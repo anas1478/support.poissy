@@ -39,7 +39,7 @@ pour avoir un retour a la ligne je fini ma phrase avec 2 espaces
 
 # les liens
 
-* [lien de type inligne](https://ww.googlz.com)
+* [lien de type inligne](https://ww.google.com)
 * [acceuil de google](https://google.com)
 * [lien de renvoi sur un fichier](https://github.com/Wimahel63/support_Poissy/blob/master/README.md)
 
