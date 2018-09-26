@@ -20,6 +20,8 @@ on écrit en italique avec des *asterisques* ou des _bonjour_
 
  **en gras**
 
+    pour avoir un effet encadré avec un background gris clair mettre 4 espaces oou tab    
+    
 le titre barré ~~tildes~~ alt gr+2  
 
 # les listes 
