@@ -1,0 +1,34 @@
+*{
+    text-align: center;
+    
+}
+body{
+    background: rgba(145, 41, 124, 0.5);
+}
+
+header{
+    background: color #585858;
+    color:#FFF;
+    font-size: 100px;
+}
+nav{
+    background: navy;
+    height: 550px;
+
+}
+article{
+    background-color: orangered;
+    height: 66px;
+}
+nav, footer{
+    color: #a93226;
+}
+.jaune{
+    background-color: yellow;
+}
+#noir{
+    background-color: black;
+    color:#fff;
+    text-align: center;
+    font-size: 25px;
+}
