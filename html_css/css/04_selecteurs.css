@@ -1,0 +1,57 @@
+body{
+    background-color:white;
+    font-size:25px;
+}
+h1{
+    background-color: black;
+    color: bisque;
+}
+section p{
+
+    color: navy;
+}
+section p:nth-child(3), section p:nth-child(10){
+    color: black !important
+}
+
+section p:first-child{
+color: yellow;
+}
+section p:last-of-type{
+    color: saddlebrown;
+}
+section p:nth-child(even){
+    color: tomato;
+}
+section p:nth-child(odd){
+    color: yellow;
+}
+.black{
+    background-color: black;
+    height:100px;
+    color: white;
+  
+}
+.zone1{
+
+    background-color: black;
+    color: brown;
+    height: 30px;
+}
+
+
+.lime{
+    color: blue
+}
+.zone2{
+    color: green;
+}
+li:nth-child(2){
+    background-color: red;
+}
+.gauche{
+    float: left;
+}
+.droite{
+    float: right;
+}

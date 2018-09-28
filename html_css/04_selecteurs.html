@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywordes" content="mot1 mot2">
+    <meta name="author" content="yousfi anas">
+    <meta name="description" content="selecteurs">
+    <title>selecteurs</title>
+    <link rel="stylesheet" href="css/04_selecteurs.css">
+</head>
+<body>
+    <!--h1+section>p*10+tab -->
+    <h1>le titre</h1>
+    <section>
+        <p>1 - un premier paragraphe</p>
+        <p>2 - j'jecris toujours</p>
+        <p>3 - mon chat veut du lait</p>
+        <p>4 - Bernard est gentil</p>
+        <p>5 - jean mange du pain</p>
+        <p>6 - l'eau c'est la vie</p>
+        <p>7 - iphone ou samsung</p>
+        <p>8 - je suis fatiguer</p>
+        <p>9 - on est vendredi</p>
+        <p>10 - bientot le week-End</p>
+    </section>
+    <section>
+        <h3>les balises HTML</h3>
+        <p>les<stong>sélecteurs de type</stong> ciblent les élements de la page html par les balises.par exemple si nous voulons cibler touts nos titres de niveau&lt;/h4> de la page html nous utiliserons le sélecteur de type h4 
+        </p>
+         <p>HTML :<br>
+             &lt;h4>bonjour à tout
+             &lt;h4> au revoir à tous <br><br>
+
+           CSS :<br>
+           &lt;h4> {<br>
+            ...}<br>  
+         </p>
+         
+         <p>
+             les <strong>sélecteurq de classe</strong> permetteent de cibler un element en foction de la valeur de l'attribut class attaché à cet element. les selecteurs de class permettent d'avantage de precisision car ils permetent de cibler mes elements d'un goupe ayant une class identique plutot que toutes les balises HTMl de la page.
+             les selecteur de class permetent d'appliquer la meme mise en forme en atribuant la meme valeusdans l'atribue class. ici le selecteur de class ciblera les elements de division et paragraphe
+         </p>
+         <div class="zone1">Zone 1</div>
+         <div class="zone2">zone 2 <span class="lime">moi je suis vert citron</span>zone 2</div>
+
+
+
+
+         <div class="black"><p class="gauche"> je suis a gauche</p><p class="droite">je suis a droite</p></div>
+
+
+
+
+
+
+
+         
+         <div class="zone4">zone 4  <span>44444444</span></div>
+         <div class="zone5">
+            <ul>
+                <li>zone 5 - 1</li>
+                <li class="rouge">zone 5 - 2</li>
+                <li>zone 5 -3</li>
+            </ul>
+
+         </div>
+         <p> les <srong>selecteur d' ID</srong> sont encore plus précis que les class, car ils ciblent un element unique. tous comme les selecteurs de class utilisent la valeur d'une class presente dans le HTMl, les sélecteurs d'ID utilisent la valeur de l'attribut ID
+        ATTENTION ! /!\
+        les ID s'utilisent qu'une fois pas comme les class voila pourquoi ils sont plus "fort"
+        en css les ID "#" et les class "."
+        
+        
+        </p>
+         
+    </section>
+
+    
+</body>
+</html>
