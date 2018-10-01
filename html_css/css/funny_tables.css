@@ -1,0 +1,10 @@
+tbody{
+    padding: 100px;
+}
+tr,td,th{
+    border: 1px solid white ;
+    width:35px;
+    height:35px;
+    padding-left: 20px;
+    padding-right: 10px;
+}

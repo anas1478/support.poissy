@@ -1,0 +1,38 @@
+body{
+
+    margin: 0 auto;
+    background-color: antiquewhite;
+}
+div{
+    width: 90%;
+    margin: 0 auto;
+    background-color: lightsteelblue;
+}
+.boite{
+    height: 11vh;
+    width: 18vh;
+    padding: 5vh;
+    background: url(../femme.jpg);
+    background-repeat: no-repeat;
+    border: 5px double green;
+    margin: 2vh;
+    float: left;
+    transition: margin 0.5s;
+   
+}
+.boite:hover{
+    margin-top: 10vh;
+    
+}
+.clear{
+    clear: both;
+}
+
+p{
+    background-color: lightblue;
+}
+
+p span{ /* sélectionne les span contenus dans les p*/
+    background-color: yellow;
+}
+
