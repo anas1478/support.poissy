@@ -1,0 +1,35 @@
+section{
+   margin: 0 auto;
+    border: 3px solid black;
+    height: 450px;
+    width: 580px;
+    
+    
+}
+
+
+
+div{
+    margin-left: 25px;
+    padding: 25px;
+    width: 15px;
+    height:15px;
+    background-color: brown;
+    border: 2px solid black;
+    margin-top: 5px;
+    border-radius: 25%;
+}
+.left{
+
+
+    float: left;
+}
+.right{
+    float: right;
+}
+
+#blanc{
+    background-color: white;
+    border: none;
+    border: 2px solid white ;
+}

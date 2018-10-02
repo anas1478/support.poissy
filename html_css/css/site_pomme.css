@@ -1,0 +1,51 @@
+ 
+ header{
+     height: 258px;
+ }
+ 
+ section{
+     width: 1400px;
+     
+ }
+ .conteneur{
+    width:0 auto;
+    border: 2px solid #7fff00 ;
+    height: 1200px;
+    margin: 0px 200px;
+}
+
+nav{
+    height: 30px;
+    background-color: #7fff00;
+    
+   
+    
+}
+.nav1{
+    display: inline;
+}
+
+.texte{
+    float: left;
+    margin-left: 400px;
+    margin-right: 200px;
+    margin-top: -350px;
+    
+
+}
+.logo{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+h1,h2{
+    font-size: 30px;
+    color: lawngreen;
+}
+hr{
+    color: lawngreen;
+}
+p{
+    font-size: 25px;
+    
+}
+

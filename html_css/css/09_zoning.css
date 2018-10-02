@@ -1,0 +1,51 @@
+
+
+#conteneur{
+   height: 80%;
+   margin: 0 auto;
+   border: 2px solid black;
+
+
+}
+header{
+    height: 100px;
+    background-color:rgba(8, 10, 31, 0.952);
+   
+}
+nav{
+    background-color: darkgrey;
+    height: 30px;
+}
+section{
+    margin: 25px 25px;
+    height: 350px;
+    background-color:rgba(71, 30, 79, 0.652);
+   
+}
+div{
+    width: 49%;
+    height: 100%;
+    float: left;
+    margin: auto;
+    border: 1px solid black;
+    
+
+}
+footer{
+    height: 80px;
+    background-color:rgba(8, 10, 31, 0.952);
+    margin-top: 400px;
+}
+
+.blue{
+    background-color: blue;
+}
+.yellow{
+    background-color: yellow;
+}
+.green{
+    background-color: green;
+}
+.red{
+    background-color: red;
+}
