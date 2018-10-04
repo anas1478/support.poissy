@@ -3,11 +3,8 @@ body{
     text-align: center;
     margin: 0 auto;
     font-size: 30px;
-    
-   
 
 }
-
 
 header{
 
@@ -41,6 +38,7 @@ footer{
     position: absolute;
     right: 0px;
     top: 22px;
+    margin-left: 1500px;
 
     
 }
