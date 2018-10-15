@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <title>Javascript</title>
+ <link rel="stylesheet" href="script.js">
+ <script src="script.js"></script>
+
+
+ <script>alert("Hello Word");
+ alert("Je suis dans le body")
+ //Toujours finir l'iscruction par un point virgule(;)
+/*Commentaire sur plusieurs lignes*/
+
+//On déclare une varible sans valeur et on lui en affecte une valeur
+
+var nomDeLaVariable;
+var nomDeLaVariable="Mathieu";//Type String
+nomDeLaVariable='L\'école';
+nomDeLaVariable="J'habite dans le 78";
+console.log(nomDeLaVariable);
+
+//On déclare une variable et lui affecte directement une valeur
+var X=25;
+var x="Toto";
+//console.log(X);
+//console.log(x);
+
+//On déclare plusieurs valiables en même temps
+var a="azerty", b=true, c=10.5;
+//console.log(a+''+b+''+c);
+
+//On déclare une variable vide et on lui affecte une valeur
+var z='';
+z="Qwerty";
+//console.log(z);
+
+
+//var t=null;
+//var u=NaN;
+//var undefined;
+//var tabs=[];
+
+//console.log(typeof(z));//Verifie le type de la variable
+
+var x=5,y=10,z=-2;
+
+ //Addition
+x=x+1;
+x+=2;
+
+ //Soustraction
+x=x-2;
+x-=2;
+
+//Multiplication
+y=y*2;
+y*=2;
+var Multiplication=x*y;
+//console.log(Multiplication);
+
+ //Division
+var Division=y/z;
+y/=z
+//console.log(Division);
+
+// Modulo
+//le Modulo est le reste de la divition
+ var Modulo=13%3;
+ //13%=3;
+ //Dans cette opperation: 13 par 3 = 4-3 = 1; le Modulo est de 1. Il s'agit  du reste de la division entière d'un nombre par un autre.
+
+
+ var priority= x + y / (4+z) % 3;
+ //console.log(priority);
+ //console.log(a+''+b+''+c)
+
+ var prenom="Mathieu",
+ espace= '',
+ age= 29;
+ var moi= prenom+espace+age;
+ //alert(moi)
+
+
+/*
+ == est égal à -> 10 - "10";
+ != est différent de -> 12!="2";
+ === est égal à(en valeur et en type) -> 10 -10;
+ !== est différent de (en valeur et en type) 10 !== 9;
+ < strictement inferieur
+ > strictement supérieur
+ <= est inférieur ou égal
+ >= est supérieur ou égal
+
+ Exo: Effectuer une caparison des variables x et y ou x = 4 et y ="4" pour chaque comparateur,
+ renvoyé les tous dans un alert().*/
+
+var x=4,
+y="4",
+vrai= x<y,
+vrai2= x>y,
+faux= x>=y,
+faux2= x<=y,
+egal= x==y,
+egalValType= x===y,
+diff=x!=y,
+diffValType= x!==y;
+alert(vrai + "\n"+faux+"\n"+ vrai2+"\n"+ faux2+"\n"+egal+"\n"+egalValType+"\n"+diff+"\n"+diffValType)
+//\n= retour a la ligne
+
+
+var heure=12.33;
+//Si
+if(heure<15){
+ if(typeof(heure)=="number")
+ alert("Il est midi");
+ //code à executer si la condition est verifiée
+
+}//Sinon si
+
+else if(Heure =="12.33" &&heure ===12.33){
+ //code à executer si l'autre condition est verifiée
+ alert("je suis dans la deuxième condition");
+}
+
+else if(Heure =="12.33"|| heure ===12.33){
+ //code à executer si l'autre condition est verifiée
+ alert("je suis dans la deuxième condition");
+} //Sinon
+
+//on peut utiliser un seul else!
+else{
+ //code à executer si aucune condition n'est verifier
+}
+</script>
+</head>
+<body>
+
+</body>
+</html>
