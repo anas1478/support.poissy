@@ -1,0 +1,65 @@
+body{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+   
+
+}
+.conteneur{
+    width: 1880px;
+
+}
+header{
+  
+    width: 1880px;
+    height: 600px;    
+}
+
+#cerf{
+ width: 250px;
+ margin-left: 840px;
+ margin-top: 90px;
+ 
+}
+nav ul li{
+    margin-right: 30px;
+    float: right;
+    display: inline;
+    text-decoration: none;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+section{
+    height: 800px;
+    width:1880px; 
+}
+.asperge{
+    width: 800px;
+    margin-right: 0px;
+}
+div.our{
+    width: 1060px;
+    float: left;
+    
+}
+.text{
+    margin-left: 200px;
+    margin-right:150px;
+    margin-top: 100px;
+}
+footer{
+    height: 600px;
+    position: absolute;
+    width: 1880px;
+}
+
+.icon{
+    position: relative;
+    right: 0px;
+    bottom: 0px;
+
+}
