@@ -9,7 +9,7 @@
     <script>
             var premon="anas",
                 nom="yousfi";
-                alert("bonjour, je m'appelle "+premon+" "+nom+" je suis au poles");
+                alert("bonjour, je m'appelle "+ premon + " " + nom + " je suis au poles");
 
 
 
@@ -33,6 +33,34 @@
 
                  resultat=nombreX+nombreY;
                  alert(resultat);
+
+
+
+            var nombre1 = Number(prompt("entrez un chiffre")),
+            
+nombre2 = Number(prompt("entrez une note")),
+nombre3 = Number(prompt("entrez une note")),
+moyenne = (nombre1 + nombre2 + nombre3)/3;
+alert(moyenne);
+
+var mois= Number(prompt("Entrez un mois en chiffre"));
+var annee= Number(prompt("Entrez l'annee"));
+switch(mois){
+ case 1: case 3: case 5: case 7 :case 8: case 10: case 12: j=31;
+ break;
+
+ case 4: case 6: case 11 :case 9: case 10: case 12: j=30;
+ break;
+
+ case 2: if(annee%4==0){
+   j=29;
+ }
+ else{
+   j=28;
+ }
+
+}
+
                
     
             </script>
@@ -41,7 +69,7 @@
     <!--condition avec le java script-->
 
 <script>
-   /*var heure=Number(prompt("entrer une valeur comprise entre 0 et 24"));
+   var heure=Number(prompt("entrer une valeur comprise entre 0 et 24"));
    if(heure>=0 && heure<=12){
    
    alert("c'est le matin");
@@ -53,7 +81,7 @@
    if(heure>=17 && heure<=24){
    
    alert("c'est le soir");
-   }*/
+   }
    /*Switch est semblable à une condition à la différence que celui-ci ne peut tester que l'égalité des valeurs.*/
 /*var heure=Number(prompt("Entrez une valeur comprise entre 0 et 24"));
 

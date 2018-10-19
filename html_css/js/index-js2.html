@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <h1>boucle while</h1>
+    <p>la boucle while va nous repeter une serie d action tant qu une condition est vraie.</p>
+    <script>
+        var x = 0;
+        while( x< 10){
+            alert("x contient la valeur" + x);
+            x++;// equaut a x = x + 1 incrementation
+            //x -- equiveaut a x = x -1 decrementation 
+        }
+        
+
+    </script>
+    <h2>la boucle do..while</h2>
+     <script>
+         var x = 100;
+         do{
+             alert("x conteint la valeur" + x);
+
+         }while(x < 10)
+     </script>
+     <h2>la boucle for</h2>
+     <p>elle nous permet de repeter une serie d instruction a partir d'une valeur donnée jusqu'a une certaine valeur seuil</p>
+     <script>
+     for(i = 0; i < 10; i++){
+         alert("i contient la valeur"+ i);
+     }
+    </script>
+    <h2>la fonction</h2>
+    <p>c'est un bloque de code qui va executer une tache précise</p> -->
+    <!-- <script>
+        function multiplication(x, y){
+            //le code de la tache à réaliser
+            alert(x * y);
+
+        }
+        multiplication(5, 10);
+    </script> -->
+
+    <!--ecrire une fontion simple qui au clique lance la fonction. cette fonction demande la saisi d'une largeur, d'une longueur et affiche la surface du rectangle -->
+    <p><button onclick="b()">surface d'un rectangle</button></p>
+    <script>
+        function b(){
+
+           var lar=Number(prompt("entrer une largeur"));
+           var lon=Number(prompt("entrer une longueur"));
+            var x = lar * lon;
+            if(x === 100){
+                window.location = "https://google.com"//pour envoyer a une adresse si la var est vrai en locurence ici c'est google//
+            }
+        }
+     
+       
+    </script>
+    
+
+   <!-- Ecrire une fonction simple qui au clique sur un bouton lance la fonction. Cette fonction demande la saisie d'une largeur, d'une longuer et affiche la surface du rectangle correspondant
+   <p><button onclick="nomdevotrefonction()">Lancer la fonction</button></p>
+   1. Créez une fonction qui demande la saisie d'un rayon, retourne la surface du cercle de ce rayon
+   2. Affichez le résultat de l'appel à cette fonction en cliquant sur le bouton.
+
+   1. Créez deux variables globales a et b, initialisées respectivement à 3 et à 2.
+   2. Créez une fonction multiplie prenant un argument x prenant comme valeur par défaut 8, et renvoyant le résultat de la multiplication de x par 3
+
+   3. Créez une fonction affiche, appelée au clic sur le bouton, qui affiche dans des boîtes d'alerte successivement le résultat de multiplie appliquée a, à b, puis sans aucun paramètre (en exécutant donc la fonction avec la valeur de x par défaut)
+   
+   1. Au click sur le premier bouton, lancez la fonction boucle() qui crée un tableau de 3 en 3 et utilise une boucle for pour le remplir. Affichez le tableau dans une boîte d'alerte.
+   2.Au click sur le second bouton, lancez la fonction boucle2() qui demande à l'utilisateur via un prompt de saisir la longueur souhaitée du tableau, puis crée ce tableau et utilise une boucle for pour le remplir de sorte que l'élément i du tableau contienne i². Affichez le tableau dans une boîte d'alerte.
+   Au click sur le bouton, lancer la fonction jourDeLaSemaine(). Cette fonction détermine le jour de la semaine et affiche selon le cas dimanche, lundi, mardi... etc. jusqu'à samedi. -->
+   <p><button onclick="c()">surface d'un cerle</button></p>
+   <script>
+       function c(){
+
+          var r=Number(prompt("entrer la longeure de votre rayon"));
+          
+           var s = Math.PI * r*r;
+           alert(s);
+       }
+
+   </script>   
+   <p><button onclick="d()">fonction</button></p> 
+   <p><button onclick="e()">fonction</button></p> 
+
+    <script>
+            var q=3,
+                y=2;
+                function d(x=8){
+                 var h=  x*3; 
+                     alert(h);
+                    return x*3;
+                }
+                
+           function e(){
+
+               alert(d()*q);
+            
+           }
+
+    
+        </script>
+
+p><button onclick="boucle()">boucle</button></p>
+<script>
+    function boucle(){
+        var t = new Array(5);
+        for (i = 0; i < t.lenght; i++) {
+            t[i] = i * i;
+        }
+        alert(t);
+    }
+</script>
+
+    
+</body>
+</html>
