@@ -1,0 +1,190 @@
+body{
+    background-image: linear-gradient(to bottom, rgb(114, 114, 114), rgb(255, 255, 255));
+
+}
+.contener{
+    border-radius: 2%;
+    margin: 10px auto;
+    width: 1000px;
+    background-color: white;
+    height: 1050px;
+
+}
+.logo{
+    margin-left: 10px;
+    margin-top:10px;
+}
+h1{
+    font-size:50px;
+    margin-left: 60px;
+    margin-top: -50px;
+    letter-spacing:3px;
+}
+h2{
+    color: rgb(28, 183, 255);
+    font-weight: normal;
+    letter-spacing:1.5px;
+
+}
+.sous_titre{
+    margin-left: 60px;
+    margin-top: -35px;
+    color: rgb(255, 68, 239);
+    font-size: 16px;
+    letter-spacing:1.25px;
+
+}
+.center{
+    margin-left: 450px;
+    margin-top: -80px;
+}
+.num{
+z-index: 1;
+margin-top: -28px;
+margin-left: 37px;
+color: rgb(19, 168, 236);
+font-size: 20px;
+}
+.sous_num{
+    color: gray;
+    font-size: 16px;
+
+}
+.droite{
+    float: right;
+    margin-right: 0px;
+    margin-top: -150px;
+}
+
+.moncompte{
+    background-color: rgb(28, 183, 255);
+    color: white;
+    height: 30px;
+    width: 250px;
+    text-align: center;
+    margin-left: 80px;
+    margin-top: -7px;
+    border-top-right-radius: 10%;
+}
+.moncompte a{
+color: white;
+text-decoration: none;
+}
+.panier{
+    background-color: rgb(28, 183, 255);
+    color: white;
+    width: 250px;
+    margin-left: 80px;
+    margin-top: 1px;
+    text-align: center;
+    font-size: 17px;
+}
+nav{
+    background-color: rgb(28, 183, 255);
+   
+    height: 30px;
+    
+    
+}
+nav ul li{
+    list-style-type:none;
+    display: inline;
+    margin-left: 80px;
+    
+    
+}
+ul li a{
+    
+    text-decoration: none;
+    list-style-type:none;
+    color: white;
+    
+}
+
+.paiement{
+    float: left;
+    margin-right: 20px;
+    margin-left: 20px;
+    border-right: 1px solid gray;
+    padding-right: 20px;
+}
+.presentation{
+    width: 780px;
+}
+.services{
+    float: right;
+    margin-top: -150px;
+    margin-right: 20px;
+    padding-left: 20px;
+    border-left: 1px solid gray;
+}
+h4{
+    color: rgb(28, 183, 255);
+    font-size: 20px;
+}
+h5{
+    color: black;
+    font-size: 20px;
+    background-color: rgb(207, 204, 204);
+    text-align: center;
+    height: 30px;
+    margin-top: -4px;
+    border-top-left-radius: 15%;
+    border-top-right-radius:25%;
+
+
+}
+
+.bonplan{
+width: 300px;
+float: left;
+border-radius: 5%;
+margin-left: 20px;
+box-shadow: 5px 5px 5px gray,-3px -3px 5px gray;
+}
+.coup{
+width: 300px;
+float: left;
+border-radius: 5%;
+margin-left: 20px;
+box-shadow: 5px 5px 5px gray,-3px -3px 5px gray;
+}
+
+
+.plaisir{
+width: 300px; 
+float: left;
+border-radius: 5%;
+margin-left: 20px;
+margin-right: 20px;
+box-shadow: 5px 5px 5px gray,-3px -3px 5px gray;
+
+}
+.float{
+    width: 210px;
+    float: right;
+}
+.margin{
+    margin-top: 40px;
+}
+footer ul li{
+    background-color: rgb(28, 183, 255);
+    height: 50px;
+    
+  
+}
+#footer{
+    width: 1000px;
+    height: 30px;
+    background-color: rgb(28, 183, 255);
+    margin-top: 350px;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+#footer ul li{
+    list-style-type:none;
+    display: inline;
+    margin-left: 5px;
+    color: white;
+    
+}
