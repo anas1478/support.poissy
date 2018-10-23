@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+
+}
+
+    html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+    vertical-align: baseline;
+}
+h1{
+    font-size: 70px;
+    color: #fff;
+    margin-top: 50px;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 400;
+}
+h2{
+    font-size: 50px;
+    color: crimson;
+    padding: 20px;
+    font-weight: bold;
+    font-family: 'Amatic SC', cursive;
+
+}
+h3{
+    font-size: 22px;
+    color: orange;
+    font-weight: bold;
+    font-family: 'Amatic SC', cursive;
+}
+h5{
+    font-size: 85px;
+    color: purple;
+    padding: 20px;
+    font-weight: bold;
+    font-family: 'Amatic SC', cursive;
+}
+blockquote{
+    font-style: italic;
+    font-size: 120%;
+
+}
+main{
+    background-color: gainsboro;
+    margin: auto;
+    width: 1000px;
+}
+aside{
+    height: 300px;
+}
+section{
+    margin-top: 50px;
+    padding: 20px;
+}
+footer{
+    background-color:mistyrose;
+    height: 30px;
+}
+header{
+    background-color: gray;
+}
