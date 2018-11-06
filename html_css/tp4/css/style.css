@@ -1,0 +1,273 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.contener{
+   
+}
+body{
+    width: 100%;
+    font-family: sans-serif;
+    text-align: center;
+    line-height: auto;
+}
+.contenaire{
+
+    margin-left: 50px;
+    margin-right: 50px;
+}
+header{
+    background-color:#f8f8f8;
+    position: relative;
+}
+
+
+.haut{
+    width: 100%;
+    background-color: gray;
+    color: white;
+    height: 25px;
+}
+.haut .satisfait{
+    margin-left: 3%;
+}
+.haut ul li{
+    display: inline;
+    margin-left: 30%;
+}
+.logo{
+    margin-top: 20px;
+   display: inline-block;
+}
+.logo ul li{
+    text-decoration: none;
+    list-style:none;
+}
+h2{
+    font-size: 18px;
+}
+.contact{
+   float:right;
+
+}
+.devis{
+float: left;
+}
+.compte{
+float: right;
+margin-left: 50px;
+}
+.panier{
+float: right;
+margin-left: 50px;
+}
+.conseils{
+float: left;
+}
+
+.panier img, .compte img {
+    float: right;
+    margin-left: 10px;
+}
+.panier titre, .compte titre {
+    float: left;
+    margin: 0;
+}
+.panier p, .compte p {
+    float: left;
+    clear: both;
+    margin: 0;
+}
+
+hr {
+    clear: both;
+}
+
+.devis img, .conseils img{
+    float: left;
+}
+
+button{
+    width: 22px;
+    height: 28px;
+    margin-left: -6px;
+}
+.d-left{
+    float: left;
+}
+.d-right{
+    float: right;
+}
+
+header h2{
+    font-size: 18px;
+}
+
+
+
+.formulaire{
+    display:inline-block;
+}
+.champ {
+    width:150px; height:20px;
+}
+
+nav ul li{
+    display: inline;
+   
+    
+}
+#recherche{
+    color: white!important;
+    background-color: grey;
+    height: 22px;
+    width: 18px;
+    margin-left: -8px;
+  
+}
+nav{
+    width: 100%;
+    background: linear-gradient(to top, rgb(197, 197, 197),rgb(238, 238, 238));
+    height: 30px;
+    clear: both;
+}
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    width: 50px;
+    
+}
+nav ul li a{
+    border-right: 1px solid  rgb(100, 100, 100);
+   margin-left: 10px;
+   padding-right: 10px;
+   margin-left: 100px;
+   
+
+}
+.row{
+    clear: both;
+}
+
+header .logo ul li{
+    font-size: 15px;
+}
+header .haut ul li{
+    text-decoration: bold;
+}
+span.carousel-control-prev-icon,span.carousel-control-next-icon {
+    width: 45px;
+    height: 45px;
+    background-color: #fc0d68;
+}
+.carousel{
+    margin-top: 20px;
+  
+}
+h5{
+    height: 30px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.609);
+    line-height: 30px;
+    text-align: center;
+}
+.imag {
+    width: 400px;
+    margin-top: 20px;
+}
+#imag{
+    width: 400px;
+    margin-left: 12.5%;
+}
+
+.h{
+    height: 50px;
+    width: 400px;
+    color: white;
+    background-color: #f52674;
+    line-height: 50px;
+    text-align: center;
+    margin-left: 12.5%;
+}
+.h_2{
+height: 50px;
+color: white;
+    background-color: #f52674;
+    line-height: 50px;
+    text-align: center;
+    width: 50%;
+    
+
+}
+.iccon{
+    margin: 20px 200px;
+    position: relative;
+    width: 100%;
+    
+}
+
+.iccon span{
+    margin-right: 150px;
+}
+.icon_droite{
+   float: left;
+ 
+}
+.icon_haut{
+    clear: both;
+    float: left;
+
+}
+.icon_bas{
+    clear: both;
+    float: left;
+
+}
+.produit{
+    margin-left: 100px;
+}
+.l-a .ajouter{
+    float: right;
+    background-color: #f52674;
+    color: white;
+}
+.l-a .loupe{
+    float: left;
+    background-color: rgb(51, 51, 51);
+    color: white;
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+    
+}
+.l-a .loupe a{
+    color: white;
+}
+.demande{
+    clear: both;
+    background-color: rgb(134, 134, 134);
+    color: white;
+    height: 30px;
+    line-height: 30px;
+}
+.fa-scroll{
+color: rgb(51, 51, 51)!important;
+font-size:30px;
+
+}
+.fa-search{
+    color: palevioletred;
+    font-size:20px;
+}
+.fa-scroll{
+    font-size:20px;
+}
+.fa-shopping-cart{
+    font-size:20px;
+}
+.ajouter{
+    width: 50%;
+    height: 30px;
+    line-height: 30px;
+}
