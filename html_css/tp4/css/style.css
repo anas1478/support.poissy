@@ -2,9 +2,7 @@
     margin: 0;
     padding: 0;
 }
-.contener{
-   
-}
+
 body{
     width: 100%;
     font-family: sans-serif;
@@ -171,6 +169,10 @@ h5{
     background-color: rgba(0, 0, 0, 0.609);
     line-height: 30px;
     text-align: center;
+    margin-left: 30px;
+}
+h6{
+    margin-left: 150px;
 }
 .imag {
     width: 400px;
@@ -178,7 +180,7 @@ h5{
 }
 #imag{
     width: 400px;
-    margin-left: 12.5%;
+    
 }
 
 .h{
@@ -188,7 +190,7 @@ h5{
     background-color: #f52674;
     line-height: 50px;
     text-align: center;
-    margin-left: 12.5%;
+    margin-left: 17.5%;
 }
 .h_2{
 height: 50px;
@@ -196,7 +198,7 @@ color: white;
     background-color: #f52674;
     line-height: 50px;
     text-align: center;
-    width: 50%;
+    width: 200px;
     
 
 }
@@ -271,3 +273,109 @@ font-size:30px;
     height: 30px;
     line-height: 30px;
 }
+.cardd{
+    margin: auto;
+    border: 1px solid black;
+    float: left;
+    margin-left: 130px;
+    margin-bottom: 50px;
+}
+.rose{
+    color: palevioletred;
+    font-weight: bold;
+}
+.eshop{
+    position: relative;
+    margin: auto;
+    width: 75%;
+    background-color: grey;
+    
+    
+}
+ h6{
+    position: absolute;
+    left: -150px;
+    top: -23px;
+}
+.adr {
+   
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 38px;
+    height: 38px;
+    background: url(../img/sprites.png); 
+    background-position-y: -102px ;
+     display: inline-block; 
+    
+    
+ }
+ .eshop section{
+     width: 32%;
+     color: white;
+     position: relative;
+     
+     
+ }
+ .eshop{
+    height: 300px;
+ }
+ .sep{
+    border-right: 5 solid white;
+ }
+.tel{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 38px;
+    height: 38px;
+    background: url(../img/sprites.png); 
+    background-position-y: 36px ;
+     display: inline-block; 
+    
+ }
+ .email{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 38px;
+    height: 38px;
+    background: url(../img/sprites.png); 
+    background-position-y: 0px ;
+     display: inline-block; 
+    
+ }
+ .gauche{
+     float: left;
+     border-right: 1px solid white;
+     height: 260px;
+ }
+.centre{
+    float: left;
+    border-right: 1px solid white;
+    height: 260px;
+}
+
+.centre, .droite{
+    float: left;
+   
+}
+
+
+ .heure{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 38px;
+    height: 38px;
+    background: url(../img/sprites.png); 
+    background-position-y: 140px ;
+     display: inline-block; 
+    
+ }
+ .qui{
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 38px;
+    height: 38px;
+    background: url(../img/sprites.png); 
+    background-position-y: 104px ;
+     display: inline-block; 
+    
+ }
