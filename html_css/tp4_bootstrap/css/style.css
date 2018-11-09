@@ -1,0 +1,27 @@
+body{
+    font-family: sans-serif;
+}
+h3{
+font-size: 18px;
+}
+header p{
+    font-size: 12px;
+}
+nav{
+background: linear-gradient(#e66465, #9198e5);
+}
+main{
+    margin: 20px auto;
+}
+.card{
+    margin-bottom: 20px;
+}
+.card-body{
+    background-color: #f62774;
+}
+.card-text{
+    color: white;
+}
+.icon{
+    margin-top: 50px;
+}

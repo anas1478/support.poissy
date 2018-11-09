@@ -3,11 +3,11 @@
     padding: 0;
 }
 
-body{
+main{
     width: 100%;
     font-family: sans-serif;
     text-align: center;
-    line-height: auto;
+   
 }
 .contenaire{
 
@@ -164,12 +164,13 @@ span.carousel-control-prev-icon,span.carousel-control-next-icon {
   
 }
 h5{
-    height: 30px;
+    height: 24px;
     color: white;
     background-color: rgba(0, 0, 0, 0.609);
     line-height: 30px;
-    text-align: center;
-    margin-left: 30px;
+    margin-left: -100px;
+   
+  width: 100%;
 }
 h6{
     margin-left: 150px;
@@ -346,6 +347,7 @@ font-size:30px;
      float: left;
      border-right: 1px solid white;
      height: 260px;
+     width: 65%;
  }
 .centre{
     float: left;
@@ -379,3 +381,131 @@ font-size:30px;
      display: inline-block; 
     
  }
+ iframe{
+    
+   float: left;
+   margin-right: 5px;
+ }
+ 
+h4{
+    
+    display: inline;
+}
+
+footer{
+    background-color: #f1f1f1;
+    margin: 20px auto;
+   
+    width: 90%;
+    clear: both;
+    padding-bottom: 30px;
+    color: gray;
+    height: 1200px;
+    
+}
+.left ul li, .information ul li{
+   text-decoration: underline;
+   
+    list-style: none;
+
+}
+.left ul li a, .information ul li a{
+    color: gray;
+}
+
+div.carousel-caption.d-md-block {
+    
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: -47px;
+    left: 0px;
+    right: -100px;
+}
+.eshop2{
+    float: left;
+    margin-left: 30px;
+}
+.information{
+    float: left;
+    margin-left: 350px;
+}
+.left{
+    float: left;
+}
+.qualite{
+    float: left;
+    margin-left: 150px;
+}
+.text-footer{
+    clear: both;
+    width: 60%;
+    margin-left: 30px;
+    color: gray;
+}
+.reseaux{
+    width: 30%;
+    float: right;
+    margin-right: 30px;
+}
+.gauche{
+    float: left;
+}
+.fb{
+    margin-bottom: 30px;
+    background-color: #eae7e7;
+}
+.news{
+    background-color: #eae7e7;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+.news p {
+    font-size: 20px;
+   font-weight: bold; 
+}
+.champ{
+    width: 70%;
+    height: 32px;
+    float: left;
+}
+.button2{
+    background-color: gray;
+    color: white;
+    width: 30%;
+    float: right;
+    height: 32px;
+}
+.from{
+    width: 400px;
+}
+.envoie{
+    text-align: center;
+    background-color: #eae7e7;
+    padding: 10px;
+}
+.envoie input{
+    float: none;
+}
+.button3{
+    background-color: gray;
+    color: white;
+    width: 30%;
+    height: 32px;
+    margin-top: 10px;
+}
+.icon-reseaux ul li{
+    display: inline;
+    margin-left: 20px;
+
+}
+.icon-reseaux ul li a{
+    font-size: 30px;
+    color: black;
+    
+
+}
+.icon-reseaux{
+    margin-top: 20px;
+    margin-left: 100px;
+}
