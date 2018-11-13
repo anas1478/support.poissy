@@ -774,10 +774,331 @@ Les parents on leur met un display : flex et place les enfants.*/
 }
 
 
+.infoBulle{
+    height: 250px;
+    width: 500px;
+    margin: auto;
+    padding-top: 15px;
+    background: slategray;
+    box-shadow: 0 0 50px #222 inset /*effet à l'intérieur de l'élément*/
+}
+.infoBulle p{
+    text-align: center;
+    padding-top: 30px;
+}
+.infoBulle a{
+    color: white;
+    text-shadow: 0 -2px 0 black;
+    text-decoration: none;
+    border-radius: 3px;
+    padding:5px 15px;
+}
+.infoBulle a:hover{
+    text-shadow: 0 1px 2px black;
+    background: rgba(0,0,0,0.4);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.4);
+    color: white;
+}
+.infoBulle a span{
+    position: absolute;
+    padding: 15px;
+    margin-top: 23px;
+    margin-left: -35px;
+    background: rgba(0,0,0,0.9);
+    opacity: 0;
+    color: pink;
+    transform: scale(0) rotateZ(-12deg);
+    transition: .25s;
+    border-radius: 3px;
+    box-shadow: 0 0 2px rgba(0,0,0,.5);
+}
+.infoBulle a:hover span{
+    opacity: 1;
+    transform: scale(1) rotateZ(0);
+}
+.infoBulle a span:before{
+    content:'';
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    border-bottom: 6px solid rgba(0,0,0,.9);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+}
+
+.imgEffets{
+  width: 320px;
+  height: 320px;
+  margin: 70px auto;
+}
+
+.imgEffets li{
+  list-style: none;
+  float: left;
+  width: 141px;
+  height: 150px;
+  margin: 5px;
+}
+
+.imgEffets li:nth-child(3){
+  clear: both;
+}
+
+.imgEffets img{
+  position: absolute;
+  z-index: 1;
+  height: 150px;
+  box-shadow: 0 0 3px black;
+  transition: .5s cubic-bezier(0,3,.4,1);
+}
+
+.imgEffets li:hover img{
+  z-index: 2;
+  transform: scale(1.5);
+  box-shadow: 0 0 10px black;
+}
+
+.imgEffets:hover li:not(:hover) img{
+  filter: grayscale(1) blur(8px);
+}
+/*------------------Menu rotation------------------*/
+
+/*------- Menu rotation ---------*/
+#menuRotate{
+	height: 360px;
+	width: 576px;
+	margin: 100px auto;
+	background: mistyrose;
+	position: relative; /*absolute en foncction du body sauf si son parent est en relative*/
+	overflow: hidden;
+	border: 2px solid pink;
+}
+#menuRotate .masque{
+	position: absolute;
+	z-index: 50;
+	width: 585px;
+	height: 135px;
+	top: 0;
+	left: 0;
+	background: linear-gradient(pink, mistyrose);
+}
+#menuRotate .ombre{
+	position: absolute;
+	z-index: 40;
+	width: 300px;
+	height: 6px;
+	box-shadow: 0px 100px 3px black;
+	border-radius: 75px / 3px; /*rayon horizontaux / rayon verticaux*/
+	top: 32px;
+	left: 142px;
+}
+#menuRotate dl{
+	position: relative;
+	top: 0;
+	left: 50%;
+	margin-left: -75px;
+	width: 150px;
+	height: 155px;
+	color: white;
+	text-align: center;
+	background: CRIMSON;
+	border-radius: 4px;
+	box-shadow: 0 0 6px rgba(0,0,0,0.7);
+	transform-origin: 50% 120px;
+	animation: bounceOut 0.7s ease-in-out;
+}
+#menuRotate dt{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	padding-top: 5px;
+}
+#menuRotate dd{
+	transform: rotate(180deg);
+}
+#menuRotate dd a{
+	display: block;
+	height: 24px;
+	padding: 3px 0;
+	color: white;
+	text-decoration: none;
+}
+#menuRotate dd a:hover{
+	background: rgba(255,255,255,0.1);
+}
+#menuRotate dl:hover{
+	transform: rotate(-180deg);
+	animation: bounceIn 0.7s ease-in-out;
+}
+@keyframes bounceIn{
+	from{transform: rotate(0deg);}
+	75%{transform: rotate(-200deg);}
+	90%{transform: rotate(-175deg);}
+	to{transform: rotate(-180deg);}
+}
+@keyframes bounceOut{
+	from{transform: rotate(0deg);}
+	0%{transform: rotate(-180deg);}
+	10%{transform: rotate(-165deg);}
+	to{transform: rotate(-360deg);}
+}
+figure{
+    width: 95%;
+    margin:auto;
+}
+.video:hover{
+    box-shadow: 10px 10px 20px black,-10px -10px 20px black; 
+    border: 10px white;
+
+}
+/***************** Multimedia *********************/
+.videoFond {
+  padding-left:0;
+  padding-right:0;
+}
+.videoFond video {
+  position:absolute;
+  z-index: 1;
+  width: 100%;
+}
+.videoTexte {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+.videoFond p {
+  position: absolute;
+  transform: translate(-50%, -25%);
+  z-index:2;
+  width: 500px;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 255, 255, .6);
+  padding: 10px;
+  border-radius: 10px;
+}
+iframe[allowfullscreen]{
+    width: 100%;
+}
+section{
+    padding-bottom: 30px;
+}
+.audio{
+   
+   text-align: center;
+}
+audio{
+    width: 450px;
+}
+form{
+    width: 60%;
+    background: lightcoral;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+    border-radius: 15px;
+}
+label{
+    margin: 10px 0;
+    width: 50%;
+    display: inline-block;
+}
+textarea{
+    resize: none;
+}
+label[for="orange"], label[for="fraise"], label[for="mangue"]{
+    width: 10%;
+}
 
 
+.ancre{
+	text-align: center;
+	margin: 15px;
+}
+.ancre a{
+	color: white;
+	background: tomato;
+	padding: 7px;
+	text-decoration: none;
+	border-radius: 7px;
+	margin: 5px;
+	box-shadow: 0px 1px 24px 0px rgba(46, 50, 50, 0.73);
+}
+.ancre a:hover{
+	font-size: 150%;
+	transition: 2s;
+}
+.contAncre{
+	border-top: 2px solid #2c3e50;
+	border-bottom: 2px solid #2c3e50;
+}
+#lien a{
+	text-decoration: none;
+	color: #2980b9;
+	font-weight: bold;
+	display: inline-block;
+	margin-bottom: 15px;
+	font-size: 120%;
+}
+#lien a:hover{
+	color: tomato;
+}
+/**** MENU ****/
+#menu nav{
+	background: transparent;
+	border: none;
+}
+#menu ul{
+	list-style: none;
+	text-align: center;
+}
+#menu ul li{
+	display: inline-block;
+}
+#menu nav a{
+	padding: 10px;
+	color: CRIMSON;
+	text-decoration: none;
+	background: white;
+}
+#menu nav a:hover{
+	background: khaki;
+	transition: 1s ease-in-out;
+}
 
-
-
-
-/********************FIN DE PAGE POSITIONS *****************/
+/*** MENU DEROULANT ***/
+#menuDeroulant{
+	height: 650px;
+}
+#menuDeroulant nav{
+	background: transparent;
+	border: none;
+	width: 90%;
+	margin: 0 auto;
+}
+#menuDeroulant nav ul li{
+	float: left;
+	list-style: none;
+	width: 20%;
+}
+#menuDeroulant ul ul{ /*Les listes qui sont dans les listes*/
+	display: none;
+}
+#menuDeroulant nav ul li ul li{
+	border-top: 1px solid pink;
+	width: 100%;
+}
+#menuDeroulant nav li{
+	background: GAINSBORO;
+}
+#menuDeroulant nav li a{
+	text-decoration: none;
+	color: #000;
+	padding: 4px 0 4px;
+	display: block; /*pour qu'il s'étende sur toute la laugeur de son conteneur*/
+	background: mistyrose;
+}
+#menuDeroulant nav ul.niveau1 li.sousMenu:hover ul.niveau2{
+	display: block;
+}
