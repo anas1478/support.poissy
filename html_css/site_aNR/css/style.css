@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+p,h1,h2,h3,h4,h5,h6,a{
+    color: white;
+}
+p{
+    font-size: 20px;
+}
+
+body{
+    background: url(../img/bgd.jpg);
+    background-attachment: fixed;
+}
+.clear{
+    clear: both;
+}
+.contener{
+    width: 60%;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+nav ul li{
+    display: inline;
+    margin-right: 2%;
+}
+nav ul li a {
+    text-decoration: none;
+    list-style: none;
+    color: rgb(255, 251, 245);
+    font-size: 20px;
+    line-height: 2.5rem;
+}
+nav.navRouge{
+    height: 50px;
+    text-align: right;
+    background-color: rgb(155, 42, 42);
+
+    
+}
+nav.navBlache{
+    height: 100px;
+    background-color: #fff;
+    width: 100%;
+    
+
+}
+
+.logo{
+    
+    height: 95px;
+  float: left;
+  margin-left: -7%;
+}
+nav.navBlache ul li a{
+color: rgb(155, 42, 42);
+width: 60%;
+  display: inline;
+  line-height: 100px;
+  font-weight: bold;
+  font-size: 19px;
+  margin-right: 20px;
+}
+nav.navBlache ul{
+    margin-left: 550px; 
+}
+.homme{
+    margin-top: 5%;
+    margin: 2%;
+    width: 45%;
+    text-align: left;
+    height: 300px;
+    float: left;
+}
+.femme{
+    margin-top: 5%;
+    margin: 2%;
+    width: 45%;
+    text-align:left;
+    height: 300px;
+    float: right;
+}
+mark{
+    background-color: rgb(155, 42, 42);
+    color: white;
+}
+.border_img{
+    margin-left: 5.5%;
+    margin-top: 10%;
+    width: 250px;
+    height: 210px;
+    border: 10px solid white;
+    float: left;
+   
+
+}
+
+.button{
+  text-align: center;
+}
+button{
+    width: 150px;
+    height: 40px;
+    background-color: rgb(155, 42, 42);
+    color: #fff;
+    border: 1px solid black;
+    border-radius: 15%;
+    text-align: center;
+    margin-left: 30%;
+}
+.jambo{
+    position: relative;
+    margin: 5% auto;
+  
+    width: 80%;
+    height: 250px;
+    background-color: #fff;
+}
+section .jambo h1,h5{
+   color: rgb(45, 45, 136);
+}
+h1{
+    text-align: center;
+}
+h5{
+    position: absolute;
+    bottom: 10px;
+    left: 150px;
+    
+    
+}
+footer ul li a{
+    color: rgb(155, 42, 42)!important;
+    display: inline;
+
+
+}

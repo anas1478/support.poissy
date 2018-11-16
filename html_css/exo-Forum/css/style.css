@@ -1,0 +1,43 @@
+*{
+    font-family: 'Rock Salt', cursive;
+    text-align: center;
+}
+main{
+    width: 70%;
+    margin:auto;
+   
+}
+
+main h1{
+    font-size: 55px;
+}
+div.chaman p,img{
+    display: inline-block;
+    font-family: 'Sunshiney', cursive;
+    font-size: 30.5px;
+}
+img{
+    width: 25%;
+    height: 80%;
+}
+p{
+    background: #fff;
+    width: 59%;
+    border: 2px dashed red;
+    padding:2%;
+    border-radius: 5px;
+}
+
+.demon{
+
+    background: url(../img/demoniste.jpg) no-repeat;
+    background-size: 280px;
+    background-position: 90% 13%;
+}
+
+.demon p{
+    text-transform: uppercase;
+    font-size: 13px;
+    word-spacing: 9px;
+
+}

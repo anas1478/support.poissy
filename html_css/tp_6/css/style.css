@@ -1,0 +1,164 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+header{
+    position: relative;
+    width: 100%;
+}
+nav ul li{
+    display: inline;
+    z-index: 6;
+    margin: 20px;
+    padding: 10px;
+    
+}
+nav{
+    position: fixed;
+    top: 0px;
+}
+nav ul li a:hover{
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 5px;
+}
+nav ul li a:focus{
+    color: #1C5F81;
+}
+
+i{
+    padding-right: 15px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+}
+.billet{
+    background-color: #1C5F81;
+    padding: 10px; 
+    border-radius: 5px;
+
+}
+.billet:hover{
+    background-color:#fff;
+    border: none;
+    
+    
+}
+.billet a:hover, a:hover{
+    color: #1C5F81;
+
+}
+
+nav{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.226);
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+}
+.dino{
+    z-index: 3;
+    width: 100%;
+}
+.logo{
+    position: absolute;
+    top: 250px;
+    left: 551px;
+    z-index: 4;
+}
+.clim{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+main{
+    width: 60%;
+    margin: 30px auto; 
+    text-align: center;
+}
+section.text{
+    text-align: left;
+    margin-left: 17%;
+    margin-top: 30px;
+}
+p{
+    margin-bottom: 20px;
+}
+h1,h2{
+    margin: 30px;
+}
+button{
+    margin-top: 30px;
+    color: white;
+    padding: 10px 30px;
+    background-color: #1C5F81;
+    border: none;
+    border-radius: 5px;
+}
+.left{
+    width: 50%;
+    float: left;
+    text-align: left;
+}
+.right{
+    width: 50%;
+    float: right;
+    text-align: left;
+
+}
+ul li {
+    list-style: none;
+}
+hr{
+    width: 80%;
+    margin-top: 30px;
+}
+
+iframe{
+    margin-top: 20px;
+}
+.zindex1{
+z-index: 1;
+position: relative;
+}
+
+.metro {
+    transform: translateY(25%)
+}
+
+.zindex2{
+    z-index: 2;
+    position: relative;
+}
+.clear{
+    clear: both;
+}
+div.media figure img{
+    margin-left: 10%;
+   
+}
+
+div.media{
+    width: 100%;
+}
+div.media figure{
+    width: 90%;
+    margin-right: 20%;
+}
+footer{
+    height: 350px;
+    background-color: #000;
+}
+footer ul{
+    color: white;
+    margin-left: 20%;
+    margin-top: 10%;
+}
+footer div.right figure{
+    margin-left: 400px;
+    margin-top: 70px;
+}
