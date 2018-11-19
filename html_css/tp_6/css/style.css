@@ -52,13 +52,14 @@ nav ul li a{
 }
 
 nav{
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.226);
     height: 80px;
     text-align: center;
     line-height: 80px;
+    z-index: 9;
 }
 .dino{
     z-index: 3;
