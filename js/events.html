@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1 onclick="alert('j\'ai cliquer sur mon titre')">mon titre h1</h1>
+    <div>
+        <img id="monImage" src="1.jpg">
+    </div>
+    <button id="changerImage">changer l'image</button>
+    <script>
+        var button = document.querySelector("#changerImage");
+        var monImage = document.querySelector("#monImage");
+        var monImageSource = monImage.getAttribute("src");
+        button.addEventListener("click", changer); 
+        
+        function changer() {
+
+            switch (monImageSource) {
+
+                case '1.jpg':
+                    monImage.src = '2.jpg';
+                    break;
+                case '2.jpg':
+                    monImage.src = '3.jpg';
+                    break;
+                case '3.jpg':
+                    monImage.src = '1.jpg';
+                    break;
+
+            }
+        }
+        //au survol de la souris sur le titre h1 on surligne en rouge
+        //onmouseOver
+        var monTitre = document.querySelector("h1");
+        monTitre.onmouseover = function () {
+            monTitre.style.background = "red";
+
+        }
+        monTitre.onmouseout = function () {
+            monTitre.style.background = "transparent";
+
+        }
+
+
+    </script>
+</body>
+
+</html>

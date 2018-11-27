@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <img id="monImage" src="1.jpg">
+    </div>
+    <button id="demarrer">lancer le carroussel</button>
+    <button id="stoper">arreter le carroussel</button>
+    <script>
+    var img=1;
+    var monImage = document.querySelector('#monImage');
+    var demarrer = document.querySelector('#demarrer');
+    function f(){
+     img += 1;
+     if(img>= 4){
+         img=1;
+     }
+     monImage.setAttribute("src",img +".jpg");
+    }
+    demarrer.addEventListener("click", function(){
+        lcc = window.setInterval("f()", 2500);
+        
+    })
+    function s(){
+     img += 1;
+     monImage.setAttribute("src",img +".jpg");
+    }
+    stoper.addEventListener("click", function(){
+        clearInterval(lcc);
+    })
+    </script>
+
+</body>
+
+</html>

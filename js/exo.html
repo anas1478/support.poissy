@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Les Selecteurs JS</title>
+</head>
+
+<body>
+	<div id="main-nav">
+		<ul>
+			<li><a href="#">Lien 1</a></li>
+			<li><a href="#">Lien 1</a></li>
+			<li><a href="#">Lien 1</a></li>
+			<li><a href="#">Lien 1</a></li>
+		</ul>
+	</div>
+
+	<h1>Titre principale de ma page</h1>
+
+	<section class="container">
+		<h2>Sous-titre</h2>
+		<p>Lorem ipsum dolor <span>sit amet</span>, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute <span>irure dolor in reprehenderit</span> in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<h2>Sous-titre</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis <span>nostrud exercitation</span> ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor <span>in reprehenderit in</span>in reprehenderit in voluptate velit esse
+			<span>cillum dolore eu fugiat</span> nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</section>
+
+	<section class="container">
+
+		<h2>Sous-titre</h2>
+
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+		<h2>Sous-titre</h2>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+	</section>
+
+
+	<footer>
+		<div id="footer-navigation">
+			<ul>
+				<li><a href="#">Lien 1</a></li>
+				<li><a href="#">Lien 1</a></li>
+				<li><a href="#">Lien 1</a></li>
+				<li><a href="#">Lien 1</a></li>
+			</ul>
+		</div>
+	</footer>
+
+	<script>
+
+
+		/* information: pour modifier le style en js il existe la proprieté "style" je vous laisse le soins de regarder 
+		comment celle-ci fonctionne sur intenet ppour l'adapter a l'exo
+		
+		combien ya til de span dans mon document ? afficher la reponse dans la console . afficher leurs valeur(contenue)
+		-Pareil pour les liens présent dans mon document.
+		- récuperer les sous-titres de mon document et modifize le contenu à la place de "sous-titre" je veux avoir "mon joli Sous-titre"
+		-mes balises p sontsans attribut class... j'aimerai ajouter des classes a mes balises"p" (cf setAttribute js) comme ca je pourrais avoir la class "mes-jolies-paragraphes"
+		dans mes balises "p" */
+		var spann = document.getElementsByTagName('span');
+		console.log("Nombre de span qui se retrouve dans la page : " + spann.length);
+
+		for (var r=0; r<spann.length; r++) {
+
+			console.log(spann[r].innerHTML);
+			spann[r].style.backgroundColor = "yellow";
+		}
+		var lien = document.getElementsByTagName('a');
+		console.log("Nombre de liens qui se retrouve dans la page : " + lien.length);
+
+		for (var r=0; r<lien.length; r++) {
+
+			console.log(lien[r].innerHTML);
+			lien[r].style.backgroundColor = "green";
+
+		}
+
+	</script>
+</body>
+
+</html>
