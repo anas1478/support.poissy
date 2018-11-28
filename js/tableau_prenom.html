@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        h1{
+            color: brown;
+        }
+        p{
+            color: brown;
+            border: 1px solid brown;
+            padding: 10px;
+            font-weight: bold;
+        }
+        button{
+            border:0;
+            border-radius: 5px;
+            width: 300px;
+            background-color: rgb(156, 67, 67);
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border: 5px solid rgb(65, 39, 39);
+            padding: 10px;
+        }
+        button:hover{
+            background-color: rgb(65, 39, 39);
+            border:5px solid rgb(156, 67, 67);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <label for="p-select"></label>
+
+    <select id="p-select">
+ <option value="anas">anas</option>
+            <option value="momo">momo</option>
+            <option value="hakim">hakim</option>
+            <option value="sonia">sonia</option>
+            <option value="assa">assa</option> -->
+    <!-- </select> -->
+
+<h1>Apparaission Paragraphe</h1>
+<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laborum libero iusto vero cupiditate deleniti inventore quasi delectus quae dolore quos?</p>
+<button>bouton magique</button>
+    <script>
+        var h1 = document.querySelector('h1');
+        var button = document.querySelector('button');
+        var p = document.querySelector('p');
+        button.onclick =function(){
+            p.style.display ="none";
+            button.style.width="100%";
+            h1.innerHTML="disparu !";
+        }
+
+
+        /* definir un tableau de prénom (5 minumum) et replir un "select option" avec les prenom */
+
+        //     var label = document.querySelector("label");
+        //     label.innerHTML = "choisir un prénom ";
+
+        //     /* style en js ****************/
+        //     label.style.color = "red";
+        //     label.style.fontSize = "20px";
+        //     label.style.textShadow = "0px 1px gray";
+        //     label.style.marginTop ="20px";
+        //     label.style.display ="block";
+        //     var prenom = ["anas", "momo", "hakim", "sonia", "assa"];
+
+
+        //     var select = document.getElementById('p-select');
+
+
+        //     for (i = 0; i < prenom.length; i++) {
+        //         select.innerHTML += "<option>" + prenom[i] + "</option>";
+
+        //     }
+        // /*
+        // demander a l'utilisateur si c'est un homme ou une femme . ensuite lui demander son prenom. afficher le prenom de l'utilisateur de couleur rose, si 
+        // c'est une femme homme bleu;
+        // */
+        // document.write("<p></p>");
+        // var p = document.querySelector("p");
+
+        // var sexe = prompt("vous etes un homme ou une femme ?");
+        // var prenom = prompt("quel est votre prenom ?");
+        // if (sexe == "homme") {
+        //     p.innerHTML= prenom;
+        //     p.style.color = "blue";
+
+        // }
+        // if (sexe == "femme") {
+        //     p.innerHTML= prenom;
+        //     p.style.color = "pink";
+
+        // }
+        // document.write("<input type='text'><button>changer la couleure du font</buton>");
+        // var input = document.querySelector("input");
+        // var button = document.querySelector("button");
+
+        // button.onclick = function () {
+        //     document.body.style.backgroundColor = input.value;
+        // }
+       
+/*****************************correction*******************/
+
+
+// var sexe =  prompt("sexe ?");
+//             var prenom = prompt("prenom ?");
+//             var p = document.write("<p></p>");
+//             var text = document.querySelector("p");
+
+//             if(sexe == "homme")
+//             {
+//                 text.innerHTML = prenom;
+//                 text.setAttribute("style", "color:blue");
+
+//             }
+
+//             if(sexe == "femme")
+//             {
+//                 text.innerHTML = prenom;
+//                 text.setAttribute("style", "color:pink");
+//             }
+
+//             var form = document.querySelector('form');
+//             var fond = document.querySelector("#color");
+
+//             form.addEventListener('submit', function(){
+            
+//                 document.querySelector("body").setAttribute("style", "background:#"+fond.value+";");
+//             });
+
+
+//     </script>
+<!--titre.className pour changer la classe tu titre pour appliquer un nouveau style par exemple
+ -->
+
+</body>
+
+</html>

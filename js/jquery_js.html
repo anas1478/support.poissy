@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    #carre {
+           width: 100px;
+           height: 100px;
+           background: red;
+       }</style>
+</head>
+
+<body>
+  <h1>je suis un titre qui chage de couleur en jquery-3</h1>
+  <button id="agrandir">agrandir</button>
+   <button id="reset">reset</button>
+   <div id="carre"></div>
+
+</body>
+
+
+
+<!-------------------------------------------------------  Jquery  ---------------------------------------------------------------------->
+<script src="jquery-3.3.1.js"> </script>
+<script>
+$(function(){
+    $("h1").mouseover(function(){
+        $("h1").css("background-color", "yellow");
+        $("h1").css("color", "red");
+    });
+    $("h1").mouseout(function(){
+        $("h1").css("background-color", "white");
+        $("h1").css("color", "black");
+    });
+});
+$(function () {
+     
+           // declarer un carre taille 100x100 donnez lui une couleur et a chaque fois je clique sur le button agrandir mon carre grandit de 10px!
+           // ajoute egalement un button reset qui permet de revenir a la taille initiale.
+           var factor = 100;
+           $('#agrandir').click(function () {
+               factor += 10;
+               $('#carre').width(factor);
+               $('#carre').height(factor);
+           });
+           $('#reset').click(function () {
+               factor = 100;
+               $('#carre').width(factor);
+               $('#carre').height(factor);
+           });
+       });
+</script>
+
+</script>
+
+</html>
