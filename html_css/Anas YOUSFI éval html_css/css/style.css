@@ -1,0 +1,193 @@
+*{
+    padding: 0;
+    margin: 0;
+    /* pour "reset"*/
+/******************CSS pour le header************/
+}
+.contener_header{
+    width: 1052px; /**car on s'adapte a la largeur de l'image 
+    header-page-catalogue.png qui est dans le main **/
+    margin: 0 auto;
+    
+}
+header{
+    padding-top: 25px;
+    background: url('../img/bg_header.PNG');
+    margin-bottom: 25px;
+}
+body{
+    background-color: #1c1c1c;
+}
+header figure{
+    float: left;
+    border-left: 4px solid #ea9f05;
+    padding-left: 30px;
+}
+.compte_nav{
+    float: right;
+}
+nav ul li{
+    display: inline;
+    list-style: none;
+    margin: 5px;
+    border-left: 1px solid #4c4c4c;
+    padding:5px 5px 0px 5px;
+    
+}
+.border_right{
+    border-right: 1px solid #4c4c4c;
+}
+nav ul li a {
+    text-decoration: none;
+    color: #4c4c4c;
+}
+.clear{
+    clear: both;
+}
+figure span{
+    color:#ea9f05; 
+    
+}
+figcaption{
+    margin-left: 20px;
+    font-size: 22px;
+}
+.compte_panier{
+    padding: 5px 50px; 
+    border: 1.5px solid #4c4c4c;
+    background-color: #4c4c4c13;
+}
+.compte_panier span{
+    font-size: 15px;  
+}
+.compte{
+    margin-right: 30px;
+}
+header p{
+    text-align: right;
+    margin: 20px;
+    font-size: 20px;
+}
+/************CSS pour le main 'le corps du site**************/
+main{
+    width: 1052px;
+    height: 1650px;
+    margin:0 auto;
+    background-color: #fff;
+}
+.gant1{
+    width: 370px;
+    text-align: center;
+    float: left;
+    margin:70px;
+    position: relative;
+}
+
+section button{
+    float: left;
+    background-color: #1c1c1c;
+    color: white;
+    width: 50%;
+    padding: 10px 30px;
+    border: 0;
+    border-radius: 1%;
+    font-size: 15px;
+
+}
+section.gants figcaption{
+    font-size: 12px;
+}
+section .prix{
+    float: right;
+    width: 45%;
+}
+.prix span{
+    color: #ea9f05;
+    font-size: 30px;
+    font-weight: bold;
+}
+.gant1 figure{
+    box-shadow: 3px 5px 5px #4c4c4c,-3px -5px 5px #4c4c4c;
+    margin-bottom: 15px;
+}
+.gant1 figure figcaption{
+    margin-top: -25px;
+    height: 35px;
+}
+s{
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+.reduction{
+    position: absolute;
+    top: 5px;
+    right: -20px;
+    background-color: #4c4c4c;
+    color: #ea9f05;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+}
+/****************** CSS FOOTER ********************/
+.barre{
+    position: relative;
+    height: 30px;
+    padding: 0;
+    background-color: #555555;
+    width: 1920px;
+    margin-left: -40%;
+}
+footer{
+    background-color: #555555;
+    height: 400px;
+    padding-top: 40px;
+}
+.qui p{
+    display: inline;
+
+}
+.qui{
+    width: 400px;
+    background-color: #e7e7e7;
+    margin: 0 auto;
+    height: 60px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 60px;
+}
+i{
+    color: #ea9f05;
+    margin: 5px;
+}
+.barre{
+    
+    height: 50px;
+}
+.contener_footer{
+    width: 800px;
+    margin: 0 auto;
+}
+footer .contener_footer div {
+text-align: center;
+width: 24%;
+float: left;
+}
+footer .contener_footer div figcaption{
+    font-size: 15px;
+    color: white;
+}
+.reseaux figure{
+    width: 300px;
+    margin:30px 250px 20px 250px;
+}
+.reseaux figure a img{
+    margin: 30px;
+}
+.reseaux figure figcaption{
+    margin: 0;
+}
+
+
+

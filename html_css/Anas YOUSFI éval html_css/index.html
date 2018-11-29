@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>évaluation HTML/CSS</title>
+    <!--link pour le style.css-->
+    <link rel="stylesheet" href="css/style.css">
+    <!--link font awsome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+</head>
+
+<body>
+    <!--début du header-->
+    <header>
+        <!--contener_header car le contenue du header n'est pas en full width-->
+        <div class="contener_header">
+            <!--figure qui va foater a gauche-->
+            <figure>
+                <img src="img/logo.png" alt="logo'sport.com'">
+                <figcaption>Lorem ipsum dolor
+                    <span>sit amet</span>
+                </figcaption>
+            </figure>
+            <!--section qui va foater à droite  avec une div  'mon compte' et 'vote panier est vide' ainsi que la nav-->
+            <section class="compte_nav">
+                <div class="compte_panier">
+                    <span class="compte">
+                        <img src="img/icon-mon-compte.png" alt="mon compte"> Mon compte</span>
+                    <span class="panier">
+                        <img src="img/icon-mon-panier.png" alt="mon panier"> Votre panier est vide</span>
+                </div>
+                <p>Bonjour julien</p>
+                <!--nav dans la meme section-->
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="#">Connectez-vous</a>
+                        </li>
+                        <li>
+                            <a href="#">Parrainage</a>
+                        </li>
+                        <li class="border_right">
+                            <a href="#">Déconnection</a>
+                        </li>
+                    </ul>
+                </nav>
+            </section>
+        </div>
+        <div class="clear"></div>
+        <!--affin de retablire le flux normal du html-->
+    </header>
+    <!--fin du header-->
+    <!--main qui aura la meme margeur que le contener_header
+    pour etre a la meme la largeur-->
+    <main>
+        <figure>
+            <img src="img/header-page-catalogue.png" alt="combat de boxe">
+        </figure>
+        <!--section avec les 4 articles  gants de box-->
+        <section class="gants">
+            <div class="gant1">
+                <figure>
+                    <img src="img/gant-boxe-2.png" alt="geat de box">
+                    <figcaption>
+                        GANTS DE BOXES DE COMBAT KLIMAX V3
+                    </figcaption>
+                </figure>
+                <button type="button">voir la vente</button>
+                <div class="prix">
+                    <s>120 €</s>
+                    <span> 65 €</span>
+                    <hr>
+                </div>
+                <div class="clear"></div>
+                <div class="reduction">
+                    <p>-45%</p>
+                </div>
+            </div>
+            <!--2eme gant rouge-->
+            <div class="gant1">
+                <figure>
+                    <img src="img/gant-boxe-1.png" alt="geat de box">
+                    <figcaption>
+                        GANTS DE BOXES DE COMBAT KLIMAX V3
+                    </figcaption>
+                </figure>
+                <button type="button">voir la vente</button>
+                <div class="prix">
+                    <s>120 €</s>
+                    <span> 65 €</span>
+                    <hr>
+                </div>
+                <div class="clear"></div>
+                <div class="reduction">
+                    <p>-60%</p>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="gant1">
+                <figure>
+                    <img src="img/gant-boxe-2.png" alt="geat de box">
+                    <figcaption>
+                        GANTS DE BOXES DE COMBAT KLIMAX V3
+                    </figcaption>
+                </figure>
+                <button type="button">voir la vente</button>
+                <div class="prix">
+                    <s>120 €</s>
+                    <span> 65 €</span>
+                    <hr>
+                </div>
+                <div class="clear"></div>
+                <div class="reduction">
+                    <p>-30%</p>
+                </div>
+            </div>
+            <!--3eme gant noir-->
+            <div class="gant1">
+                <figure>
+                    <img src="img/gant-boxe-1.png" alt="geat de box">
+                    <figcaption>
+                        GANTS DE BOXES DE COMBAT KLIMAX V3
+                    </figcaption>
+                </figure>
+                <button type="button">voir la vente</button>
+                <div class="prix">
+                    <s>120 €</s>
+                    <span> 65 €</span>
+                    <hr>
+                </div>
+                <div class="clear"></div>
+                <div class="reduction">
+                    <p>-70%</p>
+                </div>
+            </div>
+        </section>
+        <div class="clear"></div>
+        <!--barre grise au dessus du footer-->
+        <div class="barre"></div>
+        <div class="qui">
+            <span>
+                <p> qui somme nous ? </p>
+                <p><i class="fas fa-circle"></i>Contact </p>
+                <p><i class="fas fa-circle"></i>Assistance</p>
+                <p><i class="fas fa-circle"></i>CGV</p>
+            </span>
+        </div>
+    </main>
+    <!--fin du main-->
+    <!--debut du footer-->
+    <footer>
+
+
+        <div class="contener_footer">
+            <!--div livre-->
+            <div class="livre">
+                <figure>
+                    <img src="img/icon-livre.png" alt="livre">
+                    <figcaption>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Distinctio possimus blanditiis ipsam vero totam,
+                        adipisci dolorum.</figcaption>
+                </figure>
+            </div>
+            <!--div camion-->
+            <div class="camion">
+                <figure>
+                    <img src="img/icon-camion.png" alt="camion">
+                </figure>
+                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero eaque iste asperiores! Voluptate nemo tenetur
+                    dolor!
+                </figcaption>
+            </div>
+            <!--div cadenat-->
+            <div class="cadenat">
+                <figure>
+                    <img src="img/icon-cadenat.png" alt="cadenat">
+                    <figcaption>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non neque aspernatur est omnis ex temporibus
+                        nulla!
+                    </figcaption>
+                </figure>
+            </div>
+            <!--div pouce-->
+            <div class="pouce">
+                <img src="img/icon-pouce.png" alt="pouce">
+                <figcaption>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates veritatis voluptate recusandae hic aspernatur
+                    ullam amet.</figcaption>
+            </div>
+            <!--div réseaux sociaux-->
+            <div class="reseaux">
+                <figure>
+                    <a href="">
+                        <img src="img/icon-facebook.png" alt="facebook">
+                    </a>
+                    <a href="">
+                        <img src="img/icon-twitter.png" alt="icon-twitter">
+                    </a>
+                    <a href="#">
+                        <img src="img/icon-linkedin.png" alt="linkedin">
+                    </a>
+                    <figcaption>© 2013 sport privilege. Tous droit</figcaption>
+                </figure>
+
+            </div>
+
+
+
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
