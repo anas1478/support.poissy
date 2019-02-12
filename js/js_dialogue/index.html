@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>dilogue</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="zone"></div>
+    <div class="bat"></div>
+    <div class="sup"></div>
+
+  <button type="button" >lancer</button>
+
+    <script>
+        var bat = document.getElementsByClassName('bat');
+        var sup = document.getElementsByClassName('sup');
+        var button =document.querySelector('button');
+        var zone =document.getElementById('zone');
+        button.onclick=function(sup){
+            bat[0].style.display='none';
+            zone.innerHTML="<p class='text'>je suis superman ! <br> je peux te pulveriser si je veux </p>";
+        }
+    
+    </script>
+    
+</body>
+</html>

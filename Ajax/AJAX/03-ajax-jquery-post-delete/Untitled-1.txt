@@ -1,0 +1,11 @@
+
+
+       REQUETE AJAX ALLER ----- + paramètres (id) ---------- FICHIER 
+                                                               PHP
+                                                            paramètre transmit
+                                                            à la requete PHP
+                                                                |
+                                                                |
+                                                                |
+                                                                |
+        AFFICHAGE --------- SELECTION EN BDD --------- REQUETE RETOUR 
