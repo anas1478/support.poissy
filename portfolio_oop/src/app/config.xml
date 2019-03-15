@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<config>
+    <host>localhost</host>
+    <db>portfolio</db>
+    <user>root</user>
+    <mdp></mdp>
+    <table>utilisateur</table>
+</config>
