@@ -1,4 +1,6 @@
-
+<?php  
+require_once 'connect.php';
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -26,7 +28,7 @@
     <div class="card card-login mx-auto mt-5">
       <div class="card-header">CONNEXION ADMIN</div>
       <div class="card-body">
-        <form method="post" action="connect.php">
+        <form method="post" action="">
           <div class="form-group">
             <div class="form-label-group">
               <input name="pseudo" type="text" id="inputEmail" class="form-control" placeholder="pseudo" required="required" autofocus="autofocus">
