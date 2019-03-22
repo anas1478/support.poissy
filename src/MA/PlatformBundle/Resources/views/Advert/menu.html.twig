@@ -1,0 +1,11 @@
+{# {% extends "MAPlatformBundle::layout.html.twig" %} #}
+
+<table class="table table-hover container">
+  <tbody>
+  {% for advert in listAdverts %}
+    <tr class="table-active">
+      <td><a href="{{ path('ma_platform_view', {'id': advert.id}) }}">{{advert.title}}</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table> 

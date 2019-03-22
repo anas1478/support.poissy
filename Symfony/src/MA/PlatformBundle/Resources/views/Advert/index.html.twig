@@ -1,0 +1,23 @@
+{% extends "MAPlatformBundle::layout.html.twig" %}
+  {% block title %} {{ parent() }} - Index {% endblock %}
+  {% block maplatform_body %}
+    <h4>Liste des annonces</h4>
+    {# <p>Check this out : <a href="{{ path('ma_platform_view', {'id': num}) }}">Lien vers lannonce d'id {{ num }}</a></p> #}
+    <ul>
+      {% for advert in listAdverts %}
+        <li>
+          <a href="{{ path('ma_platform_view', {'id': advert.id}) }}">{{advert.title}}</a>
+          par {{advert.author}}
+          le {{advert.date | date('d/m/Y')}}
+        </li>
+
+        {% else %}
+        <li>
+          Pas encore d'annonce sorry!
+        </li>
+      {% endfor %}
+    </ul>
+    <br>
+    
+    <footer>Responsable du site : Mohamed</footer>
+  {% endblock %}

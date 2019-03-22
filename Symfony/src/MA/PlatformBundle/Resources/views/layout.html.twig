@@ -1,0 +1,9 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Mon bundle {% endblock %}
+    
+{% block body %} 
+    <h1 class="text-center my-5">Bienvenue sur mon application</h1>
+    {% block maplatform_body %} 
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,23 @@
+services:
+#    ma_platform.example:
+#        class: MA\PlatformBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+   ma_platform.antispam:
+       class: MA\PlatformBundle\Antispam\MAAntispam
+       arguments: 
+       - "@mailer"
+       - "%locale%"
+       - 30
+
+   ma_platform.application_mailer:
+       class: MA\PlatformBundle\Email\ApplicationMailer
+       arguments: 
+          - "@mailer"
+
+   ma_platform.application_creation:
+       class: MA\PlatformBundle\DoctrineListener\ApplicationCreationListener
+       arguments: 
+          - "@ma_platform.application_mailer"
+       tags:
+          - {name: doctrine.event_listener, event:postPersist} 
+        
