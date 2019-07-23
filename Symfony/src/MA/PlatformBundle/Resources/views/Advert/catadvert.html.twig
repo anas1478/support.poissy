@@ -1,0 +1,25 @@
+{% extends "MAPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Annonce par categories - {{parent()}}
+{% endblock %}
+
+{% block maplatform_body %}
+    <h4>Les annonces pour cette categorie sont</h4>
+    {# <p>Check this out : <a href="{{ path('ma_platform_view', {'id': num}) }}">Lien vers lannonce d'id {{ num }}</a></p> #}
+    <ul>
+      {% for cat in listCat %}
+        <li>
+            <em>{{ cat.author }} - {{ cat.date | date('d/m/y') }}</em>
+            <p>{{ cat.title }}</p>
+            <p>{{ cat.content }}</p>
+        </li>
+
+        {% else %}
+        <li>
+          Pas d'annonce trouve avec cette categorie!
+        </li>
+      {% endfor %}
+    </ul>
+    <br>
+{% endblock %}

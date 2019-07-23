@@ -1,5 +1,8 @@
 <?php require_once '../functions.php';
 nonConecter();
+  
+ require_once 'entity.php';
+ handler();
 ?>
 <!DOCTYPE html>
 
@@ -12,6 +15,7 @@ nonConecter();
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
 
   <title> Admin - Tables</title>
 
@@ -67,54 +71,63 @@ nonConecter();
         <!-- nav-->
         <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link" href="#">utilisateur</a>
+    <a class="nav-link" href="?op=utilisateur&f=selAll">utilisateur</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">compétences</a>
+    <a class="nav-link" href="?op=competences&f=selAll">compétences</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">cv</a>
+    <a class="nav-link" href="?op=cv&f=selAll&f=selAll">cv</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">formation</a>
+    <a class="nav-link" href="?op=formation&f=selAll">formation</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">réalisation</a>
+    <a class="nav-link" href="?op=realisation&f=selAll">réalisation</a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" href="?op=experiences&f=selAll">experiences</a>
   </li>
   
 </ul>
 
-       <!-------------------------------------   boucle avec les tables           ------------------------------------------------>
+       <!-------------------------------------   div vide pour afficher les tables en JS ------------------------------------------>
        <table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+          <?php 
+            
+            // echo "<pre>";
+            // var_dump($content);
+            // echo "</pre>";
+            
+
+            //pour recuperer que les valeur
+        // echo"<pre>";    
+        // var_dump($content);
+        // echo"</pre>";  
+        echo "<tr>";  
+            foreach($content as $c => $v) {
+                
+              echo "<td>".$c."</td>";
+             
+            }
+            echo"<td>modifier</td>";
+            echo"<td>supprimer</td>";
+            
+            
+             echo "</tr><tr>";  
+
+            foreach($content as $v) {
+              echo "<td>".$v."</td>";
+              
+            }
+            echo"<td><a href='?op=modif'><i class='fas fa-pencil-alt'></i></a></td>";
+            echo"<td><a href='?op=supp'><i class='far fa-trash-alt'></i></a></td>";
+            
+        echo "</tr>";  
+              var_dump($content);
+          ?>
+      </table>
       <!-- Sticky Footer -->
       <footer class="sticky-footer">
         <div class="container my-auto">
@@ -153,7 +166,8 @@ nonConecter();
       </div>
     </div>
   </div>
-
+<!------js d'affichage de table------->
+<script src="js/js.js"></script>
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

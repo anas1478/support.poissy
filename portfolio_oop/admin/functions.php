@@ -24,12 +24,9 @@ function nonConecter(){
         redirection('login.php');
     }
 }//handler att les parametres dans l'url
-function handler(){
-    $menu=isset($_GET['menu'])?$_GET['menu']:NULL;
-    if($menu="cv"){
-//montrer cv
-    }
-}
-function cv(){
-    echo"<script>";//a terminer !!!!!!!!!!!!!
-}
+// function handler(){
+//     $menu=isset($_GET['menu'])?$_GET['menu']:NULL;
+//     if($menu="cv"){
+// //montrer cv
+//     }
+// }

@@ -1,0 +1,155 @@
+*{
+	-moz-box-sizing: border-box;
+	position: relative;
+}
+
+html, body{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	position: relative;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	background-color: black;
+}
+
+#info{
+	height: 10%;
+	width: 100%;
+	overflow: hidden;
+}
+#content{
+	height: 90%;
+	width: 100%;
+	background-color: rgba(245,245,245,1);
+}
+
+.blue{	background-color: rgba(0,0,255, 0.85);	}
+.red{	background-color: rgba(255,0,0, 0.85);	}
+
+.texte{
+	padding-left: 5%;
+	padding-right: 5%;
+	word-wrap: break-word;
+	line-height: 1.25;
+	color: rgba(0,0,0,0.75);
+	height: 100%;
+	font-size: 20px;
+}
+textarea{
+	border: none;
+	resize : none;
+	margin: 0;
+	font-family: inherit;
+}
+#client textarea{
+	width: 100%;
+	display: block;
+	position: relative;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	word-wrap : break-word;
+}
+#client #info, 
+#client textarea{
+	font-size: 23px;
+}
+
+
+#master .textWrapper,
+#control .texte{
+	height: 100%;
+	width: 50%;
+	overflow: hidden;
+	float: left;
+}
+
+
+
+a{
+	text-decoration: none;
+	cursor: default;
+	outline: none;
+}
+
+
+
+
+#info{	color: white; display: table;}
+#info #round,
+#info #time,
+#info .score,
+#info .controls{
+	height: 100%;
+	display: table-cell;
+  	vertical-align: middle;
+  	font-family: Consolas, Helvetica, Arial;
+	font-size: 30px;
+	font-weight: bold;
+	width : 25%;
+	
+	overflow: hidden;
+}
+.wrap{ width: 100%; height: 100%;}
+
+.blue .blink, 
+.red .blink{
+	border-right: 1px solid transparent;
+	letter-spacing: -1px;
+}
+.blue .blink {
+	animation: blinkblue 0.85s step-end infinite;
+}
+.red .blink {
+	animation: blinkred 0.85s step-end infinite;
+}
+
+@keyframes blinkblue {
+	0%{		background-color: rgba(0,0,255, 0.05); 	color: rgb(0,0,200); 	border-color : blue; 		letter-spacing:-1px;}
+	50% { 	background-color: transparent; 			color: inherit; 		border-color: transparent; 	letter-spacing: normal;}
+	100% {}
+}
+
+@keyframes blinkred {
+	0%{		background-color: rgba(255,0,0, 0.05); 	color: rgb(200,0,0); 	border-color : red; 		letter-spacing:-1px;}
+	50% { 	background-color: transparent; 			color: inherit; 		border-color: transparent; 	letter-spacing: normal;}
+	100% {}
+}
+
+#panneau.anim{
+	visibility: visible;
+	opacity: 1;
+	top:0%;
+	-moz-transition : top 2s, opacity 2s;
+}	
+
+
+button{
+	display: block;
+	margin: 0px;
+	margin-right: 2px;
+	padding: 0;
+	border: none;
+	outline: 0;
+	color: white;
+	font-family: Courier;
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 100%;
+	background-color: rgba(0,0,0,0.5);
+}
+button:hover{
+	background-color: rgba(255,255,255,0.4);
+}
+button:active{
+	background-color: rgba(90, 230, 87, 0.6);
+}
+
+.clocksymbol{
+	font-size: 80%;
+}
+
+
+@font-face {
+	font-family: "fontawesome";
+	src: url("fonts/fontawesome-webfont.ttf");
+}

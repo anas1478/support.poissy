@@ -6,4 +6,9 @@
     <user>root</user>
     <mdp></mdp>
     <table>utilisateur</table>
+    <table2>titr_cv</table2>
+    <table3>competences</table3>
+    <table4>formations</table4>
+    <table5>realisations</table5>
+    <table6>experiences</table6>
 </config>

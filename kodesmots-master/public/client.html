@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Auteur - Le Chaos des Mots</title>
+	<script src="scripts/config.js"></script>
+	<script src="scripts/prototype.js"></script>
+	<script src="scripts/chaos.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/chaos.css">
+	<style type="text/css">
+		#connect{	position: absolute;	width: 100%; height: 100%; top:0; left: 0;}
+		#connectBlue, 
+		#connectRed{
+			position: relative;
+			float: left;
+			width: 50%;
+			height: 100%;
+			color: white;
+			text-align: center;
+		}
+		#connect .label 	{ 	display: none;	}
+		#connectRed:hover 	{	background-color: rgba(255,0,0,0.8);	}
+		#connectBlue:hover 	{	background-color: rgba(0,0,255,0.8);	}
+		#connect a:active 	{	opacity: 0.8;	}
+		body.blue #scoreRed { 	display: none;	}
+		body.red #scoreBlue { 	display: none;	}
+		#client textarea#textArea, 
+		#client #info 		{	max-width : 50em; margin: auto; padding-left: 3%;padding-right: 3%;}
+		.controls button{
+			height: 100%;
+			width:20%;
+			float: right;
+			background-color: rgba(0,0,0,0.3);
+		}
+		.controls button:hover{
+			background-color: rgba(0,0,0,0.6);
+		}
+		.controls button:active{
+			background-color: rgba(100,100,100,0.9);
+		}
+		.controls button#reconnect{
+			background-color: rgba(255,0,0,0.9);
+		}
+		.controls button#reconnect:hover{
+			background-color: rgba(255,20,20,1);
+		}
+		.controls button#reconnect.ok{
+			background-color: rgba(0,255,0,0.2);;
+		}
+		.controls button#reconnect.ok:hover{
+			background-color: rgba(0,255,0,0.6);;
+		}
+		#clock{
+			visibility: hidden;
+		}
+		#oponentText{
+			position: absolute;
+			bottom: 0px;
+			width: 100%;
+			height: 120px;
+			background-color: rgba(0,0,0,0.5);
+			font-size: 21px;
+			color: white;
+			overflow: auto;
+			word-wrap : break-word;
+			padding: 20px;
+			font-family: Georgia, Times, serif;
+			text-align: justify;
+			display: none;
+
+		}
+	</style>
+
+</head>
+
+<body id="client">
+	<div id="connect">
+		<a href="javascript:" id="connectBlue" class="blue"><span class="label">Blue</span></a>
+		<a href="javascript:" id="connectRed" class="red"><span class="label">Red</span></a>
+	</div>
+	<div id="wrap" class="wrap">
+		<div id="info">
+			<div id="round"></div>
+			<div id="time">00:00</div>
+			<div id="scoreBlue" class="score">0</div>
+			<div id="scoreRed" class="score">0</div>
+			<div class="controls"><button id="clock">⏰</button><button id="reconnect">*</button></div>
+		</div>
+		<div id="content">
+			<textarea id="textArea" class="texte"></textarea>
+			<div id="oponentText"></div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	var myName;
+	var socket; 
+	var messages = 0;
+	var textElement; 
+	var round = 0;
+	var blitzTimer;
+	var blitzTime = 0;
+	var blitzStartTime = 0;
+	var blitzMaxTime = 0;
+	var blitzOtherTime = 0;
+	var inBlitz = false;
+	var locked = false;
+
+	document.observe("dom:loaded",
+		function(){
+			message("Document ready !! Let's go !");
+			textElement = $('textArea');
+			$('wrap').setStyle({display : 'none'});
+			$('connectBlue').addEventListener('click' , function(){start('blue');});
+			$('connectRed').addEventListener('click' , function(){start('red');});
+			$('reconnect').addEventListener('click' , doReconnect);
+			$('clock').addEventListener('click' , keySwitch);
+			textElement.disabled = false;
+			
+
+		});
+
+
+	function start(equipe){	
+		
+		myName = equipe;
+		
+
+		socket = connect(host);    
+
+	  	socket.addEventListener("open", function(event) {
+	  		message('Connection Open !')
+	  		$('client').addClassName(equipe);
+			$('connect').setStyle({display:'none'});
+			$('wrap').setStyle({display:'block'});
+			setConnected($('reconnect'));						
+			sayHello(myName, socket);
+			
+			setFocus(textElement);
+
+			textElement.observe('keyup', textChange);
+			textElement.observe('click', textChange);
+			textElement.observe('keydown', downText);
+			
+			textChange();
+		});
+
+		socket.addEventListener("message", function(event) {
+			d = JSON.parse(event.data);
+			
+			if(d['cmd'] == 'time'){
+				doSetTime(d['time'], $('time'));
+			}else if(d['cmd'] == "lock"){
+				lock();
+			}else if(d['cmd'] == "unlock"){
+				unlock();
+			}else if(d['cmd'] == "scoreupdate"){
+				setScore(d['scoreblue'] , d['scorered']);
+			}else if(d['cmd'] == "setround"){
+				setRound(d['round'] , $('round') );
+			}else if(d['cmd'] == "sendsave"){
+				sendSave();
+			}else if(d['cmd'] == "requestinfo"){
+				textChange();
+			}else if(d['cmd'] == "blitzswitch"){
+				doBlitzSwitch(d['from']);
+			}else if(d['cmd'] == "blitzstart"){
+				doBlitzStart(d);
+			}else if(d['cmd'] == "setblitztime"){
+				if(d['from'] != myName){
+					blitzOtherTime = d['time'];
+				}
+			}else if(d['cmd'] == "resetblitz"){
+				doResetBlitz();
+			}else if(d['cmd'] == "clear"){
+				textElement.value ="";
+			}else if(inBlitz && d['cmd'] == "text"){
+				setOponentText(d['text']);
+			}else if(d['cmd'] == "lockone" && d['to'] == myName){
+				lock();
+			}else if(d['cmd'] == "unlockone" && d['to'] == myName){
+				unlock();
+			}else if(d['cmd'] == "pauseblitz"){
+				doBlitzPause();
+			}
+			
+		});
+
+		socket.addEventListener("error", function(event) {
+			message("Error: " + event);
+		});
+
+		socket.addEventListener("close", function(event) {
+			message("Not Connected : " + event.code);
+			setDisconnected($('reconnect'));
+			clearInterval(blitzTimer);
+		});
+
+	}
+	function doReconnect(){
+		
+		if(socket!== undefined){
+			if(socket.readyState > 2){
+				start(myName);
+			}
+		}else{
+			start(myName);
+		}
+	}
+	function textChange(e){
+		data = { "cmd" : "text" , "from" : myName , "text" : textElement.value , "caret" : textElement.selectionStart};
+		jSend(data, socket);
+	}
+
+	function downText(e){
+		if(e.keyCode == 9){
+			e.preventDefault();
+			if(inBlitz){
+				keySwitch();
+			}
+		}
+	}
+	function sendSave(){
+		n 	= new Date();
+		n 	= n.getFullYear() + '' 
+				+ pad2z(n.getMonth()) + '' 
+				+ pad2z(n.getDay()) + '' 
+				+ pad2z(n.getHours())+ '' 
+				+ pad2z(n.getMinutes());
+		fn 	= n + "-CDM-" + myName + '-R' + round +'.txt';
+		
+		jSend({ "cmd" : "savetext" , "from" : myName , "text" : textElement.value , 'filename' : fn} , socket);
+	}
+	
+	function lock(){
+		locked = true;
+		textElement.disabled = true;
+		$('time').focus();
+		jSend({ "cmd" : "diffuse" , "action" : "lockstate" , "from" : myName , "locked" : true } , socket);
+	}
+	function unlock(){
+		locked = false;
+		textElement.disabled = false;
+		setFocus(textElement);
+		jSend({ "cmd" : "diffuse" , "action" : "lockstate" , "from" : myName , "locked" : false } , socket);
+	}
+	function diffuseBlitzTime(){
+		jSend({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'setblitztime' , 'time' : blitzTime} , socket);
+	}
+	function keySwitch(){
+		if(inBlitz && blitzTime > 0 && blitzOtherTime > 0 && !locked){
+			blitzSwitch();
+		}
+	}
+
+	function doBlitzSwitch(from){
+		if(d['from']!=myName && blitzTime != 0 && inBlitz){
+			blitzStart();
+		}
+	}
+	function blitzSwitch(){
+		blitzMaxTime = blitzTime;
+		blitzStop();
+		if(blitzOtherTime != 0){
+			jSend ({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'blitzswitch'} , socket);
+		}
+
+	}
+	/// ICI
+	function doBlitzPause(){
+		clearInterval(blitzTimer);
+		lock();
+	}
+	
+	function updateBlitzTime(){
+		timePast = Date.now() - blitzStartTime;
+        timePast = Math.round(timePast / 1000); 
+        blitzTime = blitzMaxTime - timePast;
+        doSetTime(blitzTime, $('time'));
+        diffuseBlitzTime();
+        
+		if(blitzTime == 0){
+			clearInterval(blitzTimer);
+			blitzSwitch();
+		}
+	}
+
+	function doBlitzStart(d){
+		if( !d['unpause']){
+			blitzMaxTime = d['blitzmaxtime'];
+		}else{
+			blitzMaxTime = blitzTime;
+		}
+		inBlitz = true;
+		if(d['to'] == myName){
+			blitzOtherTime = blitzMaxTime;
+			blitzStop();
+			blitzStart();
+		}else{
+			blitzTime = blitzMaxTime;
+			doSetTime(blitzMaxTime, $('time'));
+			diffuseBlitzTime();
+			blitzStop();
+		}
+		textElement.setStyle({'paddingBottom' : '150px'});
+		$('oponentText').setStyle({"display": "block"})
+	}
+	function blitzStart(){
+		if(blitzOtherTime!=0){
+			$('clock').setStyle({"visibility": "visible"})
+		}
+		blitzStartTime = Date.now();
+		updateBlitzTime();
+		blitzTimer = setInterval(updateBlitzTime , 330);
+
+		unlock();
+	}
+	function blitzStop(){
+		lock();
+		clearInterval(blitzTimer);
+		$('clock').setStyle({"visibility": "hidden"})
+		
+	}
+	function doResetBlitz(){
+		blitzStop();
+		inBlitz = false;
+		blitzTime = 0;
+		blitzOtherTime = 0;
+		blitzStartTime = 0;
+		blitzTimer = null;
+		doSetTime(0, $('time'));
+		$('oponentText').setStyle({"display": "none"})
+		textElement.setStyle({'paddingBottom' : '3%'});
+	}
+
+	function setFocus(el){
+		el.focus();
+		el.setSelectionRange(el.value.length,el.value.length);    
+	}
+
+	function setOponentText(txt){
+		$('oponentText').update(txt);
+	}
+	
+	window.addEventListener("beforeunload", function( event ) {
+	  	event.returnValue = "Sure?";
+	});
+	
+	</script>
+
+</body>
+
+</html>

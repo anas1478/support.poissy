@@ -1,0 +1,58 @@
+{% extends "MAPlatformBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - Vue de mon annonce {% endblock %}
+
+{% block maplatform_body %}
+
+<h2>{{advert.title}}</h2>
+<i>Par {{advert.author}}, le {{advert.date | date('d/m/Y')}}</i>
+<br>
+{% if advert.image is not null %}
+    <img src="{{advert.image.url}}" alt="{{advert.image.alt}}">
+{% endif %}
+<br>
+{% if not advert.categories.empty %}
+    <p>Cette annonce est parue dans les categories suivantes :</p>
+    {% for category in advert.categories %}
+        <i class="btn btn-info">{{category.name}}</i> {% if not loop.last %} | {% endif %}
+    {% endfor %}
+{% endif %}
+<div class="well">
+    {{advert.content}}
+</div>
+
+<br>
+<br>
+
+<a class="btn btn-danger" href="{{ path('ma_platform_home')}}" ><i class="fa fa-arrow-left"></i> Retour à la liste des annonces </a>
+
+<a class="btn btn-outline-primary" href="{{ path('ma_platform_edit', {'id': advert.id})}}" ><i class="fa fa-edit"></i> Modifier l'annonce </a>
+
+<a class="btn btn-outline-danger" href="{{ path('ma_platform_delete', {'id': advert.id})}}" ><i class="fa fa-times"></i> Supprimer l'annonce </a>
+
+<h2>Liste des applications</h2>
+
+<br>
+<ul>
+{% if listAdvertSkills | length > 0 %}
+    <p>
+        Cette annonce demande les competences suivantes :
+        {% for advertSkill in listAdvertSkills %}
+            <li>{{ advertSkill.skill.name }} : niveau {{ advertSkill.level }}</li>
+        {% endfor %}
+    </p>
+{% endif %}
+<br>
+
+<ul>
+{% for app in listApps %}
+    <i>Par {{app.author}}, le {{app.date | date('d/m/Y')}}</i>
+    <li>{{app.content}}</li>
+    {% else %}
+    <i>Personne n'a postule encore</i>
+{% endfor %}
+</ul>
+<br>
+
+
+{% endblock %}

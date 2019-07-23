@@ -1,0 +1,8 @@
+ma_platform:
+    resource: "@MAPlatformBundle/Resources/config/routing.yml"
+    prefix:   /platform
+
+    # A supprimer
+# app:
+#     resource: '@AppBundle/Controller/'
+#     type: annotation

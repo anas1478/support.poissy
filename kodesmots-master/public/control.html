@@ -1,0 +1,726 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chaos des Mots - CONTROLE</title>
+	<script src="scripts/config.js"></script>
+	<script src="scripts/prototype.js"></script>
+	<script src="scripts/chaos.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/chaos.css">
+	
+
+	<style type="text/css">
+	
+	#left{
+		position: relative;
+		width : 40%;
+		height: 100%;
+		background-color: rgba(255,255,255,0.7);
+		padding-left: 15px;
+		padding-right: 15px;
+		overflow: auto;
+	}
+	#right{
+		position: absolute;
+		width: 60%;
+		height: 100%;
+		right: 0;
+		top: 0;
+		background-color: black;
+		
+	}
+	#blue, #red{
+		position: absolute;
+		width : 50%;
+		height: 100%;
+		background-color: rgba(190,0,0,1);
+	}
+	#blue{
+		right: 0;
+		background-color: rgba(0,0,190,1);
+	}
+	#textBlue, #textRed{ height: 90%;}
+
+	#textAreaBlue, #textAreaRed{
+		position: relative;
+		height : 100%;
+		padding: 20px;
+		margin : auto;
+		background-color: rgba(255,255,255,0.9);
+		overflow-y: scroll;
+		font-size: 18px;
+		word-wrap: break-word;
+	}
+	.selection, .selectionEmpty{
+		background-color: black;
+		color : white;
+		margin-right: 2px;
+	}
+	#infoBlue, #infoRed{
+		position: relative;
+		height: 10%;
+		width: 100%;
+		background-color: rgba(0,0,0,0.2);
+	}
+	#scoreRed, #scoreBlue{
+		width : 200px;
+		height: 100%;
+	}
+	
+	button{
+		width : 60px;
+	}
+	button , 
+	#timecontrols input,
+	#timecontrols,
+	.timeselect, 
+	#blitz .title, #rounds .title{
+		height: 60px;
+	}
+	
+	.info button{
+		height: 100%;
+		float: left;
+	}
+
+	#infoBlue #scoreBlue, #infoRed #scoreRed{
+		height: 100%;
+		position: absolute;
+		top: 0;
+		right: 10px;
+		color: white;
+		width: 100px;
+		text-align: right;
+		line-height: 100%;
+	}
+	.info, input, .timeselect, #time, #blitz, #rounds{
+		font-family: Consolas, Arial, Helvetica;
+		font-size: 40px;
+		color: white;
+	}
+	#timecontrols{
+		width: 100%;
+		color: white;
+		margin-top: 5px;
+	}
+	#timecontrols button{ float: left;}
+
+	#timecontrols input{
+		width : 50px;
+		border: none;
+		background-color: rgba(0,0,0,0.4);
+		text-align: center;
+		line-height: 100%;
+		color: white;
+		margin: 0;
+		font-size: 30px;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.timeselect{
+		font-size: 25px;
+		position: relative;
+		background-color: rgba(0,0,0,0.4);
+		float: left;
+		line-height: 100%;
+		margin-right: 2px;
+		width: 130px;
+	}
+	#round{
+		
+	}
+	#time{
+		width: 100%;
+		height: 10%;
+		line-height: 100%;
+		color: white;
+		background-color: rgba(0,0,0,0.4);
+		text-align: center;
+
+	}
+	#blitz, #rounds{
+		clear: both;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		text-align: center;
+		font-size: 30px;
+		padding-top: 5px;
+	}
+	#blitz .title, #rounds .title{
+		background-color: rgba(0,0,0,0.4);
+		margin-bottom: 5px;
+		float: left;
+		margin-right: 2px;
+		padding-right: 10px;
+		padding-left: 10px;
+		font-size: 25px;
+		line-height: 40px;
+		width: 100px;
+	}
+	#startBlitz, #stopBlitz, #roundPlus, #roundMinus, #pausepauseBlitz{
+		float: left;
+	}
+	#left button{
+		font-size: 20px;
+	}
+	#othercontrols, #mastercontrols{
+		padding-top: 5px;
+		clear: both;
+	}
+	#lock, #unlock, #clear, #save, #reconnect, .getstate, .mastershow{
+		display: inline-block;
+	}
+	#clear, #save{
+		margin-left: 1px;
+	}
+	button#reconnect.ok{
+		background-color: green;
+	}
+	button#reconnect{
+		background-color: rgb(200,0,0);
+	}
+	button#reconnect:hover{
+	background-color: rgba(255,255,255,0.2);
+}
+	button#reconnect:active{
+		background-color: rgba(90, 230, 87, 0.6);
+	}
+	#blitzTitle{
+		cursor: default;
+	}
+	#blitzTitle:hover{
+	 	background-color: rgba(0,0,0,0.7);
+	}
+	#blitzTitle.blue{
+		background-color: rgba(0,0,255, 0.5);
+	}
+	#blitzTitle.red{
+		background-color: rgba(255,0,0, 0.5);
+	}
+	#blitzTimeBlue, 
+	#blitzTimeRed{
+		position: absolute;
+		top :0;
+		left: 50%;
+		width: 5em;
+		margin-left: -2.5em;
+		text-align: center;
+	}
+	#stateoutput{
+		clear: both;
+		width : 100%;
+		height: 120px;
+		overflow: scroll;
+		background-color: rgba(0,0,0,0.4);
+		color: white;
+		margin-top: 5px;
+		font-family: Consolas, courier;
+		font-weight: bold;
+		font-size: 14px;
+	}
+	#minPlus, #minMoins{
+		width: 30px;
+	}
+	#textRed.locked:after,
+	#textBlue.locked:after{
+		font-family: 'fontawesome';
+		content: '\1F512'; 
+		font-size: 60px;
+		position: absolute;
+		top : 50%;
+		left : 50%;
+		width: 100px;
+		height: 100px;
+		margin-left: -50px;
+		margin-top : -50px;
+		color: rgba(0,0,0,0.5);
+		text-align: center;
+		line-height: 100px;
+	}
+	#lock, #unlock, .lock, button.pausebutton{
+		font-family: 'fontawesome';
+	}
+	#startcontrols{
+		margin-top : 5px;
+	}
+	#startcontrols button{
+		display: inline-block;
+	}
+	
+
+	</style>
+</head>
+<body>
+	
+	<div id="left">
+		<div id="time"><span id="round"></span><span id='timevalue'>00:00</span></div>
+		<div id="timecontrols">
+			<button id="minMoins">-</button>
+			<button id="minPlus">+</button>
+			<div class="timeselect">
+				<input type="text" id="minutes" value="05">:<input type="text" id="secondes" value="00">
+			</div>
+			<button id="start">▶</button>
+			<button id="pause">◼</button>
+			<button id="pausepause" class="pausebutton">&#xf04c</button>
+			
+		</div>
+		
+		<div id="rounds">
+			<div class="title">ROUNDS</div>
+			<button id="roundPlus">+</button>
+			<button id="roundMinus">-</button>
+		</div>
+		<div class="blitz" id="blitz">
+			<div class="title blue" id="blitzTitle">BLITZ</div>
+			<button id="startBlitz">▶</button>
+			<button id="stopBlitz">◼</button>
+
+			<button id="pausepauseBlitz" class="pausebutton">&#xf04c</button>
+		</div>
+		<div id="othercontrols">
+			<button id="lock">&#xf023</button>
+			<button id="unlock">&#xf09c</button>
+			<button id="clear">☢</button>
+			<button id="save">☑</button>
+			<button id="reconnect">c</button>
+			<button id="getstate">i</button>
+		</div>
+		<div id="stateoutput"></div>
+		<div id="startcontrols">
+			<button id="ledebut">1</button>
+			<button id="lafin">2</button>
+		</div>
+		<div id="startcontrols">
+			<button id="lockblue" class="lock blue">&#xf023</button>
+			<button id="unlockblue" class="lock blue">&#xf09c</button>
+			<button id="lockred" class="lock red">&#xf023</button>
+			<button id="unlockred" class="lock red">&#xf09c</button>
+		</div>
+		<div id="mastercontrols">
+			<button id="blueonly" class="mastershow blue">show blue</button>
+			<button id="redonly" class="mastershow red">show red</button>
+			<button id="bothcolor" class="mastershow both">show both</button>
+		</div>
+		
+	</div>
+	<div id="right">
+		<div id="blue">
+			<div id="infoBlue" class="info">
+				<div id="scoreBlue">0</div>
+				<div id="blitzTimeBlue">00:00</div>
+				<button id="pointPlusBlue">+</button>
+				<button id="pointMinusBlue">-</button>
+			</div>
+			<div id="textBlue"><div id="textAreaBlue"></div></div>
+		</div>
+		<div id="red">
+			<div id="infoRed" class="info">
+				<div id="scoreRed">0</div>
+				<div id="blitzTimeRed">00:00</div>
+				<button id="pointPlusRed">+</button>
+				<button id="pointMinusRed">-</button>
+			</div>
+			<div id="textRed"><div id="textAreaRed"></div></div>
+		</div>
+	</div>
+<script type="text/javascript">
+	var myName 	= 'control';
+	var scoreBlue 	= 0; 
+	var scoreRed 	= 0;
+	var locked 	= false;
+	var round 	= 0;
+	var socket;
+	var blitzfirst = "blue";
+	var state;
+	var roundTime = maxTime;
+
+	document.observe("dom:loaded",
+		function(){
+			message("Document ready !! Let's go !")
+			$('start').addEventListener('click' , startRound);
+			$('pause').addEventListener('click' , stopRound);
+			$('pointPlusBlue').addEventListener('click' , function(){addPoint('blue');});
+			$('pointMinusBlue').addEventListener('click' , function(){removePoint('blue');});
+			$('pointPlusRed').addEventListener('click' , function(){addPoint('red');});
+			$('pointMinusRed').addEventListener('click' , function(){removePoint('red');});
+			$('lock').addEventListener('click' , lock);
+			$('unlock').addEventListener('click' , unlock);
+			$('minutes').addEventListener('change' , parseTimeInput);
+			$('secondes').addEventListener('change' , parseTimeInput);
+			$('roundPlus').addEventListener('click' , roundNext);
+			$('roundMinus').addEventListener('click' , roundPrev);
+			$('save').addEventListener('click' , saveText);
+			$('reconnect').addEventListener('click' , doReconnect);
+			$('startBlitz').addEventListener('click' , startBlitz);
+			$('stopBlitz').addEventListener('click' , resetBlitz);
+			$('blitzTitle').addEventListener('click' , switchFirst);
+			$('clear').addEventListener('click' , clearAll);
+			$('getstate').addEventListener('click' , askState);
+
+			$('minPlus').addEventListener('click' , minsPlus);
+			$('minMoins').addEventListener('click' , minsMoins);
+			
+			$('ledebut').addEventListener('click' , panneauDebut);
+			$('lafin').addEventListener('click' , panneauFin);					
+
+
+
+			$('lockblue').addEventListener('click' , lockBlue);
+			$('unlockblue').addEventListener('click' , unlockBlue);	
+			$('lockred').addEventListener('click' , lockRed);
+			$('unlockred').addEventListener('click' , unlockRed);	
+
+			$('pausepause').addEventListener('click' , pauseRound);
+			$('pausepauseBlitz').addEventListener('click' , pauseBlitz);
+
+                        $('blueonly').addEventListener('click' , function() {
+                            sendAction('blueOnly');
+                        });
+                        $('redonly').addEventListener('click' , function() {
+                            sendAction('redOnly');
+                        });
+                        $('bothcolor').addEventListener('click' , function() {
+                            sendAction('bothColor');
+                        });
+			start();
+		});
+	
+	
+
+	function start(){
+		
+		socket = connect(host);
+	
+	  	socket.addEventListener("open", function(event) {
+			message("Connected");
+			setConnected($('reconnect'));
+			
+			sayHello(myName , socket);
+			updateTimeInput();
+			
+		});
+
+		socket.addEventListener("message", function(event) {
+			d = JSON.parse(event.data);
+			if(d['cmd'] == 'text'){
+				changeText(d['from'], d['text'] , d['caret']);
+			}else if(d['cmd'] == 'time'){
+				roundTime = d['time'];
+				doSetTime(d['time'], $('timevalue'));
+				if(d['time'] == 0){
+					lock();	
+				}
+			}else if(d['cmd'] == 'requestinfo'){
+				updateScore();
+				updateRound();
+			}else if(d['cmd'] == 'setblitztime'){
+				doSetBlitzTime(d['from'], d['time']);
+			}else if(d['cmd'] == 'stateinfo'){
+				setStateInfo(d);
+			}else if(d['cmd'] == 'lockstate'){
+				updateLockState(d['from'] , d['locked']);
+			}
+		});
+
+		socket.addEventListener("error", function(event) {
+			message("Error: " + event);
+		});
+
+		socket.addEventListener("close", function(event) {
+			message("Not Connected");
+			setDisconnected($('reconnect'));
+		});
+	     	 
+	}
+	function updateLockState(from, islocked){
+		
+		if(from == "red"){
+			if(islocked){
+				$('textRed').addClassName('locked');
+			}else{
+				$('textRed').removeClassName('locked');
+			}
+		}else if(from == "blue"){
+			if(islocked){
+				$('textBlue').addClassName('locked');
+			}else{
+				$('textBlue').removeClassName('locked');
+			}
+		}
+
+	}
+
+	function doReconnect(){
+		
+		if(socket!== undefined){
+			if(socket.readyState > 2){
+				start();
+			}
+		}else{
+			start();
+		}
+	}
+	function changeText(client, text, caret){
+		var txtArea;
+		var selClass = 'selection';
+		var sel = '';
+		var fullText ='';
+
+		if(client == 'blue'){
+			txtA = $('textAreaBlue');
+		}else if(client == 'red'){
+			txtA = $('textAreaRed');
+		}else{
+			return;
+		}
+		
+		var txtStart   	= text.substring(0,caret-1); 
+		var txtEnd     	= text.substring(caret, text.length);
+		var txtSel		= text.substring(caret-1, caret )
+
+		if(txtSel == " "){
+			txtSel = "&nbsp;";
+			selClass = 'selectionEmpty';
+		}
+
+		if(txtSel =='\n'){
+			txtSel = '<br>&nbsp';
+		}
+
+		sel 		= '<span class="' + selClass + ' blink" id="caret' + client +'">' + txtSel + '</span>';  
+		
+		fullText 	= txtStart + sel + txtEnd;
+		fullText 	= fullText.replace(/\n/g , " <br> ");
+
+		
+		txtA.update(fullText);
+		$('caret'+client).scrollIntoView(false);
+
+	}	
+
+	
+	var isRoundPause = false;
+	function startRound(){
+		unlock();
+		if(isRoundPause){
+			isRoundPause = false;
+			sendTime = roundTime;
+		}else{
+			sendTime = maxTime;
+		}
+
+		jSend({ 'from' : myName , 'cmd' : 'starttime' , 'maxtime' : sendTime} , socket);
+	}
+	function stopRound(){
+		jSend({'from' : myName , 'cmd' : 'stoptime'} , socket);
+		jSend({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'time' , 'time' : 0} , socket);
+		jSend({ 'cmd' : 'setmaxtime' , 'maxtime' : maxTime}, socket);
+		isRoundPause = false;
+		lock();
+	}
+
+	function pauseRound(){
+		if(roundTime !=0){
+		isRoundPause = true;
+		jSend({'from' : myName , 'cmd' : 'stoptime'} , socket);
+		jSend({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'time' , 'time' : roundTime} , socket);
+		jSend({ 'cmd' : 'setmaxtime' , 'maxtime' : roundTime}, socket);
+		lock();
+		}
+	}
+
+
+	function addPoint(lequipe){
+		if(lequipe == "blue"){
+			scoreBlue++;
+		}else{
+			scoreRed++;
+		}
+		updateScore();
+	}
+	function removePoint(lequipe){
+		if(lequipe == "blue"){
+			scoreBlue--;
+		}else{
+			scoreRed--;
+		}
+		updateScore();	
+	}
+	function updateScore(){
+		$('scoreBlue').update(scoreBlue);
+		$('scoreRed').update(scoreRed);
+		
+		jSend({ 'cmd' : 'diffuse' , 'action' : 'scoreupdate' , 'scoreblue' : scoreBlue , 'scorered' : scoreRed } , socket);
+	}
+
+
+        function sendAction(action) {
+		jSend({ 'cmd' : 'diffuse' , 'action' : action} , socket);
+        }
+	function lock(){
+		sendAction('lock');
+	}
+	function unlock(){
+		sendAction('unlock');
+	}
+
+	function lockOne(who){
+		jSend({ 'cmd' : 'diffuse' , 'action' : 'lockone' , 'to' : who} , socket);
+	}
+	function unlockOne(who){
+		
+		jSend({ 'cmd' : 'diffuse' , 'action' : 'unlockone', 'to' : who} , socket);
+	}
+
+	function lockBlue(){
+		lockOne('blue');
+	}
+	function unlockBlue(){
+		unlockOne('blue');
+	}
+
+	function lockRed(){
+		lockOne('red');
+	}
+	function unlockRed(){
+		unlockOne('red');
+	}
+
+
+	window.onbeforeunload = function (event) {
+		socket.close();
+	}
+
+	function minsPlus(){
+		updateMinsInput(parseInt($('minutes').value) + 1);
+	}
+	function minsMoins(){
+		if(mins > 0){
+			updateMinsInput(parseInt($('minutes').value) - 1);	
+		}
+	}
+	function updateMinsInput(m){
+		$('minutes').value = pad2z(m);
+		parseTimeInput();
+	}
+	function parseTimeInput(){
+		var mins 	= parseInt($('minutes').value);
+		var secs 	= parseInt($('secondes').value);
+		if(isNaN(mins)){
+			mins = 0;
+		}
+		if(isNaN(secs)){
+			secs = 0;
+		}
+		maxTime = (mins * 60) + secs;
+		updateTimeInput();
+	}
+	function updateTimeInput(){
+		mins = Math.floor(maxTime / 60);
+		secs = maxTime%60;
+		$('minutes').value = pad2z(mins);
+		$('secondes').value = pad2z(secs);
+		jSend({ 'cmd' : 'setmaxtime' , 'maxtime' : maxTime}, socket);
+		
+	}
+
+	function roundNext(){
+		round++;
+		updateRound();
+	}
+	function roundPrev(){
+		round--;
+		updateRound();
+	}
+	function updateRound(){
+		$('round').update('R' + round + " ");
+		jSend({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'setround' , 'round' : round} , socket);
+	}
+	function saveText(){
+		jSend({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'sendsave'} , socket);
+	}
+
+	function startBlitz(){
+
+		if(state != undefined){
+			if(state['blue'] && state['red']){
+				jSend({'from' : myName, 'cmd' : 'diffuse', 'action' : 'blitzstart' , 'to' : blitzfirst, 'blitzmaxtime' : maxTime , 'unpause' : blitzPaused}, socket);
+				blitzPaused = false;
+			}
+		}else{
+			askState();
+			setTimeout(startBlitz , 1000);
+		}
+	}
+	
+	function switchFirst(){
+		if(blitzfirst=='blue'){
+			blitzfirst = 'red';
+			$('blitzTitle').removeClassName('blue');
+		}else{
+			blitzfirst = 'blue';
+			$('blitzTitle').removeClassName('red');
+		}
+		$('blitzTitle').addClassName(blitzfirst);
+
+	}
+	function doSetBlitzTime(client,time){
+		
+		if(client == 'blue'){
+			doSetTime(time, $('blitzTimeBlue'));
+		}else{
+			doSetTime(time, $('blitzTimeRed'));
+		}
+	}
+	var blitzPaused = false;
+	function resetBlitz(){
+		jSend({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'resetblitz'}, socket);
+		doSetTime(0, $('blitzTimeRed'));
+		doSetTime(0, $('blitzTimeBlue'));
+		blitzPaused = false;
+	}
+
+	function pauseBlitz(){
+		blitzPaused = true;
+		
+		jSend({'from' : myName , 'cmd' : 'diffuse' , 'action' : 'pauseblitz'}, socket);
+	}
+
+	function clearAll(){
+		if(confirm("attention ça va effacer tous les textes ! (penser à enregistrer avant)")){
+			jSend({'from' : myName , 'cmd' : 'diffuse', 'action' : 'clear'} , socket);
+			$('textAreaBlue').update('');
+			$('textAreaRed').update('');
+		}
+	}
+
+	function setStateInfo(statedata){
+		
+		state = statedata['users'];
+		out ="";
+		for(key in state){
+			out = out + key + " : " + (state[key]?'ok':'err') + "<br/>";
+		}
+		$('stateoutput').update(out);
+		
+	}
+
+	function askState(){
+		jSend({'from' : myName , 'cmd' : 'requeststateinfo'} , socket);
+	}
+
+	
+	function panneauDebut(){
+		togglePaneau(1);
+	}
+	function panneauFin(){
+		togglePaneau(2);
+	}
+	function togglePaneau(id, todo){
+		jSend({'cmd': 'diffuse' , 'action' : 'panneau' , 'id' : id }, socket);
+	}
+
+</script>
+</body>
+</html>

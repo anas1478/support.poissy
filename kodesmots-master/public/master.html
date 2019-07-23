@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Master - Le Chaos des Mots</title>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/prototype.js"></script>
+    <script src="scripts/scriptaculous/scriptaculous.js?load=effects" type="text/javascript"></script>
+    <script src="scripts/chaos.js"></script>
+    
+    <link rel="stylesheet" type="text/css" href="css/chaos.css">
+    <style type="text/css">
+        .score{        }
+        #info #scoreBlue{     width: 50%; padding-left: 5%}
+        #info #scoreRed{    width: 50%; text-align: right;padding-right: 5%}
+
+        #centerinfo, 
+        #blitzinfo{
+            position: absolute;
+            height: 100%;
+            left: 50%;
+            width : 30%;
+            margin-left: -15%;
+            background-color: rgba(0,0,0,0.6);
+            text-align: center;
+            vertical-align: middle;
+            padding-top: 5px;
+            font-size: 40px;
+
+        }
+
+        #info #round, #info #time,
+        #blitzinfo #bluetime, #blitzinfo #redtime{
+            display: inline-block;
+            vertical-align: middle;
+            height: auto;
+            margin: 0;
+            padding: 0;
+            width: 50%;
+
+        }
+        #blitzinfo{
+            font-family: Consolas, Helvetica, Arial;
+            font-size: 30px;
+            font-weight: bold;
+            display: none;
+        }
+        #containerBlue,
+        #containerRed{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            padding: 20px;
+        }
+        #containerBlue     { left: 0; background-color: rgba(0,0,255,0.8);}
+        #containerRed     { right: 0; background-color: rgba(255,0,0,0.8);}
+        #containerBlue.alone, #containerRed.alone {
+            width: 100%;
+        }
+
+        #textAreaBlue, 
+        #textAreaRed{
+            background-color: white;
+            height: 100%;
+            padding: 20px;
+            overflow: hidden;
+            font-size: 23px;
+            line-height: 1.3;
+        }
+
+        #scrollBlue, #scrollRed{
+            position: absolute;
+            width : 20px;
+            height: 50px;
+            min-height: 50px;
+            top: 20px;
+            right: 0px;
+            opacity: 0.3;
+            background-color : black;
+        }
+        #master .pause #textAreaBlue, 
+        #master .pause #textAreaRed {
+            background-color: rgba(255,255,255, 0.7);
+        }
+        #textAreaBlue .flow{
+            background-color:rgba(0,0,255, 0.3); 
+            color:white
+        }
+        #textAreaRed .flow{
+            background-color:rgba(255,0,0, 0.3); 
+            color:white
+        }
+        #panneau{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: black;
+        }
+        #panneau #fin{
+            position: absolute;
+            left: 0;
+            top:0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,1);
+            font-family: Consolas, Arial;
+            text-align: center;
+            color: white;
+            font-size: 35px;
+            padding: 40px;
+            font-weight: bold;
+            line-height: 1.4;
+            text-transform: uppercase;
+            border: 20px solid rgba(250,250,250,0.9);
+            background-image:url('images/AD2.gif');
+            background-repeat: no-repeat;
+            background-position: 50% 75%;
+            overflow: hidden;
+
+        }
+        #panneau #debut{
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image:url('images/image.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: auto 100%;
+            overflow: hidden;
+        }
+        
+        
+    </style>
+    
+</head>
+<body id="master">
+    
+  <div class="wrap">
+    <div id="info">
+      <div id="scoreBlue" class="score blue">0</div>
+      <div id="scoreRed" class="score red">0</div>
+      <div id="centerinfo"><span id="round">0</span><span id="time">00:00</span></div>
+      <div id="blitzinfo"><span id="bluetime"></span><span id="redtime"></span></div>
+    </div>
+    <div id="content">
+      <div id="containerBlue" class="blue">
+        <div id="textAreaBlue" class="texte"></div>
+        <div id="scrollBlue"></div>
+      </div>
+      <div id="containerRed" class="red">
+        <div id="textAreaRed" class="texte"></div>
+        <div id="scrollRed"></div>
+      </div>
+    </div>
+  </div>
+  <div id="panneau">
+    <div id="fin"></div>
+    <div id="debut"></div>
+  </div>
+
+        <script src="scripts/master.js"></script>
+</body>
+</html>
