@@ -162,6 +162,10 @@ final class WP_Comment {
 	 * Retrieves a WP_Comment instance.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
+=======
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
@@ -255,6 +259,7 @@ final class WP_Comment {
 	 */
 	public function get_children( $args = array() ) {
 		$defaults = array(
+<<<<<<< HEAD
 			'format'       => 'tree',
 			'status'       => 'all',
 			'hierarchical' => 'threaded',
@@ -262,6 +267,15 @@ final class WP_Comment {
 		);
 
 		$_args           = wp_parse_args( $args, $defaults );
+=======
+			'format' => 'tree',
+			'status' => 'all',
+			'hierarchical' => 'threaded',
+			'orderby' => '',
+		);
+
+		$_args = wp_parse_args( $args, $defaults );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$_args['parent'] = $this->comment_ID;
 
 		if ( is_null( $this->children ) ) {
@@ -275,7 +289,11 @@ final class WP_Comment {
 		if ( 'flat' === $_args['format'] ) {
 			$children = array();
 			foreach ( $this->children as $child ) {
+<<<<<<< HEAD
 				$child_args           = $_args;
+=======
+				$child_args = $_args;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$child_args['format'] = 'flat';
 				// get_children() resets this value automatically.
 				unset( $child_args['parent'] );

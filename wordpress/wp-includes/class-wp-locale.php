@@ -44,6 +44,17 @@ class WP_Locale {
 	public $weekday_abbrev;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * Stores the default start of the week.
+	 *
+	 * @since 4.4.0
+	 * @var string
+	 */
+	public $start_of_week;
+
+	/**
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * Stores the translated strings for the full month names.
 	 *
 	 * @since 2.1.0
@@ -118,6 +129,7 @@ class WP_Locale {
 	 */
 	public function init() {
 		// The Weekdays
+<<<<<<< HEAD
 		$this->weekday[0] = /* translators: weekday */ __( 'Sunday' );
 		$this->weekday[1] = /* translators: weekday */ __( 'Monday' );
 		$this->weekday[2] = /* translators: weekday */ __( 'Tuesday' );
@@ -125,6 +137,15 @@ class WP_Locale {
 		$this->weekday[4] = /* translators: weekday */ __( 'Thursday' );
 		$this->weekday[5] = /* translators: weekday */ __( 'Friday' );
 		$this->weekday[6] = /* translators: weekday */ __( 'Saturday' );
+=======
+		$this->weekday[0] = /* translators: weekday */ __('Sunday');
+		$this->weekday[1] = /* translators: weekday */ __('Monday');
+		$this->weekday[2] = /* translators: weekday */ __('Tuesday');
+		$this->weekday[3] = /* translators: weekday */ __('Wednesday');
+		$this->weekday[4] = /* translators: weekday */ __('Thursday');
+		$this->weekday[5] = /* translators: weekday */ __('Friday');
+		$this->weekday[6] = /* translators: weekday */ __('Saturday');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// The first letter of each day.
 		$this->weekday_initial[ __( 'Sunday' ) ]    = /* translators: one-letter abbreviation of the weekday */ _x( 'S', 'Sunday initial' );
@@ -136,6 +157,7 @@ class WP_Locale {
 		$this->weekday_initial[ __( 'Saturday' ) ]  = /* translators: one-letter abbreviation of the weekday */ _x( 'S', 'Saturday initial' );
 
 		// Abbreviations for each day.
+<<<<<<< HEAD
 		$this->weekday_abbrev[ __( 'Sunday' ) ]    = /* translators: three-letter abbreviation of the weekday */ __( 'Sun' );
 		$this->weekday_abbrev[ __( 'Monday' ) ]    = /* translators: three-letter abbreviation of the weekday */ __( 'Mon' );
 		$this->weekday_abbrev[ __( 'Tuesday' ) ]   = /* translators: three-letter abbreviation of the weekday */ __( 'Tue' );
@@ -143,6 +165,15 @@ class WP_Locale {
 		$this->weekday_abbrev[ __( 'Thursday' ) ]  = /* translators: three-letter abbreviation of the weekday */ __( 'Thu' );
 		$this->weekday_abbrev[ __( 'Friday' ) ]    = /* translators: three-letter abbreviation of the weekday */ __( 'Fri' );
 		$this->weekday_abbrev[ __( 'Saturday' ) ]  = /* translators: three-letter abbreviation of the weekday */ __( 'Sat' );
+=======
+		$this->weekday_abbrev[__('Sunday')]    = /* translators: three-letter abbreviation of the weekday */ __('Sun');
+		$this->weekday_abbrev[__('Monday')]    = /* translators: three-letter abbreviation of the weekday */ __('Mon');
+		$this->weekday_abbrev[__('Tuesday')]   = /* translators: three-letter abbreviation of the weekday */ __('Tue');
+		$this->weekday_abbrev[__('Wednesday')] = /* translators: three-letter abbreviation of the weekday */ __('Wed');
+		$this->weekday_abbrev[__('Thursday')]  = /* translators: three-letter abbreviation of the weekday */ __('Thu');
+		$this->weekday_abbrev[__('Friday')]    = /* translators: three-letter abbreviation of the weekday */ __('Fri');
+		$this->weekday_abbrev[__('Saturday')]  = /* translators: three-letter abbreviation of the weekday */ __('Sat');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// The Months
 		$this->month['01'] = /* translators: month name */ __( 'January' );
@@ -187,10 +218,17 @@ class WP_Locale {
 		$this->month_abbrev[ __( 'December' ) ]  = /* translators: three-letter abbreviation of the month */ _x( 'Dec', 'December abbreviation' );
 
 		// The Meridiems
+<<<<<<< HEAD
 		$this->meridiem['am'] = __( 'am' );
 		$this->meridiem['pm'] = __( 'pm' );
 		$this->meridiem['AM'] = __( 'AM' );
 		$this->meridiem['PM'] = __( 'PM' );
+=======
+		$this->meridiem['am'] = __('am');
+		$this->meridiem['pm'] = __('pm');
+		$this->meridiem['AM'] = __('AM');
+		$this->meridiem['PM'] = __('PM');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Numbers formatting
 		// See https://secure.php.net/number_format
@@ -214,6 +252,7 @@ class WP_Locale {
 		$this->number_format['decimal_point'] = ( 'number_format_decimal_point' === $decimal_point ) ? '.' : $decimal_point;
 
 		// Set text direction.
+<<<<<<< HEAD
 		if ( isset( $GLOBALS['text_direction'] ) ) {
 			$this->text_direction = $GLOBALS['text_direction'];
 
@@ -221,6 +260,13 @@ class WP_Locale {
 		} elseif ( 'rtl' == _x( 'ltr', 'text direction' ) ) {
 			$this->text_direction = 'rtl';
 		}
+=======
+		if ( isset( $GLOBALS['text_direction'] ) )
+			$this->text_direction = $GLOBALS['text_direction'];
+		/* translators: 'rtl' or 'ltr'. This sets the text direction for WordPress. */
+		elseif ( 'rtl' == _x( 'ltr', 'text direction' ) )
+			$this->text_direction = 'rtl';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( 'rtl' === $this->text_direction && strpos( get_bloginfo( 'version' ), '-src' ) ) {
 			$this->text_direction = 'ltr';
@@ -247,11 +293,19 @@ class WP_Locale {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param int $weekday_number 0 for Sunday through 6 Saturday.
 	 * @return string Full translated weekday.
 	 */
 	public function get_weekday( $weekday_number ) {
 		return $this->weekday[ $weekday_number ];
+=======
+	 * @param int $weekday_number 0 for Sunday through 6 Saturday
+	 * @return string Full translated weekday
+	 */
+	public function get_weekday($weekday_number) {
+		return $this->weekday[$weekday_number];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -264,11 +318,19 @@ class WP_Locale {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param string $weekday_name Full translated weekday word.
 	 * @return string Translated weekday initial.
 	 */
 	public function get_weekday_initial( $weekday_name ) {
 		return $this->weekday_initial[ $weekday_name ];
+=======
+	 * @param string $weekday_name
+	 * @return string
+	 */
+	public function get_weekday_initial($weekday_name) {
+		return $this->weekday_initial[$weekday_name];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -279,11 +341,19 @@ class WP_Locale {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param string $weekday_name Full translated weekday word.
 	 * @return string Translated weekday abbreviation.
 	 */
 	public function get_weekday_abbrev( $weekday_name ) {
 		return $this->weekday_abbrev[ $weekday_name ];
+=======
+	 * @param string $weekday_name Full translated weekday word
+	 * @return string Translated weekday abbreviation
+	 */
+	public function get_weekday_abbrev($weekday_name) {
+		return $this->weekday_abbrev[$weekday_name];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -299,11 +369,19 @@ class WP_Locale {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param string|int $month_number '01' through '12'.
 	 * @return string Translated full month name.
 	 */
 	public function get_month( $month_number ) {
 		return $this->month[ zeroise( $month_number, 2 ) ];
+=======
+	 * @param string|int $month_number '01' through '12'
+	 * @return string Translated full month name
+	 */
+	public function get_month($month_number) {
+		return $this->month[zeroise($month_number, 2)];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -314,11 +392,19 @@ class WP_Locale {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param string $month_name Translated month to get abbreviated version.
 	 * @return string Translated abbreviated month.
 	 */
 	public function get_month_abbrev( $month_name ) {
 		return $this->month_abbrev[ $month_name ];
+=======
+	 * @param string $month_name Translated month to get abbreviated version
+	 * @return string Translated abbreviated month
+	 */
+	public function get_month_abbrev($month_name) {
+		return $this->month_abbrev[$month_name];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -331,8 +417,13 @@ class WP_Locale {
 	 * @param string $meridiem Either 'am', 'pm', 'AM', or 'PM'. Not translated version.
 	 * @return string Translated version
 	 */
+<<<<<<< HEAD
 	public function get_meridiem( $meridiem ) {
 		return $this->meridiem[ $meridiem ];
+=======
+	public function get_meridiem($meridiem) {
+		return $this->meridiem[$meridiem];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**

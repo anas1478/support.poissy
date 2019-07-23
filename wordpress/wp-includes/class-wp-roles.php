@@ -15,10 +15,17 @@
  * in the value of the 'capability' key.
  *
  *     array (
+<<<<<<< HEAD
  *          'rolename' => array (
  *              'name' => 'rolename',
  *              'capabilities' => array()
  *          )
+=======
+ *    		'rolename' => array (
+ *    			'name' => 'rolename',
+ *    			'capabilities' => array()
+ *    		)
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *     )
  *
  * @since 2.0.0
@@ -28,7 +35,11 @@ class WP_Roles {
 	 * List of roles and capabilities.
 	 *
 	 * @since 2.0.0
+<<<<<<< HEAD
 	 * @var array[]
+=======
+	 * @var array
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public $roles;
 
@@ -36,7 +47,11 @@ class WP_Roles {
 	 * List of the role objects.
 	 *
 	 * @since 2.0.0
+<<<<<<< HEAD
 	 * @var WP_Role[]
+=======
+	 * @var array
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public $role_objects = array();
 
@@ -44,7 +59,11 @@ class WP_Roles {
 	 * List of role names.
 	 *
 	 * @since 2.0.0
+<<<<<<< HEAD
 	 * @var string[]
+=======
+	 * @var array
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public $role_names = array();
 
@@ -76,7 +95,11 @@ class WP_Roles {
 	 * Constructor
 	 *
 	 * @since 2.0.0
+<<<<<<< HEAD
 	 * @since 4.9.0 The `$site_id` argument was added.
+=======
+	 * @since 4.9.0 The $site_id argument was added.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @global array $wp_user_roles Used to set the 'roles' property value.
 	 *
@@ -95,7 +118,11 @@ class WP_Roles {
 	 *
 	 * @since 4.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string   $name      Method to call.
+=======
+	 * @param callable $name      Method to call.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param array    $arguments Arguments to pass when calling.
 	 * @return mixed|false Return value of the callback, false otherwise.
 	 */
@@ -157,6 +184,7 @@ class WP_Roles {
 			return;
 		}
 
+<<<<<<< HEAD
 		$this->roles[ $role ] = array(
 			'name'         => $display_name,
 			'capabilities' => $capabilities,
@@ -167,6 +195,17 @@ class WP_Roles {
 		$this->role_objects[ $role ] = new WP_Role( $role, $capabilities );
 		$this->role_names[ $role ]   = $display_name;
 		return $this->role_objects[ $role ];
+=======
+		$this->roles[$role] = array(
+			'name' => $display_name,
+			'capabilities' => $capabilities
+			);
+		if ( $this->use_db )
+			update_option( $this->role_key, $this->roles );
+		$this->role_objects[$role] = new WP_Role( $role, $capabilities );
+		$this->role_names[$role] = $display_name;
+		return $this->role_objects[$role];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -177,6 +216,7 @@ class WP_Roles {
 	 * @param string $role Role name.
 	 */
 	public function remove_role( $role ) {
+<<<<<<< HEAD
 		if ( ! isset( $this->role_objects[ $role ] ) ) {
 			return;
 		}
@@ -192,6 +232,20 @@ class WP_Roles {
 		if ( get_option( 'default_role' ) == $role ) {
 			update_option( 'default_role', 'subscriber' );
 		}
+=======
+		if ( ! isset( $this->role_objects[$role] ) )
+			return;
+
+		unset( $this->role_objects[$role] );
+		unset( $this->role_names[$role] );
+		unset( $this->roles[$role] );
+
+		if ( $this->use_db )
+			update_option( $this->role_key, $this->roles );
+
+		if ( get_option( 'default_role' ) == $role )
+			update_option( 'default_role', 'subscriber' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -204,6 +258,7 @@ class WP_Roles {
 	 * @param bool $grant Optional, default is true. Whether role is capable of performing capability.
 	 */
 	public function add_cap( $role, $cap, $grant = true ) {
+<<<<<<< HEAD
 		if ( ! isset( $this->roles[ $role ] ) ) {
 			return;
 		}
@@ -212,6 +267,14 @@ class WP_Roles {
 		if ( $this->use_db ) {
 			update_option( $this->role_key, $this->roles );
 		}
+=======
+		if ( ! isset( $this->roles[$role] ) )
+			return;
+
+		$this->roles[$role]['capabilities'][$cap] = $grant;
+		if ( $this->use_db )
+			update_option( $this->role_key, $this->roles );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -223,6 +286,7 @@ class WP_Roles {
 	 * @param string $cap Capability name.
 	 */
 	public function remove_cap( $role, $cap ) {
+<<<<<<< HEAD
 		if ( ! isset( $this->roles[ $role ] ) ) {
 			return;
 		}
@@ -231,6 +295,14 @@ class WP_Roles {
 		if ( $this->use_db ) {
 			update_option( $this->role_key, $this->roles );
 		}
+=======
+		if ( ! isset( $this->roles[$role] ) )
+			return;
+
+		unset( $this->roles[$role]['capabilities'][$cap] );
+		if ( $this->use_db )
+			update_option( $this->role_key, $this->roles );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -242,11 +314,18 @@ class WP_Roles {
 	 * @return WP_Role|null WP_Role object if found, null if the role does not exist.
 	 */
 	public function get_role( $role ) {
+<<<<<<< HEAD
 		if ( isset( $this->role_objects[ $role ] ) ) {
 			return $this->role_objects[ $role ];
 		} else {
 			return null;
 		}
+=======
+		if ( isset( $this->role_objects[$role] ) )
+			return $this->role_objects[$role];
+		else
+			return null;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -254,7 +333,11 @@ class WP_Roles {
 	 *
 	 * @since 2.0.0
 	 *
+<<<<<<< HEAD
 	 * @return string[] List of role names.
+=======
+	 * @return array List of role names.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public function get_names() {
 		return $this->role_names;
@@ -269,7 +352,11 @@ class WP_Roles {
 	 * @return bool
 	 */
 	public function is_role( $role ) {
+<<<<<<< HEAD
 		return isset( $this->role_names[ $role ] );
+=======
+		return isset( $this->role_names[$role] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -283,10 +370,17 @@ class WP_Roles {
 		}
 
 		$this->role_objects = array();
+<<<<<<< HEAD
 		$this->role_names   = array();
 		foreach ( array_keys( $this->roles ) as $role ) {
 			$this->role_objects[ $role ] = new WP_Role( $role, $this->roles[ $role ]['capabilities'] );
 			$this->role_names[ $role ]   = $this->roles[ $role ]['name'];
+=======
+		$this->role_names =  array();
+		foreach ( array_keys( $this->roles ) as $role ) {
+			$this->role_objects[ $role ] = new WP_Role( $role, $this->roles[ $role ]['capabilities'] );
+			$this->role_names[ $role ] = $this->roles[ $role ]['name'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		/**

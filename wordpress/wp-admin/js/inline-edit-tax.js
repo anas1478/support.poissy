@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * This file is used on the term overview page to power quick-editing terms.
  *
@@ -6,6 +7,13 @@
 
 /* global inlineEditL10n, ajaxurl, inlineEditTax */
 
+=======
+/* global inlineEditL10n, ajaxurl */
+/**
+ * This file is used on the term overview page to power quick-editing terms.
+ */
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 window.wp = window.wp || {};
 
 /**
@@ -17,6 +25,7 @@ window.wp = window.wp || {};
  * @property {string} what The type property with a hash prefixed and a dash
  *                         suffixed.
  */
+<<<<<<< HEAD
 ( function( $, wp ) {
 
 window.inlineEditTax = {
@@ -24,6 +33,18 @@ window.inlineEditTax = {
 	/**
 	 * Initializes the inline taxonomy editor by adding event handlers to be able to
 	 * quick edit.
+=======
+var inlineEditTax;
+
+( function( $, wp ) {
+
+inlineEditTax = {
+
+	/**
+	 * @summary Initializes the inline taxonomy editor.
+	 *
+	 * Adds event handlers to be able to quick edit.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 2.7.0
 	 *
@@ -37,6 +58,7 @@ window.inlineEditTax = {
 		t.type = $('#the-list').attr('data-wp-lists').substr(5);
 		t.what = '#'+t.type+'-';
 
+<<<<<<< HEAD
 		$( '#the-list' ).on( 'click', '.editinline', function() {
 			$( this ).attr( 'aria-expanded', 'true' );
 			inlineEditTax.edit( this );
@@ -44,6 +66,15 @@ window.inlineEditTax = {
 
 		/**
 		 * Cancels inline editing when pressing escape inside the inline editor.
+=======
+		$('#the-list').on('click', 'a.editinline', function(){
+			inlineEditTax.edit(this);
+			return false;
+		});
+
+		/*
+		 * @summary Cancels inline editing when pressing escape inside the inline editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @param {Object} e The keyup event that has been triggered.
 		 */
@@ -55,21 +86,33 @@ window.inlineEditTax = {
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Cancels inline editing when clicking the cancel button.
+=======
+		 * @summary Cancels inline editing when clicking the cancel button.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		$( '.cancel', row ).click( function() {
 			return inlineEditTax.revert();
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Saves the inline edits when clicking the save button.
+=======
+		 * @summary Saves the inline edits when clicking the save button.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		$( '.save', row ).click( function() {
 			return inlineEditTax.save(this);
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Saves the inline edits when pressing enter inside the inline editor.
+=======
+		 * @summary Saves the inline edits when pressing enter inside the inline editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		$( 'input, select', row ).keydown( function( e ) {
 			// 13 = [enter]
@@ -79,7 +122,11 @@ window.inlineEditTax = {
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Saves the inline edits on submitting the inline edit form.
+=======
+		 * @summary Saves the inline edits on submitting the inline edit form.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		$( '#posts-filter input[type="submit"]' ).mousedown( function() {
 			t.revert();
@@ -149,7 +196,11 @@ window.inlineEditTax = {
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Saves the quick edit data.
+=======
+	 * @summary Saves the quick edit data.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * Saves the quick edit data to the server and replaces the table row with the
 	 * HTML retrieved from the server.
@@ -187,7 +238,11 @@ window.inlineEditTax = {
 		// Do the ajax request to save the data to the server.
 		$.post( ajaxurl, params,
 			/**
+<<<<<<< HEAD
 			 * Handles the response from the server
+=======
+			 * @summary Handles the response from the server.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Handles the response from the server, replaces the table row with the response
 			 * from the server.
@@ -220,10 +275,15 @@ window.inlineEditTax = {
 						$( '#parent' ).find( 'option[value=' + option_value + ']' ).text( row.find( '.row-title' ).text() );
 
 						row.hide().fadeIn( 400, function() {
+<<<<<<< HEAD
 							// Move focus back to the Quick Edit button.
 							row.find( '.editinline' )
 								.attr( 'aria-expanded', 'false' )
 								.focus();
+=======
+							// Move focus back to the Quick Edit link.
+							row.find( '.editinline' ).focus();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 							wp.a11y.speak( inlineEditL10n.saved );
 						});
 
@@ -265,10 +325,15 @@ window.inlineEditTax = {
 			$('#'+id).siblings('tr.hidden').addBack().remove();
 			id = id.substr( id.lastIndexOf('-') + 1 );
 
+<<<<<<< HEAD
 			// Show the taxonomy row and move focus back to the Quick Edit button.
 			$( this.what + id ).show().find( '.editinline' )
 				.attr( 'aria-expanded', 'false' )
 				.focus();
+=======
+			// Show the taxonomy row and move focus back to the Quick Edit link.
+			$( this.what + id ).show().find( '.editinline' ).focus();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	},
 

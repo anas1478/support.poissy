@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 /**
  * Utility functions for parsing and handling shortcodes in JavaScript.
  *
  * @output wp-includes/js/shortcode.js
  */
+=======
+// Utility functions for parsing and handling shortcodes in JavaScript.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * Ensure the global `wp` object exists.

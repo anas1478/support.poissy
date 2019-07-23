@@ -31,7 +31,11 @@ function get_header( $name = null ) {
 	do_action( 'get_header', $name );
 
 	$templates = array();
+<<<<<<< HEAD
 	$name      = (string) $name;
+=======
+	$name = (string) $name;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( '' !== $name ) {
 		$templates[] = "header-{$name}.php";
 	}
@@ -66,12 +70,20 @@ function get_footer( $name = null ) {
 	do_action( 'get_footer', $name );
 
 	$templates = array();
+<<<<<<< HEAD
 	$name      = (string) $name;
+=======
+	$name = (string) $name;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( '' !== $name ) {
 		$templates[] = "footer-{$name}.php";
 	}
 
+<<<<<<< HEAD
 	$templates[] = 'footer.php';
+=======
+	$templates[]    = 'footer.php';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	locate_template( $templates, true );
 }
@@ -101,10 +113,16 @@ function get_sidebar( $name = null ) {
 	do_action( 'get_sidebar', $name );
 
 	$templates = array();
+<<<<<<< HEAD
 	$name      = (string) $name;
 	if ( '' !== $name ) {
 		$templates[] = "sidebar-{$name}.php";
 	}
+=======
+	$name = (string) $name;
+	if ( '' !== $name )
+		$templates[] = "sidebar-{$name}.php";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$templates[] = 'sidebar.php';
 
@@ -147,6 +165,7 @@ function get_template_part( $slug, $name = null ) {
 	do_action( "get_template_part_{$slug}", $slug, $name );
 
 	$templates = array();
+<<<<<<< HEAD
 	$name      = (string) $name;
 	if ( '' !== $name ) {
 		$templates[] = "{$slug}-{$name}.php";
@@ -155,6 +174,15 @@ function get_template_part( $slug, $name = null ) {
 	$templates[] = "{$slug}.php";
 
 	locate_template( $templates, true, false );
+=======
+	$name = (string) $name;
+	if ( '' !== $name )
+		$templates[] = "{$slug}-{$name}.php";
+
+	$templates[] = "{$slug}.php";
+
+	locate_template($templates, true, false);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -214,14 +242,22 @@ function get_search_form( $echo = true ) {
 					<span class="screen-reader-text">' . _x( 'Search for:', 'label' ) . '</span>
 					<input type="search" class="search-field" placeholder="' . esc_attr_x( 'Search &hellip;', 'placeholder' ) . '" value="' . get_search_query() . '" name="s" />
 				</label>
+<<<<<<< HEAD
 				<input type="submit" class="search-submit" value="' . esc_attr_x( 'Search', 'submit button' ) . '" />
+=======
+				<input type="submit" class="search-submit" value="'. esc_attr_x( 'Search', 'submit button' ) .'" />
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			</form>';
 		} else {
 			$form = '<form role="search" method="get" id="searchform" class="searchform" action="' . esc_url( home_url( '/' ) ) . '">
 				<div>
 					<label class="screen-reader-text" for="s">' . _x( 'Search for:', 'label' ) . '</label>
 					<input type="text" value="' . get_search_query() . '" name="s" id="s" />
+<<<<<<< HEAD
 					<input type="submit" id="searchsubmit" value="' . esc_attr_x( 'Search', 'submit button' ) . '" />
+=======
+					<input type="submit" id="searchsubmit" value="'. esc_attr_x( 'Search', 'submit button' ) .'" />
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				</div>
 			</form>';
 		}
@@ -236,6 +272,7 @@ function get_search_form( $echo = true ) {
 	 */
 	$result = apply_filters( 'get_search_form', $form );
 
+<<<<<<< HEAD
 	if ( null === $result ) {
 		$result = $form;
 	}
@@ -245,6 +282,15 @@ function get_search_form( $echo = true ) {
 	} else {
 		return $result;
 	}
+=======
+	if ( null === $result )
+		$result = $form;
+
+	if ( $echo )
+		echo $result;
+	else
+		return $result;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -259,12 +305,20 @@ function get_search_form( $echo = true ) {
  * @param bool   $echo     Default to echo and not return the link.
  * @return string|void String when retrieving.
  */
+<<<<<<< HEAD
 function wp_loginout( $redirect = '', $echo = true ) {
 	if ( ! is_user_logged_in() ) {
 		$link = '<a href="' . esc_url( wp_login_url( $redirect ) ) . '">' . __( 'Log in' ) . '</a>';
 	} else {
 		$link = '<a href="' . esc_url( wp_logout_url( $redirect ) ) . '">' . __( 'Log out' ) . '</a>';
 	}
+=======
+function wp_loginout($redirect = '', $echo = true) {
+	if ( ! is_user_logged_in() )
+		$link = '<a href="' . esc_url( wp_login_url($redirect) ) . '">' . __('Log in') . '</a>';
+	else
+		$link = '<a href="' . esc_url( wp_logout_url($redirect) ) . '">' . __('Log out') . '</a>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( $echo ) {
 		/**
@@ -291,6 +345,7 @@ function wp_loginout( $redirect = '', $echo = true ) {
  * @param string $redirect Path to redirect to on logout.
  * @return string The logout URL. Note: HTML-encoded via esc_html() in wp_nonce_url().
  */
+<<<<<<< HEAD
 function wp_logout_url( $redirect = '' ) {
 	$args = array( 'action' => 'logout' );
 	if ( ! empty( $redirect ) ) {
@@ -298,6 +353,15 @@ function wp_logout_url( $redirect = '' ) {
 	}
 
 	$logout_url = add_query_arg( $args, site_url( 'wp-login.php', 'login' ) );
+=======
+function wp_logout_url($redirect = '') {
+	$args = array( 'action' => 'logout' );
+	if ( !empty($redirect) ) {
+		$args['redirect_to'] = urlencode( $redirect );
+	}
+
+	$logout_url = add_query_arg($args, site_url('wp-login.php', 'login'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$logout_url = wp_nonce_url( $logout_url, 'log-out' );
 
 	/**
@@ -321,6 +385,7 @@ function wp_logout_url( $redirect = '' ) {
  *                             Default false.
  * @return string The login URL. Not HTML-encoded.
  */
+<<<<<<< HEAD
 function wp_login_url( $redirect = '', $force_reauth = false ) {
 	$login_url = site_url( 'wp-login.php', 'login' );
 
@@ -331,6 +396,16 @@ function wp_login_url( $redirect = '', $force_reauth = false ) {
 	if ( $force_reauth ) {
 		$login_url = add_query_arg( 'reauth', '1', $login_url );
 	}
+=======
+function wp_login_url($redirect = '', $force_reauth = false) {
+	$login_url = site_url('wp-login.php', 'login');
+
+	if ( !empty($redirect) )
+		$login_url = add_query_arg('redirect_to', urlencode($redirect), $login_url);
+
+	if ( $force_reauth )
+		$login_url = add_query_arg('reauth', '1', $login_url);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the login URL.
@@ -396,6 +471,7 @@ function wp_registration_url() {
  */
 function wp_login_form( $args = array() ) {
 	$defaults = array(
+<<<<<<< HEAD
 		'echo'           => true,
 		// Default 'redirect' value takes the user back to the request URI.
 		'redirect'       => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
@@ -409,6 +485,21 @@ function wp_login_form( $args = array() ) {
 		'id_remember'    => 'rememberme',
 		'id_submit'      => 'wp-submit',
 		'remember'       => true,
+=======
+		'echo' => true,
+		// Default 'redirect' value takes the user back to the request URI.
+		'redirect' => ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+		'form_id' => 'loginform',
+		'label_username' => __( 'Username or Email Address' ),
+		'label_password' => __( 'Password' ),
+		'label_remember' => __( 'Remember Me' ),
+		'label_log_in' => __( 'Log In' ),
+		'id_username' => 'user_login',
+		'id_password' => 'user_pass',
+		'id_remember' => 'rememberme',
+		'id_submit' => 'wp-submit',
+		'remember' => true,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		'value_username' => '',
 		// Set 'value_remember' to true to default the "Remember me" checkbox to checked.
 		'value_remember' => false,
@@ -482,11 +573,18 @@ function wp_login_form( $args = array() ) {
 			' . $login_form_bottom . '
 		</form>';
 
+<<<<<<< HEAD
 	if ( $args['echo'] ) {
 		echo $form;
 	} else {
 		return $form;
 	}
+=======
+	if ( $args['echo'] )
+		echo $form;
+	else
+		return $form;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -499,11 +597,19 @@ function wp_login_form( $args = array() ) {
  */
 function wp_lostpassword_url( $redirect = '' ) {
 	$args = array( 'action' => 'lostpassword' );
+<<<<<<< HEAD
 	if ( ! empty( $redirect ) ) {
 		$args['redirect_to'] = urlencode( $redirect );
 	}
 
 	$lostpassword_url = add_query_arg( $args, network_site_url( 'wp-login.php', 'login' ) );
+=======
+	if ( !empty($redirect) ) {
+		$args['redirect_to'] = urlencode( $redirect );
+	}
+
+	$lostpassword_url = add_query_arg( $args, network_site_url('wp-login.php', 'login') );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the Lost Password URL.
@@ -531,6 +637,7 @@ function wp_lostpassword_url( $redirect = '' ) {
  */
 function wp_register( $before = '<li>', $after = '</li>', $echo = true ) {
 	if ( ! is_user_logged_in() ) {
+<<<<<<< HEAD
 		if ( get_option( 'users_can_register' ) ) {
 			$link = $before . '<a href="' . esc_url( wp_registration_url() ) . '">' . __( 'Register' ) . '</a>' . $after;
 		} else {
@@ -538,6 +645,14 @@ function wp_register( $before = '<li>', $after = '</li>', $echo = true ) {
 		}
 	} elseif ( current_user_can( 'read' ) ) {
 		$link = $before . '<a href="' . admin_url() . '">' . __( 'Site Admin' ) . '</a>' . $after;
+=======
+		if ( get_option('users_can_register') )
+			$link = $before . '<a href="' . esc_url( wp_registration_url() ) . '">' . __('Register') . '</a>' . $after;
+		else
+			$link = '';
+	} elseif ( current_user_can( 'read' ) ) {
+		$link = $before . '<a href="' . admin_url() . '">' . __('Site Admin') . '</a>' . $after;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} else {
 		$link = '';
 	}
@@ -618,7 +733,11 @@ function bloginfo( $show = '' ) {
  *   child theme will NOT take precedence over this value
  * - 'pingback_url' - The pingback XML-RPC file URL (xmlrpc.php)
  * - 'atom_url' - The Atom feed URL (/feed/atom)
+<<<<<<< HEAD
  * - 'rdf_url' - The RDF/RSS 1.0 feed URL (/feed/rdf)
+=======
+ * - 'rdf_url' - The RDF/RSS 1.0 feed URL (/feed/rfd)
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * - 'rss_url' - The RSS 0.92 feed URL (/feed/rss)
  * - 'rss2_url' - The RSS 2.0 feed URL (/feed)
  * - 'comments_atom_url' - The comments Atom feed URL (/comments/feed)
@@ -641,6 +760,7 @@ function bloginfo( $show = '' ) {
  * @return string Mostly string values, might be empty.
  */
 function get_bloginfo( $show = '', $filter = 'raw' ) {
+<<<<<<< HEAD
 	switch ( $show ) {
 		case 'home': // DEPRECATED
 		case 'siteurl': // DEPRECATED
@@ -682,6 +802,44 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			break;
 		case 'comments_rss2_url':
 			$output = get_feed_link( 'comments_rss2' );
+=======
+	switch( $show ) {
+		case 'home' : // DEPRECATED
+		case 'siteurl' : // DEPRECATED
+			_deprecated_argument( __FUNCTION__, '2.2.0', sprintf(
+				/* translators: 1: 'siteurl'/'home' argument, 2: bloginfo() function name, 3: 'url' argument */
+				__( 'The %1$s option is deprecated for the family of %2$s functions. Use the %3$s option instead.' ),
+				'<code>' . $show . '</code>',
+				'<code>bloginfo()</code>',
+				'<code>url</code>'
+			) );
+		case 'url' :
+			$output = home_url();
+			break;
+		case 'wpurl' :
+			$output = site_url();
+			break;
+		case 'description':
+			$output = get_option('blogdescription');
+			break;
+		case 'rdf_url':
+			$output = get_feed_link('rdf');
+			break;
+		case 'rss_url':
+			$output = get_feed_link('rss');
+			break;
+		case 'rss2_url':
+			$output = get_feed_link('rss2');
+			break;
+		case 'atom_url':
+			$output = get_feed_link('atom');
+			break;
+		case 'comments_atom_url':
+			$output = get_feed_link('comments_atom');
+			break;
+		case 'comments_rss2_url':
+			$output = get_feed_link('comments_rss2');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			break;
 		case 'pingback_url':
 			$output = site_url( 'xmlrpc.php' );
@@ -697,6 +855,7 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			$output = get_template_directory_uri();
 			break;
 		case 'admin_email':
+<<<<<<< HEAD
 			$output = get_option( 'admin_email' );
 			break;
 		case 'charset':
@@ -707,6 +866,16 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			break;
 		case 'html_type':
 			$output = get_option( 'html_type' );
+=======
+			$output = get_option('admin_email');
+			break;
+		case 'charset':
+			$output = get_option('blog_charset');
+			if ('' == $output) $output = 'UTF-8';
+			break;
+		case 'html_type' :
+			$output = get_option('html_type');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			break;
 		case 'version':
 			global $wp_version;
@@ -724,6 +893,7 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			}
 			break;
 		case 'text_direction':
+<<<<<<< HEAD
 			_deprecated_argument(
 				__FUNCTION__,
 				'2.2.0',
@@ -735,6 +905,15 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 					'<code>is_rtl()</code>'
 				)
 			);
+=======
+			_deprecated_argument( __FUNCTION__, '2.2.0', sprintf(
+				/* translators: 1: 'text_direction' argument, 2: bloginfo() function name, 3: is_rtl() function name */
+				__( 'The %1$s option is deprecated for the family of %2$s functions. Use the %3$s function instead.' ),
+				'<code>' . $show . '</code>',
+				'<code>bloginfo()</code>',
+				'<code>is_rtl()</code>'
+			) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( function_exists( 'is_rtl' ) ) {
 				$output = is_rtl() ? 'rtl' : 'ltr';
 			} else {
@@ -743,16 +922,27 @@ function get_bloginfo( $show = '', $filter = 'raw' ) {
 			break;
 		case 'name':
 		default:
+<<<<<<< HEAD
 			$output = get_option( 'blogname' );
+=======
+			$output = get_option('blogname');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			break;
 	}
 
 	$url = true;
+<<<<<<< HEAD
 	if ( strpos( $show, 'url' ) === false &&
 		strpos( $show, 'directory' ) === false &&
 		strpos( $show, 'home' ) === false ) {
 		$url = false;
 	}
+=======
+	if (strpos($show, 'url') === false &&
+		strpos($show, 'directory') === false &&
+		strpos($show, 'home') === false)
+		$url = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( 'display' == $filter ) {
 		if ( $url ) {
@@ -885,7 +1075,11 @@ function has_custom_logo( $blog_id = 0 ) {
  * @return string Custom logo markup.
  */
 function get_custom_logo( $blog_id = 0 ) {
+<<<<<<< HEAD
 	$html          = '';
+=======
+	$html = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$switched_blog = false;
 
 	if ( is_multisite() && ! empty( $blog_id ) && (int) $blog_id !== get_current_blog_id() ) {
@@ -915,6 +1109,7 @@ function get_custom_logo( $blog_id = 0 ) {
 		 * If the alt attribute is not empty, there's no need to explicitly pass
 		 * it because wp_get_attachment_image() already adds the alt attribute.
 		 */
+<<<<<<< HEAD
 		$html = sprintf(
 			'<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
 			esc_url( home_url( '/' ) ),
@@ -924,6 +1119,17 @@ function get_custom_logo( $blog_id = 0 ) {
 		// If no logo is set but we're in the Customizer, leave a placeholder (needed for the live preview).
 		$html = sprintf(
 			'<a href="%1$s" class="custom-logo-link" style="display:none;"><img class="custom-logo"/></a>',
+=======
+		$html = sprintf( '<a href="%1$s" class="custom-logo-link" rel="home" itemprop="url">%2$s</a>',
+			esc_url( home_url( '/' ) ),
+			wp_get_attachment_image( $custom_logo_id, 'full', false, $custom_logo_attr )
+		);
+	}
+
+	// If no logo is set but we're in the Customizer, leave a placeholder (needed for the live preview).
+	elseif ( is_customize_preview() ) {
+		$html = sprintf( '<a href="%1$s" class="custom-logo-link" style="display:none;"><img class="custom-logo"/></a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			esc_url( home_url( '/' ) )
 		);
 	}
@@ -992,11 +1198,16 @@ function wp_get_document_title() {
 	if ( is_404() ) {
 		$title['title'] = __( 'Page not found' );
 
+<<<<<<< HEAD
 		// If it's a search, use a dynamic search results title.
+=======
+	// If it's a search, use a dynamic search results title.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} elseif ( is_search() ) {
 		/* translators: %s: search phrase */
 		$title['title'] = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), get_search_query() );
 
+<<<<<<< HEAD
 		// If on the front page, use the site title.
 	} elseif ( is_front_page() ) {
 		$title['title'] = get_bloginfo( 'name', 'display' );
@@ -1025,6 +1236,36 @@ function wp_get_document_title() {
 		$title['title'] = $author->display_name;
 
 		// If it's a date archive, use the date as the title.
+=======
+	// If on the front page, use the site title.
+	} elseif ( is_front_page() ) {
+		$title['title'] = get_bloginfo( 'name', 'display' );
+
+	// If on a post type archive, use the post type archive title.
+	} elseif ( is_post_type_archive() ) {
+		$title['title'] = post_type_archive_title( '', false );
+
+	// If on a taxonomy archive, use the term title.
+	} elseif ( is_tax() ) {
+		$title['title'] = single_term_title( '', false );
+
+	/*
+	 * If we're on the blog page that is not the homepage or
+	 * a single post of any post type, use the post title.
+	 */
+	} elseif ( is_home() || is_singular() ) {
+		$title['title'] = single_post_title( '', false );
+
+	// If on a category or tag archive, use the term title.
+	} elseif ( is_category() || is_tag() ) {
+		$title['title'] = single_term_title( '', false );
+
+	// If on an author archive, use the author's display name.
+	} elseif ( is_author() && $author = get_queried_object() ) {
+		$title['title'] = $author->display_name;
+
+	// If it's a date archive, use the date as the title.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} elseif ( is_year() ) {
 		$title['title'] = get_the_date( _x( 'Y', 'yearly archives date format' ) );
 
@@ -1268,9 +1509,14 @@ function wp_title( $sep = '&raquo;', $display = true, $seplocation = '' ) {
 function single_post_title( $prefix = '', $display = true ) {
 	$_post = get_queried_object();
 
+<<<<<<< HEAD
 	if ( ! isset( $_post->post_title ) ) {
 		return;
 	}
+=======
+	if ( !isset($_post->post_title) )
+		return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the page title for a single post.
@@ -1281,11 +1527,18 @@ function single_post_title( $prefix = '', $display = true ) {
 	 * @param object $_post       The current queried object as returned by get_queried_object().
 	 */
 	$title = apply_filters( 'single_post_title', $_post->post_title, $_post );
+<<<<<<< HEAD
 	if ( $display ) {
 		echo $prefix . $title;
 	} else {
 		return $prefix . $title;
 	}
+=======
+	if ( $display )
+		echo $prefix . $title;
+	else
+		return $prefix . $title;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -1301,6 +1554,7 @@ function single_post_title( $prefix = '', $display = true ) {
  * @return string|void Title when retrieving, null when displaying or failure.
  */
 function post_type_archive_title( $prefix = '', $display = true ) {
+<<<<<<< HEAD
 	if ( ! is_post_type_archive() ) {
 		return;
 	}
@@ -1309,6 +1563,14 @@ function post_type_archive_title( $prefix = '', $display = true ) {
 	if ( is_array( $post_type ) ) {
 		$post_type = reset( $post_type );
 	}
+=======
+	if ( ! is_post_type_archive() )
+		return;
+
+	$post_type = get_query_var( 'post_type' );
+	if ( is_array( $post_type ) )
+		$post_type = reset( $post_type );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$post_type_obj = get_post_type_object( $post_type );
 
@@ -1322,11 +1584,18 @@ function post_type_archive_title( $prefix = '', $display = true ) {
 	 */
 	$title = apply_filters( 'post_type_archive_title', $post_type_obj->labels->name, $post_type );
 
+<<<<<<< HEAD
 	if ( $display ) {
 		echo $prefix . $title;
 	} else {
 		return $prefix . $title;
 	}
+=======
+	if ( $display )
+		echo $prefix . $title;
+	else
+		return $prefix . $title;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -1379,9 +1648,14 @@ function single_tag_title( $prefix = '', $display = true ) {
 function single_term_title( $prefix = '', $display = true ) {
 	$term = get_queried_object();
 
+<<<<<<< HEAD
 	if ( ! $term ) {
 		return;
 	}
+=======
+	if ( !$term )
+		return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( is_category() ) {
 		/**
@@ -1414,6 +1688,7 @@ function single_term_title( $prefix = '', $display = true ) {
 		return;
 	}
 
+<<<<<<< HEAD
 	if ( empty( $term_name ) ) {
 		return;
 	}
@@ -1423,6 +1698,15 @@ function single_term_title( $prefix = '', $display = true ) {
 	} else {
 		return $prefix . $term_name;
 	}
+=======
+	if ( empty( $term_name ) )
+		return;
+
+	if ( $display )
+		echo $prefix . $term_name;
+	else
+		return $prefix . $term_name;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -1441,6 +1725,7 @@ function single_term_title( $prefix = '', $display = true ) {
  * @param bool   $display Optional, default is true. Whether to display or retrieve title.
  * @return string|void Title when retrieving.
  */
+<<<<<<< HEAD
 function single_month_title( $prefix = '', $display = true ) {
 	global $wp_locale;
 
@@ -1465,6 +1750,30 @@ function single_month_title( $prefix = '', $display = true ) {
 	if ( ! $display ) {
 		return $result;
 	}
+=======
+function single_month_title($prefix = '', $display = true ) {
+	global $wp_locale;
+
+	$m = get_query_var('m');
+	$year = get_query_var('year');
+	$monthnum = get_query_var('monthnum');
+
+	if ( !empty($monthnum) && !empty($year) ) {
+		$my_year = $year;
+		$my_month = $wp_locale->get_month($monthnum);
+	} elseif ( !empty($m) ) {
+		$my_year = substr($m, 0, 4);
+		$my_month = $wp_locale->get_month(substr($m, 4, 2));
+	}
+
+	if ( empty($my_month) )
+		return false;
+
+	$result = $prefix . $my_month . $prefix . $my_year;
+
+	if ( !$display )
+		return $result;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	echo $result;
 }
 
@@ -1495,6 +1804,7 @@ function the_archive_title( $before = '', $after = '' ) {
  */
 function get_the_archive_title() {
 	if ( is_category() ) {
+<<<<<<< HEAD
 		/* translators: Category archive title. %s: Category name */
 		$title = sprintf( __( 'Category: %s' ), single_cat_title( '', false ) );
 	} elseif ( is_tag() ) {
@@ -1511,6 +1821,24 @@ function get_the_archive_title() {
 		$title = sprintf( __( 'Month: %s' ), get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
 	} elseif ( is_day() ) {
 		/* translators: Daily archive title. %s: Date */
+=======
+		/* translators: Category archive title. 1: Category name */
+		$title = sprintf( __( 'Category: %s' ), single_cat_title( '', false ) );
+	} elseif ( is_tag() ) {
+		/* translators: Tag archive title. 1: Tag name */
+		$title = sprintf( __( 'Tag: %s' ), single_tag_title( '', false ) );
+	} elseif ( is_author() ) {
+		/* translators: Author archive title. 1: Author name */
+		$title = sprintf( __( 'Author: %s' ), '<span class="vcard">' . get_the_author() . '</span>' );
+	} elseif ( is_year() ) {
+		/* translators: Yearly archive title. 1: Year */
+		$title = sprintf( __( 'Year: %s' ), get_the_date( _x( 'Y', 'yearly archives date format' ) ) );
+	} elseif ( is_month() ) {
+		/* translators: Monthly archive title. 1: Month name and year */
+		$title = sprintf( __( 'Month: %s' ), get_the_date( _x( 'F Y', 'monthly archives date format' ) ) );
+	} elseif ( is_day() ) {
+		/* translators: Daily archive title. 1: Date */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$title = sprintf( __( 'Day: %s' ), get_the_date( _x( 'F j, Y', 'daily archives date format' ) ) );
 	} elseif ( is_tax( 'post_format' ) ) {
 		if ( is_tax( 'post_format', 'post-format-aside' ) ) {
@@ -1533,7 +1861,11 @@ function get_the_archive_title() {
 			$title = _x( 'Chats', 'post format archive title' );
 		}
 	} elseif ( is_post_type_archive() ) {
+<<<<<<< HEAD
 		/* translators: Post type archive title. %s: Post type name */
+=======
+		/* translators: Post type archive title. 1: Post type name */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$title = sprintf( __( 'Archives: %s' ), post_type_archive_title( '', false ) );
 	} elseif ( is_tax() ) {
 		$tax = get_taxonomy( get_queried_object()->taxonomy );
@@ -1667,6 +1999,7 @@ function get_the_post_type_description() {
  * @param string $after  Optional. Content to append to the description. Default empty.
  * @return string HTML link content for archive.
  */
+<<<<<<< HEAD
 function get_archives_link( $url, $text, $format = 'html', $before = '', $after = '' ) {
 	$text = wptexturize( $text );
 	$url  = esc_url( $url );
@@ -1680,6 +2013,20 @@ function get_archives_link( $url, $text, $format = 'html', $before = '', $after 
 	} else { // custom
 		$link_html = "\t$before<a href='$url'>$text</a>$after\n";
 	}
+=======
+function get_archives_link($url, $text, $format = 'html', $before = '', $after = '') {
+	$text = wptexturize($text);
+	$url = esc_url($url);
+
+	if ('link' == $format)
+		$link_html = "\t<link rel='archives' title='" . esc_attr( $text ) . "' href='$url' />\n";
+	elseif ('option' == $format)
+		$link_html = "\t<option value='$url'>$before $text $after</option>\n";
+	elseif ('html' == $format)
+		$link_html = "\t<li>$before<a href='$url'>$text</a>$after</li>\n";
+	else // custom
+		$link_html = "\t$before<a href='$url'>$text</a>$after\n";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the archive link content.
@@ -1736,6 +2083,7 @@ function wp_get_archives( $args = '' ) {
 	global $wpdb, $wp_locale;
 
 	$defaults = array(
+<<<<<<< HEAD
 		'type'            => 'monthly',
 		'limit'           => '',
 		'format'          => 'html',
@@ -1745,6 +2093,13 @@ function wp_get_archives( $args = '' ) {
 		'echo'            => 1,
 		'order'           => 'DESC',
 		'post_type'       => 'post',
+=======
+		'type' => 'monthly', 'limit' => '',
+		'format' => 'html', 'before' => '',
+		'after' => '', 'show_post_count' => false,
+		'echo' => 1, 'order' => 'DESC',
+		'post_type' => 'post'
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	$r = wp_parse_args( $args, $defaults );
@@ -1802,8 +2157,13 @@ function wp_get_archives( $args = '' ) {
 
 	if ( 'monthly' == $r['type'] ) {
 		$query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date) ORDER BY post_date $order $limit";
+<<<<<<< HEAD
 		$key   = md5( $query );
 		$key   = "wp_get_archives:$key:$last_changed";
+=======
+		$key = md5( $query );
+		$key = "wp_get_archives:$key:$last_changed";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $results = wp_cache_get( $key, 'posts' ) ) {
 			$results = $wpdb->get_results( $query );
 			wp_cache_set( $key, $results, 'posts' );
@@ -1825,15 +2185,24 @@ function wp_get_archives( $args = '' ) {
 		}
 	} elseif ( 'yearly' == $r['type'] ) {
 		$query = "SELECT YEAR(post_date) AS `year`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date) ORDER BY post_date $order $limit";
+<<<<<<< HEAD
 		$key   = md5( $query );
 		$key   = "wp_get_archives:$key:$last_changed";
+=======
+		$key = md5( $query );
+		$key = "wp_get_archives:$key:$last_changed";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $results = wp_cache_get( $key, 'posts' ) ) {
 			$results = $wpdb->get_results( $query );
 			wp_cache_set( $key, $results, 'posts' );
 		}
 		if ( $results ) {
 			$after = $r['after'];
+<<<<<<< HEAD
 			foreach ( (array) $results as $result ) {
+=======
+			foreach ( (array) $results as $result) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$url = get_year_link( $result->year );
 				if ( 'post' !== $r['post_type'] ) {
 					$url = add_query_arg( 'post_type', $r['post_type'], $url );
@@ -1847,8 +2216,13 @@ function wp_get_archives( $args = '' ) {
 		}
 	} elseif ( 'daily' == $r['type'] ) {
 		$query = "SELECT YEAR(post_date) AS `year`, MONTH(post_date) AS `month`, DAYOFMONTH(post_date) AS `dayofmonth`, count(ID) as posts FROM $wpdb->posts $join $where GROUP BY YEAR(post_date), MONTH(post_date), DAYOFMONTH(post_date) ORDER BY post_date $order $limit";
+<<<<<<< HEAD
 		$key   = md5( $query );
 		$key   = "wp_get_archives:$key:$last_changed";
+=======
+		$key = md5( $query );
+		$key = "wp_get_archives:$key:$last_changed";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $results = wp_cache_get( $key, 'posts' ) ) {
 			$results = $wpdb->get_results( $query );
 			wp_cache_set( $key, $results, 'posts' );
@@ -1856,7 +2230,11 @@ function wp_get_archives( $args = '' ) {
 		if ( $results ) {
 			$after = $r['after'];
 			foreach ( (array) $results as $result ) {
+<<<<<<< HEAD
 				$url = get_day_link( $result->year, $result->month, $result->dayofmonth );
+=======
+				$url  = get_day_link( $result->year, $result->month, $result->dayofmonth );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( 'post' !== $r['post_type'] ) {
 					$url = add_query_arg( 'post_type', $r['post_type'], $url );
 				}
@@ -1869,10 +2247,17 @@ function wp_get_archives( $args = '' ) {
 			}
 		}
 	} elseif ( 'weekly' == $r['type'] ) {
+<<<<<<< HEAD
 		$week  = _wp_mysql_week( '`post_date`' );
 		$query = "SELECT DISTINCT $week AS `week`, YEAR( `post_date` ) AS `yr`, DATE_FORMAT( `post_date`, '%Y-%m-%d' ) AS `yyyymmdd`, count( `ID` ) AS `posts` FROM `$wpdb->posts` $join $where GROUP BY $week, YEAR( `post_date` ) ORDER BY `post_date` $order $limit";
 		$key   = md5( $query );
 		$key   = "wp_get_archives:$key:$last_changed";
+=======
+		$week = _wp_mysql_week( '`post_date`' );
+		$query = "SELECT DISTINCT $week AS `week`, YEAR( `post_date` ) AS `yr`, DATE_FORMAT( `post_date`, '%Y-%m-%d' ) AS `yyyymmdd`, count( `ID` ) AS `posts` FROM `$wpdb->posts` $join $where GROUP BY $week, YEAR( `post_date` ) ORDER BY `post_date` $order $limit";
+		$key = md5( $query );
+		$key = "wp_get_archives:$key:$last_changed";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $results = wp_cache_get( $key, 'posts' ) ) {
 			$results = $wpdb->get_results( $query );
 			wp_cache_set( $key, $results, 'posts' );
@@ -1887,6 +2272,7 @@ function wp_get_archives( $args = '' ) {
 					$arc_week       = get_weekstartend( $result->yyyymmdd, get_option( 'start_of_week' ) );
 					$arc_week_start = date_i18n( get_option( 'date_format' ), $arc_week['start'] );
 					$arc_week_end   = date_i18n( get_option( 'date_format' ), $arc_week['end'] );
+<<<<<<< HEAD
 					$url            = add_query_arg(
 						array(
 							'm' => $arc_year,
@@ -1898,6 +2284,13 @@ function wp_get_archives( $args = '' ) {
 						$url = add_query_arg( 'post_type', $r['post_type'], $url );
 					}
 					$text = $arc_week_start . $archive_week_separator . $arc_week_end;
+=======
+					$url            = add_query_arg( array( 'm' => $arc_year, 'w' => $result->week, ), home_url( '/' ) );
+					if ( 'post' !== $r['post_type'] ) {
+						$url = add_query_arg( 'post_type', $r['post_type'], $url );
+					}
+					$text           = $arc_week_start . $archive_week_separator . $arc_week_end;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					if ( $r['show_post_count'] ) {
 						$r['after'] = '&nbsp;(' . $result->posts . ')' . $after;
 					}
@@ -1905,11 +2298,19 @@ function wp_get_archives( $args = '' ) {
 				}
 			}
 		}
+<<<<<<< HEAD
 	} elseif ( ( 'postbypost' == $r['type'] ) || ( 'alpha' == $r['type'] ) ) {
 		$orderby = ( 'alpha' == $r['type'] ) ? 'post_title ASC ' : 'post_date DESC, ID DESC ';
 		$query   = "SELECT * FROM $wpdb->posts $join $where ORDER BY $orderby $limit";
 		$key     = md5( $query );
 		$key     = "wp_get_archives:$key:$last_changed";
+=======
+	} elseif ( ( 'postbypost' == $r['type'] ) || ('alpha' == $r['type'] ) ) {
+		$orderby = ( 'alpha' == $r['type'] ) ? 'post_title ASC ' : 'post_date DESC, ID DESC ';
+		$query = "SELECT * FROM $wpdb->posts $join $where ORDER BY $orderby $limit";
+		$key = md5( $query );
+		$key = "wp_get_archives:$key:$last_changed";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $results = wp_cache_get( $key, 'posts' ) ) {
 			$results = $wpdb->get_results( $query );
 			wp_cache_set( $key, $results, 'posts' );
@@ -1944,9 +2345,15 @@ function wp_get_archives( $args = '' ) {
  * @param int $num Number of day.
  * @return float Days since the start of the week.
  */
+<<<<<<< HEAD
 function calendar_week_mod( $num ) {
 	$base = 7;
 	return ( $num - $base * floor( $num / $base ) );
+=======
+function calendar_week_mod($num) {
+	$base = 7;
+	return ($num - $base*floor($num/$base));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -1971,7 +2378,11 @@ function calendar_week_mod( $num ) {
 function get_calendar( $initial = true, $echo = true ) {
 	global $wpdb, $m, $monthnum, $year, $wp_locale, $posts;
 
+<<<<<<< HEAD
 	$key   = md5( $m . $monthnum . $year );
+=======
+	$key = md5( $m . $monthnum . $year );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$cache = wp_cache_get( 'get_calendar', 'calendar' );
 
 	if ( $cache && is_array( $cache ) && isset( $cache[ $key ] ) ) {
@@ -1992,7 +2403,11 @@ function get_calendar( $initial = true, $echo = true ) {
 
 	// Quick check. If we have no posts at all, abort!
 	if ( ! $posts ) {
+<<<<<<< HEAD
 		$gotsome = $wpdb->get_var( "SELECT 1 as test FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' LIMIT 1" );
+=======
+		$gotsome = $wpdb->get_var("SELECT 1 as test FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' LIMIT 1");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $gotsome ) {
 			$cache[ $key ] = '';
 			wp_cache_set( 'get_calendar', $cache, 'calendar' );
@@ -2005,18 +2420,31 @@ function get_calendar( $initial = true, $echo = true ) {
 	}
 	// week_begins = 0 stands for Sunday
 	$week_begins = (int) get_option( 'start_of_week' );
+<<<<<<< HEAD
 	$ts          = current_time( 'timestamp' );
+=======
+	$ts = current_time( 'timestamp' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	// Let's figure out when we are
 	if ( ! empty( $monthnum ) && ! empty( $year ) ) {
 		$thismonth = zeroise( intval( $monthnum ), 2 );
+<<<<<<< HEAD
 		$thisyear  = (int) $year;
+=======
+		$thisyear = (int) $year;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} elseif ( ! empty( $w ) ) {
 		// We need to get the month from MySQL
 		$thisyear = (int) substr( $m, 0, 4 );
 		//it seems MySQL's weeks disagree with PHP's
+<<<<<<< HEAD
 		$d         = ( ( $w - 1 ) * 7 ) + 6;
 		$thismonth = $wpdb->get_var( "SELECT DATE_FORMAT((DATE_ADD('{$thisyear}0101', INTERVAL $d DAY) ), '%m')" );
+=======
+		$d = ( ( $w - 1 ) * 7 ) + 6;
+		$thismonth = $wpdb->get_var("SELECT DATE_FORMAT((DATE_ADD('{$thisyear}0101', INTERVAL $d DAY) ), '%m')");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} elseif ( ! empty( $m ) ) {
 		$thisyear = (int) substr( $m, 0, 4 );
 		if ( strlen( $m ) < 6 ) {
@@ -2025,6 +2453,7 @@ function get_calendar( $initial = true, $echo = true ) {
 			$thismonth = zeroise( (int) substr( $m, 4, 2 ), 2 );
 		}
 	} else {
+<<<<<<< HEAD
 		$thisyear  = gmdate( 'Y', $ts );
 		$thismonth = gmdate( 'm', $ts );
 	}
@@ -2035,24 +2464,48 @@ function get_calendar( $initial = true, $echo = true ) {
 	// Get the next and previous month and year with at least one post
 	$previous = $wpdb->get_row(
 		"SELECT MONTH(post_date) AS month, YEAR(post_date) AS year
+=======
+		$thisyear = gmdate( 'Y', $ts );
+		$thismonth = gmdate( 'm', $ts );
+	}
+
+	$unixmonth = mktime( 0, 0 , 0, $thismonth, 1, $thisyear );
+	$last_day = date( 't', $unixmonth );
+
+	// Get the next and previous month and year with at least one post
+	$previous = $wpdb->get_row("SELECT MONTH(post_date) AS month, YEAR(post_date) AS year
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		FROM $wpdb->posts
 		WHERE post_date < '$thisyear-$thismonth-01'
 		AND post_type = 'post' AND post_status = 'publish'
 			ORDER BY post_date DESC
+<<<<<<< HEAD
 			LIMIT 1"
 	);
 	$next     = $wpdb->get_row(
 		"SELECT MONTH(post_date) AS month, YEAR(post_date) AS year
+=======
+			LIMIT 1");
+	$next = $wpdb->get_row("SELECT MONTH(post_date) AS month, YEAR(post_date) AS year
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		FROM $wpdb->posts
 		WHERE post_date > '$thisyear-$thismonth-{$last_day} 23:59:59'
 		AND post_type = 'post' AND post_status = 'publish'
 			ORDER BY post_date ASC
+<<<<<<< HEAD
 			LIMIT 1"
 	);
 
 	/* translators: Calendar caption: 1: month name, 2: 4-digit year */
 	$calendar_caption = _x( '%1$s %2$s', 'calendar caption' );
 	$calendar_output  = '<table id="wp-calendar">
+=======
+			LIMIT 1");
+
+	/* translators: Calendar caption: 1: month name, 2: 4-digit year */
+	$calendar_caption = _x('%1$s %2$s', 'calendar caption');
+	$calendar_output = '<table id="wp-calendar">
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	<caption>' . sprintf(
 		$calendar_caption,
 		$wp_locale->get_month( $thismonth ),
@@ -2068,8 +2521,13 @@ function get_calendar( $initial = true, $echo = true ) {
 	}
 
 	foreach ( $myweek as $wd ) {
+<<<<<<< HEAD
 		$day_name         = $initial ? $wp_locale->get_weekday_initial( $wd ) : $wp_locale->get_weekday_abbrev( $wd );
 		$wd               = esc_attr( $wd );
+=======
+		$day_name = $initial ? $wp_locale->get_weekday_initial( $wd ) : $wp_locale->get_weekday_abbrev( $wd );
+		$wd = esc_attr( $wd );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$calendar_output .= "\n\t\t<th scope=\"col\" title=\"$wd\">$day_name</th>";
 	}
 
@@ -2081,6 +2539,7 @@ function get_calendar( $initial = true, $echo = true ) {
 	<tr>';
 
 	if ( $previous ) {
+<<<<<<< HEAD
 		$calendar_output .= "\n\t\t" . '<td colspan="3" id="prev"><a href="' . get_month_link( $previous->year, $previous->month ) . '">&laquo; ' .
 			$wp_locale->get_month_abbrev( $wp_locale->get_month( $previous->month ) ) .
 		'</a></td>';
@@ -2096,6 +2555,23 @@ function get_calendar( $initial = true, $echo = true ) {
 		' &raquo;</a></td>';
 	} else {
 		$calendar_output .= "\n\t\t" . '<td colspan="3" id="next" class="pad">&nbsp;</td>';
+=======
+		$calendar_output .= "\n\t\t".'<td colspan="3" id="prev"><a href="' . get_month_link( $previous->year, $previous->month ) . '">&laquo; ' .
+			$wp_locale->get_month_abbrev( $wp_locale->get_month( $previous->month ) ) .
+		'</a></td>';
+	} else {
+		$calendar_output .= "\n\t\t".'<td colspan="3" id="prev" class="pad">&nbsp;</td>';
+	}
+
+	$calendar_output .= "\n\t\t".'<td class="pad">&nbsp;</td>';
+
+	if ( $next ) {
+		$calendar_output .= "\n\t\t".'<td colspan="3" id="next"><a href="' . get_month_link( $next->year, $next->month ) . '">' .
+			$wp_locale->get_month_abbrev( $wp_locale->get_month( $next->month ) ) .
+		' &raquo;</a></td>';
+	} else {
+		$calendar_output .= "\n\t\t".'<td colspan="3" id="next" class="pad">&nbsp;</td>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	$calendar_output .= '
@@ -2108,6 +2584,7 @@ function get_calendar( $initial = true, $echo = true ) {
 	$daywithpost = array();
 
 	// Get days with posts
+<<<<<<< HEAD
 	$dayswithposts = $wpdb->get_results(
 		"SELECT DISTINCT DAYOFMONTH(post_date)
 		FROM $wpdb->posts WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00'
@@ -2115,6 +2592,12 @@ function get_calendar( $initial = true, $echo = true ) {
 		AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59'",
 		ARRAY_N
 	);
+=======
+	$dayswithposts = $wpdb->get_results("SELECT DISTINCT DAYOFMONTH(post_date)
+		FROM $wpdb->posts WHERE post_date >= '{$thisyear}-{$thismonth}-01 00:00:00'
+		AND post_type = 'post' AND post_status = 'publish'
+		AND post_date <= '{$thisyear}-{$thismonth}-{$last_day} 23:59:59'", ARRAY_N);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( $dayswithposts ) {
 		foreach ( (array) $dayswithposts as $daywith ) {
 			$daywithpost[] = $daywith[0];
@@ -2124,6 +2607,7 @@ function get_calendar( $initial = true, $echo = true ) {
 	// See how much we should pad in the beginning
 	$pad = calendar_week_mod( date( 'w', $unixmonth ) - $week_begins );
 	if ( 0 != $pad ) {
+<<<<<<< HEAD
 		$calendar_output .= "\n\t\t" . '<td colspan="' . esc_attr( $pad ) . '" class="pad">&nbsp;</td>';
 	}
 
@@ -2132,6 +2616,16 @@ function get_calendar( $initial = true, $echo = true ) {
 
 	for ( $day = 1; $day <= $daysinmonth; ++$day ) {
 		if ( isset( $newrow ) && $newrow ) {
+=======
+		$calendar_output .= "\n\t\t".'<td colspan="'. esc_attr( $pad ) .'" class="pad">&nbsp;</td>';
+	}
+
+	$newrow = false;
+	$daysinmonth = (int) date( 't', $unixmonth );
+
+	for ( $day = 1; $day <= $daysinmonth; ++$day ) {
+		if ( isset($newrow) && $newrow ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$calendar_output .= "\n\t</tr>\n\t<tr>\n\t\t";
 		}
 		$newrow = false;
@@ -2147,8 +2641,13 @@ function get_calendar( $initial = true, $echo = true ) {
 		if ( in_array( $day, $daywithpost ) ) {
 			// any posts today?
 			$date_format = date( _x( 'F j, Y', 'daily archives date format' ), strtotime( "{$thisyear}-{$thismonth}-{$day}" ) );
+<<<<<<< HEAD
 			/* translators: Post calendar label. %s: Date */
 			$label            = sprintf( __( 'Posts published on %s' ), $date_format );
+=======
+			/* translators: Post calendar label. 1: Date */
+			$label = sprintf( __( 'Posts published on %s' ), $date_format );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$calendar_output .= sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
 				get_day_link( $thisyear, $thismonth, $day ),
@@ -2160,14 +2659,24 @@ function get_calendar( $initial = true, $echo = true ) {
 		}
 		$calendar_output .= '</td>';
 
+<<<<<<< HEAD
 		if ( 6 == calendar_week_mod( date( 'w', mktime( 0, 0, 0, $thismonth, $day, $thisyear ) ) - $week_begins ) ) {
+=======
+		if ( 6 == calendar_week_mod( date( 'w', mktime(0, 0 , 0, $thismonth, $day, $thisyear ) ) - $week_begins ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$newrow = true;
 		}
 	}
 
+<<<<<<< HEAD
 	$pad = 7 - calendar_week_mod( date( 'w', mktime( 0, 0, 0, $thismonth, $day, $thisyear ) ) - $week_begins );
 	if ( $pad != 0 && $pad != 7 ) {
 		$calendar_output .= "\n\t\t" . '<td class="pad" colspan="' . esc_attr( $pad ) . '">&nbsp;</td>';
+=======
+	$pad = 7 - calendar_week_mod( date( 'w', mktime( 0, 0 , 0, $thismonth, $day, $thisyear ) ) - $week_begins );
+	if ( $pad != 0 && $pad != 7 ) {
+		$calendar_output .= "\n\t\t".'<td class="pad" colspan="'. esc_attr( $pad ) .'">&nbsp;</td>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	$calendar_output .= "\n\t</tr>\n\t</tbody>\n\t</table>";
 
@@ -2215,10 +2724,17 @@ function allowed_tags() {
 	global $allowedtags;
 	$allowed = '';
 	foreach ( (array) $allowedtags as $tag => $attributes ) {
+<<<<<<< HEAD
 		$allowed .= '<' . $tag;
 		if ( 0 < count( $attributes ) ) {
 			foreach ( $attributes as $attribute => $limits ) {
 				$allowed .= ' ' . $attribute . '=""';
+=======
+		$allowed .= '<'.$tag;
+		if ( 0 < count($attributes) ) {
+			foreach ( $attributes as $attribute => $limits ) {
+				$allowed .= ' '.$attribute.'=""';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 		$allowed .= '> ';
@@ -2226,7 +2742,11 @@ function allowed_tags() {
 	return htmlentities( $allowed );
 }
 
+<<<<<<< HEAD
 /***** Date/Time tags */
+=======
+/***** Date/Time tags *****/
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * Outputs the date in iso8601 format for xml files.
@@ -2264,7 +2784,11 @@ function the_date( $d = '', $before = '', $after = '', $echo = true ) {
 	global $currentday, $previousday;
 
 	if ( is_new_day() ) {
+<<<<<<< HEAD
 		$the_date    = $before . get_the_date( $d ) . $after;
+=======
+		$the_date = $before . get_the_date( $d ) . $after;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$previousday = $currentday;
 
 		/**
@@ -2280,11 +2804,18 @@ function the_date( $d = '', $before = '', $after = '', $echo = true ) {
 		 */
 		$the_date = apply_filters( 'the_date', $the_date, $d, $before, $after );
 
+<<<<<<< HEAD
 		if ( $echo ) {
 			echo $the_date;
 		} else {
 			return $the_date;
 		}
+=======
+		if ( $echo )
+			echo $the_date;
+		else
+			return $the_date;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }
 
@@ -2308,9 +2839,15 @@ function get_the_date( $d = '', $post = null ) {
 	}
 
 	if ( '' == $d ) {
+<<<<<<< HEAD
 		$the_date = get_post_time( get_option( 'date_format' ), false, $post, true );
 	} else {
 		$the_date = get_post_time( $d, false, $post, true );
+=======
+		$the_date = mysql2date( get_option( 'date_format' ), $post->post_date );
+	} else {
+		$the_date = mysql2date( $d, $post->post_date );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -2338,7 +2875,11 @@ function get_the_date( $d = '', $post = null ) {
  * @return string|void String if retrieving.
  */
 function the_modified_date( $d = '', $before = '', $after = '', $echo = true ) {
+<<<<<<< HEAD
 	$the_modified_date = $before . get_the_modified_date( $d ) . $after;
+=======
+	$the_modified_date = $before . get_the_modified_date($d) . $after;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the date a post was last modified for display.
@@ -2353,11 +2894,18 @@ function the_modified_date( $d = '', $before = '', $after = '', $echo = true ) {
 	 */
 	$the_modified_date = apply_filters( 'the_modified_date', $the_modified_date, $d, $before, $after );
 
+<<<<<<< HEAD
 	if ( $echo ) {
 		echo $the_modified_date;
 	} else {
 		return $the_modified_date;
 	}
+=======
+	if ( $echo )
+		echo $the_modified_date;
+	else
+		return $the_modified_date;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 }
 
@@ -2426,20 +2974,34 @@ function the_time( $d = '' ) {
  *                          was written. Either 'G', 'U', or php date format defaults
  *                          to the value specified in the time_format option. Default empty.
  * @param int|WP_Post $post WP_Post object or ID. Default is global $post object.
+<<<<<<< HEAD
  * @return string|int|false Formatted date string or Unix timestamp if `$d` is 'U' or 'G'. False on failure.
  */
 function get_the_time( $d = '', $post = null ) {
 	$post = get_post( $post );
+=======
+ * @return string|int|false Formatted date string or Unix timestamp if `$id` is 'U' or 'G'. False on failure.
+ */
+function get_the_time( $d = '', $post = null ) {
+	$post = get_post($post);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( ! $post ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( '' == $d ) {
 		$the_time = get_post_time( get_option( 'time_format' ), false, $post, true );
 	} else {
 		$the_time = get_post_time( $d, false, $post, true );
 	}
+=======
+	if ( '' == $d )
+		$the_time = get_post_time(get_option('time_format'), false, $post, true);
+	else
+		$the_time = get_post_time($d, false, $post, true);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the time a post was written.
@@ -2465,15 +3027,23 @@ function get_the_time( $d = '', $post = null ) {
  * @param bool        $gmt       Optional. Whether to retrieve the GMT time. Default false.
  * @param int|WP_Post $post      WP_Post object or ID. Default is global $post object.
  * @param bool        $translate Whether to translate the time string. Default false.
+<<<<<<< HEAD
  * @return string|int|false Formatted date string or Unix timestamp if `$d` is 'U' or 'G'. False on failure.
  */
 function get_post_time( $d = 'U', $gmt = false, $post = null, $translate = false ) {
 	$post = get_post( $post );
+=======
+ * @return string|int|false Formatted date string or Unix timestamp if `$id` is 'U' or 'G'. False on failure.
+ */
+function get_post_time( $d = 'U', $gmt = false, $post = null, $translate = false ) {
+	$post = get_post($post);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( ! $post ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( $gmt ) {
 		$time = $post->post_date_gmt;
 	} else {
@@ -2481,6 +3051,14 @@ function get_post_time( $d = 'U', $gmt = false, $post = null, $translate = false
 	}
 
 	$time = mysql2date( $d, $time, $translate );
+=======
+	if ( $gmt )
+		$time = $post->post_date_gmt;
+	else
+		$time = $post->post_date;
+
+	$time = mysql2date($d, $time, $translate);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the localized time a post was written.
@@ -2502,7 +3080,11 @@ function get_post_time( $d = 'U', $gmt = false, $post = null, $translate = false
  *
  * @param string $d Optional Either 'G', 'U', or php date format defaults to the value specified in the time_format option.
  */
+<<<<<<< HEAD
 function the_modified_time( $d = '' ) {
+=======
+function the_modified_time($d = '') {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * Filters the localized time a post was last modified, for display.
 	 *
@@ -2513,7 +3095,11 @@ function the_modified_time( $d = '' ) {
 	 *                                      or php date format. Defaults to value
 	 *                                      specified in 'time_format' option.
 	 */
+<<<<<<< HEAD
 	echo apply_filters( 'the_modified_time', get_the_modified_time( $d ), $d );
+=======
+	echo apply_filters( 'the_modified_time', get_the_modified_time($d), $d );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -2565,21 +3151,36 @@ function get_the_modified_time( $d = '', $post = null ) {
  * @param bool        $gmt       Optional. Whether to retrieve the GMT time. Default false.
  * @param int|WP_Post $post      WP_Post object or ID. Default is global $post object.
  * @param bool        $translate Whether to translate the time string. Default false.
+<<<<<<< HEAD
  * @return string|int|false Formatted date string or Unix timestamp if `$d` is 'U' or 'G'. False on failure.
  */
 function get_post_modified_time( $d = 'U', $gmt = false, $post = null, $translate = false ) {
 	$post = get_post( $post );
+=======
+ * @return string|int|false Formatted date string or Unix timestamp if `$id` is 'U' or 'G'. False on failure.
+ */
+function get_post_modified_time( $d = 'U', $gmt = false, $post = null, $translate = false ) {
+	$post = get_post($post);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( ! $post ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( $gmt ) {
 		$time = $post->post_modified_gmt;
 	} else {
 		$time = $post->post_modified;
 	}
 	$time = mysql2date( $d, $time, $translate );
+=======
+	if ( $gmt )
+		$time = $post->post_modified_gmt;
+	else
+		$time = $post->post_modified;
+	$time = mysql2date($d, $time, $translate);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the localized time a post was last modified.
@@ -2629,14 +3230,22 @@ function the_weekday() {
  * @param string $before Optional Output before the date.
  * @param string $after Optional Output after the date.
  */
+<<<<<<< HEAD
 function the_weekday_date( $before = '', $after = '' ) {
+=======
+function the_weekday_date($before='',$after='') {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	global $wp_locale, $currentday, $previousweekday;
 	$the_weekday_date = '';
 	if ( $currentday != $previousweekday ) {
 		$the_weekday_date .= $before;
 		$the_weekday_date .= $wp_locale->get_weekday( mysql2date( 'w', get_post()->post_date, false ) );
 		$the_weekday_date .= $after;
+<<<<<<< HEAD
 		$previousweekday   = $currentday;
+=======
+		$previousweekday = $currentday;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -2692,6 +3301,7 @@ function wp_footer() {
  * @param array $args Optional arguments.
  */
 function feed_links( $args = array() ) {
+<<<<<<< HEAD
 	if ( ! current_theme_supports( 'automatic-feed-links' ) ) {
 		return;
 	}
@@ -2703,6 +3313,18 @@ function feed_links( $args = array() ) {
 		'feedtitle' => __( '%1$s %2$s Feed' ),
 		/* translators: 1: blog title, 2: separator (raquo) */
 		'comstitle' => __( '%1$s %2$s Comments Feed' ),
+=======
+	if ( !current_theme_supports('automatic-feed-links') )
+		return;
+
+	$defaults = array(
+		/* translators: Separator between blog name and feed type in feed links */
+		'separator'	=> _x('&raquo;', 'feed link'),
+		/* translators: 1: blog title, 2: separator (raquo) */
+		'feedtitle'	=> __('%1$s %2$s Feed'),
+		/* translators: 1: blog title, 2: separator (raquo) */
+		'comstitle'	=> __('%1$s %2$s Comments Feed'),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	$args = wp_parse_args( $args, $defaults );
@@ -2740,6 +3362,7 @@ function feed_links( $args = array() ) {
 function feed_links_extra( $args = array() ) {
 	$defaults = array(
 		/* translators: Separator between blog name and feed type in feed links */
+<<<<<<< HEAD
 		'separator'     => _x( '&raquo;', 'feed link' ),
 		/* translators: 1: blog name, 2: separator(raquo), 3: post title */
 		'singletitle'   => __( '%1$s %2$s %3$s Comments Feed' ),
@@ -2755,11 +3378,29 @@ function feed_links_extra( $args = array() ) {
 		'searchtitle'   => __( '%1$s %2$s Search Results for &#8220;%3$s&#8221; Feed' ),
 		/* translators: 1: blog name, 2: separator(raquo), 3: post type name */
 		'posttypetitle' => __( '%1$s %2$s %3$s Feed' ),
+=======
+		'separator'   => _x('&raquo;', 'feed link'),
+		/* translators: 1: blog name, 2: separator(raquo), 3: post title */
+		'singletitle' => __('%1$s %2$s %3$s Comments Feed'),
+		/* translators: 1: blog name, 2: separator(raquo), 3: category name */
+		'cattitle'    => __('%1$s %2$s %3$s Category Feed'),
+		/* translators: 1: blog name, 2: separator(raquo), 3: tag name */
+		'tagtitle'    => __('%1$s %2$s %3$s Tag Feed'),
+		/* translators: 1: blog name, 2: separator(raquo), 3: term name, 4: taxonomy singular name */
+		'taxtitle'    => __('%1$s %2$s %3$s %4$s Feed'),
+		/* translators: 1: blog name, 2: separator(raquo), 3: author name  */
+		'authortitle' => __('%1$s %2$s Posts by %3$s Feed'),
+		/* translators: 1: blog name, 2: separator(raquo), 3: search phrase */
+		'searchtitle' => __('%1$s %2$s Search Results for &#8220;%3$s&#8221; Feed'),
+		/* translators: 1: blog name, 2: separator(raquo), 3: post type name */
+		'posttypetitle' => __('%1$s %2$s %3$s Feed'),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	$args = wp_parse_args( $args, $defaults );
 
 	if ( is_singular() ) {
+<<<<<<< HEAD
 		$id   = 0;
 		$post = get_post( $id );
 
@@ -2776,17 +3417,40 @@ function feed_links_extra( $args = array() ) {
 		$post_type_obj = get_post_type_object( $post_type );
 		$title         = sprintf( $args['posttypetitle'], get_bloginfo( 'name' ), $args['separator'], $post_type_obj->labels->name );
 		$href          = get_post_type_archive_feed_link( $post_type_obj->name );
+=======
+		$id = 0;
+		$post = get_post( $id );
+
+		if ( comments_open() || pings_open() || $post->comment_count > 0 ) {
+			$title = sprintf( $args['singletitle'], get_bloginfo('name'), $args['separator'], the_title_attribute( array( 'echo' => false ) ) );
+			$href = get_post_comments_feed_link( $post->ID );
+		}
+	} elseif ( is_post_type_archive() ) {
+		$post_type = get_query_var( 'post_type' );
+		if ( is_array( $post_type ) )
+			$post_type = reset( $post_type );
+
+		$post_type_obj = get_post_type_object( $post_type );
+		$title = sprintf( $args['posttypetitle'], get_bloginfo( 'name' ), $args['separator'], $post_type_obj->labels->name );
+		$href = get_post_type_archive_feed_link( $post_type_obj->name );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} elseif ( is_category() ) {
 		$term = get_queried_object();
 
 		if ( $term ) {
+<<<<<<< HEAD
 			$title = sprintf( $args['cattitle'], get_bloginfo( 'name' ), $args['separator'], $term->name );
 			$href  = get_category_feed_link( $term->term_id );
+=======
+			$title = sprintf( $args['cattitle'], get_bloginfo('name'), $args['separator'], $term->name );
+			$href = get_category_feed_link( $term->term_id );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	} elseif ( is_tag() ) {
 		$term = get_queried_object();
 
 		if ( $term ) {
+<<<<<<< HEAD
 			$title = sprintf( $args['tagtitle'], get_bloginfo( 'name' ), $args['separator'], $term->name );
 			$href  = get_tag_feed_link( $term->term_id );
 		}
@@ -2814,6 +3478,33 @@ function feed_links_extra( $args = array() ) {
 	if ( isset( $title ) && isset( $href ) ) {
 		echo '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( $title ) . '" href="' . esc_url( $href ) . '" />' . "\n";
 	}
+=======
+			$title = sprintf( $args['tagtitle'], get_bloginfo('name'), $args['separator'], $term->name );
+			$href = get_tag_feed_link( $term->term_id );
+		}
+	} elseif ( is_tax() ) {
+ 		$term = get_queried_object();
+ 		$tax = get_taxonomy( $term->taxonomy );
+ 		$title = sprintf( $args['taxtitle'], get_bloginfo('name'), $args['separator'], $term->name, $tax->labels->singular_name );
+ 		$href = get_term_feed_link( $term->term_id, $term->taxonomy );
+	} elseif ( is_author() ) {
+		$author_id = intval( get_query_var('author') );
+
+		$title = sprintf( $args['authortitle'], get_bloginfo('name'), $args['separator'], get_the_author_meta( 'display_name', $author_id ) );
+		$href = get_author_feed_link( $author_id );
+	} elseif ( is_search() ) {
+		$title = sprintf( $args['searchtitle'], get_bloginfo('name'), $args['separator'], get_search_query( false ) );
+		$href = get_search_feed_link();
+	} elseif ( is_post_type_archive() ) {
+		$title = sprintf( $args['posttypetitle'], get_bloginfo('name'), $args['separator'], post_type_archive_title( '', false ) );
+		$post_type_obj = get_queried_object();
+		if ( $post_type_obj )
+			$href = get_post_type_archive_feed_link( $post_type_obj->name );
+	}
+
+	if ( isset($title) && isset($href) )
+		echo '<link rel="alternate" type="' . feed_content_type() . '" title="' . esc_attr( $title ) . '" href="' . esc_url( $href ) . '" />' . "\n";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -2854,9 +3545,14 @@ function wlwmanifest_link() {
  */
 function noindex() {
 	// If the blog is not public, tell robots to go away.
+<<<<<<< HEAD
 	if ( '0' == get_option( 'blog_public' ) ) {
 		wp_no_robots();
 	}
+=======
+	if ( '0' == get_option('blog_public') )
+		wp_no_robots();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -2880,7 +3576,11 @@ function wp_no_robots() {
  *
  * Typical usage is as a wp_head callback. add_action( 'wp_head', 'wp_sensitive_page_meta' );
  *
+<<<<<<< HEAD
  * @since 5.0.1
+=======
+ * @since 5.0.0
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 function wp_sensitive_page_meta() {
 	?>
@@ -2902,7 +3602,11 @@ function wp_site_icon() {
 	}
 
 	$meta_tags = array();
+<<<<<<< HEAD
 	$icon_32   = get_site_icon_url( 32 );
+=======
+	$icon_32 = get_site_icon_url( 32 );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( empty( $icon_32 ) && is_customize_preview() ) {
 		$icon_32 = '/favicon.ico'; // Serve default favicon URL in customizer so element can be updated for preview.
 	}
@@ -2923,11 +3627,19 @@ function wp_site_icon() {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Filters the site icon meta tags, so plugins can add their own.
 	 *
 	 * @since 4.3.0
 	 *
 	 * @param string[] $meta_tags Array of Site Icon meta tags.
+=======
+	 * Filters the site icon meta tags, so Plugins can add their own.
+	 *
+	 * @since 4.3.0
+	 *
+	 * @param array $meta_tags Site Icon meta elements.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	$meta_tags = apply_filters( 'site_icon_meta_tags', $meta_tags );
 	$meta_tags = array_filter( $meta_tags );
@@ -2962,7 +3674,11 @@ function wp_resource_hints() {
 	 * The path is removed in the foreach loop below.
 	 */
 	/** This filter is documented in wp-includes/formatting.php */
+<<<<<<< HEAD
 	$hints['dns-prefetch'][] = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/11.2.0/svg/' );
+=======
+	$hints['dns-prefetch'][] = apply_filters( 'emoji_svg_url', 'https://s.w.org/images/core/emoji/11/svg/' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	foreach ( $hints as $relation_type => $urls ) {
 		$unique_urls = array();
@@ -3014,7 +3730,11 @@ function wp_resource_hints() {
 				}
 			}
 
+<<<<<<< HEAD
 			$atts['rel']  = $relation_type;
+=======
+			$atts['rel'] = $relation_type;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$atts['href'] = $url;
 
 			$unique_urls[ $url ] = $atts;
@@ -3025,8 +3745,13 @@ function wp_resource_hints() {
 
 			foreach ( $atts as $attr => $value ) {
 				if ( ! is_scalar( $value ) ||
+<<<<<<< HEAD
 					( ! in_array( $attr, array( 'as', 'crossorigin', 'href', 'pr', 'rel', 'type' ), true ) && ! is_numeric( $attr ) ) ) {
 
+=======
+				     ( ! in_array( $attr, array( 'as', 'crossorigin', 'href', 'pr', 'rel', 'type' ), true ) && ! is_numeric( $attr ))
+				) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					continue;
 				}
 
@@ -3099,7 +3824,11 @@ function wp_dependencies_unique_hosts() {
 function user_can_richedit() {
 	global $wp_rich_edit, $is_gecko, $is_opera, $is_safari, $is_chrome, $is_IE, $is_edge;
 
+<<<<<<< HEAD
 	if ( ! isset( $wp_rich_edit ) ) {
+=======
+	if ( !isset($wp_rich_edit) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$wp_rich_edit = false;
 
 		if ( get_user_option( 'rich_editing' ) == 'true' || ! is_user_logged_in() ) { // default to 'true' for logged out users
@@ -3107,7 +3836,11 @@ function user_can_richedit() {
 				$wp_rich_edit = ! wp_is_mobile() || ( preg_match( '!AppleWebKit/(\d+)!', $_SERVER['HTTP_USER_AGENT'], $match ) && intval( $match[1] ) >= 534 );
 			} elseif ( $is_IE ) {
 				$wp_rich_edit = ( strpos( $_SERVER['HTTP_USER_AGENT'], 'Trident/7.0;' ) !== false );
+<<<<<<< HEAD
 			} elseif ( $is_gecko || $is_chrome || $is_edge || ( $is_opera && ! wp_is_mobile() ) ) {
+=======
+			} elseif ( $is_gecko || $is_chrome || $is_edge || ( $is_opera && !wp_is_mobile() ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$wp_rich_edit = true;
 			}
 		}
@@ -3136,8 +3869,13 @@ function user_can_richedit() {
 function wp_default_editor() {
 	$r = user_can_richedit() ? 'tinymce' : 'html'; // defaults
 	if ( wp_get_current_user() ) { // look for cookie
+<<<<<<< HEAD
 		$ed = get_user_setting( 'editor', 'tinymce' );
 		$r  = ( in_array( $ed, array( 'tinymce', 'html', 'test' ) ) ) ? $ed : $r;
+=======
+		$ed = get_user_setting('editor', 'tinymce');
+		$r = ( in_array($ed, array('tinymce', 'html', 'test') ) ) ? $ed : $r;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -3170,10 +3908,16 @@ function wp_default_editor() {
  * @param array  $settings  See _WP_Editors::editor().
  */
 function wp_editor( $content, $editor_id, $settings = array() ) {
+<<<<<<< HEAD
 	if ( ! class_exists( '_WP_Editors', false ) ) {
 		require( ABSPATH . WPINC . '/class-wp-editor.php' );
 	}
 	_WP_Editors::editor( $content, $editor_id, $settings );
+=======
+	if ( ! class_exists( '_WP_Editors', false ) )
+		require( ABSPATH . WPINC . '/class-wp-editor.php' );
+	_WP_Editors::editor($content, $editor_id, $settings);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -3310,6 +4054,7 @@ function wp_enqueue_code_editor( $args ) {
 function wp_get_code_editor_settings( $args ) {
 	$settings = array(
 		'codemirror' => array(
+<<<<<<< HEAD
 			'indentUnit'       => 4,
 			'indentWithTabs'   => true,
 			'inputStyle'       => 'contenteditable',
@@ -3376,6 +4121,74 @@ function wp_get_code_editor_settings( $args ) {
 			'alt-require'              => true,
 			'space-tab-mixed-disabled' => 'tab',
 			'attr-unsafe-chars'        => true,
+=======
+			'indentUnit' => 4,
+			'indentWithTabs' => true,
+			'inputStyle' => 'contenteditable',
+			'lineNumbers' => true,
+			'lineWrapping' => true,
+			'styleActiveLine' => true,
+			'continueComments' => true,
+			'extraKeys' => array(
+				'Ctrl-Space' => 'autocomplete',
+				'Ctrl-/' => 'toggleComment',
+				'Cmd-/' => 'toggleComment',
+				'Alt-F' => 'findPersistent',
+				'Ctrl-F'     => 'findPersistent',
+				'Cmd-F'      => 'findPersistent',
+			),
+			'direction' => 'ltr', // Code is shown in LTR even in RTL languages.
+			'gutters' => array(),
+		),
+		'csslint' => array(
+			'errors' => true, // Parsing errors.
+			'box-model' => true,
+			'display-property-grouping' => true,
+			'duplicate-properties' => true,
+			'known-properties' => true,
+			'outline-none' => true,
+		),
+		'jshint' => array(
+			// The following are copied from <https://github.com/WordPress/wordpress-develop/blob/4.8.1/.jshintrc>.
+			'boss' => true,
+			'curly' => true,
+			'eqeqeq' => true,
+			'eqnull' => true,
+			'es3' => true,
+			'expr' => true,
+			'immed' => true,
+			'noarg' => true,
+			'nonbsp' => true,
+			'onevar' => true,
+			'quotmark' => 'single',
+			'trailing' => true,
+			'undef' => true,
+			'unused' => true,
+
+			'browser' => true,
+
+			'globals' => array(
+				'_' => false,
+				'Backbone' => false,
+				'jQuery' => false,
+				'JSON' => false,
+				'wp' => false,
+			),
+		),
+		'htmlhint' => array(
+			'tagname-lowercase' => true,
+			'attr-lowercase' => true,
+			'attr-value-double-quotes' => false,
+			'doctype-first' => false,
+			'tag-pair' => true,
+			'spec-char-escape' => true,
+			'id-unique' => true,
+			'src-not-empty' => true,
+			'attr-no-duplication' => true,
+			'alt-require' => true,
+			'space-tab-mixed-disabled' => 'tab',
+			'attr-unsafe-chars' => true,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		),
 	);
 
@@ -3472,6 +4285,7 @@ function wp_get_code_editor_settings( $args ) {
 	}
 
 	if ( 'text/css' === $type ) {
+<<<<<<< HEAD
 		$settings['codemirror'] = array_merge(
 			$settings['codemirror'],
 			array(
@@ -3511,11 +4325,41 @@ function wp_get_code_editor_settings( $args ) {
 				),
 			)
 		);
+=======
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'css',
+			'lint' => true,
+			'autoCloseBrackets' => true,
+			'matchBrackets' => true,
+		) );
+	} elseif ( 'text/x-scss' === $type || 'text/x-less' === $type || 'text/x-sass' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => $type,
+			'lint' => false,
+			'autoCloseBrackets' => true,
+			'matchBrackets' => true,
+		) );
+	} elseif ( 'text/x-diff' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'diff',
+		) );
+	} elseif ( 'text/html' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'htmlmixed',
+			'lint' => true,
+			'autoCloseBrackets' => true,
+			'autoCloseTags' => true,
+			'matchTags' => array(
+				'bothTags' => true,
+			),
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! current_user_can( 'unfiltered_html' ) ) {
 			$settings['htmlhint']['kses'] = wp_kses_allowed_html( 'post' );
 		}
 	} elseif ( 'text/x-gfm' === $type ) {
+<<<<<<< HEAD
 		$settings['codemirror'] = array_merge(
 			$settings['codemirror'],
 			array(
@@ -3545,12 +4389,35 @@ function wp_get_code_editor_settings( $args ) {
 				'matchBrackets'     => true,
 			)
 		);
+=======
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'gfm',
+			'highlightFormatting' => true,
+		) );
+	} elseif ( 'application/javascript' === $type || 'text/javascript' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'javascript',
+			'lint' => true,
+			'autoCloseBrackets' => true,
+			'matchBrackets' => true,
+		) );
+	} elseif ( false !== strpos( $type, 'json' ) ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => array(
+				'name' => 'javascript',
+			),
+			'lint' => true,
+			'autoCloseBrackets' => true,
+			'matchBrackets' => true,
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( 'application/ld+json' === $type ) {
 			$settings['codemirror']['mode']['jsonld'] = true;
 		} else {
 			$settings['codemirror']['mode']['json'] = true;
 		}
 	} elseif ( false !== strpos( $type, 'jsx' ) ) {
+<<<<<<< HEAD
 		$settings['codemirror'] = array_merge(
 			$settings['codemirror'],
 			array(
@@ -3615,6 +4482,51 @@ function wp_get_code_editor_settings( $args ) {
 				'mode' => 'yaml',
 			)
 		);
+=======
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'jsx',
+			'autoCloseBrackets' => true,
+			'matchBrackets' => true,
+		) );
+	} elseif ( 'text/x-markdown' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'markdown',
+			'highlightFormatting' => true,
+		) );
+	} elseif ( 'text/nginx' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'nginx',
+		) );
+	} elseif ( 'application/x-httpd-php' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'php',
+			'autoCloseBrackets' => true,
+			'autoCloseTags' => true,
+			'matchBrackets' => true,
+			'matchTags' => array(
+				'bothTags' => true,
+			),
+		) );
+	} elseif ( 'text/x-sql' === $type || 'text/x-mysql' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'sql',
+			'autoCloseBrackets' => true,
+			'matchBrackets' => true,
+		) );
+	} elseif ( false !== strpos( $type, 'xml' ) ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'xml',
+			'autoCloseBrackets' => true,
+			'autoCloseTags' => true,
+			'matchTags' => array(
+				'bothTags' => true,
+			),
+		) );
+	} elseif ( 'text/x-yaml' === $type ) {
+		$settings['codemirror'] = array_merge( $settings['codemirror'], array(
+			'mode' => 'yaml',
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} else {
 		$settings['codemirror']['mode'] = $type;
 	}
@@ -3664,7 +4576,11 @@ function wp_get_code_editor_settings( $args ) {
  * @since 2.3.0
  *
  * @param bool $escaped Whether the result is escaped. Default true.
+<<<<<<< HEAD
  *                      Only use when you are later escaping it. Do not use unescaped.
+=======
+ * 	                    Only use when you are later escaping it. Do not use unescaped.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * @return string
  */
 function get_search_query( $escaped = true ) {
@@ -3677,9 +4593,14 @@ function get_search_query( $escaped = true ) {
 	 */
 	$query = apply_filters( 'get_search_query', get_query_var( 's' ) );
 
+<<<<<<< HEAD
 	if ( $escaped ) {
 		$query = esc_attr( $query );
 	}
+=======
+	if ( $escaped )
+		$query = esc_attr( $query );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	return $query;
 }
 
@@ -3715,9 +4636,14 @@ function the_search_query() {
 function get_language_attributes( $doctype = 'html' ) {
 	$attributes = array();
 
+<<<<<<< HEAD
 	if ( function_exists( 'is_rtl' ) && is_rtl() ) {
 		$attributes[] = 'dir="rtl"';
 	}
+=======
+	if ( function_exists( 'is_rtl' ) && is_rtl() )
+		$attributes[] = 'dir="rtl"';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( $lang = get_bloginfo( 'language' ) ) {
 		if ( get_option( 'html_type' ) == 'text/html' || $doctype == 'html' ) {
@@ -3729,7 +4655,11 @@ function get_language_attributes( $doctype = 'html' ) {
 		}
 	}
 
+<<<<<<< HEAD
 	$output = implode( ' ', $attributes );
+=======
+	$output = implode(' ', $attributes);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the language attributes for display in the html tag.
@@ -3834,7 +4764,11 @@ function language_attributes( $doctype = 'html' ) {
  *     @type string $before_page_number A string to appear before the page number. Default empty.
  *     @type string $after_page_number  A string to append after the page number. Default empty.
  * }
+<<<<<<< HEAD
  * @return string|array|void String of page links or array of page links.
+=======
+ * @return array|string|void String of page links or array of page links.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 function paginate_links( $args = '' ) {
 	global $wp_query, $wp_rewrite;
@@ -3882,7 +4816,11 @@ function paginate_links( $args = '' ) {
 	// Merge additional query vars found in the original URL into 'add_args' array.
 	if ( isset( $url_parts[1] ) ) {
 		// Find the format argument.
+<<<<<<< HEAD
 		$format       = explode( '?', str_replace( '%_%', $args['format'], $args['base'] ) );
+=======
+		$format = explode( '?', str_replace( '%_%', $args['format'], $args['base'] ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$format_query = isset( $format[1] ) ? $format[1] : '';
 		wp_parse_str( $format_query, $format_args );
 
@@ -3911,17 +4849,29 @@ function paginate_links( $args = '' ) {
 	if ( $mid_size < 0 ) {
 		$mid_size = 2;
 	}
+<<<<<<< HEAD
 	$add_args   = $args['add_args'];
 	$r          = '';
 	$page_links = array();
 	$dots       = false;
+=======
+	$add_args = $args['add_args'];
+	$r = '';
+	$page_links = array();
+	$dots = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( $args['prev_next'] && $current && 1 < $current ) :
 		$link = str_replace( '%_%', 2 == $current ? '' : $args['format'], $args['base'] );
 		$link = str_replace( '%#%', $current - 1, $link );
+<<<<<<< HEAD
 		if ( $add_args ) {
 			$link = add_query_arg( $add_args, $link );
 		}
+=======
+		if ( $add_args )
+			$link = add_query_arg( $add_args, $link );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$link .= $args['add_fragment'];
 
 		/**
@@ -3935,12 +4885,18 @@ function paginate_links( $args = '' ) {
 	endif;
 	for ( $n = 1; $n <= $total; $n++ ) :
 		if ( $n == $current ) :
+<<<<<<< HEAD
 			$page_links[] = "<span aria-current='" . esc_attr( $args['aria_current'] ) . "' class='page-numbers current'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . '</span>';
 			$dots         = true;
+=======
+			$page_links[] = "<span aria-current='" . esc_attr( $args['aria_current'] ) . "' class='page-numbers current'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</span>";
+			$dots = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		else :
 			if ( $args['show_all'] || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) :
 				$link = str_replace( '%_%', 1 == $n ? '' : $args['format'], $args['base'] );
 				$link = str_replace( '%#%', $n, $link );
+<<<<<<< HEAD
 				if ( $add_args ) {
 					$link = add_query_arg( $add_args, $link );
 				}
@@ -3952,21 +4908,39 @@ function paginate_links( $args = '' ) {
 			elseif ( $dots && ! $args['show_all'] ) :
 				$page_links[] = '<span class="page-numbers dots">' . __( '&hellip;' ) . '</span>';
 				$dots         = false;
+=======
+				if ( $add_args )
+					$link = add_query_arg( $add_args, $link );
+				$link .= $args['add_fragment'];
+
+				/** This filter is documented in wp-includes/general-template.php */
+				$page_links[] = "<a class='page-numbers' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</a>";
+				$dots = true;
+			elseif ( $dots && ! $args['show_all'] ) :
+				$page_links[] = '<span class="page-numbers dots">' . __( '&hellip;' ) . '</span>';
+				$dots = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			endif;
 		endif;
 	endfor;
 	if ( $args['prev_next'] && $current && $current < $total ) :
 		$link = str_replace( '%_%', $args['format'], $args['base'] );
 		$link = str_replace( '%#%', $current + 1, $link );
+<<<<<<< HEAD
 		if ( $add_args ) {
 			$link = add_query_arg( $add_args, $link );
 		}
+=======
+		if ( $add_args )
+			$link = add_query_arg( $add_args, $link );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$link .= $args['add_fragment'];
 
 		/** This filter is documented in wp-includes/general-template.php */
 		$page_links[] = '<a class="next page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '">' . $args['next_text'] . '</a>';
 	endif;
 	switch ( $args['type'] ) {
+<<<<<<< HEAD
 		case 'array':
 			return $page_links;
 
@@ -3978,15 +4952,34 @@ function paginate_links( $args = '' ) {
 
 		default:
 			$r = join( "\n", $page_links );
+=======
+		case 'array' :
+			return $page_links;
+
+		case 'list' :
+			$r .= "<ul class='page-numbers'>\n\t<li>";
+			$r .= join("</li>\n\t<li>", $page_links);
+			$r .= "</li>\n</ul>\n";
+			break;
+
+		default :
+			$r = join("\n", $page_links);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			break;
 	}
 	return $r;
 }
 
 /**
+<<<<<<< HEAD
  * Registers an admin color scheme css file.
  *
  * Allows a plugin to register a new admin color scheme. For example:
+=======
+ * Registers an admin colour scheme css file.
+ *
+ * Allows a plugin to register a new admin colour scheme. For example:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  *     wp_admin_css_color( 'classic', __( 'Classic' ), admin_url( "css/colors-classic.css" ), array(
  *         '#07273E', '#14568A', '#D54E21', '#2683AE'
@@ -4012,6 +5005,7 @@ function paginate_links( $args = '' ) {
 function wp_admin_css_color( $key, $name, $url, $colors = array(), $icons = array() ) {
 	global $_wp_admin_css_colors;
 
+<<<<<<< HEAD
 	if ( ! isset( $_wp_admin_css_colors ) ) {
 		$_wp_admin_css_colors = array();
 	}
@@ -4020,21 +5014,35 @@ function wp_admin_css_color( $key, $name, $url, $colors = array(), $icons = arra
 		'name'        => $name,
 		'url'         => $url,
 		'colors'      => $colors,
+=======
+	if ( !isset($_wp_admin_css_colors) )
+		$_wp_admin_css_colors = array();
+
+	$_wp_admin_css_colors[$key] = (object) array(
+		'name' => $name,
+		'url' => $url,
+		'colors' => $colors,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		'icon_colors' => $icons,
 	);
 }
 
 /**
+<<<<<<< HEAD
  * Registers the default admin color schemes.
  *
  * Registers the initial set of eight color schemes in the Profile section
  * of the dashboard which allows for styling the admin menu and toolbar.
  *
  * @see wp_admin_css_color()
+=======
+ * Registers the default Admin color schemes
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 3.0.0
  */
 function register_admin_color_schemes() {
+<<<<<<< HEAD
 	$suffix  = is_rtl() ? '-rtl' : '';
 	$suffix .= SCRIPT_DEBUG ? '' : '.min';
 
@@ -4048,6 +5056,15 @@ function register_admin_color_schemes() {
 			'focus'   => '#00a0d2',
 			'current' => '#fff',
 		)
+=======
+	$suffix = is_rtl() ? '-rtl' : '';
+	$suffix .= SCRIPT_DEBUG ? '' : '.min';
+
+	wp_admin_css_color( 'fresh', _x( 'Default', 'admin color scheme' ),
+		false,
+		array( '#222', '#333', '#0073aa', '#00a0d2' ),
+		array( 'base' => '#82878c', 'focus' => '#00a0d2', 'current' => '#fff' )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	// Other color schemes are not available when running out of src
@@ -4055,6 +5072,7 @@ function register_admin_color_schemes() {
 		return;
 	}
 
+<<<<<<< HEAD
 	wp_admin_css_color(
 		'light',
 		_x( 'Light', 'admin color scheme' ),
@@ -4137,6 +5155,48 @@ function register_admin_color_schemes() {
 			'focus'   => '#fff',
 			'current' => '#fff',
 		)
+=======
+	wp_admin_css_color( 'light', _x( 'Light', 'admin color scheme' ),
+		admin_url( "css/colors/light/colors$suffix.css" ),
+		array( '#e5e5e5', '#999', '#d64e07', '#04a4cc' ),
+		array( 'base' => '#999', 'focus' => '#ccc', 'current' => '#ccc' )
+	);
+
+	wp_admin_css_color( 'blue', _x( 'Blue', 'admin color scheme' ),
+		admin_url( "css/colors/blue/colors$suffix.css" ),
+		array( '#096484', '#4796b3', '#52accc', '#74B6CE' ),
+		array( 'base' => '#e5f8ff', 'focus' => '#fff', 'current' => '#fff' )
+	);
+
+	wp_admin_css_color( 'midnight', _x( 'Midnight', 'admin color scheme' ),
+		admin_url( "css/colors/midnight/colors$suffix.css" ),
+		array( '#25282b', '#363b3f', '#69a8bb', '#e14d43' ),
+		array( 'base' => '#f1f2f3', 'focus' => '#fff', 'current' => '#fff' )
+	);
+
+	wp_admin_css_color( 'sunrise', _x( 'Sunrise', 'admin color scheme' ),
+		admin_url( "css/colors/sunrise/colors$suffix.css" ),
+		array( '#b43c38', '#cf4944', '#dd823b', '#ccaf0b' ),
+		array( 'base' => '#f3f1f1', 'focus' => '#fff', 'current' => '#fff' )
+	);
+
+	wp_admin_css_color( 'ectoplasm', _x( 'Ectoplasm', 'admin color scheme' ),
+		admin_url( "css/colors/ectoplasm/colors$suffix.css" ),
+		array( '#413256', '#523f6d', '#a3b745', '#d46f15' ),
+		array( 'base' => '#ece6f6', 'focus' => '#fff', 'current' => '#fff' )
+	);
+
+	wp_admin_css_color( 'ocean', _x( 'Ocean', 'admin color scheme' ),
+		admin_url( "css/colors/ocean/colors$suffix.css" ),
+		array( '#627c83', '#738e96', '#9ebaa0', '#aa9d88' ),
+		array( 'base' => '#f2fcff', 'focus' => '#fff', 'current' => '#fff' )
+	);
+
+	wp_admin_css_color( 'coffee', _x( 'Coffee', 'admin color scheme' ),
+		admin_url( "css/colors/coffee/colors$suffix.css" ),
+		array( '#46403c', '#59524c', '#c7a589', '#9ea476' ),
+		array( 'base' => '#f3f2f1', 'focus' => '#fff', 'current' => '#fff' )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 }
@@ -4152,12 +5212,21 @@ function register_admin_color_schemes() {
  * @return string
  */
 function wp_admin_css_uri( $file = 'wp-admin' ) {
+<<<<<<< HEAD
 	if ( defined( 'WP_INSTALLING' ) ) {
 		$_file = "./$file.css";
 	} else {
 		$_file = admin_url( "$file.css" );
 	}
 	$_file = add_query_arg( 'version', get_bloginfo( 'version' ), $_file );
+=======
+	if ( defined('WP_INSTALLING') ) {
+		$_file = "./$file.css";
+	} else {
+		$_file = admin_url("$file.css");
+	}
+	$_file = add_query_arg( 'version', get_bloginfo( 'version' ),  $_file );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the URI of a WordPress admin CSS file.
@@ -4187,7 +5256,11 @@ function wp_admin_css_uri( $file = 'wp-admin' ) {
  * @since 2.3.0
  *
  * @param string $file       Optional. Style handle name or file name (without ".css" extension) relative
+<<<<<<< HEAD
  *                           to wp-admin/. Defaults to 'wp-admin'.
+=======
+ * 	                         to wp-admin/. Defaults to 'wp-admin'.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * @param bool   $force_echo Optional. Force the stylesheet link to be printed rather than enqueued.
  */
 function wp_admin_css( $file = 'wp-admin', $force_echo = false ) {
@@ -4195,11 +5268,18 @@ function wp_admin_css( $file = 'wp-admin', $force_echo = false ) {
 	$handle = 0 === strpos( $file, 'css/' ) ? substr( $file, 4 ) : $file;
 
 	if ( wp_styles()->query( $handle ) ) {
+<<<<<<< HEAD
 		if ( $force_echo || did_action( 'wp_print_styles' ) ) { // we already printed the style queue. Print this one immediately
 			wp_print_styles( $handle );
 		} else { // Add to style queue
 			wp_enqueue_style( $handle );
 		}
+=======
+		if ( $force_echo || did_action( 'wp_print_styles' ) ) // we already printed the style queue. Print this one immediately
+			wp_print_styles( $handle );
+		else // Add to style queue
+			wp_enqueue_style( $handle );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return;
 	}
 
@@ -4235,9 +5315,14 @@ function add_thickbox() {
 	wp_enqueue_script( 'thickbox' );
 	wp_enqueue_style( 'thickbox' );
 
+<<<<<<< HEAD
 	if ( is_network_admin() ) {
 		add_action( 'admin_head', '_thickbox_path_admin_subfolder' );
 	}
+=======
+	if ( is_network_admin() )
+		add_action( 'admin_head', '_thickbox_path_admin_subfolder' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -4278,7 +5363,11 @@ function the_generator( $type ) {
 	 * @param string $type           The type of generator to output. Accepts 'html',
 	 *                               'xhtml', 'atom', 'rss2', 'rdf', 'comment', 'export'.
 	 */
+<<<<<<< HEAD
 	echo apply_filters( 'the_generator', get_the_generator( $type ), $type ) . "\n";
+=======
+	echo apply_filters( 'the_generator', get_the_generator($type), $type ) . "\n";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -4297,6 +5386,7 @@ function get_the_generator( $type = '' ) {
 	if ( empty( $type ) ) {
 
 		$current_filter = current_filter();
+<<<<<<< HEAD
 		if ( empty( $current_filter ) ) {
 			return;
 		}
@@ -4316,6 +5406,26 @@ function get_the_generator( $type = '' ) {
 			case 'atom_head':
 			case 'comments_atom_head':
 			case 'app_head':
+=======
+		if ( empty( $current_filter ) )
+			return;
+
+		switch ( $current_filter ) {
+			case 'rss2_head' :
+			case 'commentsrss2_head' :
+				$type = 'rss2';
+				break;
+			case 'rss_head' :
+			case 'opml_head' :
+				$type = 'comment';
+				break;
+			case 'rdf_header' :
+				$type = 'rdf';
+				break;
+			case 'atom_head' :
+			case 'comments_atom_head' :
+			case 'app_head' :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$type = 'atom';
 				break;
 		}
@@ -4438,6 +5548,7 @@ function readonly( $readonly, $current = true, $echo = true ) {
  * @return string html attribute or empty string
  */
 function __checked_selected_helper( $helper, $current, $echo, $type ) {
+<<<<<<< HEAD
 	if ( (string) $helper === (string) $current ) {
 		$result = " $type='$type'";
 	} else {
@@ -4447,6 +5558,15 @@ function __checked_selected_helper( $helper, $current, $echo, $type ) {
 	if ( $echo ) {
 		echo $result;
 	}
+=======
+	if ( (string) $helper === (string) $current )
+		$result = " $type='$type'";
+	else
+		$result = '';
+
+	if ( $echo )
+		echo $result;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $result;
 }
@@ -4462,6 +5582,7 @@ function __checked_selected_helper( $helper, $current, $echo, $type ) {
  * @return array $settings
  */
 function wp_heartbeat_settings( $settings ) {
+<<<<<<< HEAD
 	if ( ! is_admin() ) {
 		$settings['ajaxurl'] = admin_url( 'admin-ajax.php', 'relative' );
 	}
@@ -4469,6 +5590,13 @@ function wp_heartbeat_settings( $settings ) {
 	if ( is_user_logged_in() ) {
 		$settings['nonce'] = wp_create_nonce( 'heartbeat-nonce' );
 	}
+=======
+	if ( ! is_admin() )
+		$settings['ajaxurl'] = admin_url( 'admin-ajax.php', 'relative' );
+
+	if ( is_user_logged_in() )
+		$settings['nonce'] = wp_create_nonce( 'heartbeat-nonce' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $settings;
 }

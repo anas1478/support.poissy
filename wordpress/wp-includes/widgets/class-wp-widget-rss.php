@@ -22,6 +22,7 @@ class WP_Widget_RSS extends WP_Widget {
 	 * @since 2.8.0
 	 */
 	public function __construct() {
+<<<<<<< HEAD
 		$widget_ops  = array(
 			'description'                 => __( 'Entries from any RSS or Atom feed.' ),
 			'customize_selective_refresh' => true,
@@ -30,6 +31,13 @@ class WP_Widget_RSS extends WP_Widget {
 			'width'  => 400,
 			'height' => 200,
 		);
+=======
+		$widget_ops = array(
+			'description' => __( 'Entries from any RSS or Atom feed.' ),
+			'customize_selective_refresh' => true,
+		);
+		$control_ops = array( 'width' => 400, 'height' => 200 );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		parent::__construct( 'rss', __( 'RSS' ), $widget_ops, $control_ops );
 	}
 
@@ -43,6 +51,7 @@ class WP_Widget_RSS extends WP_Widget {
 	 * @param array $instance Settings for the current RSS widget instance.
 	 */
 	public function widget( $args, $instance ) {
+<<<<<<< HEAD
 		if ( isset( $instance['error'] ) && $instance['error'] ) {
 			return;
 		}
@@ -75,6 +84,34 @@ class WP_Widget_RSS extends WP_Widget {
 			while ( stristr( $link, 'http' ) != $link ) {
 				$link = substr( $link, 1 );
 			}
+=======
+		if ( isset($instance['error']) && $instance['error'] )
+			return;
+
+		$url = ! empty( $instance['url'] ) ? $instance['url'] : '';
+		while ( stristr($url, 'http') != $url )
+			$url = substr($url, 1);
+
+		if ( empty($url) )
+			return;
+
+		// self-url destruction sequence
+		if ( in_array( untrailingslashit( $url ), array( site_url(), home_url() ) ) )
+			return;
+
+		$rss = fetch_feed($url);
+		$title = $instance['title'];
+		$desc = '';
+		$link = '';
+
+		if ( ! is_wp_error($rss) ) {
+			$desc = esc_attr(strip_tags(@html_entity_decode($rss->get_description(), ENT_QUOTES, get_option('blog_charset'))));
+			if ( empty($title) )
+				$title = strip_tags( $rss->get_title() );
+			$link = strip_tags( $rss->get_permalink() );
+			while ( stristr($link, 'http') != $link )
+				$link = substr($link, 1);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		if ( empty( $title ) ) {
@@ -84,11 +121,18 @@ class WP_Widget_RSS extends WP_Widget {
 		/** This filter is documented in wp-includes/widgets/class-wp-widget-pages.php */
 		$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
+<<<<<<< HEAD
 		$url  = strip_tags( $url );
 		$icon = includes_url( 'images/rss.png' );
 		if ( $title ) {
 			$title = '<a class="rsswidget" href="' . esc_url( $url ) . '"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="' . esc_url( $icon ) . '" alt="RSS" /></a> <a class="rsswidget" href="' . esc_url( $link ) . '">' . esc_html( $title ) . '</a>';
 		}
+=======
+		$url = strip_tags( $url );
+		$icon = includes_url( 'images/rss.png' );
+		if ( $title )
+			$title = '<a class="rsswidget" href="' . esc_url( $url ) . '"><img class="rss-widget-icon" style="border:0" width="14" height="14" src="' . esc_url( $icon ) . '" alt="RSS" /></a> <a class="rsswidget" href="' . esc_url( $link ) . '">'. esc_html( $title ) . '</a>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		echo $args['before_widget'];
 		if ( $title ) {
@@ -97,10 +141,16 @@ class WP_Widget_RSS extends WP_Widget {
 		wp_widget_rss_output( $rss, $instance );
 		echo $args['after_widget'];
 
+<<<<<<< HEAD
 		if ( ! is_wp_error( $rss ) ) {
 			$rss->__destruct();
 		}
 		unset( $rss );
+=======
+		if ( ! is_wp_error($rss) )
+			$rss->__destruct();
+		unset($rss);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -114,7 +164,11 @@ class WP_Widget_RSS extends WP_Widget {
 	 * @return array Updated settings to save.
 	 */
 	public function update( $new_instance, $old_instance ) {
+<<<<<<< HEAD
 		$testurl = ( isset( $new_instance['url'] ) && ( ! isset( $old_instance['url'] ) || ( $new_instance['url'] != $old_instance['url'] ) ) );
+=======
+		$testurl = ( isset( $new_instance['url'] ) && ( !isset( $old_instance['url'] ) || ( $new_instance['url'] != $old_instance['url'] ) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return wp_widget_rss_process( $new_instance, $testurl );
 	}
 
@@ -127,6 +181,7 @@ class WP_Widget_RSS extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		if ( empty( $instance ) ) {
+<<<<<<< HEAD
 			$instance = array(
 				'title'        => '',
 				'url'          => '',
@@ -136,6 +191,9 @@ class WP_Widget_RSS extends WP_Widget {
 				'show_author'  => 0,
 				'show_date'    => 0,
 			);
+=======
+			$instance = array( 'title' => '', 'url' => '', 'items' => 10, 'error' => false, 'show_summary' => 0, 'show_author' => 0, 'show_date' => 0 );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		$instance['number'] = $this->number;
 

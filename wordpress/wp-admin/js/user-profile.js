@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/user-profile.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* global ajaxurl, pwsL10n, userProfileL10n */
 (function($) {
 	var updateLock = false,
@@ -17,7 +20,23 @@
 		$toggleButton,
 		$submitButtons,
 		$submitButton,
+<<<<<<< HEAD
 		currentPass;
+=======
+		currentPass,
+		inputEvent;
+
+	/*
+	 * Use feature detection to determine whether password inputs should use
+	 * the `keyup` or `input` event. Input is preferred but lacks support
+	 * in legacy browsers.
+	 */
+	if ( 'oninput' in document.createElement( 'input' ) ) {
+		inputEvent = 'input';
+	} else {
+		inputEvent = 'keyup';
+	}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	function generatePassword() {
 		if ( typeof zxcvbn !== 'function' ) {
@@ -59,7 +78,11 @@
 			.addClass( $pass1[0].className )
 			.data( 'pw', $pass1.data( 'pw' ) )
 			.val( $pass1.val() )
+<<<<<<< HEAD
 			.on( 'input', function () {
+=======
+			.on( inputEvent, function () {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( $pass1Text.val() === currentPass ) {
 					return;
 				}
@@ -74,7 +97,11 @@
 			generatePassword();
 		}
 
+<<<<<<< HEAD
 		$pass1.on( 'input' + ' pwupdate', function () {
+=======
+		$pass1.on( inputEvent + ' pwupdate', function () {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( $pass1.val() === currentPass ) {
 				return;
 			}
@@ -176,7 +203,11 @@
 		 * This fixes the issue by copying any changes from the hidden
 		 * pass2 field to the pass1 field, then running check_pass_strength.
 		 */
+<<<<<<< HEAD
 		$pass2 = $( '#pass2' ).on( 'input', function () {
+=======
+		$pass2 = $('#pass2').on( inputEvent, function () {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( $pass2.val().length > 0 ) {
 				$pass1.val( $pass2.val() );
 				$pass2.val('');
@@ -324,7 +355,11 @@
 			current_name = select.val(),
 			greeting     = $( '#wp-admin-bar-my-account' ).find( '.display-name' );
 
+<<<<<<< HEAD
 		$( '#pass1' ).val( '' ).on( 'input' + ' pwupdate', check_pass_strength );
+=======
+		$('#pass1').val('').on( inputEvent + ' pwupdate', check_pass_strength );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$('#pass-strength-result').show();
 		$('.color-palette').click( function() {
 			$(this).siblings('input[name="admin_color"]').prop('checked', true);

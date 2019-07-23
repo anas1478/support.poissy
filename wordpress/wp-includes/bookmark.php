@@ -19,6 +19,7 @@
  * @param string $filter Optional, default is 'raw'.
  * @return array|object|null Type returned depends on $output value.
  */
+<<<<<<< HEAD
 function get_bookmark( $bookmark, $output = OBJECT, $filter = 'raw' ) {
 	global $wpdb;
 
@@ -36,6 +37,24 @@ function get_bookmark( $bookmark, $output = OBJECT, $filter = 'raw' ) {
 			$_bookmark = & $GLOBALS['link'];
 		} elseif ( ! $_bookmark = wp_cache_get( $bookmark, 'bookmark' ) ) {
 			$_bookmark = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM $wpdb->links WHERE link_id = %d LIMIT 1", $bookmark ) );
+=======
+function get_bookmark($bookmark, $output = OBJECT, $filter = 'raw') {
+	global $wpdb;
+
+	if ( empty($bookmark) ) {
+		if ( isset($GLOBALS['link']) )
+			$_bookmark = & $GLOBALS['link'];
+		else
+			$_bookmark = null;
+	} elseif ( is_object($bookmark) ) {
+		wp_cache_add($bookmark->link_id, $bookmark, 'bookmark');
+		$_bookmark = $bookmark;
+	} else {
+		if ( isset($GLOBALS['link']) && ($GLOBALS['link']->link_id == $bookmark) ) {
+			$_bookmark = & $GLOBALS['link'];
+		} elseif ( ! $_bookmark = wp_cache_get($bookmark, 'bookmark') ) {
+			$_bookmark = $wpdb->get_row($wpdb->prepare("SELECT * FROM $wpdb->links WHERE link_id = %d LIMIT 1", $bookmark));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( $_bookmark ) {
 				$_bookmark->link_category = array_unique( wp_get_object_terms( $_bookmark->link_id, 'link_category', array( 'fields' => 'ids' ) ) );
 				wp_cache_add( $_bookmark->link_id, $_bookmark, 'bookmark' );
@@ -43,18 +62,31 @@ function get_bookmark( $bookmark, $output = OBJECT, $filter = 'raw' ) {
 		}
 	}
 
+<<<<<<< HEAD
 	if ( ! $_bookmark ) {
 		return $_bookmark;
 	}
 
 	$_bookmark = sanitize_bookmark( $_bookmark, $filter );
+=======
+	if ( ! $_bookmark )
+		return $_bookmark;
+
+	$_bookmark = sanitize_bookmark($_bookmark, $filter);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( $output == OBJECT ) {
 		return $_bookmark;
 	} elseif ( $output == ARRAY_A ) {
+<<<<<<< HEAD
 		return get_object_vars( $_bookmark );
 	} elseif ( $output == ARRAY_N ) {
 		return array_values( get_object_vars( $_bookmark ) );
+=======
+		return get_object_vars($_bookmark);
+	} elseif ( $output == ARRAY_N ) {
+		return array_values(get_object_vars($_bookmark));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} else {
 		return $_bookmark;
 	}
@@ -74,6 +106,7 @@ function get_bookmark_field( $field, $bookmark, $context = 'display' ) {
 	$bookmark = (int) $bookmark;
 	$bookmark = get_bookmark( $bookmark );
 
+<<<<<<< HEAD
 	if ( is_wp_error( $bookmark ) ) {
 		return $bookmark;
 	}
@@ -87,6 +120,18 @@ function get_bookmark_field( $field, $bookmark, $context = 'display' ) {
 	}
 
 	return sanitize_bookmark_field( $field, $bookmark->$field, $bookmark->link_id, $context );
+=======
+	if ( is_wp_error($bookmark) )
+		return $bookmark;
+
+	if ( !is_object($bookmark) )
+		return '';
+
+	if ( !isset($bookmark->$field) )
+		return '';
+
+	return sanitize_bookmark_field($field, $bookmark->$field, $bookmark->link_id, $context);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -124,6 +169,7 @@ function get_bookmarks( $args = '' ) {
 	global $wpdb;
 
 	$defaults = array(
+<<<<<<< HEAD
 		'orderby'        => 'name',
 		'order'          => 'ASC',
 		'limit'          => -1,
@@ -134,11 +180,22 @@ function get_bookmarks( $args = '' ) {
 		'include'        => '',
 		'exclude'        => '',
 		'search'         => '',
+=======
+		'orderby' => 'name', 'order' => 'ASC',
+		'limit' => -1, 'category' => '',
+		'category_name' => '', 'hide_invisible' => 1,
+		'show_updated' => 0, 'include' => '',
+		'exclude' => '', 'search' => ''
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	$r = wp_parse_args( $args, $defaults );
 
+<<<<<<< HEAD
 	$key   = md5( serialize( $r ) );
+=======
+	$key = md5( serialize( $r ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$cache = false;
 	if ( 'rand' !== $r['orderby'] && $cache = wp_cache_get( 'get_bookmarks', 'bookmark' ) ) {
 		if ( is_array( $cache ) && isset( $cache[ $key ] ) ) {
@@ -168,6 +225,7 @@ function get_bookmarks( $args = '' ) {
 
 	$inclusions = '';
 	if ( ! empty( $r['include'] ) ) {
+<<<<<<< HEAD
 		$r['exclude']       = '';  //ignore exclude, category, and category_name params if using include
 		$r['category']      = '';
 		$r['category_name'] = '';
@@ -178,16 +236,33 @@ function get_bookmarks( $args = '' ) {
 					$inclusions = ' AND ( link_id = ' . $inclink . ' ';
 				} else {
 					$inclusions .= ' OR link_id = ' . $inclink . ' ';
+=======
+		$r['exclude'] = '';  //ignore exclude, category, and category_name params if using include
+		$r['category'] = '';
+		$r['category_name'] = '';
+		$inclinks = preg_split( '/[\s,]+/', $r['include'] );
+		if ( count( $inclinks ) ) {
+			foreach ( $inclinks as $inclink ) {
+				if ( empty( $inclusions ) ) {
+					$inclusions = ' AND ( link_id = ' . intval( $inclink ) . ' ';
+				} else {
+					$inclusions .= ' OR link_id = ' . intval( $inclink ) . ' ';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		}
 	}
+<<<<<<< HEAD
 	if ( ! empty( $inclusions ) ) {
+=======
+	if (! empty( $inclusions ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$inclusions .= ')';
 	}
 
 	$exclusions = '';
 	if ( ! empty( $r['exclude'] ) ) {
+<<<<<<< HEAD
 		$exlinks = wp_parse_id_list( $r['exclude'] );
 		if ( count( $exlinks ) ) {
 			foreach ( $exlinks as $exlink ) {
@@ -195,6 +270,15 @@ function get_bookmarks( $args = '' ) {
 					$exclusions = ' AND ( link_id <> ' . $exlink . ' ';
 				} else {
 					$exclusions .= ' AND link_id <> ' . $exlink . ' ';
+=======
+		$exlinks = preg_split( '/[\s,]+/', $r['exclude'] );
+		if ( count( $exlinks ) ) {
+			foreach ( $exlinks as $exlink ) {
+				if ( empty( $exclusions ) ) {
+					$exclusions = ' AND ( link_id <> ' . intval( $exlink ) . ' ';
+				} else {
+					$exclusions .= ' AND link_id <> ' . intval( $exlink ) . ' ';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		}
@@ -204,7 +288,11 @@ function get_bookmarks( $args = '' ) {
 	}
 
 	if ( ! empty( $r['category_name'] ) ) {
+<<<<<<< HEAD
 		if ( $r['category'] = get_term_by( 'name', $r['category_name'], 'link_category' ) ) {
+=======
+		if ( $r['category'] = get_term_by('name', $r['category_name'], 'link_category') ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$r['category'] = $r['category']->term_id;
 		} else {
 			$cache[ $key ] = array();
@@ -216,6 +304,7 @@ function get_bookmarks( $args = '' ) {
 
 	$search = '';
 	if ( ! empty( $r['search'] ) ) {
+<<<<<<< HEAD
 		$like   = '%' . $wpdb->esc_like( $r['search'] ) . '%';
 		$search = $wpdb->prepare( ' AND ( (link_url LIKE %s) OR (link_name LIKE %s) OR (link_description LIKE %s) ) ', $like, $like, $like );
 	}
@@ -230,17 +319,41 @@ function get_bookmarks( $args = '' ) {
 					$category_query = ' AND ( tt.term_id = ' . $incat . ' ';
 				} else {
 					$category_query .= ' OR tt.term_id = ' . $incat . ' ';
+=======
+		$like = '%' . $wpdb->esc_like( $r['search'] ) . '%';
+		$search = $wpdb->prepare(" AND ( (link_url LIKE %s) OR (link_name LIKE %s) OR (link_description LIKE %s) ) ", $like, $like, $like );
+	}
+
+	$category_query = '';
+	$join = '';
+	if ( ! empty( $r['category'] ) ) {
+		$incategories = preg_split( '/[\s,]+/', $r['category'] );
+		if ( count($incategories) ) {
+			foreach ( $incategories as $incat ) {
+				if ( empty( $category_query ) ) {
+					$category_query = ' AND ( tt.term_id = ' . intval( $incat ) . ' ';
+				} else {
+					$category_query .= ' OR tt.term_id = ' . intval( $incat ) . ' ';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		}
 	}
 	if ( ! empty( $category_query ) ) {
 		$category_query .= ") AND taxonomy = 'link_category'";
+<<<<<<< HEAD
 		$join            = " INNER JOIN $wpdb->term_relationships AS tr ON ($wpdb->links.link_id = tr.object_id) INNER JOIN $wpdb->term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id";
 	}
 
 	if ( $r['show_updated'] ) {
 		$recently_updated_test = ', IF (DATE_ADD(link_updated, INTERVAL 120 MINUTE) >= NOW(), 1,0) as recently_updated ';
+=======
+		$join = " INNER JOIN $wpdb->term_relationships AS tr ON ($wpdb->links.link_id = tr.object_id) INNER JOIN $wpdb->term_taxonomy as tt ON tt.term_taxonomy_id = tr.term_taxonomy_id";
+	}
+
+	if ( $r['show_updated'] ) {
+		$recently_updated_test = ", IF (DATE_ADD(link_updated, INTERVAL 120 MINUTE) >= NOW(), 1,0) as recently_updated ";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} else {
 		$recently_updated_test = '';
 	}
@@ -248,10 +361,17 @@ function get_bookmarks( $args = '' ) {
 	$get_updated = ( $r['show_updated'] ) ? ', UNIX_TIMESTAMP(link_updated) AS link_updated_f ' : '';
 
 	$orderby = strtolower( $r['orderby'] );
+<<<<<<< HEAD
 	$length  = '';
 	switch ( $orderby ) {
 		case 'length':
 			$length = ', CHAR_LENGTH(link_name) AS length';
+=======
+	$length = '';
+	switch ( $orderby ) {
+		case 'length':
+			$length = ", CHAR_LENGTH(link_name) AS length";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			break;
 		case 'rand':
 			$orderby = 'rand()';
@@ -261,7 +381,11 @@ function get_bookmarks( $args = '' ) {
 			break;
 		default:
 			$orderparams = array();
+<<<<<<< HEAD
 			$keys        = array( 'link_id', 'link_name', 'link_url', 'link_visible', 'link_rating', 'link_owner', 'link_updated', 'link_notes', 'link_description' );
+=======
+			$keys = array( 'link_id', 'link_name', 'link_url', 'link_visible', 'link_rating', 'link_owner', 'link_updated', 'link_notes', 'link_description' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			foreach ( explode( ',', $orderby ) as $ordparam ) {
 				$ordparam = trim( $ordparam );
 
@@ -288,7 +412,11 @@ function get_bookmarks( $args = '' ) {
 		$visible = "AND link_visible = 'Y'";
 	}
 
+<<<<<<< HEAD
 	$query  = "SELECT * $length $recently_updated_test $get_updated FROM $wpdb->links $join WHERE 1=1 $visible $category_query";
+=======
+	$query = "SELECT * $length $recently_updated_test $get_updated FROM $wpdb->links $join WHERE 1=1 $visible $category_query";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$query .= " $exclusions $inclusions $search";
 	$query .= " ORDER BY $orderby $order";
 	if ( $r['limit'] != -1 ) {
@@ -313,6 +441,7 @@ function get_bookmarks( $args = '' ) {
  *
  * @param stdClass|array $bookmark Bookmark row
  * @param string $context Optional, default is 'display'. How to filter the
+<<<<<<< HEAD
  *      fields
  * @return stdClass|array Same type as $bookmark but with fields sanitized.
  */
@@ -340,10 +469,27 @@ function sanitize_bookmark( $bookmark, $context = 'display' ) {
 	} else {
 		$do_object = false;
 		$link_id   = $bookmark['link_id'];
+=======
+ *		fields
+ * @return stdClass|array Same type as $bookmark but with fields sanitized.
+ */
+function sanitize_bookmark($bookmark, $context = 'display') {
+	$fields = array('link_id', 'link_url', 'link_name', 'link_image', 'link_target', 'link_category',
+		'link_description', 'link_visible', 'link_owner', 'link_rating', 'link_updated',
+		'link_rel', 'link_notes', 'link_rss', );
+
+	if ( is_object($bookmark) ) {
+		$do_object = true;
+		$link_id = $bookmark->link_id;
+	} else {
+		$do_object = false;
+		$link_id = $bookmark['link_id'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	foreach ( $fields as $field ) {
 		if ( $do_object ) {
+<<<<<<< HEAD
 			if ( isset( $bookmark->$field ) ) {
 				$bookmark->$field = sanitize_bookmark_field( $field, $bookmark->$field, $link_id, $context );
 			}
@@ -351,6 +497,13 @@ function sanitize_bookmark( $bookmark, $context = 'display' ) {
 			if ( isset( $bookmark[ $field ] ) ) {
 				$bookmark[ $field ] = sanitize_bookmark_field( $field, $bookmark[ $field ], $link_id, $context );
 			}
+=======
+			if ( isset($bookmark->$field) )
+				$bookmark->$field = sanitize_bookmark_field($field, $bookmark->$field, $link_id, $context);
+		} else {
+			if ( isset($bookmark[$field]) )
+				$bookmark[$field] = sanitize_bookmark_field($field, $bookmark[$field], $link_id, $context);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -383,6 +536,7 @@ function sanitize_bookmark( $bookmark, $context = 'display' ) {
  */
 function sanitize_bookmark_field( $field, $value, $bookmark_id, $context ) {
 	switch ( $field ) {
+<<<<<<< HEAD
 		case 'link_id': // ints
 		case 'link_rating':
 			$value = (int) $value;
@@ -407,6 +561,30 @@ function sanitize_bookmark_field( $field, $value, $bookmark_id, $context ) {
 	if ( 'raw' == $context ) {
 		return $value;
 	}
+=======
+	case 'link_id' : // ints
+	case 'link_rating' :
+		$value = (int) $value;
+		break;
+	case 'link_category' : // array( ints )
+		$value = array_map('absint', (array) $value);
+		// We return here so that the categories aren't filtered.
+		// The 'link_category' filter is for the name of a link category, not an array of a link's link categories
+		return $value;
+
+	case 'link_visible' : // bool stored as Y|N
+		$value = preg_replace('/[^YNyn]/', '', $value);
+		break;
+	case 'link_target' : // "enum"
+		$targets = array('_top', '_blank');
+		if ( ! in_array($value, $targets) )
+			$value = '';
+		break;
+	}
+
+	if ( 'raw' == $context )
+		return $value;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( 'edit' == $context ) {
 		/** This filter is documented in wp-includes/post.php */
@@ -415,7 +593,11 @@ function sanitize_bookmark_field( $field, $value, $bookmark_id, $context ) {
 		if ( 'link_notes' == $field ) {
 			$value = esc_html( $value ); // textarea_escaped
 		} else {
+<<<<<<< HEAD
 			$value = esc_attr( $value );
+=======
+			$value = esc_attr($value);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	} elseif ( 'db' == $context ) {
 		/** This filter is documented in wp-includes/post.php */
@@ -444,5 +626,9 @@ function sanitize_bookmark_field( $field, $value, $bookmark_id, $context ) {
 function clean_bookmark_cache( $bookmark_id ) {
 	wp_cache_delete( $bookmark_id, 'bookmark' );
 	wp_cache_delete( 'get_bookmarks', 'bookmark' );
+<<<<<<< HEAD
 	clean_object_term_cache( $bookmark_id, 'link' );
+=======
+	clean_object_term_cache( $bookmark_id, 'link');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }

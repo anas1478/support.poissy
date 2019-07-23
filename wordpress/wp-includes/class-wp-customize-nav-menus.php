@@ -42,7 +42,11 @@ final class WP_Customize_Nav_Menus {
 	 * @param object $manager An instance of the WP_Customize_Manager class.
 	 */
 	public function __construct( $manager ) {
+<<<<<<< HEAD
 		$this->manager                     = $manager;
+=======
+		$this->manager = $manager;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->original_nav_menu_locations = get_nav_menu_locations();
 
 		// See https://github.com/xwp/wp-customize-snapshots/blob/962586659688a5b1fd9ae93618b7ce2d4e7a421c/php/class-customize-snapshot-manager.php#L469-L499
@@ -75,8 +79,13 @@ final class WP_Customize_Nav_Menus {
 	 *
 	 * @since 4.5.0
 	 *
+<<<<<<< HEAD
 	 * @param string[] $nonces Array of nonces.
 	 * @return string[] $nonces Modified array of nonces.
+=======
+	 * @param array $nonces Array of nonces.
+	 * @return array $nonces Modified array of nonces.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public function filter_nonces( $nonces ) {
 		$nonces['customize-menus'] = wp_create_nonce( 'customize-menus' );
@@ -95,15 +104,25 @@ final class WP_Customize_Nav_Menus {
 			wp_die( -1 );
 		}
 
+<<<<<<< HEAD
 		$all_items  = array();
+=======
+		$all_items = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$item_types = array();
 		if ( isset( $_POST['item_types'] ) && is_array( $_POST['item_types'] ) ) {
 			$item_types = wp_unslash( $_POST['item_types'] );
 		} elseif ( isset( $_POST['type'] ) && isset( $_POST['object'] ) ) { // Back compat.
 			$item_types[] = array(
+<<<<<<< HEAD
 				'type'   => wp_unslash( $_POST['type'] ),
 				'object' => wp_unslash( $_POST['object'] ),
 				'page'   => empty( $_POST['page'] ) ? 0 : absint( $_POST['page'] ),
+=======
+				'type' => wp_unslash( $_POST['type'] ),
+				'object' => wp_unslash( $_POST['object'] ),
+				'page' => empty( $_POST['page'] ) ? 0 : absint( $_POST['page'] ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		} else {
 			wp_send_json_error( 'nav_menus_missing_type_or_object_parameter' );
@@ -113,10 +132,17 @@ final class WP_Customize_Nav_Menus {
 			if ( empty( $item_type['type'] ) || empty( $item_type['object'] ) ) {
 				wp_send_json_error( 'nav_menus_missing_type_or_object_parameter' );
 			}
+<<<<<<< HEAD
 			$type   = sanitize_key( $item_type['type'] );
 			$object = sanitize_key( $item_type['object'] );
 			$page   = empty( $item_type['page'] ) ? 0 : absint( $item_type['page'] );
 			$items  = $this->load_available_items_query( $type, $object, $page );
+=======
+			$type = sanitize_key( $item_type['type'] );
+			$object = sanitize_key( $item_type['object'] );
+			$page = empty( $item_type['page'] ) ? 0 : absint( $item_type['page'] );
+			$items = $this->load_available_items_query( $type, $object, $page );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( is_wp_error( $items ) ) {
 				wp_send_json_error( $items->get_error_code() );
 			}
@@ -179,6 +205,7 @@ final class WP_Customize_Nav_Menus {
 				}
 			}
 
+<<<<<<< HEAD
 			$posts = array_merge(
 				$posts,
 				get_posts(
@@ -191,6 +218,15 @@ final class WP_Customize_Nav_Menus {
 					)
 				)
 			);
+=======
+			$posts = array_merge( $posts, get_posts( array(
+				'numberposts' => 10,
+				'offset'      => 10 * $page,
+				'orderby'     => 'date',
+				'order'       => 'DESC',
+				'post_type'   => $object,
+			) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			foreach ( $posts as $post ) {
 				$post_title = $post->post_title;
@@ -209,6 +245,7 @@ final class WP_Customize_Nav_Menus {
 				);
 			}
 		} elseif ( 'taxonomy' === $type ) {
+<<<<<<< HEAD
 			$terms = get_terms(
 				$object,
 				array(
@@ -224,6 +261,20 @@ final class WP_Customize_Nav_Menus {
 					'pad_counts'   => false,
 				)
 			);
+=======
+			$terms = get_terms( $object, array(
+				'child_of'     => 0,
+				'exclude'      => '',
+				'hide_empty'   => false,
+				'hierarchical' => 1,
+				'include'      => '',
+				'number'       => 10,
+				'offset'       => 10 * $page,
+				'order'        => 'DESC',
+				'orderby'      => 'count',
+				'pad_counts'   => false,
+			) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( is_wp_error( $terms ) ) {
 				return $terms;
 			}
@@ -277,6 +328,7 @@ final class WP_Customize_Nav_Menus {
 			$p = 1;
 		}
 
+<<<<<<< HEAD
 		$s     = sanitize_text_field( wp_unslash( $_POST['search'] ) );
 		$items = $this->search_available_items_query(
 			array(
@@ -284,6 +336,10 @@ final class WP_Customize_Nav_Menus {
 				's'       => $s,
 			)
 		);
+=======
+		$s = sanitize_text_field( wp_unslash( $_POST['search'] ) );
+		$items = $this->search_available_items_query( array( 'pagenum' => $p, 's' => $s ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( empty( $items ) ) {
 			wp_send_json_error( array( 'message' => __( 'No results found.' ) ) );
@@ -306,7 +362,11 @@ final class WP_Customize_Nav_Menus {
 		$items = array();
 
 		$post_type_objects = get_post_types( array( 'show_in_nav_menus' => true ), 'objects' );
+<<<<<<< HEAD
 		$query             = array(
+=======
+		$query = array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'post_type'              => array_keys( $post_type_objects ),
 			'suppress_filters'       => true,
 			'update_post_term_cache' => false,
@@ -327,6 +387,7 @@ final class WP_Customize_Nav_Menus {
 		// Prepend list of posts with nav_menus_created_posts search results on first page.
 		$nav_menus_created_posts_setting = $this->manager->get_setting( 'nav_menus_created_posts' );
 		if ( 1 === $args['pagenum'] && $nav_menus_created_posts_setting && count( $nav_menus_created_posts_setting->value() ) > 0 ) {
+<<<<<<< HEAD
 			$stub_post_query = new WP_Query(
 				array_merge(
 					$query,
@@ -338,11 +399,26 @@ final class WP_Customize_Nav_Menus {
 				)
 			);
 			$posts           = array_merge( $posts, $stub_post_query->posts );
+=======
+			$stub_post_query = new WP_Query( array_merge(
+				$query,
+				array(
+					'post_status' => 'auto-draft',
+					'post__in' => $nav_menus_created_posts_setting->value(),
+					'posts_per_page' => -1,
+				)
+			) );
+			$posts = array_merge( $posts, $stub_post_query->posts );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		// Query posts.
 		$get_posts = new WP_Query( $query );
+<<<<<<< HEAD
 		$posts     = array_merge( $posts, $get_posts->posts );
+=======
+		$posts = array_merge( $posts, $get_posts->posts );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Create items for posts.
 		foreach ( $posts as $post ) {
@@ -364,6 +440,7 @@ final class WP_Customize_Nav_Menus {
 
 		// Query taxonomy terms.
 		$taxonomies = get_taxonomies( array( 'show_in_nav_menus' => true ), 'names' );
+<<<<<<< HEAD
 		$terms      = get_terms(
 			$taxonomies,
 			array(
@@ -372,6 +449,13 @@ final class WP_Customize_Nav_Menus {
 				'offset'     => 20 * ( $args['pagenum'] - 1 ),
 			)
 		);
+=======
+		$terms = get_terms( $taxonomies, array(
+			'name__like' => $args['s'],
+			'number'     => 20,
+			'offset'     => 20 * ($args['pagenum'] - 1),
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Check if any taxonomies were found.
 		if ( ! empty( $terms ) ) {
@@ -390,7 +474,11 @@ final class WP_Customize_Nav_Menus {
 
 		// Add "Home" link if search term matches. Treat as a page, but switch to custom on add.
 		if ( isset( $args['s'] ) ) {
+<<<<<<< HEAD
 			$title   = _x( 'Home', 'nav menu home label' );
+=======
+			$title = _x( 'Home', 'nav menu home label' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$matches = function_exists( 'mb_stripos' ) ? false !== mb_stripos( $title, $args['s'] ) : false !== stripos( $title, $args['s'] );
 			if ( $matches ) {
 				$items[] = array(
@@ -439,9 +527,15 @@ final class WP_Customize_Nav_Menus {
 
 		// Pass data to JS.
 		$settings = array(
+<<<<<<< HEAD
 			'allMenus'                 => wp_get_nav_menus(),
 			'itemTypes'                => $this->available_item_types(),
 			'l10n'                     => array(
+=======
+			'allMenus'             => wp_get_nav_menus(),
+			'itemTypes'            => $this->available_item_types(),
+			'l10n'                 => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'untitled'               => _x( '(no label)', 'missing menu item navigation label' ),
 				'unnamed'                => _x( '(unnamed)', 'Missing menu name.' ),
 				'custom_label'           => __( 'Custom Link' ),
@@ -474,9 +568,15 @@ final class WP_Customize_Nav_Menus {
 				'reorderLabelOn'         => esc_attr__( 'Reorder menu items' ),
 				'reorderLabelOff'        => esc_attr__( 'Close reorder mode' ),
 			),
+<<<<<<< HEAD
 			'settingTransport'         => 'postMessage',
 			'phpIntMax'                => PHP_INT_MAX,
 			'defaultSettingValues'     => array(
+=======
+			'settingTransport'     => 'postMessage',
+			'phpIntMax'            => PHP_INT_MAX,
+			'defaultSettingValues' => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'nav_menu'      => $temp_nav_menu_setting->default,
 				'nav_menu_item' => $temp_nav_menu_item_setting->default,
 			),
@@ -489,6 +589,7 @@ final class WP_Customize_Nav_Menus {
 		// This is copied from nav-menus.php, and it has an unfortunate object name of `menus`.
 		$nav_menus_l10n = array(
 			'oneThemeLocationNoMenus' => null,
+<<<<<<< HEAD
 			'moveUp'                  => __( 'Move up one' ),
 			'moveDown'                => __( 'Move down one' ),
 			'moveToTop'               => __( 'Move to the top' ),
@@ -504,6 +605,23 @@ final class WP_Customize_Nav_Menus {
 			'menuFocus'               => __( '%1$s. Menu item %2$d of %3$d.' ),
 			/* translators: 1: item name, 2: item position, 3: parent item name */
 			'subMenuFocus'            => __( '%1$s. Sub item number %2$d under %3$s.' ),
+=======
+			'moveUp'       => __( 'Move up one' ),
+			'moveDown'     => __( 'Move down one' ),
+			'moveToTop'    => __( 'Move to the top' ),
+			/* translators: %s: previous item name */
+			'moveUnder'    => __( 'Move under %s' ),
+			/* translators: %s: previous item name */
+			'moveOutFrom'  => __( 'Move out from under %s' ),
+			/* translators: %s: previous item name */
+			'under'        => __( 'Under %s' ),
+			/* translators: %s: previous item name */
+			'outFrom'      => __( 'Out from under %s' ),
+			/* translators: 1: item name, 2: item position, 3: total number of items */
+			'menuFocus'    => __( '%1$s. Menu item %2$d of %3$d.' ),
+			/* translators: 1: item name, 2: item position, 3: parent item name */
+			'subMenuFocus' => __( '%1$s. Sub item number %2$d under %3$s.' ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 		wp_localize_script( 'nav-menu', 'menus', $nav_menus_l10n );
 	}
@@ -595,6 +713,7 @@ final class WP_Customize_Nav_Menus {
 		} else {
 			$description .= '<p>' . __( 'Menus can be displayed in locations defined by your theme.' ) . '</p>';
 		}
+<<<<<<< HEAD
 
 		/*
 		 * Once multiple theme supports are allowed in WP_Customize_Panel,
@@ -611,6 +730,14 @@ final class WP_Customize_Nav_Menus {
 				)
 			)
 		);
+=======
+		$this->manager->add_panel( new WP_Customize_Nav_Menus_Panel( $this->manager, 'nav_menus', array(
+			'title'       => __( 'Menus' ),
+			'description' => $description,
+			'priority'    => 100,
+			// 'theme_supports' => 'menus|widgets', @todo allow multiple theme supports
+		) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$menus = wp_get_nav_menus();
 
 		// Menu locations.
@@ -628,6 +755,7 @@ final class WP_Customize_Nav_Menus {
 			$description .= '<p>' . sprintf( __( 'If your theme has widget areas, you can also add menus there. Visit the <a href="%s">Widgets panel</a> and add a &#8220;Navigation Menu widget&#8221; to display a menu in a sidebar or footer.' ), "javascript:wp.customize.panel( 'widgets' ).focus();" ) . '</p>';
 		}
 
+<<<<<<< HEAD
 		$this->manager->add_section(
 			'menu_locations',
 			array(
@@ -637,6 +765,14 @@ final class WP_Customize_Nav_Menus {
 				'description' => $description,
 			)
 		);
+=======
+		$this->manager->add_section( 'menu_locations', array(
+			'title'       => 1 === $num_locations ? _x( 'View Location', 'menu locations' ) : _x( 'View All Locations', 'menu locations' ),
+			'panel'       => 'nav_menus',
+			'priority'    => 30,
+			'description' => $description,
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$choices = array( '0' => __( '&mdash; Select &mdash;' ) );
 		foreach ( $menus as $menu ) {
@@ -665,6 +801,7 @@ final class WP_Customize_Nav_Menus {
 				remove_filter( "customize_sanitize_{$setting_id}", 'absint' );
 				add_filter( "customize_sanitize_{$setting_id}", array( $this, 'intval_base10' ) );
 			} else {
+<<<<<<< HEAD
 				$this->manager->add_setting(
 					$setting_id,
 					array(
@@ -675,6 +812,15 @@ final class WP_Customize_Nav_Menus {
 						'default'           => 0,
 					)
 				);
+=======
+				$this->manager->add_setting( $setting_id, array(
+					'sanitize_callback' => array( $this, 'intval_base10' ),
+					'theme_supports'    => 'menus',
+					'type'              => 'theme_mod',
+					'transport'         => 'postMessage',
+					'default'           => 0,
+				) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			// Override the assigned nav menu location if mapped during previewed theme switch.
@@ -682,6 +828,7 @@ final class WP_Customize_Nav_Menus {
 				$this->manager->set_post_value( $setting_id, $mapped_nav_menu_locations[ $location ] );
 			}
 
+<<<<<<< HEAD
 			$this->manager->add_control(
 				new WP_Customize_Nav_Menu_Location_Control(
 					$this->manager,
@@ -694,6 +841,14 @@ final class WP_Customize_Nav_Menus {
 					)
 				)
 			);
+=======
+			$this->manager->add_control( new WP_Customize_Nav_Menu_Location_Control( $this->manager, $setting_id, array(
+				'label'       => $description,
+				'location_id' => $location,
+				'section'     => 'menu_locations',
+				'choices'     => $choices,
+			) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		// Register each menu as a Customizer section, and add each menu item to each menu.
@@ -702,6 +857,7 @@ final class WP_Customize_Nav_Menus {
 
 			// Create a section for each menu.
 			$section_id = 'nav_menu[' . $menu_id . ']';
+<<<<<<< HEAD
 			$this->manager->add_section(
 				new WP_Customize_Nav_Menu_Section(
 					$this->manager,
@@ -724,6 +880,18 @@ final class WP_Customize_Nav_Menus {
 					)
 				)
 			);
+=======
+			$this->manager->add_section( new WP_Customize_Nav_Menu_Section( $this->manager, $section_id, array(
+				'title'     => html_entity_decode( $menu->name, ENT_QUOTES, get_bloginfo( 'charset' ) ),
+				'priority'  => 10,
+				'panel'     => 'nav_menus',
+			) ) );
+
+			$nav_menu_setting_id = 'nav_menu[' . $menu_id . ']';
+			$this->manager->add_setting( new WP_Customize_Nav_Menu_Setting( $this->manager, $nav_menu_setting_id, array(
+				'transport' => 'postMessage',
+			) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			// Add the menu contents.
 			$menu_items = (array) wp_get_nav_menu_items( $menu_id );
@@ -739,6 +907,7 @@ final class WP_Customize_Nav_Menus {
 				}
 
 				$value['nav_menu_term_id'] = $menu_id;
+<<<<<<< HEAD
 				$this->manager->add_setting(
 					new WP_Customize_Nav_Menu_Item_Setting(
 						$this->manager,
@@ -762,12 +931,26 @@ final class WP_Customize_Nav_Menus {
 						)
 					)
 				);
+=======
+				$this->manager->add_setting( new WP_Customize_Nav_Menu_Item_Setting( $this->manager, $menu_item_setting_id, array(
+					'value'     => $value,
+					'transport' => 'postMessage',
+				) ) );
+
+				// Create a control for each menu item.
+				$this->manager->add_control( new WP_Customize_Nav_Menu_Item_Control( $this->manager, $menu_item_setting_id, array(
+					'label'    => $item->title,
+					'section'  => $section_id,
+					'priority' => 10 + $i,
+				) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			// Note: other controls inside of this section get added dynamically in JS via the MenuSection.ready() function.
 		}
 
 		// Add the add-new-menu section and controls.
+<<<<<<< HEAD
 		$this->manager->add_section(
 			'add_menu',
 			array(
@@ -790,6 +973,21 @@ final class WP_Customize_Nav_Menus {
 				)
 			)
 		);
+=======
+		$this->manager->add_section( 'add_menu', array(
+			'type'     => 'new_menu',
+			'title'    => __( 'New Menu' ),
+			'panel'    => 'nav_menus',
+			'priority' => 20,
+		) );
+
+		$this->manager->add_setting( new WP_Customize_Filter_Setting( $this->manager, 'nav_menus_created_posts', array(
+			'transport' => 'postMessage',
+			'type' => 'option', // To prevent theme prefix in changeset.
+			'default' => array(),
+			'sanitize_callback' => array( $this, 'sanitize_nav_menus_created_posts' ),
+		) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -822,10 +1020,17 @@ final class WP_Customize_Nav_Menus {
 		if ( $post_types ) {
 			foreach ( $post_types as $slug => $post_type ) {
 				$item_types[] = array(
+<<<<<<< HEAD
 					'title'      => $post_type->labels->name,
 					'type_label' => $post_type->labels->singular_name,
 					'type'       => 'post_type',
 					'object'     => $post_type->name,
+=======
+					'title'  => $post_type->labels->name,
+					'type_label' => $post_type->labels->singular_name,
+					'type' => 'post_type',
+					'object' => $post_type->name,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				);
 			}
 		}
@@ -837,10 +1042,17 @@ final class WP_Customize_Nav_Menus {
 					continue;
 				}
 				$item_types[] = array(
+<<<<<<< HEAD
 					'title'      => $taxonomy->labels->name,
 					'type_label' => $taxonomy->labels->singular_name,
 					'type'       => 'taxonomy',
 					'object'     => $taxonomy->name,
+=======
+					'title' => $taxonomy->labels->name,
+					'type_label' => $taxonomy->labels->singular_name,
+					'type' => 'taxonomy',
+					'object' => $taxonomy->name,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				);
 			}
 		}
@@ -866,10 +1078,17 @@ final class WP_Customize_Nav_Menus {
 	 * @param array $postarr {
 	 *     Post array. Note that post_status is overridden to be `auto-draft`.
 	 *
+<<<<<<< HEAD
 	 * @var string $post_title   Post title. Required.
 	 * @var string $post_type    Post type. Required.
 	 * @var string $post_name    Post name.
 	 * @var string $post_content Post content.
+=======
+	 *     @var string $post_title   Post title. Required.
+	 *     @var string $post_type    Post type. Required.
+	 *     @var string $post_name    Post name.
+	 *     @var string $post_content Post content.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * }
 	 * @return WP_Post|WP_Error Inserted auto-draft post object or error.
 	 */
@@ -898,7 +1117,11 @@ final class WP_Customize_Nav_Menus {
 			$postarr['meta_input'] = array();
 		}
 		$postarr['meta_input']['_customize_draft_post_name'] = $postarr['post_name'];
+<<<<<<< HEAD
 		$postarr['meta_input']['_customize_changeset_uuid']  = $this->manager->changeset_uuid();
+=======
+		$postarr['meta_input']['_customize_changeset_uuid'] = $this->manager->changeset_uuid();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		unset( $postarr['post_name'] );
 
 		add_filter( 'wp_insert_post_empty_content', '__return_false', 1000 );
@@ -930,7 +1153,11 @@ final class WP_Customize_Nav_Menus {
 			wp_send_json_error( 'missing_params', 400 );
 		}
 
+<<<<<<< HEAD
 		$params         = wp_unslash( $_POST['params'] );
+=======
+		$params = wp_unslash( $_POST['params'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$illegal_params = array_diff( array_keys( $params ), array( 'post_type', 'post_title' ) );
 		if ( ! empty( $illegal_params ) ) {
 			wp_send_json_error( 'illegal_params', 400 );
@@ -938,7 +1165,11 @@ final class WP_Customize_Nav_Menus {
 
 		$params = array_merge(
 			array(
+<<<<<<< HEAD
 				'post_type'  => '',
+=======
+				'post_type' => '',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'post_title' => '',
 			),
 			$params
@@ -971,7 +1202,11 @@ final class WP_Customize_Nav_Menus {
 			}
 
 			$data = array(
+<<<<<<< HEAD
 				/* translators: 1: post type name, 2: error message */
+=======
+				/* translators: %1$s is the post type name and %2$s is the error message. */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'message' => sprintf( __( '%1$s could not be created: %2$s' ), $singular_name, $error->get_error_message() ),
 			);
 			wp_send_json_error( $data );
@@ -1003,12 +1238,19 @@ final class WP_Customize_Nav_Menus {
 							<span class="menu-item-title<# if ( ! data.title ) { #> no-title<# } #>">{{ data.title || wp.customize.Menus.data.l10n.untitled }}</span>
 						</span>
 						<button type="button" class="button-link item-add">
+<<<<<<< HEAD
 							<span class="screen-reader-text">
 							<?php
 								/* translators: 1: title of a menu item, 2: type of a menu item */
 								printf( __( 'Add to menu: %1$s (%2$s)' ), '{{ data.title || wp.customize.Menus.data.l10n.untitled }}', '{{ data.type_label }}' );
 							?>
 							</span>
+=======
+							<span class="screen-reader-text"><?php
+								/* translators: 1: Title of a menu item, 2: Type of a menu item */
+								printf( __( 'Add to menu: %1$s (%2$s)' ), '{{ data.title || wp.customize.Menus.data.l10n.untitled }}', '{{ data.type_label }}' );
+							?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						</button>
 					</div>
 				</div>
@@ -1060,7 +1302,11 @@ final class WP_Customize_Nav_Menus {
 				</button>
 			</h3>
 		</script>
+<<<<<<< HEAD
 		<?php
+=======
+	<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -1088,7 +1334,11 @@ final class WP_Customize_Nav_Menus {
 			<div id="available-menu-items-search" class="accordion-section cannot-expand">
 				<div class="accordion-section-title">
 					<label class="screen-reader-text" for="menu-items-search"><?php _e( 'Search Menu Items' ); ?></label>
+<<<<<<< HEAD
 					<input type="text" id="menu-items-search" placeholder="<?php esc_attr_e( 'Search menu items&hellip;' ); ?>" aria-describedby="menu-items-search-desc" />
+=======
+					<input type="text" id="menu-items-search" placeholder="<?php esc_attr_e( 'Search menu items&hellip;' ) ?>" aria-describedby="menu-items-search-desc" />
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<p class="screen-reader-text" id="menu-items-search-desc"><?php _e( 'The search results will be updated as you type.' ); ?></p>
 					<span class="spinner"></span>
 				</div>
@@ -1099,7 +1349,11 @@ final class WP_Customize_Nav_Menus {
 			<?php
 
 			// Ensure the page post type comes first in the list.
+<<<<<<< HEAD
 			$item_types     = $this->available_item_types();
+=======
+			$item_types = $this->available_item_types();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$page_item_type = null;
 			foreach ( $item_types as $i => $item_type ) {
 				if ( isset( $item_type['object'] ) && 'page' === $item_type['object'] ) {
@@ -1118,7 +1372,11 @@ final class WP_Customize_Nav_Menus {
 			}
 			?>
 		</div><!-- #available-menu-items -->
+<<<<<<< HEAD
 		<?php
+=======
+	<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -1140,12 +1398,18 @@ final class WP_Customize_Nav_Menus {
 				<span class="spinner"></span>
 				<span class="no-items"><?php _e( 'No items' ); ?></span>
 				<button type="button" class="button-link" aria-expanded="false">
+<<<<<<< HEAD
 					<span class="screen-reader-text">
 					<?php
 						/* translators: %s: Title of a section with menu items */
 						printf( __( 'Toggle section: %s' ), esc_html( $available_item_type['title'] ) );
 					?>
 						</span>
+=======
+					<span class="screen-reader-text"><?php
+						/* translators: %s: Title of a section with menu items */
+						printf( __( 'Toggle section: %s' ), esc_html( $available_item_type['title'] ) ); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<span class="toggle-indicator" aria-hidden="true"></span>
 				</button>
 			</h4>
@@ -1325,11 +1589,19 @@ final class WP_Customize_Nav_Menus {
 				}
 
 				$target_status = 'attachment' === get_post_type( $post_id ) ? 'inherit' : 'publish';
+<<<<<<< HEAD
 				$args          = array(
 					'ID'          => $post_id,
 					'post_status' => $target_status,
 				);
 				$post_name     = get_post_meta( $post_id, '_customize_draft_post_name', true );
+=======
+				$args = array(
+					'ID' => $post_id,
+					'post_status' => $target_status,
+				);
+				$post_name = get_post_meta( $post_id, '_customize_draft_post_name', true );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( $post_name ) {
 					$args['post_name'] = $post_name;
 				}
@@ -1347,7 +1619,11 @@ final class WP_Customize_Nav_Menus {
 	 *
 	 * @since 4.3.0
 	 * @see wp_nav_menu()
+<<<<<<< HEAD
 	 * @see WP_Customize_Widgets::filter_dynamic_sidebar_params()
+=======
+	 * @see WP_Customize_Widgets_Partial_Refresh::filter_dynamic_sidebar_params()
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @param array $args An array containing wp_nav_menu() arguments.
 	 * @return array Arguments.
@@ -1388,7 +1664,11 @@ final class WP_Customize_Nav_Menus {
 		// Empty out args which may not be JSON-serializable.
 		if ( ! $can_partial_refresh ) {
 			$exported_args['fallback_cb'] = '';
+<<<<<<< HEAD
 			$exported_args['walker']      = '';
+=======
+			$exported_args['walker'] = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		/*
@@ -1402,7 +1682,11 @@ final class WP_Customize_Nav_Menus {
 		ksort( $exported_args );
 		$exported_args['args_hmac'] = $this->hash_nav_menu_args( $exported_args );
 
+<<<<<<< HEAD
 		$args['customize_preview_nav_menus_args']                            = $exported_args;
+=======
+		$args['customize_preview_nav_menus_args'] = $exported_args;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->preview_nav_menu_instance_args[ $exported_args['args_hmac'] ] = $exported_args;
 		return $args;
 	}
@@ -1422,9 +1706,15 @@ final class WP_Customize_Nav_Menus {
 	 */
 	public function filter_wp_nav_menu( $nav_menu_content, $args ) {
 		if ( isset( $args->customize_preview_nav_menus_args['can_partial_refresh'] ) && $args->customize_preview_nav_menus_args['can_partial_refresh'] ) {
+<<<<<<< HEAD
 			$attributes       = sprintf( ' data-customize-partial-id="%s"', esc_attr( 'nav_menu_instance[' . $args->customize_preview_nav_menus_args['args_hmac'] . ']' ) );
 			$attributes      .= ' data-customize-partial-type="nav_menu_instance"';
 			$attributes      .= sprintf( ' data-customize-partial-placement-context="%s"', esc_attr( wp_json_encode( $args->customize_preview_nav_menus_args ) ) );
+=======
+			$attributes = sprintf( ' data-customize-partial-id="%s"', esc_attr( 'nav_menu_instance[' . $args->customize_preview_nav_menus_args['args_hmac'] . ']' ) );
+			$attributes .= ' data-customize-partial-type="nav_menu_instance"';
+			$attributes .= sprintf( ' data-customize-partial-placement-context="%s"', esc_attr( wp_json_encode( $args->customize_preview_nav_menus_args ) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$nav_menu_content = preg_replace( '#^(<\w+)#', '$1 ' . str_replace( '\\', '\\\\', $attributes ), $nav_menu_content, 1 );
 		}
 		return $nav_menu_content;

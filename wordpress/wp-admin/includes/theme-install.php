@@ -6,6 +6,7 @@
  * @subpackage Administration
  */
 
+<<<<<<< HEAD
 $themes_allowedtags = array(
 	'a'       => array(
 		'href'   => array(),
@@ -52,6 +53,23 @@ $theme_field_defaults = array(
 
 /**
  * Retrieve list of WordPress theme features (aka theme tags).
+=======
+$themes_allowedtags = array('a' => array('href' => array(), 'title' => array(), 'target' => array()),
+	'abbr' => array('title' => array()), 'acronym' => array('title' => array()),
+	'code' => array(), 'pre' => array(), 'em' => array(), 'strong' => array(),
+	'div' => array(), 'p' => array(), 'ul' => array(), 'ol' => array(), 'li' => array(),
+	'h1' => array(), 'h2' => array(), 'h3' => array(), 'h4' => array(), 'h5' => array(), 'h6' => array(),
+	'img' => array('src' => array(), 'class' => array(), 'alt' => array())
+);
+
+$theme_field_defaults = array( 'description' => true, 'sections' => false, 'tested' => true, 'requires' => true,
+	'rating' => true, 'downloaded' => true, 'downloadlink' => true, 'last_updated' => true, 'homepage' => true,
+	'tags' => true, 'num_ratings' => true
+);
+
+/**
+ * Retrieve list of WordPress theme features (aka theme tags)
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 2.8.0
  *
@@ -62,6 +80,7 @@ $theme_field_defaults = array(
 function install_themes_feature_list() {
 	_deprecated_function( __FUNCTION__, '3.1.0', 'get_theme_feature_list()' );
 
+<<<<<<< HEAD
 	if ( ! $cache = get_transient( 'wporg_theme_feature_list' ) ) {
 		set_transient( 'wporg_theme_feature_list', array(), 3 * HOUR_IN_SECONDS );
 	}
@@ -74,6 +93,17 @@ function install_themes_feature_list() {
 	if ( is_wp_error( $feature_list ) ) {
 		return array();
 	}
+=======
+	if ( !$cache = get_transient( 'wporg_theme_feature_list' ) )
+		set_transient( 'wporg_theme_feature_list', array(), 3 * HOUR_IN_SECONDS );
+
+	if ( $cache )
+		return $cache;
+
+	$feature_list = themes_api( 'feature_list', array() );
+	if ( is_wp_error( $feature_list ) )
+		return array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	set_transient( 'wporg_theme_feature_list', $feature_list, 3 * HOUR_IN_SECONDS );
 
@@ -90,13 +120,19 @@ function install_themes_feature_list() {
 function install_theme_search_form( $type_selector = true ) {
 	$type = isset( $_REQUEST['type'] ) ? wp_unslash( $_REQUEST['type'] ) : 'term';
 	$term = isset( $_REQUEST['s'] ) ? wp_unslash( $_REQUEST['s'] ) : '';
+<<<<<<< HEAD
 	if ( ! $type_selector ) {
 		echo '<p class="install-help">' . __( 'Search for themes by keyword.' ) . '</p>';
 	}
+=======
+	if ( ! $type_selector )
+		echo '<p class="install-help">' . __( 'Search for themes by keyword.' ) . '</p>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	?>
 <form id="search-themes" method="get">
 	<input type="hidden" name="tab" value="search" />
 	<?php if ( $type_selector ) : ?>
+<<<<<<< HEAD
 	<label class="screen-reader-text" for="typeselector"><?php _e( 'Type of search' ); ?></label>
 	<select	name="type" id="typeselector">
 	<option value="term" <?php selected( 'term', $type ); ?>><?php _e( 'Keyword' ); ?></option>
@@ -125,6 +161,34 @@ function install_theme_search_form( $type_selector = true ) {
 	<?php submit_button( __( 'Search' ), '', 'search', false ); ?>
 </form>
 	<?php
+=======
+	<label class="screen-reader-text" for="typeselector"><?php _e('Type of search'); ?></label>
+	<select	name="type" id="typeselector">
+	<option value="term" <?php selected('term', $type) ?>><?php _e('Keyword'); ?></option>
+	<option value="author" <?php selected('author', $type) ?>><?php _e('Author'); ?></option>
+	<option value="tag" <?php selected('tag', $type) ?>><?php _ex('Tag', 'Theme Installer'); ?></option>
+	</select>
+	<label class="screen-reader-text" for="s"><?php
+	switch ( $type ) {
+		case 'term':
+			_e( 'Search by keyword' );
+			break;
+		case 'author':
+			_e( 'Search by author' );
+			break;
+		case 'tag':
+			_e( 'Search by tag' );
+			break;
+	}
+	?></label>
+	<?php else : ?>
+	<label class="screen-reader-text" for="s"><?php _e('Search by keyword'); ?></label>
+	<?php endif; ?>
+	<input type="search" name="s" id="s" size="30" value="<?php echo esc_attr($term) ?>" autofocus="autofocus" />
+	<?php submit_button( __( 'Search' ), '', 'search', false ); ?>
+</form>
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -134,8 +198,13 @@ function install_theme_search_form( $type_selector = true ) {
  */
 function install_themes_dashboard() {
 	install_theme_search_form( false );
+<<<<<<< HEAD
 	?>
 <h4><?php _e( 'Feature Filter' ); ?></h4>
+=======
+?>
+<h4><?php _e('Feature Filter') ?></h4>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <p class="install-help"><?php _e( 'Find a theme based on specific features.' ); ?></p>
 
 <form method="get">
@@ -151,8 +220,13 @@ function install_themes_dashboard() {
 		echo '<ol class="feature-group">';
 		foreach ( $features as $feature => $feature_name ) {
 			$feature_name = esc_html( $feature_name );
+<<<<<<< HEAD
 			$feature      = esc_attr( $feature );
 			?>
+=======
+			$feature = esc_attr($feature);
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 <li>
 	<input type="checkbox" name="features[]" id="feature-id-<?php echo $feature; ?>" value="<?php echo $feature; ?>" />
@@ -162,6 +236,7 @@ function install_themes_dashboard() {
 <?php	} ?>
 </ol>
 <br class="clear" />
+<<<<<<< HEAD
 		<?php
 	}
 	?>
@@ -171,15 +246,31 @@ function install_themes_dashboard() {
 	<?php submit_button( __( 'Find Themes' ), '', 'search' ); ?>
 </form>
 	<?php
+=======
+<?php
+	} ?>
+
+</div>
+<br class="clear" />
+<?php submit_button( __( 'Find Themes' ), '', 'search' ); ?>
+</form>
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
  * @since 2.8.0
  */
 function install_themes_upload() {
+<<<<<<< HEAD
 	?>
 <p class="install-help"><?php _e( 'If you have a theme in a .zip format, you may install it by uploading it here.' ); ?></p>
 <form method="post" enctype="multipart/form-data" class="wp-upload-form" action="<?php echo self_admin_url( 'update.php?action=upload-theme' ); ?>">
+=======
+?>
+<p class="install-help"><?php _e('If you have a theme in a .zip format, you may install it by uploading it here.'); ?></p>
+<form method="post" enctype="multipart/form-data" class="wp-upload-form" action="<?php echo self_admin_url('update.php?action=upload-theme'); ?>">
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	<?php wp_nonce_field( 'theme-upload' ); ?>
 	<label class="screen-reader-text" for="themezip"><?php _e( 'Theme zip file' ); ?></label>
 	<input type="file" id="themezip" name="themezip" />
@@ -201,7 +292,11 @@ function display_theme( $theme ) {
 	_deprecated_function( __FUNCTION__, '3.4.0' );
 	global $wp_list_table;
 	if ( ! isset( $wp_list_table ) ) {
+<<<<<<< HEAD
 		$wp_list_table = _get_list_table( 'WP_Theme_Install_List_Table' );
+=======
+		$wp_list_table = _get_list_table('WP_Theme_Install_List_Table');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	$wp_list_table->prepare_items();
 	$wp_list_table->single_row( $theme );
@@ -218,7 +313,11 @@ function display_themes() {
 	global $wp_list_table;
 
 	if ( ! isset( $wp_list_table ) ) {
+<<<<<<< HEAD
 		$wp_list_table = _get_list_table( 'WP_Theme_Install_List_Table' );
+=======
+		$wp_list_table = _get_list_table('WP_Theme_Install_List_Table');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	$wp_list_table->prepare_items();
 	$wp_list_table->display();
@@ -237,6 +336,7 @@ function install_theme_information() {
 
 	$theme = themes_api( 'theme_information', array( 'slug' => wp_unslash( $_REQUEST['theme'] ) ) );
 
+<<<<<<< HEAD
 	if ( is_wp_error( $theme ) ) {
 		wp_die( $theme );
 	}
@@ -244,6 +344,14 @@ function install_theme_information() {
 	iframe_header( __( 'Theme Installation' ) );
 	if ( ! isset( $wp_list_table ) ) {
 		$wp_list_table = _get_list_table( 'WP_Theme_Install_List_Table' );
+=======
+	if ( is_wp_error( $theme ) )
+		wp_die( $theme );
+
+	iframe_header( __('Theme Installation') );
+	if ( ! isset( $wp_list_table ) ) {
+		$wp_list_table = _get_list_table('WP_Theme_Install_List_Table');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	$wp_list_table->theme_installer_single( $theme );
 	iframe_footer();

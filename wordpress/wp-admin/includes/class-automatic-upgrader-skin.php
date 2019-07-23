@@ -50,6 +50,10 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	public function get_upgrade_messages() {
@@ -57,6 +61,10 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param string|array|WP_Error $data
 	 */
 	public function feedback( $data ) {
@@ -67,21 +75,32 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 		} else {
 			$string = $data;
 		}
+<<<<<<< HEAD
 		if ( ! empty( $this->upgrader->strings[ $string ] ) ) {
 			$string = $this->upgrader->strings[ $string ];
 		}
+=======
+		if ( ! empty( $this->upgrader->strings[ $string ] ) )
+			$string = $this->upgrader->strings[ $string ];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( strpos( $string, '%' ) !== false ) {
 			$args = func_get_args();
 			$args = array_splice( $args, 1 );
+<<<<<<< HEAD
 			if ( ! empty( $args ) ) {
 				$string = vsprintf( $string, $args );
 			}
+=======
+			if ( ! empty( $args ) )
+				$string = vsprintf( $string, $args );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		$string = trim( $string );
 
 		// Only allow basic HTML in the messages, as it'll be used in emails/logs rather than direct browser output.
+<<<<<<< HEAD
 		$string = wp_kses(
 			$string,
 			array(
@@ -97,6 +116,19 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 		if ( empty( $string ) ) {
 			return;
 		}
+=======
+		$string = wp_kses( $string, array(
+			'a' => array(
+				'href' => true
+			),
+			'br' => true,
+			'em' => true,
+			'strong' => true,
+		) );
+
+		if ( empty( $string ) )
+			return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->messages[] = $string;
 	}
@@ -111,8 +143,13 @@ class Automatic_Upgrader_Skin extends WP_Upgrader_Skin {
 	 */
 	public function footer() {
 		$output = ob_get_clean();
+<<<<<<< HEAD
 		if ( ! empty( $output ) ) {
 			$this->feedback( $output );
 		}
+=======
+		if ( ! empty( $output ) )
+			$this->feedback( $output );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

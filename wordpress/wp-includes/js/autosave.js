@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/autosave.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* global tinymce, wpCookies, autosaveL10n, switchEditors */
 // Back-compat
 window.autosave = function() {
@@ -9,7 +12,11 @@ window.autosave = function() {
 };
 
 /**
+<<<<<<< HEAD
  * Adds autosave to the window object on dom ready.
+=======
+ * @summary Adds autosave to the window object on dom ready.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 3.9.0
  *
@@ -19,7 +26,11 @@ window.autosave = function() {
  */
 ( function( $, window ) {
 	/**
+<<<<<<< HEAD
 	 * Auto saves the post.
+=======
+	 * @summary Auto saves the post.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 3.9.0
 	 *
@@ -40,7 +51,11 @@ window.autosave = function() {
 			$document = $(document);
 
 		/**
+<<<<<<< HEAD
 		 * Returns the data saved in both local and remote autosave.
+=======
+		 * @summary Returns the data saved in both local and remote autosave.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.9.0
 		 *
@@ -103,8 +118,14 @@ window.autosave = function() {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Concatenates the title, content and excerpt. This is used to track changes
 		 * when auto-saving.
+=======
+		 * @summary Concatenates the title, content and excerpt.
+		 *
+		 * This is used to track changes when auto-saving.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.9.0
 		 *
@@ -121,7 +142,11 @@ window.autosave = function() {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Disables save buttons.
+=======
+		 * @summary Disables save buttons.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.9.0
 		 *
@@ -135,7 +160,11 @@ window.autosave = function() {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Enables save buttons.
+=======
+		 * @summary Enables save buttons.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.9.0
 		 *
@@ -146,7 +175,11 @@ window.autosave = function() {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Gets the content editor.
+=======
+		 * @summary Gets the content editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 4.6.0
 		 *
@@ -158,7 +191,11 @@ window.autosave = function() {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Autosave in localStorage.
+=======
+		 * @summary Autosave in localStorage.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.9.0
 		 *
@@ -179,7 +216,11 @@ window.autosave = function() {
 				isSuspended = false;
 
 			/**
+<<<<<<< HEAD
 			 * Checks if the browser supports sessionStorage and it's not disabled.
+=======
+			 * @summary Checks if the browser supports sessionStorage and it's not disabled.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -200,7 +241,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Initializes the local storage.
+=======
+			 * @summary Initializes the local storage.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -224,8 +269,14 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets the storage for this blog. Confirms that the data was saved
 			 * successfully.
+=======
+			 * @summary Sets the storage for this blog.
+			 *
+			 * Confirms that the data was saved successfully.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -244,7 +295,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Gets the saved post data for the current post.
+=======
+			 * @summary Gets the saved post data for the current post.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -261,7 +316,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets (save or delete) post data in the storage.
+=======
+			 * @summary Sets (save or delete) post data in the storage.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * If stored_data evaluates to 'false' the storage key for the current post will be removed.
 			 *
@@ -290,7 +349,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets isSuspended to true.
+=======
+			 * @summary Sets isSuspended to true.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -301,7 +364,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets isSuspended to false.
+=======
+			 * @summary Sets isSuspended to false.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -312,7 +379,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Saves post data for the current post.
+=======
+			 * @summary Saves post data for the current post.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Runs on a 15 sec. interval, saves when there are differences in the post title or content.
 			 * When the optional data is provided, updates the last saved post data.
@@ -361,7 +432,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Initializes the auto save function.
+=======
+			 * @summary Initializes the auto save function.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Checks whether the editor is active or not to use the editor events
 			 * to autosave, or uses the values from the elements to autosave.
@@ -421,7 +496,13 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Compares 2 strings. Removes whitespaces in the strings before comparing them.
+=======
+			 * @summary Compares 2 strings.
+			 *
+			 * Removes whitespaces in the strings before comparing them.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -438,8 +519,13 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Checks if the saved data for the current post (if any) is different than the
 			 * loaded post data on the screen.
+=======
+			 * @summary Checks if the saved data for the current post (if any) is different
+			 * than the loaded post data on the screen.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Shows a standard message letting the user restore the post data if different.
 			 *
@@ -507,7 +593,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Restores the current title, content and excerpt from postData.
+=======
+			 * @summary Restores the current title, content and excerpt from postData.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -575,7 +665,11 @@ window.autosave = function() {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Auto saves the post on the server.
+=======
+		 * @summary Auto saves the post on the server.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.9.0
 		 *
@@ -596,7 +690,11 @@ window.autosave = function() {
 
 
 			/**
+<<<<<<< HEAD
 			 * Blocks saving for the next 10 seconds.
+=======
+			 * @summary  Blocks saving for the next 10 seconds.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -612,7 +710,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets isSuspended to true.
+=======
+			 * @summary Sets isSuspended to true.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -623,7 +725,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets isSuspended to false.
+=======
+			 * @summary Sets isSuspended to false.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -634,7 +740,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Triggers the autosave with the post data.
+=======
+			 * @summary Triggers the autosave with the post data.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -658,7 +768,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Saves immediately.
+=======
+			 * @summary Saves immediately.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Resets the timing and tells heartbeat to connect now.
 			 *
@@ -672,7 +786,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Checks if the post content in the textarea has changed since page load.
+=======
+			 * @summary Checks if the post content in the textarea has changed since page load.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * This also happens when TinyMCE is active and editor.save() is triggered by
 			 * wp.autosave.getPostData().
@@ -686,7 +804,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Checks if the post can be saved or not.
+=======
+			 * @summary Checks if the post can be saved or not.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * If the post hasn't changed or it cannot be updated,
 			 * because the autosave is blocked or suspended, the function returns false.
@@ -733,7 +855,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets the next run, based on the autosave interval.
+=======
+			 * @summary Sets the next run, based on the autosave interval.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @private
 			 *
@@ -746,7 +872,11 @@ window.autosave = function() {
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Sets the autosaveData on the autosave heartbeat.
+=======
+			 * @summary Sets the autosaveData on the autosave heartbeat.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.9.0
 			 *
@@ -760,8 +890,13 @@ window.autosave = function() {
 				}
 
 				/**
+<<<<<<< HEAD
 				 * Triggers the autosave of the post with the autosave data on the autosave
 				 * heartbeat.
+=======
+				 * @summary Triggers the autosave of the post with the autosave data
+				 * on the autosave heartbeat.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 *
 				 * @since 3.9.0
 				 *
@@ -772,7 +907,11 @@ window.autosave = function() {
 					response( data.wp_autosave );
 				}
 				/**
+<<<<<<< HEAD
 				 * Disables buttons and throws a notice when the connection is lost.
+=======
+				 * @summary Disables buttons and throws a notice when the connection is lost.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 *
 				 * @since 3.9.0
 				 *
@@ -793,7 +932,11 @@ window.autosave = function() {
 				}
 
 				/**
+<<<<<<< HEAD
 				 * Enables buttons when the connection is restored.
+=======
+				 * @summary Enables buttons when the connection is restored.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 *
 				 * @since 3.9.0
 				 *
@@ -816,7 +959,11 @@ window.autosave = function() {
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Sets the autosave time out.
+=======
+		 * @summary Sets the autosave time out.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Wait for TinyMCE to initialize plus 1 second. for any external css to finish loading,
 		 * then save to the textarea before setting initialCompareString.

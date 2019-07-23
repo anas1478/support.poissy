@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/theme.js
  */
 
 /* global _wpThemeSettings, confirm, tb_position */
+=======
+/* global _wpThemeSettings, confirm */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 window.wp = window.wp || {};
 
 ( function($) {
@@ -338,7 +342,22 @@ themes.Collection = Backbone.Collection.extend({
 			data: {
 			// Request data
 				request: _.extend({
+<<<<<<< HEAD
 					per_page: 100
+=======
+					per_page: 100,
+					fields: {
+						description: true,
+						tested: true,
+						requires: true,
+						rating: true,
+						downloaded: true,
+						downloadLink: true,
+						last_updated: true,
+						homepage: true,
+						num_ratings: true
+					}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}, request)
 			},
 
@@ -577,6 +596,7 @@ themes.view.Theme = wp.Backbone.View.extend({
 	// Handles .disabled classes for previous/next buttons in theme installer preview
 	setNavButtonsState: function() {
 		var $themeInstaller = $( '.theme-install-overlay' ),
+<<<<<<< HEAD
 			current = _.isUndefined( this.current ) ? this.model : this.current,
 			previousThemeButton = $themeInstaller.find( '.previous-theme' ),
 			nextThemeButton = $themeInstaller.find( '.next-theme' );
@@ -588,15 +608,26 @@ themes.view.Theme = wp.Backbone.View.extend({
 				.prop( 'disabled', true );
 
 			nextThemeButton.focus();
+=======
+			current = _.isUndefined( this.current ) ? this.model : this.current;
+
+		// Disable previous at the zero position
+		if ( 0 === this.model.collection.indexOf( current ) ) {
+			$themeInstaller.find( '.previous-theme' ).addClass( 'disabled' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		// Disable next if the next model is undefined
 		if ( _.isUndefined( this.model.collection.at( this.model.collection.indexOf( current ) + 1 ) ) ) {
+<<<<<<< HEAD
 			nextThemeButton
 				.addClass( 'disabled' )
 				.prop( 'disabled', true );
 
 			previousThemeButton.focus();
+=======
+			$themeInstaller.find( '.next-theme' ).addClass( 'disabled' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	},
 
@@ -2041,8 +2072,14 @@ $( document ).ready(function() {
 })( jQuery );
 
 // Align theme browser thickbox
+<<<<<<< HEAD
 jQuery(document).ready( function($) {
 	window.tb_position = function() {
+=======
+var tb_position;
+jQuery(document).ready( function($) {
+	tb_position = function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		var tbWindow = $('#TB_window'),
 			width = $(window).width(),
 			H = $(window).height(),

@@ -75,8 +75,12 @@
 			$shape = apply_filters( 'embed_thumbnail_image_shape', $shape, $thumbnail_id );
 		}
 
+<<<<<<< HEAD
 		if ( $thumbnail_id && 'rectangular' === $shape ) :
 			?>
+=======
+		if ( $thumbnail_id && 'rectangular' === $shape ) : ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<div class="wp-embed-featured-image rectangular">
 				<a href="<?php the_permalink(); ?>" target="_top">
 					<?php echo wp_get_attachment_image( $thumbnail_id, $image_size ); ?>
@@ -110,7 +114,11 @@
 		?>
 
 		<div class="wp-embed-footer">
+<<<<<<< HEAD
 			<?php the_embed_site_title(); ?>
+=======
+			<?php the_embed_site_title() ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			<div class="wp-embed-meta">
 				<?php
@@ -119,7 +127,11 @@
 				 *
 				 * @since 4.4.0
 				 */
+<<<<<<< HEAD
 				do_action( 'embed_content_meta' );
+=======
+				do_action( 'embed_content_meta');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				?>
 			</div>
 		</div>

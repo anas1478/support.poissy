@@ -102,6 +102,10 @@ final class WP_Term {
 	 * Retrieve WP_Term instance.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
+=======
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
@@ -142,11 +146,19 @@ final class WP_Term {
 					}
 				}
 
+<<<<<<< HEAD
 				// If only one match was found, it's the one we want.
 			} elseif ( 1 === count( $terms ) ) {
 				$_term = reset( $terms );
 
 				// Otherwise, the term must be shared between taxonomies.
+=======
+			// If only one match was found, it's the one we want.
+			} elseif ( 1 === count( $terms ) ) {
+				$_term = reset( $terms );
+
+			// Otherwise, the term must be shared between taxonomies.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else {
 				// If the term is shared only with invalid taxonomies, return the one valid term.
 				foreach ( $terms as $t ) {
@@ -231,8 +243,13 @@ final class WP_Term {
 	 */
 	public function __get( $key ) {
 		switch ( $key ) {
+<<<<<<< HEAD
 			case 'data':
 				$data    = new stdClass();
+=======
+			case 'data' :
+				$data = new stdClass();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$columns = array( 'term_id', 'name', 'slug', 'term_group', 'term_taxonomy_id', 'taxonomy', 'description', 'parent', 'count' );
 				foreach ( $columns as $column ) {
 					$data->{$column} = isset( $this->{$column} ) ? $this->{$column} : null;

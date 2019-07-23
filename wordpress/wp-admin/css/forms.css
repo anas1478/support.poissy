@@ -52,8 +52,11 @@ select:focus,
 textarea:focus {
 	border-color: #5b9dd9;
 	box-shadow: 0 0 2px rgba( 30, 140, 190, 0.8 );
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /* rtl:ignore */
@@ -230,20 +233,32 @@ textarea[readonly] {
 }
 
 ::-moz-placeholder {
+<<<<<<< HEAD
 	color: #72777c;
 	opacity: 1;
+=======
+   color: #72777c;
+   opacity: 1;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 :-ms-input-placeholder {
 	color: #72777c;
 }
 
+<<<<<<< HEAD
 .form-invalid input,
 .form-invalid input:focus,
 .form-invalid select,
 .form-invalid select:focus {
 	border-color: #dc3232 !important;
 	box-shadow: 0 0 2px rgba( 204, 0, 0, 0.8 );
+=======
+.form-invalid input, .form-invalid input:focus,
+.form-invalid select, .form-invalid select:focus {
+	border-color: #dc3232 !important;
+ box-shadow: 0 0 2px rgba( 204, 0, 0, 0.8 );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .form-table .form-required.form-invalid td:after {
@@ -256,11 +271,19 @@ textarea[readonly] {
 
 /* Adjust error indicator for password layout */
 .form-table .form-required.user-pass1-wrap.form-invalid td:after {
+<<<<<<< HEAD
 	content: "";
 }
 
 .form-table .form-required.user-pass1-wrap.form-invalid .password-input-wrapper:after {
 	content: "\f534";
+=======
+	content: '';
+}
+
+.form-table .form-required.user-pass1-wrap.form-invalid .password-input-wrapper:after {
+	content: '\f534';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	font: normal 20px/1 dashicons;
 	color: #dc3232;
 	margin: 0 6px 0 -29px;
@@ -508,7 +531,11 @@ fieldset label,
 }
 
 .pw-weak {
+<<<<<<< HEAD
 	display: none;
+=======
+	display:none;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .indicator-hint {
@@ -976,8 +1003,13 @@ table.form-table td .updated p {
 }
 
 #request-filesystem-credentials-title {
+<<<<<<< HEAD
 	font-size: 1.3em;
 	margin: 1em 0;
+=======
+    font-size: 1.3em;
+    margin: 1em 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .request-filesystem-credentials-form legend {
@@ -1159,18 +1191,30 @@ table.form-table td .updated p {
 }
 
 .status-label {
+<<<<<<< HEAD
 	font-weight: 600;
 }
 
 .status-label.status-request-pending {
 	font-weight: 400;
+=======
+	font-weight: bold;
+}
+
+.status-label.status-request-pending {
+	font-weight: normal;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	font-style: italic;
 	color: #6c7781;
 }
 
 .status-label.status-request-failed {
 	color: #aa0000;
+<<<<<<< HEAD
 	font-weight: 600;
+=======
+	font-weight: bold;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-privacy-request-form {
@@ -1182,7 +1226,11 @@ table.form-table td .updated p {
 }
 
 .wp-privacy-request-form label {
+<<<<<<< HEAD
 	font-weight: 600;
+=======
+	font-weight: bold;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	line-height: 1.5;
 	padding-bottom: .5em;
 	display: block;
@@ -1218,7 +1266,11 @@ table.form-table td .updated p {
 /* =Media Queries
 -------------------------------------------------------------- */
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/* Input Elements */
 	textarea {
 		-webkit-appearance: none;
@@ -1494,21 +1546,37 @@ table.form-table td .updated p {
 
 	/* Privacy Policy settings screen */
 	.tools-privacy-policy-page form.wp-create-privacy-page {
+<<<<<<< HEAD
 		margin-bottom: 1em;
 	}
 
 	.tools-privacy-policy-page input#set-page,
+=======
+	    margin-bottom: 1em;
+	}
+
+ 	.tools-privacy-policy-page input#set-page,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.tools-privacy-policy-page select {
 		margin: 10px 0 0;
 	}
 
 	.tools-privacy-policy-page .wp-create-privacy-page span {
+<<<<<<< HEAD
 		display: block;
 		margin-bottom: 1em;
 	}
 
 	.tools-privacy-policy-page .wp-create-privacy-page .button {
 		margin-left: 0;
+=======
+	    display: block;
+	    margin-bottom: 1em;
+	}
+
+	.tools-privacy-policy-page .wp-create-privacy-page .button {
+	    margin-left: 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	.wp-list-table.privacy_requests tr:not(.inline-edit-row):not(.no-items) td.column-primary:not(.check-column) {
@@ -1531,7 +1599,11 @@ table.form-table td .updated p {
 	}
 
 	.form-wrap .form-field {
+<<<<<<< HEAD
 		padding: 0;
+=======
+		padding:0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/* users */
@@ -1542,7 +1614,11 @@ table.form-table td .updated p {
 }
 
 @media only screen and (max-height: 480px), screen and (max-width: 450px) {
+<<<<<<< HEAD
 	/* Request Credentials / File Editor Warning */
+=======
+	/*  Request Credentials / File Editor Warning */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.request-filesystem-credentials-dialog .notification-dialog,
 	.file-editor-warning .notification-dialog {
 		width: 100%;

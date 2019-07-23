@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/widgets/media-image-widget.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* eslint consistent-this: [ "error", "control" ] */
 (function( component, $ ) {
 	'use strict';
@@ -13,8 +16,13 @@
 	 *
 	 * See WP_Widget_Media_Image::enqueue_admin_scripts() for amending prototype from PHP exports.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.modelConstructors.media_image
 	 * @augments wp.mediaWidgets.MediaWidgetModel
+=======
+	 * @class ImageWidgetModel
+	 * @constructor
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	ImageWidgetModel = component.MediaWidgetModel.extend({});
 
@@ -23,10 +31,17 @@
 	 *
 	 * See WP_Widget_Media_Image::enqueue_admin_scripts() for amending prototype from PHP exports.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.controlConstructors.media_audio
 	 * @augments wp.mediaWidgets.MediaWidgetControl
 	 */
 	ImageWidgetControl = component.MediaWidgetControl.extend(/** @lends wp.mediaWidgets.controlConstructors.media_image.prototype */{
+=======
+	 * @class ImageWidgetModel
+	 * @constructor
+	 */
+	ImageWidgetControl = component.MediaWidgetControl.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * View events.

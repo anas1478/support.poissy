@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["formatLibrary"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 313);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 312);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -182,6 +186,7 @@ function _inherits(subClass, superClass) {
 /***/ }),
 
 /***/ 16:
+<<<<<<< HEAD
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["keycodes"]; }());
@@ -189,6 +194,8 @@ function _inherits(subClass, superClass) {
 /***/ }),
 
 /***/ 17:
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -246,6 +253,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+/***/ 17:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["keycodes"]; }());
+
+/***/ }),
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ 2:
 /***/ (function(module, exports) {
 
@@ -356,7 +373,11 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 313:
+=======
+/***/ 312:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -638,11 +659,19 @@ var italic = {
 var external_this_wp_url_ = __webpack_require__(24);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
+<<<<<<< HEAD
 var classnames = __webpack_require__(17);
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // EXTERNAL MODULE: external {"this":["wp","keycodes"]}
 var external_this_wp_keycodes_ = __webpack_require__(16);
+=======
+var classnames = __webpack_require__(16);
+var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
+
+// EXTERNAL MODULE: external {"this":["wp","keycodes"]}
+var external_this_wp_keycodes_ = __webpack_require__(17);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // EXTERNAL MODULE: external {"this":["wp","dom"]}
 var external_this_wp_dom_ = __webpack_require__(22);
@@ -1061,7 +1090,11 @@ function (_Component) {
       } else if (isActive) {
         speak(Object(external_this_wp_i18n_["__"])('Link edited.'), 'assertive');
       } else {
+<<<<<<< HEAD
         speak(Object(external_this_wp_i18n_["__"])('Link inserted.'), 'assertive');
+=======
+        speak(Object(external_this_wp_i18n_["__"])('Link inserted'), 'assertive');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       }
     }
   }, {

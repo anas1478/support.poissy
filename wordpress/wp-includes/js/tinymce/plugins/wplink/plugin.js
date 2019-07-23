@@ -226,15 +226,24 @@
 			linkNode = getSelectedLink();
 			editToolbar.tempHide = false;
 
+<<<<<<< HEAD
 			if ( ! linkNode ) {
+=======
+			if ( linkNode ) {
+				editor.dom.setAttribs( linkNode, { 'data-wplink-edit': true } );
+			} else {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				removePlaceholders();
 				editor.execCommand( 'mceInsertLink', false, { href: '_wp_link_placeholder' } );
 
 				linkNode = editor.$( 'a[href="_wp_link_placeholder"]' )[0];
 				editor.nodeChanged();
 			}
+<<<<<<< HEAD
 
 			editor.dom.setAttribs( linkNode, { 'data-wplink-edit': true } );
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} );
 
 		editor.addCommand( 'wp_link_apply', function() {
@@ -284,9 +293,14 @@
 		} );
 
 		editor.addCommand( 'wp_link_cancel', function() {
+<<<<<<< HEAD
 			inputInstance.reset();
 
 			if ( ! editToolbar.tempHide ) {
+=======
+			if ( ! editToolbar.tempHide ) {
+				inputInstance.reset();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				removePlaceholders();
 			}
 		} );
@@ -584,10 +598,31 @@
 					var url = inputInstance.getURL() || null,
 						text = inputInstance.getLinkText() || null;
 
+<<<<<<< HEAD
 					window.wpLink.open( editor.id, url, text );
 
 					editToolbar.tempHide = true;
 					editToolbar.hide();
+=======
+					/*
+					 * Accessibility note: moving focus back to the editor confuses
+					 * screen readers. They will announce again the Editor ARIA role
+					 * `application` and the iframe `title` attribute.
+					 *
+					 * Unfortunately IE looses the selection when the editor iframe
+					 * looses focus, so without returning focus to the editor, the code
+					 * in the modal will not be able to get the selection, place the caret
+					 * at the same location, etc.
+					 */
+					if ( tinymce.Env.ie ) {
+						editor.focus(); // Needed for IE
+					}
+
+					editToolbar.tempHide = true;
+					window.wpLink.open( editor.id, url, text, linkNode );
+
+					inputInstance.reset();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		} );

@@ -22,6 +22,7 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 	 * @since 4.9.0
 	 */
 	public function __construct() {
+<<<<<<< HEAD
 		parent::__construct(
 			'media_gallery',
 			__( 'Gallery' ),
@@ -40,6 +41,19 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 				'edit_media'        => _x( 'Edit Gallery', 'label for button in the gallery widget; should not be longer than ~13 characters long' ),
 			)
 		);
+=======
+		parent::__construct( 'media_gallery', __( 'Gallery' ), array(
+			'description' => __( 'Displays an image gallery.' ),
+			'mime_type'   => 'image',
+		) );
+
+		$this->l10n = array_merge( $this->l10n, array(
+			'no_media_selected' => __( 'No images selected' ),
+			'add_media' => _x( 'Add Images', 'label for button in the gallery widget; should not be longer than ~13 characters long' ),
+			'replace_media' => '',
+			'edit_media' => _x( 'Edit Gallery', 'label for button in the gallery widget; should not be longer than ~13 characters long' ),
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -54,6 +68,7 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 	 */
 	public function get_instance_schema() {
 		$schema = array(
+<<<<<<< HEAD
 			'title'          => array(
 				'type'                  => 'string',
 				'default'               => '',
@@ -71,10 +86,30 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 			),
 			'columns'        => array(
 				'type'    => 'integer',
+=======
+			'title' => array(
+				'type' => 'string',
+				'default' => '',
+				'sanitize_callback' => 'sanitize_text_field',
+				'description' => __( 'Title for the widget' ),
+				'should_preview_update' => false,
+			),
+			'ids' => array(
+				'type' => 'array',
+				'items' => array(
+					'type' => 'integer',
+				),
+				'default' => array(),
+				'sanitize_callback' => 'wp_parse_id_list',
+			),
+			'columns' => array(
+				'type' => 'integer',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'default' => 3,
 				'minimum' => 1,
 				'maximum' => 9,
 			),
+<<<<<<< HEAD
 			'size'           => array(
 				'type'    => 'string',
 				'enum'    => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom' ) ),
@@ -85,6 +120,18 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 				'enum'                  => array( 'post', 'file', 'none' ),
 				'default'               => 'post',
 				'media_prop'            => 'link',
+=======
+			'size' => array(
+				'type' => 'string',
+				'enum' => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom' ) ),
+				'default' => 'thumbnail',
+			),
+			'link_type' => array(
+				'type' => 'string',
+				'enum' => array( 'post', 'file', 'none' ),
+				'default' => 'post',
+				'media_prop' => 'link',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'should_preview_update' => false,
 			),
 			'orderby_random' => array(
@@ -176,6 +223,7 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 		?>
 		<script type="text/html" id="tmpl-wp-media-widget-gallery-preview">
 			<# var describedById = 'describedBy-' + String( Math.random() ); #>
+<<<<<<< HEAD
 			<#
 			var ids = _.filter( data.ids, function( id ) {
 				return ( id in data.attachments );
@@ -185,6 +233,17 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 				<div class="gallery media-widget-gallery-preview">
 					<# _.each( ids, function( id, index ) { #>
 						<# var attachment = data.attachments[ id ]; #>
+=======
+			<# if ( data.ids.length ) { #>
+				<div class="gallery media-widget-gallery-preview">
+					<# _.each( data.ids, function( id, index ) { #>
+						<#
+						var attachment = data.attachments[ id ];
+						if ( ! attachment ) {
+							return;
+						}
+						#>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<# if ( index < 6 ) { #>
 							<dl class="gallery-item">
 								<dt class="gallery-icon">
@@ -193,9 +252,15 @@ class WP_Widget_Media_Gallery extends WP_Widget_Media {
 								<# } else { #>
 									<img src="{{ attachment.url }}" alt="" />
 								<# } #>
+<<<<<<< HEAD
 								<# if ( index === 5 && ids.length > 6 ) { #>
 									<div class="gallery-icon-placeholder">
 										<p class="gallery-icon-placeholder-text">+{{ ids.length - 5 }}</p>
+=======
+								<# if ( index === 5 && data.ids.length > 6 ) { #>
+									<div class="gallery-icon-placeholder">
+										<p class="gallery-icon-placeholder-text">+{{ data.ids.length - 5 }}</p>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 									</div>
 								<# } #>
 								</dt>

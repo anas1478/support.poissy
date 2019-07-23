@@ -7,9 +7,14 @@
  */
 
 // don't load directly
+<<<<<<< HEAD
 if ( ! defined( 'ABSPATH' ) ) {
 	die( '-1' );
 }
+=======
+if ( !defined('ABSPATH') )
+	die('-1');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * @global string $hook_suffix
@@ -100,10 +105,16 @@ do_action( 'admin_print_footer_scripts' );
 do_action( "admin_footer-{$hook_suffix}" );
 
 // get_site_option() won't exist when auto upgrading from <= 2.7
+<<<<<<< HEAD
 if ( function_exists( 'get_site_option' ) ) {
 	if ( false === get_site_option( 'can_compress_scripts' ) ) {
 		compression_test();
 	}
+=======
+if ( function_exists('get_site_option') ) {
+	if ( false === get_site_option('can_compress_scripts') )
+		compression_test();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 ?>

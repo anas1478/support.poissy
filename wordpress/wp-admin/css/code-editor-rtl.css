@@ -71,6 +71,11 @@
 	text-align: right;
 }
 
+<<<<<<< HEAD
 .wrap .CodeMirror .CodeMirror-linenumber {
 	color: #666;
+=======
+.wrap .CodeMirror .CodeMirror-linenumber { 
+    color: #666; 
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }

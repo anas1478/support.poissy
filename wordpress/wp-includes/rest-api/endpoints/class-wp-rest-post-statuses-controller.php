@@ -35,6 +35,7 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 	 */
 	public function register_routes() {
 
+<<<<<<< HEAD
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base,
@@ -70,6 +71,35 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 				'schema' => array( $this, 'get_public_item_schema' ),
 			)
 		);
+=======
+		register_rest_route( $this->namespace, '/' . $this->rest_base, array(
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_items' ),
+				'permission_callback' => array( $this, 'get_items_permissions_check' ),
+				'args'                => $this->get_collection_params(),
+			),
+			'schema' => array( $this, 'get_public_item_schema' ),
+		) );
+
+		register_rest_route( $this->namespace, '/' . $this->rest_base . '/(?P<status>[\w-]+)', array(
+			'args' => array(
+				'status' => array(
+					'description' => __( 'An alphanumeric identifier for the status.' ),
+					'type'        => 'string',
+				),
+			),
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_item' ),
+				'permission_callback' => array( $this, 'get_item_permissions_check' ),
+				'args'                => array(
+					'context' => $this->get_context_param( array( 'default' => 'view' ) ),
+				),
+			),
+			'schema' => array( $this, 'get_public_item_schema' ),
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -104,8 +134,13 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 	 * @return WP_Error|WP_REST_Response Response object on success, or WP_Error object on failure.
 	 */
 	public function get_items( $request ) {
+<<<<<<< HEAD
 		$data              = array();
 		$statuses          = get_post_stati( array( 'internal' => false ), 'object' );
+=======
+		$data = array();
+		$statuses = get_post_stati( array( 'internal' => false ), 'object' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$statuses['trash'] = get_post_status_object( 'trash' );
 
 		foreach ( $statuses as $slug => $obj ) {
@@ -115,7 +150,11 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 				continue;
 			}
 
+<<<<<<< HEAD
 			$status             = $this->prepare_item_for_response( $obj, $request );
+=======
+			$status = $this->prepare_item_for_response( $obj, $request );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$data[ $obj->name ] = $this->prepare_response_for_collection( $status );
 		}
 
@@ -235,8 +274,13 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 		}
 
 		$context = ! empty( $request['context'] ) ? $request['context'] : 'view';
+<<<<<<< HEAD
 		$data    = $this->add_additional_fields_to_object( $data, $request );
 		$data    = $this->filter_response_by_context( $data, $context );
+=======
+		$data = $this->add_additional_fields_to_object( $data, $request );
+		$data = $this->filter_response_by_context( $data, $context );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$response = rest_ensure_response( $data );
 
@@ -269,6 +313,7 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 	 */
 	public function get_item_schema() {
 		$schema = array(
+<<<<<<< HEAD
 			'$schema'    => 'http://json-schema.org/draft-04/schema#',
 			'title'      => 'status',
 			'type'       => 'object',
@@ -314,6 +359,53 @@ class WP_REST_Post_Statuses_Controller extends WP_REST_Controller {
 					'type'        => 'string',
 					'context'     => array( 'embed', 'view', 'edit' ),
 					'readonly'    => true,
+=======
+			'$schema'              => 'http://json-schema.org/draft-04/schema#',
+			'title'                => 'status',
+			'type'                 => 'object',
+			'properties'           => array(
+				'name'             => array(
+					'description'  => __( 'The title for the status.' ),
+					'type'         => 'string',
+					'context'      => array( 'embed', 'view', 'edit' ),
+					'readonly'     => true,
+				),
+				'private'          => array(
+					'description'  => __( 'Whether posts with this status should be private.' ),
+					'type'         => 'boolean',
+					'context'      => array( 'edit' ),
+					'readonly'     => true,
+				),
+				'protected'        => array(
+					'description'  => __( 'Whether posts with this status should be protected.' ),
+					'type'         => 'boolean',
+					'context'      => array( 'edit' ),
+					'readonly'     => true,
+				),
+				'public'           => array(
+					'description'  => __( 'Whether posts of this status should be shown in the front end of the site.' ),
+					'type'         => 'boolean',
+					'context'      => array( 'view', 'edit' ),
+					'readonly'     => true,
+				),
+				'queryable'        => array(
+					'description'  => __( 'Whether posts with this status should be publicly-queryable.' ),
+					'type'         => 'boolean',
+					'context'      => array( 'view', 'edit' ),
+					'readonly'     => true,
+				),
+				'show_in_list'     => array(
+					'description'  => __( 'Whether to include posts in the edit listing for their post type.' ),
+					'type'         => 'boolean',
+					'context'      => array( 'edit' ),
+					'readonly'     => true,
+				),
+				'slug'             => array(
+					'description'  => __( 'An alphanumeric identifier for the status.' ),
+					'type'         => 'string',
+					'context'      => array( 'embed', 'view', 'edit' ),
+					'readonly'     => true,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				),
 			),
 		);

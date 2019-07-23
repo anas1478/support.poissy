@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * The functions necessary for editing images.
  *
@@ -7,6 +8,15 @@
 
  /* global imageEditL10n, ajaxurl, confirm */
 
+=======
+/* global imageEditL10n, ajaxurl, confirm */
+/**
+ * @summary   The functions necessary for editing images.
+ *
+ * @since     2.9.0
+ */
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 (function($) {
 
 	/**
@@ -21,6 +31,7 @@
 	_view : false,
 
 	/**
+<<<<<<< HEAD
 	 * Handle crop tool clicks.
 	 */
 	handleCropToolClick: function( postid, nonce, cropButton ) {
@@ -47,6 +58,9 @@
 
 	/**
 	 * Converts a value to an integer.
+=======
+	 * @summary Converts a value to an integer.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -64,7 +78,12 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Adds the disabled attribute and class to a single form element or a field set.
+=======
+	 * @summary Adds the disabled attribute and class to a single form element
+	 *          or a field set.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -93,7 +112,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Initializes the image editor.
+=======
+	 * @summary Initializes the image editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -136,7 +159,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Toggles the wait/load icon in the editor.
+=======
+	 * @summary Toggles the wait/load icon in the editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -157,7 +184,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Shows or hides the image edit help box.
+=======
+	 * @summary Shows or hides the image edit help box.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -176,7 +207,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Gets the value from the image edit target.
+=======
+	 * @summary Gets the value from the image edit target.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * The image edit target contains the image sizes where the (possible) changes
 	 * have to be applied to.
@@ -194,7 +229,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Recalculates the height or width and keeps the original aspect ratio.
+=======
+	 * @summary Recalculates the height or width and keeps the original aspect ratio.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * If the original image size is exceeded a red exclamation mark is shown.
 	 *
@@ -232,7 +271,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Gets the selected aspect ratio.
+=======
+	 * @summary Gets the selected aspect ratio.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -258,7 +301,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Removes the last action from the image edit history.
+=======
+	 * @summary Removes the last action from the image edit history
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * The history consist of (edit) actions performed on the image.
 	 *
 	 * @memberof imageEdit
@@ -322,7 +369,11 @@
 		return '';
 	},
 	/**
+<<<<<<< HEAD
 	 * Binds the necessary events to the image.
+=======
+	 * @summary Binds the necessary events to the image.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * When the image source is reloaded the image will be reloaded.
 	 *
@@ -377,6 +428,10 @@
 				t.hold.sizer = max1 > max2 ? max2 / max1 : 1;
 
 				t.initCrop(postid, img, parent);
+<<<<<<< HEAD
+=======
+				t.setCropSelection(postid, 0);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				if ( (typeof callback !== 'undefined') && callback !== null ) {
 					callback();
@@ -397,7 +452,11 @@
 			.attr('src', ajaxurl + '?' + $.param(data));
 	},
 	/**
+<<<<<<< HEAD
 	 * Performs an image edit action.
+=======
+	 * @summary Performs an image edit action.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -464,7 +523,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Stores the changes that are made to the image.
+=======
+	 * @summary Stores the changes that are made to the image.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -529,7 +592,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Creates the image edit window.
+=======
+	 * @summary Creates the image edit window.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -586,7 +653,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Initializes the cropping tool and sets a default cropping selection.
+=======
+	 * @summary Initializes the cropping tool and sets a default cropping selection.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -604,15 +675,23 @@
 		}
 
 		this.initCrop(postid, img, parent);
+<<<<<<< HEAD
 		this.setCropSelection( postid, { 'x1': 0, 'y1': 0, 'x2': 0, 'y2': 0, 'width': img.innerWidth(), 'height': img.innerHeight() } );
 
+=======
+		this.setCropSelection(postid, 0);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		this.toggleEditor(postid, 0);
 		// Editor is ready, move focus to the first focusable element.
 		$( '.imgedit-wrap .imgedit-help-toggle' ).eq( 0 ).focus();
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Initializes the cropping tool.
+=======
+	 * @summary Initializes the cropping tool.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -638,9 +717,13 @@
 			minHeight: 3,
 
 			/**
+<<<<<<< HEAD
 			 * Sets the CSS styles and binds events for locking the aspect ratio.
 			 *
 			 * @ignore
+=======
+			 * @summary Sets the CSS styles and binds events for locking the aspect ratio.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @param {jQuery} img The preview image.
 			 */
@@ -651,7 +734,11 @@
 				$img.next().css( 'position', 'absolute' )
 					.nextAll( '.imgareaselect-outer' ).css( 'position', 'absolute' );
 				/**
+<<<<<<< HEAD
 				 * Binds mouse down event to the cropping container.
+=======
+				 * @summary Binds mouse down event to the cropping container.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 *
 				 * @returns {void}
 				 */
@@ -671,9 +758,13 @@
 			},
 
 			/**
+<<<<<<< HEAD
 			 * Event triggered when starting a selection.
 			 *
 			 * @ignore
+=======
+			 * @summary Event triggered when starting a selection.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @returns {void}
 			 */
@@ -681,9 +772,13 @@
 				imageEdit.setDisabled($('#imgedit-crop-sel-' + postid), 1);
 			},
 			/**
+<<<<<<< HEAD
 			 * Event triggered when the selection is ended.
 			 *
 			 * @ignore
+=======
+			 * @summary Event triggered when the selection is ended.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @param {object} img jQuery object representing the image.
 			 * @param {object} c   The selection.
@@ -695,9 +790,13 @@
 			},
 
 			/**
+<<<<<<< HEAD
 			 * Event triggered when the selection changes.
 			 *
 			 * @ignore
+=======
+			 * @summary Event triggered when the selection changes.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @param {object} img jQuery object representing the image.
 			 * @param {object} c   The selection.
@@ -713,7 +812,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Stores the current crop selection.
+=======
+	 * @summary Stores the current crop selection.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -729,8 +832,13 @@
 		c = c || 0;
 
 		if ( !c || ( c.width < 3 && c.height < 3 ) ) {
+<<<<<<< HEAD
 			this.setDisabled( $( '.imgedit-crop', '#imgedit-panel-' + postid ), 1 );
 			this.setDisabled( $( '#imgedit-crop-sel-' + postid ), 1 );
+=======
+			this.setDisabled($('.imgedit-crop', '#imgedit-panel-' + postid), 0);
+			this.setDisabled($('#imgedit-crop-sel-' + postid), 0);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$('#imgedit-sel-width-' + postid).val('');
 			$('#imgedit-sel-height-' + postid).val('');
 			$('#imgedit-selection-' + postid).val('');
@@ -744,7 +852,11 @@
 
 
 	/**
+<<<<<<< HEAD
 	 * Closes the image editor.
+=======
+	 * @summary Closes the image editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -785,7 +897,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Checks if the image edit history is saved.
+=======
+	 * @summary Checks if the image edit history is saved.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -809,7 +925,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Adds an image edit action to the history.
+=======
+	 * @summary Adds an image edit action to the history.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -842,7 +962,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Rotates the image.
+=======
+	 * @summary Rotates the image.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -863,7 +987,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Flips the image.
+=======
+	 * @summary Flips the image.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -884,7 +1012,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Crops the image.
+=======
+	 * @summary Crops the image.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -913,7 +1045,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Undoes an image edit action.
+=======
+	 * @summary Undoes an image edit action.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0
@@ -976,7 +1112,11 @@
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Sets the selection for the height and width in pixels.
+=======
+	 * @summary Sets the selection for the height and width in pixels.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @memberof imageEdit
 	 * @since    2.9.0

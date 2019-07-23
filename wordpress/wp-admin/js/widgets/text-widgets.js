@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/widgets/text-widgets.js
  */
@@ -8,6 +9,10 @@
 /**
  * @namespace wp.textWidgets
  */
+=======
+/* global tinymce, switchEditors */
+/* eslint consistent-this: [ "error", "control" ] */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 wp.textWidgets = ( function( $ ) {
 	'use strict';
 
@@ -16,7 +21,18 @@ wp.textWidgets = ( function( $ ) {
 		idBases: [ 'text' ]
 	};
 
+<<<<<<< HEAD
 	component.TextWidgetControl = Backbone.View.extend(/** @lends wp.textWidgets.TextWidgetControl.prototype */{
+=======
+	/**
+	 * Text widget control.
+	 *
+	 * @class TextWidgetControl
+	 * @constructor
+	 * @abstract
+	 */
+	component.TextWidgetControl = Backbone.View.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * View events.
@@ -26,16 +42,23 @@ wp.textWidgets = ( function( $ ) {
 		events: {},
 
 		/**
+<<<<<<< HEAD
 		 * Text widget control.
 		 *
 		 * @constructs wp.textWidgets.TextWidgetControl
 		 * @augments   Backbone.View
 		 * @abstract
+=======
+		 * Initialize.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @param {Object} options - Options.
 		 * @param {jQuery} options.el - Control field container element.
 		 * @param {jQuery} options.syncContainer - Container element where fields are synced for the server.
+<<<<<<< HEAD
 		 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @returns {void}
 		 */
 		initialize: function initialize( options ) {
@@ -363,8 +386,11 @@ wp.textWidgets = ( function( $ ) {
 	/**
 	 * Mapping of widget ID to instances of TextWidgetControl subclasses.
 	 *
+<<<<<<< HEAD
 	 * @memberOf wp.textWidgets
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @type {Object.<string, wp.textWidgets.TextWidgetControl>}
 	 */
 	component.widgetControls = {};
@@ -372,11 +398,16 @@ wp.textWidgets = ( function( $ ) {
 	/**
 	 * Handle widget being added or initialized for the first time at the widget-added event.
 	 *
+<<<<<<< HEAD
 	 * @memberOf wp.textWidgets
 	 *
 	 * @param {jQuery.Event} event - Event.
 	 * @param {jQuery}       widgetContainer - Widget container element.
 	 *
+=======
+	 * @param {jQuery.Event} event - Event.
+	 * @param {jQuery}       widgetContainer - Widget container element.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @returns {void}
 	 */
 	component.handleWidgetAdded = function handleWidgetAdded( event, widgetContainer ) {
@@ -440,8 +471,11 @@ wp.textWidgets = ( function( $ ) {
 	/**
 	 * Setup widget in accessibility mode.
 	 *
+<<<<<<< HEAD
 	 * @memberOf wp.textWidgets
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @returns {void}
 	 */
 	component.setupAccessibleMode = function setupAccessibleMode() {
@@ -480,8 +514,11 @@ wp.textWidgets = ( function( $ ) {
 	 * the widgets admin screen and also via the 'widget-synced' event when making
 	 * a change to a widget in the customizer.
 	 *
+<<<<<<< HEAD
 	 * @memberOf wp.textWidgets
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {jQuery.Event} event - Event.
 	 * @param {jQuery}       widgetContainer - Widget container element.
 	 * @returns {void}
@@ -511,8 +548,11 @@ wp.textWidgets = ( function( $ ) {
 	 * When WordPress enqueues this script, it should have an inline script
 	 * attached which calls wp.textWidgets.init().
 	 *
+<<<<<<< HEAD
 	 * @memberOf wp.textWidgets
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @returns {void}
 	 */
 	component.init = function init() {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Contains logic for deleting and adding tags.
  *
@@ -14,6 +15,23 @@ jQuery(document).ready(function($) {
 	/**
 	 * Adds an event handler to the delete term link on the term overview page.
 	 *
+=======
+/* global ajaxurl, wpAjax, tagsl10n, showNotice, validateForm */
+/**
+ * Contains logic for both adding and deleting tags. For deleting tags it makes a request
+ * to the server to delete the tag. For adding tags it makes a request to the server to
+ * add the tag.
+ *
+ * @summary Contains logic for deleting and adding tags
+ */
+
+jQuery(document).ready(function($) {
+
+	/**
+	 * @summary Adds an event handler to the delete term link on the term overview page.
+	 *
+	 * Adds an event handler to the delete term link on the term overview page.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * Cancels default event handling and event bubbling.
 	 *
 	 * @since 2.8.0
@@ -30,8 +48,13 @@ jQuery(document).ready(function($) {
 			data = t.attr('href').replace(/[^?]*\?/, '').replace(/action=delete/, 'action=delete-tag');
 
 			/**
+<<<<<<< HEAD
 			 * Makes a request to the server to delete the term that corresponds to the
 			 * delete term button.
+=======
+			 * @summary Makes a request to the server to delete the term that
+			 * corresponds to the delete term button.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @param {string} r The response from the server.
 			 *
@@ -43,7 +66,11 @@ jQuery(document).ready(function($) {
 					tr.fadeOut('normal', function(){ tr.remove(); });
 
 					/**
+<<<<<<< HEAD
 					 * Removes the term from the parent box and the tag cloud.
+=======
+					 * @summary Remove the term from the parent box and the tag cloud
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					 *
 					 * `data.match(/tag_ID=(\d+)/)[1]` matches the term id from the data variable.
 					 * This term id is then used to select the relevant HTML elements:
@@ -88,7 +115,11 @@ jQuery(document).ready(function($) {
 	});
 
 	/**
+<<<<<<< HEAD
 	 * Adds an event handler to the form submit on the term overview page.
+=======
+	 * @summary Adds an event handler tot he form submit on the term overview page.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * Cancels default event handling and event bubbling.
 	 *

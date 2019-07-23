@@ -15,4 +15,8 @@ if ( ! class_exists( 'SimplePie', false ) ) {
 require_once( ABSPATH . WPINC . '/class-wp-feed-cache.php' );
 require_once( ABSPATH . WPINC . '/class-wp-feed-cache-transient.php' );
 require_once( ABSPATH . WPINC . '/class-wp-simplepie-file.php' );
+<<<<<<< HEAD
 require_once( ABSPATH . WPINC . '/class-wp-simplepie-sanitize-kses.php' );
+=======
+require_once( ABSPATH . WPINC . '/class-wp-simplepie-sanitize-kses.php' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

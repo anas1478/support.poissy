@@ -37,8 +37,13 @@ ul.add-menu-item-tabs li {
 }
 
 #wpbody-content #menu-settings-column {
+<<<<<<< HEAD
 	display: inline;
 	width: 281px;
+=======
+	display:inline;
+	width:281px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	margin-right: -300px;
 	clear: both;
 	float: right;
@@ -161,6 +166,10 @@ ul.add-menu-item-tabs li {
 	margin-left: 20px;
 	margin-top: -3px;
 	width: 100%;
+<<<<<<< HEAD
+=======
+	background: #f5f5f5;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #menu-management .menu-edit {
@@ -177,7 +186,10 @@ ul.add-menu-item-tabs li {
 #nav-menu-header,
 #nav-menu-footer {
 	padding: 0 10px;
+<<<<<<< HEAD
 	background: #f5f5f5;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #nav-menu-header {
@@ -203,7 +215,11 @@ ul.add-menu-item-tabs li {
 }
 
 #menu-management .menu-add-new abbr {
+<<<<<<< HEAD
 	font-weight: 600;
+=======
+	font-weight:600;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #select-nav-menu-container {
@@ -318,7 +334,11 @@ ul.add-menu-item-tabs li {
 }
 
 .button-controls {
+<<<<<<< HEAD
 	clear: both;
+=======
+	clear:both;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	margin: 10px 0;
 }
 
@@ -415,7 +435,11 @@ ul.add-menu-item-tabs li {
 }
 
 .menu {
+<<<<<<< HEAD
 	padding-top: 1em;
+=======
+	padding-top:1em;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #menu-to-edit {
@@ -429,6 +453,7 @@ ul.add-menu-item-tabs li {
 
 .menu li {
 	margin-bottom: 0;
+<<<<<<< HEAD
 	position: relative;
 }
 
@@ -436,6 +461,15 @@ ul.add-menu-item-tabs li {
 	clear: both;
 	line-height: 1.5em;
 	position: relative;
+=======
+	position:relative;
+}
+
+.menu-item-bar {
+	clear:both;
+	line-height:1.5em;
+	position:relative;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	margin: 9px 0 0;
 }
 
@@ -492,13 +526,21 @@ li.menu-item.ui-sortable-helper .menu-item-bar {
 }
 
 li.menu-item.ui-sortable-helper .menu-item-transport .menu-item-bar {
+<<<<<<< HEAD
 	margin-top: 9px; /* Must use the same value used by the dragged item .menu-item-bar */
+=======
+	margin-top: 13px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .menu .sortable-placeholder {
 	height: 35px;
 	width: 410px;
+<<<<<<< HEAD
 	margin-top: 9px; /* Must use the same value used by the dragged item .menu-item-bar */
+=======
+	margin-top: 13px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /* Hide the transport list when it's empty */
@@ -784,7 +826,11 @@ body.menu-max-depth-11 { min-width: 1280px !important; }
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	body.nav-menus-php,
 	body.wp-customizer {
 		min-width: 0 !important;

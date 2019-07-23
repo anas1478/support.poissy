@@ -1,8 +1,12 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/gallery.js
  */
 
 /* global unescape, getUserSetting, setUserSetting, wpgallery, tinymce */
+=======
+/* global unescape, getUserSetting, setUserSetting */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 jQuery(document).ready(function($) {
 	var gallerySortable, gallerySortableInit, sortIt, clearAll, w, desc = false;
@@ -88,12 +92,21 @@ jQuery(document).ready(function($) {
 	}
 });
 
+<<<<<<< HEAD
 jQuery(window).unload( function () { window.tinymce = window.tinyMCE = window.wpgallery = null; } ); // Cleanup
 
 /* gallery settings */
 window.tinymce = null;
 
 window.wpgallery = {
+=======
+jQuery(window).unload( function () { tinymce = tinyMCE = wpgallery = null; } ); // Cleanup
+
+/* gallery settings */
+var tinymce = null, tinyMCE, wpgallery;
+
+wpgallery = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	mcemode : false,
 	editor : {},
 	dom : {},
@@ -123,8 +136,13 @@ window.wpgallery = {
 		}
 
 		// Find window & API
+<<<<<<< HEAD
 		window.tinymce = w.tinymce;
 		window.tinyMCE = w.tinyMCE;
+=======
+		tinymce = w.tinymce;
+		tinyMCE = w.tinyMCE;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		t.editor = tinymce.EditorManager.activeEditor;
 
 		t.setup();

@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["annotations"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 316);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 314);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -496,7 +500,11 @@ function isShallowEqual( a, b, fromIndex ) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 316:
+=======
+/***/ 314:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

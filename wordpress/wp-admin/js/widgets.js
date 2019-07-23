@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/widgets.js
  */
@@ -8,6 +9,14 @@
 	var $document = $( document );
 
 window.wpWidgets = {
+=======
+/*global ajaxurl, isRtl */
+var wpWidgets;
+(function($) {
+	var $document = $( document );
+
+wpWidgets = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * A closed Sidebar that gets a Widget dragged over it.
 	 *
@@ -25,8 +34,12 @@ window.wpWidgets = {
 	l10n: {
 		save: '{save}',
 		saved: '{saved}',
+<<<<<<< HEAD
 		saveAlert: '{saveAlert}',
 		widgetAdded: '{widgetAdded}'
+=======
+		saveAlert: '{saveAlert}'
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	},
 
 	/**
@@ -181,16 +194,28 @@ window.wpWidgets = {
 						widget.removeClass( 'open' );
 					});
 				}
+<<<<<<< HEAD
+=======
+				e.preventDefault();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else if ( target.hasClass('widget-control-save') ) {
 				wpWidgets.save( target.closest('div.widget'), 0, 1, 0 );
 				e.preventDefault();
 			} else if ( target.hasClass('widget-control-remove') ) {
 				wpWidgets.save( target.closest('div.widget'), 1, 1, 0 );
+<<<<<<< HEAD
+=======
+				e.preventDefault();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else if ( target.hasClass('widget-control-close') ) {
 				widget = target.closest('div.widget');
 				widget.removeClass( 'open' );
 				toggleBtn.attr( 'aria-expanded', 'false' );
 				wpWidgets.close( widget );
+<<<<<<< HEAD
+=======
+				e.preventDefault();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else if ( target.attr( 'id' ) === 'inactive-widgets-control-remove' ) {
 				wpWidgets.removeInactiveWidgets();
 				e.preventDefault();
@@ -247,8 +272,11 @@ window.wpWidgets = {
 			/**
 			 * Open Sidebar when a Widget gets dragged over it.
 			 *
+<<<<<<< HEAD
 			 * @ignore
 			 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * @param {object} event jQuery event object.
 			 */
 			over: function( event ) {
@@ -272,8 +300,11 @@ window.wpWidgets = {
 			/**
 			 * Close Sidebar when the Widget gets dragged out of it.
 			 *
+<<<<<<< HEAD
 			 * @ignore
 			 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * @param {object} event jQuery event object.
 			 */
 			out: function( event ) {
@@ -435,6 +466,7 @@ window.wpWidgets = {
 		$( '#widgets-right .widgets-holder-wrap' ).each( function( index, element ) {
 			var $element = $( element ),
 				name = $element.find( '.sidebar-name h2' ).text(),
+<<<<<<< HEAD
 				ariaLabel = $element.find( '.sidebar-name' ).data( 'add-to' ),
 				id = $element.find( '.widgets-sortables' ).attr( 'id' ),
 				li = $( '<li>' ),
@@ -450,12 +482,20 @@ window.wpWidgets = {
 			if ( index === 0 ) {
 				li.addClass( 'widgets-chooser-selected' );
 				button.attr( 'aria-pressed', 'true' );
+=======
+				id = $element.find( '.widgets-sortables' ).attr( 'id' ),
+				li = $('<li tabindex="0">').text( $.trim( name ) );
+
+			if ( index === 0 ) {
+				li.addClass( 'widgets-chooser-selected' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			selectSidebar.append( li );
 			li.data( 'sidebarId', id );
 		});
 
+<<<<<<< HEAD
 		$( '#available-widgets .widget .widget-top' ).on( 'click.widgets-chooser', function() {
 			var $widget = $( this ).closest( '.widget' ),
 				toggleButton = $( this ).find( '.widget-action' ),
@@ -463,11 +503,18 @@ window.wpWidgets = {
 
 			if ( $widget.hasClass( 'widget-in-question' ) || $( '#widgets-left' ).hasClass( 'chooser' ) ) {
 				toggleButton.attr( 'aria-expanded', 'false' );
+=======
+		$( '#available-widgets .widget .widget-title' ).on( 'click.widgets-chooser', function() {
+			var $widget = $(this).closest( '.widget' );
+
+			if ( $widget.hasClass( 'widget-in-question' ) || $( '#widgets-left' ).hasClass( 'chooser' ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				self.closeChooser();
 			} else {
 				// Open the chooser
 				self.clearWidgetSelection();
 				$( '#widgets-left' ).addClass( 'chooser' );
+<<<<<<< HEAD
 				// Add CSS class and insert the chooser after the widget description.
 				$widget.addClass( 'widget-in-question' ).children( '.widget-description' ).after( chooser );
 				// Open the chooser with a slide down animation.
@@ -482,6 +529,17 @@ window.wpWidgets = {
 					$( this )
 						.attr( 'aria-pressed', 'true' )
 						.closest( 'li' ).addClass( 'widgets-chooser-selected' );
+=======
+				$widget.addClass( 'widget-in-question' ).children( '.widget-description' ).after( chooser );
+
+				chooser.slideDown( 300, function() {
+					selectSidebar.find('.widgets-chooser-selected').focus();
+				});
+
+				selectSidebar.find( 'li' ).on( 'focusin.widgets-chooser', function() {
+					selectSidebar.find('.widgets-chooser-selected').removeClass( 'widgets-chooser-selected' );
+					$(this).addClass( 'widgets-chooser-selected' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				} );
 			}
 		});
@@ -497,7 +555,19 @@ window.wpWidgets = {
 				self.closeChooser();
 			}
 		}).on( 'keyup.widgets-chooser', function( event ) {
+<<<<<<< HEAD
 			if ( event.which === $.ui.keyCode.ESCAPE ) {
+=======
+			if ( event.which === $.ui.keyCode.ENTER ) {
+				if ( $( event.target ).hasClass( 'widgets-chooser-cancel' ) ) {
+					// Close instead of adding when pressing Enter on the Cancel button
+					self.closeChooser();
+				} else {
+					self.addWidget( chooser );
+					self.closeChooser();
+				}
+			} else if ( event.which === $.ui.keyCode.ESCAPE ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				self.closeChooser();
 			}
 		});
@@ -717,20 +787,30 @@ window.wpWidgets = {
 			// Cannot use a callback in the animation above as it fires twice,
 			// have to queue this "by hand".
 			widget.find( '.widget-title' ).trigger('click');
+<<<<<<< HEAD
 			// At the end of the animation, announce the widget has been added.
 			window.wp.a11y.speak( wpWidgets.l10n.widgetAdded, 'assertive' );
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}, 250 );
 	},
 
 	closeChooser: function() {
+<<<<<<< HEAD
 		var self = this,
 			widgetInQuestion = $( '#available-widgets .widget-in-question' );
+=======
+		var self = this;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$( '.widgets-chooser' ).slideUp( 200, function() {
 			$( '#wpbody-content' ).append( this );
 			self.clearWidgetSelection();
+<<<<<<< HEAD
 			// Move focus back to the toggle button.
 			widgetInQuestion.find( '.widget-action' ).attr( 'aria-expanded', 'false' ).focus();
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		});
 	},
 

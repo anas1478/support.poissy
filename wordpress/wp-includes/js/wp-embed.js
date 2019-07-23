@@ -2,7 +2,10 @@
  * WordPress inline HTML embed
  *
  * @since 4.4.0
+<<<<<<< HEAD
  * @output wp-includes/js/wp-embed.js
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * This file cannot have ampersands in it. This is to ensure
  * it can be embedded in older versions of WordPress.

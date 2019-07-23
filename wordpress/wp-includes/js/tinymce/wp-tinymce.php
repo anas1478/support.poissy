@@ -1,14 +1,18 @@
 <?php
 /**
+<<<<<<< HEAD
  * Not used in core since 5.1.
  * This is a back-compat for plugins that may be using this method of loading directly.
  */
 
 /**
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * Disable error reporting
  *
  * Set this to error_reporting( -1 ) for debugging.
  */
+<<<<<<< HEAD
 error_reporting( 0 );
 
 $basepath = dirname( __FILE__ );
@@ -24,10 +28,26 @@ function get_file( $path ) {
 	}
 
 	return @file_get_contents( $path );
+=======
+error_reporting(0);
+
+$basepath = dirname(__FILE__);
+
+function get_file($path) {
+
+	if ( function_exists('realpath') )
+		$path = realpath($path);
+
+	if ( ! $path || ! @is_file($path) )
+		return false;
+
+	return @file_get_contents($path);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 $expires_offset = 31536000; // 1 year
 
+<<<<<<< HEAD
 header( 'Content-Type: application/javascript; charset=UTF-8' );
 header( 'Vary: Accept-Encoding' ); // Handle proxies
 header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', time() + $expires_offset ) . ' GMT' );
@@ -37,6 +57,20 @@ if ( isset( $_GET['c'] ) && ( $file = get_file( $basepath . '/wp-tinymce.js' ) )
 	echo $file;
 } else {
 	// Even further back compat.
+=======
+header('Content-Type: application/javascript; charset=UTF-8');
+header('Vary: Accept-Encoding'); // Handle proxies
+header('Expires: ' . gmdate( "D, d M Y H:i:s", time() + $expires_offset ) . ' GMT');
+header("Cache-Control: public, max-age=$expires_offset");
+
+if ( isset($_GET['c']) && 1 == $_GET['c'] && isset($_SERVER['HTTP_ACCEPT_ENCODING'])
+	&& false !== stripos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') && ( $file = get_file($basepath . '/wp-tinymce.js.gz') ) ) {
+
+	header('Content-Encoding: gzip');
+	echo $file;
+} else {
+	// Back compat. This file shouldn't be used if this condition can occur (as in, if gzip isn't accepted).
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	echo get_file( $basepath . '/tinymce.min.js' );
 	echo get_file( $basepath . '/plugins/compat3x/plugin.min.js' );
 }

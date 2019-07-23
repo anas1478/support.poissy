@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/widgets/media-audio-widget.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* eslint consistent-this: [ "error", "control" ] */
 (function( component ) {
 	'use strict';
@@ -11,10 +14,17 @@
 	/**
 	 * Custom audio details frame that removes the replace-audio state.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.controlConstructors~AudioDetailsMediaFrame
 	 * @augments wp.media.view.MediaFrame.AudioDetails
 	 */
 	AudioDetailsMediaFrame = wp.media.view.MediaFrame.AudioDetails.extend(/** @lends wp.mediaWidgets.controlConstructors~AudioDetailsMediaFrame.prototype */{
+=======
+	 * @class AudioDetailsMediaFrame
+	 * @constructor
+	 */
+	AudioDetailsMediaFrame = wp.media.view.MediaFrame.AudioDetails.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Create the default states.
@@ -44,8 +54,13 @@
 	 *
 	 * See WP_Widget_Audio::enqueue_admin_scripts() for amending prototype from PHP exports.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.modelConstructors.media_audio
 	 * @augments wp.mediaWidgets.MediaWidgetModel
+=======
+	 * @class AudioWidgetModel
+	 * @constructor
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	AudioWidgetModel = component.MediaWidgetModel.extend({});
 
@@ -54,10 +69,17 @@
 	 *
 	 * See WP_Widget_Audio::enqueue_admin_scripts() for amending prototype from PHP exports.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.controlConstructors.media_audio
 	 * @augments wp.mediaWidgets.MediaWidgetControl
 	 */
 	AudioWidgetControl = component.MediaWidgetControl.extend(/** @lends wp.mediaWidgets.controlConstructors.media_audio.prototype */{
+=======
+	 * @class AudioWidgetModel
+	 * @constructor
+	 */
+	AudioWidgetControl = component.MediaWidgetControl.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Show display settings.

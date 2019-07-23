@@ -82,12 +82,19 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 
 			<span class="more-details theme-details" id="{{ data.section }}-{{ data.theme.id }}-action" aria-label="<?php echo esc_attr( $details_label ); ?>"><?php _e( 'Theme Details' ); ?></span>
 
+<<<<<<< HEAD
 			<div class="theme-author">
 			<?php
 				/* translators: Theme author name */
 				printf( _x( 'By %s', 'theme author' ), '{{ data.theme.author }}' );
 			?>
 			</div>
+=======
+			<div class="theme-author"><?php
+				/* translators: Theme author name */
+				printf( _x( 'By %s', 'theme author' ), '{{ data.theme.author }}' );
+			?></div>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			<# if ( 'installed' === data.theme.type && data.theme.hasUpdate ) { #>
 				<div class="update-message notice inline notice-warning notice-alt" data-slug="{{ data.theme.id }}">
@@ -130,6 +137,10 @@ class WP_Customize_Theme_Control extends WP_Customize_Control {
 				</div>
 			<# } #>
 		</div>
+<<<<<<< HEAD
 		<?php
+=======
+	<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

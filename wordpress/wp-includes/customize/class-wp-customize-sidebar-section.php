@@ -40,7 +40,11 @@ class WP_Customize_Sidebar_Section extends WP_Customize_Section {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
+<<<<<<< HEAD
 		$json              = parent::json();
+=======
+		$json = parent::json();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$json['sidebarId'] = $this->sidebar_id;
 		return $json;
 	}

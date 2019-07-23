@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/admin-bar.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* jshint loopfunc: true */
 // use jQuery and hoverIntent if loaded
 if ( typeof(jQuery) != 'undefined' ) {
@@ -14,6 +17,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 	jQuery(document).ready(function($){
 		var adminbar = $('#wpadminbar'), refresh, touchOpen, touchClose, disableHoverIntent = false;
 
+<<<<<<< HEAD
 		/**
 		 * Forces the browser to refresh the tabbing index.
 		 *
@@ -27,11 +31,15 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 * @return {void}
 		 */
 		refresh = function(i, el){
+=======
+		refresh = function(i, el){ // force the browser to refresh the tabbing index
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			var node = $(el), tab = node.attr('tabindex');
 			if ( tab )
 				node.attr('tabindex', '0').attr('tabindex', tab);
 		};
 
+<<<<<<< HEAD
 		/**
 		 * Adds or removes the hover class on touch.
 		 *
@@ -41,6 +49,8 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		touchOpen = function(unbind) {
 			adminbar.find('li.menupop').on('click.wp-mobile-hover', function(e) {
 				var el = $(this);
@@ -68,6 +78,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			});
 		};
 
+<<<<<<< HEAD
 		/**
 		 * Removes the hover class if clicked or touched outside the admin bar.
 		 *
@@ -75,6 +86,8 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		touchClose = function() {
 			var mobileEvent = /Mobile\/.+Safari/.test(navigator.userAgent) ? 'touchstart' : 'click';
 			// close any open drop-downs when the click/touch is not on the toolbar
@@ -86,8 +99,11 @@ if ( typeof(jQuery) != 'undefined' ) {
 
 		adminbar.removeClass('nojq').removeClass('nojs');
 
+<<<<<<< HEAD
 		// If clicked on the adminbar add the hoverclass, if clicked outside it remove
 		// it.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( 'ontouchstart' in window ) {
 			adminbar.on('touchstart', function(){
 				touchOpen(true);
@@ -99,7 +115,10 @@ if ( typeof(jQuery) != 'undefined' ) {
 			touchClose();
 		}
 
+<<<<<<< HEAD
 		// Adds or removes the hover class based on the hover intent.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		adminbar.find('li.menupop').hoverIntent({
 			over: function() {
 				if ( disableHoverIntent )
@@ -118,6 +137,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			interval: 100
 		});
 
+<<<<<<< HEAD
 		// Prevents the toolbar from covering up content when a hash is present in the
 		// URL.
 		if ( window.location.hash )
@@ -133,6 +153,11 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 **/
+=======
+		if ( window.location.hash )
+			window.scrollBy( 0, -32 );
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$('#wp-admin-bar-get-shortlink').click(function(e){
 			e.preventDefault();
 			$(this).addClass('selected').children('.shortlink-input').blur(function(){
@@ -140,6 +165,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			}).focus().select();
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Removes the hoverclass if the enter key is pressed.
 		 *
@@ -152,6 +178,9 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 */
 		$('#wpadminbar li.menupop > .ab-item').bind('keydown.adminbar', function(e){
 			// Key code 13 is the enter key.
+=======
+		$('#wpadminbar li.menupop > .ab-item').bind('keydown.adminbar', function(e){
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( e.which != 13 )
 				return;
 
@@ -174,6 +203,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			target.siblings('.ab-sub-wrapper').find('.ab-item').each(refresh);
 		}).each(refresh);
 
+<<<<<<< HEAD
 		/**
 		 * Removes the hover class when the escape key is pressed.
 		 *
@@ -186,6 +216,9 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 */
 		$('#wpadminbar .ab-item').bind('keydown.adminbar', function(e){
 			// Key code 27 is the escape key.
+=======
+		$('#wpadminbar .ab-item').bind('keydown.adminbar', function(e){
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( e.which != 27 )
 				return;
 
@@ -198,6 +231,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			target.siblings('.ab-sub-wrapper').find('.ab-item').each(refresh);
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Scrolls to top of page by clicking the adminbar.
 		 *
@@ -205,6 +239,8 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		adminbar.click( function(e) {
 			if ( e.target.id != 'wpadminbar' && e.target.id != 'wp-admin-bar-top-secondary' ) {
 				return;
@@ -215,6 +251,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			e.preventDefault();
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Sets the focus on an element with a href attribute.
 		 *
@@ -224,6 +261,9 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 */
+=======
+		// fix focus bug in WebKit
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$('.screen-reader-shortcut').keydown( function(e) {
 			var id, ua;
 
@@ -242,6 +282,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 		});
 
 		$( '#adminbar-search' ).on({
+<<<<<<< HEAD
 			/**
 			 * Adds the adminbar-focused class on focus.
 			 *
@@ -254,17 +295,26 @@ if ( typeof(jQuery) != 'undefined' ) {
 			 *
 			 * @return {void}
 			 */
+=======
+			focus: function() {
+				$( '#adminbarsearch' ).addClass( 'adminbar-focused' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}, blur: function() {
 				$( '#adminbarsearch' ).removeClass( 'adminbar-focused' );
 			}
 		} );
 
+<<<<<<< HEAD
 		if ( 'sessionStorage' in window ) {
 			/**
 			 * Empties sessionStorage on logging out.
 			 *
 			 * @return {void}
 			 */
+=======
+		// Empty sessionStorage on logging out
+		if ( 'sessionStorage' in window ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$('#wp-admin-bar-logout a').click( function() {
 				try {
 					for ( var key in sessionStorage ) {
@@ -282,6 +332,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 		}
 	});
 } else {
+<<<<<<< HEAD
 	/**
 	 * Wrapper function for the adminbar that's used if jQuery isn't available.
 	 *
@@ -310,12 +361,21 @@ if ( typeof(jQuery) != 'undefined' ) {
 					return fn.call( obj, window.event );
 				} );
 			}
+=======
+	(function(d, w) {
+		var addEvent = function( obj, type, fn ) {
+			if ( obj.addEventListener )
+				obj.addEventListener(type, fn, false);
+			else if ( obj.attachEvent )
+				obj.attachEvent('on' + type, function() { return fn.call(obj, window.event);});
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		},
 
 		aB, hc = new RegExp('\\bhover\\b', 'g'), q = [],
 		rselected = new RegExp('\\bselected\\b', 'g'),
 
 		/**
+<<<<<<< HEAD
 		 * Gets the timeout ID of the given element.
 		 *
 		 * @since 3.1.0
@@ -323,6 +383,9 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 * @param {HTMLElement} el The HTML element.
 		 *
 		 * @return {number|boolean} The ID value of the timer that is set or false.
+=======
+		 * Get the timeout ID of the given element
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		getTOID = function(el) {
 			var i = q.length;
@@ -333,6 +396,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			return false;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Adds the hoverclass to menu items.
 		 *
@@ -342,12 +406,17 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		addHoverClass = function(t) {
 			var i, id, inA, hovering, ul, li,
 				ancestors = [],
 				ancestorLength = 0;
 
+<<<<<<< HEAD
 			// aB is adminbar. d is document.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			while ( t && t != aB && t != d ) {
 				if ( 'LI' == t.nodeName.toUpperCase() ) {
 					ancestors[ ancestors.length ] = t;
@@ -360,7 +429,11 @@ if ( typeof(jQuery) != 'undefined' ) {
 				t = t.parentNode;
 			}
 
+<<<<<<< HEAD
 			// Removes any selected classes.
+=======
+			// Remove any selected classes.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( hovering && hovering.parentNode ) {
 				ul = hovering.parentNode;
 				if ( ul && 'UL' == ul.nodeName.toUpperCase() ) {
@@ -373,7 +446,11 @@ if ( typeof(jQuery) != 'undefined' ) {
 				}
 			}
 
+<<<<<<< HEAD
 			// Removes the hover class for any objects not in the immediate element's ancestry.
+=======
+			/* remove the hover class for any objects not in the immediate element's ancestry */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			i = q.length;
 			while ( i-- ) {
 				inA = false;
@@ -388,6 +465,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			}
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Removes the hoverclass from menu items.
 		 *
@@ -397,6 +475,8 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		removeHoverClass = function(t) {
 			while ( t && t != aB && t != d ) {
 				if ( 'LI' == t.nodeName.toUpperCase() ) {
@@ -411,6 +491,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			}
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Handles the click on the Shortlink link in the adminbar.
 		 *
@@ -420,6 +501,8 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {boolean} Returns false to prevent default click behavior.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		clickShortlink = function(e) {
 			var i, l, node,
 				t = e.target || e.srcElement;
@@ -458,6 +541,7 @@ if ( typeof(jQuery) != 'undefined' ) {
 			return false;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Scrolls to the top of the page.
 		 *
@@ -467,6 +551,8 @@ if ( typeof(jQuery) != 'undefined' ) {
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		scrollToTop = function(t) {
 			var distance, speed, step, steps, timer, speed_step;
 

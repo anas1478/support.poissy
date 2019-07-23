@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/widgets/media-gallery-widget.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* eslint consistent-this: [ "error", "control" ] */
 (function( component ) {
 	'use strict';
@@ -12,10 +15,17 @@
 	 * Custom gallery details frame.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets~GalleryDetailsMediaFrame
 	 * @augments wp.media.view.MediaFrame.Post
 	 */
 	GalleryDetailsMediaFrame = wp.media.view.MediaFrame.Post.extend(/** @lends wp.mediaWidgets~GalleryDetailsMediaFrame.prototype */{
+=======
+	 * @class GalleryDetailsMediaFrame
+	 * @constructor
+	 */
+	GalleryDetailsMediaFrame = wp.media.view.MediaFrame.Post.extend( {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Create the default states.
@@ -57,6 +67,7 @@
 	 * See WP_Widget_Gallery::enqueue_admin_scripts() for amending prototype from PHP exports.
 	 *
 	 * @since 4.9.0
+<<<<<<< HEAD
 	 *
 	 * @class    wp.mediaWidgets.modelConstructors.media_gallery
 	 * @augments wp.mediaWidgets.MediaWidgetModel
@@ -64,6 +75,23 @@
 	GalleryWidgetModel = component.MediaWidgetModel.extend(/** @lends wp.mediaWidgets.modelConstructors.media_gallery.prototype */{} );
 
 	GalleryWidgetControl = component.MediaWidgetControl.extend(/** @lends wp.mediaWidgets.controlConstructors.media_gallery.prototype */{
+=======
+	 * @class GalleryWidgetModel
+	 * @constructor
+	 */
+	GalleryWidgetModel = component.MediaWidgetModel.extend( {} );
+
+	/**
+	 * Gallery widget control.
+	 *
+	 * See WP_Widget_Gallery::enqueue_admin_scripts() for amending prototype from PHP exports.
+	 *
+	 * @since 4.9.0
+	 * @class GalleryWidgetControl
+	 * @constructor
+	 */
+	GalleryWidgetControl = component.MediaWidgetControl.extend( {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * View events.
@@ -76,12 +104,16 @@
 		} ),
 
 		/**
+<<<<<<< HEAD
 		 * Gallery widget control.
 		 *
 		 * See WP_Widget_Gallery::enqueue_admin_scripts() for amending prototype from PHP exports.
 		 *
 		 * @constructs wp.mediaWidgets.controlConstructors.media_gallery
 		 * @augments   wp.mediaWidgets.MediaWidgetControl
+=======
+		 * Initialize.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 4.9.0
 		 * @param {Object}         options - Options.

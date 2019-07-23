@@ -48,9 +48,14 @@
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
+<<<<<<< HEAD
 	color: #124964;
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+	outline: none;
+	color: #124964;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .media-frame a.button {
@@ -196,9 +201,12 @@
 	color: #00a0d2;
 	border-color: #5b9dd9;
 	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
 	outline-offset: -2px;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .media-modal-close span.media-modal-icon {
@@ -787,8 +795,11 @@
 
 .media-frame select.attachment-filters:last-of-type {
 	margin-right: 0;
+<<<<<<< HEAD
 	width: auto;
 	max-width: 100%;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -841,9 +852,13 @@
 	box-shadow:
 		inset 0 0 2px 3px #fff,
 		inset 0 0 0 7px #5b9dd9;
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
 	outline-offset: -6px;
+=======
+	outline: none;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui .selected.attachment {
@@ -919,7 +934,11 @@
 	top: 0;
 	left: 0;
 	width: 100%;
+<<<<<<< HEAD
 	height: 100%;
+=======
+	height: 100%; /* Fails with spaces?? Weird! */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	transform: translate( 50%, 50% );
 }
 
@@ -1019,11 +1038,14 @@
 		0 0 0 2px #0073aa;
 }
 
+<<<<<<< HEAD
 .wp-core-ui .attachment.selected .check:focus {
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .wp-core-ui .attachment.details .check .media-modal-icon,
 .wp-core-ui .media-frame.mode-grid .attachment.selected .check .media-modal-icon {
 	background-position: -21px 0;
@@ -1123,7 +1145,11 @@
 }
 
 .uploader-inline .close:focus {
+<<<<<<< HEAD
 	outline: 1px solid #5b9dd9;
+=======
+	outline: 1px solid  #5b9dd9;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 }
 
@@ -1498,8 +1524,11 @@
 	box-shadow:
 		0 0 0 1px #fff,
 		0 0 2px 3px #5b9dd9;
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui .media-selection .selected.attachment {
@@ -1792,9 +1821,14 @@
 .wp-core-ui.media-modal .image-editor .imgedit-help-toggle:focus {
 	color: #0074a2;
 	border-color: #5b9dd9;
+<<<<<<< HEAD
 	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
+=======
+	outline: none;
+	box-shadow: 0 0 3px rgba( 0, 115, 170, .8 );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui.media-modal .imgedit-group-top .dashicons-arrow-down.imgedit-help-toggle {

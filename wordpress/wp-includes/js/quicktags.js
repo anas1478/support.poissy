@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 
+=======
+/* global adminpage, wpActiveEditor, quicktagsL10n, wpLink, prompt */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /*
  * Quicktags
  *
@@ -16,17 +20,25 @@
  *
  * quicktags_id string The ID of the textarea that will be the editor canvas
  * buttons string Comma separated list of the default buttons names that will be shown in that instance.
+<<<<<<< HEAD
  *
  * @output wp-includes/js/quicktags.js
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 
 // new edit toolbar used with permission
 // by Alex King
 // http://www.alexking.org/
 
+<<<<<<< HEAD
 /* global adminpage, wpActiveEditor, quicktagsL10n, wpLink, prompt, edButtons */
 
 window.edButtons = [];
+=======
+var QTags, edCanvas,
+	edButtons = [];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /* jshint ignore:start */
 
@@ -35,6 +47,7 @@ window.edButtons = [];
  *
  * Define all former global functions so plugins that hack quicktags.js directly don't cause fatal errors.
  */
+<<<<<<< HEAD
 window.edAddTag = function(){};
 window.edCheckOpenTags = function(){};
 window.edCloseAllTags = function(){};
@@ -48,6 +61,48 @@ window.edShowButton = function(){};
 window.edShowLinks = function(){};
 window.edSpell = function(){};
 window.edToolbar = function(){};
+=======
+var edAddTag = function(){},
+edCheckOpenTags = function(){},
+edCloseAllTags = function(){},
+edInsertImage = function(){},
+edInsertLink = function(){},
+edInsertTag = function(){},
+edLink = function(){},
+edQuickLink = function(){},
+edRemoveTag = function(){},
+edShowButton = function(){},
+edShowLinks = function(){},
+edSpell = function(){},
+edToolbar = function(){};
+
+/**
+ * Initialize new instance of the Quicktags editor
+ */
+function quicktags(settings) {
+	return new QTags(settings);
+}
+
+/**
+ * Inserts content at the caret in the active editor (textarea)
+ *
+ * Added for back compatibility
+ * @see QTags.insertContent()
+ */
+function edInsertContent(bah, txt) {
+	return QTags.insertContent(txt);
+}
+
+/**
+ * Adds a button to all instances of the editor
+ *
+ * Added for back compatibility, use QTags.addButton() as it gives more flexibility like type of button, button placement, etc.
+ * @see QTags.addButton()
+ */
+function edButton(id, display, tagStart, tagEnd, access) {
+	return QTags.addButton( id, display, tagStart, tagEnd, access, '', -1 );
+}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /* jshint ignore:end */
 
@@ -125,9 +180,16 @@ window.edToolbar = function(){};
 			zeroise( now.getUTCMinutes() ) + ':' +
 			zeroise( now.getUTCSeconds() ) +
 			'+00:00';
+<<<<<<< HEAD
 	})();
 
 	var qt = window.QTags = function(settings) {
+=======
+	})(),
+	qt;
+
+	qt = QTags = function(settings) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( typeof(settings) === 'string' ) {
 			settings = {id: settings};
 		} else if ( typeof(settings) !== 'object' ) {
@@ -151,7 +213,11 @@ window.edToolbar = function(){};
 
 		if ( id === 'content' && typeof(adminpage) === 'string' && ( adminpage === 'post-new-php' || adminpage === 'post-php' ) ) {
 			// back compat hack :-(
+<<<<<<< HEAD
 			window.edCanvas = canvas;
+=======
+			edCanvas = canvas;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			toolbar_id = 'ed_toolbar';
 		} else {
 			toolbar_id = name + '_toolbar';
@@ -720,6 +786,7 @@ window.edToolbar = function(){};
 	edButtons[140] = new qt.CloseButton();
 
 })();
+<<<<<<< HEAD
 
 /**
  * Initialize new instance of the Quicktags editor
@@ -747,3 +814,5 @@ window.edInsertContent = function(bah, txt) {
 window.edButton = function(id, display, tagStart, tagEnd, access) {
 	return window.QTags.addButton( id, display, tagStart, tagEnd, access, '', -1 );
 };
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

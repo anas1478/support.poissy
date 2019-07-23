@@ -17,9 +17,14 @@
  * @return array Containing the headers in the format id => UI String
  */
 function get_column_headers( $screen ) {
+<<<<<<< HEAD
 	if ( is_string( $screen ) ) {
 		$screen = convert_to_screen( $screen );
 	}
+=======
+	if ( is_string( $screen ) )
+		$screen = convert_to_screen( $screen );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	static $column_headers = array();
 
@@ -99,6 +104,7 @@ function get_hidden_columns( $screen ) {
 function meta_box_prefs( $screen ) {
 	global $wp_meta_boxes;
 
+<<<<<<< HEAD
 	if ( is_string( $screen ) ) {
 		$screen = convert_to_screen( $screen );
 	}
@@ -108,6 +114,15 @@ function meta_box_prefs( $screen ) {
 	}
 
 	$hidden = get_hidden_meta_boxes( $screen );
+=======
+	if ( is_string( $screen ) )
+		$screen = convert_to_screen( $screen );
+
+	if ( empty($wp_meta_boxes[$screen->id]) )
+		return;
+
+	$hidden = get_hidden_meta_boxes($screen);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	foreach ( array_keys( $wp_meta_boxes[ $screen->id ] ) as $context ) {
 		foreach ( array( 'high', 'core', 'default', 'low' ) as $priority ) {
@@ -115,6 +130,7 @@ function meta_box_prefs( $screen ) {
 				continue;
 			}
 			foreach ( $wp_meta_boxes[ $screen->id ][ $context ][ $priority ] as $box ) {
+<<<<<<< HEAD
 				if ( false == $box || ! $box['title'] ) {
 					continue;
 				}
@@ -122,6 +138,13 @@ function meta_box_prefs( $screen ) {
 				if ( 'submitdiv' == $box['id'] || 'linksubmitdiv' == $box['id'] ) {
 					continue;
 				}
+=======
+				if ( false == $box || ! $box['title'] )
+					continue;
+				// Submit box cannot be hidden
+				if ( 'submitdiv' == $box['id'] || 'linksubmitdiv' == $box['id'] )
+					continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				$widget_title = $box['title'];
 
@@ -149,9 +172,14 @@ function meta_box_prefs( $screen ) {
  * @return array Hidden Meta Boxes
  */
 function get_hidden_meta_boxes( $screen ) {
+<<<<<<< HEAD
 	if ( is_string( $screen ) ) {
 		$screen = convert_to_screen( $screen );
 	}
+=======
+	if ( is_string( $screen ) )
+		$screen = convert_to_screen( $screen );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$hidden = get_user_option( "metaboxhidden_{$screen->id}" );
 
@@ -161,11 +189,18 @@ function get_hidden_meta_boxes( $screen ) {
 	if ( $use_defaults ) {
 		$hidden = array();
 		if ( 'post' == $screen->base ) {
+<<<<<<< HEAD
 			if ( 'post' == $screen->post_type || 'page' == $screen->post_type || 'attachment' == $screen->post_type ) {
 				$hidden = array( 'slugdiv', 'trackbacksdiv', 'postcustom', 'postexcerpt', 'commentstatusdiv', 'commentsdiv', 'authordiv', 'revisionsdiv' );
 			} else {
 				$hidden = array( 'slugdiv' );
 			}
+=======
+			if ( 'post' == $screen->post_type || 'page' == $screen->post_type || 'attachment' == $screen->post_type )
+				$hidden = array('slugdiv', 'trackbacksdiv', 'postcustom', 'postexcerpt', 'commentstatusdiv', 'commentsdiv', 'authordiv', 'revisionsdiv');
+			else
+				$hidden = array( 'slugdiv' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		/**
@@ -203,9 +238,14 @@ function get_hidden_meta_boxes( $screen ) {
 function add_screen_option( $option, $args = array() ) {
 	$current_screen = get_current_screen();
 
+<<<<<<< HEAD
 	if ( ! $current_screen ) {
 		return;
 	}
+=======
+	if ( ! $current_screen )
+		return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$current_screen->add_option( $option, $args );
 }
@@ -222,9 +262,14 @@ function add_screen_option( $option, $args = array() ) {
 function get_current_screen() {
 	global $current_screen;
 
+<<<<<<< HEAD
 	if ( ! isset( $current_screen ) ) {
 		return null;
 	}
+=======
+	if ( ! isset( $current_screen ) )
+		return null;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $current_screen;
 }
@@ -235,7 +280,11 @@ function get_current_screen() {
  * @since 3.0.0
  *
  * @param mixed $hook_name Optional. The hook name (also known as the hook suffix) used to determine the screen,
+<<<<<<< HEAD
  *                         or an existing screen object.
+=======
+ *	                       or an existing screen object.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 function set_current_screen( $hook_name = '' ) {
 	WP_Screen::get( $hook_name )->set_current_screen();

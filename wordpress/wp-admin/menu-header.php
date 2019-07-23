@@ -11,10 +11,17 @@
  *
  * @global string $self
  */
+<<<<<<< HEAD
 $self = preg_replace( '|^.*/wp-admin/network/|i', '', $_SERVER['PHP_SELF'] );
 $self = preg_replace( '|^.*/wp-admin/|i', '', $self );
 $self = preg_replace( '|^.*/plugins/|i', '', $self );
 $self = preg_replace( '|^.*/mu-plugins/|i', '', $self );
+=======
+$self = preg_replace('|^.*/wp-admin/network/|i', '', $_SERVER['PHP_SELF']);
+$self = preg_replace('|^.*/wp-admin/|i', '', $self);
+$self = preg_replace('|^.*/plugins/|i', '', $self);
+$self = preg_replace('|^.*/mu-plugins/|i', '', $self);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * For when admin-header is included from within a function.
@@ -72,6 +79,7 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 	// 0 = menu_title, 1 = capability, 2 = menu_slug, 3 = page_title, 4 = classes, 5 = hookname, 6 = icon_url
 	foreach ( $menu as $key => $item ) {
 		$admin_is_parent = false;
+<<<<<<< HEAD
 		$class           = array();
 		$aria_attributes = '';
 		$aria_hidden     = '';
@@ -93,10 +101,34 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 				$class[] = 'wp-has-current-submenu wp-menu-open';
 			} else {
 				$class[]          = 'current';
+=======
+		$class = array();
+		$aria_attributes = '';
+		$aria_hidden = '';
+		$is_separator = false;
+
+		if ( $first ) {
+			$class[] = 'wp-first-item';
+			$first = false;
+		}
+
+		$submenu_items = array();
+		if ( ! empty( $submenu[$item[2]] ) ) {
+			$class[] = 'wp-has-submenu';
+			$submenu_items = $submenu[$item[2]];
+		}
+
+		if ( ( $parent_file && $item[2] == $parent_file ) || ( empty($typenow) && $self == $item[2] ) ) {
+			if ( ! empty( $submenu_items ) ) {
+				$class[] = 'wp-has-current-submenu wp-menu-open';
+			} else {
+				$class[] = 'current';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$aria_attributes .= 'aria-current="page"';
 			}
 		} else {
 			$class[] = 'wp-not-current-submenu';
+<<<<<<< HEAD
 			if ( ! empty( $submenu_items ) ) {
 				$aria_attributes .= 'aria-haspopup="true"';
 			}
@@ -109,6 +141,18 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 		$class     = $class ? ' class="' . join( ' ', $class ) . '"' : '';
 		$id        = ! empty( $item[5] ) ? ' id="' . preg_replace( '|[^a-zA-Z0-9_:.]|', '-', $item[5] ) . '"' : '';
 		$img       = $img_style = '';
+=======
+			if ( ! empty( $submenu_items ) )
+				$aria_attributes .= 'aria-haspopup="true"';
+		}
+
+		if ( ! empty( $item[4] ) )
+			$class[] = esc_attr( $item[4] );
+
+		$class = $class ? ' class="' . join( ' ', $class ) . '"' : '';
+		$id = ! empty( $item[5] ) ? ' id="' . preg_replace( '|[^a-zA-Z0-9_:.]|', '-', $item[5] ) . '"' : '';
+		$img = $img_style = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$img_class = ' dashicons-before';
 
 		if ( false !== strpos( $class, 'wp-menu-separator' ) ) {
@@ -127,11 +171,19 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 			if ( 'none' === $item[6] || 'div' === $item[6] ) {
 				$img = '<br />';
 			} elseif ( 0 === strpos( $item[6], 'data:image/svg+xml;base64,' ) ) {
+<<<<<<< HEAD
 				$img       = '<br />';
 				$img_style = ' style="background-image:url(\'' . esc_attr( $item[6] ) . '\')"';
 				$img_class = ' svg';
 			} elseif ( 0 === strpos( $item[6], 'dashicons-' ) ) {
 				$img       = '<br />';
+=======
+				$img = '<br />';
+				$img_style = ' style="background-image:url(\'' . esc_attr( $item[6] ) . '\')"';
+				$img_class = ' svg';
+			} elseif ( 0 === strpos( $item[6], 'dashicons-' ) ) {
+				$img = '<br />';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$img_class = ' dashicons-before ' . sanitize_html_class( $item[6] );
 			}
 		}
@@ -139,7 +191,11 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 
 		$title = wptexturize( $item[0] );
 
+<<<<<<< HEAD
 		// Hide separators from screen readers.
+=======
+		// hide separators from screen readers
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( $is_separator ) {
 			$aria_hidden = ' aria-hidden="true"';
 		}
@@ -150,11 +206,18 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 			echo '<div class="separator"></div>';
 		} elseif ( $submenu_as_parent && ! empty( $submenu_items ) ) {
 			$submenu_items = array_values( $submenu_items );  // Re-index.
+<<<<<<< HEAD
 			$menu_hook     = get_plugin_page_hook( $submenu_items[0][2], $item[2] );
 			$menu_file     = $submenu_items[0][2];
 			if ( false !== ( $pos = strpos( $menu_file, '?' ) ) ) {
 				$menu_file = substr( $menu_file, 0, $pos );
 			}
+=======
+			$menu_hook = get_plugin_page_hook( $submenu_items[0][2], $item[2] );
+			$menu_file = $submenu_items[0][2];
+			if ( false !== ( $pos = strpos( $menu_file, '?' ) ) )
+				$menu_file = substr( $menu_file, 0, $pos );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( ! empty( $menu_hook ) || ( ( 'index.php' != $submenu_items[0][2] ) && file_exists( WP_PLUGIN_DIR . "/$menu_file" ) && ! file_exists( ABSPATH . "/wp-admin/$menu_file" ) ) ) {
 				$admin_is_parent = true;
 				echo "<a href='admin.php?page={$submenu_items[0][2]}'$class $aria_attributes>$arrow<div class='wp-menu-image$img_class'$img_style>$img</div><div class='wp-menu-name'>$title</div></a>";
@@ -164,9 +227,14 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 		} elseif ( ! empty( $item[2] ) && current_user_can( $item[1] ) ) {
 			$menu_hook = get_plugin_page_hook( $item[2], 'admin.php' );
 			$menu_file = $item[2];
+<<<<<<< HEAD
 			if ( false !== ( $pos = strpos( $menu_file, '?' ) ) ) {
 				$menu_file = substr( $menu_file, 0, $pos );
 			}
+=======
+			if ( false !== ( $pos = strpos( $menu_file, '?' ) ) )
+				$menu_file = substr( $menu_file, 0, $pos );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( ! empty( $menu_hook ) || ( ( 'index.php' != $item[2] ) && file_exists( WP_PLUGIN_DIR . "/$menu_file" ) && ! file_exists( ABSPATH . "/wp-admin/$menu_file" ) ) ) {
 				$admin_is_parent = true;
 				echo "\n\t<a href='admin.php?page={$item[2]}'$class $aria_attributes>$arrow<div class='wp-menu-image$img_class'$img_style>$img</div><div class='wp-menu-name'>{$item[0]}</div></a>";
@@ -183,6 +251,7 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 
 			// 0 = menu_title, 1 = capability, 2 = menu_slug, 3 = page_title, 4 = classes
 			foreach ( $submenu_items as $sub_key => $sub_item ) {
+<<<<<<< HEAD
 				if ( ! current_user_can( $sub_item[1] ) ) {
 					continue;
 				}
@@ -192,19 +261,35 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 				if ( $first ) {
 					$class[] = 'wp-first-item';
 					$first   = false;
+=======
+				if ( ! current_user_can( $sub_item[1] ) )
+					continue;
+
+				$class = array();
+				$aria_attributes = '';
+				if ( $first ) {
+					$class[] = 'wp-first-item';
+					$first = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 
 				$menu_file = $item[2];
 
+<<<<<<< HEAD
 				if ( false !== ( $pos = strpos( $menu_file, '?' ) ) ) {
 					$menu_file = substr( $menu_file, 0, $pos );
 				}
+=======
+				if ( false !== ( $pos = strpos( $menu_file, '?' ) ) )
+					$menu_file = substr( $menu_file, 0, $pos );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				// Handle current for post_type=post|page|foo pages, which won't match $self.
 				$self_type = ! empty( $typenow ) ? $self . '?post_type=' . $typenow : 'nothing';
 
 				if ( isset( $submenu_file ) ) {
 					if ( $submenu_file == $sub_item[2] ) {
+<<<<<<< HEAD
 						$class[]          = 'current';
 						$aria_attributes .= ' aria-current="page"';
 					}
@@ -215,6 +300,18 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 					( isset( $plugin_page ) && $plugin_page == $sub_item[2] && ( $item[2] == $self_type || $item[2] == $self || file_exists( $menu_file ) === false ) )
 				) {
 					$class[]          = 'current';
+=======
+						$class[] = 'current';
+						$aria_attributes .= ' aria-current="page"';
+					}
+				// If plugin_page is set the parent must either match the current page or not physically exist.
+				// This allows plugin pages with the same hook to exist under different parents.
+				} elseif (
+					( ! isset( $plugin_page ) && $self == $sub_item[2] ) ||
+					( isset( $plugin_page ) && $plugin_page == $sub_item[2] && ( $item[2] == $self_type || $item[2] == $self || file_exists($menu_file) === false ) )
+				) {
+					$class[] = 'current';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$aria_attributes .= ' aria-current="page"';
 				}
 
@@ -224,6 +321,7 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 
 				$class = $class ? ' class="' . join( ' ', $class ) . '"' : '';
 
+<<<<<<< HEAD
 				$menu_hook = get_plugin_page_hook( $sub_item[2], $item[2] );
 				$sub_file  = $sub_item[2];
 				if ( false !== ( $pos = strpos( $sub_file, '?' ) ) ) {
@@ -239,6 +337,21 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 					} else {
 						$sub_item_url = add_query_arg( array( 'page' => $sub_item[2] ), 'admin.php' );
 					}
+=======
+				$menu_hook = get_plugin_page_hook($sub_item[2], $item[2]);
+				$sub_file = $sub_item[2];
+				if ( false !== ( $pos = strpos( $sub_file, '?' ) ) )
+					$sub_file = substr($sub_file, 0, $pos);
+
+				$title = wptexturize($sub_item[0]);
+
+				if ( ! empty( $menu_hook ) || ( ( 'index.php' != $sub_item[2] ) && file_exists( WP_PLUGIN_DIR . "/$sub_file" ) && ! file_exists( ABSPATH . "/wp-admin/$sub_file" ) ) ) {
+					// If admin.php is the current page or if the parent exists as a file in the plugins or admin dir
+					if ( ( ! $admin_is_parent && file_exists( WP_PLUGIN_DIR . "/$menu_file" ) && ! is_dir( WP_PLUGIN_DIR . "/{$item[2]}" ) ) || file_exists( $menu_file ) )
+						$sub_item_url = add_query_arg( array( 'page' => $sub_item[2] ), $item[2] );
+					else
+						$sub_item_url = add_query_arg( array( 'page' => $sub_item[2] ), 'admin.php' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 					$sub_item_url = esc_url( $sub_item_url );
 					echo "<li$class><a href='$sub_item_url'$class$aria_attributes>$title</a></li>";
@@ -246,9 +359,15 @@ function _wp_menu_output( $menu, $submenu, $submenu_as_parent = true ) {
 					echo "<li$class><a href='{$sub_item[2]}'$class$aria_attributes>$title</a></li>";
 				}
 			}
+<<<<<<< HEAD
 			echo '</ul>';
 		}
 		echo '</li>';
+=======
+			echo "</ul>";
+		}
+		echo "</li>";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	echo '<li id="collapse-menu" class="hide-if-no-js">' .

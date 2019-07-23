@@ -128,6 +128,7 @@ final class WP_Taxonomy {
 	public $meta_box_cb = null;
 
 	/**
+<<<<<<< HEAD
 	 * The callback function for sanitizing taxonomy data saved from a meta box.
 	 *
 	 * @since 5.1.0
@@ -136,6 +137,8 @@ final class WP_Taxonomy {
 	public $meta_box_sanitize_cb = null;
 
 	/**
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * An array of object types this taxonomy is registered for.
 	 *
 	 * @since 4.7.0
@@ -147,7 +150,11 @@ final class WP_Taxonomy {
 	 * Capabilities for this taxonomy.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
 	 * @var object
+=======
+	 * @var array
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public $cap;
 
@@ -246,9 +253,15 @@ final class WP_Taxonomy {
 		 *
 		 * @since 4.4.0
 		 *
+<<<<<<< HEAD
 		 * @param array    $args        Array of arguments for registering a taxonomy.
 		 * @param string   $taxonomy    Taxonomy key.
 		 * @param string[] $object_type Array of names of object types for the taxonomy.
+=======
+		 * @param array  $args        Array of arguments for registering a taxonomy.
+		 * @param string $taxonomy    Taxonomy key.
+		 * @param array  $object_type Array of names of object types for the taxonomy.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		$args = apply_filters( 'register_taxonomy_args', $args, $this->name, (array) $object_type );
 
@@ -265,7 +278,10 @@ final class WP_Taxonomy {
 			'show_in_quick_edit'    => null,
 			'show_admin_column'     => false,
 			'meta_box_cb'           => null,
+<<<<<<< HEAD
 			'meta_box_sanitize_cb'  => null,
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'capabilities'          => array(),
 			'rewrite'               => true,
 			'query_var'             => $this->name,
@@ -295,6 +311,7 @@ final class WP_Taxonomy {
 		}
 
 		if ( false !== $args['rewrite'] && ( is_admin() || '' != get_option( 'permalink_structure' ) ) ) {
+<<<<<<< HEAD
 			$args['rewrite'] = wp_parse_args(
 				$args['rewrite'],
 				array(
@@ -303,6 +320,13 @@ final class WP_Taxonomy {
 					'ep_mask'      => EP_NONE,
 				)
 			);
+=======
+			$args['rewrite'] = wp_parse_args( $args['rewrite'], array(
+				'with_front'   => true,
+				'hierarchical' => false,
+				'ep_mask'      => EP_NONE,
+			) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			if ( empty( $args['rewrite']['slug'] ) ) {
 				$args['rewrite']['slug'] = sanitize_title_with_dashes( $this->name );
@@ -357,6 +381,7 @@ final class WP_Taxonomy {
 
 		$args['name'] = $this->name;
 
+<<<<<<< HEAD
 		// Default meta box sanitization callback depends on the value of 'meta_box_cb'.
 		if ( null === $args['meta_box_sanitize_cb'] ) {
 			switch ( $args['meta_box_cb'] ) {
@@ -371,12 +396,18 @@ final class WP_Taxonomy {
 			}
 		}
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		foreach ( $args as $property_name => $property_value ) {
 			$this->$property_name = $property_value;
 		}
 
 		$this->labels = get_taxonomy_labels( $this );
+<<<<<<< HEAD
 		$this->label  = $this->labels->name;
+=======
+		$this->label = $this->labels->name;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**

@@ -235,11 +235,14 @@
 	width: auto !important;
 }
 
+<<<<<<< HEAD
 /* Keep rule that is no longer necessary on widgets.php. */
 #available-widgets .widget-action {
 	display: none;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .ios #available-widgets {
 	transition: right 0s;
 }

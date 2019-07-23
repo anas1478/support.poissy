@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/custom-header.js
  */
@@ -12,14 +13,24 @@
  * @deprecated 4.1.0 The page this is used on is never linked to from the UI.
  *             Setting a custom header is completely handled by the Customizer.
  */
+=======
+/* global isRtl */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 (function($) {
 	var frame;
 
 	$( function() {
+<<<<<<< HEAD
 		// Fetch available headers.
 		var $headers = $('.available-headers');
 
 		// Apply jQuery.masonry once the images have loaded.
+=======
+		// Fetch available headers and apply jQuery.masonry
+		// once the images have loaded.
+		var $headers = $('.available-headers');
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$headers.imagesLoaded( function() {
 			$headers.masonry({
 				itemSelector: '.default-header',
@@ -27,6 +38,7 @@
 			});
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Opens the 'choose from library' frame and creates it if it doesn't exist.
 		 *
@@ -35,6 +47,9 @@
 		 *
 		 * @returns {void}
 		 */
+=======
+		// Build the choose from library frame.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$('#choose-from-library-link').click( function( event ) {
 			var $el = $(this);
 			event.preventDefault();
@@ -65,6 +80,7 @@
 				}
 			});
 
+<<<<<<< HEAD
 			/**
 			 * Updates the window location to include the selected attachment.
 			 *
@@ -73,6 +89,9 @@
 			 *
 			 * @returns {void}
 			 */
+=======
+			// When an image is selected, run a callback.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			frame.on( 'select', function() {
 				// Grab the selected attachment.
 				var attachment = frame.state().get('selection').first(),

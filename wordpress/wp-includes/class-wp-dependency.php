@@ -90,9 +90,14 @@ class _WP_Dependency {
 	 */
 	public function __construct() {
 		@list( $this->handle, $this->src, $this->deps, $this->ver, $this->args ) = func_get_args();
+<<<<<<< HEAD
 		if ( ! is_array( $this->deps ) ) {
 			$this->deps = array();
 		}
+=======
+		if ( ! is_array($this->deps) )
+			$this->deps = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -105,6 +110,7 @@ class _WP_Dependency {
 	 * @return bool False if not scalar, true otherwise.
 	 */
 	public function add_data( $name, $data ) {
+<<<<<<< HEAD
 		if ( ! is_scalar( $name ) ) {
 			return false;
 		}
@@ -126,6 +132,17 @@ class _WP_Dependency {
 		if ( ! is_string( $domain ) ) {
 			return false;
 		}
+=======
+		if ( !is_scalar($name) )
+			return false;
+		$this->extra[$name] = $data;
+		return true;
+	}
+
+	public function set_translations( $domain, $path = null ) {
+		if ( !is_string($domain) )
+			return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->textdomain        = $domain;
 		$this->translations_path = $path;
 		return true;

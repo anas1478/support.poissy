@@ -457,6 +457,7 @@ function isFormatEqual(format1, format2) {
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/rich-text/build-module/normalise-formats.js
 /**
+<<<<<<< HEAD
  * External dependencies
  */
 
@@ -465,6 +466,11 @@ function isFormatEqual(format1, format2) {
  */
 
 
+=======
+ * Internal dependencies
+ */
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /**
  * Normalises formats: ensures subsequent equal formats have the same reference.
  *
@@ -478,6 +484,7 @@ function normaliseFormats(_ref) {
       text = _ref.text,
       start = _ref.start,
       end = _ref.end;
+<<<<<<< HEAD
   var refs = [];
   var newFormats = formats.map(function (formatsAtIndex) {
     return formatsAtIndex.map(function (format) {
@@ -492,6 +499,23 @@ function normaliseFormats(_ref) {
       refs.push(format);
       return format;
     });
+=======
+  var newFormats = formats.slice(0);
+  newFormats.forEach(function (formatsAtIndex, index) {
+    var lastFormatsAtIndex = newFormats[index - 1];
+
+    if (lastFormatsAtIndex) {
+      var newFormatsAtIndex = formatsAtIndex.slice(0);
+      newFormatsAtIndex.forEach(function (format, formatIndex) {
+        var lastFormat = lastFormatsAtIndex[formatIndex];
+
+        if (isFormatEqual(format, lastFormat)) {
+          newFormatsAtIndex[formatIndex] = lastFormat;
+        }
+      });
+      newFormats[index] = newFormatsAtIndex;
+    }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   });
   return {
     formats: newFormats,
@@ -2780,6 +2804,7 @@ function unregisterFormatType(name) {
   return oldFormat;
 }
 
+<<<<<<< HEAD
 // CONCATENATED MODULE: ./node_modules/@wordpress/rich-text/build-module/get-line-index.js
 /**
  * Internal dependencies
@@ -3107,6 +3132,8 @@ function changeListType(value, newFormat) {
   });
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 // CONCATENATED MODULE: ./node_modules/@wordpress/rich-text/build-module/index.js
 /* concated harmony reexport applyFormat */__webpack_require__.d(__webpack_exports__, "applyFormat", function() { return applyFormat; });
 /* concated harmony reexport charAt */__webpack_require__.d(__webpack_exports__, "charAt", function() { return charAt; });
@@ -3135,12 +3162,15 @@ function changeListType(value, newFormat) {
 /* concated harmony reexport toggleFormat */__webpack_require__.d(__webpack_exports__, "toggleFormat", function() { return toggleFormat; });
 /* concated harmony reexport LINE_SEPARATOR */__webpack_require__.d(__webpack_exports__, "LINE_SEPARATOR", function() { return LINE_SEPARATOR; });
 /* concated harmony reexport unregisterFormatType */__webpack_require__.d(__webpack_exports__, "unregisterFormatType", function() { return unregisterFormatType; });
+<<<<<<< HEAD
 /* concated harmony reexport indentListItems */__webpack_require__.d(__webpack_exports__, "indentListItems", function() { return indentListItems; });
 /* concated harmony reexport outdentListItems */__webpack_require__.d(__webpack_exports__, "outdentListItems", function() { return outdentListItems; });
 /* concated harmony reexport changeListType */__webpack_require__.d(__webpack_exports__, "changeListType", function() { return changeListType; });
 
 
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 
 

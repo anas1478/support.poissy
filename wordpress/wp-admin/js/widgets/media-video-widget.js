@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/widgets/media-video-widget.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* eslint consistent-this: [ "error", "control" ] */
 (function( component ) {
 	'use strict';
@@ -11,12 +14,19 @@
 	/**
 	 * Custom video details frame that removes the replace-video state.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.controlConstructors~VideoDetailsMediaFrame
 	 * @augments wp.media.view.MediaFrame.VideoDetails
 	 *
 	 * @private
 	 */
 	VideoDetailsMediaFrame = wp.media.view.MediaFrame.VideoDetails.extend(/** @lends wp.mediaWidgets.controlConstructors~VideoDetailsMediaFrame.prototype */{
+=======
+	 * @class VideoDetailsMediaFrame
+	 * @constructor
+	 */
+	VideoDetailsMediaFrame = wp.media.view.MediaFrame.VideoDetails.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Create the default states.
@@ -55,8 +65,13 @@
 	 *
 	 * See WP_Widget_Video::enqueue_admin_scripts() for amending prototype from PHP exports.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.modelConstructors.media_video
 	 * @augments wp.mediaWidgets.MediaWidgetModel
+=======
+	 * @class VideoWidgetModel
+	 * @constructor
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	VideoWidgetModel = component.MediaWidgetModel.extend({});
 
@@ -65,10 +80,17 @@
 	 *
 	 * See WP_Widget_Video::enqueue_admin_scripts() for amending prototype from PHP exports.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.mediaWidgets.controlConstructors.media_video
 	 * @augments wp.mediaWidgets.MediaWidgetControl
 	 */
 	VideoWidgetControl = component.MediaWidgetControl.extend(/** @lends wp.mediaWidgets.controlConstructors.media_video.prototype */{
+=======
+	 * @class VideoWidgetControl
+	 * @constructor
+	 */
+	VideoWidgetControl = component.MediaWidgetControl.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Show display settings.

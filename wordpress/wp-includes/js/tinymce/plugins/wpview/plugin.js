@@ -1,6 +1,7 @@
 /**
  * WordPress View plugin.
  */
+<<<<<<< HEAD
 ( function( tinymce ) {
 	tinymce.PluginManager.add( 'wpview', function( editor ) {
 		function noop () {}
@@ -8,6 +9,12 @@
 		// Set this here as wp-tinymce.js may be loaded too early.
 		var wp = window.wp;
 
+=======
+( function( tinymce, wp ) {
+	tinymce.PluginManager.add( 'wpview', function( editor ) {
+		function noop () {}
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! wp || ! wp.mce || ! wp.mce.views ) {
 			return {
 				getView: noop
@@ -202,4 +209,8 @@
 			getView: noop
 		};
 	} );
+<<<<<<< HEAD
 } )( window.tinymce );
+=======
+} )( window.tinymce, window.wp );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

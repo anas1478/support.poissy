@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/comment.js
  */
@@ -6,6 +7,12 @@
 
 /**
  * Binds to the document ready event.
+=======
+/* global postboxes, commentL10n */
+
+/**
+ * @summary Binds to the document ready event.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 2.5.0
  *
@@ -22,7 +29,11 @@ jQuery(document).ready( function($) {
 		$edittimestamp = $timestampdiv.siblings( 'a.edit-timestamp' );
 
 	/**
+<<<<<<< HEAD
 	 * Adds event that opens the time stamp form if the form is hidden.
+=======
+	 * @summary Adds event that opens the time stamp form if the form is hidden.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @listens $edittimestamp:click
 	 *
@@ -41,7 +52,11 @@ jQuery(document).ready( function($) {
 	});
 
 	/**
+<<<<<<< HEAD
 	 * Resets the time stamp values when the cancel button is clicked.
+=======
+	 * @summary Resets the time stamp values when the cancel button is clicked.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @listens .cancel-timestamp:click
 	 *
@@ -63,7 +78,11 @@ jQuery(document).ready( function($) {
 	});
 
 	/**
+<<<<<<< HEAD
 	 * Sets the time stamp values when the ok button is clicked.
+=======
+	 * @summary Sets the time stamp values when the ok button is clicked.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @listens .save-timestamp:click
 	 *

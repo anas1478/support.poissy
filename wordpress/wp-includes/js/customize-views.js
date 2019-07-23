@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/customize-views.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 (function( $, wp, _ ) {
 
 	if ( ! wp || ! wp.customize ) { return; }

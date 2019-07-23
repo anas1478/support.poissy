@@ -18,7 +18,11 @@ global $post_type, $post_type_object, $post;
 
 if ( ! isset( $_GET['post_type'] ) ) {
 	$post_type = 'post';
+<<<<<<< HEAD
 } elseif ( in_array( $_GET['post_type'], get_post_types( array( 'show_ui' => true ) ) ) ) {
+=======
+} elseif ( in_array( $_GET['post_type'], get_post_types( array('show_ui' => true ) ) ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$post_type = $_GET['post_type'];
 } else {
 	wp_die( __( 'Invalid post type.' ) );
@@ -26,19 +30,31 @@ if ( ! isset( $_GET['post_type'] ) ) {
 $post_type_object = get_post_type_object( $post_type );
 
 if ( 'post' == $post_type ) {
+<<<<<<< HEAD
 	$parent_file  = 'edit.php';
 	$submenu_file = 'post-new.php';
 } elseif ( 'attachment' == $post_type ) {
 	if ( wp_redirect( admin_url( 'media-new.php' ) ) ) {
 		exit;
 	}
+=======
+	$parent_file = 'edit.php';
+	$submenu_file = 'post-new.php';
+} elseif ( 'attachment' == $post_type ) {
+	if ( wp_redirect( admin_url( 'media-new.php' ) ) )
+		exit;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } else {
 	$submenu_file = "post-new.php?post_type=$post_type";
 	if ( isset( $post_type_object ) && $post_type_object->show_in_menu && $post_type_object->show_in_menu !== true ) {
 		$parent_file = $post_type_object->show_in_menu;
 		// What if there isn't a post-new.php item for this post type?
 		if ( ! isset( $_registered_pages[ get_plugin_page_hookname( "post-new.php?post_type=$post_type", $post_type_object->show_in_menu ) ] ) ) {
+<<<<<<< HEAD
 			if ( isset( $_registered_pages[ get_plugin_page_hookname( "edit.php?post_type=$post_type", $post_type_object->show_in_menu ) ] ) ) {
+=======
+			if (	isset( $_registered_pages[ get_plugin_page_hookname( "edit.php?post_type=$post_type", $post_type_object->show_in_menu ) ] ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				// Fall back to edit.php for that post type, if it exists
 				$submenu_file = "edit.php?post_type=$post_type";
 			} else {
@@ -63,7 +79,16 @@ if ( ! current_user_can( $post_type_object->cap->edit_posts ) || ! current_user_
 	);
 }
 
+<<<<<<< HEAD
 $post    = get_default_post_to_edit( $post_type, true );
+=======
+// Schedule auto-draft cleanup
+if ( ! wp_next_scheduled( 'wp_scheduled_auto_draft_delete' ) ) {
+	wp_schedule_event( time(), 'daily', 'wp_scheduled_auto_draft_delete' );
+}
+
+$post = get_default_post_to_edit( $post_type, true );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 $post_ID = $post->ID;
 
 /** This filter is documented in wp-admin/post.php */

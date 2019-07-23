@@ -48,7 +48,11 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	 * @param array                $args    Optional. Arguments to override class property defaults.
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
+<<<<<<< HEAD
 		$this->statuses = array( '' => __( 'Default' ) );
+=======
+		$this->statuses = array( '' => __('Default') );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		parent::__construct( $manager, $id, $args );
 	}
 
@@ -70,9 +74,15 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
+<<<<<<< HEAD
 		$this->json['statuses']     = $this->statuses;
 		$this->json['defaultValue'] = $this->setting->default;
 		$this->json['mode']         = $this->mode;
+=======
+		$this->json['statuses'] = $this->statuses;
+		$this->json['defaultValue'] = $this->setting->default;
+		$this->json['mode'] = $this->mode;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -111,7 +121,11 @@ class WP_Customize_Color_Control extends WP_Customize_Control {
 				<input class="color-picker-hue" type="text" data-type="hue" />
 			<# } else { #>
 				<input class="color-picker-hex" type="text" maxlength="7" placeholder="{{ defaultValue }}" {{ defaultValueAttr }} />
+<<<<<<< HEAD
 			<# } #>
+=======
+ 			<# } #>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			</label>
 		</div>
 		<?php

@@ -1,8 +1,11 @@
 /* global pluploadL10n, plupload, _wpPluploadSettings */
 
+<<<<<<< HEAD
 /**
  * @namespace wp
  */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 window.wp = window.wp || {};
 
 ( function( exports, $ ) {
@@ -19,10 +22,13 @@ window.wp = window.wp || {};
 	 * This object bridges the Plupload API to integrate uploads into the
 	 * WordPress back end and the WordPress media experience.
 	 *
+<<<<<<< HEAD
 	 * @class
 	 * @memberOf wp
 	 * @alias wp.Uploader
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} options           The options passed to the new plupload instance.
 	 * @param {object} options.container The id of uploader container.
 	 * @param {object} options.browser   The id of button to trigger the file select.

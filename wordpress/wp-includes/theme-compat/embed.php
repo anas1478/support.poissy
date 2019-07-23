@@ -13,8 +13,12 @@
 get_header( 'embed' );
 
 if ( have_posts() ) :
+<<<<<<< HEAD
 	while ( have_posts() ) :
 		the_post();
+=======
+	while ( have_posts() ) : the_post();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		get_template_part( 'embed', 'content' );
 	endwhile;
 else :

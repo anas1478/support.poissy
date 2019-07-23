@@ -794,7 +794,11 @@ body.adding-menu-items #customize-preview iframe {
 }
 
 #accordion-section-add_menu .customize-add-menu-button {
+<<<<<<< HEAD
 	font-weight: 400;
+=======
+	font-weight: normal;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #create-new-menu-submit {
@@ -874,13 +878,21 @@ li.assigned-to-menu-location .add-new-menu-item {
 }
 
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#available-menu-items #available-menu-items-search .accordion-section-content {
 		top: 63px;
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 640px) {
+=======
+@media screen and ( max-width: 640px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#available-menu-items #available-menu-items-search .accordion-section-content {
 		top: 130px;
 	}

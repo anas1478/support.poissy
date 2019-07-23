@@ -95,7 +95,11 @@ wp_add_inline_script(
  * but should be included in its save payload.
  */
 $initial_edits = null;
+<<<<<<< HEAD
 $is_new_post   = false;
+=======
+$is_new_post = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 if ( 'auto-draft' === $post->post_status ) {
 	$is_new_post = true;
 	// Override "(Auto Draft)" new post default title with empty string, or filtered value.
@@ -273,7 +277,11 @@ $editor_settings = array(
 	'titlePlaceholder'       => apply_filters( 'enter_title_here', __( 'Add title' ), $post ),
 	'bodyPlaceholder'        => $body_placeholder,
 	'isRTL'                  => is_rtl(),
+<<<<<<< HEAD
 	'autosaveInterval'       => AUTOSAVE_INTERVAL,
+=======
+	'autosaveInterval'       => 10,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	'maxUploadFileSize'      => $max_upload_size,
 	'allowedMimeTypes'       => get_allowed_mime_types(),
 	'styles'                 => $styles,
@@ -408,7 +416,11 @@ require_once( ABSPATH . 'wp-admin/admin-header.php' );
 			<p>
 				<?php
 					$message = sprintf(
+<<<<<<< HEAD
 						/* translators: %s: Classic Editor plugin URL */
+=======
+						/* translators: %s: https://wordpress.org/plugins/classic-editor/ */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						__( 'The block editor requires JavaScript. Please enable JavaScript in your browser settings, or try the <a href="%s">Classic Editor plugin</a>.' ),
 						__( 'https://wordpress.org/plugins/classic-editor/' )
 					);

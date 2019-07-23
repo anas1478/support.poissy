@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Interim login dialog.
  *
@@ -14,6 +15,13 @@
 	 * @since 3.6.0
 	 * @private
 	 */
+=======
+/* global adminpage */
+// Interim login dialog
+(function($){
+	var wrap, next;
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function show() {
 		var parent = $('#wp-auth-check'),
 			form = $('#wp-auth-check-form'),
@@ -21,7 +29,11 @@
 			frame, loaded = false;
 
 		if ( form.length ) {
+<<<<<<< HEAD
 			// Add unload confirmation to counter (frame-busting) JS redirects.
+=======
+			// Add unload confirmation to counter (frame-busting) JS redirects
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$(window).on( 'beforeunload.wp-auth-check', function(e) {
 				e.originalEvent.returnValue = window.authcheckL10n.beforeunload;
 			});
@@ -51,8 +63,12 @@
 					else
 						parent.css( 'max-height', height + 40 + 'px' );
 				} else if ( ! body || ! body.length ) {
+<<<<<<< HEAD
 					// Catch "silent" iframe origin exceptions in WebKit after another page is
 					// loaded in the iframe.
+=======
+					// Catch "silent" iframe origin exceptions in WebKit after another page is loaded in the iframe
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					wrap.addClass('fallback');
 					parent.css( 'max-height', '' );
 					form.remove();
@@ -68,8 +84,12 @@
 
 		if ( frame ) {
 			frame.focus();
+<<<<<<< HEAD
 			// WebKit doesn't throw an error if the iframe fails to load because of
 			// "X-Frame-Options: DENY" header.
+=======
+			// WebKit doesn't throw an error if the iframe fails to load because of "X-Frame-Options: DENY" header.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			// Wait for 10 sec. and switch to the fallback text.
 			setTimeout( function() {
 				if ( ! loaded ) {
@@ -83,6 +103,7 @@
 		}
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Hides the authentication form popup.
 	 *
@@ -94,6 +115,12 @@
 
 		// When on the Edit Post screen, speed up heartbeat after the user logs in to
 		// quickly refresh nonces.
+=======
+	function hide() {
+		$(window).off( 'beforeunload.wp-auth-check' );
+
+		// When on the Edit Post screen, speed up heartbeat after the user logs in to quickly refresh nonces
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( typeof adminpage !== 'undefined' && ( adminpage === 'post-php' || adminpage === 'post-new-php' ) &&
 			typeof wp !== 'undefined' && wp.heartbeat ) {
 
@@ -108,6 +135,7 @@
 		});
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Schedules when the next time the authentication check will be done.
 	 *
@@ -134,6 +162,13 @@
 	 * @param {Object} e The heartbeat-tick event that has been triggered.
 	 * @param {Object} data Response data.
 	 */
+=======
+	function schedule() {
+		var interval = parseInt( window.authcheckL10n.interval, 10 ) || 180; // in seconds, default 3 min.
+		next = ( new Date() ).getTime() + ( interval * 1000 );
+	}
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$( document ).on( 'heartbeat-tick.wp-auth-check', function( e, data ) {
 		if ( 'wp-auth-check' in data ) {
 			schedule();
@@ -143,6 +178,7 @@
 				hide();
 			}
 		}
+<<<<<<< HEAD
 
 	/**
 	 * Binds to the Heartbeat Send event.
@@ -154,10 +190,13 @@
 	 * @param {Object} e The heartbeat-send event that has been triggered.
 	 * @param {Object} data Response data.
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}).on( 'heartbeat-send.wp-auth-check', function( e, data ) {
 		if ( ( new Date() ).getTime() > next ) {
 			data['wp-auth-check'] = true;
 		}
+<<<<<<< HEAD
 
 	}).ready( function() {
 		schedule();
@@ -169,6 +208,10 @@
 		 *
 		 * @since 3.6.0
 		 */
+=======
+	}).ready( function() {
+		schedule();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wrap = $('#wp-auth-check-wrap');
 		wrap.find('.wp-auth-check-close').on( 'click', function() {
 			hide();

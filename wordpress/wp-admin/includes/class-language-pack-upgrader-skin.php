@@ -16,6 +16,7 @@
  * @see WP_Upgrader_Skin
  */
 class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
+<<<<<<< HEAD
 	public $language_update        = null;
 	public $done_header            = false;
 	public $done_footer            = false;
@@ -35,6 +36,23 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 		if ( $args['skip_header_footer'] ) {
 			$this->done_header            = true;
 			$this->done_footer            = true;
+=======
+	public $language_update = null;
+	public $done_header = false;
+	public $done_footer = false;
+	public $display_footer_actions = true;
+
+	/**
+	 *
+	 * @param array $args
+	 */
+	public function __construct( $args = array() ) {
+		$defaults = array( 'url' => '', 'nonce' => '', 'title' => __( 'Update Translations' ), 'skip_header_footer' => false );
+		$args = wp_parse_args( $args, $defaults );
+		if ( $args['skip_header_footer'] ) {
+			$this->done_header = true;
+			$this->done_footer = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->display_footer_actions = false;
 		}
 		parent::__construct( $args );
@@ -47,11 +65,18 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 
 		echo '<div class="update-messages lp-show-latest">';
 
+<<<<<<< HEAD
 		/* translators: 1: name of project, 2: language */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		printf( '<h2>' . __( 'Updating translations for %1$s (%2$s)&#8230;' ) . '</h2>', $name, $this->language_update->language );
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param string|WP_Error $error
 	 */
 	public function error( $error ) {
@@ -70,7 +95,11 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 	 */
 	public function bulk_footer() {
 		$this->decrement_update_count( 'translation' );
+<<<<<<< HEAD
 		$update_actions                 = array();
+=======
+		$update_actions = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$update_actions['updates_page'] = '<a href="' . self_admin_url( 'update-core.php' ) . '" target="_parent">' . __( 'Return to WordPress Updates page' ) . '</a>';
 
 		/**
@@ -78,6 +107,7 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 		 *
 		 * @since 3.7.0
 		 *
+<<<<<<< HEAD
 		 * @param string[] $update_actions Array of translations update links.
 		 */
 		$update_actions = apply_filters( 'update_translations_complete_actions', $update_actions );
@@ -85,5 +115,13 @@ class Language_Pack_Upgrader_Skin extends WP_Upgrader_Skin {
 		if ( $update_actions && $this->display_footer_actions ) {
 			$this->feedback( implode( ' | ', $update_actions ) );
 		}
+=======
+		 * @param array $update_actions Array of translations update links.
+		 */
+		$update_actions = apply_filters( 'update_translations_complete_actions', $update_actions );
+
+		if ( $update_actions && $this->display_footer_actions )
+			$this->feedback( implode( ' | ', $update_actions ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

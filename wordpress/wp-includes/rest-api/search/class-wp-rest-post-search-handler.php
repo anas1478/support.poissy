@@ -68,6 +68,7 @@ class WP_REST_Post_Search_Handler extends WP_REST_Search_Handler {
 			$query_args['s'] = $request['search'];
 		}
 
+<<<<<<< HEAD
 		/**
 		 * Filters the query arguments for a search request.
 		 *
@@ -80,6 +81,8 @@ class WP_REST_Post_Search_Handler extends WP_REST_Search_Handler {
 		 */
 		$query_args = apply_filters( 'rest_post_search_query', $query_args, $request );
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$query     = new WP_Query();
 		$found_ids = $query->query( $query_args );
 		$total     = $query->found_posts;

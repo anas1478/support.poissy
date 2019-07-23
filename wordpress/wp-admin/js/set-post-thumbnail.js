@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/set-post-thumbnail.js
  */
@@ -6,6 +7,12 @@
 /* exported WPSetAsThumbnail */
 
 window.WPSetAsThumbnail = function( id, nonce ) {
+=======
+/* global setPostThumbnailL10n, ajaxurl, post_id, alert */
+/* exported WPSetAsThumbnail */
+
+function WPSetAsThumbnail( id, nonce ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	var $link = jQuery('a#wp-post-thumbnail-' + id);
 
 	$link.text( setPostThumbnailL10n.saving );
@@ -25,4 +32,8 @@ window.WPSetAsThumbnail = function( id, nonce ) {
 		}
 	}
 	);
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

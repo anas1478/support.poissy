@@ -5,7 +5,11 @@
  *
  * Set this to error_reporting( -1 ) for debugging.
  */
+<<<<<<< HEAD
 error_reporting( 0 );
+=======
+error_reporting(0);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /** Set ABSPATH for execution */
 if ( ! defined( 'ABSPATH' ) ) {
@@ -15,23 +19,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'WPINC', 'wp-includes' );
 
 $load = $_GET['load'];
+<<<<<<< HEAD
 if ( is_array( $load ) ) {
 	$load = implode( '', $load );
 }
+=======
+if ( is_array( $load ) )
+	$load = implode( '', $load );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 $load = preg_replace( '/[^a-z0-9,_-]+/i', '', $load );
 $load = array_unique( explode( ',', $load ) );
 
+<<<<<<< HEAD
 if ( empty( $load ) ) {
 	exit;
 }
+=======
+if ( empty($load) )
+	exit;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 require( ABSPATH . 'wp-admin/includes/noop.php' );
 require( ABSPATH . WPINC . '/script-loader.php' );
 require( ABSPATH . WPINC . '/version.php' );
 
 $expires_offset = 31536000; // 1 year
+<<<<<<< HEAD
 $out            = '';
+=======
+$out = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 $wp_scripts = new WP_Scripts();
 wp_default_scripts( $wp_scripts );
@@ -48,6 +66,7 @@ if ( isset( $_SERVER['HTTP_IF_NONE_MATCH'] ) && stripslashes( $_SERVER['HTTP_IF_
 }
 
 foreach ( $load as $handle ) {
+<<<<<<< HEAD
 	if ( ! array_key_exists( $handle, $wp_scripts->registered ) ) {
 		continue;
 	}
@@ -60,6 +79,19 @@ header( "Etag: $wp_version" );
 header( 'Content-Type: application/javascript; charset=UTF-8' );
 header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', time() + $expires_offset ) . ' GMT' );
 header( "Cache-Control: public, max-age=$expires_offset" );
+=======
+	if ( !array_key_exists($handle, $wp_scripts->registered) )
+		continue;
+
+	$path = ABSPATH . $wp_scripts->registered[$handle]->src;
+	$out .= get_file($path) . "\n";
+}
+
+header("Etag: $wp_version");
+header('Content-Type: application/javascript; charset=UTF-8');
+header('Expires: ' . gmdate( "D, d M Y H:i:s", time() + $expires_offset ) . ' GMT');
+header("Cache-Control: public, max-age=$expires_offset");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 echo $out;
 exit;

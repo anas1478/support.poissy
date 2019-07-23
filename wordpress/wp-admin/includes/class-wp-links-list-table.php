@@ -27,6 +27,7 @@ class WP_Links_List_Table extends WP_List_Table {
 	 * @param array $args An associative array of arguments.
 	 */
 	public function __construct( $args = array() ) {
+<<<<<<< HEAD
 		parent::__construct(
 			array(
 				'plural' => 'bookmarks',
@@ -36,6 +37,16 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
+=======
+		parent::__construct( array(
+			'plural' => 'bookmarks',
+			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
+		) );
+	}
+
+	/**
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return bool
 	 */
 	public function ajax_user_can() {
@@ -43,6 +54,10 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @global int    $cat_id
 	 * @global string $s
 	 * @global string $orderby
@@ -53,6 +68,7 @@ class WP_Links_List_Table extends WP_List_Table {
 
 		wp_reset_vars( array( 'action', 'cat_id', 'link_id', 'orderby', 'order', 's' ) );
 
+<<<<<<< HEAD
 		$args = array(
 			'hide_invisible' => 0,
 			'hide_empty'     => 0,
@@ -70,6 +86,18 @@ class WP_Links_List_Table extends WP_List_Table {
 		if ( ! empty( $order ) ) {
 			$args['order'] = $order;
 		}
+=======
+		$args = array( 'hide_invisible' => 0, 'hide_empty' => 0 );
+
+		if ( 'all' != $cat_id )
+			$args['category'] = $cat_id;
+		if ( !empty( $s ) )
+			$args['search'] = $s;
+		if ( !empty( $orderby ) )
+			$args['orderby'] = $orderby;
+		if ( !empty( $order ) )
+			$args['order'] = $order;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->items = get_bookmarks( $args );
 	}
@@ -81,22 +109,35 @@ class WP_Links_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @return array
 	 */
 	protected function get_bulk_actions() {
 		$actions           = array();
+=======
+	 *
+	 * @return array
+	 */
+	protected function get_bulk_actions() {
+		$actions = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$actions['delete'] = __( 'Delete' );
 
 		return $actions;
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @global int $cat_id
 	 * @param string $which
 	 */
 	protected function extra_tablenav( $which ) {
 		global $cat_id;
 
+<<<<<<< HEAD
 		if ( 'top' != $which ) {
 			return;
 		}
@@ -112,17 +153,43 @@ class WP_Links_List_Table extends WP_List_Table {
 				'hierarchical'    => 1,
 				'show_count'      => 0,
 				'orderby'         => 'name',
+=======
+		if ( 'top' != $which )
+			return;
+?>
+		<div class="alignleft actions">
+<?php
+			$dropdown_options = array(
+				'selected' => $cat_id,
+				'name' => 'cat_id',
+				'taxonomy' => 'link_category',
+				'show_option_all' => get_taxonomy( 'link_category' )->labels->all_items,
+				'hide_empty' => true,
+				'hierarchical' => 1,
+				'show_count' => 0,
+				'orderby' => 'name',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 
 			echo '<label class="screen-reader-text" for="cat_id">' . __( 'Filter by category' ) . '</label>';
 			wp_dropdown_categories( $dropdown_options );
 			submit_button( __( 'Filter' ), '', 'filter_action', false, array( 'id' => 'post-query-submit' ) );
+<<<<<<< HEAD
 		?>
 		</div>
 		<?php
 	}
 
 	/**
+=======
+?>
+		</div>
+<?php
+	}
+
+	/**
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	public function get_columns() {
@@ -133,11 +200,19 @@ class WP_Links_List_Table extends WP_List_Table {
 			'categories' => __( 'Categories' ),
 			'rel'        => __( 'Relationship' ),
 			'visible'    => __( 'Visible' ),
+<<<<<<< HEAD
 			'rating'     => __( 'Rating' ),
+=======
+			'rating'     => __( 'Rating' )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	protected function get_sortable_columns() {
@@ -145,7 +220,11 @@ class WP_Links_List_Table extends WP_List_Table {
 			'name'    => 'name',
 			'url'     => 'url',
 			'visible' => 'visible',
+<<<<<<< HEAD
 			'rating'  => 'rating',
+=======
+			'rating'  => 'rating'
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 	}
 
@@ -183,8 +262,12 @@ class WP_Links_List_Table extends WP_List_Table {
 	 */
 	public function column_name( $link ) {
 		$edit_link = get_edit_bookmark_link( $link );
+<<<<<<< HEAD
 		printf(
 			'<strong><a class="row-title" href="%s" aria-label="%s">%s</a></strong>',
+=======
+		printf( '<strong><a class="row-title" href="%s" aria-label="%s">%s</a></strong>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$edit_link,
 			/* translators: %s: link name */
 			esc_attr( sprintf( __( 'Edit &#8220;%s&#8221;' ), $link->link_name ) ),
@@ -290,6 +373,7 @@ class WP_Links_List_Table extends WP_List_Table {
 
 	public function display_rows() {
 		foreach ( $this->items as $link ) {
+<<<<<<< HEAD
 			$link                = sanitize_bookmark( $link );
 			$link->link_name     = esc_attr( $link->link_name );
 			$link->link_category = wp_get_link_cats( $link->link_id );
@@ -298,6 +382,16 @@ class WP_Links_List_Table extends WP_List_Table {
 			<?php $this->single_row_columns( $link ); ?>
 		</tr>
 			<?php
+=======
+			$link = sanitize_bookmark( $link );
+			$link->link_name = esc_attr( $link->link_name );
+			$link->link_category = wp_get_link_cats( $link->link_id );
+?>
+		<tr id="link-<?php echo $link->link_id; ?>">
+			<?php $this->single_row_columns( $link ) ?>
+		</tr>
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -318,9 +412,15 @@ class WP_Links_List_Table extends WP_List_Table {
 
 		$edit_link = get_edit_bookmark_link( $link );
 
+<<<<<<< HEAD
 		$actions           = array();
 		$actions['edit']   = '<a href="' . $edit_link . '">' . __( 'Edit' ) . '</a>';
 		$actions['delete'] = "<a class='submitdelete' href='" . wp_nonce_url( "link.php?action=delete&amp;link_id=$link->link_id", 'delete-bookmark_' . $link->link_id ) . "' onclick=\"if ( confirm( '" . esc_js( sprintf( __( "You are about to delete this link '%s'\n  'Cancel' to stop, 'OK' to delete." ), $link->link_name ) ) . "' ) ) { return true;}return false;\">" . __( 'Delete' ) . '</a>';
+=======
+		$actions = array();
+		$actions['edit'] = '<a href="' . $edit_link . '">' . __('Edit') . '</a>';
+		$actions['delete'] = "<a class='submitdelete' href='" . wp_nonce_url("link.php?action=delete&amp;link_id=$link->link_id", 'delete-bookmark_' . $link->link_id) . "' onclick=\"if ( confirm( '" . esc_js(sprintf(__("You are about to delete this link '%s'\n  'Cancel' to stop, 'OK' to delete."), $link->link_name)) . "' ) ) { return true;}return false;\">" . __('Delete') . "</a>";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $this->row_actions( $actions );
 	}
 }

@@ -1,13 +1,21 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/tags-box.js
  */
 
 /* jshint curly: false, eqeqeq: false */
 /* global ajaxurl, tagBox, array_unique_noempty */
+=======
+/* jshint curly: false, eqeqeq: false */
+/* global ajaxurl */
+
+var tagBox, array_unique_noempty;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 ( function( $ ) {
 	var tagDelimiter = ( window.tagsSuggestL10n && window.tagsSuggestL10n.tagDelimiter ) || ',';
 
+<<<<<<< HEAD
 	/**
 	 * Filters unique items and returns a new array.
 	 *
@@ -26,6 +34,12 @@
 		var out = [];
 
 		// Trim the values and ensure they are unique.
+=======
+	// Return an array with any duplicate, whitespace or empty values removed
+	array_unique_noempty = function( array ) {
+		var out = [];
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$.each( array, function( key, val ) {
 			val = $.trim( val );
 
@@ -37,6 +51,7 @@
 		return out;
 	};
 
+<<<<<<< HEAD
 	/**
 	 * The TagBox object.
 	 *
@@ -58,6 +73,9 @@
 		 *
 		 * @return {string} The cleaned up tags.
 		 */
+=======
+	tagBox = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		clean : function( tags ) {
 			if ( ',' !== tagDelimiter ) {
 				tags = tags.replace( new RegExp( tagDelimiter, 'g' ), ',' );
@@ -72,6 +90,7 @@
 			return tags;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Parses tags and makes them editable.
 		 *
@@ -82,6 +101,8 @@
 		 *
 		 * @return {boolean} Always returns false.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		parseTags : function(el) {
 			var id = el.id,
 				num = id.split('-check-num-')[1],
@@ -92,7 +113,10 @@
 
 			delete current_tags[num];
 
+<<<<<<< HEAD
 			// Sanitize the current tags and push them as if they're new tags.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$.each( current_tags, function( key, val ) {
 				val = $.trim( val );
 				if ( val ) {
@@ -106,6 +130,7 @@
 			return false;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Creates clickable links, buttons and fields for adding or editing tags.
 		 *
@@ -116,6 +141,8 @@
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		quickClicks : function( el ) {
 			var thetags = $('.the-tags', el),
 				tagchecklist = $('.tagchecklist', el),
@@ -130,6 +157,7 @@
 			current_tags = thetags.val().split( tagDelimiter );
 			tagchecklist.empty();
 
+<<<<<<< HEAD
 			/**
 			 * Creates a delete button if tag editing is enabled, before adding it to the tag list.
 			 *
@@ -141,6 +169,8 @@
 			 *
 			 * @return {void}
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$.each( current_tags, function( key, val ) {
 				var listItem, xbutton;
 
@@ -163,6 +193,7 @@
 						'<span class="screen-reader-text">' + window.tagsSuggestL10n.removeTerm + ' ' + listItem.html() + '</span>' +
 						'</button>' );
 
+<<<<<<< HEAD
 					/**
 					 * Handles the click and keypress event of the tag remove button.
 					 *
@@ -175,6 +206,8 @@
 					 *
 					 * @return {void}
 					 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					xbutton.on( 'click keypress', function( e ) {
 						// On click or when using the Enter/Spacebar keys.
 						if ( 'click' === e.type || 13 === e.keyCode || 32 === e.keyCode ) {
@@ -198,11 +231,15 @@
 				// Append the list item to the tag list.
 				tagchecklist.append( listItem );
 			});
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			// The buttons list is built now, give feedback to screen reader users.
 			tagBox.screenReadersMessage();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Adds a new tag.
 		 *
@@ -219,6 +256,8 @@
 		 *
 		 * @return {boolean} Always returns false.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		flushTags : function( el, a, f ) {
 			var tagsval, newtags, text,
 				tags = $( '.the-tags', el ),
@@ -255,6 +294,7 @@
 			return false;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Retrieves the available tags and creates a tagcloud.
 		 *
@@ -283,6 +323,11 @@
 			 *
 			 * @return {void}
 			 */
+=======
+		get : function( id ) {
+			var tax = id.substr( id.indexOf('-') + 1 );
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$.post( ajaxurl, { 'action': 'get-tagcloud', 'tax': tax }, function( r, stat ) {
 				if ( 0 === r || 'success' != stat ) {
 					return;
@@ -290,6 +335,7 @@
 
 				r = $( '<div id="tagcloud-' + tax + '" class="the-tagcloud">' + r + '</div>' );
 
+<<<<<<< HEAD
 				/**
 				 * Adds a new tag when a tag in the tagcloud is clicked.
 				 *
@@ -297,6 +343,8 @@
 				 *
 				 * @return {boolean} Returns false to prevent the default action.
 				 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$( 'a', r ).click( function() {
 					tagBox.userAction = 'add';
 					tagBox.flushTags( $( '#' + tax ), this );
@@ -315,6 +363,7 @@
 		userAction: '',
 
 		/**
+<<<<<<< HEAD
 		 * Dispatches an audible message to screen readers.
 		 *
 		 * This will inform the user when a tag has been added or removed.
@@ -322,6 +371,11 @@
 		 * @since 4.7.0
 		 *
 		 * @return {void}
+=======
+		 * Dispatch an audible message to screen readers.
+		 *
+		 * @since 4.7.0
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		screenReadersMessage: function() {
 			var message;
@@ -342,6 +396,7 @@
 			window.wp.a11y.speak( message, 'assertive' );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Initializes the tags box by setting up the links, buttons. Sets up event
 		 * handling.
@@ -354,6 +409,8 @@
 		 *
 		 * @return {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		init : function() {
 			var ajaxtag = $('div.ajaxtag');
 
@@ -366,6 +423,7 @@
 				tagBox.flushTags( $( this ).closest( '.tagsdiv' ) );
 			});
 
+<<<<<<< HEAD
 			/**
 			 * Handles pressing enter on the new tag input field.
 			 *
@@ -377,6 +435,8 @@
 			 *
 			 * @return {void}
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$( 'input.newtag', ajaxtag ).keypress( function( event ) {
 				if ( 13 == event.which ) {
 					tagBox.userAction = 'add';
@@ -393,6 +453,7 @@
 				$( element ).wpTagsSuggest();
 			});
 
+<<<<<<< HEAD
 			/**
 			 * Before a post is saved the value currently in the new tag input field will be
 			 * added as a tag.
@@ -401,12 +462,16 @@
 			 *
 			 * @return {void}
 			 */
+=======
+			// save tags on post save/publish
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$('#post').submit(function(){
 				$('div.tagsdiv').each( function() {
 					tagBox.flushTags(this, false, 1);
 				});
 			});
 
+<<<<<<< HEAD
 			/**
 			 * Handles clicking on the tag cloud link.
 			 *
@@ -416,6 +481,9 @@
 			 *
 			 * @return {void}
 			 */
+=======
+			// Fetch and toggle the Tag cloud.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$('.tagcloud-link').click(function(){
 				// On the first click, fetch the tag cloud and insert it in the DOM.
 				tagBox.get( $( this ).attr( 'id' ) );

@@ -75,7 +75,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 
 		// Attaching media to a post requires ability to edit said post.
 		if ( ! empty( $request['post'] ) ) {
+<<<<<<< HEAD
 			$parent           = get_post( (int) $request['post'] );
+=======
+			$parent = get_post( (int) $request['post'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$post_parent_type = get_post_type_object( $parent->post_type );
 
 			if ( ! current_user_can( $post_parent_type->cap->edit_post, $request['post'] ) ) {
@@ -101,7 +105,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		}
 
 		// Get the file via $_FILES or raw data.
+<<<<<<< HEAD
 		$files   = $request->get_file_params();
+=======
+		$files = $request->get_file_params();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$headers = $request->get_headers();
 
 		if ( ! empty( $files ) ) {
@@ -116,11 +124,19 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 
 		$name       = basename( $file['file'] );
 		$name_parts = pathinfo( $name );
+<<<<<<< HEAD
 		$name       = trim( substr( $name, 0, -( 1 + strlen( $name_parts['extension'] ) ) ) );
 
 		$url  = $file['url'];
 		$type = $file['type'];
 		$file = $file['file'];
+=======
+		$name       = trim( substr( $name, 0, -(1 + strlen( $name_parts['extension'] ) ) ) );
+
+		$url     = $file['url'];
+		$type    = $file['type'];
+		$file    = $file['file'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Include image functions to get access to wp_read_image_metadata().
 		require_once ABSPATH . 'wp-admin/includes/image.php';
@@ -138,9 +154,15 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 			}
 		}
 
+<<<<<<< HEAD
 		$attachment                 = $this->prepare_item_for_database( $request );
 		$attachment->post_mime_type = $type;
 		$attachment->guid           = $url;
+=======
+		$attachment = $this->prepare_item_for_database( $request );
+		$attachment->post_mime_type = $type;
+		$attachment->guid = $url;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( empty( $attachment->post_title ) ) {
 			$attachment->post_title = preg_replace( '/\.[^.]+$/', '', basename( $file ) );
@@ -228,7 +250,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		}
 
 		$response = rest_ensure_response( $response );
+<<<<<<< HEAD
 		$data     = $response->get_data();
+=======
+		$data = $response->get_data();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( isset( $request['alt_text'] ) ) {
 			update_post_meta( $data['id'], '_wp_attachment_image_alt', $request['alt_text'] );
@@ -421,10 +447,17 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		$schema = parent::get_item_schema();
 
 		$schema['properties']['alt_text'] = array(
+<<<<<<< HEAD
 			'description' => __( 'Alternative text to display when attachment is not displayed.' ),
 			'type'        => 'string',
 			'context'     => array( 'view', 'edit', 'embed' ),
 			'arg_options' => array(
+=======
+			'description'     => __( 'Alternative text to display when attachment is not displayed.' ),
+			'type'            => 'string',
+			'context'         => array( 'view', 'edit', 'embed' ),
+			'arg_options'     => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'sanitize_callback' => 'sanitize_text_field',
 			),
 		);
@@ -438,7 +471,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 				'validate_callback' => null, // Note: validation implemented in self::prepare_item_for_database()
 			),
 			'properties'  => array(
+<<<<<<< HEAD
 				'raw'      => array(
+=======
+				'raw' => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'Caption for the attachment, as it exists in the database.' ),
 					'type'        => 'string',
 					'context'     => array( 'edit' ),
@@ -461,7 +498,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 				'validate_callback' => null, // Note: validation implemented in self::prepare_item_for_database()
 			),
 			'properties'  => array(
+<<<<<<< HEAD
 				'raw'      => array(
+=======
+				'raw' => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'Description for the object, as it exists in the database.' ),
 					'type'        => 'string',
 					'context'     => array( 'edit' ),
@@ -476,6 +517,7 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 		);
 
 		$schema['properties']['media_type'] = array(
+<<<<<<< HEAD
 			'description' => __( 'Attachment type.' ),
 			'type'        => 'string',
 			'enum'        => array( 'image', 'file' ),
@@ -509,6 +551,41 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 			'format'      => 'uri',
 			'context'     => array( 'view', 'edit', 'embed' ),
 			'readonly'    => true,
+=======
+			'description'     => __( 'Attachment type.' ),
+			'type'            => 'string',
+			'enum'            => array( 'image', 'file' ),
+			'context'         => array( 'view', 'edit', 'embed' ),
+			'readonly'        => true,
+		);
+
+		$schema['properties']['mime_type'] = array(
+			'description'     => __( 'The attachment MIME type.' ),
+			'type'            => 'string',
+			'context'         => array( 'view', 'edit', 'embed' ),
+			'readonly'        => true,
+		);
+
+		$schema['properties']['media_details'] = array(
+			'description'     => __( 'Details about the media file, specific to its type.' ),
+			'type'            => 'object',
+			'context'         => array( 'view', 'edit', 'embed' ),
+			'readonly'        => true,
+		);
+
+		$schema['properties']['post'] = array(
+			'description'     => __( 'The ID for the associated post of the attachment.' ),
+			'type'            => 'integer',
+			'context'         => array( 'view', 'edit' ),
+		);
+
+		$schema['properties']['source_url'] = array(
+			'description'     => __( 'URL to the original attachment file.' ),
+			'type'            => 'string',
+			'format'          => 'uri',
+			'context'         => array( 'view', 'edit', 'embed' ),
+			'readonly'        => true,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		unset( $schema['properties']['password'] );
@@ -678,6 +755,7 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 	 * @return array Query parameters for the attachment collection as an array.
 	 */
 	public function get_collection_params() {
+<<<<<<< HEAD
 		$params                            = parent::get_collection_params();
 		$params['status']['default']       = 'inherit';
 		$params['status']['items']['enum'] = array( 'inherit', 'private', 'trash' );
@@ -688,6 +766,18 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 			'description' => __( 'Limit result set to attachments of a particular media type.' ),
 			'type'        => 'string',
 			'enum'        => array_keys( $media_types ),
+=======
+		$params = parent::get_collection_params();
+		$params['status']['default'] = 'inherit';
+		$params['status']['items']['enum'] = array( 'inherit', 'private', 'trash' );
+		$media_types = $this->get_media_types();
+
+		$params['media_type'] = array(
+			'default'           => null,
+			'description'       => __( 'Limit result set to attachments of a particular media type.' ),
+			'type'              => 'string',
+			'enum'              => array_keys( $media_types ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		$params['mime_type'] = array(
@@ -744,7 +834,11 @@ class WP_REST_Attachments_Controller extends WP_REST_Posts_Controller {
 
 		// Pass off to WP to handle the actual upload.
 		$overrides = array(
+<<<<<<< HEAD
 			'test_form' => false,
+=======
+			'test_form'   => false,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		// Bypasses is_uploaded_file() when running unit tests.

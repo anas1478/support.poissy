@@ -103,12 +103,15 @@ if (typeof FormData === 'undefined' || !FormData.prototype.keys) {
       : [name + '', value + '']
   }
 
+<<<<<<< HEAD
   function each (arr, cb) {
     for (let i = 0; i < arr.length; i++) {
       cb(arr[i])
     }
   }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   /**
    * @implements {Iterable}
    */
@@ -125,6 +128,7 @@ if (typeof FormData === 'undefined' || !FormData.prototype.keys) {
       if (!form)
         return this
 
+<<<<<<< HEAD
       const self = this
 
       each(form.elements, elm => {
@@ -144,6 +148,22 @@ if (typeof FormData === 'undefined' || !FormData.prototype.keys) {
           self.append(elm.name, elm.value)
         }
       })
+=======
+      for (let elm of arrayFrom(form.elements)) {
+        if (!elm.name || elm.disabled) continue
+
+        if (elm.type === 'file')
+          for (let file of arrayFrom(elm.files || []))
+            this.append(elm.name, file)
+        else if (elm.type === 'select-multiple' || elm.type === 'select-one')
+          for (let opt of arrayFrom(elm.options))
+            !opt.disabled && opt.selected && this.append(elm.name, opt.value)
+        else if (elm.type === 'checkbox' || elm.type === 'radio') {
+          if (elm.checked) this.append(elm.name, elm.value)
+        } else
+          this.append(elm.name, elm.value)
+      }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     }
 
 
@@ -370,7 +390,11 @@ if (typeof FormData === 'undefined' || !FormData.prototype.keys) {
 
   // Patch xhr's send method to call _blob transparently
   if (_send) {
+<<<<<<< HEAD
     XMLHttpRequest.prototype.send = function(data) {
+=======
+      XMLHttpRequest.prototype.send = function(data) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       // I would check if Content-Type isn't already set
       // But xhr lacks getRequestHeaders functionallity
       // https://github.com/jimmywarting/FormData/issues/44

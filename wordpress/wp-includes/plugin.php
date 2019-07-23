@@ -33,6 +33,7 @@ if ( $wp_filter ) {
 	$wp_filter = array();
 }
 
+<<<<<<< HEAD
 if ( ! isset( $wp_actions ) ) {
 	$wp_actions = array();
 }
@@ -40,6 +41,13 @@ if ( ! isset( $wp_actions ) ) {
 if ( ! isset( $wp_current_filter ) ) {
 	$wp_current_filter = array();
 }
+=======
+if ( ! isset( $wp_actions ) )
+	$wp_actions = array();
+
+if ( ! isset( $wp_current_filter ) )
+	$wp_current_filter = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * Hook a function or method to a specific filter action.
@@ -130,7 +138,11 @@ function add_filter( $tag, $function_to_add, $priority = 10, $accepted_args = 1 
  *                   that evaluates to false (e.g.) 0, so use the === operator for testing the
  *                   return value.
  */
+<<<<<<< HEAD
 function has_filter( $tag, $function_to_check = false ) {
+=======
+function has_filter($tag, $function_to_check = false) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	global $wp_filter;
 
 	if ( ! isset( $wp_filter[ $tag ] ) ) {
@@ -181,6 +193,7 @@ function apply_filters( $tag, $value ) {
 	$args = array();
 
 	// Do 'all' actions first.
+<<<<<<< HEAD
 	if ( isset( $wp_filter['all'] ) ) {
 		$wp_current_filter[] = $tag;
 		$args                = func_get_args();
@@ -201,6 +214,25 @@ function apply_filters( $tag, $value ) {
 	if ( empty( $args ) ) {
 		$args = func_get_args();
 	}
+=======
+	if ( isset($wp_filter['all']) ) {
+		$wp_current_filter[] = $tag;
+		$args = func_get_args();
+		_wp_call_all_hook($args);
+	}
+
+	if ( !isset($wp_filter[$tag]) ) {
+		if ( isset($wp_filter['all']) )
+			array_pop($wp_current_filter);
+		return $value;
+	}
+
+	if ( !isset($wp_filter['all']) )
+		$wp_current_filter[] = $tag;
+
+	if ( empty($args) )
+		$args = func_get_args();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	// don't pass the tag name to WP_Hook
 	array_shift( $args );
@@ -227,6 +259,7 @@ function apply_filters( $tag, $value ) {
  * @param array  $args The arguments supplied to the functions hooked to $tag.
  * @return mixed The filtered value after all hooked functions are applied to it.
  */
+<<<<<<< HEAD
 function apply_filters_ref_array( $tag, $args ) {
 	global $wp_filter, $wp_current_filter;
 
@@ -247,6 +280,26 @@ function apply_filters_ref_array( $tag, $args ) {
 	if ( ! isset( $wp_filter['all'] ) ) {
 		$wp_current_filter[] = $tag;
 	}
+=======
+function apply_filters_ref_array($tag, $args) {
+	global $wp_filter, $wp_current_filter;
+
+	// Do 'all' actions first
+	if ( isset($wp_filter['all']) ) {
+		$wp_current_filter[] = $tag;
+		$all_args = func_get_args();
+		_wp_call_all_hook($all_args);
+	}
+
+	if ( !isset($wp_filter[$tag]) ) {
+		if ( isset($wp_filter['all']) )
+			array_pop($wp_current_filter);
+		return $args[0];
+	}
+
+	if ( !isset($wp_filter['all']) )
+		$wp_current_filter[] = $tag;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$filtered = $wp_filter[ $tag ]->apply_filters( $args[0], $args );
 
@@ -303,7 +356,11 @@ function remove_filter( $tag, $function_to_remove, $priority = 10 ) {
 function remove_all_filters( $tag, $priority = false ) {
 	global $wp_filter;
 
+<<<<<<< HEAD
 	if ( isset( $wp_filter[ $tag ] ) ) {
+=======
+	if ( isset( $wp_filter[ $tag ]) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$wp_filter[ $tag ]->remove_all_filters( $priority );
 		if ( ! $wp_filter[ $tag ]->has_filters() ) {
 			unset( $wp_filter[ $tag ] );
@@ -402,8 +459,13 @@ function doing_action( $action = null ) {
  * @param int      $accepted_args   Optional. The number of arguments the function accepts. Default 1.
  * @return true Will always return true.
  */
+<<<<<<< HEAD
 function add_action( $tag, $function_to_add, $priority = 10, $accepted_args = 1 ) {
 	return add_filter( $tag, $function_to_add, $priority, $accepted_args );
+=======
+function add_action($tag, $function_to_add, $priority = 10, $accepted_args = 1) {
+	return add_filter($tag, $function_to_add, $priority, $accepted_args);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -425,6 +487,7 @@ function add_action( $tag, $function_to_add, $priority = 10, $accepted_args = 1 
  * @param mixed  $arg,... Optional. Additional arguments which are passed on to the
  *                        functions hooked to the action. Default empty.
  */
+<<<<<<< HEAD
 function do_action( $tag, $arg = '' ) {
 	global $wp_filter, $wp_actions, $wp_current_filter;
 
@@ -465,6 +528,43 @@ function do_action( $tag, $arg = '' ) {
 	$wp_filter[ $tag ]->do_action( $args );
 
 	array_pop( $wp_current_filter );
+=======
+function do_action($tag, $arg = '') {
+	global $wp_filter, $wp_actions, $wp_current_filter;
+
+	if ( ! isset($wp_actions[$tag]) )
+		$wp_actions[$tag] = 1;
+	else
+		++$wp_actions[$tag];
+
+	// Do 'all' actions first
+	if ( isset($wp_filter['all']) ) {
+		$wp_current_filter[] = $tag;
+		$all_args = func_get_args();
+		_wp_call_all_hook($all_args);
+	}
+
+	if ( !isset($wp_filter[$tag]) ) {
+		if ( isset($wp_filter['all']) )
+			array_pop($wp_current_filter);
+		return;
+	}
+
+	if ( !isset($wp_filter['all']) )
+		$wp_current_filter[] = $tag;
+
+	$args = array();
+	if ( is_array($arg) && 1 == count($arg) && isset($arg[0]) && is_object($arg[0]) ) // array(&$this)
+		$args[] =& $arg[0];
+	else
+		$args[] = $arg;
+	for ( $a = 2, $num = func_num_args(); $a < $num; $a++ )
+		$args[] = func_get_arg($a);
+
+	$wp_filter[ $tag ]->do_action( $args );
+
+	array_pop($wp_current_filter);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -477,6 +577,7 @@ function do_action( $tag, $arg = '' ) {
  * @param string $tag The name of the action hook.
  * @return int The number of times action hook $tag is fired.
  */
+<<<<<<< HEAD
 function did_action( $tag ) {
 	global $wp_actions;
 
@@ -485,6 +586,15 @@ function did_action( $tag ) {
 	}
 
 	return $wp_actions[ $tag ];
+=======
+function did_action($tag) {
+	global $wp_actions;
+
+	if ( ! isset( $wp_actions[ $tag ] ) )
+		return 0;
+
+	return $wp_actions[$tag];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -501,6 +611,7 @@ function did_action( $tag ) {
  * @param string $tag  The name of the action to be executed.
  * @param array  $args The arguments supplied to the functions hooked to `$tag`.
  */
+<<<<<<< HEAD
 function do_action_ref_array( $tag, $args ) {
 	global $wp_filter, $wp_actions, $wp_current_filter;
 
@@ -531,6 +642,35 @@ function do_action_ref_array( $tag, $args ) {
 	$wp_filter[ $tag ]->do_action( $args );
 
 	array_pop( $wp_current_filter );
+=======
+function do_action_ref_array($tag, $args) {
+	global $wp_filter, $wp_actions, $wp_current_filter;
+
+	if ( ! isset($wp_actions[$tag]) )
+		$wp_actions[$tag] = 1;
+	else
+		++$wp_actions[$tag];
+
+	// Do 'all' actions first
+	if ( isset($wp_filter['all']) ) {
+		$wp_current_filter[] = $tag;
+		$all_args = func_get_args();
+		_wp_call_all_hook($all_args);
+	}
+
+	if ( !isset($wp_filter[$tag]) ) {
+		if ( isset($wp_filter['all']) )
+			array_pop($wp_current_filter);
+		return;
+	}
+
+	if ( !isset($wp_filter['all']) )
+		$wp_current_filter[] = $tag;
+
+	$wp_filter[ $tag ]->do_action( $args );
+
+	array_pop($wp_current_filter);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -549,8 +689,13 @@ function do_action_ref_array( $tag, $args ) {
  *                  that evaluates to false (e.g.) 0, so use the === operator for testing the
  *                  return value.
  */
+<<<<<<< HEAD
 function has_action( $tag, $function_to_check = false ) {
 	return has_filter( $tag, $function_to_check );
+=======
+function has_action($tag, $function_to_check = false) {
+	return has_filter($tag, $function_to_check);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -580,8 +725,13 @@ function remove_action( $tag, $function_to_remove, $priority = 10 ) {
  * @param int|bool $priority The priority number to remove them from. Default false.
  * @return true True when finished.
  */
+<<<<<<< HEAD
 function remove_all_actions( $tag, $priority = false ) {
 	return remove_all_filters( $tag, $priority );
+=======
+function remove_all_actions($tag, $priority = false) {
+	return remove_all_filters($tag, $priority);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -676,11 +826,19 @@ function plugin_basename( $file ) {
 		}
 	}
 
+<<<<<<< HEAD
 	$plugin_dir    = wp_normalize_path( WP_PLUGIN_DIR );
 	$mu_plugin_dir = wp_normalize_path( WPMU_PLUGIN_DIR );
 
 	$file = preg_replace( '#^' . preg_quote( $plugin_dir, '#' ) . '/|^' . preg_quote( $mu_plugin_dir, '#' ) . '/#', '', $file ); // get relative path from plugins dir
 	$file = trim( $file, '/' );
+=======
+	$plugin_dir = wp_normalize_path( WP_PLUGIN_DIR );
+	$mu_plugin_dir = wp_normalize_path( WPMU_PLUGIN_DIR );
+
+	$file = preg_replace('#^' . preg_quote($plugin_dir, '#') . '/|^' . preg_quote($mu_plugin_dir, '#') . '/#','',$file); // get relative path from plugins dir
+	$file = trim($file, '/');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	return $file;
 }
 
@@ -707,11 +865,19 @@ function wp_register_plugin_realpath( $file ) {
 	// Normalize, but store as static to avoid recalculation of a constant value
 	static $wp_plugin_path = null, $wpmu_plugin_path = null;
 	if ( ! isset( $wp_plugin_path ) ) {
+<<<<<<< HEAD
 		$wp_plugin_path   = wp_normalize_path( WP_PLUGIN_DIR );
 		$wpmu_plugin_path = wp_normalize_path( WPMU_PLUGIN_DIR );
 	}
 
 	$plugin_path     = wp_normalize_path( dirname( $file ) );
+=======
+		$wp_plugin_path   = wp_normalize_path( WP_PLUGIN_DIR   );
+		$wpmu_plugin_path = wp_normalize_path( WPMU_PLUGIN_DIR );
+	}
+
+	$plugin_path = wp_normalize_path( dirname( $file ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$plugin_realpath = wp_normalize_path( dirname( realpath( $file ) ) );
 
 	if ( $plugin_path === $wp_plugin_path || $plugin_path === $wpmu_plugin_path ) {
@@ -767,9 +933,15 @@ function plugin_dir_url( $file ) {
  * @param string   $file     The filename of the plugin including the path.
  * @param callable $function The function hooked to the 'activate_PLUGIN' action.
  */
+<<<<<<< HEAD
 function register_activation_hook( $file, $function ) {
 	$file = plugin_basename( $file );
 	add_action( 'activate_' . $file, $function );
+=======
+function register_activation_hook($file, $function) {
+	$file = plugin_basename($file);
+	add_action('activate_' . $file, $function);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -790,9 +962,15 @@ function register_activation_hook( $file, $function ) {
  * @param string   $file     The filename of the plugin including the path.
  * @param callable $function The function hooked to the 'deactivate_PLUGIN' action.
  */
+<<<<<<< HEAD
 function register_deactivation_hook( $file, $function ) {
 	$file = plugin_basename( $file );
 	add_action( 'deactivate_' . $file, $function );
+=======
+function register_deactivation_hook($file, $function) {
+	$file = plugin_basename($file);
+	add_action('deactivate_' . $file, $function);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -832,10 +1010,17 @@ function register_uninstall_hook( $file, $callback ) {
 	 * cases. Emphasis should be put on using the 'uninstall.php' way of
 	 * uninstalling the plugin.
 	 */
+<<<<<<< HEAD
 	$uninstallable_plugins                             = (array) get_option( 'uninstall_plugins' );
 	$uninstallable_plugins[ plugin_basename( $file ) ] = $callback;
 
 	update_option( 'uninstall_plugins', $uninstallable_plugins );
+=======
+	$uninstallable_plugins = (array) get_option('uninstall_plugins');
+	$uninstallable_plugins[plugin_basename($file)] = $callback;
+
+	update_option('uninstall_plugins', $uninstallable_plugins);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -856,7 +1041,11 @@ function register_uninstall_hook( $file, $callback ) {
  *
  * @param array $args The collected parameters from the hook that was called.
  */
+<<<<<<< HEAD
 function _wp_call_all_hook( $args ) {
+=======
+function _wp_call_all_hook($args) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	global $wp_filter;
 
 	$wp_filter['all']->do_all_hook( $args );
@@ -896,6 +1085,7 @@ function _wp_call_all_hook( $args ) {
  *                      and $function is an object reference, and it does not already have
  *                      a unique id.
  */
+<<<<<<< HEAD
 function _wp_filter_build_unique_id( $tag, $function, $priority ) {
 	global $wp_filter;
 	static $filter_id_count = 0;
@@ -905,12 +1095,23 @@ function _wp_filter_build_unique_id( $tag, $function, $priority ) {
 	}
 
 	if ( is_object( $function ) ) {
+=======
+function _wp_filter_build_unique_id($tag, $function, $priority) {
+	global $wp_filter;
+	static $filter_id_count = 0;
+
+	if ( is_string($function) )
+		return $function;
+
+	if ( is_object($function) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		// Closures are currently implemented as objects
 		$function = array( $function, '' );
 	} else {
 		$function = (array) $function;
 	}
 
+<<<<<<< HEAD
 	if ( is_object( $function[0] ) ) {
 		// Object Class Calling
 		if ( function_exists( 'spl_object_hash' ) ) {
@@ -922,6 +1123,18 @@ function _wp_filter_build_unique_id( $tag, $function, $priority ) {
 					return false;
 				}
 				$obj_idx                  .= isset( $wp_filter[ $tag ][ $priority ] ) ? count( (array) $wp_filter[ $tag ][ $priority ] ) : $filter_id_count;
+=======
+	if (is_object($function[0]) ) {
+		// Object Class Calling
+		if ( function_exists('spl_object_hash') ) {
+			return spl_object_hash($function[0]) . $function[1];
+		} else {
+			$obj_idx = get_class($function[0]).$function[1];
+			if ( !isset($function[0]->wp_filter_id) ) {
+				if ( false === $priority )
+					return false;
+				$obj_idx .= isset($wp_filter[$tag][$priority]) ? count((array)$wp_filter[$tag][$priority]) : $filter_id_count;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$function[0]->wp_filter_id = $filter_id_count;
 				++$filter_id_count;
 			} else {

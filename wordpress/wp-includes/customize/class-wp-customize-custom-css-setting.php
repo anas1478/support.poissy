@@ -127,8 +127,13 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 			}
 		}
 		$id_base = $this->id_data['base'];
+<<<<<<< HEAD
 		$value   = '';
 		$post    = wp_get_custom_css_post( $this->stylesheet );
+=======
+		$value = '';
+		$post = wp_get_custom_css_post( $this->stylesheet );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( $post ) {
 			$value = $post->post_content;
 		}
@@ -161,7 +166,11 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 			$validity->add( 'illegal_markup', __( 'Markup is not allowed in CSS.' ) );
 		}
 
+<<<<<<< HEAD
 		if ( ! $validity->has_errors() ) {
+=======
+		if ( empty( $validity->errors ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$validity = parent::validate( $css );
 		}
 		return $validity;
@@ -180,12 +189,18 @@ final class WP_Customize_Custom_CSS_Setting extends WP_Customize_Setting {
 			$css = '';
 		}
 
+<<<<<<< HEAD
 		$r = wp_update_custom_css_post(
 			$css,
 			array(
 				'stylesheet' => $this->stylesheet,
 			)
 		);
+=======
+		$r = wp_update_custom_css_post( $css, array(
+			'stylesheet' => $this->stylesheet,
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( $r instanceof WP_Error ) {
 			return false;

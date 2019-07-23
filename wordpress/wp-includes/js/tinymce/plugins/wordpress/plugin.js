@@ -1064,6 +1064,7 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 			}
 		}
 
+<<<<<<< HEAD
 		editor.dom.bind( editor.getWin(), 'resize', hide );
 
 		if ( editor.inline ) {
@@ -1078,6 +1079,14 @@ tinymce.PluginManager.add( 'wordpress', function( editor ) {
 
 		editor.on( 'remove', function() {
 			document.removeEventListener( 'scroll', hide, true );
+=======
+		// For full height editor.
+		editor.on( 'resizewindow scrollwindow', hide );
+		// For scrollable editor.
+		editor.dom.bind( editor.getWin(), 'resize scroll', hide );
+
+		editor.on( 'remove', function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			editor.off( 'resizewindow scrollwindow', hide );
 			editor.dom.unbind( editor.getWin(), 'resize scroll', hide );
 		} );

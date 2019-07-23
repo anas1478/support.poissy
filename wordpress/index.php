@@ -11,7 +11,11 @@
  *
  * @var bool
  */
+<<<<<<< HEAD
 define( 'WP_USE_THEMES', true );
+=======
+define('WP_USE_THEMES', true);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /** Loads the WordPress Environment and Template */
 require( dirname( __FILE__ ) . '/wp-blog-header.php' );

@@ -197,7 +197,11 @@
 	border-color: #cccccc;
 	background: #f7f7f7;
 	box-shadow: 0 1px 0 #cccccc;
+<<<<<<< HEAD
 	vertical-align: top;
+=======
+ 	vertical-align: top;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .ui-button:active,
@@ -242,7 +246,11 @@
 	transform: none !important;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	.ui-button {
 		padding: 6px 14px;
@@ -301,7 +309,11 @@
 	line-height: 36px;
 	width: 36px;
 	height: 36px;
+<<<<<<< HEAD
 	content: "\f158";
+=======
+	content: '\f158';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .ui-button.ui-dialog-titlebar-close:hover {

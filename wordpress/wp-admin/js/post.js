@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file Contains all dynamic functionality needed on post and term pages.
  *
@@ -10,6 +11,20 @@
 
 // Backwards compatibility: prevent fatal errors.
 window.makeSlugeditClickable = window.editPermalink = function(){};
+=======
+/* global postL10n, ajaxurl, wpAjax, setPostThumbnailL10n, postboxes, pagenow, tinymce, alert, deleteUserSetting */
+/* global theList:true, theExtraList:true, getUserSetting, setUserSetting, commentReply */
+
+/**
+ * Contains all dynamic functionality needed on post and term pages.
+ *
+ * @summary Control page and term functionality.
+ */
+
+var commentsBox, WPSetThumbnailHTML, WPSetThumbnailID, WPRemoveThumbnail, wptitlehint, makeSlugeditClickable, editPermalink;
+// Backwards compatibility: prevent fatal errors.
+makeSlugeditClickable = editPermalink = function(){};
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // Make sure the wp object exists.
 window.wp = window.wp || {};
@@ -24,18 +39,30 @@ window.wp = window.wp || {};
 	 *
 	 * @namespace commentsBox
 	 */
+<<<<<<< HEAD
 	window.commentsBox = {
+=======
+	commentsBox = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		// Comment offset to use when fetching new comments.
 		st : 0,
 
 		/**
 		 * Fetch comments using AJAX and display them in the box.
 		 *
+<<<<<<< HEAD
 		 * @memberof commentsBox
 		 *
 		 * @param {int} total Total number of comments for this post.
 		 * @param {int} num   Optional. Number of comments to fetch, defaults to 20.
 		 * @returns {boolean} Always returns false.
+=======
+		 * @param {int} total Total number of comments for this post.
+		 * @param {int} num   Optional. Number of comments to fetch, defaults to 20.
+		 * @returns {boolean} Always returns false.
+		 *
+		 * @memberof commentsBox
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		get : function(total, num) {
 			var st = this.st, data;
@@ -108,7 +135,11 @@ window.wp = window.wp || {};
 	 *
 	 * @global
 	 */
+<<<<<<< HEAD
 	window.WPSetThumbnailHTML = function(html){
+=======
+	WPSetThumbnailHTML = function(html){
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$('.inside', '#postimagediv').html(html);
 	};
 
@@ -119,7 +150,11 @@ window.wp = window.wp || {};
 	 *
 	 * @global
 	 */
+<<<<<<< HEAD
 	window.WPSetThumbnailID = function(id){
+=======
+	WPSetThumbnailID = function(id){
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		var field = $('input[value="_thumbnail_id"]', '#list-table');
 		if ( field.length > 0 ) {
 			$('#meta\\[' + field.attr('id').match(/[0-9]+/) + '\\]\\[value\\]').text(id);
@@ -133,7 +168,11 @@ window.wp = window.wp || {};
 	 *
 	 * @global
 	 */
+<<<<<<< HEAD
 	window.WPRemoveThumbnail = function(nonce){
+=======
+	WPRemoveThumbnail = function(nonce){
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$.post(ajaxurl, {
 			action: 'set-post-thumbnail', post_id: $( '#post_ID' ).val(), thumbnail_id: -1, _ajax_nonce: nonce, cookie: encodeURIComponent( document.cookie )
 		},
@@ -662,8 +701,11 @@ jQuery(document).ready( function($) {
 			/**
 			 * Add current post_ID to request to fetch custom fields
 			 *
+<<<<<<< HEAD
 			 * @ignore
 			 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * @param {Object} s Request object.
 			 *
 			 * @returns {Object} Data modified with post_ID attached.
@@ -674,8 +716,11 @@ jQuery(document).ready( function($) {
 			},
 			/**
 			 * Show the listing of custom fields after fetching.
+<<<<<<< HEAD
 			 *
 			 * @ignore
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 */
 			addAfter: function() {
 				$('table#list-table').show();
@@ -693,8 +738,11 @@ jQuery(document).ready( function($) {
 		/**
 		 * When the visibility of a post changes sub-options should be shown or hidden.
 		 *
+<<<<<<< HEAD
 		 * @ignore
 		 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @returns void
 		 */
 		updateVisibility = function() {
@@ -717,8 +765,11 @@ jQuery(document).ready( function($) {
 		/**
 		 * Make sure all labels represent the current settings.
 		 *
+<<<<<<< HEAD
 		 * @ignore
 		 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @returns {boolean} False when an invalid timestamp has been selected, otherwise True.
 		 */
 		updateText = function() {
@@ -934,8 +985,14 @@ jQuery(document).ready( function($) {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Handle the editing of the post_name. Create the required HTML elements and
 	 * update the changes via AJAX.
+=======
+	 * Handle the editing of the post_name. Create the required HTML elements and update the changes via AJAX.
+	 *
+	 * @summary Permalink aka slug aka post_name editing
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @global
 	 *
@@ -1040,7 +1097,13 @@ jQuery(document).ready( function($) {
 	});
 
 	/**
+<<<<<<< HEAD
 	 * Adds screen reader text to the title prompt when needed.
+=======
+	 * Add screen reader text to the title prompt when needed.
+	 *
+	 * @summary Title screen reader text handler.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @param {string} id Optional. HTML ID to add the screen reader helper text to.
 	 *
@@ -1048,7 +1111,11 @@ jQuery(document).ready( function($) {
 	 *
 	 * @returns void
 	 */
+<<<<<<< HEAD
 	window.wptitlehint = function(id) {
+=======
+	wptitlehint = function(id) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		id = id || 'title';
 
 		var title = $('#' + id), titleprompt = $('#' + id + '-prompt-text');

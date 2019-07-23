@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/customize-base.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /** @namespace wp */
 window.wp = window.wp || {};
 
@@ -912,7 +915,11 @@ window.wp = window.wp || {};
 	/**
 	 * Get all customize settings.
 	 *
+<<<<<<< HEAD
 	 * @alias wp.customize.get
+=======
+	 * @memberOf wp.customize
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @return {object}
 	 */
@@ -938,8 +945,12 @@ window.wp = window.wp || {};
 	 *
 	 * @since 4.7.0
 	 * @access public
+<<<<<<< HEAD
 	 *
 	 * @alias wp.customize.utils.parseQueryString
+=======
+	 * @memberOf wp.customize.utils
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @param {string} queryString Query string.
 	 * @returns {object} Parsed query string.

@@ -20,12 +20,20 @@
  * @param string $deprecated Deprecated.
  * @return string|null The author's display name.
  */
+<<<<<<< HEAD
 function get_the_author( $deprecated = '' ) {
 	global $authordata;
 
 	if ( ! empty( $deprecated ) ) {
 		_deprecated_argument( __FUNCTION__, '2.1.0' );
 	}
+=======
+function get_the_author($deprecated = '') {
+	global $authordata;
+
+	if ( !empty( $deprecated ) )
+		_deprecated_argument( __FUNCTION__, '2.1.0' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the display name of the current post's author.
@@ -34,7 +42,11 @@ function get_the_author( $deprecated = '' ) {
 	 *
 	 * @param string $authordata->display_name The author's display name.
 	 */
+<<<<<<< HEAD
 	return apply_filters( 'the_author', is_object( $authordata ) ? $authordata->display_name : null );
+=======
+	return apply_filters('the_author', is_object($authordata) ? $authordata->display_name : null);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -62,12 +74,18 @@ function the_author( $deprecated = '', $deprecated_echo = true ) {
 	}
 
 	if ( true !== $deprecated_echo ) {
+<<<<<<< HEAD
 		_deprecated_argument(
 			__FUNCTION__,
 			'1.5.0',
 			/* translators: %s: get_the_author() */
 			sprintf(
 				__( 'Use %s instead if you do not want the value echoed.' ),
+=======
+		_deprecated_argument( __FUNCTION__, '1.5.0',
+			/* translators: %s: get_the_author() */
+			sprintf( __( 'Use %s instead if you do not want the value echoed.' ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'<code>get_the_author()</code>'
 			)
 		);
@@ -88,10 +106,15 @@ function the_author( $deprecated = '', $deprecated_echo = true ) {
  * @return string|void The author's display name.
  */
 function get_the_modified_author() {
+<<<<<<< HEAD
 	$last_id = get_post_meta( get_post()->ID, '_edit_last', true );
 
 	if ( $last_id ) {
 		$last_user = get_userdata( $last_id );
+=======
+	if ( $last_id = get_post_meta( get_post()->ID, '_edit_last', true) ) {
+		$last_user = get_userdata($last_id);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters the display name of the author who last edited the current post.
@@ -100,7 +123,11 @@ function get_the_modified_author() {
 		 *
 		 * @param string $last_user->display_name The author's display name.
 		 */
+<<<<<<< HEAD
 		return apply_filters( 'the_modified_author', $last_user->display_name );
+=======
+		return apply_filters('the_modified_author', $last_user->display_name);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }
 
@@ -167,9 +194,14 @@ function get_the_author_meta( $field = '', $user_id = false ) {
 		$authordata = get_userdata( $user_id );
 	}
 
+<<<<<<< HEAD
 	if ( in_array( $field, array( 'login', 'pass', 'nicename', 'email', 'url', 'registered', 'activation_key', 'status' ) ) ) {
 		$field = 'user_' . $field;
 	}
+=======
+	if ( in_array( $field, array( 'login', 'pass', 'nicename', 'email', 'url', 'registered', 'activation_key', 'status' ) ) )
+		$field = 'user_' . $field;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$value = isset( $authordata->$field ) ? $authordata->$field : '';
 
@@ -227,10 +259,16 @@ function the_author_meta( $field = '', $user_id = false ) {
  *                     else the result of get_the_author().
  */
 function get_the_author_link() {
+<<<<<<< HEAD
 	if ( get_the_author_meta( 'url' ) ) {
 		return sprintf(
 			'<a href="%1$s" title="%2$s" rel="author external">%3$s</a>',
 			esc_url( get_the_author_meta( 'url' ) ),
+=======
+	if ( get_the_author_meta('url') ) {
+		return sprintf( '<a href="%1$s" title="%2$s" rel="author external">%3$s</a>',
+			esc_url( get_the_author_meta('url') ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			/* translators: %s: author's display name */
 			esc_attr( sprintf( __( 'Visit %s&#8217;s website' ), get_the_author() ) ),
 			get_the_author()
@@ -288,16 +326,27 @@ function the_author_posts() {
  *
  * @global object $authordata The current author's DB object.
  *
+<<<<<<< HEAD
  * @return string An HTML link to the author page, or an empty string if $authordata isn't defined.
+=======
+ * @return string An HTML link to the author page.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 function get_the_author_posts_link() {
 	global $authordata;
 	if ( ! is_object( $authordata ) ) {
+<<<<<<< HEAD
 		return '';
 	}
 
 	$link = sprintf(
 		'<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+=======
+		return;
+	}
+
+	$link = sprintf( '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		esc_url( get_author_posts_url( $authordata->ID, $authordata->user_nicename ) ),
 		/* translators: %s: author's display name */
 		esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
@@ -343,19 +392,33 @@ function the_author_posts_link( $deprecated = '' ) {
 function get_author_posts_url( $author_id, $author_nicename = '' ) {
 	global $wp_rewrite;
 	$auth_ID = (int) $author_id;
+<<<<<<< HEAD
 	$link    = $wp_rewrite->get_author_permastruct();
 
 	if ( empty( $link ) ) {
+=======
+	$link = $wp_rewrite->get_author_permastruct();
+
+	if ( empty($link) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$file = home_url( '/' );
 		$link = $file . '?author=' . $auth_ID;
 	} else {
 		if ( '' == $author_nicename ) {
+<<<<<<< HEAD
 			$user = get_userdata( $author_id );
 			if ( ! empty( $user->user_nicename ) ) {
 				$author_nicename = $user->user_nicename;
 			}
 		}
 		$link = str_replace( '%author%', $author_nicename, $link );
+=======
+			$user = get_userdata($author_id);
+			if ( !empty($user->user_nicename) )
+				$author_nicename = $user->user_nicename;
+		}
+		$link = str_replace('%author%', $author_nicename, $link);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$link = home_url( user_trailingslashit( $link ) );
 	}
 
@@ -391,7 +454,11 @@ function get_author_posts_url( $author_id, $author_nicename = '' ) {
  *     @type string       $order         Sorting direction for $orderby. Accepts 'ASC', 'DESC'. Default 'ASC'.
  *     @type int          $number        Maximum authors to return or display. Default empty (all authors).
  *     @type bool         $optioncount   Show the count in parenthesis next to the author's name. Default false.
+<<<<<<< HEAD
  *     @type bool         $exclude_admin Whether to exclude the 'admin' account, if it exists. Default true.
+=======
+ *     @type bool         $exclude_admin Whether to exclude the 'admin' account, if it exists. Default false.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *     @type bool         $show_fullname Whether to show the author's full name. Default false.
  *     @type bool         $hide_empty    Whether to hide any authors with no posts. Default true.
  *     @type string       $feed          If not empty, show a link to the author's feed and use this text as the alt
@@ -412,6 +479,7 @@ function wp_list_authors( $args = '' ) {
 	global $wpdb;
 
 	$defaults = array(
+<<<<<<< HEAD
 		'orderby'       => 'name',
 		'order'         => 'ASC',
 		'number'        => '',
@@ -427,12 +495,20 @@ function wp_list_authors( $args = '' ) {
 		'html'          => true,
 		'exclude'       => '',
 		'include'       => '',
+=======
+		'orderby' => 'name', 'order' => 'ASC', 'number' => '',
+		'optioncount' => false, 'exclude_admin' => true,
+		'show_fullname' => false, 'hide_empty' => true,
+		'feed' => '', 'feed_image' => '', 'feed_type' => '', 'echo' => true,
+		'style' => 'list', 'html' => true, 'exclude' => '', 'include' => ''
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	$args = wp_parse_args( $args, $defaults );
 
 	$return = '';
 
+<<<<<<< HEAD
 	$query_args           = wp_array_slice_assoc( $args, array( 'orderby', 'order', 'number', 'exclude', 'include' ) );
 	$query_args['fields'] = 'ids';
 	$authors              = get_users( $query_args );
@@ -440,6 +516,15 @@ function wp_list_authors( $args = '' ) {
 	$author_count = array();
 	foreach ( (array) $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql( 'post' ) . ' GROUP BY post_author' ) as $row ) {
 		$author_count[ $row->post_author ] = $row->count;
+=======
+	$query_args = wp_array_slice_assoc( $args, array( 'orderby', 'order', 'number', 'exclude', 'include' ) );
+	$query_args['fields'] = 'ids';
+	$authors = get_users( $query_args );
+
+	$author_count = array();
+	foreach ( (array) $wpdb->get_results( "SELECT DISTINCT post_author, COUNT(ID) AS count FROM $wpdb->posts WHERE " . get_private_posts_cap_sql( 'post' ) . " GROUP BY post_author" ) as $row ) {
+		$author_count[$row->post_author] = $row->count;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	foreach ( $authors as $author_id ) {
 		$author = get_userdata( $author_id );
@@ -448,7 +533,11 @@ function wp_list_authors( $args = '' ) {
 			continue;
 		}
 
+<<<<<<< HEAD
 		$posts = isset( $author_count[ $author->ID ] ) ? $author_count[ $author->ID ] : 0;
+=======
+		$posts = isset( $author_count[$author->ID] ) ? $author_count[$author->ID] : 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! $posts && $args['hide_empty'] ) {
 			continue;
@@ -470,8 +559,12 @@ function wp_list_authors( $args = '' ) {
 			$return .= '<li>';
 		}
 
+<<<<<<< HEAD
 		$link = sprintf(
 			'<a href="%1$s" title="%2$s">%3$s</a>',
+=======
+		$link = sprintf( '<a href="%1$s" title="%2$s">%3$s</a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			get_author_posts_url( $author->ID, $author->user_nicename ),
 			/* translators: %s: author's display name */
 			esc_attr( sprintf( __( 'Posts by %s' ), $author->display_name ) ),
@@ -488,7 +581,11 @@ function wp_list_authors( $args = '' ) {
 
 			$alt = '';
 			if ( ! empty( $args['feed'] ) ) {
+<<<<<<< HEAD
 				$alt  = ' alt="' . esc_attr( $args['feed'] ) . '"';
+=======
+				$alt = ' alt="' . esc_attr( $args['feed'] ) . '"';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$name = $args['feed'];
 			}
 
@@ -508,7 +605,11 @@ function wp_list_authors( $args = '' ) {
 		}
 
 		if ( $args['optioncount'] ) {
+<<<<<<< HEAD
 			$link .= ' (' . $posts . ')';
+=======
+			$link .= ' ('. $posts . ')';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		$return .= $link;
@@ -527,11 +628,19 @@ function wp_list_authors( $args = '' ) {
  * Determines whether this site has more than one author.
  *
  * Checks to see if more than one author has published posts.
+<<<<<<< HEAD
  *
  * For more information on this and similar theme functions, check out
  * the {@link https://developer.wordpress.org/themes/basics/conditional-tags/
  * Conditional Tags} article in the Theme Developer Handbook.
  *
+=======
+ * 
+ * For more information on this and similar theme functions, check out
+ * the {@link https://developer.wordpress.org/themes/basics/conditional-tags/ 
+ * Conditional Tags} article in the Theme Developer Handbook.
+ * 
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * @since 3.2.0
  *
  * @global wpdb $wpdb WordPress database abstraction object.
@@ -542,7 +651,11 @@ function is_multi_author() {
 	global $wpdb;
 
 	if ( false === ( $is_multi_author = get_transient( 'is_multi_author' ) ) ) {
+<<<<<<< HEAD
 		$rows            = (array) $wpdb->get_col( "SELECT DISTINCT post_author FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' LIMIT 2" );
+=======
+		$rows = (array) $wpdb->get_col("SELECT DISTINCT post_author FROM $wpdb->posts WHERE post_type = 'post' AND post_status = 'publish' LIMIT 2");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$is_multi_author = 1 < count( $rows ) ? 1 : 0;
 		set_transient( 'is_multi_author', $is_multi_author );
 	}

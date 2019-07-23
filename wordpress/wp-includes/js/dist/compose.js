@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["compose"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 314);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 313);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -244,7 +248,11 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 314:
+=======
+/***/ 313:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

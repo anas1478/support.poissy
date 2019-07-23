@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["editor"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 303);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 302);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -290,12 +294,15 @@ function _defineProperty(obj, key, value) {
 
 /***/ }),
 /* 16 */
+<<<<<<< HEAD
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["keycodes"]; }());
 
 /***/ }),
 /* 17 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -352,6 +359,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
+<<<<<<< HEAD
+=======
+/* 17 */
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["keycodes"]; }());
+
+/***/ }),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2300,7 +2316,11 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
+<<<<<<< HEAD
 	g = g || new Function("return this")();
+=======
+	g = g || Function("return this")() || (1, eval)("this");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } catch (e) {
 	// This works if the window reference is available
 	if (typeof window === "object") g = window;
@@ -2323,7 +2343,11 @@ module.exports = g;
 /* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(270);
+=======
+module.exports = __webpack_require__(269);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 
 /***/ }),
@@ -2334,7 +2358,11 @@ module.exports = __webpack_require__(270);
 "use strict";
 
 exports.__esModule = true;
+<<<<<<< HEAD
 var TextareaAutosize_1 = __webpack_require__(271);
+=======
+var TextareaAutosize_1 = __webpack_require__(270);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 exports["default"] = TextareaAutosize_1["default"];
 
 
@@ -3239,7 +3267,11 @@ if (typeof Object.create === 'function') {
 /* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */(function(module, global) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! https://mths.be/punycode v1.4.1 by @mathias */
+=======
+/* WEBPACK VAR INJECTION */(function(module, global) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! https://mths.be/punycode v1.3.2 by @mathias */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 ;(function(root) {
 
 	/** Detect free variables */
@@ -3305,7 +3337,11 @@ if (typeof Object.create === 'function') {
 	 * @returns {Error} Throws a `RangeError` with the applicable error message.
 	 */
 	function error(type) {
+<<<<<<< HEAD
 		throw new RangeError(errors[type]);
+=======
+		throw RangeError(errors[type]);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -3452,7 +3488,11 @@ if (typeof Object.create === 'function') {
 
 	/**
 	 * Bias adaptation function as per section 3.4 of RFC 3492.
+<<<<<<< HEAD
 	 * https://tools.ietf.org/html/rfc3492#section-3.4
+=======
+	 * http://tools.ietf.org/html/rfc3492#section-3.4
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @private
 	 */
 	function adapt(delta, numPoints, firstTime) {
@@ -3727,7 +3767,11 @@ if (typeof Object.create === 'function') {
 		 * @memberOf punycode
 		 * @type String
 		 */
+<<<<<<< HEAD
 		'version': '1.4.1',
+=======
+		'version': '1.3.2',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		/**
 		 * An object of methods to convert from JavaScript's internal character
 		 * representation (UCS-2) to Unicode code points, and back.
@@ -7035,8 +7079,12 @@ var hasOwnProperty = Object.hasOwnProperty || function (obj, key) {
 /* 266 */,
 /* 267 */,
 /* 268 */,
+<<<<<<< HEAD
 /* 269 */,
 /* 270 */
+=======
+/* 269 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7201,7 +7249,11 @@ function separateState(state) {
 }
 
 /***/ }),
+<<<<<<< HEAD
 /* 271 */
+=======
+/* 270 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7236,8 +7288,13 @@ var __rest = (this && this.__rest) || function (s, e) {
 exports.__esModule = true;
 var React = __webpack_require__(26);
 var PropTypes = __webpack_require__(29);
+<<<<<<< HEAD
 var autosize = __webpack_require__(272);
 var _getLineHeight = __webpack_require__(273);
+=======
+var autosize = __webpack_require__(271);
+var _getLineHeight = __webpack_require__(272);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var getLineHeight = _getLineHeight;
 var UPDATE = 'autosize:update';
 var DESTROY = 'autosize:destroy';
@@ -7329,7 +7386,11 @@ exports["default"] = TextareaAutosize;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 272 */
+=======
+/* 271 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -7617,11 +7678,19 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
+<<<<<<< HEAD
 /* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Load in dependencies
 var computedStyle = __webpack_require__(274);
+=======
+/* 272 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Load in dependencies
+var computedStyle = __webpack_require__(273);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * Calculate the `line-height` of a given node
@@ -7720,7 +7789,11 @@ module.exports = lineHeight;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 274 */
+=======
+/* 273 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 // This code has been refactored for 140 bytes
@@ -7753,6 +7826,10 @@ module.exports = computedStyle;
 
 
 /***/ }),
+<<<<<<< HEAD
+=======
+/* 274 */,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* 275 */,
 /* 276 */,
 /* 277 */,
@@ -7780,8 +7857,12 @@ module.exports = computedStyle;
 /* 299 */,
 /* 300 */,
 /* 301 */,
+<<<<<<< HEAD
 /* 302 */,
 /* 303 */
+=======
+/* 302 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8732,7 +8813,11 @@ var reducer_withSaveReusableBlock = function withSaveReusableBlock(reducer) {
  */
 
 
+<<<<<<< HEAD
 var editor = Object(external_lodash_["flow"])([external_this_wp_data_["combineReducers"], reducer_withInnerBlocksRemoveCascade, // Track undo history, starting at editor initialization.
+=======
+var reducer_editor = Object(external_lodash_["flow"])([external_this_wp_data_["combineReducers"], reducer_withInnerBlocksRemoveCascade, // Track undo history, starting at editor initialization.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 with_history({
   resetTypes: ['SETUP_EDITOR_STATE'],
   ignoreTypes: ['RECEIVE_BLOCKS', 'RESET_POST', 'UPDATE_POST'],
@@ -9747,7 +9832,11 @@ function reducer_previewLink() {
   return state;
 }
 /* harmony default export */ var store_reducer = (redux_optimist_default()(Object(external_this_wp_data_["combineReducers"])({
+<<<<<<< HEAD
   editor: editor,
+=======
+  editor: reducer_editor,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   initialEdits: initialEdits,
   currentPost: currentPost,
   isTyping: reducer_isTyping,
@@ -14069,7 +14158,11 @@ var esm_extends = __webpack_require__(18);
 var external_this_wp_element_ = __webpack_require__(0);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
+<<<<<<< HEAD
 var classnames = __webpack_require__(17);
+=======
+var classnames = __webpack_require__(16);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // EXTERNAL MODULE: external {"this":["wp","compose"]}
@@ -14878,7 +14971,11 @@ BlockFormatControls.Slot = block_format_controls_Slot;
 /* harmony default export */ var block_format_controls = (BlockFormatControls);
 
 // EXTERNAL MODULE: external {"this":["wp","keycodes"]}
+<<<<<<< HEAD
 var external_this_wp_keycodes_ = __webpack_require__(16);
+=======
+var external_this_wp_keycodes_ = __webpack_require__(17);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/editor/build-module/components/block-navigation/index.js
 
@@ -20530,15 +20627,33 @@ function (_Component) {
         custom_undo_redo_levels: 1,
         lists_indent_on_tab: false
       };
+<<<<<<< HEAD
       external_tinymce_default.a.init(Object(objectSpread["a" /* default */])({}, settings, {
         target: this.editorNode,
         setup: function setup(editor) {
           _this3.editor = editor; // TinyMCE resets the element content on initialization, even
+=======
+
+      if (multilineTag === 'li') {
+        settings.plugins.push('lists');
+      }
+
+      external_tinymce_default.a.init(Object(objectSpread["a" /* default */])({}, settings, {
+        target: this.editorNode,
+        setup: function setup(editor) {
+          _this3.editor = editor;
+
+          _this3.props.onSetup(editor); // TinyMCE resets the element content on initialization, even
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           // when it's already identical to what exists currently. This
           // behavior clobbers a selection which exists at the time of
           // initialization, thus breaking writing flow navigation. The
           // hack here neutralizes setHTML during initialization.
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           var setHTML;
           editor.on('preinit', function () {
             setHTML = editor.dom.setHTML;
@@ -20838,13 +20953,17 @@ function (_Component) {
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /**
  * Internal dependencies
  */
 
 
 
+<<<<<<< HEAD
 var _window$Node = window.Node,
     list_edit_TEXT_NODE = _window$Node.TEXT_NODE,
     ELEMENT_NODE = _window$Node.ELEMENT_NODE;
@@ -20920,38 +21039,86 @@ var list_edit_ListEdit = function ListEdit(_ref) {
       tagName = _ref.tagName,
       value = _ref.value,
       onChange = _ref.onChange;
+=======
+
+function isListRootSelected(editor) {
+  return !editor.selection || editor.selection.getNode().closest('ol,ul') === editor.getBody();
+}
+
+function isActiveListType(editor, tagName, rootTagName) {
+  if (document.activeElement !== editor.getBody()) {
+    return tagName === rootTagName;
+  }
+
+  var listItem = editor.selection.getNode();
+  var list = listItem.closest('ol,ul');
+
+  if (!list) {
+    return;
+  }
+
+  return list.nodeName.toLowerCase() === tagName;
+}
+
+var list_edit_ListEdit = function ListEdit(_ref) {
+  var editor = _ref.editor,
+      onTagNameChange = _ref.onTagNameChange,
+      tagName = _ref.tagName,
+      onSyncDOM = _ref.onSyncDOM;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   return Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(shortcut_RichTextShortcut, {
     type: "primary",
     character: "[",
     onUse: function onUse() {
+<<<<<<< HEAD
       onChange(Object(external_this_wp_richText_["outdentListItems"])(value));
+=======
+      editor.execCommand('Outdent');
+      onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     }
   }), Object(external_this_wp_element_["createElement"])(shortcut_RichTextShortcut, {
     type: "primary",
     character: "]",
     onUse: function onUse() {
+<<<<<<< HEAD
       onChange(Object(external_this_wp_richText_["indentListItems"])(value, {
         type: tagName
       }));
+=======
+      editor.execCommand('Indent');
+      onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     }
   }), Object(external_this_wp_element_["createElement"])(shortcut_RichTextShortcut, {
     type: "primary",
     character: "m",
     onUse: function onUse() {
+<<<<<<< HEAD
       onChange(Object(external_this_wp_richText_["indentListItems"])(value, {
         type: tagName
       }));
+=======
+      editor.execCommand('Indent');
+      onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     }
   }), Object(external_this_wp_element_["createElement"])(shortcut_RichTextShortcut, {
     type: "primaryShift",
     character: "m",
     onUse: function onUse() {
+<<<<<<< HEAD
       onChange(Object(external_this_wp_richText_["outdentListItems"])(value));
+=======
+      editor.execCommand('Outdent');
+      onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     }
   }), Object(external_this_wp_element_["createElement"])(block_format_controls, null, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Toolbar"], {
     controls: [{
       icon: 'editor-ul',
       title: Object(external_this_wp_i18n_["__"])('Convert to unordered list'),
+<<<<<<< HEAD
       isActive: isActiveListType('ul', tagName),
       onClick: function onClick() {
         onChange(Object(external_this_wp_richText_["changeListType"])(value, {
@@ -20960,11 +21127,21 @@ var list_edit_ListEdit = function ListEdit(_ref) {
 
         if (isListRootSelected()) {
           onTagNameChange('ul');
+=======
+      isActive: isActiveListType(editor, 'ul', tagName),
+      onClick: function onClick() {
+        if (isListRootSelected(editor)) {
+          onTagNameChange('ul');
+        } else {
+          editor.execCommand('InsertUnorderedList');
+          onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }
       }
     }, {
       icon: 'editor-ol',
       title: Object(external_this_wp_i18n_["__"])('Convert to ordered list'),
+<<<<<<< HEAD
       isActive: isActiveListType('ol', tagName),
       onClick: function onClick() {
         onChange(Object(external_this_wp_richText_["changeListType"])(value, {
@@ -20973,21 +21150,40 @@ var list_edit_ListEdit = function ListEdit(_ref) {
 
         if (isListRootSelected()) {
           onTagNameChange('ol');
+=======
+      isActive: isActiveListType(editor, 'ol', tagName),
+      onClick: function onClick() {
+        if (isListRootSelected(editor)) {
+          onTagNameChange('ol');
+        } else {
+          editor.execCommand('InsertOrderedList');
+          onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }
       }
     }, {
       icon: 'editor-outdent',
       title: Object(external_this_wp_i18n_["__"])('Outdent list item'),
       onClick: function onClick() {
+<<<<<<< HEAD
         onChange(Object(external_this_wp_richText_["outdentListItems"])(value));
+=======
+        editor.execCommand('Outdent');
+        onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       }
     }, {
       icon: 'editor-indent',
       title: Object(external_this_wp_i18n_["__"])('Indent list item'),
       onClick: function onClick() {
+<<<<<<< HEAD
         onChange(Object(external_this_wp_richText_["indentListItems"])(value, {
           type: tagName
         }));
+=======
+        editor.execCommand('Indent');
+        onSyncDOM();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       }
     }]
   })));
@@ -21212,6 +21408,10 @@ function (_Component) {
       _this.onSplit = _this.props.unstableOnSplit;
     }
 
+<<<<<<< HEAD
+=======
+    _this.onSetup = _this.onSetup.bind(Object(assertThisInitialized["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this)));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     _this.onFocus = _this.onFocus.bind(Object(assertThisInitialized["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this)));
     _this.onBlur = _this.onBlur.bind(Object(assertThisInitialized["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this)));
     _this.onChange = _this.onChange.bind(Object(assertThisInitialized["a" /* default */])(Object(assertThisInitialized["a" /* default */])(_this)));
@@ -21260,6 +21460,20 @@ function (_Component) {
     value: function setRef(node) {
       this.editableRef = node;
     }
+<<<<<<< HEAD
+=======
+    /**
+     * Sets a reference to the TinyMCE editor instance.
+     *
+     * @param {Editor} editor The editor instance as passed by TinyMCE.
+     */
+
+  }, {
+    key: "onSetup",
+    value: function onSetup(editor) {
+      this.editor = editor;
+    }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   }, {
     key: "setFocusedElement",
     value: function setFocusedElement() {
@@ -22018,11 +22232,21 @@ function (_Component) {
       return Object(external_this_wp_element_["createElement"])("div", {
         className: classes,
         onFocus: this.setFocusedElement
+<<<<<<< HEAD
       }, isSelected && this.multilineTag === 'li' && Object(external_this_wp_element_["createElement"])(list_edit_ListEdit, {
         onTagNameChange: onTagNameChange,
         tagName: Tagname,
         value: record,
         onChange: this.onChange
+=======
+      }, isSelected && this.editor && this.multilineTag === 'li' && Object(external_this_wp_element_["createElement"])(list_edit_ListEdit, {
+        editor: this.editor,
+        onTagNameChange: onTagNameChange,
+        tagName: Tagname,
+        onSyncDOM: function onSyncDOM() {
+          return _this3.onChange(_this3.createRecord());
+        }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       }), isSelected && !inlineToolbar && Object(external_this_wp_element_["createElement"])(block_format_controls, null, Object(external_this_wp_element_["createElement"])(format_toolbar, {
         controls: formattingControls
       })), isSelected && inlineToolbar && Object(external_this_wp_element_["createElement"])(external_this_wp_components_["IsolatedEventContainer"], {
@@ -22039,6 +22263,10 @@ function (_Component) {
             activeId = _ref6.activeId;
         return Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(tinymce_TinyMCE, Object(esm_extends["a" /* default */])({
           tagName: Tagname,
+<<<<<<< HEAD
+=======
+          onSetup: _this3.onSetup,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           style: style,
           record: record,
           valueToEditableHTML: _this3.valueToEditableHTML,
@@ -23269,7 +23497,11 @@ function (_Component) {
             if (this.state.selectedSuggestion !== null) {
               this.selectLink(post); // Announce a link has been selected when tabbing away from the input field.
 
+<<<<<<< HEAD
               this.props.speak(Object(external_this_wp_i18n_["__"])('Link selected.'));
+=======
+              this.props.speak(Object(external_this_wp_i18n_["__"])('Link selected'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
             }
 
             break;

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Contains global functions for the media upload within the post edit screen.
  *
@@ -27,15 +28,30 @@
  *                         sent to the editor.
  */
 window.send_to_editor = function( html ) {
+=======
+/* global tinymce, QTags */
+// send html to the post editor
+
+var wpActiveEditor, send_to_editor;
+
+send_to_editor = function( html ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	var editor,
 		hasTinymce = typeof tinymce !== 'undefined',
 		hasQuicktags = typeof QTags !== 'undefined';
 
+<<<<<<< HEAD
 	// If no active editor is set, try to set it.
 	if ( ! wpActiveEditor ) {
 		if ( hasTinymce && tinymce.activeEditor ) {
 			editor = tinymce.activeEditor;
 			window.wpActiveEditor = editor.id;
+=======
+	if ( ! wpActiveEditor ) {
+		if ( hasTinymce && tinymce.activeEditor ) {
+			editor = tinymce.activeEditor;
+			wpActiveEditor = editor.id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} else if ( ! hasQuicktags ) {
 			return false;
 		}
@@ -43,6 +59,7 @@ window.send_to_editor = function( html ) {
 		editor = tinymce.get( wpActiveEditor );
 	}
 
+<<<<<<< HEAD
 	// If the editor is set and not hidden, insert the HTML into the content of the
 	// editor.
 	if ( editor && ! editor.isHidden() ) {
@@ -57,11 +74,23 @@ window.send_to_editor = function( html ) {
 	}
 
 	// If the old thickbox remove function exists, call it.
+=======
+	if ( editor && ! editor.isHidden() ) {
+		editor.execCommand( 'mceInsertContent', false, html );
+	} else if ( hasQuicktags ) {
+		QTags.insertContent( html );
+	} else {
+		document.getElementById( wpActiveEditor ).value += html;
+	}
+
+	// If the old thickbox remove function exists, call it
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( window.tb_remove ) {
 		try { window.tb_remove(); } catch( e ) {}
 	}
 };
 
+<<<<<<< HEAD
 (function($) {
 	/**
 	 * Recalculates and applies the new ThickBox position based on the current
@@ -75,6 +104,12 @@ window.send_to_editor = function( html ) {
 	 *                     ThickBox anchors.
 	 */
 	window.tb_position = function() {
+=======
+// thickbox settings
+var tb_position;
+(function($) {
+	tb_position = function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		var tbWindow = $('#TB_window'),
 			width = $(window).width(),
 			H = $(window).height(),
@@ -93,11 +128,14 @@ window.send_to_editor = function( html ) {
 				tbWindow.css({'top': 20 + adminbar_height + 'px', 'margin-top': '0'});
 		}
 
+<<<<<<< HEAD
 		/**
 		 * Recalculates the new height and width for all links with a ThickBox class.
 		 *
 		 * @since 2.6.0
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $('a.thickbox').each( function() {
 			var href = $(this).attr('href');
 			if ( ! href ) return;
@@ -107,7 +145,10 @@ window.send_to_editor = function( html ) {
 		});
 	};
 
+<<<<<<< HEAD
 	// Add handler to recalculates the ThickBox position when the window is resized.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$(window).resize(function(){ tb_position(); });
 
 })(jQuery);

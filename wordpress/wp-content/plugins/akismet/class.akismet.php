@@ -575,11 +575,14 @@ class Akismet {
 		if ( $new_status == $old_status )
 			return;
 
+<<<<<<< HEAD
 		if ( 'spam' === $new_status || 'spam' === $old_status ) {
 			// Clear the cache of the "X comments in your spam queue" count on the dashboard.
 			wp_cache_delete( 'akismet_spam_count', 'widget' );
 		}
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		# we don't need to record a history item for deleted comments
 		if ( $new_status == 'delete' )
 			return;

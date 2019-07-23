@@ -1,7 +1,10 @@
 /**
  * Attempt to re-color SVG icons used in the admin menu or the toolbar
  *
+<<<<<<< HEAD
  * @output wp-admin/js/svg-painter.js
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 
 window.wp = window.wp || {};

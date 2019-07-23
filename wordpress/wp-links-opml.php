@@ -14,6 +14,7 @@
 
 require_once( dirname( __FILE__ ) . '/wp-load.php' );
 
+<<<<<<< HEAD
 header( 'Content-Type: text/xml; charset=' . get_option( 'blog_charset' ), true );
 $link_cat = '';
 if ( ! empty( $_GET['link_cat'] ) ) {
@@ -34,6 +35,25 @@ echo '<?xml version="1.0"?' . ">\n";
 		?>
 		</title>
 		<dateCreated><?php echo gmdate( 'D, d M Y H:i:s' ); ?> GMT</dateCreated>
+=======
+header('Content-Type: text/xml; charset=' . get_option('blog_charset'), true);
+$link_cat = '';
+if ( !empty($_GET['link_cat']) ) {
+	$link_cat = $_GET['link_cat'];
+	if ( !in_array($link_cat, array('all', '0')) )
+		$link_cat = absint( (string)urldecode($link_cat) );
+}
+
+echo '<?xml version="1.0"?'.">\n";
+?>
+<opml version="1.0">
+	<head>
+		<title><?php
+			/* translators: 1: Site name */
+			printf( __('Links for %s'), esc_attr(get_bloginfo('name', 'display')) );
+		?></title>
+		<dateCreated><?php echo gmdate("D, d M Y H:i:s"); ?> GMT</dateCreated>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		<?php
 		/**
 		 * Fires in the OPML header.
@@ -45,6 +65,7 @@ echo '<?xml version="1.0"?' . ">\n";
 	</head>
 	<body>
 <?php
+<<<<<<< HEAD
 if ( empty( $link_cat ) ) {
 	$cats = get_categories(
 		array(
@@ -71,6 +92,28 @@ foreach ( (array) $cats as $cat ) :
 	<?php
 	$bookmarks = get_bookmarks( array( 'category' => $cat->term_id ) );
 	foreach ( (array) $bookmarks as $bookmark ) :
+=======
+if ( empty($link_cat) )
+	$cats = get_categories(array('taxonomy' => 'link_category', 'hierarchical' => 0));
+else
+	$cats = get_categories(array('taxonomy' => 'link_category', 'hierarchical' => 0, 'include' => $link_cat));
+
+foreach ( (array)$cats as $cat ) :
+	/**
+	 * Filters the OPML outline link category name.
+	 *
+	 * @since 2.2.0
+	 *
+	 * @param string $catname The OPML outline category name.
+	 */
+	$catname = apply_filters( 'link_category', $cat->name );
+
+?>
+<outline type="category" title="<?php echo esc_attr($catname); ?>">
+<?php
+	$bookmarks = get_bookmarks(array("category" => $cat->term_id));
+	foreach ( (array)$bookmarks as $bookmark ) :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		/**
 		 * Filters the OPML outline link title text.
 		 *
@@ -79,6 +122,7 @@ foreach ( (array) $cats as $cat ) :
 		 * @param string $title The OPML outline title text.
 		 */
 		$title = apply_filters( 'link_title', $bookmark->link_name );
+<<<<<<< HEAD
 		?>
 <outline text="<?php echo esc_attr( $title ); ?>" type="link" xmlUrl="<?php echo esc_attr( $bookmark->link_rss ); ?>" htmlUrl="<?php echo esc_attr( $bookmark->link_url ); ?>" updated="
 							<?php
@@ -91,6 +135,15 @@ foreach ( (array) $cats as $cat ) :
 	?>
 </outline>
 	<?php
+=======
+?>
+	<outline text="<?php echo esc_attr($title); ?>" type="link" xmlUrl="<?php echo esc_attr($bookmark->link_rss); ?>" htmlUrl="<?php echo esc_attr($bookmark->link_url); ?>" updated="<?php if ('0000-00-00 00:00:00' != $bookmark->link_updated) echo $bookmark->link_updated; ?>" />
+<?php
+	endforeach; // $bookmarks
+?>
+</outline>
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 endforeach; // $cats
 ?>
 </body>

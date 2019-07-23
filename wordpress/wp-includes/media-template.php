@@ -15,18 +15,28 @@
  */
 function wp_underscore_audio_template() {
 	$audio_types = wp_get_audio_extensions();
+<<<<<<< HEAD
 	?>
+=======
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <audio style="visibility: hidden"
 	controls
 	class="wp-audio-shortcode"
 	width="{{ _.isUndefined( data.model.width ) ? 400 : data.model.width }}"
 	preload="{{ _.isUndefined( data.model.preload ) ? 'none' : data.model.preload }}"
 	<#
+<<<<<<< HEAD
 	<?php
 	foreach ( array( 'autoplay', 'loop' ) as $attr ) :
 		?>
 	if ( ! _.isUndefined( data.model.<?php echo $attr; ?> ) && data.model.<?php echo $attr; ?> ) {
 		#> <?php echo $attr; ?><#
+=======
+	<?php foreach ( array( 'autoplay', 'loop' ) as $attr ):
+	?>if ( ! _.isUndefined( data.model.<?php echo $attr ?> ) && data.model.<?php echo $attr ?> ) {
+		#> <?php echo $attr ?><#
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	<?php endforeach ?>#>
 >
@@ -34,6 +44,7 @@ function wp_underscore_audio_template() {
 	<source src="{{ data.model.src }}" type="{{ wp.media.view.settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
 	<# } #>
 
+<<<<<<< HEAD
 	<?php
 	foreach ( $audio_types as $type ) :
 		?>
@@ -45,6 +56,15 @@ function wp_underscore_audio_template() {
 	?>
 </audio>
 	<?php
+=======
+	<?php foreach ( $audio_types as $type ):
+	?><# if ( ! _.isEmpty( data.model.<?php echo $type ?> ) ) { #>
+	<source src="{{ data.model.<?php echo $type ?> }}" type="{{ wp.media.view.settings.embedMimes[ '<?php echo $type ?>' ] }}" />
+	<# } #>
+	<?php endforeach;
+?></audio>
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -55,7 +75,11 @@ function wp_underscore_audio_template() {
  */
 function wp_underscore_video_template() {
 	$video_types = wp_get_video_extensions();
+<<<<<<< HEAD
 	?>
+=======
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <#  var w_rule = '', classes = [],
 		w, h, settings = wp.media.view.settings,
 		isYouTube = isVimeo = false;
@@ -96,6 +120,7 @@ function wp_underscore_video_template() {
 	<# if ( w ) { #>width="{{ w }}"<# } #>
 	<# if ( h ) { #>height="{{ h }}"<# } #>
 	<?php
+<<<<<<< HEAD
 	$props = array(
 		'poster'  => '',
 		'preload' => 'metadata',
@@ -121,6 +146,22 @@ function wp_underscore_video_template() {
 	foreach ( array( 'autoplay', 'loop' ) as $attr ) :
 		?>
 	if ( ! _.isUndefined( data.model.<?php echo $attr; ?> ) && data.model.<?php echo $attr; ?> ) {
+=======
+	$props = array( 'poster' => '', 'preload' => 'metadata' );
+	foreach ( $props as $key => $value ):
+		if ( empty( $value ) ) {
+		?><#
+		if ( ! _.isUndefined( data.model.<?php echo $key ?> ) && data.model.<?php echo $key ?> ) {
+			#> <?php echo $key ?>="{{ data.model.<?php echo $key ?> }}"<#
+		} #>
+		<?php } else {
+			echo $key ?>="{{ _.isUndefined( data.model.<?php echo $key ?> ) ? '<?php echo $value ?>' : data.model.<?php echo $key ?> }}"<?php
+		}
+	endforeach;
+	?><#
+	<?php foreach ( array( 'autoplay', 'loop' ) as $attr ):
+	?> if ( ! _.isUndefined( data.model.<?php echo $attr; ?> ) && data.model.<?php echo $attr; ?> ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		#> <?php echo $attr; ?><#
 	}
 	<?php endforeach ?>#>
@@ -135,17 +176,27 @@ function wp_underscore_video_template() {
 		<# }
 	} #>
 
+<<<<<<< HEAD
 	<?php
 	foreach ( $video_types as $type ) :
 		?>
 	<# if ( data.model.<?php echo $type; ?> ) { #>
 	<source src="{{ data.model.<?php echo $type; ?> }}" type="{{ settings.embedMimes[ '<?php echo $type; ?>' ] }}" />
+=======
+	<?php foreach ( $video_types as $type ):
+	?><# if ( data.model.<?php echo $type ?> ) { #>
+	<source src="{{ data.model.<?php echo $type ?> }}" type="{{ settings.embedMimes[ '<?php echo $type ?>' ] }}" />
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	<# } #>
 	<?php endforeach; ?>
 	{{{ data.model.content }}}
 </video>
 </div>
+<<<<<<< HEAD
 	<?php
+=======
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -158,9 +209,14 @@ function wp_underscore_video_template() {
 function wp_print_media_templates() {
 	global $is_IE;
 	$class = 'media-modal wp-core-ui';
+<<<<<<< HEAD
 	if ( $is_IE && strpos( $_SERVER['HTTP_USER_AGENT'], 'MSIE 7' ) !== false ) {
 		$class .= ' ie7';
 	}
+=======
+	if ( $is_IE && strpos($_SERVER['HTTP_USER_AGENT'], 'MSIE 7') !== false )
+		$class .= ' ie7';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	?>
 	<!--[if lte IE 8]>
 	<style>
@@ -216,8 +272,12 @@ function wp_print_media_templates() {
 			<h2 class="upload-instructions"><?php _e( 'Upload Limit Exceeded' ); ?></h2>
 			<?php
 			/** This action is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
 			do_action( 'upload_ui_over_quota' );
 			?>
+=======
+			do_action( 'upload_ui_over_quota' ); ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		<?php else : ?>
 			<div class="upload-ui">
@@ -250,11 +310,17 @@ function wp_print_media_templates() {
 				}
 				?>
 
+<<<<<<< HEAD
 				<p class="max-upload-size">
 				<?php
 					printf( __( 'Maximum upload file size: %s.' ), esc_html( size_format( $max_upload_size ) ) );
 				?>
 				</p>
+=======
+				<p class="max-upload-size"><?php
+					printf( __( 'Maximum upload file size: %s.' ), esc_html( size_format( $max_upload_size ) ) );
+				?></p>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
 					<p class="suggested-dimensions">
@@ -267,18 +333,29 @@ function wp_print_media_templates() {
 
 				<?php
 				/** This action is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
 				do_action( 'post-upload-ui' );
 				?>
+=======
+				do_action( 'post-upload-ui' ); ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			</div>
 		<?php endif; ?>
 		</div>
 	</script>
 
 	<script type="text/html" id="tmpl-media-library-view-switcher">
+<<<<<<< HEAD
 		<a href="<?php echo esc_url( add_query_arg( 'mode', 'list', $_SERVER['REQUEST_URI'] ) ); ?>" class="view-list">
 			<span class="screen-reader-text"><?php _e( 'List View' ); ?></span>
 		</a>
 		<a href="<?php echo esc_url( add_query_arg( 'mode', 'grid', $_SERVER['REQUEST_URI'] ) ); ?>" class="view-grid current">
+=======
+		<a href="<?php echo esc_url( add_query_arg( 'mode', 'list', $_SERVER['REQUEST_URI'] ) ) ?>" class="view-list">
+			<span class="screen-reader-text"><?php _e( 'List View' ); ?></span>
+		</a>
+		<a href="<?php echo esc_url( add_query_arg( 'mode', 'grid', $_SERVER['REQUEST_URI'] ) ) ?>" class="view-grid current">
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<span class="screen-reader-text"><?php _e( 'Grid View' ); ?></span>
 		</a>
 	</script>
@@ -361,7 +438,11 @@ function wp_print_media_templates() {
 		<div class="attachment-info">
 			<span class="settings-save-status">
 				<span class="spinner"></span>
+<<<<<<< HEAD
 				<span class="saved"><?php esc_html_e( 'Saved.' ); ?></span>
+=======
+				<span class="saved"><?php esc_html_e('Saved.'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			</span>
 			<div class="details">
 				<div class="filename"><strong><?php _e( 'File name:' ); ?></strong> {{ data.filename }}</div>
@@ -371,6 +452,7 @@ function wp_print_media_templates() {
 				<div class="file-size"><strong><?php _e( 'File size:' ); ?></strong> {{ data.filesizeHumanReadable }}</div>
 				<# if ( 'image' === data.type && ! data.uploading ) { #>
 					<# if ( data.width && data.height ) { #>
+<<<<<<< HEAD
 						<div class="dimensions"><strong><?php _e( 'Dimensions:' ); ?></strong>
 							<?php
 							/* translators: 1: a number of pixels wide, 2: a number of pixels tall. */
@@ -385,6 +467,14 @@ function wp_print_media_templates() {
 						<span aria-hidden="true">{{ data.fileLength }}</span>
 						<span class="screen-reader-text">{{ data.fileLengthHumanReadable }}</span>
 					</div>
+=======
+						<div class="dimensions"><strong><?php _e( 'Dimensions:' ); ?></strong> {{ data.width }} &times; {{ data.height }}</div>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength ) { #>
+					<div class="file-length"><strong><?php _e( 'Length:' ); ?></strong> {{ data.fileLength }}</div>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<# } #>
 
 				<# if ( 'audio' === data.type && data.meta.bitrate ) { #>
@@ -405,17 +495,26 @@ function wp_print_media_templates() {
 
 			<div class="settings">
 				<label class="setting" data-setting="url">
+<<<<<<< HEAD
 					<span class="name"><?php _e( 'URL' ); ?></span>
+=======
+					<span class="name"><?php _e('URL'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<input type="text" value="{{ data.url }}" readonly />
 				</label>
 				<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
 				<?php if ( post_type_supports( 'attachment', 'title' ) ) : ?>
 				<label class="setting" data-setting="title">
+<<<<<<< HEAD
 					<span class="name"><?php _e( 'Title' ); ?></span>
+=======
+					<span class="name"><?php _e('Title'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
 				</label>
 				<?php endif; ?>
 				<# if ( 'audio' === data.type ) { #>
+<<<<<<< HEAD
 				<?php
 				foreach ( array(
 					'artist' => __( 'Artist' ),
@@ -425,6 +524,15 @@ function wp_print_media_templates() {
 				<label class="setting" data-setting="<?php echo esc_attr( $key ); ?>">
 					<span class="name"><?php echo $label; ?></span>
 					<input type="text" value="{{ data.<?php echo $key; ?> || data.meta.<?php echo $key; ?> || '' }}" />
+=======
+				<?php foreach ( array(
+					'artist' => __( 'Artist' ),
+					'album' => __( 'Album' ),
+				) as $key => $label ) : ?>
+				<label class="setting" data-setting="<?php echo esc_attr( $key ) ?>">
+					<span class="name"><?php echo $label ?></span>
+					<input type="text" value="{{ data.<?php echo $key ?> || data.meta.<?php echo $key ?> || '' }}" />
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				</label>
 				<?php endforeach; ?>
 				<# } #>
@@ -439,7 +547,11 @@ function wp_print_media_templates() {
 					</label>
 				<# } #>
 				<label class="setting" data-setting="description">
+<<<<<<< HEAD
 					<span class="name"><?php _e( 'Description' ); ?></span>
+=======
+					<span class="name"><?php _e('Description'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
 				</label>
 				<div class="setting">
@@ -465,13 +577,21 @@ function wp_print_media_templates() {
 					<a href="{{ data.editLink }}"><?php _e( 'Edit more details' ); ?></a>
 				<# } #>
 				<# if ( ! data.uploading && data.can.remove ) { #> |
+<<<<<<< HEAD
 					<?php if ( MEDIA_TRASH ) : ?>
+=======
+					<?php if ( MEDIA_TRASH ): ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<# if ( 'trash' === data.status ) { #>
 							<button type="button" class="button-link untrash-attachment"><?php _e( 'Untrash' ); ?></button>
 						<# } else { #>
 							<button type="button" class="button-link trash-attachment"><?php _ex( 'Trash', 'verb' ); ?></button>
 						<# } #>
+<<<<<<< HEAD
 					<?php else : ?>
+=======
+					<?php else: ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<button type="button" class="button-link delete-attachment"><?php _e( 'Delete Permanently' ); ?></button>
 					<?php endif; ?>
 				<# } #>
@@ -516,6 +636,7 @@ function wp_print_media_templates() {
 		if ( data.describe ) {
 			if ( 'image' === data.type ) { #>
 				<input type="text" value="{{ data.caption }}" class="describe" data-setting="caption"
+<<<<<<< HEAD
 					placeholder="<?php esc_attr_e( 'Caption this image&hellip;' ); ?>" {{ maybeReadOnly }} />
 			<# } else { #>
 				<input type="text" value="{{ data.title }}" class="describe" data-setting="title"
@@ -525,6 +646,17 @@ function wp_print_media_templates() {
 						placeholder="<?php esc_attr_e( 'Describe this audio file&hellip;' ); ?>"
 					<# } else { #>
 						placeholder="<?php esc_attr_e( 'Describe this media file&hellip;' ); ?>"
+=======
+					placeholder="<?php esc_attr_e('Caption this image&hellip;'); ?>" {{ maybeReadOnly }} />
+			<# } else { #>
+				<input type="text" value="{{ data.title }}" class="describe" data-setting="title"
+					<# if ( 'video' === data.type ) { #>
+						placeholder="<?php esc_attr_e('Describe this video&hellip;'); ?>"
+					<# } else if ( 'audio' === data.type ) { #>
+						placeholder="<?php esc_attr_e('Describe this audio file&hellip;'); ?>"
+					<# } else { #>
+						placeholder="<?php esc_attr_e('Describe this media file&hellip;'); ?>"
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<# } #> {{ maybeReadOnly }} />
 			<# }
 		} #>
@@ -535,7 +667,11 @@ function wp_print_media_templates() {
 			<?php _e( 'Attachment Details' ); ?>
 			<span class="settings-save-status">
 				<span class="spinner"></span>
+<<<<<<< HEAD
 				<span class="saved"><?php esc_html_e( 'Saved.' ); ?></span>
+=======
+				<span class="saved"><?php esc_html_e('Saved.'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			</span>
 		</h2>
 		<div class="attachment-info">
@@ -555,12 +691,16 @@ function wp_print_media_templates() {
 				<div class="file-size">{{ data.filesizeHumanReadable }}</div>
 				<# if ( 'image' === data.type && ! data.uploading ) { #>
 					<# if ( data.width && data.height ) { #>
+<<<<<<< HEAD
 						<div class="dimensions">
 							<?php
 							/* translators: 1: a number of pixels wide, 2: a number of pixels tall. */
 							printf( __( '%1$s by %2$s pixels' ), '{{ data.width }}', '{{ data.height }}' );
 							?>
 						</div>
+=======
+						<div class="dimensions">{{ data.width }} &times; {{ data.height }}</div>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<# } #>
 
 					<# if ( data.can.save && data.sizes ) { #>
@@ -568,6 +708,7 @@ function wp_print_media_templates() {
 					<# } #>
 				<# } #>
 
+<<<<<<< HEAD
 				<# if ( data.fileLength && data.fileLengthHumanReadable ) { #>
 					<div class="file-length"><?php _e( 'Length:' ); ?>
 						<span aria-hidden="true">{{ data.fileLength }}</span>
@@ -577,12 +718,24 @@ function wp_print_media_templates() {
 
 				<# if ( ! data.uploading && data.can.remove ) { #>
 					<?php if ( MEDIA_TRASH ) : ?>
+=======
+				<# if ( data.fileLength ) { #>
+					<div class="file-length"><?php _e( 'Length:' ); ?> {{ data.fileLength }}</div>
+				<# } #>
+
+				<# if ( ! data.uploading && data.can.remove ) { #>
+					<?php if ( MEDIA_TRASH ): ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<# if ( 'trash' === data.status ) { #>
 						<button type="button" class="button-link untrash-attachment"><?php _e( 'Untrash' ); ?></button>
 					<# } else { #>
 						<button type="button" class="button-link trash-attachment"><?php _ex( 'Trash', 'verb' ); ?></button>
 					<# } #>
+<<<<<<< HEAD
 					<?php else : ?>
+=======
+					<?php else: ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<button type="button" class="button-link delete-attachment"><?php _e( 'Delete Permanently' ); ?></button>
 					<?php endif; ?>
 				<# } #>
@@ -596,17 +749,26 @@ function wp_print_media_templates() {
 		</div>
 
 		<label class="setting" data-setting="url">
+<<<<<<< HEAD
 			<span class="name"><?php _e( 'URL' ); ?></span>
+=======
+			<span class="name"><?php _e('URL'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<input type="text" value="{{ data.url }}" readonly />
 		</label>
 		<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
 		<?php if ( post_type_supports( 'attachment', 'title' ) ) : ?>
 		<label class="setting" data-setting="title">
+<<<<<<< HEAD
 			<span class="name"><?php _e( 'Title' ); ?></span>
+=======
+			<span class="name"><?php _e('Title'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<input type="text" value="{{ data.title }}" {{ maybeReadOnly }} />
 		</label>
 		<?php endif; ?>
 		<# if ( 'audio' === data.type ) { #>
+<<<<<<< HEAD
 		<?php
 		foreach ( array(
 			'artist' => __( 'Artist' ),
@@ -616,21 +778,42 @@ function wp_print_media_templates() {
 		<label class="setting" data-setting="<?php echo esc_attr( $key ); ?>">
 			<span class="name"><?php echo $label; ?></span>
 			<input type="text" value="{{ data.<?php echo $key; ?> || data.meta.<?php echo $key; ?> || '' }}" />
+=======
+		<?php foreach ( array(
+			'artist' => __( 'Artist' ),
+			'album' => __( 'Album' ),
+		) as $key => $label ) : ?>
+		<label class="setting" data-setting="<?php echo esc_attr( $key ) ?>">
+			<span class="name"><?php echo $label ?></span>
+			<input type="text" value="{{ data.<?php echo $key ?> || data.meta.<?php echo $key ?> || '' }}" />
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		</label>
 		<?php endforeach; ?>
 		<# } #>
 		<label class="setting" data-setting="caption">
+<<<<<<< HEAD
 			<span class="name"><?php _e( 'Caption' ); ?></span>
+=======
+			<span class="name"><?php _e('Caption'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<textarea {{ maybeReadOnly }}>{{ data.caption }}</textarea>
 		</label>
 		<# if ( 'image' === data.type ) { #>
 			<label class="setting" data-setting="alt">
+<<<<<<< HEAD
 				<span class="name"><?php _e( 'Alt Text' ); ?></span>
+=======
+				<span class="name"><?php _e('Alt Text'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<input type="text" value="{{ data.alt }}" {{ maybeReadOnly }} />
 			</label>
 		<# } #>
 		<label class="setting" data-setting="description">
+<<<<<<< HEAD
 			<span class="name"><?php _e( 'Description' ); ?></span>
+=======
+			<span class="name"><?php _e('Description'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<textarea {{ maybeReadOnly }}>{{ data.description }}</textarea>
 		</label>
 	</script>
@@ -653,7 +836,11 @@ function wp_print_media_templates() {
 
 		<# if ( 'image' === data.type ) { #>
 			<label class="setting align">
+<<<<<<< HEAD
 				<span><?php _e( 'Alignment' ); ?></span>
+=======
+				<span><?php _e('Alignment'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<select class="alignment"
 					data-setting="align"
 					<# if ( data.userSettings ) { #>
@@ -679,9 +866,15 @@ function wp_print_media_templates() {
 		<div class="setting">
 			<label>
 				<# if ( data.model.canEmbed ) { #>
+<<<<<<< HEAD
 					<span><?php _e( 'Embed or Link' ); ?></span>
 				<# } else { #>
 					<span><?php _e( 'Link To' ); ?></span>
+=======
+					<span><?php _e('Embed or Link'); ?></span>
+				<# } else { #>
+					<span><?php _e('Link To'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<# } #>
 
 				<select class="link-to"
@@ -726,7 +919,11 @@ function wp_print_media_templates() {
 
 		<# if ( 'undefined' !== typeof data.sizes ) { #>
 			<label class="setting">
+<<<<<<< HEAD
 				<span><?php _e( 'Size' ); ?></span>
+=======
+				<span><?php _e('Size'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<select class="size" name="size"
 					data-setting="size"
 					<# if ( data.userSettings ) { #>
@@ -734,6 +931,7 @@ function wp_print_media_templates() {
 					<# } #>>
 					<?php
 					/** This filter is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
 					$sizes = apply_filters(
 						'image_size_names_choose',
 						array(
@@ -746,6 +944,16 @@ function wp_print_media_templates() {
 
 					foreach ( $sizes as $value => $name ) :
 						?>
+=======
+					$sizes = apply_filters( 'image_size_names_choose', array(
+						'thumbnail' => __('Thumbnail'),
+						'medium'    => __('Medium'),
+						'large'     => __('Large'),
+						'full'      => __('Full Size'),
+					) );
+
+					foreach ( $sizes as $value => $name ) : ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<#
 						var size = data.sizes['<?php echo esc_js( $value ); ?>'];
 						if ( size ) { #>
@@ -763,7 +971,11 @@ function wp_print_media_templates() {
 		<h2><?php _e( 'Gallery Settings' ); ?></h2>
 
 		<label class="setting">
+<<<<<<< HEAD
 			<span><?php _e( 'Link To' ); ?></span>
+=======
+			<span><?php _e('Link To'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<select class="link-to"
 				data-setting="link"
 				<# if ( data.userSettings ) { #>
@@ -785,12 +997,20 @@ function wp_print_media_templates() {
 		</label>
 
 		<label class="setting">
+<<<<<<< HEAD
 			<span><?php _e( 'Columns' ); ?></span>
+=======
+			<span><?php _e('Columns'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<select class="columns" name="columns"
 				data-setting="columns">
 				<?php for ( $i = 1; $i <= 9; $i++ ) : ?>
 					<option value="<?php echo esc_attr( $i ); ?>" <#
+<<<<<<< HEAD
 						if ( <?php echo $i; ?> == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+=======
+						if ( <?php echo $i ?> == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					#>>
 						<?php echo esc_html( $i ); ?>
 					</option>
@@ -813,6 +1033,7 @@ function wp_print_media_templates() {
 				>
 				<?php
 				/** This filter is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
 				$size_names = apply_filters(
 					'image_size_names_choose',
 					array(
@@ -825,6 +1046,16 @@ function wp_print_media_templates() {
 
 				foreach ( $size_names as $size => $label ) :
 					?>
+=======
+				$size_names = apply_filters( 'image_size_names_choose', array(
+					'thumbnail' => __( 'Thumbnail' ),
+					'medium'    => __( 'Medium' ),
+					'large'     => __( 'Large' ),
+					'full'      => __( 'Full Size' ),
+				) );
+
+				foreach ( $size_names as $size => $label ) : ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<option value="<?php echo esc_attr( $size ); ?>">
 						<?php echo esc_html( $label ); ?>
 					</option>
@@ -884,21 +1115,35 @@ function wp_print_media_templates() {
 
 		<?php
 		/** This filter is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
 		if ( ! apply_filters( 'disable_captions', '' ) ) :
 			?>
 			<label class="setting caption">
 				<span><?php _e( 'Caption' ); ?></span>
+=======
+		if ( ! apply_filters( 'disable_captions', '' ) ) : ?>
+			<label class="setting caption">
+				<span><?php _e('Caption'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<textarea data-setting="caption" />
 			</label>
 		<?php endif; ?>
 
 		<label class="setting alt-text">
+<<<<<<< HEAD
 			<span><?php _e( 'Alt Text' ); ?></span>
+=======
+			<span><?php _e('Alt Text'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<input type="text" data-setting="alt" />
 		</label>
 
 		<div class="setting align">
+<<<<<<< HEAD
 			<span><?php _e( 'Align' ); ?></span>
+=======
+			<span><?php _e('Align'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<div class="button-group button-large" data-setting="align">
 				<button class="button" value="left">
 					<?php esc_html_e( 'Left' ); ?>
@@ -916,7 +1161,11 @@ function wp_print_media_templates() {
 		</div>
 
 		<div class="setting link-to">
+<<<<<<< HEAD
 			<span><?php _e( 'Link To' ); ?></span>
+=======
+			<span><?php _e('Link To'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<div class="button-group button-large" data-setting="link">
 				<button class="button" value="file">
 					<?php esc_html_e( 'Image URL' ); ?>
@@ -950,22 +1199,36 @@ function wp_print_media_templates() {
 				<div class="column-settings">
 					<?php
 					/** This filter is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
 					if ( ! apply_filters( 'disable_captions', '' ) ) :
 						?>
 						<label class="setting caption">
 							<span><?php _e( 'Caption' ); ?></span>
+=======
+					if ( ! apply_filters( 'disable_captions', '' ) ) : ?>
+						<label class="setting caption">
+							<span><?php _e('Caption'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 							<textarea data-setting="caption">{{ data.model.caption }}</textarea>
 						</label>
 					<?php endif; ?>
 
 					<label class="setting alt-text">
+<<<<<<< HEAD
 						<span><?php _e( 'Alternative Text' ); ?></span>
+=======
+						<span><?php _e('Alternative Text'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<input type="text" data-setting="alt" value="{{ data.model.alt }}" />
 					</label>
 
 					<h2><?php _e( 'Display Settings' ); ?></h2>
 					<div class="setting align">
+<<<<<<< HEAD
 						<span><?php _e( 'Align' ); ?></span>
+=======
+						<span><?php _e('Align'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<div class="button-group button-large" data-setting="align">
 							<button class="button" value="left">
 								<?php esc_html_e( 'Left' ); ?>
@@ -985,7 +1248,11 @@ function wp_print_media_templates() {
 					<# if ( data.attachment ) { #>
 						<# if ( 'undefined' !== typeof data.attachment.sizes ) { #>
 							<label class="setting size">
+<<<<<<< HEAD
 								<span><?php _e( 'Size' ); ?></span>
+=======
+								<span><?php _e('Size'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 								<select class="size" name="size"
 									data-setting="size"
 									<# if ( data.userSettings ) { #>
@@ -993,6 +1260,7 @@ function wp_print_media_templates() {
 									<# } #>>
 									<?php
 									/** This filter is documented in wp-admin/includes/media.php */
+<<<<<<< HEAD
 									$sizes = apply_filters(
 										'image_size_names_choose',
 										array(
@@ -1005,6 +1273,16 @@ function wp_print_media_templates() {
 
 									foreach ( $sizes as $value => $name ) :
 										?>
+=======
+									$sizes = apply_filters( 'image_size_names_choose', array(
+										'thumbnail' => __('Thumbnail'),
+										'medium'    => __('Medium'),
+										'large'     => __('Large'),
+										'full'      => __('Full Size'),
+									) );
+
+									foreach ( $sizes as $value => $name ) : ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 										<#
 										var size = data.sizes['<?php echo esc_js( $value ); ?>'];
 										if ( size ) { #>
@@ -1025,7 +1303,11 @@ function wp_print_media_templates() {
 					<# } #>
 
 					<div class="setting link-to">
+<<<<<<< HEAD
 						<span><?php _e( 'Link To' ); ?></span>
+=======
+						<span><?php _e('Link To'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						<select data-setting="link">
 						<# if ( data.attachment ) { #>
 							<option value="file">
@@ -1053,11 +1335,19 @@ function wp_print_media_templates() {
 						<div class="advanced-settings hidden">
 							<div class="advanced-image">
 								<label class="setting title-text">
+<<<<<<< HEAD
 									<span><?php _e( 'Image Title Attribute' ); ?></span>
 									<input type="text" data-setting="title" value="{{ data.model.title }}" />
 								</label>
 								<label class="setting extra-classes">
 									<span><?php _e( 'Image CSS Class' ); ?></span>
+=======
+									<span><?php _e('Image Title Attribute'); ?></span>
+									<input type="text" data-setting="title" value="{{ data.model.title }}" />
+								</label>
+								<label class="setting extra-classes">
+									<span><?php _e('Image CSS Class'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 									<input type="text" data-setting="extraClasses" value="{{ data.model.extraClasses }}" />
 								</label>
 							</div>
@@ -1066,11 +1356,19 @@ function wp_print_media_templates() {
 									<label><input type="checkbox" data-setting="linkTargetBlank" value="_blank" <# if ( data.model.linkTargetBlank ) { #>checked="checked"<# } #>><?php _e( 'Open link in a new tab' ); ?></label>
 								</div>
 								<label class="setting link-rel">
+<<<<<<< HEAD
 									<span><?php _e( 'Link Rel' ); ?></span>
 									<input type="text" data-setting="linkRel" value="{{ data.model.linkRel }}" />
 								</label>
 								<label class="setting link-class-name">
 									<span><?php _e( 'Link CSS Class' ); ?></span>
+=======
+									<span><?php _e('Link Rel'); ?></span>
+									<input type="text" data-setting="linkRel" value="{{ data.model.linkRel }}" />
+								</label>
+								<label class="setting link-class-name">
+									<span><?php _e('Link CSS Class'); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 									<input type="text" data-setting="linkClassName" value="{{ data.model.linkClassName }}" />
 								</label>
 							</div>
@@ -1095,7 +1393,11 @@ function wp_print_media_templates() {
 		<?php $audio_types = wp_get_audio_extensions(); ?>
 		<div class="media-embed media-embed-details">
 			<div class="embed-media-settings embed-audio-settings">
+<<<<<<< HEAD
 				<?php wp_underscore_audio_template(); ?>
+=======
+				<?php wp_underscore_audio_template() ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				<# if ( ! _.isEmpty( data.model.src ) ) {
 					ext = data.model.src.split('.').pop();
@@ -1111,11 +1413,18 @@ function wp_print_media_templates() {
 				<# } #>
 				<?php
 
+<<<<<<< HEAD
 				foreach ( $audio_types as $type ) :
 					?>
 				<# if ( ! _.isEmpty( data.model.<?php echo $type; ?> ) ) {
 					if ( ! _.isUndefined( html5types.<?php echo $type; ?> ) ) {
 						delete html5types.<?php echo $type; ?>;
+=======
+				foreach ( $audio_types as $type ):
+				?><# if ( ! _.isEmpty( data.model.<?php echo $type ?> ) ) {
+					if ( ! _.isUndefined( html5types.<?php echo $type ?> ) ) {
+						delete html5types.<?php echo $type ?>;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					}
 				#>
 				<div class="setting">
@@ -1128,7 +1437,11 @@ function wp_print_media_templates() {
 
 				<# if ( ! _.isEmpty( html5types ) ) { #>
 				<div class="setting">
+<<<<<<< HEAD
 					<span><?php _e( 'Add alternate sources for maximum HTML5 playback:' ); ?></span>
+=======
+					<span><?php _e( 'Add alternate sources for maximum HTML5 playback:' ) ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<div class="button-large">
 					<# _.each( html5types, function (mime, type) { #>
 					<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
@@ -1179,7 +1492,11 @@ function wp_print_media_templates() {
 				}
 				#>
 
+<<<<<<< HEAD
 				<?php wp_underscore_video_template(); ?>
+=======
+				<?php wp_underscore_video_template() ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				<# if ( ! _.isEmpty( data.model.src ) ) {
 					ext = data.model.src.split('.').pop();
@@ -1193,12 +1510,19 @@ function wp_print_media_templates() {
 					<button type="button" class="button-link remove-setting"><?php _e( 'Remove video source' ); ?></button>
 				</div>
 				<# } #>
+<<<<<<< HEAD
 				<?php
 				foreach ( $video_types as $type ) :
 					?>
 				<# if ( ! _.isEmpty( data.model.<?php echo $type; ?> ) ) {
 					if ( ! _.isUndefined( html5types.<?php echo $type; ?> ) ) {
 						delete html5types.<?php echo $type; ?>;
+=======
+				<?php foreach ( $video_types as $type ):
+				?><# if ( ! _.isEmpty( data.model.<?php echo $type ?> ) ) {
+					if ( ! _.isUndefined( html5types.<?php echo $type ?> ) ) {
+						delete html5types.<?php echo $type ?>;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					}
 				#>
 				<div class="setting">

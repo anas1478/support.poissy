@@ -159,7 +159,11 @@ class WP_Customize_Partial {
 		// Process settings.
 		if ( ! isset( $this->settings ) ) {
 			$this->settings = array( $id );
+<<<<<<< HEAD
 		} elseif ( is_string( $this->settings ) ) {
+=======
+		} else if ( is_string( $this->settings ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->settings = array( $this->settings );
 		}
 
@@ -201,7 +205,11 @@ class WP_Customize_Partial {
 		if ( ! empty( $this->render_callback ) ) {
 			ob_start();
 			$return_render = call_user_func( $this->render_callback, $this, $container_context );
+<<<<<<< HEAD
 			$ob_render     = ob_get_clean();
+=======
+			$ob_render = ob_get_clean();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			if ( null !== $return_render && '' !== $ob_render ) {
 				_doing_it_wrong( __FUNCTION__, __( 'Partial render must echo the content or return the content string (or array), but not both.' ), '4.5.0' );

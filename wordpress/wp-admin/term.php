@@ -31,8 +31,13 @@ $taxonomy = $tax->name;
 $title    = $tax->labels->edit_item;
 
 if ( ! in_array( $taxonomy, get_taxonomies( array( 'show_ui' => true ) ) ) ||
+<<<<<<< HEAD
 	! current_user_can( 'edit_term', $tag->term_id ) ) {
 
+=======
+     ! current_user_can( 'edit_term', $tag->term_id )
+) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	wp_die(
 		'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
 		'<p>' . __( 'Sorry, you are not allowed to edit this item.' ) . '</p>',
@@ -58,12 +63,19 @@ if ( 'post' != $post_type ) {
 	$submenu_file = "edit-tags.php?taxonomy=$taxonomy";
 }
 
+<<<<<<< HEAD
 get_current_screen()->set_screen_reader_content(
 	array(
 		'heading_pagination' => $tax->labels->items_list_navigation,
 		'heading_list'       => $tax->labels->items_list,
 	)
 );
+=======
+get_current_screen()->set_screen_reader_content( array(
+	'heading_pagination' => $tax->labels->items_list_navigation,
+	'heading_list'       => $tax->labels->items_list,
+) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 wp_enqueue_script( 'admin-tags' );
 require_once( ABSPATH . 'wp-admin/admin-header.php' );
 include( ABSPATH . 'wp-admin/edit-tag-form.php' );

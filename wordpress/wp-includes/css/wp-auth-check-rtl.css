@@ -33,7 +33,11 @@
 	box-shadow: 0 3px 6px rgba( 0, 0, 0, 0.3 );
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 380px) {
+=======
+@media screen and ( max-width: 380px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#wp-auth-check-wrap #wp-auth-check {
 		right: 0;
 		width: 100%;

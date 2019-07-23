@@ -167,7 +167,11 @@ body.post-new-php .submitbox .submitdelete {
 	border: 0 none;
 	float: left;
 	padding: 0 12px;
+<<<<<<< HEAD
 	margin: 0;
+=======
+	margin:0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .category-add input[type="text"],
@@ -214,7 +218,11 @@ ul.category-tabs li,
 
 /* Back-compat for pre-4.4 */
 #category-adder h4 {
+<<<<<<< HEAD
 	margin: 0;
+=======
+    margin: 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .taxonomy-add-new {
@@ -607,18 +615,24 @@ span.wp-media-buttons-icon:before {
 	line-height: 1.4;
 }
 
+<<<<<<< HEAD
 #poststuff .stuffbox h2 {
 	padding: 8px 10px;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 #poststuff .inside {
 	margin: 6px 0 0 0;
 }
 
+<<<<<<< HEAD
 #poststuff .stuffbox .inside {
 	margin: 0;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 #poststuff .inside #parent_id,
 #poststuff .inside #page_template {
 	max-width: 100%;
@@ -651,7 +665,11 @@ span.wp-media-buttons-icon:before {
 
 #post-body-content,
 .edit-form-section {
+<<<<<<< HEAD
 	margin-bottom: 20px;
+=======
+ 	margin-bottom: 20px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /* Suggested text for privacy policy */
@@ -1011,11 +1029,19 @@ a.post-state-format.format-link:before {
 }
 
 div.tabs-panel-active {
+<<<<<<< HEAD
 	display: block;
 }
 
 div.tabs-panel-inactive {
 	display: none;
+=======
+	display:block;
+}
+
+div.tabs-panel-inactive {
+	display:none;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #front-page-warning,
@@ -1102,12 +1128,17 @@ span.description,
   13.0 - Tags
 ------------------------------------------------------------------------------*/
 
+<<<<<<< HEAD
 #poststuff .tagsdiv .ajaxtag {
 	margin-top: 1em;
 }
 
 #poststuff .tagsdiv .howto {
 	margin: 1em 0 6px 0;
+=======
+#poststuff .tagsdiv .howto {
+	margin: 0 0 6px 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .ajaxtag .newtag {
@@ -1199,6 +1230,12 @@ p.popular-tags a {
 
 .edit-tag-actions {
 	margin-top: 20px;
+<<<<<<< HEAD
+=======
+	overflow: hidden;
+	padding: 10px;
+	margin-left: 10px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /* Comments */
@@ -1218,7 +1255,11 @@ p.popular-tags a {
 }
 
 .comment-ays .comment-content a[href]:after {
+<<<<<<< HEAD
 	content: "(" attr( href ) ")";
+=======
+	content: '(' attr( href ) ')';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	display: inline-block;
 	padding: 0 4px;
 	color: #72777C;
@@ -1231,7 +1272,11 @@ p.popular-tags a {
 }
 
 .comment-ays .comment-content p.edit-comment a[href]:after {
+<<<<<<< HEAD
 	content: "";
+=======
+	content: '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	padding: 0;
 }
 
@@ -1255,6 +1300,7 @@ p.popular-tags a {
 
 .stuffbox .editcomment {
 	clear: none;
+<<<<<<< HEAD
 	margin-top: 0;
 }
 
@@ -1264,6 +1310,8 @@ p.popular-tags a {
 
 #namediv.stuffbox .editcomment.form-table td {
 	padding: 10px;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #comment-status-radio p {
@@ -1444,7 +1492,11 @@ table.links-table {
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.wp-core-ui .edit-tag-actions .button-primary {
 		margin-bottom: 0;
 	}
@@ -1457,20 +1509,26 @@ table.links-table {
 		padding: 10px 10px;
 	}
 
+<<<<<<< HEAD
 	#poststuff .stuffbox .inside {
 		padding: 0 0 4px 2px;
 	}
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#poststuff h3.hndle, /* Back-compat for pre-4.4 */
 	#poststuff .stuffbox > h3, /* Back-compat for pre-4.4 */
 	#poststuff h2 {
 		padding: 12px;
 	}
 
+<<<<<<< HEAD
 	#namediv.stuffbox .editcomment.form-table td {
 		padding: 5px 10px;
 	}
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.post-format-options {
 		padding-left: 0;
 	}
@@ -1677,11 +1735,19 @@ table.links-table {
 	.links-table td {
 		padding: 10px 0;
 	}
+<<<<<<< HEAD
 
 	.privacy-text-box {
 		width: auto;
 	}
 
+=======
+	
+	.privacy-text-box {
+		width: auto;
+	}
+	
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.privacy-text-box-toc {
 		float: none;
 		width: auto;

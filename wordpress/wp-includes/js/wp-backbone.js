@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/wp-backbone.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /** @namespace wp */
 window.wp = window.wp || {};
 
@@ -13,6 +16,7 @@ window.wp = window.wp || {};
 	 */
 	wp.Backbone = {};
 
+<<<<<<< HEAD
 	/**
 	 * A backbone subview manager.
 	 *
@@ -26,6 +30,13 @@ window.wp = window.wp || {};
 	 * @param  {wp.Backbone.View} view  The main view.
 	 * @param  {Array|Object}     views The subviews for the main view.
 	 */
+=======
+
+	// wp.Backbone.Subviews
+	// --------------------
+	//
+	// A subview manager.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	wp.Backbone.Subviews = function( view, views ) {
 		this.view = view;
 		this._views = _.isArray( views ) ? { '': views } : views || {};
@@ -34,6 +45,7 @@ window.wp = window.wp || {};
 	wp.Backbone.Subviews.extend = Backbone.Model.extend;
 
 	_.extend( wp.Backbone.Subviews.prototype, {
+<<<<<<< HEAD
 		/**
 		 * Fetches all of the subviews.
 		 *
@@ -57,11 +69,27 @@ window.wp = window.wp || {};
 		 *
 		 * @return {Array} All the subviews that match the selector.
 		 */
+=======
+		// ### Fetch all of the subviews
+		//
+		// Returns an array of all subviews.
+		all: function() {
+			return _.flatten( _.values( this._views ) ); 
+		},
+
+		// ### Get a selector's subviews
+		//
+		// Fetches all subviews that match a given `selector`.
+		//
+		// If no `selector` is provided, it will grab all subviews attached
+		// to the view's root.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		get: function( selector ) {
 			selector = selector || '';
 			return this._views[ selector ];
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Fetches the first subview that matches a given `selector`.
 		 *
@@ -76,11 +104,22 @@ window.wp = window.wp || {};
 		 *
 		 * @return {Backbone.View} The view.
 		 */
+=======
+		// ### Get a selector's first subview
+		//
+		// Fetches the first subview that matches a given `selector`.
+		//
+		// If no `selector` is provided, it will grab the first subview
+		// attached to the view's root.
+		//
+		// Useful when a selector only has one subview at a time.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		first: function( selector ) {
 			var views = this.get( selector );
 			return views && views.length ? views[0] : null;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Registers subview(s).
 		 *
@@ -123,6 +162,34 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		 */
+=======
+		// ### Register subview(s)
+		//
+		// Registers any number of `views` to a `selector`.
+		//
+		// When no `selector` is provided, the root selector (the empty string)
+		// is used. `views` accepts a `Backbone.View` instance or an array of
+		// `Backbone.View` instances.
+		//
+		// ---
+		//
+		// Accepts an `options` object, which has a significant effect on the
+		// resulting behavior.
+		//
+		// `options.silent` &ndash; *boolean, `false`*
+		// > If `options.silent` is true, no DOM modifications will be made.
+		//
+		// `options.add` &ndash; *boolean, `false`*
+		// > Use `Views.add()` as a shortcut for setting `options.add` to true.
+		//
+		// > By default, the provided `views` will replace
+		// any existing views associated with the selector. If `options.add`
+		// is true, the provided `views` will be added to the existing views.
+		//
+		// `options.at` &ndash; *integer, `undefined`*
+		// > When adding, to insert `views` at a specific index, use
+		// `options.at`. By default, `views` are added to the end of the array.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		set: function( selector, views, options ) {
 			var existing, next;
 
@@ -178,6 +245,7 @@ window.wp = window.wp || {};
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Add subview(s) to existing subviews.
 		 *
@@ -209,6 +277,26 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current subviews instance.
 		 */
+=======
+		// ### Add subview(s) to existing subviews
+		//
+		// An alias to `Views.set()`, which defaults `options.add` to true.
+		//
+		// Adds any number of `views` to a `selector`.
+		//
+		// When no `selector` is provided, the root selector (the empty string)
+		// is used. `views` accepts a `Backbone.View` instance or an array of
+		// `Backbone.View` instances.
+		//
+		// Use `Views.set()` when setting `options.add` to `false`.
+		//
+		// Accepts an `options` object. By default, provided `views` will be
+		// inserted at the end of the array of existing views. To insert
+		// `views` at a specific index, use `options.at`. If `options.silent`
+		// is true, no DOM modifications will be made.
+		//
+		// For more information on the `options` object, see `Views.set()`.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		add: function( selector, views, options ) {
 			if ( ! _.isString( selector ) ) {
 				options  = views;
@@ -219,6 +307,7 @@ window.wp = window.wp || {};
 			return this.set( selector, views, _.extend({ add: true }, options ) );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Removes an added subview.
 		 *
@@ -239,6 +328,16 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		 */
+=======
+		// ### Stop tracking subviews
+		//
+		// Stops tracking `views` registered to a `selector`. If no `views` are
+		// set, then all of the `selector`'s subviews will be unregistered and
+		// removed.
+		//
+		// Accepts an `options` object. If `options.silent` is set, `remove`
+		// will *not* be triggered on the unregistered views.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		unset: function( selector, views, options ) {
 			var existing;
 
@@ -261,6 +360,7 @@ window.wp = window.wp || {};
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Detaches all subviews.
 		 *
@@ -271,11 +371,20 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		 */
+=======
+		// ### Detach all subviews
+		//
+		// Detaches all subviews from the DOM.
+		//
+		// Helps to preserve all subview events when re-rendering the master
+		// view. Used in conjunction with `Views.render()`.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		detach: function() {
 			$( _.pluck( this.all(), 'el' ) ).detach();
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Renders all subviews.
 		 *
@@ -285,6 +394,11 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		*/
+=======
+		// ### Render all subviews
+		//
+		// Renders all subviews. Used in conjunction with `Views.detach()`.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		render: function() {
 			var options = {
 					ready: this._isReady()
@@ -298,6 +412,7 @@ window.wp = window.wp || {};
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Removes all subviews.
 		 *
@@ -315,6 +430,15 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		*/
+=======
+		// ### Remove all subviews
+		//
+		// Triggers the `remove()` method on all subviews. Detaches the master
+		// view from its parent. Resets the internals of the views manager.
+		//
+		// Accepts an `options` object. If `options.silent` is set, `unset`
+		// will *not* be triggered on the master view's parent.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		remove: function( options ) {
 			if ( ! options || ! options.silent ) {
 				if ( this.parent && this.parent.views )
@@ -328,6 +452,7 @@ window.wp = window.wp || {};
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Replaces a selector's subviews
 		 *
@@ -342,11 +467,19 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		 */
+=======
+		// ### Replace a selector's subviews
+		//
+		// By default, sets the `$target` selector's html to the subview `els`.
+		//
+		// Can be overridden in subclasses.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		replace: function( $target, els ) {
 			$target.html( els );
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Insert subviews into a selector.
 		 *
@@ -366,6 +499,15 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		 */
+=======
+		// ### Insert subviews into a selector
+		//
+		// By default, appends the subview `els` to the end of the `$target`
+		// selector. If `options.at` is set, inserts the subview `els` at the
+		// provided index.
+		//
+		// Can be overridden in subclasses.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		insert: function( $target, els, options ) {
 			var at = options && options.at,
 				$children;
@@ -378,6 +520,7 @@ window.wp = window.wp || {};
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Triggers the ready event.
 		 *
@@ -389,6 +532,15 @@ window.wp = window.wp || {};
 		 *
 		 * @since 3.5.0
 		 */
+=======
+		// ### Trigger the ready event
+		//
+		// **Only use this method if you know what you're doing.**
+		// For performance reasons, this method does not check if the view is
+		// actually attached to the DOM. It's taking your word for it.
+		//
+		// Fires the ready event on the current view and all attached subviews.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		ready: function() {
 			this.view.trigger('ready');
 
@@ -397,6 +549,7 @@ window.wp = window.wp || {};
 				return view.views;
 			}).flatten().where({ attached: true }).invoke('ready');
 		},
+<<<<<<< HEAD
 		/**
 		 * Attaches a series of views to a selector. Internal.
 		 *
@@ -415,6 +568,14 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		 */
+=======
+
+		// #### Internal. Attaches a series of views to a selector.
+		//
+		// Checks to see if a matching selector exists, renders the views,
+		// performs the proper DOM operation, and then checks if the view is
+		// attached to the document.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_attach: function( selector, views, options ) {
 			var $selector = selector ? this.view.$( selector ) : this.view.$el,
 				managers;
@@ -437,10 +598,15 @@ window.wp = window.wp || {};
 			// Insert or replace the views.
 			this[ options.add ? 'insert' : 'replace' ]( $selector, _.pluck( views, 'el' ), options );
 
+<<<<<<< HEAD
 			/*
 			 * Set attached and trigger ready if the current view is already
 			 * attached to the DOM.
 			 */
+=======
+			// Set attached and trigger ready if the current view is already
+			// attached to the DOM.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			_.each( managers, function( manager ) {
 				manager.attached = true;
 
@@ -451,6 +617,7 @@ window.wp = window.wp || {};
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Determines whether or not the current view is in the DOM.
 		 *
@@ -460,6 +627,9 @@ window.wp = window.wp || {};
 		 *
 		 * @return {boolean} Whether or not the current view is in the DOM.
 		 */
+=======
+		// #### Internal. Checks if the current view is in the DOM.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_isReady: function() {
 			var node = this.view.el;
 			while ( node ) {
@@ -472,6 +642,7 @@ window.wp = window.wp || {};
 		}
 	});
 
+<<<<<<< HEAD
 	wp.Backbone.View = Backbone.View.extend({
 
 		// The constructor for the `Views` manager.
@@ -494,6 +665,17 @@ window.wp = window.wp || {};
 		 *
 		 * @param {Object} options The options for this view.
 		 */
+=======
+
+	// wp.Backbone.View
+	// ----------------
+	//
+	// The base view class.
+	wp.Backbone.View = Backbone.View.extend({
+		// The constructor for the `Views` manager.
+		Subviews: wp.Backbone.Subviews,
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		constructor: function( options ) {
 			this.views = new this.Subviews( this, this.views );
 			this.on( 'ready', this.ready, this );
@@ -503,6 +685,7 @@ window.wp = window.wp || {};
 			Backbone.View.apply( this, arguments );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Removes this view and all subviews.
 		 *
@@ -510,6 +693,8 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.Subviews} The current Subviews instance.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		remove: function() {
 			var result = Backbone.View.prototype.remove.apply( this, arguments );
 
@@ -520,6 +705,7 @@ window.wp = window.wp || {};
 			return result;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Renders this view and all subviews.
 		 *
@@ -527,6 +713,8 @@ window.wp = window.wp || {};
 		 *
 		 * @return {wp.Backbone.View} The current instance of the view.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		render: function() {
 			var options;
 
@@ -545,6 +733,7 @@ window.wp = window.wp || {};
 			return this;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Returns the options for this view.
 		 *
@@ -552,15 +741,20 @@ window.wp = window.wp || {};
 		 *
 		 * @return {Object} The options for this view.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		prepare: function() {
 			return this.options;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Method that is called when the ready event is triggered.
 		 *
 		 * @since 3.5.0
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		ready: function() {}
 	});
 }(jQuery));

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Cookie functions.
  *
@@ -8,6 +9,13 @@
 /* exported getUserSetting, setUserSetting, deleteUserSetting */
 
 window.wpCookies = {
+=======
+/* global userSettings */
+/* exported getUserSetting, setUserSetting, deleteUserSetting */
+// utility functions
+
+var wpCookies = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 // The following functions are from Cookie.js class in TinyMCE 3, Moxiecode, used under LGPL.
 
 	each: function( obj, cb, scope ) {
@@ -139,7 +147,11 @@ window.wpCookies = {
 };
 
 // Returns the value as string. Second arg or empty string is returned when value is not set.
+<<<<<<< HEAD
 window.getUserSetting = function( name, def ) {
+=======
+function getUserSetting( name, def ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	var settings = getAllUserSettings();
 
 	if ( settings.hasOwnProperty( name ) ) {
@@ -151,12 +163,20 @@ window.getUserSetting = function( name, def ) {
 	}
 
 	return '';
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // Both name and value must be only ASCII letters, numbers or underscore
 // and the shorter, the better (cookies can store maximum 4KB). Not suitable to store text.
 // The value is converted and stored as string.
+<<<<<<< HEAD
 window.setUserSetting = function( name, value, _del ) {
+=======
+function setUserSetting( name, value, _del ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( 'object' !== typeof userSettings ) {
 		return false;
 	}
@@ -186,6 +206,7 @@ window.setUserSetting = function( name, value, _del ) {
 	wpCookies.set( 'wp-settings-time-' + uid, userSettings.time, 31536000, path, '', secure );
 
 	return name;
+<<<<<<< HEAD
 };
 
 window.deleteUserSetting = function( name ) {
@@ -194,9 +215,24 @@ window.deleteUserSetting = function( name ) {
 
 // Returns all settings as js object.
 window.getAllUserSettings = function() {
+=======
+}
+
+function deleteUserSetting( name ) {
+	return setUserSetting( name, '', 1 );
+}
+
+// Returns all settings as js object.
+function getAllUserSettings() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( 'object' !== typeof userSettings ) {
 		return {};
 	}
 
 	return wpCookies.getHash( 'wp-settings-' + userSettings.uid ) || {};
+<<<<<<< HEAD
 };
+=======
+}
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

@@ -17,10 +17,14 @@ define( 'REST_API_VERSION', '2.0' );
 /**
  * Registers a REST API route.
  *
+<<<<<<< HEAD
  * Note: Do not use before the {@see 'rest_api_init'} hook.
  *
  * @since 4.4.0
  * @since 5.1.0 Added a _doing_it_wrong() notice when not called on or after the rest_api_init hook.
+=======
+ * @since 4.4.0
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @param string $namespace The first URL segment after core prefix. Should be unique to your package/plugin.
  * @param string $route     The base URL for route you are adding.
@@ -39,11 +43,16 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
 		 */
 		_doing_it_wrong( 'register_rest_route', __( 'Routes must be namespaced with plugin or theme name and version.' ), '4.4.0' );
 		return false;
+<<<<<<< HEAD
 	} elseif ( empty( $route ) ) {
+=======
+	} else if ( empty( $route ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_doing_it_wrong( 'register_rest_route', __( 'Route must be specified.' ), '4.4.0' );
 		return false;
 	}
 
+<<<<<<< HEAD
 	if ( ! did_action( 'rest_api_init' ) ) {
 		_doing_it_wrong(
 			'register_rest_route',
@@ -56,6 +65,8 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
 		);
 	}
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( isset( $args['args'] ) ) {
 		$common_args = $args['args'];
 		unset( $args['args'] );
@@ -69,9 +80,15 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
 	}
 
 	$defaults = array(
+<<<<<<< HEAD
 		'methods'  => 'GET',
 		'callback' => null,
 		'args'     => array(),
+=======
+		'methods'         => 'GET',
+		'callback'        => null,
+		'args'            => array(),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 	foreach ( $args as $key => &$arg_group ) {
 		if ( ! is_numeric( $key ) ) {
@@ -79,7 +96,11 @@ function register_rest_route( $namespace, $route, $args = array(), $override = f
 			continue;
 		}
 
+<<<<<<< HEAD
 		$arg_group         = array_merge( $defaults, $arg_group );
+=======
+		$arg_group = array_merge( $defaults, $arg_group );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$arg_group['args'] = array_merge( $common_args, $arg_group['args'] );
 	}
 
@@ -156,10 +177,17 @@ function rest_api_init() {
 function rest_api_register_rewrites() {
 	global $wp_rewrite;
 
+<<<<<<< HEAD
 	add_rewrite_rule( '^' . rest_get_url_prefix() . '/?$', 'index.php?rest_route=/', 'top' );
 	add_rewrite_rule( '^' . rest_get_url_prefix() . '/(.*)?', 'index.php?rest_route=/$matches[1]', 'top' );
 	add_rewrite_rule( '^' . $wp_rewrite->index . '/' . rest_get_url_prefix() . '/?$', 'index.php?rest_route=/', 'top' );
 	add_rewrite_rule( '^' . $wp_rewrite->index . '/' . rest_get_url_prefix() . '/(.*)?', 'index.php?rest_route=/$matches[1]', 'top' );
+=======
+	add_rewrite_rule( '^' . rest_get_url_prefix() . '/?$','index.php?rest_route=/','top' );
+	add_rewrite_rule( '^' . rest_get_url_prefix() . '/(.*)?','index.php?rest_route=/$matches[1]','top' );
+	add_rewrite_rule( '^' . $wp_rewrite->index . '/' . rest_get_url_prefix() . '/?$','index.php?rest_route=/','top' );
+	add_rewrite_rule( '^' . $wp_rewrite->index . '/' . rest_get_url_prefix() . '/(.*)?','index.php?rest_route=/$matches[1]','top' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -213,6 +241,10 @@ function create_initial_rest_routes() {
 			$autosaves_controller = new WP_REST_Autosaves_Controller( $post_type->name );
 			$autosaves_controller->register_routes();
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	// Post types.
@@ -460,7 +492,11 @@ function rest_get_server() {
 		 * @param string $class_name The name of the server class. Default 'WP_REST_Server'.
 		 */
 		$wp_rest_server_class = apply_filters( 'wp_rest_server_class', 'WP_REST_Server' );
+<<<<<<< HEAD
 		$wp_rest_server       = new $wp_rest_server_class;
+=======
+		$wp_rest_server = new $wp_rest_server_class;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires when preparing to serve an API request.
@@ -612,7 +648,11 @@ function rest_handle_options_request( $response, $handler, $request ) {
 	}
 
 	$response = new WP_REST_Response();
+<<<<<<< HEAD
 	$data     = array();
+=======
+	$data = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	foreach ( $handler->get_routes() as $route => $endpoints ) {
 		$match = preg_match( '@^' . $route . '$@i', $request->get_route() );
@@ -694,7 +734,11 @@ function rest_filter_response_fields( $response, $server, $request ) {
 
 	$data = $response->get_data();
 
+<<<<<<< HEAD
 	$fields = wp_parse_list( $request['_fields'] );
+=======
+	$fields = is_array( $request['_fields']  ) ? $request['_fields'] : preg_split( '/[\s,]+/', $request['_fields'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( 0 === count( $fields ) ) {
 		return $response;
@@ -910,9 +954,15 @@ function rest_get_date_with_gmt( $date, $is_utc = false ) {
 	// cases.
 	if ( ! $is_utc && ! $has_timezone ) {
 		$local = date( 'Y-m-d H:i:s', $date );
+<<<<<<< HEAD
 		$utc   = get_gmt_from_date( $local );
 	} else {
 		$utc   = date( 'Y-m-d H:i:s', $date );
+=======
+		$utc = get_gmt_from_date( $local );
+	} else {
+		$utc = date( 'Y-m-d H:i:s', $date );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$local = get_date_from_gmt( $utc );
 	}
 
@@ -1025,7 +1075,11 @@ function rest_is_ip_address( $ip ) {
  */
 function rest_sanitize_boolean( $value ) {
 	// String values are translated to `true`; make sure 'false' is false.
+<<<<<<< HEAD
 	if ( is_string( $value ) ) {
+=======
+	if ( is_string( $value )  ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$value = strtolower( $value );
 		if ( in_array( $value, array( 'false', '0' ), true ) ) {
 			$value = false;
@@ -1033,7 +1087,11 @@ function rest_sanitize_boolean( $value ) {
 	}
 
 	// Everything else will map nicely to boolean.
+<<<<<<< HEAD
 	return (bool) $value;
+=======
+	return (boolean) $value;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -1124,8 +1182,13 @@ function rest_get_avatar_sizes() {
  */
 function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 	if ( 'array' === $args['type'] ) {
+<<<<<<< HEAD
 		if ( ! is_null( $value ) ) {
 			$value = wp_parse_list( $value );
+=======
+		if ( ! is_array( $value ) ) {
+			$value = preg_split( '/[\s,]+/', $value );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		if ( ! wp_is_numeric_array( $value ) ) {
 			/* translators: 1: parameter, 2: type name */
@@ -1189,18 +1252,30 @@ function rest_validate_value_from_schema( $value, $args, $param = '' ) {
 
 	if ( isset( $args['format'] ) ) {
 		switch ( $args['format'] ) {
+<<<<<<< HEAD
 			case 'date-time':
+=======
+			case 'date-time' :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( ! rest_parse_date( $value ) ) {
 					return new WP_Error( 'rest_invalid_date', __( 'Invalid date.' ) );
 				}
 				break;
 
+<<<<<<< HEAD
 			case 'email':
+=======
+			case 'email' :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( ! is_email( $value ) ) {
 					return new WP_Error( 'rest_invalid_email', __( 'Invalid email address.' ) );
 				}
 				break;
+<<<<<<< HEAD
 			case 'ip':
+=======
+			case 'ip' :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( ! rest_is_ip_address( $value ) ) {
 					/* translators: %s: IP address */
 					return new WP_Error( 'rest_invalid_param', sprintf( __( '%s is not a valid IP address.' ), $value ) );
@@ -1268,7 +1343,13 @@ function rest_sanitize_value_from_schema( $value, $args ) {
 		if ( empty( $args['items'] ) ) {
 			return (array) $value;
 		}
+<<<<<<< HEAD
 		$value = wp_parse_list( $value );
+=======
+		if ( ! is_array( $value ) ) {
+			$value = preg_split( '/[\s,]+/', $value );
+		}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		foreach ( $value as $index => $v ) {
 			$value[ $index ] = rest_sanitize_value_from_schema( $v, $args['items'] );
 		}
@@ -1311,19 +1392,33 @@ function rest_sanitize_value_from_schema( $value, $args ) {
 
 	if ( isset( $args['format'] ) ) {
 		switch ( $args['format'] ) {
+<<<<<<< HEAD
 			case 'date-time':
 				return sanitize_text_field( $value );
 
 			case 'email':
+=======
+			case 'date-time' :
+				return sanitize_text_field( $value );
+
+			case 'email' :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				/*
 				 * sanitize_email() validates, which would be unexpected.
 				 */
 				return sanitize_text_field( $value );
 
+<<<<<<< HEAD
 			case 'uri':
 				return esc_url_raw( $value );
 
 			case 'ip':
+=======
+			case 'uri' :
+				return esc_url_raw( $value );
+
+			case 'ip' :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				return sanitize_text_field( $value );
 		}
 	}

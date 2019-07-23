@@ -12,6 +12,7 @@ require_once( dirname( __FILE__ ) . '/admin.php' );
 /** WordPress Translation Installation API */
 require_once( ABSPATH . 'wp-admin/includes/translation-install.php' );
 
+<<<<<<< HEAD
 if ( ! current_user_can( 'manage_options' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
 }
@@ -29,12 +30,31 @@ $options_help = '<p>' . __( 'The fields on this screen determine some of the bas
 if ( ! is_multisite() ) {
 	$options_help .= '<p>' . __( 'The WordPress URL and the Site URL can be the same (example.com) or different; for example, having the WordPress core files (example.com/wordpress) in a subdirectory instead of the root directory.' ) . '</p>' .
 		'<p>' . __( 'If you want site visitors to be able to register themselves, as opposed to by the site administrator, check the membership box. A default user role can be set for all new users, whether self-registered or registered by the site admin.' ) . '</p>';
+=======
+if ( ! current_user_can( 'manage_options' ) )
+	wp_die( __( 'Sorry, you are not allowed to manage options for this site.' ) );
+
+$title = __('General Settings');
+$parent_file = 'options-general.php';
+/* translators: date and time format for exact current time, mainly about timezones, see https://secure.php.net/date */
+$timezone_format = _x('Y-m-d H:i:s', 'timezone date format');
+
+add_action('admin_head', 'options_general_add_js');
+
+$options_help = '<p>' . __('The fields on this screen determine some of the basics of your site setup.') . '</p>' .
+	'<p>' . __('Most themes display the site title at the top of every page, in the title bar of the browser, and as the identifying name for syndicated feeds. The tagline is also displayed by many themes.') . '</p>';
+
+if ( ! is_multisite() ) {
+	$options_help .= '<p>' . __('The WordPress URL and the Site URL can be the same (example.com) or different; for example, having the WordPress core files (example.com/wordpress) in a subdirectory instead of the root directory.') . '</p>' .
+		'<p>' . __('If you want site visitors to be able to register themselves, as opposed to by the site administrator, check the membership box. A default user role can be set for all new users, whether self-registered or registered by the site admin.') . '</p>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 $options_help .= '<p>' . __( 'You can set the language, and the translation files will be automatically downloaded and installed (available if your filesystem is writable).' ) . '</p>' .
 	'<p>' . __( 'UTC means Coordinated Universal Time.' ) . '</p>' .
 	'<p>' . __( 'You must click the Save Changes button at the bottom of the screen for new settings to take effect.' ) . '</p>';
 
+<<<<<<< HEAD
 get_current_screen()->add_help_tab(
 	array(
 		'id'      => 'overview',
@@ -47,6 +67,18 @@ get_current_screen()->set_help_sidebar(
 	'<p><strong>' . __( 'For more information:' ) . '</strong></p>' .
 	'<p>' . __( '<a href="https://codex.wordpress.org/Settings_General_Screen">Documentation on General Settings</a>' ) . '</p>' .
 	'<p>' . __( '<a href="https://wordpress.org/support/">Support Forums</a>' ) . '</p>'
+=======
+get_current_screen()->add_help_tab( array(
+	'id'      => 'overview',
+	'title'   => __('Overview'),
+	'content' => $options_help,
+) );
+
+get_current_screen()->set_help_sidebar(
+	'<p><strong>' . __('For more information:') . '</strong></p>' .
+	'<p>' . __('<a href="https://codex.wordpress.org/Settings_General_Screen">Documentation on General Settings</a>') . '</p>' .
+	'<p>' . __('<a href="https://wordpress.org/support/">Support Forums</a>') . '</p>'
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 );
 
 include( ABSPATH . 'wp-admin/admin-header.php' );
@@ -56,11 +88,16 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 <h1><?php echo esc_html( $title ); ?></h1>
 
 <form method="post" action="options.php" novalidate="novalidate">
+<<<<<<< HEAD
 <?php settings_fields( 'general' ); ?>
+=======
+<?php settings_fields('general'); ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 <table class="form-table">
 
 <tr>
+<<<<<<< HEAD
 <th scope="row"><label for="blogname"><?php _e( 'Site Title' ); ?></label></th>
 <td><input name="blogname" type="text" id="blogname" value="<?php form_option( 'blogname' ); ?>" class="regular-text" /></td>
 </tr>
@@ -100,6 +137,36 @@ if ( ! is_multisite() ) {
 		);
 		?>
 </p>
+=======
+<th scope="row"><label for="blogname"><?php _e('Site Title') ?></label></th>
+<td><input name="blogname" type="text" id="blogname" value="<?php form_option('blogname'); ?>" class="regular-text" /></td>
+</tr>
+
+<tr>
+<th scope="row"><label for="blogdescription"><?php _e('Tagline') ?></label></th>
+<td><input name="blogdescription" type="text" id="blogdescription" aria-describedby="tagline-description" value="<?php form_option('blogdescription'); ?>" class="regular-text" />
+<p class="description" id="tagline-description"><?php _e( 'In a few words, explain what this site is about.' ) ?></p></td>
+</tr>
+
+<?php if ( !is_multisite() ) { ?>
+
+<tr>
+<th scope="row"><label for="siteurl"><?php _e('WordPress Address (URL)') ?></label></th>
+<td><input name="siteurl" type="url" id="siteurl" value="<?php form_option( 'siteurl' ); ?>"<?php disabled( defined( 'WP_SITEURL' ) ); ?> class="regular-text code<?php if ( defined( 'WP_SITEURL' ) ) echo ' disabled' ?>" /></td>
+</tr>
+
+<tr>
+<th scope="row"><label for="home"><?php _e('Site Address (URL)') ?></label></th>
+<td><input name="home" type="url" id="home" aria-describedby="home-description" value="<?php form_option( 'home' ); ?>"<?php disabled( defined( 'WP_HOME' ) ); ?> class="regular-text code<?php if ( defined( 'WP_HOME' ) ) echo ' disabled' ?>" />
+<?php if ( ! defined( 'WP_HOME' ) ) : ?>
+<p class="description" id="home-description"><?php
+	printf(
+		/* translators: %s: Codex URL */
+		__( 'Enter the address here if you <a href="%s">want your site home page to be different from your WordPress installation directory</a>.' ),
+		__( 'https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory' )
+	);
+?></p>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <?php endif; ?>
 </td>
 </tr>
@@ -112,11 +179,17 @@ if ( ! is_multisite() ) {
 <p class="description" id="new-admin-email-description"><?php _e( 'This address is used for admin purposes. If you change this we will send you an email at your new address to confirm it. <strong>The new address will not become active until confirmed.</strong>' ); ?></p>
 <?php
 $new_admin_email = get_option( 'new_admin_email' );
+<<<<<<< HEAD
 if ( $new_admin_email && $new_admin_email != get_option( 'admin_email' ) ) :
 	?>
 	<div class="updated inline">
 	<p>
 	<?php
+=======
+if ( $new_admin_email && $new_admin_email != get_option( 'admin_email' ) ) : ?>
+	<div class="updated inline">
+	<p><?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		printf(
 			/* translators: %s: new admin email */
 			__( 'There is a pending change of the admin email to %s.' ),
@@ -127,8 +200,12 @@ if ( $new_admin_email && $new_admin_email != get_option( 'admin_email' ) ) :
 			esc_url( wp_nonce_url( admin_url( 'options.php?dismiss=new_admin_email' ), 'dismiss-' . get_current_blog_id() . '-new_admin_email' ) ),
 			__( 'Cancel' )
 		);
+<<<<<<< HEAD
 	?>
 	</p>
+=======
+	?></p>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	</div>
 <?php endif; ?>
 </td>
@@ -137,14 +214,22 @@ if ( $new_admin_email && $new_admin_email != get_option( 'admin_email' ) ) :
 <?php if ( ! is_multisite() ) { ?>
 
 <tr>
+<<<<<<< HEAD
 <th scope="row"><?php _e( 'Membership' ); ?></th>
 <td> <fieldset><legend class="screen-reader-text"><span><?php _e( 'Membership' ); ?></span></legend><label for="users_can_register">
 <input name="users_can_register" type="checkbox" id="users_can_register" value="1" <?php checked( '1', get_option( 'users_can_register' ) ); ?> />
 	<?php _e( 'Anyone can register' ); ?></label>
+=======
+<th scope="row"><?php _e('Membership') ?></th>
+<td> <fieldset><legend class="screen-reader-text"><span><?php _e('Membership') ?></span></legend><label for="users_can_register">
+<input name="users_can_register" type="checkbox" id="users_can_register" value="1" <?php checked('1', get_option('users_can_register')); ?> />
+<?php _e('Anyone can register') ?></label>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 </fieldset></td>
 </tr>
 
 <tr>
+<<<<<<< HEAD
 <th scope="row"><label for="default_role"><?php _e( 'New User Default Role' ); ?></label></th>
 <td>
 <select name="default_role" id="default_role"><?php wp_dropdown_roles( get_option( 'default_role' ) ); ?></select>
@@ -155,6 +240,17 @@ if ( $new_admin_email && $new_admin_email != get_option( 'admin_email' ) ) :
 }
 
 $languages    = get_available_languages();
+=======
+<th scope="row"><label for="default_role"><?php _e('New User Default Role') ?></label></th>
+<td>
+<select name="default_role" id="default_role"><?php wp_dropdown_roles( get_option('default_role') ); ?></select>
+</td>
+</tr>
+
+<?php }
+
+$languages = get_available_languages();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 $translations = wp_get_available_translations();
 if ( ! is_multisite() && defined( 'WPLANG' ) && '' !== WPLANG && 'en_US' !== WPLANG && ! in_array( WPLANG, $languages ) ) {
 	$languages[] = WPLANG;
@@ -170,6 +266,7 @@ if ( ! empty( $languages ) || ! empty( $translations ) ) {
 				$locale = '';
 			}
 
+<<<<<<< HEAD
 			wp_dropdown_languages(
 				array(
 					'name'                        => 'WPLANG',
@@ -180,6 +277,16 @@ if ( ! empty( $languages ) || ! empty( $translations ) ) {
 					'show_available_translations' => current_user_can( 'install_languages' ) && wp_can_install_language_pack(),
 				)
 			);
+=======
+			wp_dropdown_languages( array(
+				'name'         => 'WPLANG',
+				'id'           => 'WPLANG',
+				'selected'     => $locale,
+				'languages'    => $languages,
+				'translations' => $translations,
+				'show_available_translations' => current_user_can( 'install_languages' ) && wp_can_install_language_pack(),
+			) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			// Add note about deprecated WPLANG constant.
 			if ( defined( 'WPLANG' ) && ( '' !== WPLANG ) && $locale !== WPLANG ) {
@@ -187,11 +294,19 @@ if ( ! empty( $languages ) || ! empty( $translations ) ) {
 					|| ! is_multisite() && current_user_can( 'manage_options' ) ) {
 					?>
 					<p class="description">
+<<<<<<< HEAD
 						<strong><?php _e( 'Note:' ); ?></strong> <?php printf( __( 'The %1$s constant in your %2$s file is no longer needed.' ), '<code>WPLANG</code>', '<code>wp-config.php</code>' ); ?>
 					</p>
 					<?php
 				}
 				_deprecated_argument( 'define()', '4.0.0', sprintf( __( 'The %1$s constant in your %2$s file is no longer needed.' ), 'WPLANG', 'wp-config.php' ) );
+=======
+						<strong><?php _e( 'Note:' ); ?></strong> <?php printf( __( 'The %s constant in your %s file is no longer needed.' ), '<code>WPLANG</code>', '<code>wp-config.php</code>' ); ?>
+					</p>
+					<?php
+				}
+				_deprecated_argument( 'define()', '4.0.0', sprintf( __( 'The %s constant in your %s file is no longer needed.' ), 'WPLANG', 'wp-config.php' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 			?>
 		</td>
@@ -201,12 +316,18 @@ if ( ! empty( $languages ) || ! empty( $translations ) ) {
 ?>
 <tr>
 <?php
+<<<<<<< HEAD
 $current_offset = get_option( 'gmt_offset' );
 $tzstring       = get_option( 'timezone_string' );
+=======
+$current_offset = get_option('gmt_offset');
+$tzstring = get_option('timezone_string');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 $check_zone_info = true;
 
 // Remove old Etc mappings. Fallback to gmt_offset.
+<<<<<<< HEAD
 if ( false !== strpos( $tzstring, 'Etc/GMT' ) ) {
 	$tzstring = '';
 }
@@ -224,6 +345,23 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 
 ?>
 <th scope="row"><label for="timezone_string"><?php _e( 'Timezone' ); ?></label></th>
+=======
+if ( false !== strpos($tzstring,'Etc/GMT') )
+	$tzstring = '';
+
+if ( empty($tzstring) ) { // Create a UTC+- zone if no timezone string exists
+	$check_zone_info = false;
+	if ( 0 == $current_offset )
+		$tzstring = 'UTC+0';
+	elseif ($current_offset < 0)
+		$tzstring = 'UTC' . $current_offset;
+	else
+		$tzstring = 'UTC+' . $current_offset;
+}
+
+?>
+<th scope="row"><label for="timezone_string"><?php _e('Timezone') ?></label></th>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <td>
 
 <select id="timezone_string" name="timezone_string" aria-describedby="timezone-description">
@@ -233,6 +371,7 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 <p class="description" id="timezone-description"><?php _e( 'Choose either a city in the same timezone as you or a UTC timezone offset.' ); ?></p>
 
 <p class="timezone-info">
+<<<<<<< HEAD
 	<span id="utc-time">
 	<?php
 		/* translators: 1: UTC abbreviation, 2: UTC time */
@@ -253,6 +392,22 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 		);
 	?>
 	</span>
+=======
+	<span id="utc-time"><?php
+		/* translators: 1: UTC abbreviation, 2: UTC time */
+		printf( __( 'Universal time (%1$s) is %2$s.' ),
+			'<abbr>' . __( 'UTC' ) . '</abbr>',
+			'<code>' . date_i18n( $timezone_format, false, true ) . '</code>'
+		);
+	?></span>
+<?php if ( get_option( 'timezone_string' ) || ! empty( $current_offset ) ) : ?>
+	<span id="local-time"><?php
+		/* translators: %s: local time */
+		printf( __( 'Local time is %s.' ),
+			'<code>' . date_i18n( $timezone_format ) . '</code>'
+		);
+	?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <?php endif; ?>
 </p>
 
@@ -261,6 +416,7 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 <span>
 	<?php
 	// Set TZ so localtime works.
+<<<<<<< HEAD
 	date_default_timezone_set( $tzstring );
 	$now = localtime( time(), true );
 	if ( $now['tm_isdst'] ) {
@@ -268,11 +424,20 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 	} else {
 		_e( 'This timezone is currently in standard time.' );
 	}
+=======
+	date_default_timezone_set($tzstring);
+	$now = localtime(time(), true);
+	if ( $now['tm_isdst'] )
+		_e('This timezone is currently in daylight saving time.');
+	else
+		_e('This timezone is currently in standard time.');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	?>
 	<br />
 	<?php
 	$allowed_zones = timezone_identifiers_list();
 
+<<<<<<< HEAD
 	if ( in_array( $tzstring, $allowed_zones ) ) {
 		$found                   = false;
 		$date_time_zone_selected = new DateTimeZone( $tzstring );
@@ -281,6 +446,16 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 		foreach ( timezone_transitions_get( $date_time_zone_selected ) as $tr ) {
 			if ( $tr['ts'] > $right_now ) {
 				$found = true;
+=======
+	if ( in_array( $tzstring, $allowed_zones) ) {
+		$found = false;
+		$date_time_zone_selected = new DateTimeZone($tzstring);
+		$tz_offset = timezone_offset_get($date_time_zone_selected, date_create());
+		$right_now = time();
+		foreach ( timezone_transitions_get($date_time_zone_selected) as $tr) {
+			if ( $tr['ts'] > $right_now ) {
+			    $found = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				break;
 			}
 		}
@@ -289,12 +464,20 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 			echo ' ';
 			$message = $tr['isdst'] ?
 				/* translators: %s: date and time  */
+<<<<<<< HEAD
 				__( 'Daylight saving time begins on: %s.' ) :
 				/* translators: %s: date and time  */
 				__( 'Standard time begins on: %s.' );
 			// Add the difference between the current offset and the new offset to ts to get the correct transition time from date_i18n().
 			printf(
 				$message,
+=======
+				__( 'Daylight saving time begins on: %s.')  :
+				/* translators: %s: date and time  */
+				__( 'Standard time begins on: %s.' );
+			// Add the difference between the current offset and the new offset to ts to get the correct transition time from date_i18n().
+			printf( $message,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'<code>' . date_i18n(
 					__( 'F j, Y' ) . ' ' . __( 'g:i a' ),
 					$tr['ts'] + ( $tz_offset - $tr['offset'] )
@@ -305,7 +488,11 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 		}
 	}
 	// Set back to UTC.
+<<<<<<< HEAD
 	date_default_timezone_set( 'UTC' );
+=======
+	date_default_timezone_set('UTC');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	?>
 	</span>
 </p>
@@ -314,6 +501,7 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 
 </tr>
 <tr>
+<<<<<<< HEAD
 <th scope="row"><?php _e( 'Date Format' ); ?></th>
 <td>
 	<fieldset><legend class="screen-reader-text"><span><?php _e( 'Date Format' ); ?></span></legend>
@@ -326,10 +514,25 @@ if ( empty( $tzstring ) ) { // Create a UTC+- zone if no timezone string exists
 	 *
 	 * @param string[] $default_date_formats Array of default date formats.
 	 */
+=======
+<th scope="row"><?php _e('Date Format') ?></th>
+<td>
+	<fieldset><legend class="screen-reader-text"><span><?php _e('Date Format') ?></span></legend>
+<?php
+	/**
+	* Filters the default date formats.
+	*
+	* @since 2.7.0
+	* @since 4.0.0 Added ISO date standard YYYY-MM-DD format.
+	*
+	* @param array $default_date_formats Array of default date formats.
+	*/
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$date_formats = array_unique( apply_filters( 'date_formats', array( __( 'F j, Y' ), 'Y-m-d', 'm/d/Y', 'd/m/Y' ) ) );
 
 	$custom = true;
 
+<<<<<<< HEAD
 foreach ( $date_formats as $format ) {
 	echo "\t<label><input type='radio' name='date_format' value='" . esc_attr( $format ) . "'";
 	if ( get_option( 'date_format' ) === $format ) { // checked() uses "==" rather than "==="
@@ -338,6 +541,16 @@ foreach ( $date_formats as $format ) {
 	}
 	echo ' /> <span class="date-time-text format-i18n">' . date_i18n( $format ) . '</span><code>' . esc_html( $format ) . "</code></label><br />\n";
 }
+=======
+	foreach ( $date_formats as $format ) {
+		echo "\t<label><input type='radio' name='date_format' value='" . esc_attr( $format ) . "'";
+		if ( get_option('date_format') === $format ) { // checked() uses "==" rather than "==="
+			echo " checked='checked'";
+			$custom = false;
+		}
+		echo ' /> <span class="date-time-text format-i18n">' . date_i18n( $format ) . '</span><code>' . esc_html( $format ) . "</code></label><br />\n";
+	}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	echo '<label><input type="radio" name="date_format" id="date_format_custom_radio" value="\c\u\s\t\o\m"';
 	checked( $custom );
@@ -352,6 +565,7 @@ foreach ( $date_formats as $format ) {
 </td>
 </tr>
 <tr>
+<<<<<<< HEAD
 <th scope="row"><?php _e( 'Time Format' ); ?></th>
 <td>
 	<fieldset><legend class="screen-reader-text"><span><?php _e( 'Time Format' ); ?></span></legend>
@@ -363,10 +577,24 @@ foreach ( $date_formats as $format ) {
 	 *
 	 * @param string[] $default_time_formats Array of default time formats.
 	 */
+=======
+<th scope="row"><?php _e('Time Format') ?></th>
+<td>
+	<fieldset><legend class="screen-reader-text"><span><?php _e('Time Format') ?></span></legend>
+<?php
+	/**
+	* Filters the default time formats.
+	*
+	* @since 2.7.0
+	*
+	* @param array $default_time_formats Array of default time formats.
+	*/
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$time_formats = array_unique( apply_filters( 'time_formats', array( __( 'g:i a' ), 'g:i A', 'H:i' ) ) );
 
 	$custom = true;
 
+<<<<<<< HEAD
 foreach ( $time_formats as $format ) {
 	echo "\t<label><input type='radio' name='time_format' value='" . esc_attr( $format ) . "'";
 	if ( get_option( 'time_format' ) === $format ) { // checked() uses "==" rather than "==="
@@ -375,6 +603,16 @@ foreach ( $time_formats as $format ) {
 	}
 	echo ' /> <span class="date-time-text format-i18n">' . date_i18n( $format ) . '</span><code>' . esc_html( $format ) . "</code></label><br />\n";
 }
+=======
+	foreach ( $time_formats as $format ) {
+		echo "\t<label><input type='radio' name='time_format' value='" . esc_attr( $format ) . "'";
+		if ( get_option('time_format') === $format ) { // checked() uses "==" rather than "==="
+			echo " checked='checked'";
+			$custom = false;
+		}
+		echo ' /> <span class="date-time-text format-i18n">' . date_i18n( $format ) . '</span><code>' . esc_html( $format ) . "</code></label><br />\n";
+	}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	echo '<label><input type="radio" name="time_format" id="time_format_custom_radio" value="\c\u\s\t\o\m"';
 	checked( $custom );
@@ -385,13 +623,21 @@ foreach ( $time_formats as $format ) {
 		'<p><strong>' . __( 'Preview:' ) . '</strong> <span class="example">' . date_i18n( get_option( 'time_format' ) ) . '</span>' .
 		"<span class='spinner'></span>\n" . '</p>';
 
+<<<<<<< HEAD
 	echo "\t<p class='date-time-doc'>" . __( '<a href="https://codex.wordpress.org/Formatting_Date_and_Time">Documentation on date and time formatting</a>.' ) . "</p>\n";
+=======
+	echo "\t<p class='date-time-doc'>" . __('<a href="https://codex.wordpress.org/Formatting_Date_and_Time">Documentation on date and time formatting</a>.') . "</p>\n";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 ?>
 	</fieldset>
 </td>
 </tr>
 <tr>
+<<<<<<< HEAD
 <th scope="row"><label for="start_of_week"><?php _e( 'Week Starts On' ); ?></label></th>
+=======
+<th scope="row"><label for="start_of_week"><?php _e('Week Starts On') ?></label></th>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <td><select name="start_of_week" id="start_of_week">
 <?php
 /**
@@ -399,17 +645,30 @@ foreach ( $time_formats as $format ) {
  */
 global $wp_locale;
 
+<<<<<<< HEAD
 for ( $day_index = 0; $day_index <= 6; $day_index++ ) :
 	$selected = ( get_option( 'start_of_week' ) == $day_index ) ? 'selected="selected"' : '';
 	echo "\n\t<option value='" . esc_attr( $day_index ) . "' $selected>" . $wp_locale->get_weekday( $day_index ) . '</option>';
+=======
+for ($day_index = 0; $day_index <= 6; $day_index++) :
+	$selected = (get_option('start_of_week') == $day_index) ? 'selected="selected"' : '';
+	echo "\n\t<option value='" . esc_attr($day_index) . "' $selected>" . $wp_locale->get_weekday($day_index) . '</option>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 endfor;
 ?>
 </select></td>
 </tr>
+<<<<<<< HEAD
 <?php do_settings_fields( 'general', 'default' ); ?>
 </table>
 
 <?php do_settings_sections( 'general' ); ?>
+=======
+<?php do_settings_fields('general', 'default'); ?>
+</table>
+
+<?php do_settings_sections('general'); ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 <?php submit_button(); ?>
 </form>

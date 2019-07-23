@@ -15,7 +15,11 @@
  * @see WP_Customize_Upload_Control
  */
 class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
+<<<<<<< HEAD
 	public $type      = 'image';
+=======
+	public $type = 'image';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	public $mime_type = 'image';
 
 	/**
@@ -34,7 +38,11 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	 */
 	public function add_tab( $id, $label, $callback ) {
 		_deprecated_function( __METHOD__, '4.1.0' );
+<<<<<<< HEAD
 	}
+=======
+    }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * @since 3.4.0
@@ -44,7 +52,11 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	 */
 	public function remove_tab( $id ) {
 		_deprecated_function( __METHOD__, '4.1.0' );
+<<<<<<< HEAD
 	}
+=======
+    }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * @since 3.4.0
@@ -55,5 +67,9 @@ class WP_Customize_Image_Control extends WP_Customize_Upload_Control {
 	 */
 	public function print_tab_image( $url, $thumbnail_url = null ) {
 		_deprecated_function( __METHOD__, '4.1.0' );
+<<<<<<< HEAD
 	}
+=======
+    }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }

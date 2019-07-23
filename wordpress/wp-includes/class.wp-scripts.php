@@ -35,7 +35,11 @@ class WP_Scripts extends WP_Dependencies {
 	public $content_url;
 
 	/**
+<<<<<<< HEAD
 	 * Default version string for scripts.
+=======
+	 * Default version string for stylesheets.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 2.6.0
 	 * @var string
@@ -145,7 +149,11 @@ class WP_Scripts extends WP_Dependencies {
 		 *
 		 * @param WP_Scripts $this WP_Scripts instance (passed by reference).
 		 */
+<<<<<<< HEAD
 		do_action_ref_array( 'wp_default_scripts', array( &$this ) );
+=======
+		do_action_ref_array( 'wp_default_scripts', array(&$this) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -196,6 +204,7 @@ class WP_Scripts extends WP_Dependencies {
 	 * @return bool|string|void Void if no data exists, extra scripts if `$echo` is true, true otherwise.
 	 */
 	public function print_extra_script( $handle, $echo = true ) {
+<<<<<<< HEAD
 		if ( ! $output = $this->get_data( $handle, 'data' ) ) {
 			return;
 		}
@@ -205,6 +214,15 @@ class WP_Scripts extends WP_Dependencies {
 		}
 
 		echo "<script type='text/javascript'>\n"; // CDATA and type='text/javascript' is not needed for HTML 5.
+=======
+		if ( !$output = $this->get_data( $handle, 'data' ) )
+			return;
+
+		if ( !$echo )
+			return $output;
+
+		echo "<script type='text/javascript'>\n"; // CDATA and type='text/javascript' is not needed for HTML 5
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		echo "/* <![CDATA[ */\n";
 		echo "$output\n";
 		echo "/* ]]> */\n";
@@ -221,25 +239,43 @@ class WP_Scripts extends WP_Dependencies {
 	 *
 	 * @see WP_Dependencies::do_item()
 	 *
+<<<<<<< HEAD
 	 * @param string    $handle The script's registered handle.
+=======
+	 * @param string $handle    The script's registered handle.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param int|false $group  Optional. Group level: (int) level, (false) no groups. Default false.
 	 * @return bool True on success, false on failure.
 	 */
 	public function do_item( $handle, $group = false ) {
+<<<<<<< HEAD
 		if ( ! parent::do_item( $handle ) ) {
 			return false;
 		}
 
 		if ( 0 === $group && $this->groups[ $handle ] > 0 ) {
+=======
+		if ( !parent::do_item($handle) )
+			return false;
+
+		if ( 0 === $group && $this->groups[$handle] > 0 ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->in_footer[] = $handle;
 			return false;
 		}
 
+<<<<<<< HEAD
 		if ( false === $group && in_array( $handle, $this->in_footer, true ) ) {
 			$this->in_footer = array_diff( $this->in_footer, (array) $handle );
 		}
 
 		$obj = $this->registered[ $handle ];
+=======
+		if ( false === $group && in_array($handle, $this->in_footer, true) )
+			$this->in_footer = array_diff( $this->in_footer, (array) $handle );
+
+		$obj = $this->registered[$handle];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( null === $obj->ver ) {
 			$ver = '';
@@ -247,21 +283,36 @@ class WP_Scripts extends WP_Dependencies {
 			$ver = $obj->ver ? $obj->ver : $this->default_version;
 		}
 
+<<<<<<< HEAD
 		if ( isset( $this->args[ $handle ] ) ) {
 			$ver = $ver ? $ver . '&amp;' . $this->args[ $handle ] : $this->args[ $handle ];
 		}
 
 		$src         = $obj->src;
+=======
+		if ( isset($this->args[$handle]) )
+			$ver = $ver ? $ver . '&amp;' . $this->args[$handle] : $this->args[$handle];
+
+		$src = $obj->src;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$cond_before = $cond_after = '';
 		$conditional = isset( $obj->extra['conditional'] ) ? $obj->extra['conditional'] : '';
 
 		if ( $conditional ) {
 			$cond_before = "<!--[if {$conditional}]>\n";
+<<<<<<< HEAD
 			$cond_after  = "<![endif]-->\n";
 		}
 
 		$before_handle = $this->print_inline_script( $handle, 'before', false );
 		$after_handle  = $this->print_inline_script( $handle, 'after', false );
+=======
+			$cond_after = "<![endif]-->\n";
+		}
+
+		$before_handle = $this->print_inline_script( $handle, 'before', false );
+		$after_handle = $this->print_inline_script( $handle, 'after', false );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( $before_handle ) {
 			$before_handle = sprintf( "<script type='text/javascript'>\n%s\n</script>\n", $before_handle );
@@ -295,8 +346,13 @@ class WP_Scripts extends WP_Dependencies {
 				_print_scripts();
 				$this->reset();
 			} elseif ( $this->in_default_dir( $srce ) && ! $conditional ) {
+<<<<<<< HEAD
 				$this->print_code     .= $this->print_extra_script( $handle, false );
 				$this->concat         .= "$handle,";
+=======
+				$this->print_code .= $this->print_extra_script( $handle, false );
+				$this->concat .= "$handle,";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$this->concat_version .= "$handle$ver";
 				return true;
 			} else {
@@ -339,16 +395,26 @@ class WP_Scripts extends WP_Dependencies {
 			$src = $this->base_url . $src;
 		}
 
+<<<<<<< HEAD
 		if ( ! empty( $ver ) ) {
 			$src = add_query_arg( 'ver', $ver, $src );
 		}
+=======
+		if ( ! empty( $ver ) )
+			$src = add_query_arg( 'ver', $ver, $src );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This filter is documented in wp-includes/class.wp-scripts.php */
 		$src = esc_url( apply_filters( 'script_loader_src', $src, $handle ) );
 
+<<<<<<< HEAD
 		if ( ! $src ) {
 			return true;
 		}
+=======
+		if ( ! $src )
+			return true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$tag = "{$translations}{$cond_before}{$before_handle}<script type='text/javascript' src='$src'></script>\n{$after_handle}{$cond_after}";
 
@@ -406,7 +472,11 @@ class WP_Scripts extends WP_Dependencies {
 	 * @param string $handle   Name of the script to add the inline script to. Must be lowercase.
 	 * @param string $position Optional. Whether to add the inline script before the handle
 	 *                         or after. Default 'after'.
+<<<<<<< HEAD
 	 * @param bool   $echo     Optional. Whether to echo the script instead of just returning it.
+=======
+	 * @param bool $echo       Optional. Whether to echo the script instead of just returning it.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *                         Default true.
 	 * @return string|false Script on success, false otherwise.
 	 */
@@ -431,6 +501,7 @@ class WP_Scripts extends WP_Dependencies {
 	 *
 	 * @since 2.1.0
 	 *
+<<<<<<< HEAD
 	 * @param string $handle      Name of the script to attach data to.
 	 * @param string $object_name Name of the variable that will contain the data.
 	 * @param array  $l10n        Array of data to localize.
@@ -452,10 +523,32 @@ class WP_Scripts extends WP_Dependencies {
 			}
 
 			$l10n[ $key ] = html_entity_decode( (string) $value, ENT_QUOTES, 'UTF-8' );
+=======
+	 * @param string $handle
+	 * @param string $object_name
+	 * @param array $l10n
+	 * @return bool
+	 */
+	public function localize( $handle, $object_name, $l10n ) {
+		if ( $handle === 'jquery' )
+			$handle = 'jquery-core';
+
+		if ( is_array($l10n) && isset($l10n['l10n_print_after']) ) { // back compat, preserve the code in 'l10n_print_after' if present
+			$after = $l10n['l10n_print_after'];
+			unset($l10n['l10n_print_after']);
+		}
+
+		foreach ( (array) $l10n as $key => $value ) {
+			if ( !is_scalar($value) )
+				continue;
+
+			$l10n[$key] = html_entity_decode( (string) $value, ENT_QUOTES, 'UTF-8');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		$script = "var $object_name = " . wp_json_encode( $l10n ) . ';';
 
+<<<<<<< HEAD
 		if ( ! empty( $after ) ) {
 			$script .= "\n$after;";
 		}
@@ -465,6 +558,15 @@ class WP_Scripts extends WP_Dependencies {
 		if ( ! empty( $data ) ) {
 			$script = "$data\n$script";
 		}
+=======
+		if ( !empty($after) )
+			$script .= "\n$after;";
+
+		$data = $this->get_data( $handle, 'data' );
+
+		if ( !empty( $data ) )
+			$script = "$data\n$script";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $this->add_data( $handle, 'data', $script );
 	}
@@ -482,6 +584,7 @@ class WP_Scripts extends WP_Dependencies {
 	 * @return bool Not already in the group or a lower group
 	 */
 	public function set_group( $handle, $recursion, $group = false ) {
+<<<<<<< HEAD
 		if ( isset( $this->registered[ $handle ]->args ) && $this->registered[ $handle ]->args === 1 ) {
 			$grp = 1;
 		} else {
@@ -491,6 +594,15 @@ class WP_Scripts extends WP_Dependencies {
 		if ( false !== $group && $grp > $group ) {
 			$grp = $group;
 		}
+=======
+		if ( isset( $this->registered[$handle]->args ) && $this->registered[$handle]->args === 1 )
+			$grp = 1;
+		else
+			$grp = (int) $this->get_data( $handle, 'group' );
+
+		if ( false !== $group && $grp > $group )
+			$grp = $group;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return parent::set_group( $handle, $recursion, $grp );
 	}
@@ -499,6 +611,7 @@ class WP_Scripts extends WP_Dependencies {
 	 * Sets a translation textdomain.
 	 *
 	 * @since 5.0.0
+<<<<<<< HEAD
 	 * @since 5.1.0 The `$domain` parameter was made optional.
 	 *
 	 * @param string $handle Name of the script to register a translation domain to.
@@ -507,6 +620,16 @@ class WP_Scripts extends WP_Dependencies {
 	 * @return bool True if the text domain was registered, false if not.
 	 */
 	public function set_translations( $handle, $domain = 'default', $path = null ) {
+=======
+	 *
+	 * @param string $handle Name of the script to register a translation domain to.
+	 * @param string $domain The textdomain.
+	 * @param string $path   Optional. The full file path to the directory containing translation files.
+	 *
+	 * @return bool True if the textdomain was registered, false if not.
+	 */
+	public function set_translations( $handle, $domain, $path = null ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! isset( $this->registered[ $handle ] ) ) {
 			return false;
 		}
@@ -517,7 +640,10 @@ class WP_Scripts extends WP_Dependencies {
 		if ( ! in_array( 'wp-i18n', $obj->deps, true ) ) {
 			$obj->deps[] = 'wp-i18n';
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $obj->set_translations( $domain, $path );
 	}
 
@@ -581,7 +707,11 @@ JS;
 			 *
 			 * @since 2.3.0
 			 *
+<<<<<<< HEAD
 			 * @param string[] $to_do An array of script dependency handles.
+=======
+			 * @param array $to_do An array of script dependencies.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 */
 			$this->to_do = apply_filters( 'print_scripts_array', $this->to_do );
 		}
@@ -598,7 +728,11 @@ JS;
 	 * @return array Handles of items that have been processed.
 	 */
 	public function do_head_items() {
+<<<<<<< HEAD
 		$this->do_items( false, 0 );
+=======
+		$this->do_items(false, 0);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $this->done;
 	}
 
@@ -612,7 +746,11 @@ JS;
 	 * @return array Handles of items that have been processed.
 	 */
 	public function do_footer_items() {
+<<<<<<< HEAD
 		$this->do_items( false, 1 );
+=======
+		$this->do_items(false, 1);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $this->done;
 	}
 
@@ -647,6 +785,7 @@ JS;
 	 * @since 2.8.0
 	 */
 	public function reset() {
+<<<<<<< HEAD
 		$this->do_concat      = false;
 		$this->print_code     = '';
 		$this->concat         = '';
@@ -654,5 +793,14 @@ JS;
 		$this->print_html     = '';
 		$this->ext_version    = '';
 		$this->ext_handles    = '';
+=======
+		$this->do_concat = false;
+		$this->print_code = '';
+		$this->concat = '';
+		$this->concat_version = '';
+		$this->print_html = '';
+		$this->ext_version = '';
+		$this->ext_handles = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

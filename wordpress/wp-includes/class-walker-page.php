@@ -35,10 +35,14 @@ class Walker_Page extends Walker {
 	 * @see Walker::$db_fields
 	 * @todo Decouple this.
 	 */
+<<<<<<< HEAD
 	public $db_fields = array(
 		'parent' => 'post_parent',
 		'id'     => 'ID',
 	);
+=======
+	public $db_fields = array( 'parent' => 'post_parent', 'id' => 'ID' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Outputs the beginning of the current level in the tree before elements are output.
@@ -60,7 +64,11 @@ class Walker_Page extends Walker {
 			$t = '';
 			$n = '';
 		}
+<<<<<<< HEAD
 		$indent  = str_repeat( $t, $depth );
+=======
+		$indent = str_repeat( $t, $depth );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$output .= "{$n}{$indent}<ul class='children'>{$n}";
 	}
 
@@ -84,7 +92,11 @@ class Walker_Page extends Walker {
 			$t = '';
 			$n = '';
 		}
+<<<<<<< HEAD
 		$indent  = str_repeat( $t, $depth );
+=======
+		$indent = str_repeat( $t, $depth );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$output .= "{$indent}</ul>{$n}";
 	}
 
@@ -130,7 +142,11 @@ class Walker_Page extends Walker {
 			} elseif ( $_current_page && $page->ID == $_current_page->post_parent ) {
 				$css_class[] = 'current_page_parent';
 			}
+<<<<<<< HEAD
 		} elseif ( $page->ID == get_option( 'page_for_posts' ) ) {
+=======
+		} elseif ( $page->ID == get_option('page_for_posts') ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$css_class[] = 'current_page_parent';
 		}
 
@@ -141,6 +157,7 @@ class Walker_Page extends Walker {
 		 *
 		 * @see wp_list_pages()
 		 *
+<<<<<<< HEAD
 		 * @param string[] $css_class    An array of CSS classes to be applied to each list item.
 		 * @param WP_Post  $page         Page data object.
 		 * @param int      $depth        Depth of page, used for padding.
@@ -149,6 +166,16 @@ class Walker_Page extends Walker {
 		 */
 		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
 		$css_classes = $css_classes ? ' class="' . esc_attr( $css_classes ) . '"' : '';
+=======
+		 * @param array   $css_class    An array of CSS classes to be applied
+		 *                              to each list item.
+		 * @param WP_Post $page         Page data object.
+		 * @param int     $depth        Depth of page, used for padding.
+		 * @param array   $args         An array of arguments.
+		 * @param int     $current_page ID of the current page.
+		 */
+		$css_classes = implode( ' ', apply_filters( 'page_css_class', $css_class, $page, $depth, $args, $current_page ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( '' === $page->post_title ) {
 			/* translators: %d: ID of a post */
@@ -156,11 +183,18 @@ class Walker_Page extends Walker {
 		}
 
 		$args['link_before'] = empty( $args['link_before'] ) ? '' : $args['link_before'];
+<<<<<<< HEAD
 		$args['link_after']  = empty( $args['link_after'] ) ? '' : $args['link_after'];
 
 		$atts                 = array();
 		$atts['href']         = get_permalink( $page->ID );
 		$atts['aria-current'] = ( $page->ID == $current_page ) ? 'page' : '';
+=======
+		$args['link_after'] = empty( $args['link_after'] ) ? '' : $args['link_after'];
+
+		$atts = array();
+		$atts['href'] = get_permalink( $page->ID );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters the HTML attributes applied to a page menu item's anchor element.
@@ -170,8 +204,12 @@ class Walker_Page extends Walker {
 		 * @param array $atts {
 		 *     The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
 		 *
+<<<<<<< HEAD
 		 *     @type string $href         The href attribute.
 		 *     @type string $aria_current The aria-current attribute.
+=======
+		 *     @type string $href The href attribute.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * }
 		 * @param WP_Post $page         Page data object.
 		 * @param int     $depth        Depth of page, used for padding.
@@ -183,13 +221,21 @@ class Walker_Page extends Walker {
 		$attributes = '';
 		foreach ( $atts as $attr => $value ) {
 			if ( ! empty( $value ) ) {
+<<<<<<< HEAD
 				$value       = esc_attr( $value );
+=======
+				$value = esc_attr( $value );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$attributes .= ' ' . $attr . '="' . $value . '"';
 			}
 		}
 
 		$output .= $indent . sprintf(
+<<<<<<< HEAD
 			'<li%s><a%s>%s%s%s</a>',
+=======
+			'<li class="%s"><a%s>%s%s%s</a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$css_classes,
 			$attributes,
 			$args['link_before'],
@@ -206,7 +252,11 @@ class Walker_Page extends Walker {
 			}
 
 			$date_format = empty( $args['date_format'] ) ? '' : $args['date_format'];
+<<<<<<< HEAD
 			$output     .= ' ' . mysql2date( $date_format, $time );
+=======
+			$output .= " " . mysql2date( $date_format, $time );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 

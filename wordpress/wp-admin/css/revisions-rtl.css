@@ -470,10 +470,18 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 .wp-slider .ui-slider-handle.ui-state-active {
 	background: #eee;
 	border-color: #999;
+<<<<<<< HEAD
 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
 	transform: translateY(1px);
 }
 
+=======
+ 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+ 	transform: translateY(1px);
+}
+
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .wp-slider .ui-slider-handle:before {
 	background: none;
 	position: absolute;
@@ -560,7 +568,11 @@ div.revisions-controls > .wp-slider > .ui-slider-handle {
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#diff-next-revision,
 	#diff-previous-revision {
 		margin-top: -1em;

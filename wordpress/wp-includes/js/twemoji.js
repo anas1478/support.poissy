@@ -373,7 +373,11 @@ var twemoji = (function (
         iconId = grabTheRightIcon(rawText);
         i = index + rawText.length;
         src = options.callback(iconId, options);
+<<<<<<< HEAD
         if (iconId && src) {
+=======
+        if (src) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           img = new Image();
           img.onerror = options.onerror;
           img.setAttribute('draggable', 'false');
@@ -434,7 +438,11 @@ var twemoji = (function (
         src = options.callback(iconId, options),
         attrib,
         attrname;
+<<<<<<< HEAD
       if (iconId && src) {
+=======
+      if (src) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         // recycle the match string replacing the emoji
         // with its image counter part
         ret = '<img '.concat(
@@ -565,4 +573,8 @@ var twemoji = (function (
     return r.join(sep || '-');
   }
 
+<<<<<<< HEAD
 }());
+=======
+}());
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

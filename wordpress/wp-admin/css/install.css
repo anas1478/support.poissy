@@ -63,7 +63,11 @@ ul, ol, dl {
 }
 
 a img {
+<<<<<<< HEAD
 	border: 0
+=======
+	border:0
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 abbr {
 	border: 0;
@@ -84,7 +88,11 @@ label {
 	margin: 6px 0 14px 0;
 	padding: 0 0 7px 0;
 	border-bottom: none;
+<<<<<<< HEAD
 	text-align: center
+=======
+	text-align:center
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 #logo a {
 	background-image: url(../images/w-logo-blue.png?ver=20131202);
@@ -107,6 +115,13 @@ label {
 	display: block;
 }
 
+<<<<<<< HEAD
+=======
+#logo a:focus {
+	box-shadow: none;
+}
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .step {
 	margin: 20px 0 15px;
 }
@@ -330,7 +345,11 @@ body.rtl,
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	.form-table {
 		margin-top: 0;

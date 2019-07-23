@@ -25,8 +25,13 @@ class WP_Widget_Meta extends WP_Widget {
 	 */
 	public function __construct() {
 		$widget_ops = array(
+<<<<<<< HEAD
 			'classname'                   => 'widget_meta',
 			'description'                 => __( 'Login, RSS, &amp; WordPress.org links.' ),
+=======
+			'classname' => 'widget_meta',
+			'description' => __( 'Login, RSS, &amp; WordPress.org links.' ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'customize_selective_refresh' => true,
 		);
 		parent::__construct( 'meta', __( 'Meta' ), $widget_ops );
@@ -52,12 +57,21 @@ class WP_Widget_Meta extends WP_Widget {
 		if ( $title ) {
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
+<<<<<<< HEAD
 		?>
 			<ul>
 			<?php wp_register(); ?>
 			<li><?php wp_loginout(); ?></li>
 			<li><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e( 'Entries <abbr title="Really Simple Syndication">RSS</abbr>' ); ?></a></li>
 			<li><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e( 'Comments <abbr title="Really Simple Syndication">RSS</abbr>' ); ?></a></li>
+=======
+			?>
+			<ul>
+			<?php wp_register(); ?>
+			<li><?php wp_loginout(); ?></li>
+			<li><a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>"><?php _e('Entries <abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
+			<li><a href="<?php echo esc_url( get_bloginfo( 'comments_rss2_url' ) ); ?>"><?php _e('Comments <abbr title="Really Simple Syndication">RSS</abbr>'); ?></a></li>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			<?php
 			/**
 			 * Filters the "Powered by WordPress" text in the Meta widget.
@@ -68,6 +82,7 @@ class WP_Widget_Meta extends WP_Widget {
 			 * @param string $title_text Default title text for the WordPress.org link.
 			 * @param array  $instance   Array of settings for the current widget.
 			 */
+<<<<<<< HEAD
 			echo apply_filters(
 				'widget_meta_poweredby',
 				sprintf(
@@ -78,13 +93,24 @@ class WP_Widget_Meta extends WP_Widget {
 				),
 				$instance
 			);
+=======
+			echo apply_filters( 'widget_meta_poweredby', sprintf( '<li><a href="%s" title="%s">%s</a></li>',
+				esc_url( __( 'https://wordpress.org/' ) ),
+				esc_attr__( 'Powered by WordPress, state-of-the-art semantic personal publishing platform.' ),
+				_x( 'WordPress.org', 'meta widget link text' )
+			), $instance );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			wp_meta();
 			?>
 			</ul>
 			<?php
 
+<<<<<<< HEAD
 			echo $args['after_widget'];
+=======
+		echo $args['after_widget'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -98,7 +124,11 @@ class WP_Widget_Meta extends WP_Widget {
 	 * @return array Updated settings to save.
 	 */
 	public function update( $new_instance, $old_instance ) {
+<<<<<<< HEAD
 		$instance          = $old_instance;
+=======
+		$instance = $old_instance;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
 		return $instance;
@@ -113,8 +143,15 @@ class WP_Widget_Meta extends WP_Widget {
 	 */
 	public function form( $instance ) {
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '' ) );
+<<<<<<< HEAD
 		?>
 			<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $instance['title'] ); ?>" /></p>
 		<?php
+=======
+		$title = sanitize_text_field( $instance['title'] );
+?>
+			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

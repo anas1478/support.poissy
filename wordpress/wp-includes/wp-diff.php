@@ -18,4 +18,8 @@ if ( ! class_exists( 'Text_Diff', false ) ) {
 }
 
 require( ABSPATH . WPINC . '/class-wp-text-diff-renderer-table.php' );
+<<<<<<< HEAD
 require( ABSPATH . WPINC . '/class-wp-text-diff-renderer-inline.php' );
+=======
+require( ABSPATH . WPINC . '/class-wp-text-diff-renderer-inline.php' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

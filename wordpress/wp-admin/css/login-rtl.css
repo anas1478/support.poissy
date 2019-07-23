@@ -79,6 +79,7 @@ p {
 }
 
 .login .password-input-wrapper {
+<<<<<<< HEAD
 	display: table;
 }
 
@@ -95,6 +96,24 @@ p {
 	display: table-cell;
 	border-radius: 0;
 	vertical-align: middle;
+=======
+    display: table;
+}
+
+.login .input.password-input {
+    display: table-cell;
+    margin: 0;
+}
+
+.login .pw-weak {
+    margin-bottom: 15px;
+}
+
+.login .button.button-secondary {
+    display: table-cell;
+    border-radius: 0;
+    vertical-align: middle;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .login form {
@@ -263,13 +282,21 @@ body.interim-login {
 	width: device-width;
 }
 
+<<<<<<< HEAD
 @media screen and (max-height: 550px) {
+=======
+@media screen and ( max-height: 550px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#login {
 		padding: 20px 0;
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.interim-login input[type=checkbox] {
 		height: 16px;
 		width: 16px;

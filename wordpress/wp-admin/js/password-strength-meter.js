@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/password-strength-meter.js
  */
@@ -28,6 +29,20 @@ window.wp = window.wp || {};
 		 * @param {string} password2 The password confirmation.
 		 *
 		 * @returns {number} The password strength score.
+=======
+/* global zxcvbn */
+window.wp = window.wp || {};
+
+var passwordStrength;
+(function($){
+	wp.passwordStrength = {
+		/**
+		 * Determine the strength of a given password
+		 *
+		 * @param string password1 The password
+		 * @param array blacklist An array of words that will lower the entropy of the password
+		 * @param string password2 The confirmed password
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		meter : function( password1, blacklist, password2 ) {
 			if ( ! $.isArray( blacklist ) )
@@ -46,6 +61,7 @@ window.wp = window.wp || {};
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Builds an array of words that should be penalized.
 		 *
 		 * Certain words need to be penalized because it would lower the entropy of a
@@ -55,6 +71,11 @@ window.wp = window.wp || {};
 		 * @since 3.7.0
 		 *
 		 * @returns {string[]} The array of words to be blacklisted.
+=======
+		 * Builds an array of data that should be penalized, because it would lower the entropy of a password if it were used
+		 *
+		 * @return array The array of data to be blacklisted
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		userInputBlacklist : function() {
 			var i, userInputFieldsLength, rawValuesLength, currentField,
@@ -62,7 +83,11 @@ window.wp = window.wp || {};
 				blacklist       = [],
 				userInputFields = [ 'user_login', 'first_name', 'last_name', 'nickname', 'display_name', 'email', 'url', 'description', 'weblog_title', 'admin_email' ];
 
+<<<<<<< HEAD
 			// Collect all the strings we want to blacklist.
+=======
+			// Collect all the strings we want to blacklist
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			rawValues.push( document.title );
 			rawValues.push( document.URL );
 
@@ -78,10 +103,14 @@ window.wp = window.wp || {};
 				rawValues.push( currentField.val() );
 			}
 
+<<<<<<< HEAD
 			/*
 			 * Strip out non-alphanumeric characters and convert each word to an
 			 * individual entry.
 			 */
+=======
+			// Strip out non-alphanumeric characters and convert each word to an individual entry
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			rawValuesLength = rawValues.length;
 			for ( i = 0; i < rawValuesLength; i++ ) {
 				if ( rawValues[ i ] ) {
@@ -89,10 +118,14 @@ window.wp = window.wp || {};
 				}
 			}
 
+<<<<<<< HEAD
 			/*
 			 * Remove empty values, short words and duplicates. Short words are likely to
 			 * cause many false positives.
 			 */
+=======
+			// Remove empty values, short words, and duplicates. Short words are likely to cause many false positives.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			blacklist = $.grep( blacklist, function( value, key ) {
 				if ( '' === value || 4 > value.length ) {
 					return false;
@@ -105,6 +138,7 @@ window.wp = window.wp || {};
 		}
 	};
 
+<<<<<<< HEAD
 	// Backward compatibility.
 
 	/**
@@ -118,4 +152,8 @@ window.wp = window.wp || {};
 	 * @type {wp.passwordStrength.meter}
 	 */
 	window.passwordStrength = wp.passwordStrength.meter;
+=======
+	// Back-compat.
+	passwordStrength = wp.passwordStrength.meter;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 })(jQuery);

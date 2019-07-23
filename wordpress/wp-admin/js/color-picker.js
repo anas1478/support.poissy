@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/color-picker.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* global wpColorPickerL10n */
 ( function( $, undef ) {
 
@@ -14,6 +17,7 @@
 		_wrappingLabelText = '<span class="screen-reader-text"></span>';
 
 	/**
+<<<<<<< HEAD
 	 * Creates a jQuery UI color picker that is used in the theme customizer.
 	 *
 	 * @class $.widget.wp.wpColorPicker
@@ -21,6 +25,15 @@
 	 * @since 3.5.0
 	 */
 	ColorPicker = /** @lends $.widget.wp.wpColorPicker.prototype */{
+=======
+	 * @summary Creates a jQuery UI color picker.
+	 *
+	 * Creates a jQuery UI color picker that is used in the theme customizer.
+	 *
+	 * @since 3.5.0
+	 */
+	ColorPicker = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		options: {
 			defaultColor: false,
 			change: false,
@@ -33,7 +46,11 @@
 			slider: 'horizontal'
 		},
 		/**
+<<<<<<< HEAD
 		 * Creates a color picker that only allows you to adjust the hue.
+=======
+		 * @summary Creates a color picker that only allows you to adjust the hue.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.5.0
 		 *
@@ -58,9 +75,13 @@
 				hide: false,
 				color: color,
 				/**
+<<<<<<< HEAD
 				 * Handles the onChange event if one has been defined in the options.
 				 *
 				 * @ignore
+=======
+				 * @summary Handles the onChange event if one has been defined in the options.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 *
 				 * @param {Event} event    The event that's being called.
 				 * @param {HTMLElement} ui The HTMLElement containing the color picker.
@@ -77,6 +98,11 @@
 			} );
 		},
 		/**
+<<<<<<< HEAD
+=======
+		 * @summary Creates the color picker.
+		 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * Creates the color picker, sets default values, css classes and wraps it all in HTML.
 		 *
 		 * @since 3.5.0
@@ -176,13 +202,21 @@
 				mode: self.options.mode,
 				palettes: self.options.palettes,
 				/**
+<<<<<<< HEAD
+=======
+				 * @summary Handles the onChange event if one has been defined in the options.
+				 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * Handles the onChange event if one has been defined in the options and additionally
 				 * sets the background color for the toggler element.
 				 *
 				 * @since 3.5.0
 				 *
+<<<<<<< HEAD
 				 * @ignore
 				 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * @param {Event} event    The event that's being called.
 				 * @param {HTMLElement} ui The HTMLElement containing the color picker.
 				 *
@@ -206,7 +240,11 @@
 			}
 		},
 		/**
+<<<<<<< HEAD
 		 * Binds event listeners to the color picker.
+=======
+		 * @summary Binds event listeners to the color picker.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.5.0
 		 *
@@ -218,7 +256,11 @@
 			var self = this;
 
 			/**
+<<<<<<< HEAD
 			 * Prevent any clicks inside this widget from leaking to the top and closing it.
+=======
+			 * @summary Prevent any clicks inside this widget from leaking to the top and closing it.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.5.0
 			 *
@@ -231,7 +273,11 @@
 			});
 
 			/**
+<<<<<<< HEAD
 			 * Open or close the color picker depending on the class.
+=======
+			 * @summary Open or close the color picker depending on the class.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.5
 			 */
@@ -244,6 +290,11 @@
 			});
 
 			/**
+<<<<<<< HEAD
+=======
+			 * @summary Checks if value is empty when changing the color in the color picker.
+			 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * Checks if value is empty when changing the color in the color picker.
 			 * If so, the background color is cleared.
 			 *
@@ -267,6 +318,11 @@
 			});
 
 			/**
+<<<<<<< HEAD
+=======
+			 * @summary Enables the user to clear or revert the color in the color picker.
+			 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * Enables the user to either clear the color in the color picker or revert back to the default color.
 			 *
 			 * @since 3.5.0
@@ -289,7 +345,11 @@
 			});
 		},
 		/**
+<<<<<<< HEAD
 		 * Opens the color picker dialog.
+=======
+		 * @summary Opens the color picker dialog.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.5.0
 		 *
@@ -305,7 +365,11 @@
 			$( 'body' ).trigger( 'click.wpcolorpicker' ).on( 'click.wpcolorpicker', this.close );
 		},
 		/**
+<<<<<<< HEAD
 		 * Closes the color picker dialog.
+=======
+		 * @summary Closes the color picker dialog.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.5.0
 		 *
@@ -321,6 +385,11 @@
 			$( 'body' ).off( 'click.wpcolorpicker', this.close );
 		},
 		/**
+<<<<<<< HEAD
+=======
+		 * @summary Returns iris object or sets new color.
+		 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * Returns the iris object if no new color is provided. If a new color is provided, it sets the new color.
 		 *
 		 * @param newColor {string|*} The new color to use. Can be undefined.
@@ -336,6 +405,11 @@
 			this.element.iris( 'option', 'color', newColor );
 		},
 		/**
+<<<<<<< HEAD
+=======
+		 * @summary Returns iris object or sets new default color.
+		 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * Returns the iris object if no new default color is provided.
 		 * If a new default color is provided, it sets the new default color.
 		 *

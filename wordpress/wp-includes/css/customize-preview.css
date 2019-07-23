@@ -56,11 +56,18 @@
 	animation-duration: .4s;
 	opacity: 0;
 	pointer-events: none;
+<<<<<<< HEAD
 	text-shadow:
 		0 -1px 1px #006799,
 		1px 0 1px #006799,
 		0 1px 1px #006799,
 		-1px 0 1px #006799;
+=======
+	text-shadow: 0 -1px 1px #006799,
+	             1px 0 1px #006799,
+	             0 1px 1px #006799,
+	             -1px 0 1px #006799;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 .wp-custom-header .customize-partial-edit-shortcut button {
 	left: 2px
@@ -151,14 +158,22 @@ body.customize-partial-edit-shortcuts-hidden .customize-partial-edit-shortcut bu
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 800px) {
+=======
+@media screen and (max-width:800px) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.widget .customize-partial-edit-shortcut button,
 	.customize-partial-edit-shortcut button {
 		left: -32px;
 	}
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 320px) {
+=======
+@media screen and (max-width:320px) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.widget .customize-partial-edit-shortcut button,
 	.customize-partial-edit-shortcut button {
 		left: -30px;

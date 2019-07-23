@@ -61,6 +61,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function __construct() {
 		$this->methods = array(
 			// WordPress API
+<<<<<<< HEAD
 			'wp.getUsersBlogs'                 => 'this:wp_getUsersBlogs',
 			'wp.newPost'                       => 'this:wp_newPost',
 			'wp.editPost'                      => 'this:wp_editPost',
@@ -150,6 +151,97 @@ class wp_xmlrpc_server extends IXR_Server {
 
 			'demo.sayHello'                    => 'this:sayHello',
 			'demo.addTwoNumbers'               => 'this:addTwoNumbers',
+=======
+			'wp.getUsersBlogs'		=> 'this:wp_getUsersBlogs',
+			'wp.newPost'			=> 'this:wp_newPost',
+			'wp.editPost'			=> 'this:wp_editPost',
+			'wp.deletePost'			=> 'this:wp_deletePost',
+			'wp.getPost'			=> 'this:wp_getPost',
+			'wp.getPosts'			=> 'this:wp_getPosts',
+			'wp.newTerm'			=> 'this:wp_newTerm',
+			'wp.editTerm'			=> 'this:wp_editTerm',
+			'wp.deleteTerm'			=> 'this:wp_deleteTerm',
+			'wp.getTerm'			=> 'this:wp_getTerm',
+			'wp.getTerms'			=> 'this:wp_getTerms',
+			'wp.getTaxonomy'		=> 'this:wp_getTaxonomy',
+			'wp.getTaxonomies'		=> 'this:wp_getTaxonomies',
+			'wp.getUser'			=> 'this:wp_getUser',
+			'wp.getUsers'			=> 'this:wp_getUsers',
+			'wp.getProfile'			=> 'this:wp_getProfile',
+			'wp.editProfile'		=> 'this:wp_editProfile',
+			'wp.getPage'			=> 'this:wp_getPage',
+			'wp.getPages'			=> 'this:wp_getPages',
+			'wp.newPage'			=> 'this:wp_newPage',
+			'wp.deletePage'			=> 'this:wp_deletePage',
+			'wp.editPage'			=> 'this:wp_editPage',
+			'wp.getPageList'		=> 'this:wp_getPageList',
+			'wp.getAuthors'			=> 'this:wp_getAuthors',
+			'wp.getCategories'		=> 'this:mw_getCategories',		// Alias
+			'wp.getTags'			=> 'this:wp_getTags',
+			'wp.newCategory'		=> 'this:wp_newCategory',
+			'wp.deleteCategory'		=> 'this:wp_deleteCategory',
+			'wp.suggestCategories'	=> 'this:wp_suggestCategories',
+			'wp.uploadFile'			=> 'this:mw_newMediaObject',	// Alias
+			'wp.deleteFile'			=> 'this:wp_deletePost',		// Alias
+			'wp.getCommentCount'	=> 'this:wp_getCommentCount',
+			'wp.getPostStatusList'	=> 'this:wp_getPostStatusList',
+			'wp.getPageStatusList'	=> 'this:wp_getPageStatusList',
+			'wp.getPageTemplates'	=> 'this:wp_getPageTemplates',
+			'wp.getOptions'			=> 'this:wp_getOptions',
+			'wp.setOptions'			=> 'this:wp_setOptions',
+			'wp.getComment'			=> 'this:wp_getComment',
+			'wp.getComments'		=> 'this:wp_getComments',
+			'wp.deleteComment'		=> 'this:wp_deleteComment',
+			'wp.editComment'		=> 'this:wp_editComment',
+			'wp.newComment'			=> 'this:wp_newComment',
+			'wp.getCommentStatusList' => 'this:wp_getCommentStatusList',
+			'wp.getMediaItem'		=> 'this:wp_getMediaItem',
+			'wp.getMediaLibrary'	=> 'this:wp_getMediaLibrary',
+			'wp.getPostFormats'     => 'this:wp_getPostFormats',
+			'wp.getPostType'		=> 'this:wp_getPostType',
+			'wp.getPostTypes'		=> 'this:wp_getPostTypes',
+			'wp.getRevisions'		=> 'this:wp_getRevisions',
+			'wp.restoreRevision'	=> 'this:wp_restoreRevision',
+
+			// Blogger API
+			'blogger.getUsersBlogs' => 'this:blogger_getUsersBlogs',
+			'blogger.getUserInfo' => 'this:blogger_getUserInfo',
+			'blogger.getPost' => 'this:blogger_getPost',
+			'blogger.getRecentPosts' => 'this:blogger_getRecentPosts',
+			'blogger.newPost' => 'this:blogger_newPost',
+			'blogger.editPost' => 'this:blogger_editPost',
+			'blogger.deletePost' => 'this:blogger_deletePost',
+
+			// MetaWeblog API (with MT extensions to structs)
+			'metaWeblog.newPost' => 'this:mw_newPost',
+			'metaWeblog.editPost' => 'this:mw_editPost',
+			'metaWeblog.getPost' => 'this:mw_getPost',
+			'metaWeblog.getRecentPosts' => 'this:mw_getRecentPosts',
+			'metaWeblog.getCategories' => 'this:mw_getCategories',
+			'metaWeblog.newMediaObject' => 'this:mw_newMediaObject',
+
+			// MetaWeblog API aliases for Blogger API
+			// see http://www.xmlrpc.com/stories/storyReader$2460
+			'metaWeblog.deletePost' => 'this:blogger_deletePost',
+			'metaWeblog.getUsersBlogs' => 'this:blogger_getUsersBlogs',
+
+			// MovableType API
+			'mt.getCategoryList' => 'this:mt_getCategoryList',
+			'mt.getRecentPostTitles' => 'this:mt_getRecentPostTitles',
+			'mt.getPostCategories' => 'this:mt_getPostCategories',
+			'mt.setPostCategories' => 'this:mt_setPostCategories',
+			'mt.supportedMethods' => 'this:mt_supportedMethods',
+			'mt.supportedTextFilters' => 'this:mt_supportedTextFilters',
+			'mt.getTrackbackPings' => 'this:mt_getTrackbackPings',
+			'mt.publishPost' => 'this:mt_publishPost',
+
+			// PingBack
+			'pingback.ping' => 'this:pingback_ping',
+			'pingback.extensions.getPingbacks' => 'this:pingback_extensions_getPingbacks',
+
+			'demo.sayHello' => 'this:sayHello',
+			'demo.addTwoNumbers' => 'this:addTwoNumbers'
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		$this->initialise_blog_option_info();
@@ -171,7 +263,11 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *
 	 * @since 4.0.0
 	 *
+<<<<<<< HEAD
 	 * @param string   $name      Method to call.
+=======
+	 * @param callable $name      Method to call.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param array    $arguments Arguments to pass when calling.
 	 * @return array|IXR_Error|false Return value of the callback, false otherwise.
 	 */
@@ -188,7 +284,11 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @since 2.9.0
 	 */
 	public function serve_request() {
+<<<<<<< HEAD
 		$this->IXR_Server( $this->methods );
+=======
+		$this->IXR_Server($this->methods);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -322,6 +422,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *                     when array is passed.
 	 */
 	public function escape( &$data ) {
+<<<<<<< HEAD
 		if ( ! is_array( $data ) ) {
 			return wp_slash( $data );
 		}
@@ -332,6 +433,16 @@ class wp_xmlrpc_server extends IXR_Server {
 			} elseif ( ! is_object( $v ) ) {
 				$v = wp_slash( $v );
 			}
+=======
+		if ( ! is_array( $data ) )
+			return wp_slash( $data );
+
+		foreach ( $data as &$v ) {
+			if ( is_array( $v ) )
+				$this->escape( $v );
+			elseif ( ! is_object( $v ) )
+				$v = wp_slash( $v );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -343,11 +454,16 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @param int $post_id Post ID.
 	 * @return array Custom fields, if exist.
 	 */
+<<<<<<< HEAD
 	public function get_custom_fields( $post_id ) {
+=======
+	public function get_custom_fields($post_id) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$post_id = (int) $post_id;
 
 		$custom_fields = array();
 
+<<<<<<< HEAD
 		foreach ( (array) has_meta( $post_id ) as $meta ) {
 			// Don't expose protected fields.
 			if ( ! current_user_can( 'edit_post_meta', $post_id, $meta['meta_key'] ) ) {
@@ -358,6 +474,17 @@ class wp_xmlrpc_server extends IXR_Server {
 				'id'    => $meta['meta_id'],
 				'key'   => $meta['meta_key'],
 				'value' => $meta['meta_value'],
+=======
+		foreach ( (array) has_meta($post_id) as $meta ) {
+			// Don't expose protected fields.
+			if ( ! current_user_can( 'edit_post_meta', $post_id , $meta['meta_key'] ) )
+				continue;
+
+			$custom_fields[] = array(
+				"id"    => $meta['meta_id'],
+				"key"   => $meta['meta_key'],
+				"value" => $meta['meta_value']
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -372,6 +499,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @param int $post_id Post ID.
 	 * @param array $fields Custom fields.
 	 */
+<<<<<<< HEAD
 	public function set_custom_fields( $post_id, $fields ) {
 		$post_id = (int) $post_id;
 
@@ -379,11 +507,21 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( isset( $meta['id'] ) ) {
 				$meta['id'] = (int) $meta['id'];
 				$pmeta      = get_metadata_by_mid( 'post', $meta['id'] );
+=======
+	public function set_custom_fields($post_id, $fields) {
+		$post_id = (int) $post_id;
+
+		foreach ( (array) $fields as $meta ) {
+			if ( isset($meta['id']) ) {
+				$meta['id'] = (int) $meta['id'];
+				$pmeta = get_metadata_by_mid( 'post', $meta['id'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				if ( ! $pmeta || $pmeta->post_id != $post_id ) {
 					continue;
 				}
 
+<<<<<<< HEAD
 				if ( isset( $meta['key'] ) ) {
 					$meta['key'] = wp_unslash( $meta['key'] );
 					if ( $meta['key'] !== $pmeta->meta_key ) {
@@ -393,6 +531,15 @@ class wp_xmlrpc_server extends IXR_Server {
 					if ( current_user_can( 'edit_post_meta', $post_id, $meta['key'] ) ) {
 						update_metadata_by_mid( 'post', $meta['id'], $meta['value'] );
 					}
+=======
+				if ( isset($meta['key']) ) {
+					$meta['key'] = wp_unslash( $meta['key'] );
+					if ( $meta['key'] !== $pmeta->meta_key )
+						continue;
+					$meta['value'] = wp_unslash( $meta['value'] );
+					if ( current_user_can( 'edit_post_meta', $post_id, $meta['key'] ) )
+						update_metadata_by_mid( 'post', $meta['id'], $meta['value'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				} elseif ( current_user_can( 'delete_post_meta', $post_id, $pmeta->meta_key ) ) {
 					delete_metadata_by_mid( 'post', $meta['id'] );
 				}
@@ -445,7 +592,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		foreach ( (array) $fields as $meta ) {
 			if ( isset( $meta['id'] ) ) {
 				$meta['id'] = (int) $meta['id'];
+<<<<<<< HEAD
 				$pmeta      = get_metadata_by_mid( 'term', $meta['id'] );
+=======
+				$pmeta = get_metadata_by_mid( 'term', $meta['id'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( isset( $meta['key'] ) ) {
 					$meta['key'] = wp_unslash( $meta['key'] );
 					if ( $meta['key'] !== $pmeta->meta_key ) {
@@ -474,6 +625,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function initialise_blog_option_info() {
 		$this->blog_options = array(
 			// Read only options
+<<<<<<< HEAD
 			'software_name'           => array(
 				'desc'     => __( 'Software Name' ),
 				'readonly' => true,
@@ -621,6 +773,155 @@ class wp_xmlrpc_server extends IXR_Server {
 				'readonly' => false,
 				'option'   => 'default_ping_status',
 			),
+=======
+			'software_name'     => array(
+				'desc'          => __( 'Software Name' ),
+				'readonly'      => true,
+				'value'         => 'WordPress'
+			),
+			'software_version'  => array(
+				'desc'          => __( 'Software Version' ),
+				'readonly'      => true,
+				'value'         => get_bloginfo( 'version' )
+			),
+			'blog_url'          => array(
+				'desc'          => __( 'WordPress Address (URL)' ),
+				'readonly'      => true,
+				'option'        => 'siteurl'
+			),
+			'home_url'          => array(
+				'desc'          => __( 'Site Address (URL)' ),
+				'readonly'      => true,
+				'option'        => 'home'
+			),
+			'login_url'          => array(
+				'desc'          => __( 'Login Address (URL)' ),
+				'readonly'      => true,
+				'value'         => wp_login_url( )
+			),
+			'admin_url'          => array(
+				'desc'          => __( 'The URL to the admin area' ),
+				'readonly'      => true,
+				'value'         => get_admin_url( )
+			),
+			'image_default_link_type' => array(
+				'desc'          => __( 'Image default link type' ),
+				'readonly'      => true,
+				'option'        => 'image_default_link_type'
+			),
+			'image_default_size' => array(
+				'desc'          => __( 'Image default size' ),
+				'readonly'      => true,
+				'option'        => 'image_default_size'
+			),
+			'image_default_align' => array(
+				'desc'          => __( 'Image default align' ),
+				'readonly'      => true,
+				'option'        => 'image_default_align'
+			),
+			'template'          => array(
+				'desc'          => __( 'Template' ),
+				'readonly'      => true,
+				'option'        => 'template'
+			),
+			'stylesheet'        => array(
+				'desc'          => __( 'Stylesheet' ),
+				'readonly'      => true,
+				'option'        => 'stylesheet'
+			),
+			'post_thumbnail'    => array(
+				'desc'          => __('Post Thumbnail'),
+				'readonly'      => true,
+				'value'         => current_theme_supports( 'post-thumbnails' )
+			),
+
+			// Updatable options
+			'time_zone'         => array(
+				'desc'          => __( 'Time Zone' ),
+				'readonly'      => false,
+				'option'        => 'gmt_offset'
+			),
+			'blog_title'        => array(
+				'desc'          => __( 'Site Title' ),
+				'readonly'      => false,
+				'option'        => 'blogname'
+			),
+			'blog_tagline'      => array(
+				'desc'          => __( 'Site Tagline' ),
+				'readonly'      => false,
+				'option'        => 'blogdescription'
+			),
+			'date_format'       => array(
+				'desc'          => __( 'Date Format' ),
+				'readonly'      => false,
+				'option'        => 'date_format'
+			),
+			'time_format'       => array(
+				'desc'          => __( 'Time Format' ),
+				'readonly'      => false,
+				'option'        => 'time_format'
+			),
+			'users_can_register' => array(
+				'desc'          => __( 'Allow new users to sign up' ),
+				'readonly'      => false,
+				'option'        => 'users_can_register'
+			),
+			'thumbnail_size_w'  => array(
+				'desc'          => __( 'Thumbnail Width' ),
+				'readonly'      => false,
+				'option'        => 'thumbnail_size_w'
+			),
+			'thumbnail_size_h'  => array(
+				'desc'          => __( 'Thumbnail Height' ),
+				'readonly'      => false,
+				'option'        => 'thumbnail_size_h'
+			),
+			'thumbnail_crop'    => array(
+				'desc'          => __( 'Crop thumbnail to exact dimensions' ),
+				'readonly'      => false,
+				'option'        => 'thumbnail_crop'
+			),
+			'medium_size_w'     => array(
+				'desc'          => __( 'Medium size image width' ),
+				'readonly'      => false,
+				'option'        => 'medium_size_w'
+			),
+			'medium_size_h'     => array(
+				'desc'          => __( 'Medium size image height' ),
+				'readonly'      => false,
+				'option'        => 'medium_size_h'
+			),
+			'medium_large_size_w'   => array(
+				'desc'          => __( 'Medium-Large size image width' ),
+				'readonly'      => false,
+				'option'        => 'medium_large_size_w'
+			),
+			'medium_large_size_h'   => array(
+				'desc'          => __( 'Medium-Large size image height' ),
+				'readonly'      => false,
+				'option'        => 'medium_large_size_h'
+			),
+			'large_size_w'      => array(
+				'desc'          => __( 'Large size image width' ),
+				'readonly'      => false,
+				'option'        => 'large_size_w'
+			),
+			'large_size_h'      => array(
+				'desc'          => __( 'Large size image height' ),
+				'readonly'      => false,
+				'option'        => 'large_size_h'
+			),
+			'default_comment_status' => array(
+				'desc'          => __( 'Allow people to post comments on new articles' ),
+				'readonly'      => false,
+				'option'        => 'default_comment_status'
+			),
+			'default_ping_status' => array(
+				'desc'          => __( 'Allow link notifications from other blogs (pingbacks and trackbacks) on new articles' ),
+				'readonly'      => false,
+				'option'        => 'default_ping_status'
+			)
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		/**
@@ -658,7 +959,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		// If this isn't on WPMU then just use blogger_getUsersBlogs
+<<<<<<< HEAD
 		if ( ! is_multisite() ) {
+=======
+		if ( !is_multisite() ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			array_unshift( $args, 1 );
 			return $this->blogger_getUsersBlogs( $args );
 		}
@@ -668,9 +973,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[0];
 		$password = $args[1];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires after the XML-RPC user has been authenticated but before the rest of
@@ -685,25 +995,41 @@ class wp_xmlrpc_server extends IXR_Server {
 		 */
 		do_action( 'xmlrpc_call', 'wp.getUsersBlogs' );
 
+<<<<<<< HEAD
 		$blogs           = (array) get_blogs_of_user( $user->ID );
 		$struct          = array();
 		$primary_blog_id = 0;
 		$active_blog     = get_active_blog_for_user( $user->ID );
+=======
+		$blogs = (array) get_blogs_of_user( $user->ID );
+		$struct = array();
+		$primary_blog_id = 0;
+		$active_blog = get_active_blog_for_user( $user->ID );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( $active_blog ) {
 			$primary_blog_id = (int) $active_blog->blog_id;
 		}
 
 		foreach ( $blogs as $blog ) {
 			// Don't include blogs that aren't hosted at this site.
+<<<<<<< HEAD
 			if ( $blog->site_id != get_current_network_id() ) {
 				continue;
 			}
+=======
+			if ( $blog->site_id != get_current_network_id() )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$blog_id = $blog->userblog_id;
 
 			switch_to_blog( $blog_id );
 
+<<<<<<< HEAD
 			$is_admin   = current_user_can( 'manage_options' );
+=======
+			$is_admin = current_user_can( 'manage_options' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$is_primary = ( (int) $blog_id === $primary_blog_id );
 
 			$struct[] = array(
@@ -742,12 +1068,17 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Prepares taxonomy data for return in an XML-RPC object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param object $taxonomy The unprepared taxonomy data.
 	 * @param array $fields    The subset of taxonomy fields to return.
 	 * @return array The prepared taxonomy data.
 	 */
 	protected function _prepare_taxonomy( $taxonomy, $fields ) {
 		$_taxonomy = array(
+<<<<<<< HEAD
 			'name'         => $taxonomy->name,
 			'label'        => $taxonomy->label,
 			'hierarchical' => (bool) $taxonomy->hierarchical,
@@ -771,6 +1102,27 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( in_array( 'object_type', $fields ) ) {
 			$_taxonomy['object_type'] = array_unique( (array) $taxonomy->object_type );
 		}
+=======
+			'name' => $taxonomy->name,
+			'label' => $taxonomy->label,
+			'hierarchical' => (bool) $taxonomy->hierarchical,
+			'public' => (bool) $taxonomy->public,
+			'show_ui' => (bool) $taxonomy->show_ui,
+			'_builtin' => (bool) $taxonomy->_builtin,
+		);
+
+		if ( in_array( 'labels', $fields ) )
+			$_taxonomy['labels'] = (array) $taxonomy->labels;
+
+		if ( in_array( 'cap', $fields ) )
+			$_taxonomy['cap'] = (array) $taxonomy->cap;
+
+		if ( in_array( 'menu', $fields ) )
+			$_taxonomy['show_in_menu'] = (bool) $_taxonomy->show_in_menu;
+
+		if ( in_array( 'object_type', $fields ) )
+			$_taxonomy['object_type'] = array_unique( (array) $taxonomy->object_type );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters XML-RPC-prepared data for the given taxonomy.
@@ -787,11 +1139,16 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Prepares term data for return in an XML-RPC object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param array|object $term The unprepared term data.
 	 * @return array The prepared term data.
 	 */
 	protected function _prepare_term( $term ) {
 		$_term = $term;
+<<<<<<< HEAD
 		if ( ! is_array( $_term ) ) {
 			$_term = get_object_vars( $_term );
 		}
@@ -801,6 +1158,16 @@ class wp_xmlrpc_server extends IXR_Server {
 		$_term['term_group']       = strval( $_term['term_group'] );
 		$_term['term_taxonomy_id'] = strval( $_term['term_taxonomy_id'] );
 		$_term['parent']           = strval( $_term['parent'] );
+=======
+		if ( ! is_array( $_term ) )
+			$_term = get_object_vars( $_term );
+
+		// For integers which may be larger than XML-RPC supports ensure we return strings.
+		$_term['term_id'] = strval( $_term['term_id'] );
+		$_term['term_group'] = strval( $_term['term_group'] );
+		$_term['term_taxonomy_id'] = strval( $_term['term_taxonomy_id'] );
+		$_term['parent'] = strval( $_term['parent'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Count we are happy to return as an integer because people really shouldn't use terms that much.
 		$_term['count'] = intval( $_term['count'] );
@@ -822,6 +1189,10 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Convert a WordPress date string to an IXR_Date object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param string $date Date string to convert.
 	 * @return IXR_Date IXR_Date object.
 	 */
@@ -835,6 +1206,10 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Convert a WordPress GMT date string to an IXR_Date object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param string $date_gmt WordPress GMT date string.
 	 * @param string $date     Date string.
 	 * @return IXR_Date IXR_Date object.
@@ -849,6 +1224,10 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Prepares post data for return in an XML-RPC object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param array $post   The unprepared post data.
 	 * @param array $fields The subset of post type fields to return.
 	 * @return array The prepared post data.
@@ -883,13 +1262,20 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		// Thumbnail.
 		$post_fields['post_thumbnail'] = array();
+<<<<<<< HEAD
 		$thumbnail_id                  = get_post_thumbnail_id( $post['ID'] );
 		if ( $thumbnail_id ) {
 			$thumbnail_size                = current_theme_supports( 'post-thumbnail' ) ? 'post-thumbnail' : 'thumbnail';
+=======
+		$thumbnail_id = get_post_thumbnail_id( $post['ID'] );
+		if ( $thumbnail_id ) {
+			$thumbnail_size = current_theme_supports('post-thumbnail') ? 'post-thumbnail' : 'thumbnail';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$post_fields['post_thumbnail'] = $this->_prepare_media_item( get_post( $thumbnail_id ), $thumbnail_size );
 		}
 
 		// Consider future posts as published.
+<<<<<<< HEAD
 		if ( $post_fields['post_status'] === 'future' ) {
 			$post_fields['post_status'] = 'publish';
 		}
@@ -899,26 +1285,45 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( empty( $post_fields['post_format'] ) ) {
 			$post_fields['post_format'] = 'standard';
 		}
+=======
+		if ( $post_fields['post_status'] === 'future' )
+			$post_fields['post_status'] = 'publish';
+
+		// Fill in blank post format.
+		$post_fields['post_format'] = get_post_format( $post['ID'] );
+		if ( empty( $post_fields['post_format'] ) )
+			$post_fields['post_format'] = 'standard';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Merge requested $post_fields fields into $_post.
 		if ( in_array( 'post', $fields ) ) {
 			$_post = array_merge( $_post, $post_fields );
 		} else {
 			$requested_fields = array_intersect_key( $post_fields, array_flip( $fields ) );
+<<<<<<< HEAD
 			$_post            = array_merge( $_post, $requested_fields );
+=======
+			$_post = array_merge( $_post, $requested_fields );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		$all_taxonomy_fields = in_array( 'taxonomies', $fields );
 
 		if ( $all_taxonomy_fields || in_array( 'terms', $fields ) ) {
 			$post_type_taxonomies = get_object_taxonomies( $post['post_type'], 'names' );
+<<<<<<< HEAD
 			$terms                = wp_get_object_terms( $post['ID'], $post_type_taxonomies );
 			$_post['terms']       = array();
+=======
+			$terms = wp_get_object_terms( $post['ID'], $post_type_taxonomies );
+			$_post['terms'] = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			foreach ( $terms as $term ) {
 				$_post['terms'][] = $this->_prepare_term( $term );
 			}
 		}
 
+<<<<<<< HEAD
 		if ( in_array( 'custom_fields', $fields ) ) {
 			$_post['custom_fields'] = $this->get_custom_fields( $post['ID'] );
 		}
@@ -931,6 +1336,19 @@ class wp_xmlrpc_server extends IXR_Server {
 				$_post['enclosure']['url']    = trim( htmlspecialchars( $encdata[0] ) );
 				$_post['enclosure']['length'] = (int) trim( $encdata[1] );
 				$_post['enclosure']['type']   = trim( $encdata[2] );
+=======
+		if ( in_array( 'custom_fields', $fields ) )
+			$_post['custom_fields'] = $this->get_custom_fields( $post['ID'] );
+
+		if ( in_array( 'enclosure', $fields ) ) {
+			$_post['enclosure'] = array();
+			$enclosures = (array) get_post_meta( $post['ID'], 'enclosure' );
+			if ( ! empty( $enclosures ) ) {
+				$encdata = explode( "\n", $enclosures[0] );
+				$_post['enclosure']['url'] = trim( htmlspecialchars( $encdata[0] ) );
+				$_post['enclosure']['length'] = (int) trim( $encdata[1] );
+				$_post['enclosure']['type'] = trim( $encdata[2] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 
@@ -958,6 +1376,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 */
 	protected function _prepare_post_type( $post_type, $fields ) {
 		$_post_type = array(
+<<<<<<< HEAD
 			'name'         => $post_type->name,
 			'label'        => $post_type->label,
 			'hierarchical' => (bool) $post_type->hierarchical,
@@ -966,6 +1385,16 @@ class wp_xmlrpc_server extends IXR_Server {
 			'_builtin'     => (bool) $post_type->_builtin,
 			'has_archive'  => (bool) $post_type->has_archive,
 			'supports'     => get_all_post_type_supports( $post_type->name ),
+=======
+			'name' => $post_type->name,
+			'label' => $post_type->label,
+			'hierarchical' => (bool) $post_type->hierarchical,
+			'public' => (bool) $post_type->public,
+			'show_ui' => (bool) $post_type->show_ui,
+			'_builtin' => (bool) $post_type->_builtin,
+			'has_archive' => (bool) $post_type->has_archive,
+			'supports' => get_all_post_type_supports( $post_type->name ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		if ( in_array( 'labels', $fields ) ) {
@@ -973,12 +1402,17 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		if ( in_array( 'cap', $fields ) ) {
+<<<<<<< HEAD
 			$_post_type['cap']          = (array) $post_type->cap;
+=======
+			$_post_type['cap'] = (array) $post_type->cap;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$_post_type['map_meta_cap'] = (bool) $post_type->map_meta_cap;
 		}
 
 		if ( in_array( 'menu', $fields ) ) {
 			$_post_type['menu_position'] = (int) $post_type->menu_position;
+<<<<<<< HEAD
 			$_post_type['menu_icon']     = $post_type->menu_icon;
 			$_post_type['show_in_menu']  = (bool) $post_type->show_in_menu;
 		}
@@ -986,6 +1420,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( in_array( 'taxonomies', $fields ) ) {
 			$_post_type['taxonomies'] = get_object_taxonomies( $post_type->name, 'names' );
 		}
+=======
+			$_post_type['menu_icon'] = $post_type->menu_icon;
+			$_post_type['show_in_menu'] = (bool) $post_type->show_in_menu;
+		}
+
+		if ( in_array( 'taxonomies', $fields ) )
+			$_post_type['taxonomies'] = get_object_taxonomies( $post_type->name, 'names' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters XML-RPC-prepared date for the given post type.
@@ -1002,6 +1444,10 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Prepares media item data for return in an XML-RPC object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param object $media_item     The unprepared media item data.
 	 * @param string $thumbnail_size The image size to use for the thumbnail URL.
 	 * @return array The prepared media item data.
@@ -1016,6 +1462,7 @@ class wp_xmlrpc_server extends IXR_Server {
 			'caption'          => $media_item->post_excerpt,
 			'description'      => $media_item->post_content,
 			'metadata'         => wp_get_attachment_metadata( $media_item->ID ),
+<<<<<<< HEAD
 			'type'             => $media_item->post_mime_type,
 		);
 
@@ -1025,6 +1472,16 @@ class wp_xmlrpc_server extends IXR_Server {
 		} else {
 			$_media_item['thumbnail'] = $_media_item['link'];
 		}
+=======
+			'type'             => $media_item->post_mime_type
+		);
+
+		$thumbnail_src = image_downsize( $media_item->ID, $thumbnail_size );
+		if ( $thumbnail_src )
+			$_media_item['thumbnail'] = $thumbnail_src[0];
+		else
+			$_media_item['thumbnail'] = $_media_item['link'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters XML-RPC-prepared data for the given media item.
@@ -1041,27 +1498,47 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Prepares page data for return in an XML-RPC object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param object $page The unprepared page data.
 	 * @return array The prepared page data.
 	 */
 	protected function _prepare_page( $page ) {
 		// Get all of the page content and link.
 		$full_page = get_extended( $page->post_content );
+<<<<<<< HEAD
 		$link      = get_permalink( $page->ID );
 
 		// Get info the page parent if there is one.
 		$parent_title = '';
 		if ( ! empty( $page->post_parent ) ) {
 			$parent       = get_post( $page->post_parent );
+=======
+		$link = get_permalink( $page->ID );
+
+		// Get info the page parent if there is one.
+		$parent_title = "";
+		if ( ! empty( $page->post_parent ) ) {
+			$parent = get_post( $page->post_parent );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$parent_title = $parent->post_title;
 		}
 
 		// Determine comment and ping settings.
 		$allow_comments = comments_open( $page->ID ) ? 1 : 0;
+<<<<<<< HEAD
 		$allow_pings    = pings_open( $page->ID ) ? 1 : 0;
 
 		// Format page date.
 		$page_date     = $this->_convert_date( $page->post_date );
+=======
+		$allow_pings = pings_open( $page->ID ) ? 1 : 0;
+
+		// Format page date.
+		$page_date = $this->_convert_date( $page->post_date );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$page_date_gmt = $this->_convert_date_gmt( $page->post_date_gmt, $page->post_date );
 
 		// Pull the categories info together.
@@ -1076,9 +1553,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$author = get_userdata( $page->post_author );
 
 		$page_template = get_page_template_slug( $page->ID );
+<<<<<<< HEAD
 		if ( empty( $page_template ) ) {
 			$page_template = 'default';
 		}
+=======
+		if ( empty( $page_template ) )
+			$page_template = 'default';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$_page = array(
 			'dateCreated'            => $page_date,
@@ -1104,7 +1586,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			'wp_author_display_name' => $author->display_name,
 			'date_created_gmt'       => $page_date_gmt,
 			'custom_fields'          => $this->get_custom_fields( $page->ID ),
+<<<<<<< HEAD
 			'wp_page_template'       => $page_template,
+=======
+			'wp_page_template'       => $page_template
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		/**
@@ -1121,6 +1607,10 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Prepares comment data for return in an XML-RPC object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param object $comment The unprepared comment data.
 	 * @return array The prepared comment data.
 	 */
@@ -1144,9 +1634,15 @@ class wp_xmlrpc_server extends IXR_Server {
 			'parent'           => $comment->comment_parent,
 			'status'           => $comment_status,
 			'content'          => $comment->comment_content,
+<<<<<<< HEAD
 			'link'             => get_comment_link( $comment ),
 			'post_id'          => $comment->comment_post_ID,
 			'post_title'       => get_the_title( $comment->comment_post_ID ),
+=======
+			'link'             => get_comment_link($comment),
+			'post_id'          => $comment->comment_post_ID,
+			'post_title'       => get_the_title($comment->comment_post_ID),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'author'           => $comment->comment_author,
 			'author_url'       => $comment->comment_author_url,
 			'author_email'     => $comment->comment_author_email,
@@ -1168,6 +1664,10 @@ class wp_xmlrpc_server extends IXR_Server {
 	/**
 	 * Prepares user data for return in an XML-RPC object.
 	 *
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param WP_User $user   The unprepared user object.
 	 * @param array   $fields The subset of user fields to return.
 	 * @return array The prepared user data.
@@ -1176,6 +1676,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$_user = array( 'user_id' => strval( $user->ID ) );
 
 		$user_fields = array(
+<<<<<<< HEAD
 			'username'     => $user->user_login,
 			'first_name'   => $user->user_firstname,
 			'last_name'    => $user->user_lastname,
@@ -1187,6 +1688,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			'url'          => $user->user_url,
 			'display_name' => $user->display_name,
 			'roles'        => $user->roles,
+=======
+			'username'          => $user->user_login,
+			'first_name'        => $user->user_firstname,
+			'last_name'         => $user->user_lastname,
+			'registered'        => $this->_convert_date( $user->user_registered ),
+			'bio'               => $user->user_description,
+			'email'             => $user->user_email,
+			'nickname'          => $user->nickname,
+			'nicename'          => $user->user_nicename,
+			'url'               => $user->user_url,
+			'display_name'      => $user->display_name,
+			'roles'             => $user->roles,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		if ( in_array( 'all', $fields ) ) {
@@ -1194,10 +1708,17 @@ class wp_xmlrpc_server extends IXR_Server {
 		} else {
 			if ( in_array( 'basic', $fields ) ) {
 				$basic_fields = array( 'username', 'email', 'registered', 'display_name', 'nicename' );
+<<<<<<< HEAD
 				$fields       = array_merge( $fields, $basic_fields );
 			}
 			$requested_fields = array_intersect_key( $user_fields, array_flip( $fields ) );
 			$_user            = array_merge( $_user, $requested_fields );
+=======
+				$fields = array_merge( $fields, $basic_fields );
+			}
+			$requested_fields = array_intersect_key( $user_fields, array_flip( $fields ) );
+			$_user = array_merge( $_user, $requested_fields );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		/**
@@ -1260,9 +1781,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return int|IXR_Error Post ID on success, IXR_Error instance otherwise.
 	 */
 	public function wp_newPost( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -1270,9 +1796,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password       = $args[2];
 		$content_struct = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// convert the date field back to IXR form
 		if ( isset( $content_struct['post_date'] ) && ! ( $content_struct['post_date'] instanceof IXR_Date ) ) {
@@ -1331,7 +1862,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( $update ) {
 				unstick_post( $post_data['ID'] );
 			}
+<<<<<<< HEAD
 		} elseif ( isset( $post_data['sticky'] ) ) {
+=======
+		} elseif ( isset( $post_data['sticky'] ) )  {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( ! current_user_can( $post_type->cap->edit_others_posts ) ) {
 				return new IXR_Error( 401, __( 'Sorry, you are not allowed to make posts sticky.' ) );
 			}
@@ -1384,13 +1919,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		$post_data = wp_parse_args( array_intersect_key( $content_struct, $defaults ), $defaults );
 
 		$post_type = get_post_type_object( $post_data['post_type'] );
+<<<<<<< HEAD
 		if ( ! $post_type ) {
 			return new IXR_Error( 403, __( 'Invalid post type.' ) );
 		}
+=======
+		if ( ! $post_type )
+			return new IXR_Error( 403, __( 'Invalid post type.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$update = ! empty( $post_data['ID'] );
 
 		if ( $update ) {
+<<<<<<< HEAD
 			if ( ! get_post( $post_data['ID'] ) ) {
 				return new IXR_Error( 401, __( 'Invalid post ID.' ) );
 			}
@@ -1404,6 +1945,17 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( ! current_user_can( $post_type->cap->create_posts ) || ! current_user_can( $post_type->cap->edit_posts ) ) {
 				return new IXR_Error( 401, __( 'Sorry, you are not allowed to post on this site.' ) );
 			}
+=======
+			if ( ! get_post( $post_data['ID'] ) )
+				return new IXR_Error( 401, __( 'Invalid post ID.' ) );
+			if ( ! current_user_can( 'edit_post', $post_data['ID'] ) )
+				return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+			if ( $post_data['post_type'] != get_post_type( $post_data['ID'] ) )
+				return new IXR_Error( 401, __( 'The post type may not be changed.' ) );
+		} else {
+			if ( ! current_user_can( $post_type->cap->create_posts ) || ! current_user_can( $post_type->cap->edit_posts ) )
+				return new IXR_Error( 401, __( 'Sorry, you are not allowed to post on this site.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		switch ( $post_data['post_status'] ) {
@@ -1411,6 +1963,7 @@ class wp_xmlrpc_server extends IXR_Server {
 			case 'pending':
 				break;
 			case 'private':
+<<<<<<< HEAD
 				if ( ! current_user_can( $post_type->cap->publish_posts ) ) {
 					return new IXR_Error( 401, __( 'Sorry, you are not allowed to create private posts in this post type.' ) );
 				}
@@ -1443,10 +1996,39 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( ! $author ) {
 				return new IXR_Error( 404, __( 'Invalid author ID.' ) );
 			}
+=======
+				if ( ! current_user_can( $post_type->cap->publish_posts ) )
+					return new IXR_Error( 401, __( 'Sorry, you are not allowed to create private posts in this post type.' ) );
+				break;
+			case 'publish':
+			case 'future':
+				if ( ! current_user_can( $post_type->cap->publish_posts ) )
+					return new IXR_Error( 401, __( 'Sorry, you are not allowed to publish posts in this post type.' ) );
+				break;
+			default:
+				if ( ! get_post_status_object( $post_data['post_status'] ) )
+					$post_data['post_status'] = 'draft';
+			break;
+		}
+
+		if ( ! empty( $post_data['post_password'] ) && ! current_user_can( $post_type->cap->publish_posts ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to create password protected posts in this post type.' ) );
+
+		$post_data['post_author'] = absint( $post_data['post_author'] );
+		if ( ! empty( $post_data['post_author'] ) && $post_data['post_author'] != $user->ID ) {
+			if ( ! current_user_can( $post_type->cap->edit_others_posts ) )
+				return new IXR_Error( 401, __( 'Sorry, you are not allowed to create posts as this user.' ) );
+
+			$author = get_userdata( $post_data['post_author'] );
+
+			if ( ! $author )
+				return new IXR_Error( 404, __( 'Invalid author ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} else {
 			$post_data['post_author'] = $user->ID;
 		}
 
+<<<<<<< HEAD
 		if ( isset( $post_data['comment_status'] ) && $post_data['comment_status'] != 'open' && $post_data['comment_status'] != 'closed' ) {
 			unset( $post_data['comment_status'] );
 		}
@@ -1454,6 +2036,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $post_data['ping_status'] ) && $post_data['ping_status'] != 'open' && $post_data['ping_status'] != 'closed' ) {
 			unset( $post_data['ping_status'] );
 		}
+=======
+		if ( isset( $post_data['comment_status'] ) && $post_data['comment_status'] != 'open' && $post_data['comment_status'] != 'closed' )
+			unset( $post_data['comment_status'] );
+
+		if ( isset( $post_data['ping_status'] ) && $post_data['ping_status'] != 'open' && $post_data['ping_status'] != 'closed' )
+			unset( $post_data['ping_status'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Do some timestamp voodoo.
 		if ( ! empty( $post_data['post_date_gmt'] ) ) {
@@ -1467,16 +2056,25 @@ class wp_xmlrpc_server extends IXR_Server {
 		$post_data['edit_date'] = false;
 
 		if ( ! empty( $dateCreated ) ) {
+<<<<<<< HEAD
 			$post_data['post_date']     = get_date_from_gmt( iso8601_to_datetime( $dateCreated ) );
+=======
+			$post_data['post_date'] = get_date_from_gmt( iso8601_to_datetime( $dateCreated ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$post_data['post_date_gmt'] = iso8601_to_datetime( $dateCreated, 'GMT' );
 
 			// Flag the post date to be edited.
 			$post_data['edit_date'] = true;
 		}
 
+<<<<<<< HEAD
 		if ( ! isset( $post_data['ID'] ) ) {
 			$post_data['ID'] = get_default_post_to_edit( $post_data['post_type'], true )->ID;
 		}
+=======
+		if ( ! isset( $post_data['ID'] ) )
+			$post_data['ID'] = get_default_post_to_edit( $post_data['post_type'], true )->ID;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$post_ID = $post_data['ID'];
 
 		if ( $post_data['post_type'] == 'post' ) {
@@ -1488,18 +2086,30 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		if ( isset( $post_data['post_thumbnail'] ) ) {
 			// empty value deletes, non-empty value adds/updates.
+<<<<<<< HEAD
 			if ( ! $post_data['post_thumbnail'] ) {
 				delete_post_thumbnail( $post_ID );
 			} elseif ( ! get_post( absint( $post_data['post_thumbnail'] ) ) ) {
 				return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
 			}
+=======
+			if ( ! $post_data['post_thumbnail'] )
+				delete_post_thumbnail( $post_ID );
+			elseif ( ! get_post( absint( $post_data['post_thumbnail'] ) ) )
+				return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			set_post_thumbnail( $post_ID, $post_data['post_thumbnail'] );
 			unset( $content_struct['post_thumbnail'] );
 		}
 
+<<<<<<< HEAD
 		if ( isset( $post_data['custom_fields'] ) ) {
 			$this->set_custom_fields( $post_ID, $post_data['custom_fields'] );
 		}
+=======
+		if ( isset( $post_data['custom_fields'] ) )
+			$this->set_custom_fields( $post_ID, $post_data['custom_fields'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( isset( $post_data['terms'] ) || isset( $post_data['terms_names'] ) ) {
 			$post_type_taxonomies = get_object_taxonomies( $post_data['post_type'], 'objects' );
@@ -1513,6 +2123,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 				// Validating term ids.
 				foreach ( $taxonomies as $taxonomy ) {
+<<<<<<< HEAD
 					if ( ! array_key_exists( $taxonomy, $post_type_taxonomies ) ) {
 						return new IXR_Error( 401, __( 'Sorry, one of the given taxonomies is not supported by the post type.' ) );
 					}
@@ -1522,15 +2133,31 @@ class wp_xmlrpc_server extends IXR_Server {
 					}
 
 					$term_ids           = $post_data['terms'][ $taxonomy ];
+=======
+					if ( ! array_key_exists( $taxonomy , $post_type_taxonomies ) )
+						return new IXR_Error( 401, __( 'Sorry, one of the given taxonomies is not supported by the post type.' ) );
+
+					if ( ! current_user_can( $post_type_taxonomies[$taxonomy]->cap->assign_terms ) )
+						return new IXR_Error( 401, __( 'Sorry, you are not allowed to assign a term to one of the given taxonomies.' ) );
+
+					$term_ids = $post_data['terms'][$taxonomy];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$terms[ $taxonomy ] = array();
 					foreach ( $term_ids as $term_id ) {
 						$term = get_term_by( 'id', $term_id, $taxonomy );
 
+<<<<<<< HEAD
 						if ( ! $term ) {
 							return new IXR_Error( 403, __( 'Invalid term ID.' ) );
 						}
 
 						$terms[ $taxonomy ][] = (int) $term_id;
+=======
+						if ( ! $term )
+							return new IXR_Error( 403, __( 'Invalid term ID.' ) );
+
+						$terms[$taxonomy][] = (int) $term_id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					}
 				}
 			}
@@ -1540,6 +2167,7 @@ class wp_xmlrpc_server extends IXR_Server {
 				$taxonomies = array_keys( $post_data['terms_names'] );
 
 				foreach ( $taxonomies as $taxonomy ) {
+<<<<<<< HEAD
 					if ( ! array_key_exists( $taxonomy, $post_type_taxonomies ) ) {
 						return new IXR_Error( 401, __( 'Sorry, one of the given taxonomies is not supported by the post type.' ) );
 					}
@@ -1547,6 +2175,13 @@ class wp_xmlrpc_server extends IXR_Server {
 					if ( ! current_user_can( $post_type_taxonomies[ $taxonomy ]->cap->assign_terms ) ) {
 						return new IXR_Error( 401, __( 'Sorry, you are not allowed to assign a term to one of the given taxonomies.' ) );
 					}
+=======
+					if ( ! array_key_exists( $taxonomy , $post_type_taxonomies ) )
+						return new IXR_Error( 401, __( 'Sorry, one of the given taxonomies is not supported by the post type.' ) );
+
+					if ( ! current_user_can( $post_type_taxonomies[$taxonomy]->cap->assign_terms ) )
+						return new IXR_Error( 401, __( 'Sorry, you are not allowed to assign a term to one of the given taxonomies.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 					/*
 					 * For hierarchical taxonomies, we can't assign a term when multiple terms
@@ -1554,6 +2189,7 @@ class wp_xmlrpc_server extends IXR_Server {
 					 */
 					$ambiguous_terms = array();
 					if ( is_taxonomy_hierarchical( $taxonomy ) ) {
+<<<<<<< HEAD
 						$tax_term_names = get_terms(
 							$taxonomy,
 							array(
@@ -1561,26 +2197,41 @@ class wp_xmlrpc_server extends IXR_Server {
 								'hide_empty' => false,
 							)
 						);
+=======
+						$tax_term_names = get_terms( $taxonomy, array( 'fields' => 'names', 'hide_empty' => false ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 						// Count the number of terms with the same name.
 						$tax_term_names_count = array_count_values( $tax_term_names );
 
 						// Filter out non-ambiguous term names.
+<<<<<<< HEAD
 						$ambiguous_tax_term_counts = array_filter( $tax_term_names_count, array( $this, '_is_greater_than_one' ) );
+=======
+						$ambiguous_tax_term_counts = array_filter( $tax_term_names_count, array( $this, '_is_greater_than_one') );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 						$ambiguous_terms = array_keys( $ambiguous_tax_term_counts );
 					}
 
+<<<<<<< HEAD
 					$term_names = $post_data['terms_names'][ $taxonomy ];
 					foreach ( $term_names as $term_name ) {
 						if ( in_array( $term_name, $ambiguous_terms ) ) {
 							return new IXR_Error( 401, __( 'Ambiguous term name used in a hierarchical taxonomy. Please use term ID instead.' ) );
 						}
+=======
+					$term_names = $post_data['terms_names'][$taxonomy];
+					foreach ( $term_names as $term_name ) {
+						if ( in_array( $term_name, $ambiguous_terms ) )
+							return new IXR_Error( 401, __( 'Ambiguous term name used in a hierarchical taxonomy. Please use term ID instead.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 						$term = get_term_by( 'name', $term_name, $taxonomy );
 
 						if ( ! $term ) {
 							// Term doesn't exist, so check that the user is allowed to create new terms.
+<<<<<<< HEAD
 							if ( ! current_user_can( $post_type_taxonomies[ $taxonomy ]->cap->edit_terms ) ) {
 								return new IXR_Error( 401, __( 'Sorry, you are not allowed to add a term to one of the given taxonomies.' ) );
 							}
@@ -1594,6 +2245,19 @@ class wp_xmlrpc_server extends IXR_Server {
 							$terms[ $taxonomy ][] = (int) $term_info['term_id'];
 						} else {
 							$terms[ $taxonomy ][] = (int) $term->term_id;
+=======
+							if ( ! current_user_can( $post_type_taxonomies[$taxonomy]->cap->edit_terms ) )
+								return new IXR_Error( 401, __( 'Sorry, you are not allowed to add a term to one of the given taxonomies.' ) );
+
+							// Create the new term.
+							$term_info = wp_insert_term( $term_name, $taxonomy );
+							if ( is_wp_error( $term_info ) )
+								return new IXR_Error( 500, $term_info->get_error_message() );
+
+							$terms[$taxonomy][] = (int) $term_info['term_id'];
+						} else {
+							$terms[$taxonomy][] = (int) $term->term_id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						}
 					}
 				}
@@ -1606,9 +2270,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $post_data['post_format'] ) ) {
 			$format = set_post_format( $post_ID, $post_data['post_format'] );
 
+<<<<<<< HEAD
 			if ( is_wp_error( $format ) ) {
 				return new IXR_Error( 500, $format->get_error_message() );
 			}
+=======
+			if ( is_wp_error( $format ) )
+				return new IXR_Error( 500, $format->get_error_message() );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			unset( $post_data['post_format'] );
 		}
@@ -1630,6 +2299,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$post_data = apply_filters( 'xmlrpc_wp_insert_post_data', $post_data, $content_struct );
 
 		$post_ID = $update ? wp_update_post( $post_data, true ) : wp_insert_post( $post_data, true );
+<<<<<<< HEAD
 		if ( is_wp_error( $post_ID ) ) {
 			return new IXR_Error( 500, $post_ID->get_error_message() );
 		}
@@ -1637,6 +2307,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $post_ID ) {
 			return new IXR_Error( 401, __( 'Sorry, your entry could not be posted.' ) );
 		}
+=======
+		if ( is_wp_error( $post_ID ) )
+			return new IXR_Error( 500, $post_ID->get_error_message() );
+
+		if ( ! $post_ID )
+			return new IXR_Error( 401, __( 'Sorry, your entry could not be posted.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return strval( $post_ID );
 	}
@@ -1661,9 +2338,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return true|IXR_Error True on success, IXR_Error on failure.
 	 */
 	public function wp_editPost( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 5 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 5 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -1672,18 +2354,28 @@ class wp_xmlrpc_server extends IXR_Server {
 		$post_id        = (int) $args[3];
 		$content_struct = $args[4];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.editPost' );
 
 		$post = get_post( $post_id, ARRAY_A );
 
+<<<<<<< HEAD
 		if ( empty( $post['ID'] ) ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
 		}
+=======
+		if ( empty( $post['ID'] ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( isset( $content_struct['if_not_modified_since'] ) ) {
 			// If the post has been modified since the date provided, return an error.
@@ -1699,19 +2391,31 @@ class wp_xmlrpc_server extends IXR_Server {
 		 * Ignore the existing GMT date if it is empty or a non-GMT date was supplied in $content_struct,
 		 * since _insert_post() will ignore the non-GMT date if the GMT date is set.
 		 */
+<<<<<<< HEAD
 		if ( $post['post_date_gmt'] == '0000-00-00 00:00:00' || isset( $content_struct['post_date'] ) ) {
 			unset( $post['post_date_gmt'] );
 		} else {
 			$post['post_date_gmt'] = $this->_convert_date( $post['post_date_gmt'] );
 		}
+=======
+		if ( $post['post_date_gmt'] == '0000-00-00 00:00:00' || isset( $content_struct['post_date'] ) )
+			unset( $post['post_date_gmt'] );
+		else
+			$post['post_date_gmt'] = $this->_convert_date( $post['post_date_gmt'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $post );
 		$merged_content_struct = array_merge( $post, $content_struct );
 
 		$retval = $this->_insert_post( $user, $merged_content_struct );
+<<<<<<< HEAD
 		if ( $retval instanceof IXR_Error ) {
 			return $retval;
 		}
+=======
+		if ( $retval instanceof IXR_Error )
+			return $retval;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return true;
 	}
@@ -1734,6 +2438,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return true|IXR_Error True on success, IXR_Error instance on failure.
 	 */
 	public function wp_deletePost( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
@@ -1747,6 +2452,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+
+		$this->escape( $args );
+
+		$username   = $args[1];
+		$password   = $args[2];
+		$post_id    = (int) $args[3];
+
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.deletePost' );
@@ -1819,9 +2537,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *  - 'enclosure'
 	 */
 	public function wp_getPost( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -1843,15 +2566,21 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_post_fields', array( 'post', 'terms', 'custom_fields' ), 'wp.getPost' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPost' );
 
 		$post = get_post( $post_id, ARRAY_A );
 
+<<<<<<< HEAD
 		if ( empty( $post['ID'] ) ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
 		}
@@ -1859,6 +2588,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
 		}
+=======
+		if ( empty( $post['ID'] ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( ! current_user_can( 'edit_post', $post_id ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $this->_prepare_post( $post, $fields );
 	}
@@ -1886,9 +2622,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return array|IXR_Error Array contains a collection of posts.
 	 */
 	public function wp_getPosts( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 3 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 3 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -1903,9 +2644,14 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_post_fields', array( 'post', 'terms', 'custom_fields' ), 'wp.getPosts' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPosts' );
@@ -1914,13 +2660,19 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		if ( isset( $filter['post_type'] ) ) {
 			$post_type = get_post_type_object( $filter['post_type'] );
+<<<<<<< HEAD
 			if ( ! ( (bool) $post_type ) ) {
 				return new IXR_Error( 403, __( 'Invalid post type.' ) );
 			}
+=======
+			if ( ! ( (bool) $post_type ) )
+				return new IXR_Error( 403, __( 'Invalid post type.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} else {
 			$post_type = get_post_type_object( 'post' );
 		}
 
+<<<<<<< HEAD
 		if ( ! current_user_can( $post_type->cap->edit_posts ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
 		}
@@ -1938,13 +2690,33 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $filter['offset'] ) ) {
 			$query['offset'] = absint( $filter['offset'] );
 		}
+=======
+		if ( ! current_user_can( $post_type->cap->edit_posts ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
+
+		$query['post_type'] = $post_type->name;
+
+		if ( isset( $filter['post_status'] ) )
+			$query['post_status'] = $filter['post_status'];
+
+		if ( isset( $filter['number'] ) )
+			$query['numberposts'] = absint( $filter['number'] );
+
+		if ( isset( $filter['offset'] ) )
+			$query['offset'] = absint( $filter['offset'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( isset( $filter['orderby'] ) ) {
 			$query['orderby'] = $filter['orderby'];
 
+<<<<<<< HEAD
 			if ( isset( $filter['order'] ) ) {
 				$query['order'] = $filter['order'];
 			}
+=======
+			if ( isset( $filter['order'] ) )
+				$query['order'] = $filter['order'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		if ( isset( $filter['s'] ) ) {
@@ -1953,17 +2725,27 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$posts_list = wp_get_recent_posts( $query );
 
+<<<<<<< HEAD
 		if ( ! $posts_list ) {
 			return array();
 		}
+=======
+		if ( ! $posts_list )
+			return array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Holds all the posts data.
 		$struct = array();
 
 		foreach ( $posts_list as $post ) {
+<<<<<<< HEAD
 			if ( ! current_user_can( 'edit_post', $post['ID'] ) ) {
 				continue;
 			}
+=======
+			if ( ! current_user_can( 'edit_post', $post['ID'] ) )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$struct[] = $this->_prepare_post( $post, $fields );
 		}
@@ -1991,9 +2773,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return int|IXR_Error The term ID on success, or an IXR_Error object on failure.
 	 */
 	public function wp_newTerm( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2001,16 +2788,26 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password       = $args[2];
 		$content_struct = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.newTerm' );
 
+<<<<<<< HEAD
 		if ( ! taxonomy_exists( $content_struct['taxonomy'] ) ) {
 			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
 		}
+=======
+		if ( ! taxonomy_exists( $content_struct['taxonomy'] ) )
+			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$taxonomy = get_taxonomy( $content_struct['taxonomy'] );
 
@@ -2024,6 +2821,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$term_data = array();
 
 		$term_data['name'] = trim( $content_struct['name'] );
+<<<<<<< HEAD
 		if ( empty( $term_data['name'] ) ) {
 			return new IXR_Error( 403, __( 'The term name cannot be empty.' ) );
 		}
@@ -2043,10 +2841,28 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( ! $parent_term ) {
 				return new IXR_Error( 403, __( 'Parent term does not exist.' ) );
 			}
+=======
+		if ( empty( $term_data['name'] ) )
+			return new IXR_Error( 403, __( 'The term name cannot be empty.' ) );
+
+		if ( isset( $content_struct['parent'] ) ) {
+			if ( ! $taxonomy['hierarchical'] )
+				return new IXR_Error( 403, __( 'This taxonomy is not hierarchical.' ) );
+
+			$parent_term_id = (int) $content_struct['parent'];
+			$parent_term = get_term( $parent_term_id , $taxonomy['name'] );
+
+			if ( is_wp_error( $parent_term ) )
+				return new IXR_Error( 500, $parent_term->get_error_message() );
+
+			if ( ! $parent_term )
+				return new IXR_Error( 403, __( 'Parent term does not exist.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$term_data['parent'] = $content_struct['parent'];
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['description'] ) ) {
 			$term_data['description'] = $content_struct['description'];
 		}
@@ -2064,6 +2880,21 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $term ) {
 			return new IXR_Error( 500, __( 'Sorry, your term could not be created.' ) );
 		}
+=======
+		if ( isset( $content_struct['description'] ) )
+			$term_data['description'] = $content_struct['description'];
+
+		if ( isset( $content_struct['slug'] ) )
+			$term_data['slug'] = $content_struct['slug'];
+
+		$term = wp_insert_term( $term_data['name'] , $taxonomy['name'] , $term_data );
+
+		if ( is_wp_error( $term ) )
+			return new IXR_Error( 500, $term->get_error_message() );
+
+		if ( ! $term )
+			return new IXR_Error( 500, __( 'Sorry, your term could not be created.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Add term meta.
 		if ( isset( $content_struct['custom_fields'] ) ) {
@@ -2094,9 +2925,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return true|IXR_Error True on success, IXR_Error instance on failure.
 	 */
 	public function wp_editTerm( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 5 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 5 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2105,16 +2941,26 @@ class wp_xmlrpc_server extends IXR_Server {
 		$term_id        = (int) $args[3];
 		$content_struct = $args[4];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.editTerm' );
 
+<<<<<<< HEAD
 		if ( ! taxonomy_exists( $content_struct['taxonomy'] ) ) {
 			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
 		}
+=======
+		if ( ! taxonomy_exists( $content_struct['taxonomy'] ) )
+			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$taxonomy = get_taxonomy( $content_struct['taxonomy'] );
 
@@ -2123,6 +2969,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		// hold the data of the term
 		$term_data = array();
 
+<<<<<<< HEAD
 		$term = get_term( $term_id, $content_struct['taxonomy'] );
 
 		if ( is_wp_error( $term ) ) {
@@ -2132,6 +2979,15 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $term ) {
 			return new IXR_Error( 404, __( 'Invalid term ID.' ) );
 		}
+=======
+		$term = get_term( $term_id , $content_struct['taxonomy'] );
+
+		if ( is_wp_error( $term ) )
+			return new IXR_Error( 500, $term->get_error_message() );
+
+		if ( ! $term )
+			return new IXR_Error( 404, __( 'Invalid term ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! current_user_can( 'edit_term', $term_id ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this term.' ) );
@@ -2140,6 +2996,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $content_struct['name'] ) ) {
 			$term_data['name'] = trim( $content_struct['name'] );
 
+<<<<<<< HEAD
 			if ( empty( $term_data['name'] ) ) {
 				return new IXR_Error( 403, __( 'The term name cannot be empty.' ) );
 			}
@@ -2160,10 +3017,29 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( ! $parent_term ) {
 				return new IXR_Error( 403, __( 'Parent term does not exist.' ) );
 			}
+=======
+			if ( empty( $term_data['name'] ) )
+				return new IXR_Error( 403, __( 'The term name cannot be empty.' ) );
+		}
+
+		if ( ! empty( $content_struct['parent'] ) ) {
+			if ( ! $taxonomy['hierarchical'] )
+				return new IXR_Error( 403, __( 'Cannot set parent term, taxonomy is not hierarchical.' ) );
+
+			$parent_term_id = (int) $content_struct['parent'];
+			$parent_term = get_term( $parent_term_id , $taxonomy['name'] );
+
+			if ( is_wp_error( $parent_term ) )
+				return new IXR_Error( 500, $parent_term->get_error_message() );
+
+			if ( ! $parent_term )
+				return new IXR_Error( 403, __( 'Parent term does not exist.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$term_data['parent'] = $content_struct['parent'];
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['description'] ) ) {
 			$term_data['description'] = $content_struct['description'];
 		}
@@ -2181,6 +3057,21 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $term ) {
 			return new IXR_Error( 500, __( 'Sorry, editing the term failed.' ) );
 		}
+=======
+		if ( isset( $content_struct['description'] ) )
+			$term_data['description'] = $content_struct['description'];
+
+		if ( isset( $content_struct['slug'] ) )
+			$term_data['slug'] = $content_struct['slug'];
+
+		$term = wp_update_term( $term_id , $taxonomy['name'] , $term_data );
+
+		if ( is_wp_error( $term ) )
+			return new IXR_Error( 500, $term->get_error_message() );
+
+		if ( ! $term )
+			return new IXR_Error( 500, __( 'Sorry, editing the term failed.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Update term meta.
 		if ( isset( $content_struct['custom_fields'] ) ) {
@@ -2209,6 +3100,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return bool|IXR_Error True on success, IXR_Error instance on failure.
 	 */
 	public function wp_deleteTerm( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 5 ) ) {
 			return $this->error;
 		}
@@ -2223,10 +3115,25 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 5 ) )
+			return $this->error;
+
+		$this->escape( $args );
+
+		$username           = $args[1];
+		$password           = $args[2];
+		$taxonomy           = $args[3];
+		$term_id            = (int) $args[4];
+
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.deleteTerm' );
 
+<<<<<<< HEAD
 		if ( ! taxonomy_exists( $taxonomy ) ) {
 			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
 		}
@@ -2241,6 +3148,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $term ) {
 			return new IXR_Error( 404, __( 'Invalid term ID.' ) );
 		}
+=======
+		if ( ! taxonomy_exists( $taxonomy ) )
+			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
+
+		$taxonomy = get_taxonomy( $taxonomy );
+		$term = get_term( $term_id, $taxonomy->name );
+
+		if ( is_wp_error( $term ) )
+			return new IXR_Error( 500, $term->get_error_message() );
+
+		if ( ! $term )
+			return new IXR_Error( 404, __( 'Invalid term ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! current_user_can( 'delete_term', $term_id ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to delete this term.' ) );
@@ -2248,6 +3168,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$result = wp_delete_term( $term_id, $taxonomy->name );
 
+<<<<<<< HEAD
 		if ( is_wp_error( $result ) ) {
 			return new IXR_Error( 500, $term->get_error_message() );
 		}
@@ -2255,6 +3176,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $result ) {
 			return new IXR_Error( 500, __( 'Sorry, deleting the term failed.' ) );
 		}
+=======
+		if ( is_wp_error( $result ) )
+			return new IXR_Error( 500, $term->get_error_message() );
+
+		if ( ! $result )
+			return new IXR_Error( 500, __( 'Sorry, deleting the term failed.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $result;
 	}
@@ -2287,6 +3215,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *  - 'count'
 	 */
 	public function wp_getTerm( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 5 ) ) {
 			return $this->error;
 		}
@@ -2301,10 +3230,25 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 5 ) )
+			return $this->error;
+
+		$this->escape( $args );
+
+		$username           = $args[1];
+		$password           = $args[2];
+		$taxonomy           = $args[3];
+		$term_id            = (int) $args[4];
+
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getTerm' );
 
+<<<<<<< HEAD
 		if ( ! taxonomy_exists( $taxonomy ) ) {
 			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
 		}
@@ -2320,6 +3264,20 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $term ) {
 			return new IXR_Error( 404, __( 'Invalid term ID.' ) );
 		}
+=======
+		if ( ! taxonomy_exists( $taxonomy ) )
+			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
+
+		$taxonomy = get_taxonomy( $taxonomy );
+
+		$term = get_term( $term_id , $taxonomy->name, ARRAY_A );
+
+		if ( is_wp_error( $term ) )
+			return new IXR_Error( 500, $term->get_error_message() );
+
+		if ( ! $term )
+			return new IXR_Error( 404, __( 'Invalid term ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! current_user_can( 'assign_term', $term_id ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to assign this term.' ) );
@@ -2351,6 +3309,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return array|IXR_Error An associative array of terms data on success, IXR_Error instance otherwise.
 	 */
 	public function wp_getTerms( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
@@ -2365,10 +3324,25 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+
+		$this->escape( $args );
+
+		$username       = $args[1];
+		$password       = $args[2];
+		$taxonomy       = $args[3];
+		$filter         = isset( $args[4] ) ? $args[4] : array();
+
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getTerms' );
 
+<<<<<<< HEAD
 		if ( ! taxonomy_exists( $taxonomy ) ) {
 			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
 		}
@@ -2388,10 +3362,28 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $filter['offset'] ) ) {
 			$query['offset'] = absint( $filter['offset'] );
 		}
+=======
+		if ( ! taxonomy_exists( $taxonomy ) )
+			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
+
+		$taxonomy = get_taxonomy( $taxonomy );
+
+		if ( ! current_user_can( $taxonomy->cap->assign_terms ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to assign terms in this taxonomy.' ) );
+
+		$query = array();
+
+		if ( isset( $filter['number'] ) )
+			$query['number'] = absint( $filter['number'] );
+
+		if ( isset( $filter['offset'] ) )
+			$query['offset'] = absint( $filter['offset'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( isset( $filter['orderby'] ) ) {
 			$query['orderby'] = $filter['orderby'];
 
+<<<<<<< HEAD
 			if ( isset( $filter['order'] ) ) {
 				$query['order'] = $filter['order'];
 			}
@@ -2412,6 +3404,24 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( is_wp_error( $terms ) ) {
 			return new IXR_Error( 500, $terms->get_error_message() );
 		}
+=======
+			if ( isset( $filter['order'] ) )
+				$query['order'] = $filter['order'];
+		}
+
+		if ( isset( $filter['hide_empty'] ) )
+			$query['hide_empty'] = $filter['hide_empty'];
+		else
+			$query['get'] = 'all';
+
+		if ( isset( $filter['search'] ) )
+			$query['search'] = $filter['search'];
+
+		$terms = get_terms( $taxonomy->name, $query );
+
+		if ( is_wp_error( $terms ) )
+			return new IXR_Error( 500, $terms->get_error_message() );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$struct = array();
 
@@ -2443,9 +3453,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return array|IXR_Error An array of taxonomy data on success, IXR_Error instance otherwise.
 	 */
 	public function wp_getTaxonomy( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2467,13 +3482,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_taxonomy_fields', array( 'labels', 'cap', 'object_type' ), 'wp.getTaxonomy' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getTaxonomy' );
 
+<<<<<<< HEAD
 		if ( ! taxonomy_exists( $taxonomy ) ) {
 			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
 		}
@@ -2483,6 +3504,15 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( $taxonomy->cap->assign_terms ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to assign terms in this taxonomy.' ) );
 		}
+=======
+		if ( ! taxonomy_exists( $taxonomy ) )
+			return new IXR_Error( 403, __( 'Invalid taxonomy.' ) );
+
+		$taxonomy = get_taxonomy( $taxonomy );
+
+		if ( ! current_user_can( $taxonomy->cap->assign_terms ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to assign terms in this taxonomy.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $this->_prepare_taxonomy( $taxonomy, $fields );
 	}
@@ -2507,9 +3537,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *                         by `$fields`, or an IXR_Error instance on failure.
 	 */
 	public function wp_getTaxonomies( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 3 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 3 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2524,9 +3559,14 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_taxonomy_fields', array( 'labels', 'cap', 'object_type' ), 'wp.getTaxonomies' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getTaxonomies' );
@@ -2538,9 +3578,14 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		foreach ( $taxonomies as $taxonomy ) {
 			// capability check for post_types
+<<<<<<< HEAD
 			if ( ! current_user_can( $taxonomy->cap->assign_terms ) ) {
 				continue;
 			}
+=======
+			if ( ! current_user_can( $taxonomy->cap->assign_terms ) )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$struct[] = $this->_prepare_taxonomy( $taxonomy, $fields );
 		}
@@ -2585,9 +3630,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *  - 'roles'
 	 */
 	public function wp_getUser( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2609,13 +3659,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_user_fields', array( 'all' ), 'wp.getUser' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getUser' );
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this user.' ) );
 		}
@@ -2625,6 +3681,15 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $user_data ) {
 			return new IXR_Error( 404, __( 'Invalid user ID.' ) );
 		}
+=======
+		if ( ! current_user_can( 'edit_user', $user_id ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this user.' ) );
+
+		$user_data = get_userdata( $user_id );
+
+		if ( ! $user_data )
+			return new IXR_Error( 404, __( 'Invalid user ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $this->_prepare_user( $user_data, $fields );
 	}
@@ -2654,9 +3719,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return array|IXR_Error users data
 	 */
 	public function wp_getUsers( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 3 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 3 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2671,16 +3741,26 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_user_fields', array( 'all' ), 'wp.getUsers' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getUsers' );
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'list_users' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to list users.' ) );
 		}
+=======
+		if ( ! current_user_can( 'list_users' ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to list users.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$query = array( 'fields' => 'all_with_meta' );
 
@@ -2690,6 +3770,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $filter['orderby'] ) ) {
 			$query['orderby'] = $filter['orderby'];
 
+<<<<<<< HEAD
 			if ( isset( $filter['order'] ) ) {
 				$query['order'] = $filter['order'];
 			}
@@ -2699,6 +3780,15 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( get_role( $filter['role'] ) === null ) {
 				return new IXR_Error( 403, __( 'Invalid role.' ) );
 			}
+=======
+			if ( isset( $filter['order'] ) )
+				$query['order'] = $filter['order'];
+		}
+
+		if ( isset( $filter['role'] ) ) {
+			if ( get_role( $filter['role'] ) === null )
+				return new IXR_Error( 403, __( 'Invalid role.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$query['role'] = $filter['role'];
 		}
@@ -2711,9 +3801,14 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$_users = array();
 		foreach ( $users as $user_data ) {
+<<<<<<< HEAD
 			if ( current_user_can( 'edit_user', $user_data->ID ) ) {
 				$_users[] = $this->_prepare_user( $user_data, $fields );
 			}
+=======
+			if ( current_user_can( 'edit_user', $user_data->ID ) )
+				$_users[] = $this->_prepare_user( $user_data, $fields );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		return $_users;
 	}
@@ -2734,9 +3829,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return array|IXR_Error (@see wp_getUser)
 	 */
 	public function wp_getProfile( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 3 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 3 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2750,16 +3850,26 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_user_fields', array( 'all' ), 'wp.getProfile' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getProfile' );
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'edit_user', $user->ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit your profile.' ) );
 		}
+=======
+		if ( ! current_user_can( 'edit_user', $user->ID ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit your profile.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$user_data = get_userdata( $user->ID );
 
@@ -2789,9 +3899,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return true|IXR_Error True, on success.
 	 */
 	public function wp_editProfile( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -2799,13 +3914,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password       = $args[2];
 		$content_struct = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.editProfile' );
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'edit_user', $user->ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit your profile.' ) );
 		}
@@ -2852,6 +3973,44 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $result ) {
 			return new IXR_Error( 500, __( 'Sorry, the user cannot be updated.' ) );
 		}
+=======
+		if ( ! current_user_can( 'edit_user', $user->ID ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit your profile.' ) );
+
+		// holds data of the user
+		$user_data = array();
+		$user_data['ID'] = $user->ID;
+
+		// only set the user details if it was given
+		if ( isset( $content_struct['first_name'] ) )
+			$user_data['first_name'] = $content_struct['first_name'];
+
+		if ( isset( $content_struct['last_name'] ) )
+			$user_data['last_name'] = $content_struct['last_name'];
+
+		if ( isset( $content_struct['url'] ) )
+			$user_data['user_url'] = $content_struct['url'];
+
+		if ( isset( $content_struct['display_name'] ) )
+			$user_data['display_name'] = $content_struct['display_name'];
+
+		if ( isset( $content_struct['nickname'] ) )
+			$user_data['nickname'] = $content_struct['nickname'];
+
+		if ( isset( $content_struct['nicename'] ) )
+			$user_data['user_nicename'] = $content_struct['nicename'];
+
+		if ( isset( $content_struct['bio'] ) )
+			$user_data['description'] = $content_struct['bio'];
+
+		$result = wp_update_user( $user_data );
+
+		if ( is_wp_error( $result ) )
+			return new IXR_Error( 500, $result->get_error_message() );
+
+		if ( ! $result )
+			return new IXR_Error( 500, __( 'Sorry, the user cannot be updated.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return true;
 	}
@@ -2878,6 +4037,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[2];
 		$password = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -2890,15 +4050,35 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_page', $page_id ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this page.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) ) {
+			return $this->error;
+		}
+
+		$page = get_post($page_id);
+		if ( ! $page )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( !current_user_can( 'edit_page', $page_id ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this page.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPage' );
 
 		// If we found the page then format the data.
+<<<<<<< HEAD
 		if ( $page->ID && ( $page->post_type == 'page' ) ) {
 			return $this->_prepare_page( $page );
 		} else {
 			// If the page doesn't exist indicate that.
+=======
+		if ( $page->ID && ($page->post_type == 'page') ) {
+			return $this->_prepare_page( $page );
+		}
+		// If the page doesn't exist indicate that.
+		else {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return new IXR_Error( 404, __( 'Sorry, no such page.' ) );
 		}
 	}
@@ -2923,6 +4103,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$username  = $args[1];
 		$password  = $args[2];
+<<<<<<< HEAD
 		$num_pages = isset( $args[3] ) ? (int) $args[3] : 10;
 
 		if ( ! $user = $this->login( $username, $password ) ) {
@@ -2932,10 +4113,20 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_pages' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit pages.' ) );
 		}
+=======
+		$num_pages = isset($args[3]) ? (int) $args[3] : 10;
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_pages' ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit pages.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPages' );
 
+<<<<<<< HEAD
 		$pages     = get_posts(
 			array(
 				'post_type'   => 'page',
@@ -2944,15 +4135,25 @@ class wp_xmlrpc_server extends IXR_Server {
 			)
 		);
 		$num_pages = count( $pages );
+=======
+		$pages = get_posts( array('post_type' => 'page', 'post_status' => 'any', 'numberposts' => $num_pages) );
+		$num_pages = count($pages);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// If we have pages, put together their info.
 		if ( $num_pages >= 1 ) {
 			$pages_struct = array();
 
+<<<<<<< HEAD
 			foreach ( $pages as $page ) {
 				if ( current_user_can( 'edit_page', $page->ID ) ) {
 					$pages_struct[] = $this->_prepare_page( $page );
 				}
+=======
+			foreach ($pages as $page) {
+				if ( current_user_can( 'edit_page', $page->ID ) )
+					$pages_struct[] = $this->_prepare_page( $page );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			return $pages_struct;
@@ -2983,15 +4184,24 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $this->escape( $args[1] );
 		$password = $this->escape( $args[2] );
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.newPage' );
 
 		// Mark this as content for a page.
+<<<<<<< HEAD
 		$args[3]['post_type'] = 'page';
+=======
+		$args[3]["post_type"] = 'page';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Let mw_newPost do all of the heavy lifting.
 		return $this->mw_newPost( $args );
@@ -3019,15 +4229,21 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password = $args[2];
 		$page_id  = (int) $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.deletePage' );
 
 		// Get the current page based on the page_id and
 		// make sure it is a page and not a post.
+<<<<<<< HEAD
 		$actual_page = get_post( $page_id, ARRAY_A );
 		if ( ! $actual_page || ( $actual_page['post_type'] != 'page' ) ) {
 			return new IXR_Error( 404, __( 'Sorry, no such page.' ) );
@@ -3043,6 +4259,20 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $result ) {
 			return new IXR_Error( 500, __( 'Failed to delete the page.' ) );
 		}
+=======
+		$actual_page = get_post($page_id, ARRAY_A);
+		if ( !$actual_page || ($actual_page['post_type'] != 'page') )
+			return new IXR_Error( 404, __( 'Sorry, no such page.' ) );
+
+		// Make sure the user can delete pages.
+		if ( !current_user_can('delete_page', $page_id) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to delete this page.' ) );
+
+		// Attempt to delete the page.
+		$result = wp_delete_post($page_id);
+		if ( !$result )
+			return new IXR_Error( 500, __( 'Failed to delete the page.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires after a page has been successfully deleted via XML-RPC.
@@ -3085,7 +4315,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		$escaped_username = $this->escape( $username );
 		$escaped_password = $this->escape( $password );
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $escaped_username, $escaped_password ) ) {
+=======
+		if ( !$user = $this->login( $escaped_username, $escaped_password ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return $this->error;
 		}
 
@@ -3093,6 +4327,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		do_action( 'xmlrpc_call', 'wp.editPage' );
 
 		// Get the page data and make sure it is a page.
+<<<<<<< HEAD
 		$actual_page = get_post( $page_id, ARRAY_A );
 		if ( ! $actual_page || ( $actual_page['post_type'] != 'page' ) ) {
 			return new IXR_Error( 404, __( 'Sorry, no such page.' ) );
@@ -3102,6 +4337,15 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_page', $page_id ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this page.' ) );
 		}
+=======
+		$actual_page = get_post($page_id, ARRAY_A);
+		if ( !$actual_page || ($actual_page['post_type'] != 'page') )
+			return new IXR_Error( 404, __( 'Sorry, no such page.' ) );
+
+		// Make sure the user is allowed to edit pages.
+		if ( !current_user_can('edit_page', $page_id) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this page.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Mark this as content for a page.
 		$content['post_type'] = 'page';
@@ -3112,7 +4356,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			$username,
 			$password,
 			$content,
+<<<<<<< HEAD
 			$publish,
+=======
+			$publish
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		// Let mw_editPost do all of the heavy lifting.
@@ -3143,6 +4391,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -3150,13 +4399,24 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_pages' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit pages.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_pages' ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit pages.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPageList' );
 
 		// Get list of pages ids and titles
+<<<<<<< HEAD
 		$page_list = $wpdb->get_results(
 			"
+=======
+		$page_list = $wpdb->get_results("
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			SELECT ID page_id,
 				post_title page_title,
 				post_parent page_parent_id,
@@ -3166,6 +4426,7 @@ class wp_xmlrpc_server extends IXR_Server {
 			FROM {$wpdb->posts}
 			WHERE post_type = 'page'
 			ORDER BY ID
+<<<<<<< HEAD
 		"
 		);
 
@@ -3178,6 +4439,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			unset( $page_list[ $i ]->post_date_gmt );
 			unset( $page_list[ $i ]->post_date );
 			unset( $page_list[ $i ]->post_status );
+=======
+		");
+
+		// The date needs to be formatted properly.
+		$num_pages = count($page_list);
+		for ( $i = 0; $i < $num_pages; $i++ ) {
+			$page_list[$i]->dateCreated = $this->_convert_date(  $page_list[$i]->post_date );
+			$page_list[$i]->date_created_gmt = $this->_convert_date_gmt( $page_list[$i]->post_date_gmt, $page_list[$i]->post_date );
+
+			unset($page_list[$i]->post_date_gmt);
+			unset($page_list[$i]->post_date);
+			unset($page_list[$i]->post_status);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		return $page_list;
@@ -3203,6 +4477,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -3210,16 +4485,31 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can('edit_posts') )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getAuthors' );
 
 		$authors = array();
+<<<<<<< HEAD
 		foreach ( get_users( array( 'fields' => array( 'ID', 'user_login', 'display_name' ) ) ) as $user ) {
 			$authors[] = array(
 				'user_id'      => $user->ID,
 				'user_login'   => $user->user_login,
 				'display_name' => $user->display_name,
+=======
+		foreach ( get_users( array( 'fields' => array('ID','user_login','display_name') ) ) as $user ) {
+			$authors[] = array(
+				'user_id'       => $user->ID,
+				'user_login'    => $user->user_login,
+				'display_name'  => $user->display_name
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -3246,6 +4536,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -3253,6 +4544,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view tags.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view tags.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getKeywords' );
@@ -3261,6 +4559,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		if ( $all_tags = get_tags() ) {
 			foreach ( (array) $all_tags as $tag ) {
+<<<<<<< HEAD
 				$struct             = array();
 				$struct['tag_id']   = $tag->term_id;
 				$struct['name']     = $tag->name;
@@ -3268,6 +4567,15 @@ class wp_xmlrpc_server extends IXR_Server {
 				$struct['slug']     = $tag->slug;
 				$struct['html_url'] = esc_html( get_tag_link( $tag->term_id ) );
 				$struct['rss_url']  = esc_html( get_tag_feed_link( $tag->term_id ) );
+=======
+				$struct = array();
+				$struct['tag_id']			= $tag->term_id;
+				$struct['name']				= $tag->name;
+				$struct['count']			= $tag->count;
+				$struct['slug']				= $tag->slug;
+				$struct['html_url']			= esc_html( get_tag_link( $tag->term_id ) );
+				$struct['rss_url']			= esc_html( get_tag_feed_link( $tag->term_id ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				$tags[] = $struct;
 			}
@@ -3298,9 +4606,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password = $args[2];
 		$category = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.newCategory' );
@@ -3312,6 +4625,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		// If no slug was provided make it empty so that
 		// WordPress will generate one.
+<<<<<<< HEAD
 		if ( empty( $category['slug'] ) ) {
 			$category['slug'] = '';
 		}
@@ -3343,6 +4657,35 @@ class wp_xmlrpc_server extends IXR_Server {
 			}
 		} elseif ( ! $cat_id ) {
 			return new IXR_Error( 500, __( 'Sorry, the new category failed.' ) );
+=======
+		if ( empty($category['slug']) )
+			$category['slug'] = '';
+
+		// If no parent_id was provided make it empty
+		// so that it will be a top level page (no parent).
+		if ( !isset($category['parent_id']) )
+			$category['parent_id'] = '';
+
+		// If no description was provided make it empty.
+		if ( empty($category["description"]) )
+			$category["description"] = "";
+
+		$new_category = array(
+			'cat_name'				=> $category['name'],
+			'category_nicename'		=> $category['slug'],
+			'category_parent'		=> $category['parent_id'],
+			'category_description'	=> $category['description']
+		);
+
+		$cat_id = wp_insert_category($new_category, true);
+		if ( is_wp_error( $cat_id ) ) {
+			if ( 'term_exists' == $cat_id->get_error_code() )
+				return (int) $cat_id->get_error_data();
+			else
+				return new IXR_Error(500, __('Sorry, the new category failed.'));
+		} elseif ( ! $cat_id ) {
+			return new IXR_Error(500, __('Sorry, the new category failed.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		/**
@@ -3380,9 +4723,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password    = $args[2];
 		$category_id = (int) $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.deleteCategory' );
@@ -3432,6 +4780,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$category    = $args[3];
 		$max_results = (int) $args[4];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -3439,11 +4788,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view categories.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view categories.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.suggestCategories' );
 
 		$category_suggestions = array();
+<<<<<<< HEAD
 		$args                 = array(
 			'get'        => 'all',
 			'number'     => $max_results,
@@ -3453,6 +4810,13 @@ class wp_xmlrpc_server extends IXR_Server {
 			$category_suggestions[] = array(
 				'category_id'   => $cat->term_id,
 				'category_name' => $cat->name,
+=======
+		$args = array('get' => 'all', 'number' => $max_results, 'name__like' => $category);
+		foreach ( (array) get_categories($args) as $cat ) {
+			$category_suggestions[] = array(
+				'category_id'	=> $cat->term_id,
+				'category_name'	=> $cat->name
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -3474,12 +4838,21 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * }
 	 * @return array|IXR_Error
 	 */
+<<<<<<< HEAD
 	public function wp_getComment( $args ) {
 		$this->escape( $args );
 
 		$username   = $args[1];
 		$password   = $args[2];
 		$comment_id = (int) $args[3];
+=======
+	public function wp_getComment($args) {
+		$this->escape($args);
+
+		$username	= $args[1];
+		$password	= $args[2];
+		$comment_id	= (int) $args[3];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
@@ -3530,7 +4903,11 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$username = $args[1];
 		$password = $args[2];
+<<<<<<< HEAD
 		$struct   = isset( $args[3] ) ? $args[3] : array();
+=======
+		$struct	  = isset( $args[3] ) ? $args[3] : array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
@@ -3573,6 +4950,7 @@ class wp_xmlrpc_server extends IXR_Server {
 			$number = absint( $struct['number'] );
 		}
 
+<<<<<<< HEAD
 		$comments = get_comments(
 			array(
 				'status'    => $status,
@@ -3582,6 +4960,15 @@ class wp_xmlrpc_server extends IXR_Server {
 				'post_type' => $post_type,
 			)
 		);
+=======
+		$comments = get_comments( array(
+			'status' => $status,
+			'post_id' => $post_id,
+			'offset' => $offset,
+			'number' => $number,
+			'post_type' => $post_type,
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$comments_struct = array();
 		if ( is_array( $comments ) ) {
@@ -3612,11 +4999,19 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return bool|IXR_Error See wp_delete_comment().
 	 */
 	public function wp_deleteComment( $args ) {
+<<<<<<< HEAD
 		$this->escape( $args );
 
 		$username   = $args[1];
 		$password   = $args[2];
 		$comment_ID = (int) $args[3];
+=======
+		$this->escape($args);
+
+		$username	= $args[1];
+		$password	= $args[2];
+		$comment_ID	= (int) $args[3];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
@@ -3680,12 +5075,21 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function wp_editComment( $args ) {
 		$this->escape( $args );
 
+<<<<<<< HEAD
 		$username       = $args[1];
 		$password       = $args[2];
 		$comment_ID     = (int) $args[3];
 		$content_struct = $args[4];
 
 		if ( ! $user = $this->login( $username, $password ) ) {
+=======
+		$username	= $args[1];
+		$password	= $args[2];
+		$comment_ID	= (int) $args[3];
+		$content_struct = $args[4];
+
+		if ( !$user = $this->login( $username, $password ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return $this->error;
 		}
 
@@ -3699,6 +5103,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.editComment' );
+<<<<<<< HEAD
 		$comment = array(
 			'comment_ID' => $comment_ID,
 		);
@@ -3746,6 +5151,53 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $result ) {
 			return new IXR_Error( 500, __( 'Sorry, the comment could not be edited.' ) );
 		}
+=======
+ 		$comment = array(
+ 			'comment_ID' => $comment_ID,
+ 		);
+
+
+		if ( isset($content_struct['status']) ) {
+			$statuses = get_comment_statuses();
+			$statuses = array_keys($statuses);
+
+			if ( ! in_array($content_struct['status'], $statuses) )
+				return new IXR_Error( 401, __( 'Invalid comment status.' ) );
+ 			$comment['comment_approved'] = $content_struct['status'];
+		}
+
+		// Do some timestamp voodoo
+		if ( !empty( $content_struct['date_created_gmt'] ) ) {
+			// We know this is supposed to be GMT, so we're going to slap that Z on there by force
+
+ 			$dateCreated                 = rtrim( $content_struct['date_created_gmt']->getIso(), 'Z' ) . 'Z';
+ 			$comment['comment_date']     = get_date_from_gmt( iso8601_to_datetime( $dateCreated ) );
+ 			$comment['comment_date_gmt'] = iso8601_to_datetime( $dateCreated, 'GMT' );
+		}
+
+		if ( isset($content_struct['content']) ) {
+ 			$comment['comment_content'] = $content_struct['content'];
+		}
+
+		if ( isset($content_struct['author']) ) {
+ 			$comment['comment_author'] = $content_struct['author'];
+		}
+
+		if ( isset($content_struct['author_url']) ) {
+ 			$comment['comment_author_url'] = $content_struct['author_url'];
+		}
+
+		if ( isset($content_struct['author_email']) ) {
+ 			$comment['comment_author_email'] = $content_struct['author_email'];
+		}
+
+		$result = wp_update_comment($comment);
+		if ( is_wp_error( $result ) )
+			return new IXR_Error(500, $result->get_error_message());
+
+		if ( !$result )
+			return new IXR_Error(500, __('Sorry, the comment could not be edited.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires after a comment has been successfully updated via XML-RPC.
@@ -3776,8 +5228,13 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * }
 	 * @return int|IXR_Error See wp_new_comment().
 	 */
+<<<<<<< HEAD
 	public function wp_newComment( $args ) {
 		$this->escape( $args );
+=======
+	public function wp_newComment($args) {
+		$this->escape($args);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$username       = $args[1];
 		$password       = $args[2];
@@ -3794,11 +5251,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		 */
 		$allow_anon = apply_filters( 'xmlrpc_allow_anonymous_comments', false );
 
+<<<<<<< HEAD
 		$user = $this->login( $username, $password );
 
 		if ( ! $user ) {
 			$logged_in = false;
 			if ( $allow_anon && get_option( 'comment_registration' ) ) {
+=======
+		$user = $this->login($username, $password);
+
+		if ( !$user ) {
+			$logged_in = false;
+			if ( $allow_anon && get_option('comment_registration') ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				return new IXR_Error( 403, __( 'You must be registered to comment.' ) );
 			} elseif ( ! $allow_anon ) {
 				return $this->error;
@@ -3807,11 +5272,18 @@ class wp_xmlrpc_server extends IXR_Server {
 			$logged_in = true;
 		}
 
+<<<<<<< HEAD
 		if ( is_numeric( $post ) ) {
 			$post_id = absint( $post );
 		} else {
 			$post_id = url_to_postid( $post );
 		}
+=======
+		if ( is_numeric($post) )
+			$post_id = absint($post);
+		else
+			$post_id = url_to_postid($post);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! $post_id ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
@@ -3836,6 +5308,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		if ( $logged_in ) {
 			$display_name = $user->display_name;
+<<<<<<< HEAD
 			$user_email   = $user->user_email;
 			$user_url     = $user->user_url;
 
@@ -3871,6 +5344,39 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		$comment['comment_parent'] = isset( $content_struct['comment_parent'] ) ? absint( $content_struct['comment_parent'] ) : 0;
+=======
+			$user_email = $user->user_email;
+			$user_url = $user->user_url;
+
+			$comment['comment_author'] = $this->escape( $display_name );
+			$comment['comment_author_email'] = $this->escape( $user_email );
+			$comment['comment_author_url'] = $this->escape( $user_url );
+			$comment['user_ID'] = $user->ID;
+		} else {
+			$comment['comment_author'] = '';
+			if ( isset($content_struct['author']) )
+				$comment['comment_author'] = $content_struct['author'];
+
+			$comment['comment_author_email'] = '';
+			if ( isset($content_struct['author_email']) )
+				$comment['comment_author_email'] = $content_struct['author_email'];
+
+			$comment['comment_author_url'] = '';
+			if ( isset($content_struct['author_url']) )
+				$comment['comment_author_url'] = $content_struct['author_url'];
+
+			$comment['user_ID'] = 0;
+
+			if ( get_option('require_name_email') ) {
+				if ( 6 > strlen($comment['comment_author_email']) || '' == $comment['comment_author'] )
+					return new IXR_Error( 403, __( 'Comment author name and email are required.' ) );
+				elseif ( !is_email($comment['comment_author_email']) )
+					return new IXR_Error( 403, __( 'A valid email address is required.' ) );
+			}
+		}
+
+		$comment['comment_parent'] = isset($content_struct['comment_parent']) ? absint($content_struct['comment_parent']) : 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.newComment' );
@@ -3922,7 +5428,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		if ( ! current_user_can( 'publish_posts' ) ) {
+<<<<<<< HEAD
 			return new IXR_Error( 403, __( 'Sorry, you are not allowed to access details about this site.' ) );
+=======
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed access to details about this site.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
@@ -3949,9 +5459,15 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function wp_getCommentCount( $args ) {
 		$this->escape( $args );
 
+<<<<<<< HEAD
 		$username = $args[1];
 		$password = $args[2];
 		$post_id  = (int) $args[3];
+=======
+		$username	= $args[1];
+		$password	= $args[2];
+		$post_id	= (int) $args[3];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
@@ -3963,7 +5479,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+<<<<<<< HEAD
 			return new IXR_Error( 403, __( 'Sorry, you are not allowed to access details of this post.' ) );
+=======
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed access to details of this post.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
@@ -3972,10 +5492,17 @@ class wp_xmlrpc_server extends IXR_Server {
 		$count = wp_count_comments( $post_id );
 
 		return array(
+<<<<<<< HEAD
 			'approved'            => $count->approved,
 			'awaiting_moderation' => $count->moderated,
 			'spam'                => $count->spam,
 			'total_comments'      => $count->total_comments,
+=======
+			'approved' => $count->approved,
+			'awaiting_moderation' => $count->moderated,
+			'spam' => $count->spam,
+			'total_comments' => $count->total_comments
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 	}
 
@@ -3999,6 +5526,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -4006,6 +5534,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 403, __( 'Sorry, you are not allowed to access details about this site.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed access to details about this site.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPostStatusList' );
@@ -4033,6 +5568,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -4040,6 +5576,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_pages' ) ) {
 			return new IXR_Error( 403, __( 'Sorry, you are not allowed to access details about this site.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_pages' ) )
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed access to details about this site.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPageStatusList' );
@@ -4067,6 +5610,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -4076,6 +5620,15 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		$templates            = get_page_templates();
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_pages' ) )
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed access to details about this site.' ) );
+
+		$templates = get_page_templates();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$templates['Default'] = 'default';
 
 		return $templates;
@@ -4099,6 +5652,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function wp_getOptions( $args ) {
 		$this->escape( $args );
 
+<<<<<<< HEAD
 		$username = $args[1];
 		$password = $args[2];
 		$options  = isset( $args[3] ) ? (array) $args[3] : array();
@@ -4113,6 +5667,20 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		return $this->_getOptions( $options );
+=======
+		$username	= $args[1];
+		$password	= $args[2];
+		$options	= isset( $args[3] ) ? (array) $args[3] : array();
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		// If no specific options where asked for, return all of them
+		if ( count( $options ) == 0 )
+			$options = array_keys($this->blog_options);
+
+		return $this->_getOptions($options);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -4123,6 +5691,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @param array $options Options to retrieve.
 	 * @return array
 	 */
+<<<<<<< HEAD
 	public function _getOptions( $options ) {
 		$data       = array();
 		$can_manage = current_user_can( 'manage_options' );
@@ -4138,6 +5707,22 @@ class wp_xmlrpc_server extends IXR_Server {
 				if ( ! $can_manage ) {
 					$data[ $option ]['readonly'] = true;
 				}
+=======
+	public function _getOptions($options) {
+		$data = array();
+		$can_manage = current_user_can( 'manage_options' );
+		foreach ( $options as $option ) {
+			if ( array_key_exists( $option, $this->blog_options ) ) {
+				$data[$option] = $this->blog_options[$option];
+				//Is the value static or dynamic?
+				if ( isset( $data[$option]['option'] ) ) {
+					$data[$option]['value'] = get_option( $data[$option]['option'] );
+					unset($data[$option]['option']);
+				}
+
+				if ( ! $can_manage )
+					$data[$option]['readonly'] = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 
@@ -4162,6 +5747,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function wp_setOptions( $args ) {
 		$this->escape( $args );
 
+<<<<<<< HEAD
 		$username = $args[1];
 		$password = $args[2];
 		$options  = (array) $args[3];
@@ -4173,10 +5759,22 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return new IXR_Error( 403, __( 'Sorry, you are not allowed to update options.' ) );
 		}
+=======
+		$username	= $args[1];
+		$password	= $args[2];
+		$options	= (array) $args[3];
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'manage_options' ) )
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed to update options.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$option_names = array();
 		foreach ( $options as $o_name => $o_value ) {
 			$option_names[] = $o_name;
+<<<<<<< HEAD
 			if ( ! array_key_exists( $o_name, $this->blog_options ) ) {
 				continue;
 			}
@@ -4190,6 +5788,19 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		//Now return the updated values
 		return $this->_getOptions( $option_names );
+=======
+			if ( !array_key_exists( $o_name, $this->blog_options ) )
+				continue;
+
+			if ( $this->blog_options[$o_name]['readonly'] == true )
+				continue;
+
+			update_option( $this->blog_options[$o_name]['option'], wp_unslash( $o_value ) );
+		}
+
+		//Now return the updated values
+		return $this->_getOptions($option_names);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -4218,6 +5829,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function wp_getMediaItem( $args ) {
 		$this->escape( $args );
 
+<<<<<<< HEAD
 		$username      = $args[1];
 		$password      = $args[2];
 		$attachment_id = (int) $args[3];
@@ -4229,13 +5841,29 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'upload_files' ) ) {
 			return new IXR_Error( 403, __( 'Sorry, you are not allowed to upload files.' ) );
 		}
+=======
+		$username		= $args[1];
+		$password		= $args[2];
+		$attachment_id	= (int) $args[3];
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'upload_files' ) )
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed to upload files.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getMediaItem' );
 
+<<<<<<< HEAD
 		if ( ! $attachment = get_post( $attachment_id ) ) {
 			return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
 		}
+=======
+		if ( ! $attachment = get_post($attachment_id) )
+			return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $this->_prepare_media_item( $attachment );
 	}
@@ -4266,6 +5894,7 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * }
 	 * @return array|IXR_Error Contains a collection of media items. See wp_xmlrpc_server::wp_getMediaItem() for a description of each item contents
 	 */
+<<<<<<< HEAD
 	public function wp_getMediaLibrary( $args ) {
 		$this->escape( $args );
 
@@ -4280,10 +5909,25 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'upload_files' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to upload files.' ) );
 		}
+=======
+	public function wp_getMediaLibrary($args) {
+		$this->escape($args);
+
+		$username	= $args[1];
+		$password	= $args[2];
+		$struct		= isset( $args[3] ) ? $args[3] : array() ;
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'upload_files' ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to upload files.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getMediaLibrary' );
 
+<<<<<<< HEAD
 		$parent_id = ( isset( $struct['parent_id'] ) ) ? absint( $struct['parent_id'] ) : '';
 		$mime_type = ( isset( $struct['mime_type'] ) ) ? $struct['mime_type'] : '';
 		$offset    = ( isset( $struct['offset'] ) ) ? absint( $struct['offset'] ) : 0;
@@ -4304,6 +5948,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		foreach ( $attachments as $attachment ) {
 			$attachments_struct[] = $this->_prepare_media_item( $attachment );
 		}
+=======
+		$parent_id = ( isset($struct['parent_id']) ) ? absint($struct['parent_id']) : '' ;
+		$mime_type = ( isset($struct['mime_type']) ) ? $struct['mime_type'] : '' ;
+		$offset = ( isset($struct['offset']) ) ? absint($struct['offset']) : 0 ;
+		$number = ( isset($struct['number']) ) ? absint($struct['number']) : -1 ;
+
+		$attachments = get_posts( array('post_type' => 'attachment', 'post_parent' => $parent_id, 'offset' => $offset, 'numberposts' => $number, 'post_mime_type' => $mime_type ) );
+
+		$attachments_struct = array();
+
+		foreach ($attachments as $attachment )
+			$attachments_struct[] = $this->_prepare_media_item( $attachment );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $attachments_struct;
 	}
@@ -4328,6 +5985,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -4335,6 +5993,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 403, __( 'Sorry, you are not allowed to access details about this site.' ) );
 		}
+=======
+		if ( !$user = $this->login( $username, $password ) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 403, __( 'Sorry, you are not allowed access to details about this site.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPostFormats' );
@@ -4347,8 +6012,13 @@ class wp_xmlrpc_server extends IXR_Server {
 				if ( current_theme_supports( 'post-formats' ) ) {
 					$supported = get_theme_support( 'post-formats' );
 
+<<<<<<< HEAD
 					$data              = array();
 					$data['all']       = $formats;
+=======
+					$data = array();
+					$data['all'] = $formats;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$data['supported'] = $supported[0];
 
 					$formats = $data;
@@ -4387,9 +6057,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 *  - 'supports'
 	 */
 	public function wp_getPostType( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -4411,13 +6086,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_posttype_fields', array( 'labels', 'cap', 'taxonomies' ), 'wp.getPostType' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPostType' );
 
+<<<<<<< HEAD
 		if ( ! post_type_exists( $post_type_name ) ) {
 			return new IXR_Error( 403, __( 'Invalid post type.' ) );
 		}
@@ -4427,6 +6108,15 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( $post_type->cap->edit_posts ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
 		}
+=======
+		if ( ! post_type_exists( $post_type_name ) )
+			return new IXR_Error( 403, __( 'Invalid post type.' ) );
+
+		$post_type = get_post_type_object( $post_type_name );
+
+		if ( ! current_user_can( $post_type->cap->edit_posts ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts in this post type.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $this->_prepare_post_type( $post_type, $fields );
 	}
@@ -4450,9 +6140,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return array|IXR_Error
 	 */
 	public function wp_getPostTypes( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 3 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 3 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -4467,9 +6162,14 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_posttype_fields', array( 'labels', 'cap', 'taxonomies' ), 'wp.getPostTypes' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getPostTypes' );
@@ -4479,11 +6179,18 @@ class wp_xmlrpc_server extends IXR_Server {
 		$struct = array();
 
 		foreach ( $post_types as $post_type ) {
+<<<<<<< HEAD
 			if ( ! current_user_can( $post_type->cap->edit_posts ) ) {
 				continue;
 			}
 
 			$struct[ $post_type->name ] = $this->_prepare_post_type( $post_type, $fields );
+=======
+			if ( ! current_user_can( $post_type->cap->edit_posts ) )
+				continue;
+
+			$struct[$post_type->name] = $this->_prepare_post_type( $post_type, $fields );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		return $struct;
@@ -4512,9 +6219,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return array|IXR_Error contains a collection of posts.
 	 */
 	public function wp_getRevisions( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 4 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 4 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -4536,13 +6248,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			$fields = apply_filters( 'xmlrpc_default_revision_fields', array( 'post_date', 'post_date_gmt' ), 'wp.getRevisions' );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.getRevisions' );
 
+<<<<<<< HEAD
 		if ( ! $post = get_post( $post_id ) ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
 		}
@@ -4561,10 +6279,27 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $revisions ) {
 			return array();
 		}
+=======
+		if ( ! $post = get_post( $post_id ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( ! current_user_can( 'edit_post', $post_id ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts.' ) );
+
+		// Check if revisions are enabled.
+		if ( ! wp_revisions_enabled( $post ) )
+			return new IXR_Error( 401, __( 'Sorry, revisions are disabled.' ) );
+
+		$revisions = wp_get_post_revisions( $post_id );
+
+		if ( ! $revisions )
+			return array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$struct = array();
 
 		foreach ( $revisions as $revision ) {
+<<<<<<< HEAD
 			if ( ! current_user_can( 'read_post', $revision->ID ) ) {
 				continue;
 			}
@@ -4573,6 +6308,14 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( wp_is_post_autosave( $revision ) ) {
 				continue;
 			}
+=======
+			if ( ! current_user_can( 'read_post', $revision->ID ) )
+				continue;
+
+			// Skip autosaves
+			if ( wp_is_post_autosave( $revision ) )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$struct[] = $this->_prepare_post( get_object_vars( $revision ), $fields );
 		}
@@ -4598,9 +6341,14 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @return bool|IXR_Error false if there was an error restoring, true if success.
 	 */
 	public function wp_restoreRevision( $args ) {
+<<<<<<< HEAD
 		if ( ! $this->minimum_args( $args, 3 ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $this->minimum_args( $args, 3 ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->escape( $args );
 
@@ -4608,13 +6356,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password    = $args[2];
 		$revision_id = (int) $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login( $username, $password ) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'wp.restoreRevision' );
 
+<<<<<<< HEAD
 		if ( ! $revision = wp_get_post_revision( $revision_id ) ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
 		}
@@ -4635,6 +6389,23 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! wp_revisions_enabled( $post ) ) {
 			return new IXR_Error( 401, __( 'Sorry, revisions are disabled.' ) );
 		}
+=======
+		if ( ! $revision = wp_get_post_revision( $revision_id ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( wp_is_post_autosave( $revision ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( ! $post = get_post( $revision->post_parent ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( ! current_user_can( 'edit_post', $revision->post_parent ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+
+		// Check if revisions are disabled.
+		if ( ! wp_revisions_enabled( $post ) )
+			return new IXR_Error( 401, __( 'Sorry, revisions are disabled.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$post = wp_restore_post_revision( $revision_id );
 
@@ -4661,27 +6432,44 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * }
 	 * @return array|IXR_Error
 	 */
+<<<<<<< HEAD
 	public function blogger_getUsersBlogs( $args ) {
+=======
+	public function blogger_getUsersBlogs($args) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $this->minimum_args( $args, 3 ) ) {
 			return $this->error;
 		}
 
 		if ( is_multisite() ) {
+<<<<<<< HEAD
 			return $this->_multisite_getUsersBlogs( $args );
 		}
 
 		$this->escape( $args );
+=======
+			return $this->_multisite_getUsersBlogs($args);
+		}
+
+		$this->escape($args);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'blogger.getUsersBlogs' );
 
+<<<<<<< HEAD
 		$is_admin = current_user_can( 'manage_options' );
 
 		$struct = array(
@@ -4693,6 +6481,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		);
 
 		return array( $struct );
+=======
+		$is_admin = current_user_can('manage_options');
+
+		$struct = array(
+			'isAdmin'  => $is_admin,
+			'url'      => get_option('home') . '/',
+			'blogid'   => '1',
+			'blogName' => get_option('blogname'),
+			'xmlrpc'   => site_url( 'xmlrpc.php', 'rpc' ),
+		);
+
+		return array($struct);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -4712,6 +6513,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$current_blog = get_site();
 
 		$domain = $current_blog->domain;
+<<<<<<< HEAD
 		$path   = $current_blog->path . 'xmlrpc.php';
 
 		$rpc = new IXR_Client( set_url_scheme( "http://{$domain}{$path}" ) );
@@ -4721,14 +6523,29 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $blogs['faultCode'] ) ) {
 			return new IXR_Error( $blogs['faultCode'], $blogs['faultString'] );
 		}
+=======
+		$path = $current_blog->path . 'xmlrpc.php';
+
+		$rpc = new IXR_Client( set_url_scheme( "http://{$domain}{$path}" ) );
+		$rpc->query('wp.getUsersBlogs', $args[1], $args[2]);
+		$blogs = $rpc->getResponse();
+
+		if ( isset($blogs['faultCode']) )
+			return new IXR_Error($blogs['faultCode'], $blogs['faultString']);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( $_SERVER['HTTP_HOST'] == $domain && $_SERVER['REQUEST_URI'] == $path ) {
 			return $blogs;
 		} else {
 			foreach ( (array) $blogs as $blog ) {
+<<<<<<< HEAD
 				if ( strpos( $blog['url'], $_SERVER['HTTP_HOST'] ) ) {
 					return array( $blog );
 				}
+=======
+				if ( strpos($blog['url'], $_SERVER['HTTP_HOST']) )
+					return array($blog);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 			return array();
 		}
@@ -4756,6 +6573,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -4763,6 +6581,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to access user data on this site.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to access user data on this site.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'blogger.getUserInfo' );
@@ -4772,7 +6597,11 @@ class wp_xmlrpc_server extends IXR_Server {
 			'userid'    => $user->ID,
 			'url'       => $user->user_url,
 			'lastname'  => $user->last_name,
+<<<<<<< HEAD
 			'firstname' => $user->first_name,
+=======
+			'firstname' => $user->first_name
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		return $struct;
@@ -4800,6 +6629,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[2];
 		$password = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -4812,10 +6642,22 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		$post_data = get_post($post_ID, ARRAY_A);
+		if ( ! $post_data )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( !current_user_can( 'edit_post', $post_ID ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'blogger.getPost' );
 
+<<<<<<< HEAD
 		$categories = implode( ',', wp_get_post_categories( $post_ID ) );
 
 		$content  = '<title>' . wp_unslash( $post_data['post_title'] ) . '</title>';
@@ -4827,6 +6669,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			'dateCreated' => $this->_convert_date( $post_data['post_date'] ),
 			'content'     => $content,
 			'postid'      => (string) $post_data['ID'],
+=======
+		$categories = implode(',', wp_get_post_categories($post_ID));
+
+		$content  = '<title>'.wp_unslash($post_data['post_title']).'</title>';
+		$content .= '<category>'.$categories.'</category>';
+		$content .= wp_unslash($post_data['post_content']);
+
+		$struct = array(
+			'userid'    => $post_data['post_author'],
+			'dateCreated' => $this->_convert_date( $post_data['post_date'] ),
+			'content'     => $content,
+			'postid'  => (string) $post_data['ID']
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		return $struct;
@@ -4850,11 +6705,16 @@ class wp_xmlrpc_server extends IXR_Server {
 	 */
 	public function blogger_getRecentPosts( $args ) {
 
+<<<<<<< HEAD
 		$this->escape( $args );
+=======
+		$this->escape($args);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// $args[0] = appkey - ignored
 		$username = $args[2];
 		$password = $args[3];
+<<<<<<< HEAD
 		if ( isset( $args[4] ) ) {
 			$query = array( 'numberposts' => absint( $args[4] ) );
 		} else {
@@ -4868,18 +6728,36 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts.' ) );
 		}
+=======
+		if ( isset( $args[4] ) )
+			$query = array( 'numberposts' => absint( $args[4] ) );
+		else
+			$query = array();
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( ! current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'blogger.getRecentPosts' );
 
 		$posts_list = wp_get_recent_posts( $query );
 
+<<<<<<< HEAD
 		if ( ! $posts_list ) {
 			$this->error = new IXR_Error( 500, __( 'Either there are no posts, or something went wrong.' ) );
+=======
+		if ( !$posts_list ) {
+			$this->error = new IXR_Error(500, __('Either there are no posts, or something went wrong.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return $this->error;
 		}
 
 		$recent_posts = array();
+<<<<<<< HEAD
 		foreach ( $posts_list as $entry ) {
 			if ( ! current_user_can( 'edit_post', $entry['ID'] ) ) {
 				continue;
@@ -4897,6 +6775,24 @@ class wp_xmlrpc_server extends IXR_Server {
 				'dateCreated' => $post_date,
 				'content'     => $content,
 				'postid'      => (string) $entry['ID'],
+=======
+		foreach ($posts_list as $entry) {
+			if ( !current_user_can( 'edit_post', $entry['ID'] ) )
+				continue;
+
+			$post_date  = $this->_convert_date( $entry['post_date'] );
+			$categories = implode(',', wp_get_post_categories($entry['ID']));
+
+			$content  = '<title>'.wp_unslash($entry['post_title']).'</title>';
+			$content .= '<category>'.$categories.'</category>';
+			$content .= wp_unslash($entry['post_content']);
+
+			$recent_posts[] = array(
+				'userid' => $entry['post_author'],
+				'dateCreated' => $post_date,
+				'content' => $content,
+				'postid' => (string) $entry['ID'],
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -4912,8 +6808,13 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @param array $args Unused.
 	 * @return IXR_Error Error object.
 	 */
+<<<<<<< HEAD
 	public function blogger_getTemplate( $args ) {
 		return new IXR_Error( 403, __( 'Sorry, that file cannot be edited.' ) );
+=======
+	public function blogger_getTemplate($args) {
+		return new IXR_Error( 403, __('Sorry, that file cannot be edited.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -4925,8 +6826,13 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * @param array $args Unused.
 	 * @return IXR_Error Error object.
 	 */
+<<<<<<< HEAD
 	public function blogger_setTemplate( $args ) {
 		return new IXR_Error( 403, __( 'Sorry, that file cannot be edited.' ) );
+=======
+	public function blogger_setTemplate($args) {
+		return new IXR_Error( 403, __('Sorry, that file cannot be edited.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -4954,13 +6860,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		$content  = $args[4];
 		$publish  = $args[5];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'blogger.newPost' );
 
+<<<<<<< HEAD
 		$cap = ( $publish ) ? 'publish_posts' : 'edit_posts';
 		if ( ! current_user_can( get_post_type_object( 'post' )->cap->create_posts ) || ! current_user_can( $cap ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to post on this site.' ) );
@@ -4987,6 +6899,31 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $post_ID ) {
 			return new IXR_Error( 500, __( 'Sorry, your entry could not be posted.' ) );
 		}
+=======
+		$cap = ($publish) ? 'publish_posts' : 'edit_posts';
+		if ( ! current_user_can( get_post_type_object( 'post' )->cap->create_posts ) || !current_user_can($cap) )
+			return new IXR_Error(401, __('Sorry, you are not allowed to post on this site.'));
+
+		$post_status = ($publish) ? 'publish' : 'draft';
+
+		$post_author = $user->ID;
+
+		$post_title = xmlrpc_getposttitle($content);
+		$post_category = xmlrpc_getpostcategory($content);
+		$post_content = xmlrpc_removepostdata($content);
+
+		$post_date = current_time('mysql');
+		$post_date_gmt = current_time('mysql', 1);
+
+		$post_data = compact('post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_title', 'post_category', 'post_status');
+
+		$post_ID = wp_insert_post($post_data);
+		if ( is_wp_error( $post_ID ) )
+			return new IXR_Error(500, $post_ID->get_error_message());
+
+		if ( !$post_ID )
+			return new IXR_Error(500, __('Sorry, your entry could not be posted.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->attach_uploads( $post_ID, $post_content );
 
@@ -5022,7 +6959,11 @@ class wp_xmlrpc_server extends IXR_Server {
 	 */
 	public function blogger_editPost( $args ) {
 
+<<<<<<< HEAD
 		$this->escape( $args );
+=======
+		$this->escape($args);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$post_ID  = (int) $args[1];
 		$username = $args[2];
@@ -5043,15 +6984,23 @@ class wp_xmlrpc_server extends IXR_Server {
 			return new IXR_Error( 404, __( 'Sorry, no such post.' ) );
 		}
 
+<<<<<<< HEAD
 		$this->escape( $actual_post );
 
 		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+=======
+		$this->escape($actual_post);
+
+		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
+			return new IXR_Error(401, __('Sorry, you are not allowed to edit this post.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		if ( 'publish' == $actual_post['post_status'] && ! current_user_can( 'publish_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to publish this post.' ) );
 		}
 
+<<<<<<< HEAD
 		$postdata                  = array();
 		$postdata['ID']            = $actual_post['ID'];
 		$postdata['post_content']  = xmlrpc_removepostdata( $content );
@@ -5060,11 +7009,25 @@ class wp_xmlrpc_server extends IXR_Server {
 		$postdata['post_status']   = $actual_post['post_status'];
 		$postdata['post_excerpt']  = $actual_post['post_excerpt'];
 		$postdata['post_status']   = $publish ? 'publish' : 'draft';
+=======
+		$postdata = array();
+		$postdata['ID'] = $actual_post['ID'];
+		$postdata['post_content'] = xmlrpc_removepostdata( $content );
+		$postdata['post_title'] = xmlrpc_getposttitle( $content );
+		$postdata['post_category'] = xmlrpc_getpostcategory( $content );
+		$postdata['post_status'] = $actual_post['post_status'];
+		$postdata['post_excerpt'] = $actual_post['post_excerpt'];
+		$postdata['post_status'] = $publish ? 'publish' : 'draft';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$result = wp_update_post( $postdata );
 
 		if ( ! $result ) {
+<<<<<<< HEAD
 			return new IXR_Error( 500, __( 'For some strange yet very annoying reason, this post could not be edited.' ) );
+=======
+			return new IXR_Error(500, __('For some strange yet very annoying reason, this post could not be edited.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		$this->attach_uploads( $actual_post['ID'], $postdata['post_content'] );
 
@@ -5103,9 +7066,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[2];
 		$password = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'blogger.deletePost' );
@@ -5181,22 +7149,33 @@ class wp_xmlrpc_server extends IXR_Server {
 	 * }
 	 * @return int|IXR_Error
 	 */
+<<<<<<< HEAD
 	public function mw_newPost( $args ) {
 		$this->escape( $args );
+=======
+	public function mw_newPost($args) {
+		$this->escape($args);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$username       = $args[1];
 		$password       = $args[2];
 		$content_struct = $args[3];
 		$publish        = isset( $args[4] ) ? $args[4] : 0;
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'metaWeblog.newPost' );
 
 		$page_template = '';
+<<<<<<< HEAD
 		if ( ! empty( $content_struct['post_type'] ) ) {
 			if ( $content_struct['post_type'] == 'page' ) {
 				if ( $publish ) {
@@ -5221,11 +7200,35 @@ class wp_xmlrpc_server extends IXR_Server {
 				}
 				$error_message = __( 'Sorry, you are not allowed to publish posts on this site.' );
 				$post_type     = 'post';
+=======
+		if ( !empty( $content_struct['post_type'] ) ) {
+			if ( $content_struct['post_type'] == 'page' ) {
+				if ( $publish )
+					$cap  = 'publish_pages';
+				elseif ( isset( $content_struct['page_status'] ) && 'publish' == $content_struct['page_status'] )
+					$cap  = 'publish_pages';
+				else
+					$cap = 'edit_pages';
+				$error_message = __( 'Sorry, you are not allowed to publish pages on this site.' );
+				$post_type = 'page';
+				if ( !empty( $content_struct['wp_page_template'] ) )
+					$page_template = $content_struct['wp_page_template'];
+			} elseif ( $content_struct['post_type'] == 'post' ) {
+				if ( $publish )
+					$cap  = 'publish_posts';
+				elseif ( isset( $content_struct['post_status'] ) && 'publish' == $content_struct['post_status'] )
+					$cap  = 'publish_posts';
+				else
+					$cap = 'edit_posts';
+				$error_message = __( 'Sorry, you are not allowed to publish posts on this site.' );
+				$post_type = 'post';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else {
 				// No other post_type values are allowed here
 				return new IXR_Error( 401, __( 'Invalid post type.' ) );
 			}
 		} else {
+<<<<<<< HEAD
 			if ( $publish ) {
 				$cap = 'publish_posts';
 			} elseif ( isset( $content_struct['post_status'] ) && 'publish' == $content_struct['post_status'] ) {
@@ -5243,17 +7246,38 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( $cap ) ) {
 			return new IXR_Error( 401, $error_message );
 		}
+=======
+			if ( $publish )
+				$cap  = 'publish_posts';
+			elseif ( isset( $content_struct['post_status'] ) && 'publish' == $content_struct['post_status'])
+				$cap  = 'publish_posts';
+			else
+				$cap = 'edit_posts';
+			$error_message = __( 'Sorry, you are not allowed to publish posts on this site.' );
+			$post_type = 'post';
+		}
+
+		if ( ! current_user_can( get_post_type_object( $post_type )->cap->create_posts ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to publish posts on this site.' ) );
+		if ( !current_user_can( $cap ) )
+			return new IXR_Error( 401, $error_message );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Check for a valid post format if one was given
 		if ( isset( $content_struct['wp_post_format'] ) ) {
 			$content_struct['wp_post_format'] = sanitize_key( $content_struct['wp_post_format'] );
+<<<<<<< HEAD
 			if ( ! array_key_exists( $content_struct['wp_post_format'], get_post_format_strings() ) ) {
+=======
+			if ( !array_key_exists( $content_struct['wp_post_format'], get_post_format_strings() ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				return new IXR_Error( 404, __( 'Invalid post format.' ) );
 			}
 		}
 
 		// Let WordPress generate the post_name (slug) unless
 		// one has been provided.
+<<<<<<< HEAD
 		$post_name = '';
 		if ( isset( $content_struct['wp_slug'] ) ) {
 			$post_name = $content_struct['wp_slug'];
@@ -5261,12 +7285,21 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		// Only use a password if one was given.
 		if ( isset( $content_struct['wp_password'] ) ) {
+=======
+		$post_name = "";
+		if ( isset($content_struct['wp_slug']) )
+			$post_name = $content_struct['wp_slug'];
+
+		// Only use a password if one was given.
+		if ( isset($content_struct['wp_password']) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$post_password = $content_struct['wp_password'];
 		} else {
 			$post_password = '';
 		}
 
 		// Only set a post parent if one was provided.
+<<<<<<< HEAD
 		if ( isset( $content_struct['wp_page_parent_id'] ) ) {
 			$post_parent = $content_struct['wp_page_parent_id'];
 		} else {
@@ -5279,12 +7312,27 @@ class wp_xmlrpc_server extends IXR_Server {
 		} else {
 			$menu_order = 0;
 		}
+=======
+		if ( isset($content_struct['wp_page_parent_id']) ) {
+			$post_parent = $content_struct['wp_page_parent_id'];
+ 		} else {
+ 			$post_parent = 0;
+  		}
+
+		// Only set the menu_order if it was provided.
+		if ( isset($content_struct['wp_page_order']) ) {
+			$menu_order = $content_struct['wp_page_order'];
+ 		} else {
+ 			$menu_order = 0;
+  		}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$post_author = $user->ID;
 
 		// If an author id was provided then use it instead.
 		if ( isset( $content_struct['wp_author_id'] ) && ( $user->ID != $content_struct['wp_author_id'] ) ) {
 			switch ( $post_type ) {
+<<<<<<< HEAD
 				case 'post':
 					if ( ! current_user_can( 'edit_others_posts' ) ) {
 						return new IXR_Error( 401, __( 'Sorry, you are not allowed to create posts as this user.' ) );
@@ -5294,11 +7342,21 @@ class wp_xmlrpc_server extends IXR_Server {
 					if ( ! current_user_can( 'edit_others_pages' ) ) {
 						return new IXR_Error( 401, __( 'Sorry, you are not allowed to create pages as this user.' ) );
 					}
+=======
+				case "post":
+					if ( !current_user_can( 'edit_others_posts' ) )
+						return new IXR_Error( 401, __( 'Sorry, you are not allowed to create posts as this user.' ) );
+					break;
+				case "page":
+					if ( !current_user_can( 'edit_others_pages' ) )
+						return new IXR_Error( 401, __( 'Sorry, you are not allowed to create pages as this user.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					break;
 				default:
 					return new IXR_Error( 401, __( 'Invalid post type.' ) );
 			}
 			$author = get_userdata( $content_struct['wp_author_id'] );
+<<<<<<< HEAD
 			if ( ! $author ) {
 				return new IXR_Error( 404, __( 'Invalid author ID.' ) );
 			}
@@ -5306,17 +7364,34 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		$post_title   = isset( $content_struct['title'] ) ? $content_struct['title'] : null;
+=======
+			if ( ! $author )
+				return new IXR_Error( 404, __( 'Invalid author ID.' ) );
+			$post_author = $content_struct['wp_author_id'];
+		}
+
+		$post_title = isset( $content_struct['title'] ) ? $content_struct['title'] : null;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$post_content = isset( $content_struct['description'] ) ? $content_struct['description'] : null;
 
 		$post_status = $publish ? 'publish' : 'draft';
 
+<<<<<<< HEAD
 		if ( isset( $content_struct[ "{$post_type}_status" ] ) ) {
 			switch ( $content_struct[ "{$post_type}_status" ] ) {
+=======
+		if ( isset( $content_struct["{$post_type}_status"] ) ) {
+			switch ( $content_struct["{$post_type}_status"] ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				case 'draft':
 				case 'pending':
 				case 'private':
 				case 'publish':
+<<<<<<< HEAD
 					$post_status = $content_struct[ "{$post_type}_status" ];
+=======
+					$post_status = $content_struct["{$post_type}_status"];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					break;
 				default:
 					$post_status = $publish ? 'publish' : 'draft';
@@ -5324,6 +7399,7 @@ class wp_xmlrpc_server extends IXR_Server {
 			}
 		}
 
+<<<<<<< HEAD
 		$post_excerpt = isset( $content_struct['mt_excerpt'] ) ? $content_struct['mt_excerpt'] : null;
 		$post_more    = isset( $content_struct['mt_text_more'] ) ? $content_struct['mt_text_more'] : null;
 
@@ -5331,6 +7407,15 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		if ( isset( $content_struct['mt_allow_comments'] ) ) {
 			if ( ! is_numeric( $content_struct['mt_allow_comments'] ) ) {
+=======
+		$post_excerpt = isset($content_struct['mt_excerpt']) ? $content_struct['mt_excerpt'] : null;
+		$post_more = isset($content_struct['mt_text_more']) ? $content_struct['mt_text_more'] : null;
+
+		$tags_input = isset($content_struct['mt_keywords']) ? $content_struct['mt_keywords'] : null;
+
+		if ( isset($content_struct['mt_allow_comments']) ) {
+			if ( !is_numeric($content_struct['mt_allow_comments']) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				switch ( $content_struct['mt_allow_comments'] ) {
 					case 'closed':
 						$comment_status = 'closed';
@@ -5360,8 +7445,13 @@ class wp_xmlrpc_server extends IXR_Server {
 			$comment_status = get_default_comment_status( $post_type );
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['mt_allow_pings'] ) ) {
 			if ( ! is_numeric( $content_struct['mt_allow_pings'] ) ) {
+=======
+		if ( isset($content_struct['mt_allow_pings']) ) {
+			if ( !is_numeric($content_struct['mt_allow_pings']) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				switch ( $content_struct['mt_allow_pings'] ) {
 					case 'closed':
 						$ping_status = 'closed';
@@ -5390,13 +7480,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			$ping_status = get_default_comment_status( $post_type, 'pingback' );
 		}
 
+<<<<<<< HEAD
 		if ( $post_more ) {
 			$post_content = $post_content . '<!--more-->' . $post_more;
 		}
+=======
+		if ( $post_more )
+			$post_content = $post_content . '<!--more-->' . $post_more;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$to_ping = null;
 		if ( isset( $content_struct['mt_tb_ping_urls'] ) ) {
 			$to_ping = $content_struct['mt_tb_ping_urls'];
+<<<<<<< HEAD
 			if ( is_array( $to_ping ) ) {
 				$to_ping = implode( ' ', $to_ping );
 			}
@@ -5415,6 +7511,24 @@ class wp_xmlrpc_server extends IXR_Server {
 			$post_date_gmt = iso8601_to_datetime( $dateCreated, 'GMT' );
 		} else {
 			$post_date     = '';
+=======
+			if ( is_array($to_ping) )
+				$to_ping = implode(' ', $to_ping);
+		}
+
+		// Do some timestamp voodoo
+		if ( !empty( $content_struct['date_created_gmt'] ) )
+			// We know this is supposed to be GMT, so we're going to slap that Z on there by force
+			$dateCreated = rtrim( $content_struct['date_created_gmt']->getIso(), 'Z' ) . 'Z';
+		elseif ( !empty( $content_struct['dateCreated']) )
+			$dateCreated = $content_struct['dateCreated']->getIso();
+
+		if ( !empty( $dateCreated ) ) {
+			$post_date = get_date_from_gmt(iso8601_to_datetime($dateCreated));
+			$post_date_gmt = iso8601_to_datetime($dateCreated, 'GMT');
+		} else {
+			$post_date = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$post_date_gmt = '';
 		}
 
@@ -5422,27 +7536,44 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $content_struct['categories'] ) ) {
 			$catnames = $content_struct['categories'];
 
+<<<<<<< HEAD
 			if ( is_array( $catnames ) ) {
 				foreach ( $catnames as $cat ) {
 					$post_category[] = get_cat_ID( $cat );
+=======
+			if ( is_array($catnames) ) {
+				foreach ($catnames as $cat) {
+					$post_category[] = get_cat_ID($cat);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		}
 
+<<<<<<< HEAD
 		$postdata = compact( 'post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_title', 'post_category', 'post_status', 'post_excerpt', 'comment_status', 'ping_status', 'to_ping', 'post_type', 'post_name', 'post_password', 'post_parent', 'menu_order', 'tags_input', 'page_template' );
+=======
+		$postdata = compact('post_author', 'post_date', 'post_date_gmt', 'post_content', 'post_title', 'post_category', 'post_status', 'post_excerpt', 'comment_status', 'ping_status', 'to_ping', 'post_type', 'post_name', 'post_password', 'post_parent', 'menu_order', 'tags_input', 'page_template');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$post_ID = $postdata['ID'] = get_default_post_to_edit( $post_type, true )->ID;
 
 		// Only posts can be sticky
 		if ( $post_type == 'post' && isset( $content_struct['sticky'] ) ) {
+<<<<<<< HEAD
 			$data           = $postdata;
 			$data['sticky'] = $content_struct['sticky'];
 			$error          = $this->_toggle_sticky( $data );
+=======
+			$data = $postdata;
+			$data['sticky'] = $content_struct['sticky'];
+			$error = $this->_toggle_sticky( $data );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( $error ) {
 				return $error;
 			}
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['custom_fields'] ) ) {
 			$this->set_custom_fields( $post_ID, $content_struct['custom_fields'] );
 		}
@@ -5451,18 +7582,32 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( set_post_thumbnail( $post_ID, $content_struct['wp_post_thumbnail'] ) === false ) {
 				return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
 			}
+=======
+		if ( isset($content_struct['custom_fields']) )
+			$this->set_custom_fields($post_ID, $content_struct['custom_fields']);
+
+		if ( isset ( $content_struct['wp_post_thumbnail'] ) ) {
+			if ( set_post_thumbnail( $post_ID, $content_struct['wp_post_thumbnail'] ) === false )
+				return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			unset( $content_struct['wp_post_thumbnail'] );
 		}
 
 		// Handle enclosures
+<<<<<<< HEAD
 		$thisEnclosure = isset( $content_struct['enclosure'] ) ? $content_struct['enclosure'] : null;
 		$this->add_enclosure_if_new( $post_ID, $thisEnclosure );
+=======
+		$thisEnclosure = isset($content_struct['enclosure']) ? $content_struct['enclosure'] : null;
+		$this->add_enclosure_if_new($post_ID, $thisEnclosure);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->attach_uploads( $post_ID, $post_content );
 
 		// Handle post formats if assigned, value is validated earlier
 		// in this function
+<<<<<<< HEAD
 		if ( isset( $content_struct['wp_post_format'] ) ) {
 			set_post_format( $post_ID, $content_struct['wp_post_format'] );
 		}
@@ -5475,6 +7620,17 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $post_ID ) {
 			return new IXR_Error( 500, __( 'Sorry, your entry could not be posted.' ) );
 		}
+=======
+		if ( isset( $content_struct['wp_post_format'] ) )
+			set_post_format( $post_ID, $content_struct['wp_post_format'] );
+
+		$post_ID = wp_insert_post( $postdata, true );
+		if ( is_wp_error( $post_ID ) )
+			return new IXR_Error(500, $post_ID->get_error_message());
+
+		if ( !$post_ID )
+			return new IXR_Error(500, __('Sorry, your entry could not be posted.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires after a new post has been successfully created via the XML-RPC MovableType API.
@@ -5486,7 +7642,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		 */
 		do_action( 'xmlrpc_call_success_mw_newPost', $post_ID, $args );
 
+<<<<<<< HEAD
 		return strval( $post_ID );
+=======
+		return strval($post_ID);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -5500,7 +7660,11 @@ class wp_xmlrpc_server extends IXR_Server {
 	public function add_enclosure_if_new( $post_ID, $enclosure ) {
 		if ( is_array( $enclosure ) && isset( $enclosure['url'] ) && isset( $enclosure['length'] ) && isset( $enclosure['type'] ) ) {
 			$encstring = $enclosure['url'] . "\n" . $enclosure['length'] . "\n" . $enclosure['type'] . "\n";
+<<<<<<< HEAD
 			$found     = false;
+=======
+			$found = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( $enclosures = get_post_meta( $post_ID, 'enclosure' ) ) {
 				foreach ( $enclosures as $enc ) {
 					// This method used to omit the trailing new line. #23219
@@ -5510,9 +7674,14 @@ class wp_xmlrpc_server extends IXR_Server {
 					}
 				}
 			}
+<<<<<<< HEAD
 			if ( ! $found ) {
 				add_post_meta( $post_ID, 'enclosure', $encstring );
 			}
+=======
+			if ( ! $found )
+				add_post_meta( $post_ID, 'enclosure', $encstring );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -5533,9 +7702,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$attachments = $wpdb->get_results( "SELECT ID, guid FROM {$wpdb->posts} WHERE post_parent = '0' AND post_type = 'attachment'" );
 		if ( is_array( $attachments ) ) {
 			foreach ( $attachments as $file ) {
+<<<<<<< HEAD
 				if ( ! empty( $file->guid ) && strpos( $post_content, $file->guid ) !== false ) {
 					$wpdb->update( $wpdb->posts, array( 'post_parent' => $post_ID ), array( 'ID' => $file->ID ) );
 				}
+=======
+				if ( ! empty( $file->guid ) && strpos( $post_content, $file->guid ) !== false )
+					$wpdb->update($wpdb->posts, array('post_parent' => $post_ID), array('ID' => $file->ID) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 	}
@@ -5565,9 +7739,14 @@ class wp_xmlrpc_server extends IXR_Server {
 		$content_struct = $args[3];
 		$publish        = isset( $args[4] ) ? $args[4] : 0;
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( ! $user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'metaWeblog.editPost' );
@@ -5578,6 +7757,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		 * If there is no post data for the give post id, stop now and return an error.
 		 * Otherwise a new post will be created (which was the old behavior).
 		 */
+<<<<<<< HEAD
 		if ( ! $postdata || empty( $postdata['ID'] ) ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
 		}
@@ -5595,15 +7775,35 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! empty( $content_struct['post_type'] ) && ( $content_struct['post_type'] != $postdata['post_type'] ) ) {
 			return new IXR_Error( 401, __( 'The post type may not be changed.' ) );
 		}
+=======
+		if ( ! $postdata || empty( $postdata[ 'ID' ] ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( ! current_user_can( 'edit_post', $post_ID ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+
+		// Use wp.editPost to edit post types other than post and page.
+		if ( ! in_array( $postdata[ 'post_type' ], array( 'post', 'page' ) ) )
+			return new IXR_Error( 401, __( 'Invalid post type.' ) );
+
+		// Thwart attempt to change the post type.
+		if ( ! empty( $content_struct[ 'post_type' ] ) && ( $content_struct['post_type'] != $postdata[ 'post_type' ] ) )
+			return new IXR_Error( 401, __( 'The post type may not be changed.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Check for a valid post format if one was given
 		if ( isset( $content_struct['wp_post_format'] ) ) {
 			$content_struct['wp_post_format'] = sanitize_key( $content_struct['wp_post_format'] );
+<<<<<<< HEAD
 			if ( ! array_key_exists( $content_struct['wp_post_format'], get_post_format_strings() ) ) {
+=======
+			if ( !array_key_exists( $content_struct['wp_post_format'], get_post_format_strings() ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				return new IXR_Error( 404, __( 'Invalid post format.' ) );
 			}
 		}
 
+<<<<<<< HEAD
 		$this->escape( $postdata );
 
 		$ID             = $postdata['ID'];
@@ -5642,6 +7842,41 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! empty( $content_struct['wp_page_template'] ) && 'page' == $post_type ) {
 			$page_template = $content_struct['wp_page_template'];
 		}
+=======
+		$this->escape($postdata);
+
+ 		$ID             = $postdata['ID'];
+ 		$post_content   = $postdata['post_content'];
+ 		$post_title     = $postdata['post_title'];
+ 		$post_excerpt   = $postdata['post_excerpt'];
+ 		$post_password  = $postdata['post_password'];
+ 		$post_parent    = $postdata['post_parent'];
+ 		$post_type      = $postdata['post_type'];
+ 		$menu_order     = $postdata['menu_order'];
+ 		$ping_status    = $postdata['ping_status'];
+ 		$comment_status = $postdata['comment_status'];
+
+		// Let WordPress manage slug if none was provided.
+		$post_name = $postdata['post_name'];
+		if ( isset($content_struct['wp_slug']) )
+			$post_name = $content_struct['wp_slug'];
+
+		// Only use a password if one was given.
+		if ( isset($content_struct['wp_password']) )
+			$post_password = $content_struct['wp_password'];
+
+		// Only set a post parent if one was given.
+		if ( isset($content_struct['wp_page_parent_id']) )
+			$post_parent = $content_struct['wp_page_parent_id'];
+
+		// Only set the menu_order if it was given.
+		if ( isset($content_struct['wp_page_order']) )
+			$menu_order = $content_struct['wp_page_order'];
+
+		$page_template = null;
+		if ( ! empty( $content_struct['wp_page_template'] ) && 'page' == $post_type )
+			$page_template = $content_struct['wp_page_template'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$post_author = $postdata['post_author'];
 
@@ -5667,8 +7902,13 @@ class wp_xmlrpc_server extends IXR_Server {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['mt_allow_comments'] ) ) {
 			if ( ! is_numeric( $content_struct['mt_allow_comments'] ) ) {
+=======
+		if ( isset($content_struct['mt_allow_comments']) ) {
+			if ( !is_numeric($content_struct['mt_allow_comments']) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				switch ( $content_struct['mt_allow_comments'] ) {
 					case 'closed':
 						$comment_status = 'closed';
@@ -5696,8 +7936,13 @@ class wp_xmlrpc_server extends IXR_Server {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['mt_allow_pings'] ) ) {
 			if ( ! is_numeric( $content_struct['mt_allow_pings'] ) ) {
+=======
+		if ( isset($content_struct['mt_allow_pings']) ) {
+			if ( !is_numeric($content_struct['mt_allow_pings']) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				switch ( $content_struct['mt_allow_pings'] ) {
 					case 'closed':
 						$ping_status = 'closed';
@@ -5710,7 +7955,11 @@ class wp_xmlrpc_server extends IXR_Server {
 						break;
 				}
 			} else {
+<<<<<<< HEAD
 				switch ( (int) $content_struct['mt_allow_pings'] ) {
+=======
+				switch ( (int) $content_struct["mt_allow_pings"] ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					case 0:
 						$ping_status = 'closed';
 						break;
@@ -5724,6 +7973,7 @@ class wp_xmlrpc_server extends IXR_Server {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['title'] ) ) {
 			$post_title = $content_struct['title'];
 		}
@@ -5731,31 +7981,58 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( isset( $content_struct['description'] ) ) {
 			$post_content = $content_struct['description'];
 		}
+=======
+		if ( isset( $content_struct['title'] ) )
+			$post_title =  $content_struct['title'];
+
+		if ( isset( $content_struct['description'] ) )
+			$post_content = $content_struct['description'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$post_category = array();
 		if ( isset( $content_struct['categories'] ) ) {
 			$catnames = $content_struct['categories'];
+<<<<<<< HEAD
 			if ( is_array( $catnames ) ) {
 				foreach ( $catnames as $cat ) {
 					$post_category[] = get_cat_ID( $cat );
+=======
+			if ( is_array($catnames) ) {
+				foreach ($catnames as $cat) {
+					$post_category[] = get_cat_ID($cat);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['mt_excerpt'] ) ) {
 			$post_excerpt = $content_struct['mt_excerpt'];
 		}
+=======
+		if ( isset( $content_struct['mt_excerpt'] ) )
+			$post_excerpt =  $content_struct['mt_excerpt'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$post_more = isset( $content_struct['mt_text_more'] ) ? $content_struct['mt_text_more'] : null;
 
 		$post_status = $publish ? 'publish' : 'draft';
+<<<<<<< HEAD
 		if ( isset( $content_struct[ "{$post_type}_status" ] ) ) {
 			switch ( $content_struct[ "{$post_type}_status" ] ) {
+=======
+		if ( isset( $content_struct["{$post_type}_status"] ) ) {
+			switch( $content_struct["{$post_type}_status"] ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				case 'draft':
 				case 'pending':
 				case 'private':
 				case 'publish':
+<<<<<<< HEAD
 					$post_status = $content_struct[ "{$post_type}_status" ];
+=======
+					$post_status = $content_struct["{$post_type}_status"];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					break;
 				default:
 					$post_status = $publish ? 'publish' : 'draft';
@@ -5773,13 +8050,19 @@ class wp_xmlrpc_server extends IXR_Server {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( $post_more ) {
 			$post_content = $post_content . '<!--more-->' . $post_more;
 		}
+=======
+		if ( $post_more )
+			$post_content = $post_content . "<!--more-->" . $post_more;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$to_ping = null;
 		if ( isset( $content_struct['mt_tb_ping_urls'] ) ) {
 			$to_ping = $content_struct['mt_tb_ping_urls'];
+<<<<<<< HEAD
 			if ( is_array( $to_ping ) ) {
 				$to_ping = implode( ' ', $to_ping );
 			}
@@ -5792,13 +8075,31 @@ class wp_xmlrpc_server extends IXR_Server {
 		} elseif ( ! empty( $content_struct['dateCreated'] ) ) {
 			$dateCreated = $content_struct['dateCreated']->getIso();
 		}
+=======
+			if ( is_array($to_ping) )
+				$to_ping = implode(' ', $to_ping);
+		}
+
+		// Do some timestamp voodoo.
+		if ( !empty( $content_struct['date_created_gmt'] ) )
+			// We know this is supposed to be GMT, so we're going to slap that Z on there by force.
+			$dateCreated = rtrim( $content_struct['date_created_gmt']->getIso(), 'Z' ) . 'Z';
+		elseif ( !empty( $content_struct['dateCreated']) )
+			$dateCreated = $content_struct['dateCreated']->getIso();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Default to not flagging the post date to be edited unless it's intentional.
 		$edit_date = false;
 
+<<<<<<< HEAD
 		if ( ! empty( $dateCreated ) ) {
 			$post_date     = get_date_from_gmt( iso8601_to_datetime( $dateCreated ) );
 			$post_date_gmt = iso8601_to_datetime( $dateCreated, 'GMT' );
+=======
+		if ( !empty( $dateCreated ) ) {
+			$post_date = get_date_from_gmt(iso8601_to_datetime($dateCreated));
+			$post_date_gmt = iso8601_to_datetime($dateCreated, 'GMT');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			// Flag the post date to be edited.
 			$edit_date = true;
@@ -5808,6 +8109,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		}
 
 		// We've got all the data -- post it.
+<<<<<<< HEAD
 		$newpost = compact( 'ID', 'post_content', 'post_title', 'post_category', 'post_status', 'post_excerpt', 'comment_status', 'ping_status', 'edit_date', 'post_date', 'post_date_gmt', 'to_ping', 'post_name', 'post_password', 'post_parent', 'menu_order', 'post_author', 'tags_input', 'page_template' );
 
 		$result = wp_update_post( $newpost, true );
@@ -5825,38 +8127,77 @@ class wp_xmlrpc_server extends IXR_Server {
 			$data['sticky']    = $content_struct['sticky'];
 			$data['post_type'] = 'post';
 			$error             = $this->_toggle_sticky( $data, true );
+=======
+		$newpost = compact('ID', 'post_content', 'post_title', 'post_category', 'post_status', 'post_excerpt', 'comment_status', 'ping_status', 'edit_date', 'post_date', 'post_date_gmt', 'to_ping', 'post_name', 'post_password', 'post_parent', 'menu_order', 'post_author', 'tags_input', 'page_template');
+
+		$result = wp_update_post($newpost, true);
+		if ( is_wp_error( $result ) )
+			return new IXR_Error(500, $result->get_error_message());
+
+		if ( !$result )
+			return new IXR_Error(500, __('Sorry, your entry could not be edited.'));
+
+		// Only posts can be sticky
+		if ( $post_type == 'post' && isset( $content_struct['sticky'] ) ) {
+			$data = $newpost;
+			$data['sticky'] = $content_struct['sticky'];
+			$data['post_type'] = 'post';
+			$error = $this->_toggle_sticky( $data, true );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( $error ) {
 				return $error;
 			}
 		}
 
+<<<<<<< HEAD
 		if ( isset( $content_struct['custom_fields'] ) ) {
 			$this->set_custom_fields( $post_ID, $content_struct['custom_fields'] );
 		}
 
 		if ( isset( $content_struct['wp_post_thumbnail'] ) ) {
+=======
+		if ( isset($content_struct['custom_fields']) )
+			$this->set_custom_fields($post_ID, $content_struct['custom_fields']);
+
+		if ( isset ( $content_struct['wp_post_thumbnail'] ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			// Empty value deletes, non-empty value adds/updates.
 			if ( empty( $content_struct['wp_post_thumbnail'] ) ) {
 				delete_post_thumbnail( $post_ID );
 			} else {
+<<<<<<< HEAD
 				if ( set_post_thumbnail( $post_ID, $content_struct['wp_post_thumbnail'] ) === false ) {
 					return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
 				}
+=======
+				if ( set_post_thumbnail( $post_ID, $content_struct['wp_post_thumbnail'] ) === false )
+					return new IXR_Error( 404, __( 'Invalid attachment ID.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 			unset( $content_struct['wp_post_thumbnail'] );
 		}
 
 		// Handle enclosures.
+<<<<<<< HEAD
 		$thisEnclosure = isset( $content_struct['enclosure'] ) ? $content_struct['enclosure'] : null;
 		$this->add_enclosure_if_new( $post_ID, $thisEnclosure );
+=======
+		$thisEnclosure = isset($content_struct['enclosure']) ? $content_struct['enclosure'] : null;
+		$this->add_enclosure_if_new($post_ID, $thisEnclosure);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->attach_uploads( $ID, $post_content );
 
 		// Handle post formats if assigned, validation is handled earlier in this function.
+<<<<<<< HEAD
 		if ( isset( $content_struct['wp_post_format'] ) ) {
 			set_post_format( $post_ID, $content_struct['wp_post_format'] );
 		}
+=======
+		if ( isset( $content_struct['wp_post_format'] ) )
+			set_post_format( $post_ID, $content_struct['wp_post_format'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires after a post has been successfully updated via the XML-RPC MovableType API.
@@ -5893,6 +8234,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -5905,10 +8247,22 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		$postdata = get_post($post_ID, ARRAY_A);
+		if ( ! $postdata )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( !current_user_can( 'edit_post', $post_ID ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'metaWeblog.getPost' );
 
+<<<<<<< HEAD
 		if ( $postdata['post_date'] != '' ) {
 			$post_date         = $this->_convert_date( $postdata['post_date'] );
 			$post_date_gmt     = $this->_convert_date_gmt( $postdata['post_date_gmt'], $postdata['post_date'] );
@@ -5927,11 +8281,30 @@ class wp_xmlrpc_server extends IXR_Server {
 				foreach ( $tags as $tag ) {
 					$tagnames[] = $tag->name;
 				}
+=======
+		if ($postdata['post_date'] != '') {
+			$post_date = $this->_convert_date( $postdata['post_date'] );
+			$post_date_gmt = $this->_convert_date_gmt( $postdata['post_date_gmt'],  $postdata['post_date'] );
+			$post_modified = $this->_convert_date( $postdata['post_modified'] );
+			$post_modified_gmt = $this->_convert_date_gmt( $postdata['post_modified_gmt'], $postdata['post_modified'] );
+
+			$categories = array();
+			$catids = wp_get_post_categories($post_ID);
+			foreach ($catids as $catid)
+				$categories[] = get_cat_name($catid);
+
+			$tagnames = array();
+			$tags = wp_get_post_tags( $post_ID );
+			if ( !empty( $tags ) ) {
+				foreach ( $tags as $tag )
+					$tagnames[] = $tag->name;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$tagnames = implode( ', ', $tagnames );
 			} else {
 				$tagnames = '';
 			}
 
+<<<<<<< HEAD
 			$post = get_extended( $postdata['post_content'] );
 			$link = get_permalink( $postdata['ID'] );
 
@@ -5965,12 +8338,45 @@ class wp_xmlrpc_server extends IXR_Server {
 						$enclosure['url']    = trim( htmlspecialchars( $encdata[0] ) );
 						$enclosure['length'] = (int) trim( $encdata[1] );
 						$enclosure['type']   = trim( $encdata[2] );
+=======
+			$post = get_extended($postdata['post_content']);
+			$link = get_permalink($postdata['ID']);
+
+			// Get the author info.
+			$author = get_userdata($postdata['post_author']);
+
+			$allow_comments = ('open' == $postdata['comment_status']) ? 1 : 0;
+			$allow_pings = ('open' == $postdata['ping_status']) ? 1 : 0;
+
+			// Consider future posts as published
+			if ( $postdata['post_status'] === 'future' )
+				$postdata['post_status'] = 'publish';
+
+			// Get post format
+			$post_format = get_post_format( $post_ID );
+			if ( empty( $post_format ) )
+				$post_format = 'standard';
+
+			$sticky = false;
+			if ( is_sticky( $post_ID ) )
+				$sticky = true;
+
+			$enclosure = array();
+			foreach ( (array) get_post_custom($post_ID) as $key => $val) {
+				if ($key == 'enclosure') {
+					foreach ( (array) $val as $enc ) {
+						$encdata = explode("\n", $enc);
+						$enclosure['url'] = trim(htmlspecialchars($encdata[0]));
+						$enclosure['length'] = (int) trim($encdata[1]);
+						$enclosure['type'] = trim($encdata[2]);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						break 2;
 					}
 				}
 			}
 
 			$resp = array(
+<<<<<<< HEAD
 				'dateCreated'            => $post_date,
 				'userid'                 => $postdata['post_author'],
 				'postid'                 => $postdata['ID'],
@@ -6003,12 +8409,48 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( ! empty( $enclosure ) ) {
 				$resp['enclosure'] = $enclosure;
 			}
+=======
+				'dateCreated' => $post_date,
+				'userid' => $postdata['post_author'],
+				'postid' => $postdata['ID'],
+				'description' => $post['main'],
+				'title' => $postdata['post_title'],
+				'link' => $link,
+				'permaLink' => $link,
+				// commented out because no other tool seems to use this
+				//	      'content' => $entry['post_content'],
+				'categories' => $categories,
+				'mt_excerpt' => $postdata['post_excerpt'],
+				'mt_text_more' => $post['extended'],
+				'wp_more_text' => $post['more_text'],
+				'mt_allow_comments' => $allow_comments,
+				'mt_allow_pings' => $allow_pings,
+				'mt_keywords' => $tagnames,
+				'wp_slug' => $postdata['post_name'],
+				'wp_password' => $postdata['post_password'],
+				'wp_author_id' => (string) $author->ID,
+				'wp_author_display_name' => $author->display_name,
+				'date_created_gmt' => $post_date_gmt,
+				'post_status' => $postdata['post_status'],
+				'custom_fields' => $this->get_custom_fields($post_ID),
+				'wp_post_format' => $post_format,
+				'sticky' => $sticky,
+				'date_modified' => $post_modified,
+				'date_modified_gmt' => $post_modified_gmt
+			);
+
+			if ( !empty($enclosure) ) $resp['enclosure'] = $enclosure;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$resp['wp_post_thumbnail'] = get_post_thumbnail_id( $postdata['ID'] );
 
 			return $resp;
 		} else {
+<<<<<<< HEAD
 			return new IXR_Error( 404, __( 'Sorry, no such post.' ) );
+=======
+			return new IXR_Error(404, __('Sorry, no such post.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -6032,6 +8474,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$username = $args[1];
 		$password = $args[2];
+<<<<<<< HEAD
 		if ( isset( $args[3] ) ) {
 			$query = array( 'numberposts' => absint( $args[3] ) );
 		} else {
@@ -6045,12 +8488,25 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts.' ) );
 		}
+=======
+		if ( isset( $args[3] ) )
+			$query = array( 'numberposts' => absint( $args[3] ) );
+		else
+			$query = array();
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( ! current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit posts.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'metaWeblog.getRecentPosts' );
 
 		$posts_list = wp_get_recent_posts( $query );
 
+<<<<<<< HEAD
 		if ( ! $posts_list ) {
 			return array();
 		}
@@ -6075,6 +8531,29 @@ class wp_xmlrpc_server extends IXR_Server {
 			$tagnames = array();
 			$tags     = wp_get_post_tags( $entry['ID'] );
 			if ( ! empty( $tags ) ) {
+=======
+		if ( !$posts_list )
+			return array();
+
+		$recent_posts = array();
+		foreach ($posts_list as $entry) {
+			if ( !current_user_can( 'edit_post', $entry['ID'] ) )
+				continue;
+
+			$post_date = $this->_convert_date( $entry['post_date'] );
+			$post_date_gmt = $this->_convert_date_gmt( $entry['post_date_gmt'], $entry['post_date'] );
+			$post_modified = $this->_convert_date( $entry['post_modified'] );
+			$post_modified_gmt = $this->_convert_date_gmt( $entry['post_modified_gmt'], $entry['post_modified'] );
+
+			$categories = array();
+			$catids = wp_get_post_categories($entry['ID']);
+			foreach ( $catids as $catid )
+				$categories[] = get_cat_name($catid);
+
+			$tagnames = array();
+			$tags = wp_get_post_tags( $entry['ID'] );
+			if ( !empty( $tags ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				foreach ( $tags as $tag ) {
 					$tagnames[] = $tag->name;
 				}
@@ -6083,6 +8562,7 @@ class wp_xmlrpc_server extends IXR_Server {
 				$tagnames = '';
 			}
 
+<<<<<<< HEAD
 			$post = get_extended( $entry['post_content'] );
 			$link = get_permalink( $entry['ID'] );
 
@@ -6132,6 +8612,55 @@ class wp_xmlrpc_server extends IXR_Server {
 				'date_modified_gmt'      => $post_modified_gmt,
 				'sticky'                 => ( $entry['post_type'] === 'post' && is_sticky( $entry['ID'] ) ),
 				'wp_post_thumbnail'      => get_post_thumbnail_id( $entry['ID'] ),
+=======
+			$post = get_extended($entry['post_content']);
+			$link = get_permalink($entry['ID']);
+
+			// Get the post author info.
+			$author = get_userdata($entry['post_author']);
+
+			$allow_comments = ('open' == $entry['comment_status']) ? 1 : 0;
+			$allow_pings = ('open' == $entry['ping_status']) ? 1 : 0;
+
+			// Consider future posts as published
+			if ( $entry['post_status'] === 'future' )
+				$entry['post_status'] = 'publish';
+
+			// Get post format
+			$post_format = get_post_format( $entry['ID'] );
+			if ( empty( $post_format ) )
+				$post_format = 'standard';
+
+			$recent_posts[] = array(
+				'dateCreated' => $post_date,
+				'userid' => $entry['post_author'],
+				'postid' => (string) $entry['ID'],
+				'description' => $post['main'],
+				'title' => $entry['post_title'],
+				'link' => $link,
+				'permaLink' => $link,
+				// commented out because no other tool seems to use this
+				// 'content' => $entry['post_content'],
+				'categories' => $categories,
+				'mt_excerpt' => $entry['post_excerpt'],
+				'mt_text_more' => $post['extended'],
+				'wp_more_text' => $post['more_text'],
+				'mt_allow_comments' => $allow_comments,
+				'mt_allow_pings' => $allow_pings,
+				'mt_keywords' => $tagnames,
+				'wp_slug' => $entry['post_name'],
+				'wp_password' => $entry['post_password'],
+				'wp_author_id' => (string) $author->ID,
+				'wp_author_display_name' => $author->display_name,
+				'date_created_gmt' => $post_date_gmt,
+				'post_status' => $entry['post_status'],
+				'custom_fields' => $this->get_custom_fields($entry['ID']),
+				'wp_post_format' => $post_format,
+				'date_modified' => $post_modified,
+				'date_modified_gmt' => $post_modified_gmt,
+				'sticky' => ( $entry['post_type'] === 'post' && is_sticky( $entry['ID'] ) ),
+				'wp_post_thumbnail' => get_post_thumbnail_id( $entry['ID'] )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -6158,6 +8687,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -6165,12 +8695,20 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view categories.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view categories.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'metaWeblog.getCategories' );
 
 		$categories_struct = array();
 
+<<<<<<< HEAD
 		if ( $cats = get_categories( array( 'get' => 'all' ) ) ) {
 			foreach ( $cats as $cat ) {
 				$struct                        = array();
@@ -6181,6 +8719,18 @@ class wp_xmlrpc_server extends IXR_Server {
 				$struct['categoryName']        = $cat->name;
 				$struct['htmlUrl']             = esc_html( get_category_link( $cat->term_id ) );
 				$struct['rssUrl']              = esc_html( get_category_feed_link( $cat->term_id, 'rss2' ) );
+=======
+		if ( $cats = get_categories(array('get' => 'all')) ) {
+			foreach ( $cats as $cat ) {
+				$struct = array();
+				$struct['categoryId'] = $cat->term_id;
+				$struct['parentId'] = $cat->parent;
+				$struct['description'] = $cat->name;
+				$struct['categoryDescription'] = $cat->description;
+				$struct['categoryName'] = $cat->name;
+				$struct['htmlUrl'] = esc_html(get_category_link($cat->term_id));
+				$struct['rssUrl'] = esc_html(get_category_feed_link($cat->term_id, 'rss2'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				$categories_struct[] = $struct;
 			}
@@ -6221,14 +8771,23 @@ class wp_xmlrpc_server extends IXR_Server {
 		$type = $data['type'];
 		$bits = $data['bits'];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'metaWeblog.newMediaObject' );
 
+<<<<<<< HEAD
 		if ( ! current_user_can( 'upload_files' ) ) {
+=======
+		if ( !current_user_can('upload_files') ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->error = new IXR_Error( 401, __( 'Sorry, you are not allowed to upload files.' ) );
 			return $this->error;
 		}
@@ -6252,8 +8811,13 @@ class wp_xmlrpc_server extends IXR_Server {
 			return new IXR_Error( 500, $upload_err );
 		}
 
+<<<<<<< HEAD
 		$upload = wp_upload_bits( $name, null, $bits );
 		if ( ! empty( $upload['error'] ) ) {
+=======
+		$upload = wp_upload_bits($name, null, $bits);
+		if ( ! empty($upload['error']) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			/* translators: 1: file name, 2: error message */
 			$errorString = sprintf( __( 'Could not write file %1$s (%2$s).' ), $name, $upload['error'] );
 			return new IXR_Error( 500, $errorString );
@@ -6263,6 +8827,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! empty( $data['post_id'] ) ) {
 			$post_id = (int) $data['post_id'];
 
+<<<<<<< HEAD
 			if ( ! current_user_can( 'edit_post', $post_id ) ) {
 				return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
 			}
@@ -6278,6 +8843,22 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		// Save the data
 		$id = wp_insert_attachment( $attachment, $upload['file'], $post_id );
+=======
+			if ( ! current_user_can( 'edit_post', $post_id ) )
+				return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+		}
+		$attachment = array(
+			'post_title' => $name,
+			'post_content' => '',
+			'post_type' => 'attachment',
+			'post_parent' => $post_id,
+			'post_mime_type' => $type,
+			'guid' => $upload[ 'url' ]
+		);
+
+		// Save the data
+		$id = wp_insert_attachment( $attachment, $upload[ 'file' ], $post_id );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wp_update_attachment_metadata( $id, wp_generate_attachment_metadata( $id, $upload['file'] ) );
 
 		/**
@@ -6324,6 +8905,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$username = $args[1];
 		$password = $args[2];
+<<<<<<< HEAD
 		if ( isset( $args[3] ) ) {
 			$query = array( 'numberposts' => absint( $args[3] ) );
 		} else {
@@ -6333,19 +8915,34 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( isset( $args[3] ) )
+			$query = array( 'numberposts' => absint( $args[3] ) );
+		else
+			$query = array();
+
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'mt.getRecentPostTitles' );
 
 		$posts_list = wp_get_recent_posts( $query );
 
+<<<<<<< HEAD
 		if ( ! $posts_list ) {
 			$this->error = new IXR_Error( 500, __( 'Either there are no posts, or something went wrong.' ) );
+=======
+		if ( !$posts_list ) {
+			$this->error = new IXR_Error(500, __('Either there are no posts, or something went wrong.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return $this->error;
 		}
 
 		$recent_posts = array();
 
+<<<<<<< HEAD
 		foreach ( $posts_list as $entry ) {
 			if ( ! current_user_can( 'edit_post', $entry['ID'] ) ) {
 				continue;
@@ -6361,6 +8958,22 @@ class wp_xmlrpc_server extends IXR_Server {
 				'title'            => $entry['post_title'],
 				'post_status'      => $entry['post_status'],
 				'date_created_gmt' => $post_date_gmt,
+=======
+		foreach ($posts_list as $entry) {
+			if ( !current_user_can( 'edit_post', $entry['ID'] ) )
+				continue;
+
+			$post_date = $this->_convert_date( $entry['post_date'] );
+			$post_date_gmt = $this->_convert_date_gmt( $entry['post_date_gmt'], $entry['post_date'] );
+
+			$recent_posts[] = array(
+				'dateCreated' => $post_date,
+				'userid' => $entry['post_author'],
+				'postid' => (string) $entry['ID'],
+				'title' => $entry['post_title'],
+				'post_status' => $entry['post_status'],
+				'date_created_gmt' => $post_date_gmt
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -6387,6 +9000,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -6394,12 +9008,20 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view categories.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( !current_user_can( 'edit_posts' ) )
+			return new IXR_Error( 401, __( 'Sorry, you must be able to edit posts on this site in order to view categories.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'mt.getCategoryList' );
 
 		$categories_struct = array();
 
+<<<<<<< HEAD
 		if ( $cats = get_categories(
 			array(
 				'hide_empty'   => 0,
@@ -6409,6 +9031,12 @@ class wp_xmlrpc_server extends IXR_Server {
 			foreach ( $cats as $cat ) {
 				$struct                 = array();
 				$struct['categoryId']   = $cat->term_id;
+=======
+		if ( $cats = get_categories(array('hide_empty' => 0, 'hierarchical' => 0)) ) {
+			foreach ( $cats as $cat ) {
+				$struct = array();
+				$struct['categoryId'] = $cat->term_id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$struct['categoryName'] = $cat->name;
 
 				$categories_struct[] = $struct;
@@ -6439,6 +9067,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
@@ -6450,21 +9079,43 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+
+		if ( ! get_post( $post_ID ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( !current_user_can( 'edit_post', $post_ID ) )
+			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'mt.getPostCategories' );
 
 		$categories = array();
+<<<<<<< HEAD
 		$catids     = wp_get_post_categories( intval( $post_ID ) );
+=======
+		$catids = wp_get_post_categories(intval($post_ID));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		// first listed category will be the primary category
 		$isPrimary = true;
 		foreach ( $catids as $catid ) {
 			$categories[] = array(
+<<<<<<< HEAD
 				'categoryName' => get_cat_name( $catid ),
 				'categoryId'   => (string) $catid,
 				'isPrimary'    => $isPrimary,
 			);
 			$isPrimary    = false;
+=======
+				'categoryName' => get_cat_name($catid),
+				'categoryId' => (string) $catid,
+				'isPrimary' => $isPrimary
+			);
+			$isPrimary = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		return $categories;
@@ -6493,13 +9144,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		$password   = $args[2];
 		$categories = $args[3];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'mt.setPostCategories' );
 
+<<<<<<< HEAD
 		if ( ! get_post( $post_ID ) ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
 		}
@@ -6507,13 +9164,24 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'edit_post', $post_ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to edit this post.' ) );
 		}
+=======
+		if ( ! get_post( $post_ID ) )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( !current_user_can('edit_post', $post_ID) )
+			return new IXR_Error(401, __('Sorry, you are not allowed to edit this post.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$catids = array();
 		foreach ( $categories as $cat ) {
 			$catids[] = $cat['categoryId'];
 		}
 
+<<<<<<< HEAD
 		wp_set_post_categories( $post_ID, $catids );
+=======
+		wp_set_post_categories($post_ID, $catids);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return true;
 	}
@@ -6567,6 +9235,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'mt.getTrackbackPings' );
 
+<<<<<<< HEAD
 		$actual_post = get_post( $post_ID, ARRAY_A );
 
 		if ( ! $actual_post ) {
@@ -6578,16 +9247,36 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $comments ) {
 			return array();
 		}
+=======
+		$actual_post = get_post($post_ID, ARRAY_A);
+
+		if ( !$actual_post )
+			return new IXR_Error(404, __('Sorry, no such post.'));
+
+		$comments = $wpdb->get_results( $wpdb->prepare("SELECT comment_author_url, comment_content, comment_author_IP, comment_type FROM $wpdb->comments WHERE comment_post_ID = %d", $post_ID) );
+
+		if ( !$comments )
+			return array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$trackback_pings = array();
 		foreach ( $comments as $comment ) {
 			if ( 'trackback' == $comment->comment_type ) {
+<<<<<<< HEAD
 				$content           = $comment->comment_content;
 				$title             = substr( $content, 8, ( strpos( $content, '</strong>' ) - 8 ) );
 				$trackback_pings[] = array(
 					'pingTitle' => $title,
 					'pingURL'   => $comment->comment_author_url,
 					'pingIP'    => $comment->comment_author_IP,
+=======
+				$content = $comment->comment_content;
+				$title = substr($content, 8, (strpos($content, '</strong>') - 8));
+				$trackback_pings[] = array(
+					'pingTitle' => $title,
+					'pingURL'   => $comment->comment_author_url,
+					'pingIP'    => $comment->comment_author_IP
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				);
 			}
 		}
@@ -6616,13 +9305,19 @@ class wp_xmlrpc_server extends IXR_Server {
 		$username = $args[1];
 		$password = $args[2];
 
+<<<<<<< HEAD
 		if ( ! $user = $this->login( $username, $password ) ) {
 			return $this->error;
 		}
+=======
+		if ( !$user = $this->login($username, $password) )
+			return $this->error;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/** This action is documented in wp-includes/class-wp-xmlrpc-server.php */
 		do_action( 'xmlrpc_call', 'mt.publishPost' );
 
+<<<<<<< HEAD
 		$postdata = get_post( $post_ID, ARRAY_A );
 		if ( ! $postdata ) {
 			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
@@ -6631,13 +9326,27 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! current_user_can( 'publish_posts' ) || ! current_user_can( 'edit_post', $post_ID ) ) {
 			return new IXR_Error( 401, __( 'Sorry, you are not allowed to publish this post.' ) );
 		}
+=======
+		$postdata = get_post($post_ID, ARRAY_A);
+		if ( ! $postdata )
+			return new IXR_Error( 404, __( 'Invalid post ID.' ) );
+
+		if ( !current_user_can('publish_posts') || !current_user_can('edit_post', $post_ID) )
+			return new IXR_Error(401, __('Sorry, you are not allowed to publish this post.'));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$postdata['post_status'] = 'publish';
 
 		// retain old cats
+<<<<<<< HEAD
 		$cats                      = wp_get_post_categories( $post_ID );
 		$postdata['post_category'] = $cats;
 		$this->escape( $postdata );
+=======
+		$cats = wp_get_post_categories($post_ID);
+		$postdata['post_category'] = $cats;
+		$this->escape($postdata);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return wp_update_post( $postdata );
 	}
@@ -6668,8 +9377,13 @@ class wp_xmlrpc_server extends IXR_Server {
 		$this->escape( $args );
 
 		$pagelinkedfrom = str_replace( '&amp;', '&', $args[0] );
+<<<<<<< HEAD
 		$pagelinkedto   = str_replace( '&amp;', '&', $args[1] );
 		$pagelinkedto   = str_replace( '&', '&amp;', $pagelinkedto );
+=======
+		$pagelinkedto = str_replace( '&amp;', '&', $args[1] );
+		$pagelinkedto = str_replace( '&', '&amp;', $pagelinkedto );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters the pingback source URI.
@@ -6681,6 +9395,7 @@ class wp_xmlrpc_server extends IXR_Server {
 		 */
 		$pagelinkedfrom = apply_filters( 'pingback_ping_source_uri', $pagelinkedfrom, $pagelinkedto );
 
+<<<<<<< HEAD
 		if ( ! $pagelinkedfrom ) {
 			return $this->pingback_error( 0, __( 'A valid URL was not provided.' ) );
 		}
@@ -6690,10 +9405,20 @@ class wp_xmlrpc_server extends IXR_Server {
 		if ( ! $pos1 ) {
 			return $this->pingback_error( 0, __( 'Is there no link to us?' ) );
 		}
+=======
+		if ( ! $pagelinkedfrom )
+			return $this->pingback_error( 0, __( 'A valid URL was not provided.' ) );
+
+		// Check if the page linked to is in our site
+		$pos1 = strpos($pagelinkedto, str_replace(array('http://www.','http://','https://www.','https://'), '', get_option('home')));
+		if ( !$pos1 )
+			return $this->pingback_error( 0, __( 'Is there no link to us?' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// let's find which post is linked to
 		// FIXME: does url_to_postid() cover all these cases already?
 		//        if so, then let's use it and drop the old code.
+<<<<<<< HEAD
 		$urltest = parse_url( $pagelinkedto );
 		if ( $post_ID = url_to_postid( $pagelinkedto ) ) {
 			// $way
@@ -6720,10 +9445,39 @@ class wp_xmlrpc_server extends IXR_Server {
 				if ( ! ( $post_ID = $wpdb->get_var( $sql ) ) ) {
 					// returning unknown error '0' is better than die()ing
 					return $this->pingback_error( 0, '' );
+=======
+		$urltest = parse_url($pagelinkedto);
+		if ( $post_ID = url_to_postid($pagelinkedto) ) {
+			// $way
+		} elseif ( isset( $urltest['path'] ) && preg_match('#p/[0-9]{1,}#', $urltest['path'], $match) ) {
+			// the path defines the post_ID (archives/p/XXXX)
+			$blah = explode('/', $match[0]);
+			$post_ID = (int) $blah[1];
+		} elseif ( isset( $urltest['query'] ) && preg_match('#p=[0-9]{1,}#', $urltest['query'], $match) ) {
+			// the querystring defines the post_ID (?p=XXXX)
+			$blah = explode('=', $match[0]);
+			$post_ID = (int) $blah[1];
+		} elseif ( isset($urltest['fragment']) ) {
+			// an #anchor is there, it's either...
+			if ( intval($urltest['fragment']) ) {
+				// ...an integer #XXXX (simplest case)
+				$post_ID = (int) $urltest['fragment'];
+			} elseif ( preg_match('/post-[0-9]+/',$urltest['fragment']) ) {
+				// ...a post id in the form 'post-###'
+				$post_ID = preg_replace('/[^0-9]+/', '', $urltest['fragment']);
+			} elseif ( is_string($urltest['fragment']) ) {
+				// ...or a string #title, a little more complicated
+				$title = preg_replace('/[^a-z0-9]/i', '.', $urltest['fragment']);
+				$sql = $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE post_title RLIKE %s", $title );
+				if (! ($post_ID = $wpdb->get_var($sql)) ) {
+					// returning unknown error '0' is better than die()ing
+			  		return $this->pingback_error( 0, '' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		} else {
 			// TODO: Attempt to extract a post ID from the given URL
+<<<<<<< HEAD
 			return $this->pingback_error( 33, __( 'The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource.' ) );
 		}
 		$post_ID = (int) $post_ID;
@@ -6750,10 +9504,35 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		// very stupid, but gives time to the 'from' server to publish !
 		sleep( 1 );
+=======
+	  		return $this->pingback_error( 33, __('The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource.' ) );
+		}
+		$post_ID = (int) $post_ID;
+
+		$post = get_post($post_ID);
+
+		if ( !$post ) // Post_ID not found
+	  		return $this->pingback_error( 33, __( 'The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource.' ) );
+
+		if ( $post_ID == url_to_postid($pagelinkedfrom) )
+			return $this->pingback_error( 0, __( 'The source URL and the target URL cannot both point to the same resource.' ) );
+
+		// Check if pings are on
+		if ( !pings_open($post) )
+	  		return $this->pingback_error( 33, __( 'The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource.' ) );
+
+		// Let's check that the remote site didn't already pingback this entry
+		if ( $wpdb->get_results( $wpdb->prepare("SELECT * FROM $wpdb->comments WHERE comment_post_ID = %d AND comment_author_url = %s", $post_ID, $pagelinkedfrom) ) )
+			return $this->pingback_error( 48, __( 'The pingback has already been registered.' ) );
+
+		// very stupid, but gives time to the 'from' server to publish !
+		sleep(1);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$remote_ip = preg_replace( '/[^0-9a-fA-F:., ]/', '', $_SERVER['REMOTE_ADDR'] );
 
 		/** This filter is documented in wp-includes/class-http.php */
+<<<<<<< HEAD
 		$user_agent = apply_filters( 'http_headers_useragent', 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ), $url );
 
 		// Let's check the remote site
@@ -6763,11 +9542,26 @@ class wp_xmlrpc_server extends IXR_Server {
 			'limit_response_size' => 153600, // 150 KB
 			'user-agent'          => "$user_agent; verifying pingback from $remote_ip",
 			'headers'             => array(
+=======
+		$user_agent = apply_filters( 'http_headers_useragent', 'WordPress/' . get_bloginfo( 'version' ) . '; ' . get_bloginfo( 'url' ) );
+
+		// Let's check the remote site
+		$http_api_args = array(
+			'timeout' => 10,
+			'redirection' => 0,
+			'limit_response_size' => 153600, // 150 KB
+			'user-agent' => "$user_agent; verifying pingback from $remote_ip",
+			'headers' => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'X-Pingback-Forwarded-For' => $remote_ip,
 			),
 		);
 
+<<<<<<< HEAD
 		$request       = wp_safe_remote_get( $pagelinkedfrom, $http_api_args );
+=======
+		$request = wp_safe_remote_get( $pagelinkedfrom, $http_api_args );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$remote_source = $remote_source_original = wp_remote_retrieve_body( $request );
 
 		if ( ! $remote_source ) {
@@ -6787,7 +9581,11 @@ class wp_xmlrpc_server extends IXR_Server {
 		// Work around bug in strip_tags():
 		$remote_source = str_replace( '<!DOC', '<DOC', $remote_source );
 		$remote_source = preg_replace( '/[\r\n\t ]+/', ' ', $remote_source ); // normalize spaces
+<<<<<<< HEAD
 		$remote_source = preg_replace( '/<\/*(h1|h2|h3|h4|h5|h6|p|th|td|li|dt|dd|pre|caption|input|textarea|button|body)[^>]*>/', "\n\n", $remote_source );
+=======
+		$remote_source = preg_replace( "/<\/*(h1|h2|h3|h4|h5|h6|p|th|td|li|dt|dd|pre|caption|input|textarea|button|body)[^>]*>/", "\n\n", $remote_source );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		preg_match( '|<title>([^<]*?)</title>|is', $remote_source, $matchtitle );
 		$title = isset( $matchtitle[1] ) ? $matchtitle[1] : '';
@@ -6799,6 +9597,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$p = explode( "\n\n", $remote_source );
 
+<<<<<<< HEAD
 		$preg_target = preg_quote( $pagelinkedto, '|' );
 
 		foreach ( $p as $para ) {
@@ -6826,10 +9625,38 @@ class wp_xmlrpc_server extends IXR_Server {
 				$preg_marker = preg_quote( $marker, '|' );
 				$excerpt     = preg_replace( "|.*?\s(.{0,100}$preg_marker.{0,100})\s.*|s", '$1', $excerpt );
 				$excerpt     = strip_tags( $excerpt ); // YES, again, to remove the marker wrapper
+=======
+		$preg_target = preg_quote($pagelinkedto, '|');
+
+		foreach ( $p as $para ) {
+			if ( strpos($para, $pagelinkedto) !== false ) { // it exists, but is it a link?
+				preg_match("|<a[^>]+?".$preg_target."[^>]*>([^>]+?)</a>|", $para, $context);
+
+				// If the URL isn't in a link context, keep looking
+				if ( empty($context) )
+					continue;
+
+				// We're going to use this fake tag to mark the context in a bit
+				// the marker is needed in case the link text appears more than once in the paragraph
+				$excerpt = preg_replace('|\</?wpcontext\>|', '', $para);
+
+				// prevent really long link text
+				if ( strlen($context[1]) > 100 )
+					$context[1] = substr($context[1], 0, 100) . '&#8230;';
+
+				$marker = '<wpcontext>'.$context[1].'</wpcontext>';    // set up our marker
+				$excerpt= str_replace($context[0], $marker, $excerpt); // swap out the link for our marker
+				$excerpt = strip_tags($excerpt, '<wpcontext>');        // strip all tags but our context marker
+				$excerpt = trim($excerpt);
+				$preg_marker = preg_quote($marker, '|');
+				$excerpt = preg_replace("|.*?\s(.{0,100}$preg_marker.{0,100})\s.*|s", '$1', $excerpt);
+				$excerpt = strip_tags($excerpt); // YES, again, to remove the marker wrapper
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				break;
 			}
 		}
 
+<<<<<<< HEAD
 		if ( empty( $context ) ) { // Link to target not found
 			return $this->pingback_error( 17, __( 'The source URL does not contain a link to the target URL, and so cannot be used as a source.' ) );
 		}
@@ -6860,6 +9687,31 @@ class wp_xmlrpc_server extends IXR_Server {
 		);
 
 		$comment_ID = wp_new_comment( $commentdata );
+=======
+		if ( empty($context) ) // Link to target not found
+			return $this->pingback_error( 17, __( 'The source URL does not contain a link to the target URL, and so cannot be used as a source.' ) );
+
+		$pagelinkedfrom = str_replace('&', '&amp;', $pagelinkedfrom);
+
+		$context = '[&#8230;] ' . esc_html( $excerpt ) . ' [&#8230;]';
+		$pagelinkedfrom = $this->escape( $pagelinkedfrom );
+
+		$comment_post_ID = (int) $post_ID;
+		$comment_author = $title;
+		$comment_author_email = '';
+		$this->escape($comment_author);
+		$comment_author_url = $pagelinkedfrom;
+		$comment_content = $context;
+		$this->escape($comment_content);
+		$comment_type = 'pingback';
+
+		$commentdata = compact(
+			'comment_post_ID', 'comment_author', 'comment_author_url', 'comment_author_email',
+			'comment_content', 'comment_type', 'remote_source', 'remote_source_original'
+		);
+
+		$comment_ID = wp_new_comment($commentdata);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( is_wp_error( $comment_ID ) ) {
 			return $this->pingback_error( 0, $comment_ID->get_error_message() );
@@ -6898,6 +9750,7 @@ class wp_xmlrpc_server extends IXR_Server {
 
 		$url = $this->escape( $url );
 
+<<<<<<< HEAD
 		$post_ID = url_to_postid( $url );
 		if ( ! $post_ID ) {
 			// We aren't sure that the resource is available and/or pingback enabled
@@ -6922,6 +9775,30 @@ class wp_xmlrpc_server extends IXR_Server {
 			if ( 'pingback' == $comment->comment_type ) {
 				$pingbacks[] = $comment->comment_author_url;
 			}
+=======
+		$post_ID = url_to_postid($url);
+		if ( !$post_ID ) {
+			// We aren't sure that the resource is available and/or pingback enabled
+	  		return $this->pingback_error( 33, __( 'The specified target URL cannot be used as a target. It either doesn&#8217;t exist, or it is not a pingback-enabled resource.' ) );
+		}
+
+		$actual_post = get_post($post_ID, ARRAY_A);
+
+		if ( !$actual_post ) {
+			// No such post = resource not found
+	  		return $this->pingback_error( 32, __('The specified target URL does not exist.' ) );
+		}
+
+		$comments = $wpdb->get_results( $wpdb->prepare("SELECT comment_author_url, comment_content, comment_author_IP, comment_type FROM $wpdb->comments WHERE comment_post_ID = %d", $post_ID) );
+
+		if ( !$comments )
+			return array();
+
+		$pingbacks = array();
+		foreach ( $comments as $comment ) {
+			if ( 'pingback' == $comment->comment_type )
+				$pingbacks[] = $comment->comment_author_url;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		return $pingbacks;

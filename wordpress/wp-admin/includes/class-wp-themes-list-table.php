@@ -18,7 +18,11 @@
 class WP_Themes_List_Table extends WP_List_Table {
 
 	protected $search_terms = array();
+<<<<<<< HEAD
 	public $features        = array();
+=======
+	public $features = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Constructor.
@@ -30,6 +34,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 	 * @param array $args An associative array of arguments.
 	 */
 	public function __construct( $args = array() ) {
+<<<<<<< HEAD
 		parent::__construct(
 			array(
 				'ajax'   => true,
@@ -39,6 +44,16 @@ class WP_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+=======
+		parent::__construct( array(
+			'ajax' => true,
+			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
+		) );
+	}
+
+	/**
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return bool
 	 */
 	public function ajax_user_can() {
@@ -51,6 +66,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 	public function prepare_items() {
 		$themes = wp_get_themes( array( 'allowed' => true ) );
 
+<<<<<<< HEAD
 		if ( ! empty( $_REQUEST['s'] ) ) {
 			$this->search_terms = array_unique( array_filter( array_map( 'trim', explode( ',', strtolower( wp_unslash( $_REQUEST['s'] ) ) ) ) ) );
 		}
@@ -64,6 +80,18 @@ class WP_Themes_List_Table extends WP_List_Table {
 				if ( ! $this->search_theme( $theme ) ) {
 					unset( $themes[ $key ] );
 				}
+=======
+		if ( ! empty( $_REQUEST['s'] ) )
+			$this->search_terms = array_unique( array_filter( array_map( 'trim', explode( ',', strtolower( wp_unslash( $_REQUEST['s'] ) ) ) ) ) );
+
+		if ( ! empty( $_REQUEST['features'] ) )
+			$this->features = $_REQUEST['features'];
+
+		if ( $this->search_terms || $this->features ) {
+			foreach ( $themes as $key => $theme ) {
+				if ( ! $this->search_theme( $theme ) )
+					unset( $themes[ $key ] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 
@@ -71,12 +99,17 @@ class WP_Themes_List_Table extends WP_List_Table {
 		WP_Theme::sort_by_name( $themes );
 
 		$per_page = 36;
+<<<<<<< HEAD
 		$page     = $this->get_pagenum();
+=======
+		$page = $this->get_pagenum();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$start = ( $page - 1 ) * $per_page;
 
 		$this->items = array_slice( $themes, $start, $per_page, true );
 
+<<<<<<< HEAD
 		$this->set_pagination_args(
 			array(
 				'total_items'     => count( $themes ),
@@ -84,6 +117,13 @@ class WP_Themes_List_Table extends WP_List_Table {
 				'infinite_scroll' => true,
 			)
 		);
+=======
+		$this->set_pagination_args( array(
+			'total_items' => count( $themes ),
+			'per_page' => $per_page,
+			'infinite_scroll' => true,
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -121,9 +161,14 @@ class WP_Themes_List_Table extends WP_List_Table {
 	 * @param string $which
 	 */
 	public function tablenav( $which = 'top' ) {
+<<<<<<< HEAD
 		if ( $this->get_pagination_arg( 'total_pages' ) <= 1 ) {
 			return;
 		}
+=======
+		if ( $this->get_pagination_arg( 'total_pages' ) <= 1 )
+			return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		?>
 		<div class="tablenav themes <?php echo $which; ?>">
 			<?php $this->pagination( $which ); ?>
@@ -136,8 +181,13 @@ class WP_Themes_List_Table extends WP_List_Table {
 	/**
 	 */
 	public function display() {
+<<<<<<< HEAD
 		wp_nonce_field( 'fetch-list-' . get_class( $this ), '_ajax_fetch_list_nonce' );
 		?>
+=======
+		wp_nonce_field( "fetch-list-" . get_class( $this ), '_ajax_fetch_list_nonce' );
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		<?php $this->tablenav( 'top' ); ?>
 
 		<div id="availablethemes">
@@ -145,10 +195,18 @@ class WP_Themes_List_Table extends WP_List_Table {
 		</div>
 
 		<?php $this->tablenav( 'bottom' ); ?>
+<<<<<<< HEAD
 		<?php
 	}
 
 	/**
+=======
+<?php
+	}
+
+	/**
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	public function get_columns() {
@@ -172,6 +230,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 	public function display_rows() {
 		$themes = $this->items;
 
+<<<<<<< HEAD
 		foreach ( $themes as $theme ) :
 			?>
 			<div class="available-theme">
@@ -186,6 +245,20 @@ class WP_Themes_List_Table extends WP_List_Table {
 			$activate_link = wp_nonce_url( 'themes.php?action=activate&amp;template=' . urlencode( $template ) . '&amp;stylesheet=' . urlencode( $stylesheet ), 'switch-theme_' . $stylesheet );
 
 			$actions             = array();
+=======
+		foreach ( $themes as $theme ):
+			?><div class="available-theme"><?php
+
+			$template   = $theme->get_template();
+			$stylesheet = $theme->get_stylesheet();
+			$title      = $theme->display('Name');
+			$version    = $theme->display('Version');
+			$author     = $theme->display('Author');
+
+			$activate_link = wp_nonce_url( "themes.php?action=activate&amp;template=" . urlencode( $template ) . "&amp;stylesheet=" . urlencode( $stylesheet ), 'switch-theme_' . $stylesheet );
+
+			$actions = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$actions['activate'] = '<a href="' . $activate_link . '" class="activatelink" title="'
 				. esc_attr( sprintf( __( 'Activate &#8220;%s&#8221;' ), $title ) ) . '">' . __( 'Activate' ) . '</a>';
 
@@ -194,6 +267,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 					. __( 'Live Preview' ) . '</a>';
 			}
 
+<<<<<<< HEAD
 			if ( ! is_multisite() && current_user_can( 'delete_themes' ) ) {
 				$actions['delete'] = '<a class="submitdelete deletion" href="' . wp_nonce_url( 'themes.php?action=delete&amp;stylesheet=' . urlencode( $stylesheet ), 'delete-theme_' . $stylesheet )
 					. '" onclick="' . "return confirm( '" . esc_js( sprintf( __( "You are about to delete this theme '%s'\n  'Cancel' to stop, 'OK' to delete." ), $title ) )
@@ -202,6 +276,15 @@ class WP_Themes_List_Table extends WP_List_Table {
 
 			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
 			$actions = apply_filters( 'theme_action_links', $actions, $theme, 'all' );
+=======
+			if ( ! is_multisite() && current_user_can( 'delete_themes' ) )
+				$actions['delete'] = '<a class="submitdelete deletion" href="' . wp_nonce_url( 'themes.php?action=delete&amp;stylesheet=' . urlencode( $stylesheet ), 'delete-theme_' . $stylesheet )
+					. '" onclick="' . "return confirm( '" . esc_js( sprintf( __( "You are about to delete this theme '%s'\n  'Cancel' to stop, 'OK' to delete." ), $title ) )
+					. "' );" . '">' . __( 'Delete' ) . '</a>';
+
+			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
+			$actions       = apply_filters( 'theme_action_links', $actions, $theme, 'all' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			/** This filter is documented in wp-admin/includes/class-wp-ms-themes-list-table.php */
 			$actions       = apply_filters( "theme_action_links_$stylesheet", $actions, $theme, 'all' );
@@ -225,10 +308,17 @@ class WP_Themes_List_Table extends WP_List_Table {
 			<div class="theme-author"><?php printf( __( 'By %s' ), $author ); ?></div>
 			<div class="action-links">
 				<ul>
+<<<<<<< HEAD
 					<?php foreach ( $actions as $action ) : ?>
 						<li><?php echo $action; ?></li>
 					<?php endforeach; ?>
 					<li class="hide-if-no-js"><a href="#" class="theme-detail"><?php _e( 'Details' ); ?></a></li>
+=======
+					<?php foreach ( $actions as $action ): ?>
+						<li><?php echo $action; ?></li>
+					<?php endforeach; ?>
+					<li class="hide-if-no-js"><a href="#" class="theme-detail"><?php _e('Details') ?></a></li>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				</ul>
 				<?php echo $delete_action; ?>
 
@@ -236,6 +326,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 			</div>
 
 			<div class="themedetaildiv hide-if-js">
+<<<<<<< HEAD
 				<p><strong><?php _e( 'Version:' ); ?></strong> <?php echo $version; ?></p>
 				<p><?php echo $theme->display( 'Description' ); ?></p>
 				<?php
@@ -251,6 +342,19 @@ class WP_Themes_List_Table extends WP_List_Table {
 
 			</div>
 			<?php
+=======
+				<p><strong><?php _e('Version:'); ?></strong> <?php echo $version; ?></p>
+				<p><?php echo $theme->display('Description'); ?></p>
+				<?php if ( $theme->parent() ) {
+					printf( ' <p class="howto">' . __( 'This <a href="%1$s">child theme</a> requires its parent theme, %2$s.' ) . '</p>',
+						__( 'https://codex.wordpress.org/Child_Themes' ),
+						$theme->parent()->display( 'Name' ) );
+				} ?>
+			</div>
+
+			</div>
+		<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		endforeach;
 	}
 
@@ -261,16 +365,26 @@ class WP_Themes_List_Table extends WP_List_Table {
 	public function search_theme( $theme ) {
 		// Search the features
 		foreach ( $this->features as $word ) {
+<<<<<<< HEAD
 			if ( ! in_array( $word, $theme->get( 'Tags' ) ) ) {
 				return false;
 			}
+=======
+			if ( ! in_array( $word, $theme->get('Tags') ) )
+				return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		// Match all phrases
 		foreach ( $this->search_terms as $word ) {
+<<<<<<< HEAD
 			if ( in_array( $word, $theme->get( 'Tags' ) ) ) {
 				continue;
 			}
+=======
+			if ( in_array( $word, $theme->get('Tags') ) )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			foreach ( array( 'Name', 'Description', 'Author', 'AuthorURI' ) as $header ) {
 				// Don't mark up; Do translate.
@@ -279,6 +393,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 				}
 			}
 
+<<<<<<< HEAD
 			if ( false !== stripos( $theme->get_stylesheet(), $word ) ) {
 				continue;
 			}
@@ -286,6 +401,13 @@ class WP_Themes_List_Table extends WP_List_Table {
 			if ( false !== stripos( $theme->get_template(), $word ) ) {
 				continue;
 			}
+=======
+			if ( false !== stripos( $theme->get_stylesheet(), $word ) )
+				continue;
+
+			if ( false !== stripos( $theme->get_template(), $word ) )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			return false;
 		}
@@ -304,6 +426,7 @@ class WP_Themes_List_Table extends WP_List_Table {
 		$search_string = isset( $_REQUEST['s'] ) ? esc_attr( wp_unslash( $_REQUEST['s'] ) ) : '';
 
 		$args = array(
+<<<<<<< HEAD
 			'search'      => $search_string,
 			'features'    => $this->features,
 			'paged'       => $this->get_pagenum(),
@@ -313,6 +436,16 @@ class WP_Themes_List_Table extends WP_List_Table {
 		if ( is_array( $extra_args ) ) {
 			$args = array_merge( $args, $extra_args );
 		}
+=======
+			'search' => $search_string,
+			'features' => $this->features,
+			'paged' => $this->get_pagenum(),
+			'total_pages' => ! empty( $this->_pagination_args['total_pages'] ) ? $this->_pagination_args['total_pages'] : 1,
+		);
+
+		if ( is_array( $extra_args ) )
+			$args = array_merge( $args, $extra_args );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		printf( "<script type='text/javascript'>var theme_list_args = %s;</script>\n", wp_json_encode( $args ) );
 		parent::_js_vars();

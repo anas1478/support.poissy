@@ -347,17 +347,25 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 		return serializer.serialize( editor.parser.parse( caption, { forced_root_block: false } ) );
 	}
 
+<<<<<<< HEAD
 	function updateImage( $imageNode, imageData ) {
 		var classes, className, node, html, parent, wrap, linkNode, imageNode,
+=======
+	function updateImage( imageNode, imageData ) {
+		var classes, className, node, html, parent, wrap, linkNode,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			captionNode, dd, dl, id, attrs, linkAttrs, width, height, align,
 			$imageNode, srcset, src,
 			dom = editor.dom;
 
+<<<<<<< HEAD
 		if ( ! $imageNode || ! $imageNode.length ) {
 			return;
 		}
 
 		imageNode = $imageNode[0];
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		classes = tinymce.explode( imageData.extraClasses, ' ' );
 
 		if ( ! classes ) {
@@ -394,7 +402,11 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 		dom.setAttribs( imageNode, attrs );
 
 		// Preserve empty alt attributes.
+<<<<<<< HEAD
 		$imageNode.attr( 'alt', imageData.alt || '' );
+=======
+		editor.$( imageNode ).attr( 'alt', imageData.alt || '' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		linkAttrs = {
 			href: imageData.linkUrl,
@@ -518,7 +530,11 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 	}
 
 	function editImage( img ) {
+<<<<<<< HEAD
 		var frame, callback, metadata, imageNode;
+=======
+		var frame, callback, metadata;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( typeof wp === 'undefined' || ! wp.media ) {
 			editor.execCommand( 'mceImage' );
@@ -527,9 +543,12 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 
 		metadata = extractImageData( img );
 
+<<<<<<< HEAD
 		// Mark the image node so we can select it later.
 		editor.$( img ).attr( 'data-wp-editing', 1 );
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		// Manipulate the metadata by reference that is fed into the PostImage model used in the media modal
 		wp.media.events.trigger( 'editor:image-edit', {
 			editor: editor,
@@ -546,8 +565,14 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 		wp.media.events.trigger( 'editor:frame-create', { frame: frame } );
 
 		callback = function( imageData ) {
+<<<<<<< HEAD
 			editor.undoManager.transact( function() {
 				updateImage( imageNode, imageData );
+=======
+			editor.focus();
+			editor.undoManager.transact( function() {
+				updateImage( img, imageData );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} );
 			frame.detach();
 		};
@@ -557,12 +582,15 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 		frame.on( 'close', function() {
 			editor.focus();
 			frame.detach();
+<<<<<<< HEAD
 
 			// `close` fires first...
 			// To be able to update the image node, we need to find it here,
 			// and use it in the callback.
 			imageNode = editor.$( 'img[data-wp-editing]' )
 			imageNode.removeAttr( 'data-wp-editing' );
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		});
 
 		frame.open();
@@ -823,7 +851,11 @@ tinymce.PluginManager.add( 'wpeditimage', function( editor ) {
 
 	editor.on( 'beforeGetContent', function( event ) {
 		if ( event.format !== 'raw' ) {
+<<<<<<< HEAD
 			editor.$( 'img[id="__wp-temp-img-id"]' ).removeAttr( 'id' );
+=======
+			editor.$( 'img[id="__wp-temp-img-id"]' ).attr( 'id', null );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	});
 

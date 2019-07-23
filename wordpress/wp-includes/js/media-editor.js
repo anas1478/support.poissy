@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/media-editor.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* global getUserSetting, tinymce, QTags */
 
 // WordPress, TinyMCE, and Media
@@ -609,7 +612,12 @@
 			return wp.media.view.settings.post.featuredImageId;
 		},
 		/**
+<<<<<<< HEAD
 		 * Sets the featured image ID property and sets the HTML in the post meta box to the new featured image.
+=======
+		 * Set the featured image id, save the post thumbnail data and
+		 * set the HTML in the post meta box to the new featured image.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @param {number} id The post ID of the featured image, or -1 to unset it.
 		 */

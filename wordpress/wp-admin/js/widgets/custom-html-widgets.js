@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/widgets/custom-html-widgets.js
  */
@@ -10,6 +11,11 @@
  * @namespace wp.customHtmlWidget
  * @memberOf wp
  */
+=======
+/* global wp */
+/* eslint consistent-this: [ "error", "control" ] */
+/* eslint no-magic-numbers: ["error", { "ignore": [0,1,-1] }] */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 wp.customHtmlWidgets = ( function( $ ) {
 	'use strict';
 
@@ -24,7 +30,18 @@ wp.customHtmlWidgets = ( function( $ ) {
 		}
 	};
 
+<<<<<<< HEAD
 	component.CustomHtmlWidgetControl = Backbone.View.extend(/** @lends wp.customHtmlWidgets.CustomHtmlWidgetControl.prototype */{
+=======
+	/**
+	 * Text widget control.
+	 *
+	 * @class CustomHtmlWidgetControl
+	 * @constructor
+	 * @abstract
+	 */
+	component.CustomHtmlWidgetControl = Backbone.View.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * View events.
@@ -34,16 +51,23 @@ wp.customHtmlWidgets = ( function( $ ) {
 		events: {},
 
 		/**
+<<<<<<< HEAD
 		 * Text widget control.
 		 *
 		 * @constructs wp.customHtmlWidgets.CustomHtmlWidgetControl
 		 * @augments Backbone.View
 		 * @abstract
+=======
+		 * Initialize.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @param {Object} options - Options.
 		 * @param {jQuery} options.el - Control field container element.
 		 * @param {jQuery} options.syncContainer - Container element where fields are synced for the server.
+<<<<<<< HEAD
 		 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @returns {void}
 		 */
 		initialize: function initialize( options ) {
@@ -112,10 +136,17 @@ wp.customHtmlWidgets = ( function( $ ) {
 			 * to prevent the editor's contents from getting sanitized as soon as a user removes focus from
 			 * the editor. This is particularly important for users who cannot unfiltered_html.
 			 */
+<<<<<<< HEAD
 			control.contentUpdateBypassed = control.fields.content.is( document.activeElement ) || control.editor && control.editor.codemirror.state.focused || 0 !== control.currentErrorAnnotations.length;
 			if ( ! control.contentUpdateBypassed ) {
 				syncInput = control.syncContainer.find( '.sync-input.content' );
 				control.fields.content.val( syncInput.val() );
+=======
+			control.contentUpdateBypassed = control.fields.content.is( document.activeElement ) || control.editor && control.editor.codemirror.state.focused || 0 !== control.currentErrorAnnotations;
+			if ( ! control.contentUpdateBypassed ) {
+				syncInput = control.syncContainer.find( '.sync-input.content' );
+				control.fields.content.val( syncInput.val() ).trigger( 'change' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		},
 
@@ -178,8 +209,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 				/**
 				 * Handle tabbing to the field before the editor.
 				 *
+<<<<<<< HEAD
 				 * @ignore
 				 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * @returns {void}
 				 */
 				onTabPrevious: function onTabPrevious() {
@@ -189,8 +223,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 				/**
 				 * Handle tabbing to the field after the editor.
 				 *
+<<<<<<< HEAD
 				 * @ignore
 				 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * @returns {void}
 				 */
 				onTabNext: function onTabNext() {
@@ -201,8 +238,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 				/**
 				 * Disable save button and store linting errors for use in updateFields.
 				 *
+<<<<<<< HEAD
 				 * @ignore
 				 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * @param {Array} errorAnnotations - Error notifications.
 				 * @returns {void}
 				 */
@@ -213,8 +253,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 				/**
 				 * Update error notice.
 				 *
+<<<<<<< HEAD
 				 * @ignore
 				 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * @param {Array} errorAnnotations - Error annotations.
 				 * @returns {void}
 				 */
@@ -274,8 +317,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 	/**
 	 * Mapping of widget ID to instances of CustomHtmlWidgetControl subclasses.
 	 *
+<<<<<<< HEAD
 	 * @alias wp.customHtmlWidgets.widgetControls
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @type {Object.<string, wp.textWidgets.CustomHtmlWidgetControl>}
 	 */
 	component.widgetControls = {};
@@ -283,11 +329,16 @@ wp.customHtmlWidgets = ( function( $ ) {
 	/**
 	 * Handle widget being added or initialized for the first time at the widget-added event.
 	 *
+<<<<<<< HEAD
 	 * @alias wp.customHtmlWidgets.handleWidgetAdded
 	 *
 	 * @param {jQuery.Event} event - Event.
 	 * @param {jQuery}       widgetContainer - Widget container element.
 	 *
+=======
+	 * @param {jQuery.Event} event - Event.
+	 * @param {jQuery}       widgetContainer - Widget container element.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @returns {void}
 	 */
 	component.handleWidgetAdded = function handleWidgetAdded( event, widgetContainer ) {
@@ -345,8 +396,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 	/**
 	 * Setup widget in accessibility mode.
 	 *
+<<<<<<< HEAD
 	 * @alias wp.customHtmlWidgets.setupAccessibleMode
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @returns {void}
 	 */
 	component.setupAccessibleMode = function setupAccessibleMode() {
@@ -380,8 +434,11 @@ wp.customHtmlWidgets = ( function( $ ) {
 	 * the widgets admin screen and also via the 'widget-synced' event when making
 	 * a change to a widget in the customizer.
 	 *
+<<<<<<< HEAD
 	 * @alias wp.customHtmlWidgets.handleWidgetUpdated
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {jQuery.Event} event - Event.
 	 * @param {jQuery}       widgetContainer - Widget container element.
 	 * @returns {void}
@@ -411,10 +468,14 @@ wp.customHtmlWidgets = ( function( $ ) {
 	 * When WordPress enqueues this script, it should have an inline script
 	 * attached which calls wp.textWidgets.init().
 	 *
+<<<<<<< HEAD
 	 * @alias wp.customHtmlWidgets.init
 	 *
 	 * @param {object} settings - Options for code editor, exported from PHP.
 	 *
+=======
+	 * @param {object} settings - Options for code editor, exported from PHP.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @returns {void}
 	 */
 	component.init = function init( settings ) {

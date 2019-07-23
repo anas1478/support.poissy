@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/customize-widgets.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* global _wpCustomizeWidgetsSettings */
 (function( wp, $ ){
 
@@ -11,9 +14,12 @@
 	var api = wp.customize,
 		l10n;
 
+<<<<<<< HEAD
 	/**
 	 * @namespace wp.customize.Widgets
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	api.Widgets = api.Widgets || {};
 	api.Widgets.savedWidgetIds = {};
 
@@ -26,10 +32,17 @@
 	 *
 	 * A single widget model.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.customize.Widgets.WidgetModel
 	 * @augments Backbone.Model
 	 */
 	api.Widgets.WidgetModel = Backbone.Model.extend(/** @lends wp.customize.Widgets.WidgetModel.prototype */{
+=======
+	 * @constructor
+	 * @augments Backbone.Model
+	 */
+	api.Widgets.WidgetModel = Backbone.Model.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		id: null,
 		temp_id: null,
 		classname: null,
@@ -52,10 +65,17 @@
 	 *
 	 * Collection for widget models.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.customize.Widgets.WidgetCollection
 	 * @augments Backbone.Collection
 	 */
 	api.Widgets.WidgetCollection = Backbone.Collection.extend(/** @lends wp.customize.Widgets.WidgetCollection.prototype */{
+=======
+	 * @constructor
+	 * @augments Backbone.Model
+	 */
+	api.Widgets.WidgetCollection = Backbone.Collection.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		model: api.Widgets.WidgetModel,
 
 		// Controls searching on the current widget collection
@@ -110,10 +130,17 @@
 	 *
 	 * A single sidebar model.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.customize.Widgets.SidebarModel
 	 * @augments Backbone.Model
 	 */
 	api.Widgets.SidebarModel = Backbone.Model.extend(/** @lends wp.customize.Widgets.SidebarModel.prototype */{
+=======
+	 * @constructor
+	 * @augments Backbone.Model
+	 */
+	api.Widgets.SidebarModel = Backbone.Model.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		after_title: null,
 		after_widget: null,
 		before_title: null,
@@ -130,20 +157,44 @@
 	 *
 	 * Collection for sidebar models.
 	 *
+<<<<<<< HEAD
 	 * @class    wp.customize.Widgets.SidebarCollection
 	 * @augments Backbone.Collection
 	 */
 	api.Widgets.SidebarCollection = Backbone.Collection.extend(/** @lends wp.customize.Widgets.SidebarCollection.prototype */{
+=======
+	 * @constructor
+	 * @augments Backbone.Collection
+	 */
+	api.Widgets.SidebarCollection = Backbone.Collection.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		model: api.Widgets.SidebarModel
 	});
 	api.Widgets.registeredSidebars = new api.Widgets.SidebarCollection( api.Widgets.data.registeredSidebars );
 
+<<<<<<< HEAD
 	api.Widgets.AvailableWidgetsPanelView = wp.Backbone.View.extend(/** @lends wp.customize.Widgets.AvailableWidgetsPanelView.prototype */{
+=======
+	/**
+	 * wp.customize.Widgets.AvailableWidgetsPanelView
+	 *
+	 * View class for the available widgets panel.
+	 *
+	 * @constructor
+	 * @augments wp.Backbone.View
+	 * @augments Backbone.View
+	 */
+	api.Widgets.AvailableWidgetsPanelView = wp.Backbone.View.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		el: '#available-widgets',
 
 		events: {
 			'input #widgets-search': 'search',
+<<<<<<< HEAD
+=======
+			'keyup #widgets-search': 'search',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'focus .widget-tpl' : 'focus',
 			'click .widget-tpl' : '_submit',
 			'keypress .widget-tpl' : '_submit',
@@ -159,12 +210,15 @@
 		$clearResults: null,
 		searchMatchesCount: null,
 
+<<<<<<< HEAD
 		/**
 		 * View class for the available widgets panel.
 		 *
 		 * @constructs wp.customize.Widgets.AvailableWidgetsPanelView
 		 * @augments   wp.Backbone.View
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		initialize: function() {
 			var self = this;
 
@@ -200,9 +254,13 @@
 			api.previewer.bind( 'url', this.close );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Performs a search and handles selected widget.
 		 */
+=======
+		// Performs a search and handles selected widget
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		search: function( event ) {
 			var firstVisible;
 
@@ -247,16 +305,24 @@
 			}
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Updates the count of the available widgets that have the `search_matched` attribute.
  		 */
+=======
+		// Update the count of the available widgets that have the `search_matched` attribute.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		updateSearchMatchesCount: function() {
 			this.searchMatchesCount = this.collection.where({ search_matched: true }).length;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Sends a message to the aria-live region to announce how many search results.
 		 */
+=======
+		// Send a message to the aria-live region to announce how many search results.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		announceSearchMatches: _.debounce( function() {
 			var message = l10n.widgetsFound.replace( '%d', this.searchMatchesCount ) ;
 
@@ -267,9 +333,13 @@
 			wp.a11y.speak( message );
 		}, 500 ),
 
+<<<<<<< HEAD
 		/**
 		 * Changes visibility of available widgets.
  		 */
+=======
+		// Changes visibility of available widgets
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		updateList: function() {
 			this.collection.each( function( widget ) {
 				var widgetTpl = $( '#widget-tpl-' + widget.id );
@@ -280,25 +350,37 @@
 			} );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Highlights a widget.
  		 */
+=======
+		// Highlights a widget
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		select: function( widgetTpl ) {
 			this.selected = $( widgetTpl );
 			this.selected.siblings( '.widget-tpl' ).removeClass( 'selected' );
 			this.selected.addClass( 'selected' );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Highlights a widget on focus.
 		 */
+=======
+		// Highlights a widget on focus
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		focus: function( event ) {
 			this.select( $( event.currentTarget ) );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Handles submit for keypress and click on widget.
 		 */
+=======
+		// Submit handler for keypress and click on widget
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_submit: function( event ) {
 			// Only proceed with keypress if it is Enter or Spacebar
 			if ( event.type === 'keypress' && ( event.which !== 13 && event.which !== 32 ) ) {
@@ -308,9 +390,13 @@
 			this.submit( $( event.currentTarget ) );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Adds a selected widget to the sidebar.
  		 */
+=======
+		// Adds a selected widget to the sidebar
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		submit: function( widgetTpl ) {
 			var widgetId, widget, widgetFormControl;
 
@@ -338,9 +424,13 @@
 			this.close();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Opens the panel.
 		 */
+=======
+		// Opens the panel
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		open: function( sidebarControl ) {
 			this.currentSidebarControl = sidebarControl;
 
@@ -367,9 +457,13 @@
 			}
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Closes the panel.
 		 */
+=======
+		// Closes the panel
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		close: function( options ) {
 			options = options || {};
 
@@ -385,9 +479,13 @@
 			this.$search.val( '' );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Adds keyboard accessiblity to the panel.
 		 */
+=======
+		// Add keyboard accessiblity to the panel
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		keyboardAccessible: function( event ) {
 			var isEnter = ( event.which === 13 ),
 				isEsc = ( event.which === 27 ),
@@ -449,8 +547,11 @@
 	 * Handlers for the widget-synced event, organized by widget ID base.
 	 * Other widgets may provide their own update handlers by adding
 	 * listeners for the widget-synced event.
+<<<<<<< HEAD
 	 *
 	 * @alias    wp.customize.Widgets.formSyncHandlers
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	api.Widgets.formSyncHandlers = {
 
@@ -473,13 +574,27 @@
 		}
 	};
 
+<<<<<<< HEAD
 	api.Widgets.WidgetControl = api.Control.extend(/** @lends wp.customize.Widgets.WidgetControl.prototype */{
+=======
+	/**
+	 * wp.customize.Widgets.WidgetControl
+	 *
+	 * Customizer control for widgets.
+	 * Note that 'widget_form' must match the WP_Widget_Form_Customize_Control::$type
+	 *
+	 * @constructor
+	 * @augments wp.customize.Control
+	 */
+	api.Widgets.WidgetControl = api.Control.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		defaultExpandedArguments: {
 			duration: 'fast',
 			completeCallback: $.noop
 		},
 
 		/**
+<<<<<<< HEAD
 		 * wp.customize.Widgets.WidgetControl
 		 *
 		 * Customizer control for widgets.
@@ -489,6 +604,9 @@
 		 *
 		 * @constructs wp.customize.Widgets.WidgetControl
 		 * @augments   wp.customize.Control
+=======
+		 * @since 4.1.0
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		initialize: function( id, options ) {
 			var control = this;
@@ -969,7 +1087,11 @@
 		 *
 		 * @param {Boolean}   active
 		 * @param {Object}    args
+<<<<<<< HEAD
 		 * @param {function}  args.completeCallback
+=======
+		 * @param {Callback}  args.completeCallback
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		onChangeActive: function ( active, args ) {
 			// Note: there is a second 'args' parameter being passed, merged on top of this.defaultActiveArguments
@@ -1600,11 +1722,16 @@
 	 * Customizer panel containing the widget area sections.
 	 *
 	 * @since 4.4.0
+<<<<<<< HEAD
 	 *
 	 * @class    wp.customize.Widgets.WidgetsPanel
 	 * @augments wp.customize.Panel
 	 */
 	api.Widgets.WidgetsPanel = api.Panel.extend(/** @lends wp.customize.Widgets.WigetsPanel.prototype */{
+=======
+	 */
+	api.Widgets.WidgetsPanel = api.Panel.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Add and manage the display of the no-rendered-areas notice.
@@ -1633,7 +1760,11 @@
 				 */
 				getActiveSectionCount = function() {
 					return _.filter( panel.sections(), function( section ) {
+<<<<<<< HEAD
 						return 'sidebar' === section.params.type && section.active();
+=======
+						return section.active();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					} ).length;
 				};
 
@@ -1724,11 +1855,16 @@
 	 * Customizer section representing a widget area widget
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
 	 *
 	 * @class    wp.customize.Widgets.SidebarSection
 	 * @augments wp.customize.Section
 	 */
 	api.Widgets.SidebarSection = api.Section.extend(/** @lends wp.customize.Widgets.SidebarSection.prototype */{
+=======
+	 */
+	api.Widgets.SidebarSection = api.Section.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Sync the section's active state back to the Backbone model's is_rendered attribute
@@ -1754,10 +1890,17 @@
 	 *
 	 * @since 3.9.0
 	 *
+<<<<<<< HEAD
 	 * @class    wp.customize.Widgets.SidebarControl
 	 * @augments wp.customize.Control
 	 */
 	api.Widgets.SidebarControl = api.Control.extend(/** @lends wp.customize.Widgets.SidebarControl.prototype */{
+=======
+	 * @constructor
+	 * @augments wp.customize.Control
+	 */
+	api.Widgets.SidebarControl = api.Control.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Set up the control

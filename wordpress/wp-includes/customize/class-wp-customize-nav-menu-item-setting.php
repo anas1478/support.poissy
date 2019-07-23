@@ -233,7 +233,11 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 				$post = get_post( $this->post_id );
 				if ( $post && self::POST_TYPE === $post->post_type ) {
 					$is_title_empty = empty( $post->post_title );
+<<<<<<< HEAD
 					$value          = (array) wp_setup_nav_menu_item( $post );
+=======
+					$value = (array) wp_setup_nav_menu_item( $post );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					if ( $is_title_empty ) {
 						$value['title'] = '';
 					}
@@ -352,6 +356,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 		}
 
 		if ( ! isset( $this->value['nav_menu_term_id'] ) && $this->post_id > 0 ) {
+<<<<<<< HEAD
 			$menus = wp_get_post_terms(
 				$this->post_id,
 				WP_Customize_Nav_Menu_Setting::TAXONOMY,
@@ -359,6 +364,11 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 					'fields' => 'ids',
 				)
 			);
+=======
+			$menus = wp_get_post_terms( $this->post_id, WP_Customize_Nav_Menu_Setting::TAXONOMY, array(
+				'fields' => 'ids',
+			) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( ! empty( $menus ) ) {
 				$this->value['nav_menu_term_id'] = array_shift( $menus );
 			} else {
@@ -383,7 +393,11 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 
 		if ( ! isset( $this->value['_invalid'] ) ) {
 			$this->value['_invalid'] = false;
+<<<<<<< HEAD
 			$is_known_invalid        = (
+=======
+			$is_known_invalid = (
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				( ( 'post_type' === $this->value['type'] || 'post_type_archive' === $this->value['type'] ) && ! post_type_exists( $this->value['object'] ) )
 				||
 				( 'taxonomy' === $this->value['type'] && ! taxonomy_exists( $this->value['object'] ) )
@@ -439,9 +453,15 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 			return false;
 		}
 
+<<<<<<< HEAD
 		$undefined      = new stdClass();
 		$is_placeholder = ( $this->post_id < 0 );
 		$is_dirty       = ( $undefined !== $this->post_value( $undefined ) );
+=======
+		$undefined = new stdClass();
+		$is_placeholder = ( $this->post_id < 0 );
+		$is_dirty = ( $undefined !== $this->post_value( $undefined ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $is_placeholder && ! $is_dirty ) {
 			return false;
 		}
@@ -470,6 +490,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 	 *
 	 * @see wp_get_nav_menu_items()
 	 *
+<<<<<<< HEAD
 	 * @param WP_Post[] $items An array of menu item post objects.
 	 * @param WP_Term   $menu  The menu object.
 	 * @param array     $args  An array of arguments used to retrieve menu item objects.
@@ -477,6 +498,15 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 	 */
 	public function filter_wp_get_nav_menu_items( $items, $menu, $args ) {
 		$this_item                = $this->value();
+=======
+	 * @param array  $items An array of menu item post objects.
+	 * @param object $menu  The menu object.
+	 * @param array  $args  An array of arguments used to retrieve menu item objects.
+	 * @return array Array of menu items,
+	 */
+	public function filter_wp_get_nav_menu_items( $items, $menu, $args ) {
+		$this_item = $this->value();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$current_nav_menu_term_id = $this_item['nav_menu_term_id'];
 		unset( $this_item['nav_menu_term_id'] );
 
@@ -511,7 +541,11 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 			return $filtered_items;
 		}
 
+<<<<<<< HEAD
 		$mutated       = false;
+=======
+		$mutated = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$should_update = (
 			is_array( $this_item )
 			&&
@@ -540,6 +574,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 	 * Re-apply the tail logic also applied on $items by wp_get_nav_menu_items().
 	 *
 	 * @since 4.3.0
+<<<<<<< HEAD
 	 *
 	 * @see wp_get_nav_menu_items()
 	 *
@@ -547,6 +582,16 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 	 * @param WP_Term   $menu  The menu object.
 	 * @param array     $args  An array of arguments used to retrieve menu item objects.
 	 * @return WP_Post[] Array of menu item objects.
+=======
+	 * @static
+	 *
+	 * @see wp_get_nav_menu_items()
+	 *
+	 * @param array  $items An array of menu item post objects.
+	 * @param object $menu  The menu object.
+	 * @param array  $args  An array of arguments used to retrieve menu item objects.
+	 * @return array Array of menu items,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public static function sort_wp_get_nav_menu_items( $items, $menu, $args ) {
 		// @todo We should probably re-apply some constraints imposed by $args.
@@ -558,6 +603,7 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 		}
 
 		if ( ARRAY_A === $args['output'] ) {
+<<<<<<< HEAD
 			$items = wp_list_sort(
 				$items,
 				array(
@@ -565,6 +611,12 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 				)
 			);
 			$i     = 1;
+=======
+			$items = wp_list_sort( $items, array(
+				$args['output_key'] => 'ASC',
+			) );
+			$i = 1;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			foreach ( $items as $k => $item ) {
 				$items[ $k ]->{$args['output_key']} = $i++;
@@ -588,7 +640,11 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 		$item->post_status = $item->status;
 		unset( $item->status );
 
+<<<<<<< HEAD
 		$item->post_type  = 'nav_menu_item';
+=======
+		$item->post_type = 'nav_menu_item';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$item->menu_order = $item->position;
 		unset( $item->position );
 
@@ -602,9 +658,15 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 			$item->post_title = $item->title;
 		}
 
+<<<<<<< HEAD
 		$item->ID    = $this->post_id;
 		$item->db_id = $this->post_id;
 		$post        = new WP_Post( (object) $item );
+=======
+		$item->ID = $this->post_id;
+		$item->db_id = $this->post_id;
+		$post = new WP_Post( (object) $item );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( empty( $post->post_author ) ) {
 			$post->post_author = get_current_user_id();
@@ -661,7 +723,11 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 			return null;
 		}
 
+<<<<<<< HEAD
 		$default                     = array(
+=======
+		$default = array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'object_id'        => 0,
 			'object'           => '',
 			'menu_item_parent' => 0,
@@ -679,8 +745,13 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 			'nav_menu_term_id' => 0,
 			'_invalid'         => false,
 		);
+<<<<<<< HEAD
 		$menu_item_value             = array_merge( $default, $menu_item_value );
 		$menu_item_value             = wp_array_slice_assoc( $menu_item_value, array_keys( $default ) );
+=======
+		$menu_item_value = array_merge( $default, $menu_item_value );
+		$menu_item_value = wp_array_slice_assoc( $menu_item_value, array_keys( $default ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$menu_item_value['position'] = intval( $menu_item_value['position'] );
 
 		foreach ( array( 'object_id', 'menu_item_parent', 'nav_menu_term_id' ) as $key ) {
@@ -855,12 +926,21 @@ class WP_Customize_Nav_Menu_Item_Setting extends WP_Customize_Setting {
 
 			if ( is_wp_error( $r ) ) {
 				$this->update_status = 'error';
+<<<<<<< HEAD
 				$this->update_error  = $r;
 			} else {
 				if ( $is_placeholder ) {
 					$this->previous_post_id = $this->post_id;
 					$this->post_id          = $r;
 					$this->update_status    = 'inserted';
+=======
+				$this->update_error = $r;
+			} else {
+				if ( $is_placeholder ) {
+					$this->previous_post_id = $this->post_id;
+					$this->post_id = $r;
+					$this->update_status = 'inserted';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				} else {
 					$this->update_status = 'updated';
 				}

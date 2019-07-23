@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/edit-comments.js
  */
 
 /* global adminCommentsL10n, thousandsSeparator, list_args, QTags, ajaxurl, wpAjax */
 /* global commentReply, theExtraList, theList, setCommentsList */
+=======
+/* global adminCommentsL10n, thousandsSeparator, list_args, QTags, ajaxurl, wpAjax */
+var setCommentsList, theList, theExtraList, commentReply;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 (function($) {
 var getCount, updateCount, updateCountText, updatePending, updateApproved,
@@ -188,7 +193,11 @@ var getCount, updateCount, updateCountText, updatePending, updateApproved,
 		});
 	};
 
+<<<<<<< HEAD
 window.setCommentsList = function() {
+=======
+setCommentsList = function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	var totalInput, perPageInput, pageInput, dimAfter, delBefore, updateTotalCount, delAfter, refillTheExtraList, diff,
 		lastConfidentTime = 0;
 
@@ -564,8 +573,13 @@ window.setCommentsList = function() {
 		});
 	};
 
+<<<<<<< HEAD
 	window.theExtraList = $('#the-extra-comment-list').wpList( { alt: '', delColor: 'none', addColor: 'none' } );
 	window.theList = $('#the-comment-list').wpList( { alt: '', delBefore: delBefore, dimAfter: dimAfter, delAfter: delAfter, addColor: 'none' } )
+=======
+	theExtraList = $('#the-extra-comment-list').wpList( { alt: '', delColor: 'none', addColor: 'none' } );
+	theList = $('#the-comment-list').wpList( { alt: '', delBefore: delBefore, dimAfter: dimAfter, delAfter: delAfter, addColor: 'none' } )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		.bind('wpListDelEnd', function(e, s){
 			var wpListsData = $(s.target).attr('data-wp-lists'), id = s.element.replace(/[^0-9]+/g, '');
 
@@ -574,7 +588,11 @@ window.setCommentsList = function() {
 		});
 };
 
+<<<<<<< HEAD
 window.commentReply = {
+=======
+commentReply = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	cid : '',
 	act : '',
 	originalContent : '',
@@ -636,6 +654,7 @@ window.commentReply = {
 	},
 
 	close : function() {
+<<<<<<< HEAD
 		var commentRow = $(),
 			replyRow = $( '#replyrow' );
 
@@ -667,6 +686,17 @@ window.commentReply = {
 			commentRow.find( '.vim-r' )
 				.attr( 'aria-expanded', 'false' )
 				.focus();
+=======
+		var c, replyrow = $('#replyrow');
+
+		// replyrow is not showing?
+		if ( replyrow.parent().is('#com-reply') )
+			return;
+
+		if ( this.cid && this.act == 'edit-comment' ) {
+			c = $('#comment-' + this.cid);
+			c.fadeIn(300, function(){ c.show(); }).css('backgroundColor', '');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		// reset the Quicktags buttons
@@ -675,6 +705,7 @@ window.commentReply = {
 
 		$('#add-new-comment').css('display', '');
 
+<<<<<<< HEAD
 		replyRow.hide();
 		$( '#com-reply' ).append( replyRow );
 		$('#replycontent').css('height', '').val('');
@@ -683,6 +714,16 @@ window.commentReply = {
 			.addClass( 'hidden' )
 			.find( '.error' ).empty();
 		$( '.spinner', replyRow ).removeClass( 'is-active' );
+=======
+		replyrow.hide();
+		$('#com-reply').append( replyrow );
+		$('#replycontent').css('height', '').val('');
+		$('#edithead input').val('');
+		$( '.notice-error', replyrow )
+			.addClass( 'hidden' )
+			.find( '.error' ).empty();
+		$( '.spinner', replyrow ).removeClass( 'is-active' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		this.cid = '';
 		this.originalContent = '';
@@ -986,7 +1027,12 @@ $(document).ready(function(){
 	}
 
 	// Quick Edit and Reply have an inline comment editor.
+<<<<<<< HEAD
 	$( '#the-comment-list' ).on( 'click', '.comment-inline', function() {
+=======
+	$( '#the-comment-list' ).on( 'click', '.comment-inline', function (e) {
+		e.preventDefault();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		var $el = $( this ),
 			action = 'replyto';
 
@@ -994,7 +1040,10 @@ $(document).ready(function(){
 			action = $el.data( 'action' );
 		}
 
+<<<<<<< HEAD
 		$( this ).attr( 'aria-expanded', 'true' );
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		commentReply.open( $el.data( 'commentId' ), $el.data( 'postId' ), action );
 	} );
 });

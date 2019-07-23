@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["editPost"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 305);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 304);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -218,6 +222,7 @@ function _defineProperty(obj, key, value) {
 /***/ }),
 
 /***/ 16:
+<<<<<<< HEAD
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["keycodes"]; }());
@@ -225,6 +230,8 @@ function _defineProperty(obj, key, value) {
 /***/ }),
 
 /***/ 17:
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -282,6 +289,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+/***/ 17:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["keycodes"]; }());
+
+/***/ }),
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ 18:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -505,7 +522,11 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 305:
+=======
+/***/ 304:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1066,7 +1087,11 @@ function CopyContentMenuItem(_ref) {
 }))(CopyContentMenuItem));
 
 // EXTERNAL MODULE: external {"this":["wp","keycodes"]}
+<<<<<<< HEAD
 var external_this_wp_keycodes_ = __webpack_require__(16);
+=======
+var external_this_wp_keycodes_ = __webpack_require__(17);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/edit-post/build-module/plugins/keyboard-shortcuts-help-menu-item/index.js
 
@@ -2036,7 +2061,11 @@ var effects = {
       window.tinyMCE.triggerSave();
     }
 
+<<<<<<< HEAD
     var state = store.getState(); // Additional data needed for backward compatibility.
+=======
+    var state = store.getState(); // Additional data needed for backwards compatibility.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     // If we do not provide this data, the post will be overridden with the default values.
 
     var post = Object(external_this_wp_data_["select"])('core/editor').getCurrentPost(state);
@@ -2251,7 +2280,11 @@ store_store.dispatch({
 });
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
+<<<<<<< HEAD
 var classnames = __webpack_require__(17);
+=======
+var classnames = __webpack_require__(16);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // EXTERNAL MODULE: external {"this":["wp","url"]}
@@ -5743,6 +5776,7 @@ function reinitializeEditor(postType, postId, target, settings, initialEdits) {
 function initializeEditor(id, postType, postId, settings, initialEdits) {
   var target = document.getElementById(id);
   var reboot = reinitializeEditor.bind(null, postType, postId, target, settings, initialEdits);
+<<<<<<< HEAD
   Object(external_this_wp_blockLibrary_["registerCoreBlocks"])(); // Show a console log warning if the browser is not in Standards rendering mode.
 
   var documentMode = document.compatMode === 'CSS1Compat' ? 'Standards' : 'Quirks';
@@ -5752,6 +5786,9 @@ function initializeEditor(id, postType, postId, settings, initialEdits) {
     console.warn("Your browser is using Quirks Mode. \nThis can cause rendering issues such as blocks overlaying meta boxes in the editor. Quirks Mode can be triggered by PHP errors or HTML code appearing before the opening <!DOCTYPE html>. Try checking the raw page source or your site's PHP error log and resolving errors there, removing any HTML before the doctype, or disabling plugins.");
   }
 
+=======
+  Object(external_this_wp_blockLibrary_["registerCoreBlocks"])();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   Object(external_this_wp_data_["dispatch"])('core/nux').triggerGuide(['core/editor.inserter', 'core/editor.settings', 'core/editor.preview', 'core/editor.publish']);
   Object(external_this_wp_element_["render"])(Object(external_this_wp_element_["createElement"])(editor, {
     settings: settings,

@@ -81,7 +81,11 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 11);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -95,6 +99,7 @@
 /* 7 */,
 /* 8 */,
 /* 9 */,
+<<<<<<< HEAD
 /* 10 */,
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -125,6 +130,26 @@ media.view.DeleteSelectedPermanentlyButton = __webpack_require__( 21 );
 
 /***/ }),
 /* 13 */
+=======
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var media = wp.media;
+
+media.controller.EditAttachmentMetadata = __webpack_require__( 11 );
+media.view.MediaFrame.Manage = __webpack_require__( 12 );
+media.view.Attachment.Details.TwoColumn = __webpack_require__( 13 );
+media.view.MediaFrame.Manage.Router = __webpack_require__( 14 );
+media.view.EditImage.Details = __webpack_require__( 15 );
+media.view.MediaFrame.EditAttachments = __webpack_require__( 16 );
+media.view.SelectModeToggleButton = __webpack_require__( 17 );
+media.view.DeleteSelectedButton = __webpack_require__( 18 );
+media.view.DeleteSelectedPermanentlyButton = __webpack_require__( 19 );
+
+
+/***/ }),
+/* 11 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var l10n = wp.media.view.l10n,
@@ -158,7 +183,11 @@ module.exports = EditAttachmentMetadata;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 14 */
+=======
+/* 12 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var MediaFrame = wp.media.view.MediaFrame,
@@ -451,7 +480,11 @@ module.exports = Manage;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 15 */
+=======
+/* 13 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var Details = wp.media.view.Attachment.Details,
@@ -508,7 +541,11 @@ module.exports = TwoColumn;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 16 */
+=======
+/* 14 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 /**
@@ -581,7 +618,11 @@ module.exports = Router;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 17 */
+=======
+/* 15 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var View = wp.media.View,
@@ -622,7 +663,11 @@ module.exports = Details;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 18 */
+=======
+/* 16 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var Frame = wp.media.view.Frame,
@@ -886,7 +931,11 @@ module.exports = EditAttachments;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 19 */
+=======
+/* 17 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 
@@ -967,7 +1016,11 @@ module.exports = SelectModeToggle;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 20 */
+=======
+/* 18 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var Button = wp.media.view.Button,
@@ -1026,7 +1079,11 @@ module.exports = DeleteSelected;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 21 */
+=======
+/* 19 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var Button = wp.media.view.Button,

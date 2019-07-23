@@ -52,7 +52,11 @@ class WP_Metadata_Lazyloader {
 	 */
 	public function __construct() {
 		$this->settings = array(
+<<<<<<< HEAD
 			'term'    => array(
+=======
+			'term' => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'filter'   => 'get_term_metadata',
 				'callback' => array( $this, 'lazyload_term_meta' ),
 			),
@@ -97,7 +101,11 @@ class WP_Metadata_Lazyloader {
 		 *
 		 * @since 4.5.0
 		 *
+<<<<<<< HEAD
 		 * @param array                  $object_ids  Array of object IDs.
+=======
+		 * @param array                  $object_ids  Object IDs.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @param string                 $object_type Type of object being queued.
 		 * @param WP_Metadata_Lazyloader $lazyloader  The lazy-loader object.
 		 */

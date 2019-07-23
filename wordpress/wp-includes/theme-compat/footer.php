@@ -24,7 +24,11 @@ _deprecated_file(
 		printf(
 			/* translators: 1: blog name, 2: WordPress */
 			__( '%1$s is proudly powered by %2$s' ),
+<<<<<<< HEAD
 			get_bloginfo( 'name' ),
+=======
+			get_bloginfo('name'),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'<a href="https://wordpress.org/">WordPress</a>'
 		);
 		?>

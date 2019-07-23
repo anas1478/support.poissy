@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/zxcvbn-async.js
  */
@@ -11,6 +12,9 @@
  * This makes sure zxcvbn isn't blocking loading the page as it is a big
  * library. The source for zxcvbn is read from the _zxcvbnSettings global.
  */
+=======
+/* global _zxcvbnSettings */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 (function() {
   var async_load = function() {
     var first, s;

@@ -551,6 +551,7 @@ function is_user_option_local( $key, $user_id = 0, $blog_id = 0 ) {
 
 	return isset( $current_user->$local_key );
 }
+<<<<<<< HEAD
 
 /**
  * Store basic site info in the blogs table.
@@ -685,3 +686,5 @@ function install_blog_defaults( $blog_id, $user_id ) {
 
 	$wpdb->suppress_errors( $suppress );
 }
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

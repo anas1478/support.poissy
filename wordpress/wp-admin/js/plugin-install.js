@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @file Functionality for the plugin install screens.
  *
@@ -6,6 +7,14 @@
 
 /* global plugininstallL10n, tb_click, tb_remove, tb_position */
 
+=======
+/* global plugininstallL10n, tb_click, tb_remove */
+
+/**
+ * Functionality for the plugin install screens.
+ */
+var tb_position;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 jQuery( document ).ready( function( $ ) {
 
 	var tbWindow,
@@ -18,7 +27,11 @@ jQuery( document ).ready( function( $ ) {
 		$wrap = $ ( '.wrap' ),
 		$body = $( document.body );
 
+<<<<<<< HEAD
 	window.tb_position = function() {
+=======
+	tb_position = function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		var width = $( window ).width(),
 			H = $( window ).height() - ( ( 792 < width ) ? 60 : 20 ),
 			W = ( 792 < width ) ? 772 : width - 20;

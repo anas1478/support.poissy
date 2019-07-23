@@ -72,8 +72,13 @@ TABLE OF CONTENTS:
 .wp-core-ui .button.button-large,
 .wp-core-ui .button-group.button-large .button {
 	height: 30px;
+<<<<<<< HEAD
 	line-height: 28px;
 	padding: 0 12px 2px;
+=======
+    line-height: 28px;
+    padding: 0 12px 2px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui .button.button-small,
@@ -92,12 +97,18 @@ TABLE OF CONTENTS:
 	padding: 0 36px;
 }
 
+<<<<<<< HEAD
 /* Only visible in Windows High Contrast mode */
 .wp-core-ui .button:active,
 .wp-core-ui .button:focus {
 	outline: 2px solid transparent;
 	/* Reset inherited offset from Gutenberg */
 	outline-offset: 0;
+=======
+.wp-core-ui .button:active,
+.wp-core-ui .button:focus {
+	outline: none;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui .button.hidden {
@@ -127,7 +138,11 @@ TABLE OF CONTENTS:
 	border-color: #cccccc;
 	background: #f7f7f7;
 	box-shadow: 0 1px 0 #cccccc;
+<<<<<<< HEAD
 	vertical-align: top;
+=======
+ 	vertical-align: top;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui p .button {
@@ -193,6 +208,10 @@ TABLE OF CONTENTS:
 	border: 0;
 	border-radius: 0;
 	background: none;
+<<<<<<< HEAD
+=======
+	outline: none;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	cursor: pointer;
 	text-align: left;
 	/* Mimics the default link style in common.css */
@@ -213,8 +232,11 @@ TABLE OF CONTENTS:
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui .button-link-delete {
@@ -284,14 +306,22 @@ TABLE OF CONTENTS:
 }
 
 .wp-core-ui .button.button-primary.button-hero {
+<<<<<<< HEAD
 	box-shadow: 0 2px 0 #006799;
+=======
+ box-shadow: 0 2px 0 #006799;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wp-core-ui .button.button-primary.button-hero.active,
 .wp-core-ui .button.button-primary.button-hero.active:hover,
 .wp-core-ui .button.button-primary.button-hero.active:focus,
 .wp-core-ui .button.button-primary.button-hero:active {
+<<<<<<< HEAD
 	box-shadow: inset 0 3px 0 #006799;
+=======
+ box-shadow: inset 0 3px 0 #006799;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /* ----------------------------------------------------------------------------
@@ -338,7 +368,11 @@ TABLE OF CONTENTS:
   5.0 - Responsive Button Styles
 ---------------------------------------------------------------------------- */
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	.wp-core-ui .button,
 	.wp-core-ui .button.button-large,

@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/wp-api.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 (function( window, undefined ) {
 
 	'use strict';
@@ -1175,7 +1178,11 @@
 					 * have to retrieve it again for this session. Then, construct the models and collections based
 					 * on the schema model data.
 					 *
+<<<<<<< HEAD
 					 * @ignore
+=======
+					 * @callback
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					 */
 					success: function( newSchemaModel ) {
 

@@ -216,6 +216,7 @@ table.comments td.comment p a:after {
 /**
  * For the activation notice on the plugins page.
  */
+<<<<<<< HEAD
 
 #akismet_setup_prompt {
 	background: none;
@@ -226,6 +227,10 @@ table.comments td.comment p a:after {
 }
 
 .akismet_activate {
+=======
+.akismet_activate {
+	min-width: 825px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	border: 1px solid #4F800D;
 	padding: 5px;
 	margin: 15px 0;
@@ -295,7 +300,10 @@ table.comments td.comment p a:after {
 }
 
 .akismet_activate .aa_button_container {
+<<<<<<< HEAD
 	box-sizing: border-box;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	display: inline-block;
 	background: #DEF1B8;
 	padding: 5px;
@@ -320,6 +328,7 @@ table.comments td.comment p a:after {
 	font-weight: normal;
 }
 
+<<<<<<< HEAD
 @media (max-width: 550px) {
 	.akismet_activate .aa_a {
 		display: none;
@@ -346,6 +355,8 @@ table.comments td.comment p a:after {
 	}
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .jetpack_page_akismet-key-config #wpcontent, .settings_page_akismet-key-config #wpcontent {
 	padding-left: 0;
 }

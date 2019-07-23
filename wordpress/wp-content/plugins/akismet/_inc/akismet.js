@@ -282,6 +282,7 @@ jQuery( function ( $ ) {
                         url: './options-general.php?page=akismet-key-config&akismet_comment_form_privacy_notice=hide',
 		});
 	});
+<<<<<<< HEAD
 
 	$( ".akismet-could-be-primary" ).each( function () {
 		var form = $( this ).closest( 'form' );
@@ -300,4 +301,6 @@ jQuery( function ( $ ) {
 			}
 		} );
 	} );
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 });

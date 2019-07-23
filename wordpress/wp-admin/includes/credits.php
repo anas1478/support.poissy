@@ -26,7 +26,11 @@ function wp_credits() {
 		|| false !== strpos( $wp_version, '-' )
 		|| ( isset( $results['data']['version'] ) && strpos( $wp_version, $results['data']['version'] ) !== 0 )
 	) {
+<<<<<<< HEAD
 		$url     = "http://api.wordpress.org/core/credits/1.1/?version={$wp_version}&locale={$locale}";
+=======
+		$url = "http://api.wordpress.org/core/credits/1.1/?version={$wp_version}&locale={$locale}";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$options = array( 'user-agent' => 'WordPress/' . $wp_version . '; ' . home_url( '/' ) );
 
 		if ( wp_http_supports( array( 'ssl' ) ) ) {
@@ -35,6 +39,7 @@ function wp_credits() {
 
 		$response = wp_remote_get( $url, $options );
 
+<<<<<<< HEAD
 		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
 			return false;
 		}
@@ -44,6 +49,15 @@ function wp_credits() {
 		if ( ! is_array( $results ) ) {
 			return false;
 		}
+=======
+		if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) )
+			return false;
+
+		$results = json_decode( wp_remote_retrieve_body( $response ), true );
+
+		if ( ! is_array( $results ) )
+			return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		set_site_transient( 'wordpress_credits_' . $locale, $results, DAY_IN_SECONDS );
 	}

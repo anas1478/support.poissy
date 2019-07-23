@@ -11,9 +11,15 @@
 
 /**
  * Determines whether a post has an image attached.
+<<<<<<< HEAD
  *
  * For more information on this and similar theme functions, check out
  * the {@link https://developer.wordpress.org/themes/basics/conditional-tags/
+=======
+ * 
+ * For more information on this and similar theme functions, check out
+ * the {@link https://developer.wordpress.org/themes/basics/conditional-tags/ 
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * Conditional Tags} article in the Theme Developer Handbook.
  *
  * @since 2.9.0
@@ -23,6 +29,7 @@
  * @return bool Whether the post has an image attached.
  */
 function has_post_thumbnail( $post = null ) {
+<<<<<<< HEAD
 	$thumbnail_id  = get_post_thumbnail_id( $post );
 	$has_thumbnail = (bool) $thumbnail_id;
 
@@ -36,6 +43,9 @@ function has_post_thumbnail( $post = null ) {
 	 * @param int|string       $thumbnail_id  Post thumbnail ID or empty string.
 	 */
 	return (bool) apply_filters( 'has_post_thumbnail', $has_thumbnail, $post, $thumbnail_id );
+=======
+	return (bool) get_post_thumbnail_id( $post );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -88,6 +98,7 @@ function the_post_thumbnail( $size = 'post-thumbnail', $attr = '' ) {
  * @param WP_Query $wp_query Optional. A WP_Query instance. Defaults to the $wp_query global.
  */
 function update_post_thumbnail_cache( $wp_query = null ) {
+<<<<<<< HEAD
 	if ( ! $wp_query ) {
 		$wp_query = $GLOBALS['wp_query'];
 	}
@@ -104,6 +115,21 @@ function update_post_thumbnail_cache( $wp_query = null ) {
 	}
 
 	if ( ! empty( $thumb_ids ) ) {
+=======
+	if ( ! $wp_query )
+		$wp_query = $GLOBALS['wp_query'];
+
+	if ( $wp_query->thumbnails_cached )
+		return;
+
+	$thumb_ids = array();
+	foreach ( $wp_query->posts as $post ) {
+		if ( $id = get_post_thumbnail_id( $post->ID ) )
+			$thumb_ids[] = $id;
+	}
+
+	if ( ! empty ( $thumb_ids ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_prime_post_caches( $thumb_ids, false, true );
 	}
 
@@ -164,9 +190,14 @@ function get_the_post_thumbnail( $post = null, $size = 'post-thumbnail', $attr =
 		 *                                        and height values (in that order). Default 'post-thumbnail'.
 		 */
 		do_action( 'begin_fetch_post_thumbnail_html', $post->ID, $post_thumbnail_id, $size );
+<<<<<<< HEAD
 		if ( in_the_loop() ) {
 			update_post_thumbnail_cache();
 		}
+=======
+		if ( in_the_loop() )
+			update_post_thumbnail_cache();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$html = wp_get_attachment_image( $post_thumbnail_id, $size, false, $attr );
 
 		/**

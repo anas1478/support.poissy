@@ -23,8 +23,13 @@
  * @param string $show See get_bloginfo() for possible values.
  * @return string
  */
+<<<<<<< HEAD
 function get_bloginfo_rss( $show = '' ) {
 	$info = strip_tags( get_bloginfo( $show ) );
+=======
+function get_bloginfo_rss($show = '') {
+	$info = strip_tags(get_bloginfo($show));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * Filters the bloginfo for use in RSS feeds.
 	 *
@@ -51,7 +56,11 @@ function get_bloginfo_rss( $show = '' ) {
  *
  * @param string $show See get_bloginfo() for possible values.
  */
+<<<<<<< HEAD
 function bloginfo_rss( $show = '' ) {
+=======
+function bloginfo_rss($show = '') {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * Filters the bloginfo for display in RSS feeds.
 	 *
@@ -182,6 +191,7 @@ function the_title_rss() {
  * @param string $feed_type The type of feed. rss2 | atom | rss | rdf
  * @return string The filtered content.
  */
+<<<<<<< HEAD
 function get_the_content_feed( $feed_type = null ) {
 	if ( ! $feed_type ) {
 		$feed_type = get_default_feed();
@@ -190,6 +200,15 @@ function get_the_content_feed( $feed_type = null ) {
 	/** This filter is documented in wp-includes/post-template.php */
 	$content = apply_filters( 'the_content', get_the_content() );
 	$content = str_replace( ']]>', ']]&gt;', $content );
+=======
+function get_the_content_feed($feed_type = null) {
+	if ( !$feed_type )
+		$feed_type = get_default_feed();
+
+	/** This filter is documented in wp-includes/post-template.php */
+	$content = apply_filters( 'the_content', get_the_content() );
+	$content = str_replace(']]>', ']]&gt;', $content);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * Filters the post content for use in feeds.
 	 *
@@ -209,8 +228,13 @@ function get_the_content_feed( $feed_type = null ) {
  *
  * @param string $feed_type The type of feed. rss2 | atom | rss | rdf
  */
+<<<<<<< HEAD
 function the_content_feed( $feed_type = null ) {
 	echo get_the_content_feed( $feed_type );
+=======
+function the_content_feed($feed_type = null) {
+	echo get_the_content_feed($feed_type);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -271,8 +295,13 @@ function comments_link_feed() {
  *
  * @param int|WP_Comment $comment_id Optional comment object or id. Defaults to global comment object.
  */
+<<<<<<< HEAD
 function comment_guid( $comment_id = null ) {
 	echo esc_url( get_comment_guid( $comment_id ) );
+=======
+function comment_guid($comment_id = null) {
+	echo esc_url( get_comment_guid($comment_id) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -283,6 +312,7 @@ function comment_guid( $comment_id = null ) {
  * @param int|WP_Comment $comment_id Optional comment object or id. Defaults to global comment object.
  * @return false|string false on failure or guid for comment on success.
  */
+<<<<<<< HEAD
 function get_comment_guid( $comment_id = null ) {
 	$comment = get_comment( $comment_id );
 
@@ -291,6 +321,15 @@ function get_comment_guid( $comment_id = null ) {
 	}
 
 	return get_the_guid( $comment->comment_post_ID ) . '#comment-' . $comment->comment_ID;
+=======
+function get_comment_guid($comment_id = null) {
+	$comment = get_comment($comment_id);
+
+	if ( !is_object($comment) )
+		return false;
+
+	return get_the_guid($comment->comment_post_ID) . '#comment-' . $comment->comment_ID;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -373,6 +412,7 @@ function comment_text_rss() {
  * @param string $type Optional, default is the type returned by get_default_feed().
  * @return string All of the post categories for displaying in the feed.
  */
+<<<<<<< HEAD
 function get_the_category_rss( $type = null ) {
 	if ( empty( $type ) ) {
 		$type = get_default_feed();
@@ -409,6 +449,37 @@ function get_the_category_rss( $type = null ) {
 		} else {
 			$the_list .= "\t\t<category><![CDATA[" . @html_entity_decode( $cat_name, ENT_COMPAT, get_option( 'blog_charset' ) ) . "]]></category>\n";
 		}
+=======
+function get_the_category_rss($type = null) {
+	if ( empty($type) )
+		$type = get_default_feed();
+	$categories = get_the_category();
+	$tags = get_the_tags();
+	$the_list = '';
+	$cat_names = array();
+
+	$filter = 'rss';
+	if ( 'atom' == $type )
+		$filter = 'raw';
+
+	if ( !empty($categories) ) foreach ( (array) $categories as $category ) {
+		$cat_names[] = sanitize_term_field('name', $category->name, $category->term_id, 'category', $filter);
+	}
+
+	if ( !empty($tags) ) foreach ( (array) $tags as $tag ) {
+		$cat_names[] = sanitize_term_field('name', $tag->name, $tag->term_id, 'post_tag', $filter);
+	}
+
+	$cat_names = array_unique($cat_names);
+
+	foreach ( $cat_names as $cat_name ) {
+		if ( 'rdf' == $type )
+			$the_list .= "\t\t<dc:subject><![CDATA[$cat_name]]></dc:subject>\n";
+		elseif ( 'atom' == $type )
+			$the_list .= sprintf( '<category scheme="%1$s" term="%2$s" />', esc_attr( get_bloginfo_rss( 'url' ) ), esc_attr( $cat_name ) );
+		else
+			$the_list .= "\t\t<category><![CDATA[" . @html_entity_decode( $cat_name, ENT_COMPAT, get_option('blog_charset') ) . "]]></category>\n";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -431,8 +502,13 @@ function get_the_category_rss( $type = null ) {
  *
  * @param string $type Optional, default is the type returned by get_default_feed().
  */
+<<<<<<< HEAD
 function the_category_rss( $type = null ) {
 	echo get_the_category_rss( $type );
+=======
+function the_category_rss($type = null) {
+	echo get_the_category_rss($type);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -443,12 +519,20 @@ function the_category_rss( $type = null ) {
  * @since 2.2.0
  */
 function html_type_rss() {
+<<<<<<< HEAD
 	$type = get_bloginfo( 'html_type' );
 	if ( strpos( $type, 'xhtml' ) !== false ) {
 		$type = 'xhtml';
 	} else {
 		$type = 'html';
 	}
+=======
+	$type = get_bloginfo('html_type');
+	if (strpos($type, 'xhtml') !== false)
+		$type = 'xhtml';
+	else
+		$type = 'html';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	echo $type;
 }
 
@@ -467,6 +551,7 @@ function html_type_rss() {
  * @since 1.5.0
  */
 function rss_enclosure() {
+<<<<<<< HEAD
 	if ( post_password_required() ) {
 		return;
 	}
@@ -478,6 +563,18 @@ function rss_enclosure() {
 
 				// only get the first element, e.g. audio/mpeg from 'audio/mpeg mpga mp2 mp3'
 				$t    = preg_split( '/[ \t]/', trim( $enclosure[2] ) );
+=======
+	if ( post_password_required() )
+		return;
+
+	foreach ( (array) get_post_custom() as $key => $val) {
+		if ($key == 'enclosure') {
+			foreach ( (array) $val as $enc ) {
+				$enclosure = explode("\n", $enc);
+
+				// only get the first element, e.g. audio/mpeg from 'audio/mpeg mpga mp2 mp3'
+				$t = preg_split('/[ \t]/', trim($enclosure[2]) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$type = $t[0];
 
 				/**
@@ -507,6 +604,7 @@ function rss_enclosure() {
  * @since 2.2.0
  */
 function atom_enclosure() {
+<<<<<<< HEAD
 	if ( post_password_required() ) {
 		return;
 	}
@@ -515,6 +613,15 @@ function atom_enclosure() {
 		if ( $key == 'enclosure' ) {
 			foreach ( (array) $val as $enc ) {
 				$enclosure = explode( "\n", $enc );
+=======
+	if ( post_password_required() )
+		return;
+
+	foreach ( (array) get_post_custom() as $key => $val ) {
+		if ($key == 'enclosure') {
+			foreach ( (array) $val as $enc ) {
+				$enclosure = explode("\n", $enc);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				/**
 				 * Filters the atom enclosure HTML link tag for the current post.
 				 *
@@ -545,9 +652,15 @@ function atom_enclosure() {
  * @param string $data Input string
  * @return array array(type, value)
  */
+<<<<<<< HEAD
 function prep_atom_text_construct( $data ) {
 	if ( strpos( $data, '<' ) === false && strpos( $data, '&' ) === false ) {
 		return array( 'text', $data );
+=======
+function prep_atom_text_construct($data) {
+	if (strpos($data, '<') === false && strpos($data, '&') === false) {
+		return array('text', $data);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	if ( ! function_exists( 'xml_parser_create' ) ) {
@@ -557,6 +670,7 @@ function prep_atom_text_construct( $data ) {
 	}
 
 	$parser = xml_parser_create();
+<<<<<<< HEAD
 	xml_parse( $parser, '<div>' . $data . '</div>', true );
 	$code = xml_get_error_code( $parser );
 	xml_parser_free( $parser );
@@ -574,6 +688,25 @@ function prep_atom_text_construct( $data ) {
 		return array( 'html', "<![CDATA[$data]]>" );
 	} else {
 		return array( 'html', htmlspecialchars( $data ) );
+=======
+	xml_parse($parser, '<div>' . $data . '</div>', true);
+	$code = xml_get_error_code($parser);
+	xml_parser_free($parser);
+
+	if (!$code) {
+		if (strpos($data, '<') === false) {
+			return array('text', $data);
+		} else {
+			$data = "<div xmlns='http://www.w3.org/1999/xhtml'>$data</div>";
+			return array('xhtml', $data);
+		}
+	}
+
+	if (strpos($data, ']]>') === false) {
+		return array('html', "<![CDATA[$data]]>");
+	} else {
+		return array('html', htmlspecialchars($data));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }
 
@@ -623,7 +756,11 @@ function rss2_site_icon() {
  * @since 2.5.0
  */
 function self_link() {
+<<<<<<< HEAD
 	$host = @parse_url( home_url() );
+=======
+	$host = @parse_url(home_url());
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * Filters the current feed URL.
 	 *
@@ -645,19 +782,31 @@ function self_link() {
  * @param string $type Type of feed. Possible values include 'rss', rss2', 'atom', and 'rdf'.
  */
 function feed_content_type( $type = '' ) {
+<<<<<<< HEAD
 	if ( empty( $type ) ) {
 		$type = get_default_feed();
 	}
+=======
+	if ( empty($type) )
+		$type = get_default_feed();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$types = array(
 		'rss'      => 'application/rss+xml',
 		'rss2'     => 'application/rss+xml',
 		'rss-http' => 'text/xml',
 		'atom'     => 'application/atom+xml',
+<<<<<<< HEAD
 		'rdf'      => 'application/rdf+xml',
 	);
 
 	$content_type = ( ! empty( $types[ $type ] ) ) ? $types[ $type ] : 'application/octet-stream';
+=======
+		'rdf'      => 'application/rdf+xml'
+	);
+
+	$content_type = ( !empty($types[$type]) ) ? $types[$type] : 'application/octet-stream';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the content type for a specific feed type.
@@ -677,7 +826,11 @@ function feed_content_type( $type = '' ) {
  *
  * @param mixed $url URL of feed to retrieve. If an array of URLs, the feeds are merged
  * using SimplePie's multifeed feature.
+<<<<<<< HEAD
  * See also {@link http://simplepie.org/wiki/faq/typical_multifeed_gotchas}
+=======
+ * See also {@link ​http://simplepie.org/wiki/faq/typical_multifeed_gotchas}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @return WP_Error|SimplePie WP_Error object on failure or SimplePie object on success
  */
@@ -716,9 +869,14 @@ function fetch_feed( $url ) {
 	$feed->init();
 	$feed->set_output_encoding( get_option( 'blog_charset' ) );
 
+<<<<<<< HEAD
 	if ( $feed->error() ) {
 		return new WP_Error( 'simplepie-error', $feed->error() );
 	}
+=======
+	if ( $feed->error() )
+		return new WP_Error( 'simplepie-error', $feed->error() );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $feed;
 }

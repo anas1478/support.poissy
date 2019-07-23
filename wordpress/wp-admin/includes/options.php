@@ -13,7 +13,11 @@
  * @since 4.2.0
  */
 function options_discussion_add_js() {
+<<<<<<< HEAD
 	?>
+=======
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	<script>
 	(function($){
 		var parent = $( '#show_avatars' ),
@@ -23,7 +27,11 @@ function options_discussion_add_js() {
 		});
 	})(jQuery);
 	</script>
+<<<<<<< HEAD
 	<?php
+=======
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -32,7 +40,11 @@ function options_discussion_add_js() {
  * @since 3.5.0
  */
 function options_general_add_js() {
+<<<<<<< HEAD
 	?>
+=======
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		var $siteName = $( '#wp-admin-bar-site-name' ).children( 'a' ).first(),
@@ -88,7 +100,11 @@ function options_general_add_js() {
 		});
 	});
 </script>
+<<<<<<< HEAD
 	<?php
+=======
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -97,7 +113,11 @@ function options_general_add_js() {
  * @since 3.5.0
  */
 function options_reading_add_js() {
+<<<<<<< HEAD
 	?>
+=======
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		var section = $('#front-static-pages'),
@@ -107,10 +127,17 @@ function options_reading_add_js() {
 				selects.prop( 'disabled', ! staticPage.prop('checked') );
 			};
 		check_disabled();
+<<<<<<< HEAD
 		 section.find('input:radio').change(check_disabled);
 	});
 </script>
 	<?php
+=======
+ 		section.find('input:radio').change(check_disabled);
+	});
+</script>
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**

@@ -32,6 +32,7 @@ function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
 		$date_field = 'comment_date_gmt';
 	}
 
+<<<<<<< HEAD
 	return $wpdb->get_var(
 		$wpdb->prepare(
 			"SELECT comment_post_ID FROM $wpdb->comments
@@ -40,6 +41,13 @@ function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
 			stripslashes( $comment_date )
 		)
 	);
+=======
+	return $wpdb->get_var( $wpdb->prepare("SELECT comment_post_ID FROM $wpdb->comments
+			WHERE comment_author = %s AND $date_field = %s",
+			stripslashes( $comment_author ),
+			stripslashes( $comment_date )
+	) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -48,6 +56,7 @@ function comment_exists( $comment_author, $comment_date, $timezone = 'blog' ) {
  * @since 2.0.0
  */
 function edit_comment() {
+<<<<<<< HEAD
 	if ( ! current_user_can( 'edit_comment', (int) $_POST['comment_ID'] ) ) {
 		wp_die( __( 'Sorry, you are not allowed to edit comments on this post.' ) );
 	}
@@ -73,11 +82,32 @@ function edit_comment() {
 
 	foreach ( array( 'aa', 'mm', 'jj', 'hh', 'mn' ) as $timeunit ) {
 		if ( ! empty( $_POST[ 'hidden_' . $timeunit ] ) && $_POST[ 'hidden_' . $timeunit ] != $_POST[ $timeunit ] ) {
+=======
+	if ( ! current_user_can( 'edit_comment', (int) $_POST['comment_ID'] ) )
+		wp_die ( __( 'Sorry, you are not allowed to edit comments on this post.' ) );
+
+	if ( isset( $_POST['newcomment_author'] ) )
+		$_POST['comment_author'] = $_POST['newcomment_author'];
+	if ( isset( $_POST['newcomment_author_email'] ) )
+		$_POST['comment_author_email'] = $_POST['newcomment_author_email'];
+	if ( isset( $_POST['newcomment_author_url'] ) )
+		$_POST['comment_author_url'] = $_POST['newcomment_author_url'];
+	if ( isset( $_POST['comment_status'] ) )
+		$_POST['comment_approved'] = $_POST['comment_status'];
+	if ( isset( $_POST['content'] ) )
+		$_POST['comment_content'] = $_POST['content'];
+	if ( isset( $_POST['comment_ID'] ) )
+		$_POST['comment_ID'] = (int) $_POST['comment_ID'];
+
+	foreach ( array ('aa', 'mm', 'jj', 'hh', 'mn') as $timeunit ) {
+		if ( !empty( $_POST['hidden_' . $timeunit] ) && $_POST['hidden_' . $timeunit] != $_POST[$timeunit] ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$_POST['edit_date'] = '1';
 			break;
 		}
 	}
 
+<<<<<<< HEAD
 	if ( ! empty( $_POST['edit_date'] ) ) {
 		$aa                    = $_POST['aa'];
 		$mm                    = $_POST['mm'];
@@ -89,6 +119,19 @@ function edit_comment() {
 		$hh                    = ( $hh > 23 ) ? $hh - 24 : $hh;
 		$mn                    = ( $mn > 59 ) ? $mn - 60 : $mn;
 		$ss                    = ( $ss > 59 ) ? $ss - 60 : $ss;
+=======
+	if ( !empty ( $_POST['edit_date'] ) ) {
+		$aa = $_POST['aa'];
+		$mm = $_POST['mm'];
+		$jj = $_POST['jj'];
+		$hh = $_POST['hh'];
+		$mn = $_POST['mn'];
+		$ss = $_POST['ss'];
+		$jj = ($jj > 31 ) ? 31 : $jj;
+		$hh = ($hh > 23 ) ? $hh -24 : $hh;
+		$mn = ($mn > 59 ) ? $mn -60 : $mn;
+		$ss = ($ss > 59 ) ? $ss -60 : $ss;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$_POST['comment_date'] = "$aa-$mm-$jj $hh:$mn:$ss";
 	}
 
@@ -104,11 +147,18 @@ function edit_comment() {
  * @return WP_Comment|false Comment if found. False on failure.
  */
 function get_comment_to_edit( $id ) {
+<<<<<<< HEAD
 	if ( ! $comment = get_comment( $id ) ) {
 		return false;
 	}
 
 	$comment->comment_ID      = (int) $comment->comment_ID;
+=======
+	if ( !$comment = get_comment($id) )
+		return false;
+
+	$comment->comment_ID = (int) $comment->comment_ID;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$comment->comment_post_ID = (int) $comment->comment_post_ID;
 
 	$comment->comment_content = format_to_edit( $comment->comment_content );
@@ -121,10 +171,17 @@ function get_comment_to_edit( $id ) {
 	 */
 	$comment->comment_content = apply_filters( 'comment_edit_pre', $comment->comment_content );
 
+<<<<<<< HEAD
 	$comment->comment_author       = format_to_edit( $comment->comment_author );
 	$comment->comment_author_email = format_to_edit( $comment->comment_author_email );
 	$comment->comment_author_url   = format_to_edit( $comment->comment_author_url );
 	$comment->comment_author_url   = esc_url( $comment->comment_author_url );
+=======
+	$comment->comment_author = format_to_edit( $comment->comment_author );
+	$comment->comment_author_email = format_to_edit( $comment->comment_author_email );
+	$comment->comment_author_url = format_to_edit( $comment->comment_author_url );
+	$comment->comment_author_url = esc_url($comment->comment_author_url);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $comment;
 }
@@ -143,6 +200,7 @@ function get_pending_comments_num( $post_id ) {
 	global $wpdb;
 
 	$single = false;
+<<<<<<< HEAD
 	if ( ! is_array( $post_id ) ) {
 		$post_id_array = (array) $post_id;
 		$single        = true;
@@ -151,20 +209,38 @@ function get_pending_comments_num( $post_id ) {
 	}
 	$post_id_array = array_map( 'intval', $post_id_array );
 	$post_id_in    = "'" . implode( "', '", $post_id_array ) . "'";
+=======
+	if ( !is_array($post_id) ) {
+		$post_id_array = (array) $post_id;
+		$single = true;
+	} else {
+		$post_id_array = $post_id;
+	}
+	$post_id_array = array_map('intval', $post_id_array);
+	$post_id_in = "'" . implode("', '", $post_id_array) . "'";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$pending = $wpdb->get_results( "SELECT comment_post_ID, COUNT(comment_ID) as num_comments FROM $wpdb->comments WHERE comment_post_ID IN ( $post_id_in ) AND comment_approved = '0' GROUP BY comment_post_ID", ARRAY_A );
 
 	if ( $single ) {
+<<<<<<< HEAD
 		if ( empty( $pending ) ) {
 			return 0;
 		} else {
 			return absint( $pending[0]['num_comments'] );
 		}
+=======
+		if ( empty($pending) )
+			return 0;
+		else
+			return absint($pending[0]['num_comments']);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	$pending_keyed = array();
 
 	// Default to zero pending for all posts in request
+<<<<<<< HEAD
 	foreach ( $post_id_array as $id ) {
 		$pending_keyed[ $id ] = 0;
 	}
@@ -174,6 +250,14 @@ function get_pending_comments_num( $post_id ) {
 			$pending_keyed[ $pend['comment_post_ID'] ] = absint( $pend['num_comments'] );
 		}
 	}
+=======
+	foreach ( $post_id_array as $id )
+		$pending_keyed[$id] = 0;
+
+	if ( !empty($pending) )
+		foreach ( $pending as $pend )
+			$pending_keyed[$pend['comment_post_ID']] = absint($pend['num_comments']);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $pending_keyed;
 }
@@ -195,9 +279,14 @@ function floated_admin_avatar( $name ) {
  * @since 2.7.0
  */
 function enqueue_comment_hotkeys_js() {
+<<<<<<< HEAD
 	if ( 'true' == get_user_option( 'comment_shortcuts' ) ) {
 		wp_enqueue_script( 'jquery-table-hotkeys' );
 	}
+=======
+	if ( 'true' == get_user_option( 'comment_shortcuts' ) )
+		wp_enqueue_script( 'jquery-table-hotkeys' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -209,4 +298,8 @@ function comment_footer_die( $msg ) {
 	echo "<div class='wrap'><p>$msg</p></div>";
 	include( ABSPATH . 'wp-admin/admin-footer.php' );
 	die;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

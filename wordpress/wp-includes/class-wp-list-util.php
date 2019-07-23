@@ -97,7 +97,11 @@ class WP_List_Util {
 			return array();
 		}
 
+<<<<<<< HEAD
 		$count    = count( $args );
+=======
+		$count = count( $args );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$filtered = array();
 
 		foreach ( $this->output as $key => $obj ) {
@@ -115,7 +119,11 @@ class WP_List_Util {
 				( 'OR' == $operator && $matched > 0 ) ||
 				( 'NOT' == $operator && 0 == $matched )
 			) {
+<<<<<<< HEAD
 				$filtered[ $key ] = $obj;
+=======
+				$filtered[$key] = $obj;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 
@@ -140,8 +148,11 @@ class WP_List_Util {
 	 *               `$list` will be preserved in the results.
 	 */
 	public function pluck( $field, $index_key = null ) {
+<<<<<<< HEAD
 		$newlist = array();
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $index_key ) {
 			/*
 			 * This is simple. Could at some point wrap array_column()
@@ -149,6 +160,7 @@ class WP_List_Util {
 			 */
 			foreach ( $this->output as $key => $value ) {
 				if ( is_object( $value ) ) {
+<<<<<<< HEAD
 					$newlist[ $key ] = $value->$field;
 				} else {
 					$newlist[ $key ] = $value[ $field ];
@@ -157,6 +169,13 @@ class WP_List_Util {
 
 			$this->output = $newlist;
 
+=======
+					$this->output[ $key ] = $value->$field;
+				} else {
+					$this->output[ $key ] = $value[ $field ];
+				}
+			}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return $this->output;
 		}
 
@@ -164,6 +183,10 @@ class WP_List_Util {
 		 * When index_key is not set for a particular item, push the value
 		 * to the end of the stack. This is how array_column() behaves.
 		 */
+<<<<<<< HEAD
+=======
+		$newlist = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		foreach ( $this->output as $value ) {
 			if ( is_object( $value ) ) {
 				if ( isset( $value->$index_key ) ) {

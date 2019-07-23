@@ -2,16 +2,39 @@
  * Contains the postboxes logic, opening and closing postboxes, reordering and saving
  * the state and ordering to the database.
  *
+<<<<<<< HEAD
  * @since 2.5.0
  * @requires jQuery
  * @output wp-admin/js/postbox.js
  */
 
 /* global ajaxurl, postBoxL10n, postboxes */
+=======
+ * @summary Contains postboxes logic
+ *
+ * @since 2.5.0
+ * @requires jQuery
+ */
+
+/* global ajaxurl, postBoxL10n */
+
+/**
+ * This object contains all function to handle the behaviour of the post boxes. The post boxes are the boxes you see
+ * around the content on the edit page.
+ *
+ * @since 2.7.0
+ *
+ * @namespace postboxes
+ *
+ * @type {Object}
+ */
+var postboxes;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 (function($) {
 	var $document = $( document );
 
+<<<<<<< HEAD
 	/**
 	 * This object contains all function to handle the behaviour of the post boxes. The post boxes are the boxes you see
 	 * around the content on the edit page.
@@ -26,6 +49,12 @@
 
 		/**
 		 * Handles a click on either the postbox heading or the postbox open/close icon.
+=======
+	postboxes = {
+
+		/**
+		 * @summary Handles a click on either the postbox heading or the postbox open/close icon.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Opens or closes the postbox. Expects `this` to equal the clicked element.
 		 * Calls postboxes.pbshow if the postbox has been opened, calls postboxes.pbhide
@@ -73,13 +102,20 @@
 			}
 
 			/**
+<<<<<<< HEAD
 			 * Fires when a postbox has been opened or closed.
+=======
+			 * @summary Fires when a postbox has been opened or closed.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Contains a jQuery object with the relevant postbox element.
 			 *
 			 * @since 4.0.0
+<<<<<<< HEAD
 			 * @ignore
 			 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * @event postboxes#postbox-toggled
 			 * @type {Object}
 			 */
@@ -114,7 +150,11 @@
 			});
 
 			/**
+<<<<<<< HEAD
 			 * Hides a postbox.
+=======
+			 * @summary Hides a postbox.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Event handler for the postbox dismiss button. After clicking the button
 			 * the postbox will be hidden.
@@ -130,14 +170,21 @@
 			});
 
 			/**
+<<<<<<< HEAD
 			 * Hides the postbox element
+=======
+			 * @summary Hides the postbox element
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * Event handler for the screen options checkboxes. When a checkbox is
 			 * clicked this function will hide or show the relevant postboxes.
 			 *
 			 * @since 2.7.0
+<<<<<<< HEAD
 			 * @ignore
 			 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * @fires postboxes#postbox-toggled
 			 *
 			 * @returns {void}
@@ -170,7 +217,11 @@
 			});
 
 			/**
+<<<<<<< HEAD
 			 * Changes the amount of columns based on the layout preferences.
+=======
+			 * @summary Changes the amount of columns based on the layout preferences.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 2.8.0
 			 *
@@ -187,7 +238,11 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Initializes all the postboxes, mainly their sortable behaviour.
+=======
+		 * @summary Initializes all the postboxes, mainly their sortable behaviour.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.7.0
 		 * @memberof postboxes
@@ -266,10 +321,17 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Saves the state of the postboxes to the server.
 		 *
 		 * It sends two lists, one with all the closed postboxes, one with all the
 		 * hidden postboxes.
+=======
+		 * @summary Saves the state of the postboxes to the server.
+		 *
+		 * Saves the state of the postboxes to the server. It sends two lists, one with
+		 * all the closed postboxes, one with all the hidden postboxes.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.7.0
 		 * @memberof postboxes
@@ -298,9 +360,16 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Saves the order of the postboxes to the server.
 		 *
 		 * Sends a list of all postboxes inside a sortable area to the server.
+=======
+		 * @summary Saves the order of the postboxes to the server.
+		 *
+		 * Saves the order of the postboxes to the server. Sends a list of all postboxes
+		 * inside a sortable area to the server.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.8.0
 		 * @memberof postboxes
@@ -326,7 +395,11 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Marks empty postbox areas.
+=======
+		 * @summary Marks empty postbox areas.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Adds a message to empty sortable areas on the dashboard page. Also adds a
 		 * border around the side area on the post edit screen if there are no postboxes
@@ -362,7 +435,11 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Changes the amount of columns on the post edit page.
+=======
+		 * @summary Changes the amount of columns on the post edit page.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.3.0
 		 * @memberof postboxes
@@ -383,16 +460,24 @@
 			 * Fires when the amount of columns on the post edit page has been changed.
 			 *
 			 * @since 4.0.0
+<<<<<<< HEAD
 			 * @ignore
 			 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 * @event postboxes#postboxes-columnchange
 			 */
 			$( document ).trigger( 'postboxes-columnchange' );
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Changes the amount of columns the postboxes are in based on the current
 		 * orientation of the browser.
+=======
+		 * @summary Changes the amount of columns the postboxes are in based on the
+		 *          current orientation of the browser.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.3.0
 		 * @memberof postboxes

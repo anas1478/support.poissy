@@ -95,8 +95,13 @@ class WP_Community_Events {
 		// include an unmodified $wp_version
 		include( ABSPATH . WPINC . '/version.php' );
 
+<<<<<<< HEAD
 		$api_url                    = 'http://api.wordpress.org/events/1.0/';
 		$request_args               = $this->get_request_args( $location_search, $timezone );
+=======
+		$api_url      = 'http://api.wordpress.org/events/1.0/';
+		$request_args = $this->get_request_args( $location_search, $timezone );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$request_args['user-agent'] = 'WordPress/' . $wp_version . '; ' . home_url( '/' );
 
 		if ( wp_http_supports( array( 'ssl' ) ) ) {
@@ -203,7 +208,11 @@ class WP_Community_Events {
 
 		// Wrap the args in an array compatible with the second parameter of `wp_remote_get()`.
 		return array(
+<<<<<<< HEAD
 			'body' => $args,
+=======
+			'body' => $args
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 	}
 
@@ -233,7 +242,11 @@ class WP_Community_Events {
 	 *                      or false on failure.
 	 */
 	public static function get_unsafe_client_ip() {
+<<<<<<< HEAD
 		$client_ip = false;
+=======
+		$client_ip = $netmask = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// In order of preference, with the best ones for this purpose first.
 		$address_headers = array(
@@ -308,7 +321,11 @@ class WP_Community_Events {
 
 		if ( isset( $location['ip'] ) ) {
 			$key = 'community-events-' . md5( $location['ip'] );
+<<<<<<< HEAD
 		} elseif ( isset( $location['latitude'], $location['longitude'] ) ) {
+=======
+		} else if ( isset( $location['latitude'], $location['longitude'] ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$key = 'community-events-' . md5( $location['latitude'] . $location['longitude'] );
 		}
 
@@ -425,7 +442,11 @@ class WP_Community_Events {
 			$response_body['events'] = array_slice( $response_body['events'], 0, 3 );
 			$trimmed_event_types     = wp_list_pluck( $response_body['events'], 'type' );
 
+<<<<<<< HEAD
 			// Make sure the soonest upcoming WordCamp is pinned in the list.
+=======
+			// Make sure the soonest upcoming WordCamps is pinned in the list.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( ! in_array( 'wordcamp', $trimmed_event_types ) && $wordcamps ) {
 				array_pop( $response_body['events'] );
 				array_push( $response_body['events'], $wordcamps[0] );
@@ -452,6 +473,7 @@ class WP_Community_Events {
 			return;
 		}
 
+<<<<<<< HEAD
 		error_log(
 			sprintf(
 				'%s: %s. Details: %s',
@@ -460,5 +482,13 @@ class WP_Community_Events {
 				wp_json_encode( $details )
 			)
 		);
+=======
+		error_log( sprintf(
+			'%s: %s. Details: %s',
+			__METHOD__,
+			trim( $message, '.' ),
+			wp_json_encode( $details )
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

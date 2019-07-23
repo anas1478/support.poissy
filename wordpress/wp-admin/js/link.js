@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/link.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* global postboxes, deleteUserSetting, setUserSetting, getUserSetting */
 
 jQuery(document).ready( function($) {
@@ -12,6 +15,7 @@ jQuery(document).ready( function($) {
 	// postboxes
 	postboxes.add_postbox_toggles('link');
 
+<<<<<<< HEAD
 	/**
 	 * Adds event that opens a particular category tab.
 	 *
@@ -19,6 +23,9 @@ jQuery(document).ready( function($) {
 	 *
 	 * @return {boolean} Always returns false to prevent the default behavior.
 	 */
+=======
+	// category tabs
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$('#category-tabs a').click(function(){
 		var t = $(this).attr('href');
 		$(this).parent().addClass('tabs').siblings('li').removeClass('tabs');
@@ -35,6 +42,7 @@ jQuery(document).ready( function($) {
 
 	// Ajax Cat
 	newCat = $('#newcat').one( 'focus', function() { $(this).val( '' ).removeClass( 'form-input-tip' ); } );
+<<<<<<< HEAD
 
 	/**
 	 * After adding a new category, focus on the category add input field.
@@ -53,6 +61,9 @@ jQuery(document).ready( function($) {
 	 *
 	 * @return {void}
 	 */
+=======
+	$('#link-category-add-submit').click( function() { newCat.focus(); } );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	syncChecks = function() {
 		if ( noSyncChecks )
 			return;
@@ -62,6 +73,7 @@ jQuery(document).ready( function($) {
 		noSyncChecks = false;
 	};
 
+<<<<<<< HEAD
 	/**
 	 * Adds event listeners to an added category.
 	 *
@@ -77,6 +89,8 @@ jQuery(document).ready( function($) {
 	 *
 	 * @return {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	catAddAfter = function( r, s ) {
 		$(s.what + ' response_data', r).each( function() {
 			var t = $($(this).text());
@@ -88,6 +102,7 @@ jQuery(document).ready( function($) {
 		} );
 	};
 
+<<<<<<< HEAD
 	/*
 	 * Instantiates the list manager.
 	 *
@@ -125,6 +140,20 @@ jQuery(document).ready( function($) {
 	 * @returns {boolean} Always returns false to prevent regular link
 	 *                    functionality.
 	 */
+=======
+	$('#categorychecklist').wpList( {
+		alt: '',
+		what: 'link-category',
+		response: 'category-ajax-response',
+		addAfter: catAddAfter
+	} );
+
+	$('a[href="#categories-all"]').click(function(){deleteUserSetting('cats');});
+	$('a[href="#categories-pop"]').click(function(){setUserSetting('cats','pop');});
+	if ( 'pop' == getUserSetting('cats') )
+		$('a[href="#categories-pop"]').click();
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$('#category-add-toggle').click( function() {
 		$(this).parents('div:first').toggleClass( 'wp-hidden-children' );
 		$('#category-tabs a[href="#categories-all"]').click();

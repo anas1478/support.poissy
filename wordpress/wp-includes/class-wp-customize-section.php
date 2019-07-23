@@ -24,6 +24,11 @@ class WP_Customize_Section {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
+=======
+	 *
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @var int
 	 */
 	protected static $instance_count = 0;
@@ -161,7 +166,11 @@ class WP_Customize_Section {
 		}
 
 		$this->manager = $manager;
+<<<<<<< HEAD
 		$this->id      = $id;
+=======
+		$this->id = $id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( empty( $this->active_callback ) ) {
 			$this->active_callback = array( $this, 'active_callback' );
 		}
@@ -180,7 +189,11 @@ class WP_Customize_Section {
 	 */
 	final public function active() {
 		$section = $this;
+<<<<<<< HEAD
 		$active  = call_user_func( $this->active_callback, $this );
+=======
+		$active = call_user_func( $this->active_callback, $this );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters response of WP_Customize_Section::active().
@@ -217,10 +230,17 @@ class WP_Customize_Section {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
+<<<<<<< HEAD
 		$array                   = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'panel', 'type', 'description_hidden' ) );
 		$array['title']          = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content']        = $this->get_content();
 		$array['active']         = $this->active();
+=======
+		$array = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'panel', 'type', 'description_hidden' ) );
+		$array['title'] = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
+		$array['content'] = $this->get_content();
+		$array['active'] = $this->active();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$array['instanceNumber'] = $this->instance_number;
 
 		if ( $this->panel ) {

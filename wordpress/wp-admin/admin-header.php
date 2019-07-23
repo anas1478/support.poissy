@@ -6,10 +6,16 @@
  * @subpackage Administration
  */
 
+<<<<<<< HEAD
 @header( 'Content-Type: ' . get_option( 'html_type' ) . '; charset=' . get_option( 'blog_charset' ) );
 if ( ! defined( 'WP_ADMIN' ) ) {
 	require_once( dirname( __FILE__ ) . '/admin.php' );
 }
+=======
+@header('Content-Type: ' . get_option('html_type') . '; charset=' . get_option('blog_charset'));
+if ( ! defined( 'WP_ADMIN' ) )
+	require_once( dirname( __FILE__ ) . '/admin.php' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * In case admin-header.php is included in a function.
@@ -27,26 +33,43 @@ global $title, $hook_suffix, $current_screen, $wp_locale, $pagenow,
 	$update_title, $total_update_count, $parent_file;
 
 // Catch plugins that include admin-header.php before admin.php completes.
+<<<<<<< HEAD
 if ( empty( $current_screen ) ) {
 	set_current_screen();
 }
+=======
+if ( empty( $current_screen ) )
+	set_current_screen();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 get_admin_page_title();
 $title = esc_html( strip_tags( $title ) );
 
 if ( is_network_admin() ) {
+<<<<<<< HEAD
 	/* translators: Network admin screen title. %s: Network name */
 	$admin_title = sprintf( __( 'Network Admin: %s' ), esc_html( get_network()->site_name ) );
 } elseif ( is_user_admin() ) {
 	/* translators: User dashboard screen title. %s: Network name */
+=======
+	/* translators: Network admin screen title. 1: Network name */
+	$admin_title = sprintf( __( 'Network Admin: %s' ), esc_html( get_network()->site_name ) );
+} elseif ( is_user_admin() ) {
+	/* translators: User dashboard screen title. 1: Network name */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$admin_title = sprintf( __( 'User Dashboard: %s' ), esc_html( get_network()->site_name ) );
 } else {
 	$admin_title = get_bloginfo( 'name' );
 }
 
 if ( $admin_title == $title ) {
+<<<<<<< HEAD
 	/* translators: Admin screen title. %s: Admin screen name */
 	$admin_title = sprintf( __( '%s &#8212; WordPress' ), $title );
+=======
+	/* translators: Admin screen title. 1: Admin screen name */
+	$admin_title = sprintf( __( '%1$s &#8212; WordPress' ), $title );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } else {
 	/* translators: Admin screen title. 1: Admin screen name, 2: Network or site name */
 	$admin_title = sprintf( __( '%1$s &lsaquo; %2$s &#8212; WordPress' ), $title, $admin_title );
@@ -71,10 +94,17 @@ _wp_admin_html_begin();
 
 wp_enqueue_style( 'colors' );
 wp_enqueue_style( 'ie' );
+<<<<<<< HEAD
 wp_enqueue_script( 'utils' );
 wp_enqueue_script( 'svg-painter' );
 
 $admin_body_class = preg_replace( '/[^a-z0-9_-]+/i', '-', $hook_suffix );
+=======
+wp_enqueue_script('utils');
+wp_enqueue_script( 'svg-painter' );
+
+$admin_body_class = preg_replace('/[^a-z0-9_-]+/i', '-', $hook_suffix);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 ?>
 <script type="text/javascript">
 addLoadEvent = function(func){if(typeof jQuery!="undefined")jQuery(document).ready(func);else if(typeof wpOnload!='function'){wpOnload=func;}else{var oldonload=wpOnload;wpOnload=function(){oldonload();func();}}};
@@ -143,6 +173,7 @@ do_action( "admin_head-{$hook_suffix}" );
  */
 do_action( 'admin_head' );
 
+<<<<<<< HEAD
 if ( get_user_setting( 'mfold' ) == 'f' ) {
 	$admin_body_class .= ' folded';
 }
@@ -166,12 +197,32 @@ if ( $current_screen->post_type ) {
 if ( $current_screen->taxonomy ) {
 	$admin_body_class .= ' taxonomy-' . $current_screen->taxonomy;
 }
+=======
+if ( get_user_setting('mfold') == 'f' )
+	$admin_body_class .= ' folded';
+
+if ( !get_user_setting('unfold') )
+	$admin_body_class .= ' auto-fold';
+
+if ( is_admin_bar_showing() )
+	$admin_body_class .= ' admin-bar';
+
+if ( is_rtl() )
+	$admin_body_class .= ' rtl';
+
+if ( $current_screen->post_type )
+	$admin_body_class .= ' post-type-' . $current_screen->post_type;
+
+if ( $current_screen->taxonomy )
+	$admin_body_class .= ' taxonomy-' . $current_screen->taxonomy;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 $admin_body_class .= ' branch-' . str_replace( array( '.', ',' ), '-', floatval( get_bloginfo( 'version' ) ) );
 $admin_body_class .= ' version-' . str_replace( '.', '-', preg_replace( '/^([.0-9]+).*/', '$1', get_bloginfo( 'version' ) ) );
 $admin_body_class .= ' admin-color-' . sanitize_html_class( get_user_option( 'admin_color' ), 'fresh' );
 $admin_body_class .= ' locale-' . sanitize_html_class( strtolower( str_replace( '_', '-', get_user_locale() ) ) );
 
+<<<<<<< HEAD
 if ( wp_is_mobile() ) {
 	$admin_body_class .= ' mobile';
 }
@@ -183,6 +234,16 @@ if ( is_multisite() ) {
 if ( is_network_admin() ) {
 	$admin_body_class .= ' network-admin';
 }
+=======
+if ( wp_is_mobile() )
+	$admin_body_class .= ' mobile';
+
+if ( is_multisite() )
+	$admin_body_class .= ' multisite';
+
+if ( is_network_admin() )
+	$admin_body_class .= ' network-admin';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 $admin_body_class .= ' no-customize-support no-svg';
 
@@ -213,9 +274,14 @@ if ( $current_screen->is_block_editor() ) {
  * @param string $classes Space-separated list of CSS classes.
  */
 $admin_body_classes = apply_filters( 'admin_body_class', '' );
+<<<<<<< HEAD
 $admin_body_classes = ltrim( $admin_body_classes . ' ' . $admin_body_class );
 ?>
 <body class="wp-admin wp-core-ui no-js <?php echo $admin_body_classes; ?>">
+=======
+?>
+<body class="wp-admin wp-core-ui no-js <?php echo $admin_body_classes . ' ' . $admin_body_class; ?>">
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <script type="text/javascript">
 	document.body.className = document.body.className.replace('no-js','js');
 </script>
@@ -228,7 +294,11 @@ if ( current_user_can( 'customize' ) ) {
 ?>
 
 <div id="wpwrap">
+<<<<<<< HEAD
 <?php require( ABSPATH . 'wp-admin/menu-header.php' ); ?>
+=======
+<?php require(ABSPATH . 'wp-admin/menu-header.php'); ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <div id="wpcontent">
 
 <?php
@@ -242,13 +312,21 @@ do_action( 'in_admin_header' );
 
 <div id="wpbody" role="main">
 <?php
+<<<<<<< HEAD
 unset( $blog_name, $total_update_count, $update_title );
+=======
+unset($title_class, $blog_name, $total_update_count, $update_title);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 $current_screen->set_parentage( $parent_file );
 
 ?>
 
+<<<<<<< HEAD
 <div id="wpbody-content">
+=======
+<div id="wpbody-content" aria-label="<?php esc_attr_e('Main content'); ?>" tabindex="0">
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <?php
 
 $current_screen->render_screen_meta();
@@ -283,6 +361,11 @@ if ( is_network_admin() ) {
  */
 do_action( 'all_admin_notices' );
 
+<<<<<<< HEAD
 if ( $parent_file == 'options-general.php' ) {
 	require( ABSPATH . 'wp-admin/options-head.php' );
 }
+=======
+if ( $parent_file == 'options-general.php' )
+	require(ABSPATH . 'wp-admin/options-head.php');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

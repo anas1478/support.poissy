@@ -15,6 +15,7 @@
  * @see WP_Customize_Control
  */
 class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
+<<<<<<< HEAD
 	/**
 	 * Customize control type.
 	 *
@@ -77,6 +78,15 @@ class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
 	 * @since 3.9.0
 	 * @var bool True if wide, false otherwise. Default false.
 	 */
+=======
+	public $type = 'widget_form';
+	public $widget_id;
+	public $widget_id_base;
+	public $sidebar_id;
+	public $is_new = false;
+	public $width;
+	public $height;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	public $is_wide = false;
 
 	/**
@@ -104,6 +114,7 @@ class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
 		}
 
 		$args = array(
+<<<<<<< HEAD
 			'widget_id'   => $widget['id'],
 			'widget_name' => $widget['name'],
 		);
@@ -114,6 +125,13 @@ class WP_Widget_Form_Customize_Control extends WP_Customize_Control {
 				1 => $widget['params'][0],
 			)
 		);
+=======
+			'widget_id' => $widget['id'],
+			'widget_name' => $widget['name'],
+		);
+
+		$args = wp_list_widget_controls_dynamic_sidebar( array( 0 => $args, 1 => $widget['params'][0] ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$widget_control_parts = $this->manager->widgets->get_widget_control_parts( $args );
 
 		$this->json['widget_control'] = $widget_control_parts['control'];

@@ -31,6 +31,10 @@
 	?>
 
 	<div class="wp-embed-footer">
+<<<<<<< HEAD
 		<?php the_embed_site_title(); ?>
+=======
+		<?php the_embed_site_title() ?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	</div>
 </div>

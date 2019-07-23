@@ -28,7 +28,11 @@
  *
  *     @type int|bool $show_updated     Whether to show the time the bookmark was last updated.
  *                                      Accepts 1|true or 0|false. Default 0|false.
+<<<<<<< HEAD
  *     @type int|bool $show_description Whether to show the bookmark description. Accepts 1|true,
+=======
+ *     @type int|bool $show_description Whether to show the bookmakr description. Accepts 1|true,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *                                      Accepts 1|true or 0|false. Default 0|false.
  *     @type int|bool $show_images      Whether to show the link image if available. Accepts 1|true
  *                                      or 0|false. Default 1|true.
@@ -50,6 +54,7 @@
  */
 function _walk_bookmarks( $bookmarks, $args = '' ) {
 	$defaults = array(
+<<<<<<< HEAD
 		'show_updated'     => 0,
 		'show_description' => 0,
 		'show_images'      => 1,
@@ -60,6 +65,12 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 		'show_rating'      => 0,
 		'link_before'      => '',
 		'link_after'       => '',
+=======
+		'show_updated' => 0, 'show_description' => 0,
+		'show_images' => 1, 'show_name' => 0,
+		'before' => '<li>', 'after' => '</li>', 'between' => "\n",
+		'show_rating' => 0, 'link_before' => '', 'link_after' => ''
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	$r = wp_parse_args( $args, $defaults );
@@ -78,15 +89,25 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 		if ( ! empty( $bookmark->link_url ) ) {
 			$the_link = esc_url( $bookmark->link_url );
 		}
+<<<<<<< HEAD
 		$desc  = esc_attr( sanitize_bookmark_field( 'link_description', $bookmark->link_description, $bookmark->link_id, 'display' ) );
 		$name  = esc_attr( sanitize_bookmark_field( 'link_name', $bookmark->link_name, $bookmark->link_id, 'display' ) );
 		$title = $desc;
+=======
+		$desc = esc_attr( sanitize_bookmark_field( 'link_description', $bookmark->link_description, $bookmark->link_id, 'display' ) );
+		$name = esc_attr( sanitize_bookmark_field( 'link_name', $bookmark->link_name, $bookmark->link_id, 'display' ) );
+ 		$title = $desc;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( $r['show_updated'] ) {
 			if ( '00' != substr( $bookmark->link_updated_f, 0, 2 ) ) {
 				$title .= ' (';
 				$title .= sprintf(
+<<<<<<< HEAD
 					__( 'Last updated: %s' ),
+=======
+					__('Last updated: %s'),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					date(
 						get_option( 'links_updated_date_format' ),
 						$bookmark->link_updated_f + ( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS )
@@ -102,7 +123,11 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 		}
 		$rel = $bookmark->link_rel;
 		if ( '' != $rel ) {
+<<<<<<< HEAD
 			$rel = ' rel="' . esc_attr( $rel ) . '"';
+=======
+			$rel = ' rel="' . esc_attr($rel) . '"';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		$target = $bookmark->link_target;
 		if ( '' != $target ) {
@@ -116,7 +141,11 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
 			if ( strpos( $bookmark->link_image, 'http' ) === 0 ) {
 				$output .= "<img src=\"$bookmark->link_image\" $alt $title />";
 			} else { // If it's a relative path
+<<<<<<< HEAD
 				$output .= '<img src="' . get_option( 'siteurl' ) . "$bookmark->link_image\" $alt $title />";
+=======
+				$output .= "<img src=\"" . get_option('siteurl') . "$bookmark->link_image\" $alt $title />";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 			if ( $r['show_name'] ) {
 				$output .= " $name";
@@ -205,6 +234,7 @@ function _walk_bookmarks( $bookmarks, $args = '' ) {
  */
 function wp_list_bookmarks( $args = '' ) {
 	$defaults = array(
+<<<<<<< HEAD
 		'orderby'          => 'name',
 		'order'            => 'ASC',
 		'limit'            => -1,
@@ -223,6 +253,17 @@ function wp_list_bookmarks( $args = '' ) {
 		'class'            => 'linkcat',
 		'category_before'  => '<li id="%id" class="%class">',
 		'category_after'   => '</li>',
+=======
+		'orderby' => 'name', 'order' => 'ASC',
+		'limit' => -1, 'category' => '', 'exclude_category' => '',
+		'category_name' => '', 'hide_invisible' => 1,
+		'show_updated' => 0, 'echo' => 1,
+		'categorize' => 1, 'title_li' => __('Bookmarks'),
+		'title_before' => '<h2>', 'title_after' => '</h2>',
+		'category_orderby' => 'name', 'category_order' => 'ASC',
+		'class' => 'linkcat', 'category_before' => '<li id="%id" class="%class">',
+		'category_after' => '</li>'
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 
 	$r = wp_parse_args( $args, $defaults );
@@ -232,6 +273,7 @@ function wp_list_bookmarks( $args = '' ) {
 	if ( ! is_array( $r['class'] ) ) {
 		$r['class'] = explode( ' ', $r['class'] );
 	}
+<<<<<<< HEAD
 	$r['class'] = array_map( 'sanitize_html_class', $r['class'] );
 	$r['class'] = trim( join( ' ', $r['class'] ) );
 
@@ -247,6 +289,20 @@ function wp_list_bookmarks( $args = '' ) {
 				'hierarchical' => 0,
 			)
 		);
+=======
+ 	$r['class'] = array_map( 'sanitize_html_class', $r['class'] );
+ 	$r['class'] = trim( join( ' ', $r['class'] ) );
+
+	if ( $r['categorize'] ) {
+		$cats = get_terms( 'link_category', array(
+			'name__like' => $r['category_name'],
+			'include' => $r['category'],
+			'exclude' => $r['exclude_category'],
+			'orderby' => $r['category_orderby'],
+			'order' => $r['category_order'],
+			'hierarchical' => 0
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( empty( $cats ) ) {
 			$r['categorize'] = false;
 		}
@@ -255,7 +311,11 @@ function wp_list_bookmarks( $args = '' ) {
 	if ( $r['categorize'] ) {
 		// Split the bookmarks into ul's for each category
 		foreach ( (array) $cats as $cat ) {
+<<<<<<< HEAD
 			$params    = array_merge( $r, array( 'category' => $cat->term_id ) );
+=======
+			$params = array_merge( $r, array( 'category' => $cat->term_id ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$bookmarks = get_bookmarks( $params );
 			if ( empty( $bookmarks ) ) {
 				continue;
@@ -266,11 +326,19 @@ function wp_list_bookmarks( $args = '' ) {
 				$r['category_before']
 			);
 			/**
+<<<<<<< HEAD
 			 * Filters the category name.
 			 *
 			 * @since 2.2.0
 			 *
 			 * @param string $cat_name The category name.
+=======
+			 * Filters the bookmarks category name.
+			 *
+			 * @since 2.2.0
+			 *
+			 * @param string $cat_name The category name of bookmarks.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 */
 			$catname = apply_filters( 'link_category', $cat->name );
 
@@ -290,7 +358,11 @@ function wp_list_bookmarks( $args = '' ) {
 			if ( ! empty( $r['title_li'] ) ) {
 				$output .= str_replace(
 					array( '%id', '%class' ),
+<<<<<<< HEAD
 					array( 'linkcat-' . $r['category'], $r['class'] ),
+=======
+					array( "linkcat-" . $r['category'], $r['class'] ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$r['category_before']
 				);
 				$output .= $r['title_before'];

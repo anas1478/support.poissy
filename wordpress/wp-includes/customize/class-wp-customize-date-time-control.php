@@ -81,11 +81,19 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	public function json() {
 		$data = parent::json();
 
+<<<<<<< HEAD
 		$data['maxYear']          = intval( $this->max_year );
 		$data['minYear']          = intval( $this->min_year );
 		$data['allowPastDate']    = (bool) $this->allow_past_date;
 		$data['twelveHourFormat'] = (bool) $this->twelve_hour_format;
 		$data['includeTime']      = (bool) $this->include_time;
+=======
+		$data['maxYear'] = intval( $this->max_year );
+		$data['minYear'] = intval( $this->min_year );
+		$data['allowPastDate'] = (bool) $this->allow_past_date;
+		$data['twelveHourFormat'] = (bool) $this->twelve_hour_format;
+		$data['includeTime'] = (bool) $this->include_time;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return $data;
 	}
@@ -96,7 +104,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * @since 4.9.0
 	 */
 	public function content_template() {
+<<<<<<< HEAD
 		$data          = array_merge( $this->json(), $this->get_month_choices() );
+=======
+		$data = array_merge( $this->json(), $this->get_month_choices() );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$timezone_info = $this->get_timezone_info();
 
 		$date_format = get_option( 'date_format' );
@@ -189,8 +201,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * @since 4.9.0
 	 * @see touch_time()
 	 *
+<<<<<<< HEAD
 	 * @global WP_Locale $wp_locale
 	 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	public function get_month_choices() {
@@ -200,7 +215,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 			$month_text = $wp_locale->get_month_abbrev( $wp_locale->get_month( $i ) );
 
 			/* translators: 1: month number (01, 02, etc.), 2: month abbreviation */
+<<<<<<< HEAD
 			$months[ $i ]['text']  = sprintf( __( '%1$s-%2$s' ), $i, $month_text );
+=======
+			$months[ $i ]['text'] = sprintf( __( '%1$s-%2$s' ), $i, $month_text );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$months[ $i ]['value'] = $i;
 		}
 		return array(
@@ -216,7 +235,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 	 * @return array abbr and description.
 	 */
 	public function get_timezone_info() {
+<<<<<<< HEAD
 		$tz_string     = get_option( 'timezone_string' );
+=======
+		$tz_string = get_option( 'timezone_string' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$timezone_info = array();
 
 		if ( $tz_string ) {
@@ -227,9 +250,15 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 			}
 
 			if ( $tz ) {
+<<<<<<< HEAD
 				$now                   = new DateTime( 'now', $tz );
 				$formatted_gmt_offset  = sprintf( 'UTC%s', $this->format_gmt_offset( $tz->getOffset( $now ) / 3600 ) );
 				$tz_name               = str_replace( '_', ' ', $tz->getName() );
+=======
+				$now = new DateTime( 'now', $tz );
+				$formatted_gmt_offset = sprintf( 'UTC%s', $this->format_gmt_offset( $tz->getOffset( $now ) / 3600 ) );
+				$tz_name = str_replace( '_', ' ', $tz->getName() );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$timezone_info['abbr'] = $now->format( 'T' );
 
 				/* translators: 1: timezone name, 2: timezone abbreviation, 3: gmt offset  */
@@ -238,7 +267,11 @@ class WP_Customize_Date_Time_Control extends WP_Customize_Control {
 				$timezone_info['description'] = '';
 			}
 		} else {
+<<<<<<< HEAD
 			$formatted_gmt_offset  = $this->format_gmt_offset( intval( get_option( 'gmt_offset', 0 ) ) );
+=======
+			$formatted_gmt_offset = $this->format_gmt_offset( intval( get_option( 'gmt_offset', 0 ) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$timezone_info['abbr'] = sprintf( 'UTC%s', $formatted_gmt_offset );
 
 			/* translators: %s: UTC offset  */

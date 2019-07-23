@@ -1,17 +1,26 @@
 <?php
 /**
  * Loads the correct template based on the visitor's url
+<<<<<<< HEAD
  *
  * @package WordPress
  */
 if ( wp_using_themes() ) {
+=======
+ * @package WordPress
+ */
+if ( defined('WP_USE_THEMES') && WP_USE_THEMES )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * Fires before determining which template to load.
 	 *
 	 * @since 1.5.0
 	 */
 	do_action( 'template_redirect' );
+<<<<<<< HEAD
 }
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * Filters whether to allow 'HEAD' requests to generate content.
@@ -23,9 +32,14 @@ if ( wp_using_themes() ) {
  *
  * @param bool $exit Whether to exit without generating any content for 'HEAD' requests. Default true.
  */
+<<<<<<< HEAD
 if ( 'HEAD' === $_SERVER['REQUEST_METHOD'] && apply_filters( 'exit_on_http_head', true ) ) {
 	exit();
 }
+=======
+if ( 'HEAD' === $_SERVER['REQUEST_METHOD'] && apply_filters( 'exit_on_http_head', true ) )
+	exit();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // Process feeds and trackbacks even if not using themes.
 if ( is_robots() ) :
@@ -44,6 +58,7 @@ elseif ( is_trackback() ) :
 	return;
 endif;
 
+<<<<<<< HEAD
 if ( wp_using_themes() ) :
 	$template = false;
 	if ( is_embed() && $template = get_embed_template() ) :
@@ -63,6 +78,27 @@ if ( wp_using_themes() ) :
 	elseif ( is_author() && $template = get_author_template() ) :
 	elseif ( is_date() && $template = get_date_template() ) :
 	elseif ( is_archive() && $template = get_archive_template() ) :
+=======
+if ( defined('WP_USE_THEMES') && WP_USE_THEMES ) :
+	$template = false;
+	if     ( is_embed()          && $template = get_embed_template()          ) :
+	elseif ( is_404()            && $template = get_404_template()            ) :
+	elseif ( is_search()         && $template = get_search_template()         ) :
+	elseif ( is_front_page()     && $template = get_front_page_template()     ) :
+	elseif ( is_home()           && $template = get_home_template()           ) :
+	elseif ( is_post_type_archive() && $template = get_post_type_archive_template() ) :
+	elseif ( is_tax()            && $template = get_taxonomy_template()       ) :
+	elseif ( is_attachment()     && $template = get_attachment_template()     ) :
+		remove_filter('the_content', 'prepend_attachment');
+	elseif ( is_single()         && $template = get_single_template()         ) :
+	elseif ( is_page()           && $template = get_page_template()           ) :
+	elseif ( is_singular()       && $template = get_singular_template()       ) :
+	elseif ( is_category()       && $template = get_category_template()       ) :
+	elseif ( is_tag()            && $template = get_tag_template()            ) :
+	elseif ( is_author()         && $template = get_author_template()         ) :
+	elseif ( is_date()           && $template = get_date_template()           ) :
+	elseif ( is_archive()        && $template = get_archive_template()        ) :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	else :
 		$template = get_index_template();
 	endif;

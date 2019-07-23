@@ -35,6 +35,7 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 */
 	public function register_routes() {
 
+<<<<<<< HEAD
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->rest_base,
@@ -70,6 +71,35 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 				'schema' => array( $this, 'get_public_item_schema' ),
 			)
 		);
+=======
+		register_rest_route( $this->namespace, '/' . $this->rest_base, array(
+			array(
+				'methods'         => WP_REST_Server::READABLE,
+				'callback'        => array( $this, 'get_items' ),
+				'permission_callback' => array( $this, 'get_items_permissions_check' ),
+				'args'            => $this->get_collection_params(),
+			),
+			'schema' => array( $this, 'get_public_item_schema' ),
+		) );
+
+		register_rest_route( $this->namespace, '/' . $this->rest_base . '/(?P<taxonomy>[\w-]+)', array(
+			'args' => array(
+				'taxonomy' => array(
+					'description'  => __( 'An alphanumeric identifier for the taxonomy.' ),
+					'type'         => 'string',
+				),
+			),
+			array(
+				'methods'         => WP_REST_Server::READABLE,
+				'callback'        => array( $this, 'get_item' ),
+				'permission_callback' => array( $this, 'get_item_permissions_check' ),
+				'args'            => array(
+					'context'     => $this->get_context_param( array( 'default' => 'view' ) ),
+				),
+			),
+			'schema' => array( $this, 'get_public_item_schema' ),
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -120,8 +150,13 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 			if ( empty( $value->show_in_rest ) || ( 'edit' === $request['context'] && ! current_user_can( $value->cap->assign_terms ) ) ) {
 				continue;
 			}
+<<<<<<< HEAD
 			$tax               = $this->prepare_item_for_response( $value, $request );
 			$tax               = $this->prepare_response_for_collection( $tax );
+=======
+			$tax = $this->prepare_item_for_response( $value, $request );
+			$tax = $this->prepare_response_for_collection( $tax );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$data[ $tax_type ] = $tax;
 		}
 
@@ -237,12 +272,18 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 		}
 
 		$context = ! empty( $request['context'] ) ? $request['context'] : 'view';
+<<<<<<< HEAD
 		$data    = $this->add_additional_fields_to_object( $data, $request );
 		$data    = $this->filter_response_by_context( $data, $context );
+=======
+		$data = $this->add_additional_fields_to_object( $data, $request );
+		$data = $this->filter_response_by_context( $data, $context );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Wrap the data in a response object.
 		$response = rest_ensure_response( $data );
 
+<<<<<<< HEAD
 		$response->add_links(
 			array(
 				'collection'              => array(
@@ -253,6 +294,16 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 				),
 			)
 		);
+=======
+		$response->add_links( array(
+			'collection'                => array(
+				'href'                  => rest_url( sprintf( '%s/%s', $this->namespace, $this->rest_base ) ),
+			),
+			'https://api.w.org/items'   => array(
+				'href'                  => rest_url( sprintf( 'wp/v2/%s', $base ) ),
+			),
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters a taxonomy returned from the REST API.
@@ -277,6 +328,7 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 */
 	public function get_item_schema() {
 		$schema = array(
+<<<<<<< HEAD
 			'$schema'    => 'http://json-schema.org/draft-04/schema#',
 			'title'      => 'taxonomy',
 			'type'       => 'object',
@@ -370,6 +422,74 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 						),
 
 					),
+=======
+			'$schema'              => 'http://json-schema.org/draft-04/schema#',
+			'title'                => 'taxonomy',
+			'type'                 => 'object',
+			'properties'           => array(
+				'capabilities'     => array(
+					'description'  => __( 'All capabilities used by the taxonomy.' ),
+					'type'         => 'object',
+					'context'      => array( 'edit' ),
+					'readonly'     => true,
+				),
+				'description'      => array(
+					'description'  => __( 'A human-readable description of the taxonomy.' ),
+					'type'         => 'string',
+					'context'      => array( 'view', 'edit' ),
+					'readonly'     => true,
+				),
+				'hierarchical'     => array(
+					'description'  => __( 'Whether or not the taxonomy should have children.' ),
+					'type'         => 'boolean',
+					'context'      => array( 'view', 'edit' ),
+					'readonly'     => true,
+				),
+				'labels'           => array(
+					'description'  => __( 'Human-readable labels for the taxonomy for various contexts.' ),
+					'type'         => 'object',
+					'context'      => array( 'edit' ),
+					'readonly'     => true,
+				),
+				'name'             => array(
+					'description'  => __( 'The title for the taxonomy.' ),
+					'type'         => 'string',
+					'context'      => array( 'view', 'edit', 'embed' ),
+					'readonly'     => true,
+				),
+				'slug'             => array(
+					'description'  => __( 'An alphanumeric identifier for the taxonomy.' ),
+					'type'         => 'string',
+					'context'      => array( 'view', 'edit', 'embed' ),
+					'readonly'     => true,
+				),
+				'show_cloud'       => array(
+					'description'  => __( 'Whether or not the term cloud should be displayed.' ),
+					'type'         => 'boolean',
+					'context'      => array( 'edit' ),
+					'readonly'     => true,
+				),
+				'types'            => array(
+					'description'  => __( 'Types associated with the taxonomy.' ),
+					'type'         => 'array',
+					'items'        => array(
+						'type' => 'string',
+					),
+					'context'      => array( 'view', 'edit' ),
+					'readonly'     => true,
+				),
+				'visibility'       => array(
+					'description'  => __( 'The visibility settings for the taxonomy.' ),
+					'type'         => 'object',
+					'context'      => array( 'edit' ),
+					'readonly'     => true,
+				),
+				'rest_base'            => array(
+					'description'  => __( 'REST base route for the taxonomy.' ),
+					'type'         => 'string',
+					'context'      => array( 'view', 'edit', 'embed' ),
+					'readonly'     => true,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				),
 			),
 		);
@@ -384,11 +504,19 @@ class WP_REST_Taxonomies_Controller extends WP_REST_Controller {
 	 * @return array Collection parameters.
 	 */
 	public function get_collection_params() {
+<<<<<<< HEAD
 		$new_params            = array();
 		$new_params['context'] = $this->get_context_param( array( 'default' => 'view' ) );
 		$new_params['type']    = array(
 			'description' => __( 'Limit results to taxonomies associated with a specific post type.' ),
 			'type'        => 'string',
+=======
+		$new_params = array();
+		$new_params['context'] = $this->get_context_param( array( 'default' => 'view' ) );
+		$new_params['type'] = array(
+			'description'  => __( 'Limit results to taxonomies associated with a specific post type.' ),
+			'type'         => 'string',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 		return $new_params;
 	}

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/wp-ajax-response.js
  */
@@ -5,6 +6,9 @@
  /* global wpAjax */
 
 window.wpAjax = jQuery.extend( {
+=======
+var wpAjax = jQuery.extend( {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	unserialize: function( s ) {
 		var r = {}, q, pp, i, p;
 		if ( !s ) { return r; }

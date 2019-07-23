@@ -37,6 +37,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	public function __construct( $args = array() ) {
 		global $status, $page;
 
+<<<<<<< HEAD
 		parent::__construct(
 			array(
 				'plural' => 'themes',
@@ -48,17 +49,36 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		if ( ! in_array( $status, array( 'all', 'enabled', 'disabled', 'upgrade', 'search', 'broken' ) ) ) {
 			$status = 'all';
 		}
+=======
+		parent::__construct( array(
+			'plural' => 'themes',
+			'screen' => isset( $args['screen'] ) ? $args['screen'] : null,
+		) );
+
+		$status = isset( $_REQUEST['theme_status'] ) ? $_REQUEST['theme_status'] : 'all';
+		if ( !in_array( $status, array( 'all', 'enabled', 'disabled', 'upgrade', 'search', 'broken' ) ) )
+			$status = 'all';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$page = $this->get_pagenum();
 
 		$this->is_site_themes = ( 'site-themes-network' === $this->screen->id ) ? true : false;
 
+<<<<<<< HEAD
 		if ( $this->is_site_themes ) {
 			$this->site_id = isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0;
 		}
 	}
 
 	/**
+=======
+		if ( $this->is_site_themes )
+			$this->site_id = isset( $_REQUEST['id'] ) ? intval( $_REQUEST['id'] ) : 0;
+	}
+
+	/**
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	protected function get_table_classes() {
@@ -67,6 +87,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @return bool
 	 */
 	public function ajax_user_can() {
@@ -78,6 +99,20 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+=======
+	 *
+	 * @return bool
+	 */
+	public function ajax_user_can() {
+		if ( $this->is_site_themes )
+			return current_user_can( 'manage_sites' );
+		else
+			return current_user_can( 'manage_network_themes' );
+	}
+
+	/**
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @global string $status
 	 * @global array $totals
 	 * @global int $page
@@ -97,6 +132,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 			 *
 			 * @since 3.1.0
 			 *
+<<<<<<< HEAD
 			 * @param WP_Theme[] $all Array of WP_Theme objects to display in the list table.
 			 */
 			'all'      => apply_filters( 'all_themes', wp_get_themes() ),
@@ -105,14 +141,31 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 			'disabled' => array(),
 			'upgrade'  => array(),
 			'broken'   => $this->is_site_themes ? array() : wp_get_themes( array( 'errors' => true ) ),
+=======
+			 * @param array $all An array of WP_Theme objects to display in the list table.
+			 */
+			'all' => apply_filters( 'all_themes', wp_get_themes() ),
+			'search' => array(),
+			'enabled' => array(),
+			'disabled' => array(),
+			'upgrade' => array(),
+			'broken' => $this->is_site_themes ? array() : wp_get_themes( array( 'errors' => true ) ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		if ( $this->is_site_themes ) {
 			$themes_per_page = $this->get_items_per_page( 'site_themes_network_per_page' );
+<<<<<<< HEAD
 			$allowed_where   = 'site';
 		} else {
 			$themes_per_page = $this->get_items_per_page( 'themes_network_per_page' );
 			$allowed_where   = 'network';
+=======
+			$allowed_where = 'site';
+		} else {
+			$themes_per_page = $this->get_items_per_page( 'themes_network_per_page' );
+			$allowed_where = 'network';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		$maybe_update = current_user_can( 'update_themes' ) && ! $this->is_site_themes && $current = get_site_transient( 'update_themes' );
@@ -125,19 +178,31 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 			if ( $maybe_update && isset( $current->response[ $key ] ) ) {
 				$themes['all'][ $key ]->update = true;
+<<<<<<< HEAD
 				$themes['upgrade'][ $key ]     = $themes['all'][ $key ];
 			}
 
 			$filter                    = $theme->is_allowed( $allowed_where, $this->site_id ) ? 'enabled' : 'disabled';
+=======
+				$themes['upgrade'][ $key ] = $themes['all'][ $key ];
+			}
+
+			$filter = $theme->is_allowed( $allowed_where, $this->site_id ) ? 'enabled' : 'disabled';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$themes[ $filter ][ $key ] = $themes['all'][ $key ];
 		}
 
 		if ( $s ) {
+<<<<<<< HEAD
 			$status           = 'search';
+=======
+			$status = 'search';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$themes['search'] = array_filter( array_merge( $themes['all'], $themes['broken'] ), array( $this, '_search_callback' ) );
 		}
 
 		$totals = array();
+<<<<<<< HEAD
 		foreach ( $themes as $type => $list ) {
 			$totals[ $type ] = count( $list );
 		}
@@ -145,6 +210,13 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		if ( empty( $themes[ $status ] ) && ! in_array( $status, array( 'all', 'search' ) ) ) {
 			$status = 'all';
 		}
+=======
+		foreach ( $themes as $type => $list )
+			$totals[ $type ] = count( $list );
+
+		if ( empty( $themes[ $status ] ) && !in_array( $status, array( 'all', 'search' ) ) )
+			$status = 'all';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->items = $themes[ $status ];
 		WP_Theme::sort_by_name( $this->items );
@@ -152,6 +224,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		$this->has_items = ! empty( $themes['all'] );
 		$total_this_page = $totals[ $status ];
 
+<<<<<<< HEAD
 		wp_localize_script(
 			'updates',
 			'_wpUpdatesItemCounts',
@@ -164,6 +237,16 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		if ( $orderby ) {
 			$orderby = ucfirst( $orderby );
 			$order   = strtoupper( $order );
+=======
+		wp_localize_script( 'updates', '_wpUpdatesItemCounts', array(
+			'themes' => $totals,
+			'totals' => wp_get_update_data(),
+		) );
+
+		if ( $orderby ) {
+			$orderby = ucfirst( $orderby );
+			$order = strtoupper( $order );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			if ( $orderby === 'Name' ) {
 				if ( 'ASC' === $order ) {
@@ -176,6 +259,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 		$start = ( $page - 1 ) * $themes_per_page;
 
+<<<<<<< HEAD
 		if ( $total_this_page > $themes_per_page ) {
 			$this->items = array_slice( $this->items, $start, $themes_per_page, true );
 		}
@@ -186,6 +270,15 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 				'per_page'    => $themes_per_page,
 			)
 		);
+=======
+		if ( $total_this_page > $themes_per_page )
+			$this->items = array_slice( $this->items, $start, $themes_per_page, true );
+
+		$this->set_pagination_args( array(
+			'total_items' => $total_this_page,
+			'per_page' => $themes_per_page,
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -195,6 +288,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	 */
 	public function _search_callback( $theme ) {
 		static $term = null;
+<<<<<<< HEAD
 		if ( is_null( $term ) ) {
 			$term = wp_unslash( $_REQUEST['s'] );
 		}
@@ -213,6 +307,22 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		if ( false !== stripos( $theme->get_template(), $term ) ) {
 			return true;
 		}
+=======
+		if ( is_null( $term ) )
+			$term = wp_unslash( $_REQUEST['s'] );
+
+		foreach ( array( 'Name', 'Description', 'Author', 'Author', 'AuthorURI' ) as $field ) {
+			// Don't mark up; Do translate.
+			if ( false !== stripos( $theme->display( $field, false, true ), $term ) )
+				return true;
+		}
+
+		if ( false !== stripos( $theme->get_stylesheet(), $term ) )
+			return true;
+
+		if ( false !== stripos( $theme->get_template(), $term ) )
+			return true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return false;
 	}
@@ -231,6 +341,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		$a = $theme_a[ $orderby ];
 		$b = $theme_b[ $orderby ];
 
+<<<<<<< HEAD
 		if ( $a == $b ) {
 			return 0;
 		}
@@ -240,6 +351,15 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		} else {
 			return ( $a < $b ) ? -1 : 1;
 		}
+=======
+		if ( $a == $b )
+			return 0;
+
+		if ( 'DESC' === $order )
+			return ( $a < $b ) ? 1 : -1;
+		else
+			return ( $a < $b ) ? -1 : 1;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -253,6 +373,10 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	public function get_columns() {
@@ -264,11 +388,19 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	protected function get_sortable_columns() {
 		return array(
+<<<<<<< HEAD
 			'name' => 'name',
+=======
+			'name'         => 'name',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 	}
 
@@ -284,6 +416,10 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @global array $totals
 	 * @global string $status
 	 * @return array
@@ -293,9 +429,14 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 		$status_links = array();
 		foreach ( $totals as $type => $count ) {
+<<<<<<< HEAD
 			if ( ! $count ) {
 				continue;
 			}
+=======
+			if ( !$count )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			switch ( $type ) {
 				case 'all':
@@ -310,11 +451,16 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 				case 'upgrade':
 					$text = _n( 'Update Available <span class="count">(%s)</span>', 'Update Available <span class="count">(%s)</span>', $count );
 					break;
+<<<<<<< HEAD
 				case 'broken':
+=======
+				case 'broken' :
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$text = _n( 'Broken <span class="count">(%s)</span>', 'Broken <span class="count">(%s)</span>', $count );
 					break;
 			}
 
+<<<<<<< HEAD
 			if ( $this->is_site_themes ) {
 				$url = 'site-themes.php?id=' . $this->site_id;
 			} else {
@@ -325,6 +471,16 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 				$status_links[ $type ] = sprintf(
 					"<a href='%s'%s>%s</a>",
 					esc_url( add_query_arg( 'theme_status', $type, $url ) ),
+=======
+			if ( $this->is_site_themes )
+				$url = 'site-themes.php?id=' . $this->site_id;
+			else
+				$url = 'themes.php';
+
+			if ( 'search' != $type ) {
+				$status_links[$type] = sprintf( "<a href='%s'%s>%s</a>",
+					esc_url( add_query_arg('theme_status', $type, $url) ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					( $type === $status ) ? ' class="current" aria-current="page"' : '',
 					sprintf( $text, number_format_i18n( $count ) )
 				);
@@ -343,6 +499,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		global $status;
 
 		$actions = array();
+<<<<<<< HEAD
 		if ( 'enabled' != $status ) {
 			$actions['enable-selected'] = $this->is_site_themes ? __( 'Enable' ) : __( 'Network Enable' );
 		}
@@ -356,6 +513,17 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 			if ( current_user_can( 'delete_themes' ) ) {
 				$actions['delete-selected'] = __( 'Delete' );
 			}
+=======
+		if ( 'enabled' != $status )
+			$actions['enable-selected'] = $this->is_site_themes ? __( 'Enable' ) : __( 'Network Enable' );
+		if ( 'disabled' != $status )
+			$actions['disable-selected'] = $this->is_site_themes ? __( 'Disable' ) : __( 'Network Disable' );
+		if ( ! $this->is_site_themes ) {
+			if ( current_user_can( 'update_themes' ) )
+				$actions['update-selected'] = __( 'Update' );
+			if ( current_user_can( 'delete_themes' ) )
+				$actions['delete-selected'] = __( 'Delete' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		return $actions;
 	}
@@ -363,9 +531,14 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	/**
 	 */
 	public function display_rows() {
+<<<<<<< HEAD
 		foreach ( $this->items as $theme ) {
 			$this->single_row( $theme );
 		}
+=======
+		foreach ( $this->items as $theme )
+			$this->single_row( $theme );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -376,10 +549,17 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 	 * @param WP_Theme $theme The current WP_Theme object.
 	 */
 	public function column_cb( $theme ) {
+<<<<<<< HEAD
 		$checkbox_id = 'checkbox_' . md5( $theme->get( 'Name' ) );
 		?>
 		<input type="checkbox" name="checked[]" value="<?php echo esc_attr( $theme->get_stylesheet() ); ?>" id="<?php echo $checkbox_id; ?>" />
 		<label class="screen-reader-text" for="<?php echo $checkbox_id; ?>" ><?php _e( 'Select' ); ?>  <?php echo $theme->display( 'Name' ); ?></label>
+=======
+		$checkbox_id = 'checkbox_' . md5( $theme->get('Name') );
+		?>
+		<input type="checkbox" name="checked[]" value="<?php echo esc_attr( $theme->get_stylesheet() ) ?>" id="<?php echo $checkbox_id ?>" />
+		<label class="screen-reader-text" for="<?php echo $checkbox_id ?>" ><?php _e( 'Select' ) ?>  <?php echo $theme->display( 'Name' ) ?></label>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		<?php
 	}
 
@@ -400,15 +580,23 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		$context = $status;
 
 		if ( $this->is_site_themes ) {
+<<<<<<< HEAD
 			$url     = "site-themes.php?id={$this->site_id}&amp;";
 			$allowed = $theme->is_allowed( 'site', $this->site_id );
 		} else {
 			$url     = 'themes.php?';
+=======
+			$url = "site-themes.php?id={$this->site_id}&amp;";
+			$allowed = $theme->is_allowed( 'site', $this->site_id );
+		} else {
+			$url = 'themes.php?';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$allowed = $theme->is_allowed( 'network' );
 		}
 
 		// Pre-order.
 		$actions = array(
+<<<<<<< HEAD
 			'enable'  => '',
 			'disable' => '',
 			'delete'  => '',
@@ -428,6 +616,24 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 					),
 					$url
 				);
+=======
+			'enable' => '',
+			'disable' => '',
+			'delete' => ''
+		);
+
+		$stylesheet = $theme->get_stylesheet();
+		$theme_key = urlencode( $stylesheet );
+
+		if ( ! $allowed ) {
+			if ( ! $theme->errors() ) {
+				$url = add_query_arg( array(
+					'action' => 'enable',
+					'theme'  => $theme_key,
+					'paged'  => $page,
+					's'      => $s,
+				), $url );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				if ( $this->is_site_themes ) {
 					/* translators: %s: theme name */
@@ -437,14 +643,19 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 					$aria_label = sprintf( __( 'Network Enable %s' ), $theme->display( 'Name' ) );
 				}
 
+<<<<<<< HEAD
 				$actions['enable'] = sprintf(
 					'<a href="%s" class="edit" aria-label="%s">%s</a>',
+=======
+				$actions['enable'] = sprintf( '<a href="%s" class="edit" aria-label="%s">%s</a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					esc_url( wp_nonce_url( $url, 'enable-theme_' . $stylesheet ) ),
 					esc_attr( $aria_label ),
 					( $this->is_site_themes ? __( 'Enable' ) : __( 'Network Enable' ) )
 				);
 			}
 		} else {
+<<<<<<< HEAD
 			$url = add_query_arg(
 				array(
 					'action' => 'disable',
@@ -454,6 +665,14 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 				),
 				$url
 			);
+=======
+			$url = add_query_arg( array(
+				'action' => 'disable',
+				'theme'  => $theme_key,
+				'paged'  => $page,
+				's'      => $s,
+			), $url );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			if ( $this->is_site_themes ) {
 				/* translators: %s: theme name */
@@ -463,8 +682,12 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 				$aria_label = sprintf( __( 'Network Disable %s' ), $theme->display( 'Name' ) );
 			}
 
+<<<<<<< HEAD
 			$actions['disable'] = sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
+=======
+			$actions['disable'] = sprintf( '<a href="%s" aria-label="%s">%s</a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				esc_url( wp_nonce_url( $url, 'disable-theme_' . $stylesheet ) ),
 				esc_attr( $aria_label ),
 				( $this->is_site_themes ? __( 'Disable' ) : __( 'Network Disable' ) )
@@ -472,6 +695,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		}
 
 		if ( ! $allowed && current_user_can( 'delete_themes' ) && ! $this->is_site_themes && $stylesheet != get_option( 'stylesheet' ) && $stylesheet != get_option( 'template' ) ) {
+<<<<<<< HEAD
 			$url = add_query_arg(
 				array(
 					'action'       => 'delete-selected',
@@ -482,12 +706,25 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 				),
 				'themes.php'
 			);
+=======
+			$url = add_query_arg( array(
+				'action'       => 'delete-selected',
+				'checked[]'    => $theme_key,
+				'theme_status' => $context,
+				'paged'        => $page,
+				's'            => $s,
+			), 'themes.php' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			/* translators: %s: theme name */
 			$aria_label = sprintf( _x( 'Delete %s', 'theme' ), $theme->display( 'Name' ) );
 
+<<<<<<< HEAD
 			$actions['delete'] = sprintf(
 				'<a href="%s" class="delete" aria-label="%s">%s</a>',
+=======
+			$actions['delete'] = sprintf( '<a href="%s" class="delete" aria-label="%s">%s</a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				esc_url( wp_nonce_url( $url, 'bulk-themes' ) ),
 				esc_attr( $aria_label ),
 				__( 'Delete' )
@@ -511,7 +748,11 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		 *
 		 * @since 2.8.0
 		 *
+<<<<<<< HEAD
 		 * @param string[] $actions An array of action links.
+=======
+		 * @param array    $actions An array of action links.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @param WP_Theme $theme   The current WP_Theme object.
 		 * @param string   $context Status of the theme, one of 'all', 'enabled', or 'disabled'.
 		 */
@@ -527,7 +768,11 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		 *
 		 * @since 3.1.0
 		 *
+<<<<<<< HEAD
 		 * @param string[] $actions An array of action links.
+=======
+		 * @param array    $actions An array of action links.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @param WP_Theme $theme   The current WP_Theme object.
 		 * @param string   $context Status of the theme, one of 'all', 'enabled', or 'disabled'.
 		 */
@@ -560,9 +805,14 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		}
 
 		$class = ! $allowed ? 'inactive' : 'active';
+<<<<<<< HEAD
 		if ( ! empty( $totals['upgrade'] ) && ! empty( $theme->update ) ) {
 			$class .= ' update';
 		}
+=======
+		if ( ! empty( $totals['upgrade'] ) && ! empty( $theme->update ) )
+			$class .= ' update';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		echo "<div class='theme-description'><p>" . $theme->display( 'Description' ) . "</p></div>
 			<div class='$class second theme-version-author-uri'>";
@@ -570,6 +820,7 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		$stylesheet = $theme->get_stylesheet();
 		$theme_meta = array();
 
+<<<<<<< HEAD
 		if ( $theme->get( 'Version' ) ) {
 			$theme_meta[] = sprintf( __( 'Version %s' ), $theme->display( 'Version' ) );
 		}
@@ -581,6 +832,18 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 			$theme_meta[] = sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
+=======
+		if ( $theme->get('Version') ) {
+			$theme_meta[] = sprintf( __( 'Version %s' ), $theme->display('Version') );
+		}
+		$theme_meta[] = sprintf( __( 'By %s' ), $theme->display('Author') );
+
+		if ( $theme->get('ThemeURI') ) {
+			/* translators: %s: theme name */
+			$aria_label = sprintf( __( 'Visit %s homepage' ), $theme->display( 'Name' ) );
+
+			$theme_meta[] = sprintf( '<a href="%s" aria-label="%s">%s</a>',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$theme->display( 'ThemeURI' ),
 				esc_attr( $aria_label ),
 				__( 'Visit Theme Site' )
@@ -592,7 +855,11 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 		 *
 		 * @since 3.1.0
 		 *
+<<<<<<< HEAD
 		 * @param string[] $theme_meta An array of the theme's metadata,
+=======
+		 * @param array    $theme_meta An array of the theme's metadata,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *                             including the version, author, and
 		 *                             theme URI.
 		 * @param string   $stylesheet Directory name of the theme.
@@ -654,6 +921,10 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 					break;
 
 				case 'name':
+<<<<<<< HEAD
+=======
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$active_theme_label = '';
 
 					/* The presence of the site_id property means that this is a subsite view and a label for the active theme needs to be added */
@@ -667,7 +938,11 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 						}
 
 						/* In case this is a child theme, label it properly */
+<<<<<<< HEAD
 						if ( $stylesheet !== $template && $item->get_stylesheet() === $stylesheet ) {
+=======
+						if ( $stylesheet !== $template && $item->get_stylesheet() === $stylesheet) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 							$active_theme_label = ' &mdash; ' . __( 'Active Child Theme' );
 						}
 					}
@@ -676,7 +951,11 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 					$this->column_name( $item );
 
+<<<<<<< HEAD
 					echo '</td>';
+=======
+					echo "</td>";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					break;
 
 				case 'description':
@@ -692,7 +971,11 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 
 					$this->column_default( $item, $column_name );
 
+<<<<<<< HEAD
 					echo '</td>';
+=======
+					echo "</td>";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					break;
 			}
 		}
@@ -720,19 +1003,30 @@ class WP_MS_Themes_List_Table extends WP_List_Table {
 			$class .= ' update';
 		}
 
+<<<<<<< HEAD
 		printf(
 			'<tr class="%s" data-slug="%s">',
+=======
+		printf( '<tr class="%s" data-slug="%s">',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			esc_attr( $class ),
 			esc_attr( $stylesheet )
 		);
 
 		$this->single_row_columns( $theme );
 
+<<<<<<< HEAD
 		echo '</tr>';
 
 		if ( $this->is_site_themes ) {
 			remove_action( "after_theme_row_$stylesheet", 'wp_theme_update_row' );
 		}
+=======
+		echo "</tr>";
+
+		if ( $this->is_site_themes )
+			remove_action( "after_theme_row_$stylesheet", 'wp_theme_update_row' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires after each row in the Multisite themes list table.

@@ -36,7 +36,11 @@ class WP_HTTP_Requests_Hooks extends Requests_Hooks {
 	 * @param array $request Request data in WP_Http format.
 	 */
 	public function __construct( $url, $request ) {
+<<<<<<< HEAD
 		$this->url     = $url;
+=======
+		$this->url = $url;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->request = $request;
 	}
 

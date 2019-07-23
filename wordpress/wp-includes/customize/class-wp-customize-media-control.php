@@ -75,10 +75,17 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 	 */
 	public function to_json() {
 		parent::to_json();
+<<<<<<< HEAD
 		$this->json['label']         = html_entity_decode( $this->label, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$this->json['mime_type']     = $this->mime_type;
 		$this->json['button_labels'] = $this->button_labels;
 		$this->json['canUpload']     = current_user_can( 'upload_files' );
+=======
+		$this->json['label'] = html_entity_decode( $this->label, ENT_QUOTES, get_bloginfo( 'charset' ) );
+		$this->json['mime_type'] = $this->mime_type;
+		$this->json['button_labels'] = $this->button_labels;
+		$this->json['canUpload'] = current_user_can( 'upload_files' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$value = $this->value();
 
@@ -86,12 +93,21 @@ class WP_Customize_Media_Control extends WP_Customize_Control {
 			if ( $this->setting->default ) {
 				// Fake an attachment model - needs all fields used by template.
 				// Note that the default value must be a URL, NOT an attachment ID.
+<<<<<<< HEAD
 				$type               = in_array( substr( $this->setting->default, -3 ), array( 'jpg', 'png', 'gif', 'bmp' ) ) ? 'image' : 'document';
 				$default_attachment = array(
 					'id'    => 1,
 					'url'   => $this->setting->default,
 					'type'  => $type,
 					'icon'  => wp_mime_type_icon( $type ),
+=======
+				$type = in_array( substr( $this->setting->default, -3 ), array( 'jpg', 'png', 'gif', 'bmp' ) ) ? 'image' : 'document';
+				$default_attachment = array(
+					'id' => 1,
+					'url' => $this->setting->default,
+					'type' => $type,
+					'icon' => wp_mime_type_icon( $type ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'title' => basename( $this->setting->default ),
 				);
 

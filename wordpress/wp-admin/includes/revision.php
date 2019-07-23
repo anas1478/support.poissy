@@ -20,6 +20,7 @@
  *                    Or, false on failure.
  */
 function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
+<<<<<<< HEAD
 	if ( ! $post = get_post( $post ) ) {
 		return false;
 	}
@@ -28,11 +29,20 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 		if ( ! $compare_from = get_post( $compare_from ) ) {
 			return false;
 		}
+=======
+	if ( ! $post = get_post( $post ) )
+		return false;
+
+	if ( $compare_from ) {
+		if ( ! $compare_from = get_post( $compare_from ) )
+			return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} else {
 		// If we're dealing with the first revision...
 		$compare_from = false;
 	}
 
+<<<<<<< HEAD
 	if ( ! $compare_to = get_post( $compare_to ) ) {
 		return false;
 	}
@@ -59,6 +69,29 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 	if ( empty( $compare_to->post_title ) ) {
 		$compare_to->post_title = __( '(no title)' );
 	}
+=======
+	if ( ! $compare_to = get_post( $compare_to ) )
+		return false;
+
+	// If comparing revisions, make sure we're dealing with the right post parent.
+	// The parent post may be a 'revision' when revisions are disabled and we're looking at autosaves.
+	if ( $compare_from && $compare_from->post_parent !== $post->ID && $compare_from->ID !== $post->ID )
+		return false;
+	if ( $compare_to->post_parent !== $post->ID && $compare_to->ID !== $post->ID )
+		return false;
+
+	if ( $compare_from && strtotime( $compare_from->post_date_gmt ) > strtotime( $compare_to->post_date_gmt ) ) {
+		$temp = $compare_from;
+		$compare_from = $compare_to;
+		$compare_to = $temp;
+	}
+
+	// Add default title if title field is empty
+	if ( $compare_from && empty( $compare_from->post_title ) )
+		$compare_from->post_title = __( '(no title)' );
+	if ( empty( $compare_to->post_title ) )
+		$compare_to->post_title = __( '(no title)' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$return = array();
 
@@ -83,7 +116,11 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 		$content_to = apply_filters( "_wp_post_revision_field_{$field}", $compare_to->$field, $field, $compare_to, 'to' );
 
 		$args = array(
+<<<<<<< HEAD
 			'show_split_view' => true,
+=======
+			'show_split_view' => true
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		/**
@@ -111,6 +148,7 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 			// It's a better user experience to still show the Title, even if it didn't change.
 			// No, you didn't see this.
 			$diff = '<table class="diff"><colgroup><col class="content diffsplit left"><col class="content diffsplit middle"><col class="content diffsplit right"></colgroup><tbody><tr>';
+<<<<<<< HEAD
 
 			// In split screen mode, show the title before/after side by side.
 			if ( true === $args['show_split_view'] ) {
@@ -124,13 +162,20 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 				}
 			}
 
+=======
+			$diff .= '<td>' . esc_html( $compare_from->post_title ) . '</td><td></td><td>' . esc_html( $compare_to->post_title ) . '</td>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$diff .= '</tr></tbody>';
 			$diff .= '</table>';
 		}
 
 		if ( $diff ) {
 			$return[] = array(
+<<<<<<< HEAD
 				'id'   => $field,
+=======
+				'id' => $field,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'name' => $name,
 				'diff' => $diff,
 			);
@@ -142,7 +187,11 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
 	 *
 	 * @since 4.1.0
 	 *
+<<<<<<< HEAD
 	 * @param array[] $return       Array of revision UI fields. Each item is an array of id, name, and diff.
+=======
+	 * @param array   $return       Revision UI fields. Each item is an array of id, name and diff.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param WP_Post $compare_from The revision post to compare from.
 	 * @param WP_Post $compare_to   The revision post to compare to.
 	 */
@@ -162,6 +211,7 @@ function wp_get_revision_ui_diff( $post, $compare_from, $compare_to ) {
  * @return array An associative array of revision data and related settings.
  */
 function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null ) {
+<<<<<<< HEAD
 	$post    = get_post( $post );
 	$authors = array();
 	$now_gmt = time();
@@ -179,6 +229,18 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 			if ( ! wp_is_post_autosave( $revision ) ) {
 				unset( $revisions[ $revision_id ] );
 			}
+=======
+	$post = get_post( $post );
+	$authors = array();
+	$now_gmt = time();
+
+	$revisions = wp_get_post_revisions( $post->ID, array( 'order' => 'ASC', 'check_enabled' => false ) );
+	// If revisions are disabled, we only want autosaves and the current post.
+	if ( ! wp_revisions_enabled( $post ) ) {
+		foreach ( $revisions as $revision_id => $revision ) {
+			if ( ! wp_is_post_autosave( $revision ) )
+				unset( $revisions[ $revision_id ] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		$revisions = array( $post->ID => $post ) + $revisions;
 	}
@@ -188,6 +250,7 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 	cache_users( wp_list_pluck( $revisions, 'post_author' ) );
 
 	$can_restore = current_user_can( 'edit_post', $post->ID );
+<<<<<<< HEAD
 	$current_id  = false;
 
 	foreach ( $revisions as $revision ) {
@@ -208,23 +271,53 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 					"restore-post_{$revision->ID}"
 				)
 			);
+=======
+	$current_id = false;
+
+	foreach ( $revisions as $revision ) {
+		$modified = strtotime( $revision->post_modified );
+		$modified_gmt = strtotime( $revision->post_modified_gmt . ' +0000' );
+		if ( $can_restore ) {
+			$restore_link = str_replace( '&amp;', '&', wp_nonce_url(
+				add_query_arg(
+					array( 'revision' => $revision->ID,
+						'action' => 'restore' ),
+						admin_url( 'revision.php' )
+				),
+				"restore-post_{$revision->ID}"
+			) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		if ( ! isset( $authors[ $revision->post_author ] ) ) {
 			$authors[ $revision->post_author ] = array(
+<<<<<<< HEAD
 				'id'     => (int) $revision->post_author,
 				'avatar' => $show_avatars ? get_avatar( $revision->post_author, 32 ) : '',
 				'name'   => get_the_author_meta( 'display_name', $revision->post_author ),
+=======
+				'id' => (int) $revision->post_author,
+				'avatar' => $show_avatars ? get_avatar( $revision->post_author, 32 ) : '',
+				'name' => get_the_author_meta( 'display_name', $revision->post_author ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
 		$autosave = (bool) wp_is_post_autosave( $revision );
+<<<<<<< HEAD
 		$current  = ! $autosave && $revision->post_modified_gmt === $post->post_modified_gmt;
+=======
+		$current = ! $autosave && $revision->post_modified_gmt === $post->post_modified_gmt;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( $current && ! empty( $current_id ) ) {
 			// If multiple revisions have the same post_modified_gmt, highest ID is current.
 			if ( $current_id < $revision->ID ) {
 				$revisions[ $current_id ]['current'] = false;
+<<<<<<< HEAD
 				$current_id                          = $revision->ID;
+=======
+				$current_id = $revision->ID;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else {
 				$current = false;
 			}
@@ -285,7 +378,11 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 			'current'    => true,
 			'restoreUrl' => false,
 		);
+<<<<<<< HEAD
 		$current_id             = $post->ID;
+=======
+		$current_id = $post->ID;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/*
@@ -320,6 +417,7 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 
 	$from = absint( $from );
 
+<<<<<<< HEAD
 	$diffs = array(
 		array(
 			'id'     => $from . ':' . $selected_revision_id,
@@ -337,6 +435,23 @@ function wp_prepare_revisions_for_js( $post, $selected_revision_id, $from = null
 		'baseUrl'        => parse_url( admin_url( 'revision.php' ), PHP_URL_PATH ),
 		'compareTwoMode' => absint( $compare_two_mode ), // Apparently booleans are not allowed
 		'revisionIds'    => array_keys( $revisions ),
+=======
+	$diffs = array( array(
+		'id' => $from . ':' . $selected_revision_id,
+		'fields' => wp_get_revision_ui_diff( $post->ID, $from, $selected_revision_id ),
+	));
+
+	return array(
+		'postId'           => $post->ID,
+		'nonce'            => wp_create_nonce( 'revisions-ajax-nonce' ),
+		'revisionData'     => array_values( $revisions ),
+		'to'               => $selected_revision_id,
+		'from'             => $from,
+		'diffData'         => $diffs,
+		'baseUrl'          => parse_url( admin_url( 'revision.php' ), PHP_URL_PATH ),
+		'compareTwoMode'   => absint( $compare_two_mode ), // Apparently booleans are not allowed
+		'revisionIds'      => array_keys( $revisions ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	);
 }
 
@@ -391,6 +506,7 @@ function wp_print_revision_templates() {
 					{{{ data.attributes.author.avatar }}}
 					<div class="author-info">
 					<# if ( data.attributes.autosave ) { #>
+<<<<<<< HEAD
 						<span class="byline">
 						<?php
 						printf(
@@ -417,6 +533,16 @@ function wp_print_revision_templates() {
 						);
 						?>
 							</span>
+=======
+						<span class="byline"><?php printf( __( 'Autosave by %s' ),
+							'<span class="author-name">{{ data.attributes.author.name }}</span>' ); ?></span>
+					<# } else if ( data.attributes.current ) { #>
+						<span class="byline"><?php printf( __( 'Current Revision by %s' ),
+							'<span class="author-name">{{ data.attributes.author.name }}</span>' ); ?></span>
+					<# } else { #>
+						<span class="byline"><?php printf( __( 'Revision by %s' ),
+							'<span class="author-name">{{ data.attributes.author.name }}</span>' ); ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					<# } #>
 						<span class="time-ago">{{ data.attributes.timeAgo }}</span>
 						<span class="date">({{ data.attributes.dateShort }})</span>
@@ -451,6 +577,10 @@ function wp_print_revision_templates() {
 			{{{ field.diff }}}
 		<# }); #>
 		</div>
+<<<<<<< HEAD
 	</script>
 	<?php
+=======
+	</script><?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }

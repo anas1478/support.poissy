@@ -52,7 +52,11 @@ class WP_HTTP_Proxy {
 	 * @return bool
 	 */
 	public function is_enabled() {
+<<<<<<< HEAD
 		return defined( 'WP_PROXY_HOST' ) && defined( 'WP_PROXY_PORT' );
+=======
+		return defined('WP_PROXY_HOST') && defined('WP_PROXY_PORT');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -66,7 +70,11 @@ class WP_HTTP_Proxy {
 	 * @return bool
 	 */
 	public function use_authentication() {
+<<<<<<< HEAD
 		return defined( 'WP_PROXY_USERNAME' ) && defined( 'WP_PROXY_PASSWORD' );
+=======
+		return defined('WP_PROXY_USERNAME') && defined('WP_PROXY_PASSWORD');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -77,9 +85,14 @@ class WP_HTTP_Proxy {
 	 * @return string
 	 */
 	public function host() {
+<<<<<<< HEAD
 		if ( defined( 'WP_PROXY_HOST' ) ) {
 			return WP_PROXY_HOST;
 		}
+=======
+		if ( defined('WP_PROXY_HOST') )
+			return WP_PROXY_HOST;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return '';
 	}
@@ -92,9 +105,14 @@ class WP_HTTP_Proxy {
 	 * @return string
 	 */
 	public function port() {
+<<<<<<< HEAD
 		if ( defined( 'WP_PROXY_PORT' ) ) {
 			return WP_PROXY_PORT;
 		}
+=======
+		if ( defined('WP_PROXY_PORT') )
+			return WP_PROXY_PORT;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return '';
 	}
@@ -107,9 +125,14 @@ class WP_HTTP_Proxy {
 	 * @return string
 	 */
 	public function username() {
+<<<<<<< HEAD
 		if ( defined( 'WP_PROXY_USERNAME' ) ) {
 			return WP_PROXY_USERNAME;
 		}
+=======
+		if ( defined('WP_PROXY_USERNAME') )
+			return WP_PROXY_USERNAME;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return '';
 	}
@@ -122,9 +145,14 @@ class WP_HTTP_Proxy {
 	 * @return string
 	 */
 	public function password() {
+<<<<<<< HEAD
 		if ( defined( 'WP_PROXY_PASSWORD' ) ) {
 			return WP_PROXY_PASSWORD;
 		}
+=======
+		if ( defined('WP_PROXY_PASSWORD') )
+			return WP_PROXY_PASSWORD;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return '';
 	}
@@ -171,6 +199,7 @@ class WP_HTTP_Proxy {
 		 * parse_url() only handles http, https type URLs, and will emit E_WARNING on failure.
 		 * This will be displayed on sites, which is not reasonable.
 		 */
+<<<<<<< HEAD
 		$check = @parse_url( $uri );
 
 		// Malformed URL, can not process, but this could mean ssl, so let through anyway.
@@ -179,6 +208,15 @@ class WP_HTTP_Proxy {
 		}
 
 		$home = parse_url( get_option( 'siteurl' ) );
+=======
+		$check = @parse_url($uri);
+
+		// Malformed URL, can not process, but this could mean ssl, so let through anyway.
+		if ( $check === false )
+			return true;
+
+		$home = parse_url( get_option('siteurl') );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters whether to preempt sending the request through the proxy server.
@@ -194,6 +232,7 @@ class WP_HTTP_Proxy {
 		 * @param array  $home     Associative array result of parsing the site URL.
 		 */
 		$result = apply_filters( 'pre_http_send_through_proxy', null, $uri, $check, $home );
+<<<<<<< HEAD
 		if ( ! is_null( $result ) ) {
 			return $result;
 		}
@@ -225,5 +264,33 @@ class WP_HTTP_Proxy {
 		} else {
 			return ! in_array( $check['host'], $bypass_hosts );
 		}
+=======
+		if ( ! is_null( $result ) )
+			return $result;
+
+		if ( 'localhost' == $check['host'] || ( isset( $home['host'] ) && $home['host'] == $check['host'] ) )
+			return false;
+
+		if ( !defined('WP_PROXY_BYPASS_HOSTS') )
+			return true;
+
+		static $bypass_hosts = null;
+		static $wildcard_regex = array();
+		if ( null === $bypass_hosts ) {
+			$bypass_hosts = preg_split('|,\s*|', WP_PROXY_BYPASS_HOSTS);
+
+			if ( false !== strpos(WP_PROXY_BYPASS_HOSTS, '*') ) {
+				$wildcard_regex = array();
+				foreach ( $bypass_hosts as $host )
+					$wildcard_regex[] = str_replace( '\*', '.+', preg_quote( $host, '/' ) );
+				$wildcard_regex = '/^(' . implode('|', $wildcard_regex) . ')$/i';
+			}
+		}
+
+		if ( !empty($wildcard_regex) )
+			return !preg_match($wildcard_regex, $check['host']);
+		else
+			return !in_array( $check['host'], $bypass_hosts );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

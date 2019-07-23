@@ -15,6 +15,7 @@ if ( ! defined( 'WP_ADMIN' ) ) {
 	define( 'WP_ADMIN', true );
 }
 
+<<<<<<< HEAD
 if ( ! defined( 'WP_NETWORK_ADMIN' ) ) {
 	define( 'WP_NETWORK_ADMIN', false );
 }
@@ -38,6 +39,28 @@ nocache_headers();
 if ( get_option( 'db_upgraded' ) ) {
 	flush_rewrite_rules();
 	update_option( 'db_upgraded', false );
+=======
+if ( ! defined('WP_NETWORK_ADMIN') )
+	define('WP_NETWORK_ADMIN', false);
+
+if ( ! defined('WP_USER_ADMIN') )
+	define('WP_USER_ADMIN', false);
+
+if ( ! WP_NETWORK_ADMIN && ! WP_USER_ADMIN ) {
+	define('WP_BLOG_ADMIN', true);
+}
+
+if ( isset($_GET['import']) && !defined('WP_LOAD_IMPORTERS') )
+	define('WP_LOAD_IMPORTERS', true);
+
+require_once(dirname(dirname(__FILE__)) . '/wp-load.php');
+
+nocache_headers();
+
+if ( get_option('db_upgraded') ) {
+	flush_rewrite_rules();
+	update_option( 'db_upgraded',  false );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Fires on the next page load after a successful DB upgrade.
@@ -45,6 +68,7 @@ if ( get_option( 'db_upgraded' ) ) {
 	 * @since 2.8.0
 	 */
 	do_action( 'after_db_upgrade' );
+<<<<<<< HEAD
 } elseif ( get_option( 'db_version' ) != $wp_db_version && empty( $_POST ) ) {
 	if ( ! is_multisite() ) {
 		wp_redirect( admin_url( 'upgrade.php?_wp_http_referer=' . urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) );
@@ -64,6 +88,27 @@ if ( get_option( 'db_upgraded' ) ) {
 		 *
 		 * @param bool $do_mu_upgrade Whether to perform the Multisite upgrade routine. Default true.
 		 */
+=======
+} elseif ( get_option('db_version') != $wp_db_version && empty($_POST) ) {
+	if ( !is_multisite() ) {
+		wp_redirect( admin_url( 'upgrade.php?_wp_http_referer=' . urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ) ) );
+		exit;
+
+	/**
+	 * Filters whether to attempt to perform the multisite DB upgrade routine.
+	 *
+	 * In single site, the user would be redirected to wp-admin/upgrade.php.
+	 * In multisite, the DB upgrade routine is automatically fired, but only
+	 * when this filter returns true.
+	 *
+	 * If the network is 50 sites or less, it will run every time. Otherwise,
+	 * it will throttle itself to reduce load.
+	 *
+	 * @since 3.0.0
+	 *
+	 * @param bool $do_mu_upgrade Whether to perform the Multisite upgrade routine. Default true.
+	 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} elseif ( apply_filters( 'do_mu_upgrade', true ) ) {
 		$c = get_blog_count();
 
@@ -71,6 +116,7 @@ if ( get_option( 'db_upgraded' ) ) {
 		 * If there are 50 or fewer sites, run every time. Otherwise, throttle to reduce load:
 		 * attempt to do no more than threshold value, with some +/- allowed.
 		 */
+<<<<<<< HEAD
 		if ( $c <= 50 || ( $c > 50 && mt_rand( 0, (int) ( $c / 50 ) ) == 1 ) ) {
 			require_once( ABSPATH . WPINC . '/http.php' );
 			$response = wp_remote_get(
@@ -89,13 +135,32 @@ if ( get_option( 'db_upgraded' ) ) {
 }
 
 require_once( ABSPATH . 'wp-admin/includes/admin.php' );
+=======
+		if ( $c <= 50 || ( $c > 50 && mt_rand( 0, (int)( $c / 50 ) ) == 1 ) ) {
+			require_once( ABSPATH . WPINC . '/http.php' );
+			$response = wp_remote_get( admin_url( 'upgrade.php?step=1' ), array( 'timeout' => 120, 'httpversion' => '1.1' ) );
+			/** This action is documented in wp-admin/network/upgrade.php */
+			do_action( 'after_mu_upgrade', $response );
+			unset($response);
+		}
+		unset($c);
+	}
+}
+
+require_once(ABSPATH . 'wp-admin/includes/admin.php');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 auth_redirect();
 
 // Schedule trash collection
+<<<<<<< HEAD
 if ( ! wp_next_scheduled( 'wp_scheduled_delete' ) && ! wp_installing() ) {
 	wp_schedule_event( time(), 'daily', 'wp_scheduled_delete' );
 }
+=======
+if ( ! wp_next_scheduled( 'wp_scheduled_delete' ) && ! wp_installing() )
+	wp_schedule_event(time(), 'daily', 'wp_scheduled_delete');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // Schedule Transient cleanup.
 if ( ! wp_next_scheduled( 'delete_expired_transients' ) && ! wp_installing() ) {
@@ -127,6 +192,7 @@ $page_hook = null;
 
 $editing = false;
 
+<<<<<<< HEAD
 if ( isset( $_GET['page'] ) ) {
 	$plugin_page = wp_unslash( $_GET['page'] );
 	$plugin_page = plugin_basename( $plugin_page );
@@ -151,6 +217,29 @@ if ( WP_NETWORK_ADMIN ) {
 } else {
 	require( ABSPATH . 'wp-admin/menu.php' );
 }
+=======
+if ( isset($_GET['page']) ) {
+	$plugin_page = wp_unslash( $_GET['page'] );
+	$plugin_page = plugin_basename($plugin_page);
+}
+
+if ( isset( $_REQUEST['post_type'] ) && post_type_exists( $_REQUEST['post_type'] ) )
+	$typenow = $_REQUEST['post_type'];
+else
+	$typenow = '';
+
+if ( isset( $_REQUEST['taxonomy'] ) && taxonomy_exists( $_REQUEST['taxonomy'] ) )
+	$taxnow = $_REQUEST['taxonomy'];
+else
+	$taxnow = '';
+
+if ( WP_NETWORK_ADMIN )
+	require(ABSPATH . 'wp-admin/network/menu.php');
+elseif ( WP_USER_ADMIN )
+	require(ABSPATH . 'wp-admin/user/menu.php');
+else
+	require(ABSPATH . 'wp-admin/menu.php');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 if ( current_user_can( 'manage_options' ) ) {
 	wp_raise_memory_limit( 'admin' );
@@ -168,6 +257,7 @@ if ( current_user_can( 'manage_options' ) ) {
  */
 do_action( 'admin_init' );
 
+<<<<<<< HEAD
 if ( isset( $plugin_page ) ) {
 	if ( ! empty( $typenow ) ) {
 		$the_parent = $pagenow . '?post_type=' . $typenow;
@@ -192,6 +282,28 @@ if ( isset( $plugin_page ) ) {
 		}
 	}
 	unset( $the_parent );
+=======
+if ( isset($plugin_page) ) {
+	if ( !empty($typenow) )
+		$the_parent = $pagenow . '?post_type=' . $typenow;
+	else
+		$the_parent = $pagenow;
+	if ( ! $page_hook = get_plugin_page_hook($plugin_page, $the_parent) ) {
+		$page_hook = get_plugin_page_hook($plugin_page, $plugin_page);
+
+		// Back-compat for plugins using add_management_page().
+		if ( empty( $page_hook ) && 'edit.php' == $pagenow && '' != get_plugin_page_hook($plugin_page, 'tools.php') ) {
+			// There could be plugin specific params on the URL, so we need the whole query string
+			if ( !empty($_SERVER[ 'QUERY_STRING' ]) )
+				$query_string = $_SERVER[ 'QUERY_STRING' ];
+			else
+				$query_string = 'page=' . $plugin_page;
+			wp_redirect( admin_url('tools.php?' . $query_string) );
+			exit;
+		}
+	}
+	unset($the_parent);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 $hook_suffix = '';
@@ -206,7 +318,11 @@ if ( isset( $page_hook ) ) {
 set_current_screen();
 
 // Handle plugin admin pages.
+<<<<<<< HEAD
 if ( isset( $plugin_page ) ) {
+=======
+if ( isset($plugin_page) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( $page_hook ) {
 		/**
 		 * Fires before a particular screen is loaded.
@@ -229,13 +345,19 @@ if ( isset( $plugin_page ) ) {
 		 * @since 2.1.0
 		 */
 		do_action( "load-{$page_hook}" );
+<<<<<<< HEAD
 		if ( ! isset( $_GET['noheader'] ) ) {
 			require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		}
+=======
+		if (! isset($_GET['noheader']))
+			require_once(ABSPATH . 'wp-admin/admin-header.php');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Used to call the registered callback for a plugin screen.
 		 *
+<<<<<<< HEAD
 		 * This hook uses a dynamic hook name, `$page_hook`, which refers to a mixture of plugin
 		 * page information including:
 		 * 1. The page type. If the plugin page is registered as a submenu page, such as for
@@ -248,6 +370,9 @@ if ( isset( $plugin_page ) ) {
 		 *
 		 * @see get_plugin_page_hook()
 		 *
+=======
+		 * @ignore
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @since 1.5.0
 		 */
 		do_action( $page_hook );
@@ -256,9 +381,14 @@ if ( isset( $plugin_page ) ) {
 			wp_die( __( 'Invalid plugin page.' ) );
 		}
 
+<<<<<<< HEAD
 		if ( ! ( file_exists( WP_PLUGIN_DIR . "/$plugin_page" ) && is_file( WP_PLUGIN_DIR . "/$plugin_page" ) ) && ! ( file_exists( WPMU_PLUGIN_DIR . "/$plugin_page" ) && is_file( WPMU_PLUGIN_DIR . "/$plugin_page" ) ) ) {
 			wp_die( sprintf( __( 'Cannot load %s.' ), htmlentities( $plugin_page ) ) );
 		}
+=======
+		if ( !( file_exists(WP_PLUGIN_DIR . "/$plugin_page") && is_file(WP_PLUGIN_DIR . "/$plugin_page") ) && !( file_exists(WPMU_PLUGIN_DIR . "/$plugin_page") && is_file(WPMU_PLUGIN_DIR . "/$plugin_page") ) )
+			wp_die(sprintf(__('Cannot load %s.'), htmlentities($plugin_page)));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires before a particular screen is loaded.
@@ -274,6 +404,7 @@ if ( isset( $plugin_page ) ) {
 		 */
 		do_action( "load-{$plugin_page}" );
 
+<<<<<<< HEAD
 		if ( ! isset( $_GET['noheader'] ) ) {
 			require_once( ABSPATH . 'wp-admin/admin-header.php' );
 		}
@@ -286,6 +417,18 @@ if ( isset( $plugin_page ) ) {
 	}
 
 	include( ABSPATH . 'wp-admin/admin-footer.php' );
+=======
+		if ( !isset($_GET['noheader']))
+			require_once(ABSPATH . 'wp-admin/admin-header.php');
+
+		if ( file_exists(WPMU_PLUGIN_DIR . "/$plugin_page") )
+			include(WPMU_PLUGIN_DIR . "/$plugin_page");
+		else
+			include(WP_PLUGIN_DIR . "/$plugin_page");
+	}
+
+	include(ABSPATH . 'wp-admin/admin-footer.php');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	exit();
 } elseif ( isset( $_GET['import'] ) ) {
@@ -296,12 +439,20 @@ if ( isset( $plugin_page ) ) {
 		wp_die( __( 'Sorry, you are not allowed to import content.' ) );
 	}
 
+<<<<<<< HEAD
 	if ( validate_file( $importer ) ) {
+=======
+	if ( validate_file($importer) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wp_redirect( admin_url( 'import.php?invalid=' . $importer ) );
 		exit;
 	}
 
+<<<<<<< HEAD
 	if ( ! isset( $wp_importers[ $importer ] ) || ! is_callable( $wp_importers[ $importer ][2] ) ) {
+=======
+	if ( ! isset($wp_importers[$importer]) || ! is_callable($wp_importers[$importer][2]) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wp_redirect( admin_url( 'import.php?invalid=' . $importer ) );
 		exit;
 	}
@@ -315,6 +466,7 @@ if ( isset( $plugin_page ) ) {
 	 */
 	do_action( "load-importer-{$importer}" );
 
+<<<<<<< HEAD
 	$parent_file  = 'tools.php';
 	$submenu_file = 'import.php';
 	$title        = __( 'Import' );
@@ -326,6 +478,18 @@ if ( isset( $plugin_page ) ) {
 	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 	define( 'WP_IMPORTING', true );
+=======
+	$parent_file = 'tools.php';
+	$submenu_file = 'import.php';
+	$title = __('Import');
+
+	if (! isset($_GET['noheader']))
+		require_once(ABSPATH . 'wp-admin/admin-header.php');
+
+	require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+
+	define('WP_IMPORTING', true);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Whether to filter imported data through kses on import.
@@ -341,12 +505,21 @@ if ( isset( $plugin_page ) ) {
 		kses_init_filters();  // Always filter imported data with kses on multisite.
 	}
 
+<<<<<<< HEAD
 	call_user_func( $wp_importers[ $importer ][2] );
 
 	include( ABSPATH . 'wp-admin/admin-footer.php' );
 
 	// Make sure rules are flushed
 	flush_rewrite_rules( false );
+=======
+	call_user_func($wp_importers[$importer][2]);
+
+	include(ABSPATH . 'wp-admin/admin-footer.php');
+
+	// Make sure rules are flushed
+	flush_rewrite_rules(false);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	exit();
 } else {
@@ -369,6 +542,7 @@ if ( isset( $plugin_page ) ) {
 	 * In all other cases, 'load-' . $pagenow should be used instead.
 	 */
 	if ( $typenow == 'page' ) {
+<<<<<<< HEAD
 		if ( $pagenow == 'post-new.php' ) {
 			do_action( 'load-page-new.php' );
 		} elseif ( $pagenow == 'post.php' ) {
@@ -381,11 +555,24 @@ if ( isset( $plugin_page ) ) {
 			do_action( 'load-edit-link-categories.php' );
 		}
 	} elseif ( 'term.php' === $pagenow ) {
+=======
+		if ( $pagenow == 'post-new.php' )
+			do_action( 'load-page-new.php' );
+		elseif ( $pagenow == 'post.php' )
+			do_action( 'load-page.php' );
+	}  elseif ( $pagenow == 'edit-tags.php' ) {
+		if ( $taxnow == 'category' )
+			do_action( 'load-categories.php' );
+		elseif ( $taxnow == 'link_category' )
+			do_action( 'load-edit-link-categories.php' );
+	} elseif( 'term.php' === $pagenow ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		do_action( 'load-edit-tags.php' );
 	}
 }
 
 if ( ! empty( $_REQUEST['action'] ) ) {
+<<<<<<< HEAD
 	$action = $_REQUEST['action'];
 
 	/**
@@ -397,4 +584,15 @@ if ( ! empty( $_REQUEST['action'] ) ) {
 	 * @since 2.6.0
 	 */
 	do_action( "admin_action_{$action}" );
+=======
+	/**
+	 * Fires when an 'action' request variable is sent.
+	 *
+	 * The dynamic portion of the hook name, `$_REQUEST['action']`,
+	 * refers to the action derived from the `GET` or `POST` request.
+	 *
+	 * @since 2.6.0
+	 */
+	do_action( 'admin_action_' . $_REQUEST['action'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }

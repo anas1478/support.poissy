@@ -61,10 +61,15 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 		$messages = array();
 
 		foreach ( $this->errors->get_error_codes() as $error_code ) {
+<<<<<<< HEAD
 			$error_data = $this->errors->get_error_data( $error_code );
 
 			if ( $error_data && is_string( $error_data ) ) {
 				$messages[] = $this->errors->get_error_message( $error_code ) . ' ' . esc_html( strip_tags( $error_data ) );
+=======
+			if ( $this->errors->get_error_data( $error_code ) && is_string( $this->errors->get_error_data( $error_code ) ) ) {
+				$messages[] = $this->errors->get_error_message( $error_code ) . ' ' . esc_html( strip_tags( $this->errors->get_error_data( $error_code ) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else {
 				$messages[] = $this->errors->get_error_message( $error_code );
 			}
@@ -97,7 +102,11 @@ class WP_Ajax_Upgrader_Skin extends Automatic_Upgrader_Skin {
 
 			// Count existing errors to generate an unique error code.
 			$errors_count = count( $this->errors->get_error_codes() );
+<<<<<<< HEAD
 			$this->errors->add( 'unknown_upgrade_error_' . $errors_count + 1, $string );
+=======
+			$this->errors->add( 'unknown_upgrade_error_' . $errors_count + 1 , $string );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} elseif ( is_wp_error( $errors ) ) {
 			foreach ( $errors->get_error_codes() as $error_code ) {
 				$this->errors->add( $error_code, $errors->get_error_message( $error_code ), $errors->get_error_data( $error_code ) );

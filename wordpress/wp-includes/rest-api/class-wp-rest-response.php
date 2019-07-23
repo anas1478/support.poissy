@@ -193,7 +193,11 @@ class WP_REST_Response extends WP_HTTP_Response {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Sets the handler that was responsible for generating the response.
+=======
+	 * Retrieves the handler that was responsible for generating the response.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.4.0
 	 *
@@ -232,7 +236,11 @@ class WP_REST_Response extends WP_HTTP_Response {
 			$data = $this->get_data();
 			$error->add( $data['code'], $data['message'], $data['data'] );
 			if ( ! empty( $data['additional_errors'] ) ) {
+<<<<<<< HEAD
 				foreach ( $data['additional_errors'] as $err ) {
+=======
+				foreach( $data['additional_errors'] as $err ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$error->add( $err['code'], $err['message'], $err['data'] );
 				}
 			}
@@ -253,8 +261,13 @@ class WP_REST_Response extends WP_HTTP_Response {
 	public function get_curies() {
 		$curies = array(
 			array(
+<<<<<<< HEAD
 				'name'      => 'wp',
 				'href'      => 'https://api.w.org/{rel}',
+=======
+				'name' => 'wp',
+				'href' => 'https://api.w.org/{rel}',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'templated' => true,
 			),
 		);

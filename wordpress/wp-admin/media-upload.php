@@ -9,9 +9,14 @@
  * @subpackage Administration
  */
 
+<<<<<<< HEAD
 if ( ! isset( $_GET['inline'] ) ) {
 	define( 'IFRAME_REQUEST', true );
 }
+=======
+if ( ! isset( $_GET['inline'] ) )
+	define( 'IFRAME_REQUEST' , true );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /** Load WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
@@ -20,6 +25,7 @@ if ( ! current_user_can( 'upload_files' ) ) {
 	wp_die( __( 'Sorry, you are not allowed to upload files.' ), 403 );
 }
 
+<<<<<<< HEAD
 wp_enqueue_script( 'plupload-handlers' );
 wp_enqueue_script( 'image-edit' );
 wp_enqueue_script( 'set-post-thumbnail' );
@@ -34,6 +40,22 @@ $post_id = isset( $post_id ) ? (int) $post_id : 0;
 
 // Require an ID for the edit screen.
 if ( isset( $action ) && $action == 'edit' && ! $ID ) {
+=======
+wp_enqueue_script('plupload-handlers');
+wp_enqueue_script('image-edit');
+wp_enqueue_script('set-post-thumbnail' );
+wp_enqueue_style('imgareaselect');
+wp_enqueue_script( 'media-gallery' );
+
+@header('Content-Type: ' . get_option('html_type') . '; charset=' . get_option('blog_charset'));
+
+// IDs should be integers
+$ID = isset($ID) ? (int) $ID : 0;
+$post_id = isset($post_id)? (int) $post_id : 0;
+
+// Require an ID for the edit screen.
+if ( isset( $action ) && $action == 'edit' && !$ID ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	wp_die(
 		'<h1>' . __( 'Something went wrong.' ) . '</h1>' .
 		'<p>' . __( 'Invalid item ID.' ) . '</p>',
@@ -41,7 +63,11 @@ if ( isset( $action ) && $action == 'edit' && ! $ID ) {
 	);
 }
 
+<<<<<<< HEAD
 if ( ! empty( $_REQUEST['post_id'] ) && ! current_user_can( 'edit_post', $_REQUEST['post_id'] ) ) {
+=======
+if ( ! empty( $_REQUEST['post_id'] ) && ! current_user_can( 'edit_post' , $_REQUEST['post_id'] ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	wp_die(
 		'<h1>' . __( 'You need a higher level of permission.' ) . '</h1>' .
 		'<p>' . __( 'Sorry, you are not allowed to edit this item.' ) . '</p>',
@@ -50,8 +76,13 @@ if ( ! empty( $_REQUEST['post_id'] ) && ! current_user_can( 'edit_post', $_REQUE
 }
 
 // Upload type: image, video, file, ..?
+<<<<<<< HEAD
 if ( isset( $_GET['type'] ) ) {
 	$type = strval( $_GET['type'] );
+=======
+if ( isset($_GET['type']) ) {
+	$type = strval($_GET['type']);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } else {
 	/**
 	 * Filters the default media upload type in the legacy (pre-3.5.0) media popup.
@@ -65,8 +96,13 @@ if ( isset( $_GET['type'] ) ) {
 }
 
 // Tab: gallery, library, or type-specific.
+<<<<<<< HEAD
 if ( isset( $_GET['tab'] ) ) {
 	$tab = strval( $_GET['tab'] );
+=======
+if ( isset($_GET['tab']) ) {
+	$tab = strval($_GET['tab']);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } else {
 	/**
 	 * Filters the default tab in the legacy (pre-3.5.0) media popup.
@@ -81,7 +117,11 @@ if ( isset( $_GET['tab'] ) ) {
 $body_id = 'media-upload';
 
 // Let the action code decide how to handle the request.
+<<<<<<< HEAD
 if ( $tab == 'type' || $tab == 'type_url' || ! array_key_exists( $tab, media_upload_tabs() ) ) {
+=======
+if ( $tab == 'type' || $tab == 'type_url' || ! array_key_exists( $tab , media_upload_tabs() ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	/**
 	 * Fires inside specific upload-type views in the legacy (pre-3.5.0)
 	 * media popup based on the current tab.

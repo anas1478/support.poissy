@@ -3745,12 +3745,20 @@ function comments_popup_script() {
 }
 
 /**
+<<<<<<< HEAD
  * Adds element attributes to open links in new tabs.
+=======
+ * Adds element attributes to open links in new windows.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 0.71
  * @deprecated 4.5.0
  *
+<<<<<<< HEAD
  * @param string $text Content to replace links to open in a new tab.
+=======
+ * @param string $text Content to replace links to open in a new window.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * @return string Content that has filtered links.
  */
 function popuplinks( $text ) {

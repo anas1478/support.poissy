@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/common.js
  */
@@ -12,11 +13,16 @@
  *  @param {Object} window   The window object.
  *  @param {mixed} undefined Unused.
  */
+=======
+/* global setUserSetting, ajaxurl, commonL10n, alert, confirm, pagenow */
+var showNotice, adminMenu, columns, validateForm, screenMeta;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 ( function( $, window, undefined ) {
 	var $document = $( document ),
 		$window = $( window ),
 		$body = $( document.body );
 
+<<<<<<< HEAD
 /**
  * Removed in 3.3.0, needed for back-compatibility.
  *
@@ -24,6 +30,11 @@
  * @deprecated 3.3.0
  */
 window.adminMenu = {
+=======
+// Removed in 3.3.
+// (perhaps) needed for back-compat
+adminMenu = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	init : function() {},
 	fold : function() {},
 	restoreMenuState : function() {},
@@ -31,6 +42,7 @@ window.adminMenu = {
 	favorites : function() {}
 };
 
+<<<<<<< HEAD
 // Show/hide/save table columns.
 window.columns = {
 
@@ -44,6 +56,10 @@ window.columns = {
 	 *
 	 * @returns {void}
 	 */
+=======
+// show/hide/save table columns
+columns = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	init : function() {
 		var that = this;
 		$('.hide-column-tog', '#adv-settings').click( function() {
@@ -57,6 +73,7 @@ window.columns = {
 		});
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Saves the toggled state for the columns.
 	 *
@@ -66,6 +83,8 @@ window.columns = {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	saveManageColumnsState : function() {
 		var hidden = this.hidden();
 		$.post(ajaxurl, {
@@ -76,6 +95,7 @@ window.columns = {
 		});
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Makes a column visible and adjusts the column span for the table.
 	 *
@@ -84,11 +104,14 @@ window.columns = {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	checked : function(column) {
 		$('.column-' + column).removeClass( 'hidden' );
 		this.colSpanChange(+1);
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Hides a column and adjusts the column span for the table.
 	 *
@@ -97,11 +120,14 @@ window.columns = {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	unchecked : function(column) {
 		$('.column-' + column).addClass( 'hidden' );
 		this.colSpanChange(-1);
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Gets all hidden columns.
 	 *
@@ -111,10 +137,15 @@ window.columns = {
 	 */
 	hidden : function() {
 		return $( '.manage-column[id]' ).filter( '.hidden' ).map(function() {
+=======
+	hidden : function() {
+		return $( '.manage-column[id]' ).filter( ':hidden' ).map(function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return this.id;
 		}).get().join( ',' );
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Gets the checked column toggles from the screen options.
 	 *
@@ -122,6 +153,8 @@ window.columns = {
 	 *
 	 * @returns {string} String containing the checked column names.
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	useCheckboxesForHidden : function() {
 		this.hidden = function(){
 			return $('.hide-column-tog').not(':checked').map(function() {
@@ -131,6 +164,7 @@ window.columns = {
 		};
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Adjusts the column span for the table.
 	 *
@@ -138,6 +172,8 @@ window.columns = {
 	 *
 	 * @param {int} diff The modifier for the column span.
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	colSpanChange : function(diff) {
 		var $t = $('table').find('.colspanchange'), n;
 		if ( !$t.length )
@@ -149,6 +185,7 @@ window.columns = {
 
 $document.ready(function(){columns.init();});
 
+<<<<<<< HEAD
 /**
  * Validates that the required form fields are not empty.
  *
@@ -159,6 +196,9 @@ $document.ready(function(){columns.init();});
  * @returns {boolean} Returns true if all required fields are not an empty string.
  */
 window.validateForm = function( form ) {
+=======
+validateForm = function( form ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	return !$( form )
 		.find( '.form-required' )
 		.filter( function() { return $( ':input:visible', this ).val() === ''; } )
@@ -169,6 +209,7 @@ window.validateForm = function( form ) {
 };
 
 // stub for doing better warnings
+<<<<<<< HEAD
 /**
  * Shows message pop-up notice or confirmation message.
  *
@@ -187,6 +228,9 @@ window.showNotice = {
 	 *
 	 * @returns {boolean} Returns true if the message is confirmed.
 	 */
+=======
+showNotice = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	warn : function() {
 		var msg = commonL10n.warnDelete || '';
 		if ( confirm(msg) ) {
@@ -196,6 +240,7 @@ window.showNotice = {
 		return false;
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Shows an alert message.
 	 *
@@ -203,11 +248,14 @@ window.showNotice = {
 	 *
 	 * @param text The text to display in the message.
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	note : function(text) {
 		alert(text);
 	}
 };
 
+<<<<<<< HEAD
 /**
  * Represents the functions for the meta screen options panel.
  *
@@ -220,10 +268,14 @@ window.showNotice = {
  * @returns {void}
  */
 window.screenMeta = {
+=======
+screenMeta = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	element: null, // #screen-meta
 	toggles: null, // .screen-meta-toggle
 	page:    null, // #wpcontent
 
+<<<<<<< HEAD
 	/**
 	 * Initializes the screen meta options panel.
 	 *
@@ -231,6 +283,8 @@ window.screenMeta = {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	init: function() {
 		this.element = $('#screen-meta');
 		this.toggles = $( '#screen-meta-links' ).find( '.show-settings' );
@@ -239,6 +293,7 @@ window.screenMeta = {
 		this.toggles.click( this.toggleEvent );
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Toggles the screen meta options panel.
 	 *
@@ -246,6 +301,8 @@ window.screenMeta = {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	toggleEvent: function() {
 		var panel = $( '#' + $( this ).attr( 'aria-controls' ) );
 
@@ -258,6 +315,7 @@ window.screenMeta = {
 			screenMeta.open( panel, $(this) );
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Opens the screen meta options panel.
 	 *
@@ -268,11 +326,14 @@ window.screenMeta = {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	open: function( panel, button ) {
 
 		$( '#screen-meta-links' ).find( '.screen-meta-toggle' ).not( button.parent() ).css( 'visibility', 'hidden' );
 
 		panel.parent().show();
+<<<<<<< HEAD
 
 		/**
 		 * Sets the focus to the meta options panel and adds the necessary CSS classes.
@@ -281,6 +342,8 @@ window.screenMeta = {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		panel.slideDown( 'fast', function() {
 			panel.focus();
 			button.addClass( 'screen-meta-active' ).attr( 'aria-expanded', true );
@@ -289,6 +352,7 @@ window.screenMeta = {
 		$document.trigger( 'screen:options:open' );
 	},
 
+<<<<<<< HEAD
 	/**
 	 * Closes the screen meta options panel.
 	 *
@@ -307,6 +371,9 @@ window.screenMeta = {
 		 *
 		 * @returns {void}
 		 */
+=======
+	close: function( panel, button ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		panel.slideUp( 'fast', function() {
 			button.removeClass( 'screen-meta-active' ).attr( 'aria-expanded', false );
 			$('.screen-meta-toggle').css('visibility', '');
@@ -318,11 +385,15 @@ window.screenMeta = {
 };
 
 /**
+<<<<<<< HEAD
  * Initializes the help tabs in the help panel.
  *
  * @param {Event} e The event object.
  *
  * @returns {void}
+=======
+ * Help tabs.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 $('.contextual-help-tabs').delegate('a', 'click', function(e) {
 	var link = $(this),
@@ -348,6 +419,10 @@ $('.contextual-help-tabs').delegate('a', 'click', function(e) {
 /**
  * Update custom permalink structure via buttons.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var permalinkStructureFocused = false,
     $permalinkStructure       = $( '#permalink_structure' ),
     $permalinkStructureInputs = $( '.permalink-structure input:radio' ),
@@ -498,6 +573,7 @@ $document.ready( function() {
 		},
 		$headerEnd = $( '.wp-header-end' );
 
+<<<<<<< HEAD
 	/**
 	 * Makes the fly-out submenu header clickable, when the menu is folded.
 	 *
@@ -505,15 +581,22 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+
+	// when the menu is folded, make the fly-out submenu header clickable
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$adminmenu.on('click.wp-submenu-head', '.wp-submenu-head', function(e){
 		$(e.target).parent().siblings('a').get(0).click();
 	});
 
+<<<<<<< HEAD
 	/**
 	 * Collapses the admin menu.
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$( '#collapse-button' ).on( 'click.collapse-menu', function() {
 		var viewportWidth = getViewportWidth() || 961;
 
@@ -546,6 +629,7 @@ $document.ready( function() {
 		$document.trigger( 'wp-collapse-menu', { state: menuState } );
 	});
 
+<<<<<<< HEAD
 	/**
 	 * Handles the `aria-haspopup` attribute on the current menu item when it has a submenu.
 	 *
@@ -553,6 +637,9 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+	// Handle the `aria-haspopup` attribute on the current menu item when it has a sub-menu.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function currentMenuItemHasPopup() {
 		var $current = $( 'a.wp-has-current-submenu' );
 
@@ -568,13 +655,20 @@ $document.ready( function() {
 	$document.on( 'wp-menu-state-set wp-collapse-menu wp-responsive-activate wp-responsive-deactivate', currentMenuItemHasPopup );
 
 	/**
+<<<<<<< HEAD
 	 * Ensures an admin submenu is within the visual viewport.
+=======
+	 * Ensure an admin submenu is within the visual viewport.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.1.0
 	 *
 	 * @param {jQuery} $menuItem The parent menu item containing the submenu.
+<<<<<<< HEAD
 	 *
 	 * @returns {void}
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	function adjustSubmenu( $menuItem ) {
 		var bottomOffset, pageHeight, adjustment, theFold, menutop, wintop, maxtop,
@@ -608,6 +702,7 @@ $document.ready( function() {
 		// iOS Safari works with touchstart, the rest work with click
 		mobileEvent = isIOS ? 'touchstart' : 'click';
 
+<<<<<<< HEAD
 		/**
 		 * Closes any open submenus when touch/click is not on the menu.
 		 *
@@ -615,6 +710,9 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+		// close any open submenus when touch/click is not on the menu
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$body.on( mobileEvent+'.wp-mobile-hover', function(e) {
 			if ( $adminmenu.data('wp-responsive') ) {
 				return;
@@ -625,6 +723,7 @@ $document.ready( function() {
 			}
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Handles the opening or closing the submenu based on the mobile click|touch event.
 		 *
@@ -632,6 +731,8 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$adminmenu.find( 'a.wp-has-submenu' ).on( mobileEvent + '.wp-mobile-hover', function( event ) {
 			var $menuItem = $(this).parent();
 
@@ -653,12 +754,15 @@ $document.ready( function() {
 
 	if ( ! isIOS && ! isAndroid ) {
 		$adminmenu.find( 'li.wp-has-submenu' ).hoverIntent({
+<<<<<<< HEAD
 
 			/**
 			 * Opens the submenu when hovered over the menu item for desktops.
 			 *
 			 * @returns {void}
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			over: function() {
 				var $menuItem = $( this ),
 					$submenu = $menuItem.find( '.wp-submenu' ),
@@ -677,12 +781,15 @@ $document.ready( function() {
 				$adminmenu.find( 'li.opensub' ).removeClass( 'opensub' );
 				$menuItem.addClass( 'opensub' );
 			},
+<<<<<<< HEAD
 
 			/**
 			 * Closes the submenu when no longer hovering the menu item.
 			 *
 			 * @returns {void}
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			out: function(){
 				if ( $adminmenu.data( 'wp-responsive' ) ) {
 					// The menu is in responsive mode, bail
@@ -696,6 +803,7 @@ $document.ready( function() {
 			interval: 90
 		});
 
+<<<<<<< HEAD
 		/**
 		 * Opens the submenu on when focused on the menu item.
 		 *
@@ -703,6 +811,8 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$adminmenu.on( 'focus.adminmenu', '.wp-submenu a', function( event ) {
 			if ( $adminmenu.data( 'wp-responsive' ) ) {
 				// The menu is in responsive mode, bail
@@ -710,6 +820,7 @@ $document.ready( function() {
 			}
 
 			$( event.target ).closest( 'li.menu-top' ).addClass( 'opensub' );
+<<<<<<< HEAD
 
 			/**
 			 * Closes the submenu on blur from the menu item.
@@ -718,18 +829,23 @@ $document.ready( function() {
 			 *
 			 * @returns {void}
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}).on( 'blur.adminmenu', '.wp-submenu a', function( event ) {
 			if ( $adminmenu.data( 'wp-responsive' ) ) {
 				return;
 			}
 
 			$( event.target ).closest( 'li.menu-top' ).removeClass( 'opensub' );
+<<<<<<< HEAD
 
 			/**
 			 * Adjusts the size for the submenu.
 			 *
 			 * @returns {void}
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}).find( 'li.wp-has-submenu.wp-not-current-submenu' ).on( 'focusin.adminmenu', function() {
 			adjustSubmenu( $( this ) );
 		});
@@ -746,6 +862,7 @@ $document.ready( function() {
 	}
 	$( 'div.updated, div.error, div.notice' ).not( '.inline, .below-h2' ).insertAfter( $headerEnd );
 
+<<<<<<< HEAD
 	/**
 	 * Makes notices dismissible.
 	 *
@@ -753,6 +870,9 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+	// Make notices dismissible
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function makeNoticesDismissible() {
 		$( '.notice.is-dismissible' ).each( function() {
 			var $el = $( this ),
@@ -779,6 +899,7 @@ $document.ready( function() {
 	// Init screen meta
 	screenMeta.init();
 
+<<<<<<< HEAD
 	/**
 	 * Checks a checkbox.
 	 *
@@ -786,6 +907,9 @@ $document.ready( function() {
 	 *
 	 * @returns {boolean} Returns whether a checkbox is checked or not.
 	 */
+=======
+	// This event needs to be delegated. Ticket #37973.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$body.on( 'click', 'tbody > tr > .check-column :checkbox', function( event ) {
 		// Shift click to select a range of checkboxes.
 		if ( 'undefined' == event.shiftKey ) { return true; }
@@ -809,12 +933,15 @@ $document.ready( function() {
 
 		// Toggle the "Select all" checkboxes depending if the other ones are all checked or not.
 		var unchecked = $(this).closest('tbody').find(':checkbox').filter(':visible:enabled').not(':checked');
+<<<<<<< HEAD
 
 		/**
 		 * Determines if all checkboxes are checked.
 		 *
 		 * @returns {boolean} Returns true if there are no unchecked checkboxes.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$(this).closest('table').children('thead, tfoot').find(':checkbox').prop('checked', function() {
 			return ( 0 === unchecked.length );
 		});
@@ -822,6 +949,7 @@ $document.ready( function() {
 		return true;
 	});
 
+<<<<<<< HEAD
 	/**
 	 * Controls all the toggles on bulk toggle change.
 	 *
@@ -834,6 +962,9 @@ $document.ready( function() {
 	 *
 	 * @returns {boolean}
 	 */
+=======
+	// This event needs to be delegated. Ticket #37973.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$body.on( 'click.wp-toggle-checkboxes', 'thead .check-column :checkbox, tfoot .check-column :checkbox', function( event ) {
 		var $this = $(this),
 			$table = $this.closest( 'table' ),
@@ -842,11 +973,14 @@ $document.ready( function() {
 
 		$table.children( 'tbody' ).filter(':visible')
 			.children().children('.check-column').find(':checkbox')
+<<<<<<< HEAD
 			/**
 			 * Updates the checked state on the checkbox in the table.
 			 *
 			 * @returns {boolean} True checks the checkbox, False unchecks the checkbox.
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			.prop('checked', function() {
 				if ( $(this).is(':hidden,:disabled') ) {
 					return false;
@@ -863,12 +997,15 @@ $document.ready( function() {
 
 		$table.children('thead,  tfoot').filter(':visible')
 			.children().children('.check-column').find(':checkbox')
+<<<<<<< HEAD
 
 			/**
 			 * Syncs the bulk checkboxes on the top and bottom of the table.
 			 *
 			 * @returns {boolean} True checks the checkbox, False unchecks the checkbox.
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			.prop('checked', function() {
 				if ( toggle ) {
 					return false;
@@ -880,11 +1017,15 @@ $document.ready( function() {
 			});
 	});
 
+<<<<<<< HEAD
 	/**
 	 * Shows row actions on focus of its parent container element or any other elements contained within.
 	 *
 	 * @returns {void}
 	 */
+=======
+	// Show row actions on keyboard focus of its parent container element or any other elements contained within
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$( '#wpbody-content' ).on({
 		focusin: function() {
 			clearTimeout( transitionTimeout );
@@ -913,6 +1054,7 @@ $document.ready( function() {
 		return false;
 	});
 
+<<<<<<< HEAD
 	/**
 	 * Handles tab keypresses in theme and plugin editor textareas.
 	 *
@@ -925,17 +1067,30 @@ $document.ready( function() {
 
 		// After pressing escape key (keyCode: 27), the tab key should tab out of the textarea.
 		if ( e.keyCode == 27 ) {
+=======
+	// tab in textareas
+	$('#newcontent').bind('keydown.wpevent_InsertTab', function(e) {
+		var el = e.target, selStart, selEnd, val, scroll, sel;
+
+		if ( e.keyCode == 27 ) { // escape key
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			// when pressing Escape: Opera 12 and 27 blur form fields, IE 8 clears them
 			e.preventDefault();
 			$(el).data('tab-out', true);
 			return;
 		}
 
+<<<<<<< HEAD
 		// Only listen for plain tab key (keyCode: 9) without any modifiers.
 		if ( e.keyCode != 9 || e.ctrlKey || e.altKey || e.shiftKey )
 			return;
 
 		// After tabbing out, reset it so next time the tab key can be used again.
+=======
+		if ( e.keyCode != 9 || e.ctrlKey || e.altKey || e.shiftKey ) // tab key
+			return;
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( $(el).data('tab-out') ) {
 			$(el).data('tab-out', false);
 			return;
@@ -945,7 +1100,10 @@ $document.ready( function() {
 		selEnd = el.selectionEnd;
 		val = el.value;
 
+<<<<<<< HEAD
 		// If any text is selected, replace the selection with a tab character.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( document.selection ) {
 			el.focus();
 			sel = document.selection.createRange();
@@ -957,13 +1115,17 @@ $document.ready( function() {
 			this.scrollTop = scroll;
 		}
 
+<<<<<<< HEAD
 		// Cancel the regular tab functionality, to prevent losing focus of the textarea.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( e.stopPropagation )
 			e.stopPropagation();
 		if ( e.preventDefault )
 			e.preventDefault();
 	});
 
+<<<<<<< HEAD
 	// Reset page number variable for new filters/searches but not for bulk actions. See #17685.
 	if ( pageInput.length ) {
 
@@ -984,20 +1146,30 @@ $document.ready( function() {
 			 * action = bulk action dropdown at the top of the table
 			 * action2 = bulk action dropdow at the bottom of the table
 			 */
+=======
+	if ( pageInput.length ) {
+		pageInput.closest('form').submit( function() {
+
+			// Reset paging var for new filters/searches but not for bulk actions. See #17685.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( $('select[name="action"]').val() == -1 && $('select[name="action2"]').val() == -1 && pageInput.val() == currentPage )
 				pageInput.val('1');
 		});
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Resets the bulk actions when the search button is clicked.
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$('.search-box input[type="search"], .search-box input[type="submit"]').mousedown(function () {
 		$('select[name^="action"]').val('-1');
 	});
 
+<<<<<<< HEAD
 	/**
 	 * Scrolls into view when focus.scroll-into-view is triggered.
 	 *
@@ -1005,11 +1177,15 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
  	 */
+=======
+	// Scroll into view when focused
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$('#contextual-help-link, #show-settings-link').on( 'focus.scroll-into-view', function(e){
 		if ( e.target.scrollIntoView )
 			e.target.scrollIntoView(false);
 	});
 
+<<<<<<< HEAD
 	/**
 	 * Disables the submit upload buttons when no data is entered.
 	 *
@@ -1034,10 +1210,22 @@ $document.ready( function() {
 		 */
 		function toggleUploadButton() {
 			// When no inputs have a value, disable the upload buttons.
+=======
+	// Disable upload buttons until files are selected
+	(function(){
+		var button, input, form = $('form.wp-upload-form');
+		if ( ! form.length )
+			return;
+		button = form.find('input[type="submit"]');
+		input = form.find('input[type="file"]');
+
+		function toggleUploadButton() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			button.prop('disabled', '' === input.map( function() {
 				return $(this).val();
 			}).get().join(''));
 		}
+<<<<<<< HEAD
 
 		// Update the status initially.
 		toggleUploadButton();
@@ -1054,6 +1242,12 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+		toggleUploadButton();
+		input.on('change', toggleUploadButton);
+	})();
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function pinMenu( event ) {
 		var windowPos = $window.scrollTop(),
 			resizing = ! event || event.type !== 'scroll';
@@ -1062,12 +1256,15 @@ $document.ready( function() {
 			return;
 		}
 
+<<<<<<< HEAD
 		/*
 		 * When the menu is higher than the window and smaller than the entire page.
 		 * It should be adjusted to be able to see the entire menu.
 		 *
 		 * Otherwise it can be accessed normally.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( height.menu + height.adminbar < height.window ||
 			height.menu + height.adminbar + 20 > height.wpwrap ) {
 			unpinMenu();
@@ -1076,11 +1273,17 @@ $document.ready( function() {
 
 		menuIsPinned = true;
 
+<<<<<<< HEAD
 		// If the menu is higher than the window, compensate on scroll.
 		if ( height.menu + height.adminbar > height.window ) {
 			// Check for overscrolling, this happens when swiping up at the top of the document in modern browsers.
 			if ( windowPos < 0 ) {
 				// Stick the menu to the top.
+=======
+		if ( height.menu + height.adminbar > height.window ) {
+			// Check for overscrolling
+			if ( windowPos < 0 ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( ! pinnedMenuTop ) {
 					pinnedMenuTop = true;
 					pinnedMenuBottom = false;
@@ -1094,7 +1297,10 @@ $document.ready( function() {
 
 				return;
 			} else if ( windowPos + height.window > $document.height() - 1 ) {
+<<<<<<< HEAD
 				// When overscrolling at the bottom, stick the menu to the bottom.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				if ( ! pinnedMenuBottom ) {
 					pinnedMenuBottom = true;
 					pinnedMenuTop = false;
@@ -1110,12 +1316,19 @@ $document.ready( function() {
 			}
 
 			if ( windowPos > lastScrollPosition ) {
+<<<<<<< HEAD
 				// When a down scroll has been detected.
 
 				// If it was pinned to the top, unpin and calculate relative scroll.
 				if ( pinnedMenuTop ) {
 					pinnedMenuTop = false;
 					// Calculate new offset position.
+=======
+				// Scrolling down
+				if ( pinnedMenuTop ) {
+					// let it scroll
+					pinnedMenuTop = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					menuTop = $adminMenuWrap.offset().top - height.adminbar - ( windowPos - lastScrollPosition );
 
 					if ( menuTop + height.menu + height.adminbar < windowPos + height.window ) {
@@ -1128,7 +1341,11 @@ $document.ready( function() {
 						bottom: ''
 					});
 				} else if ( ! pinnedMenuBottom && $adminMenuWrap.offset().top + height.menu < windowPos + height.window ) {
+<<<<<<< HEAD
 					// Pin it to the bottom.
+=======
+					// pin the bottom
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					pinnedMenuBottom = true;
 
 					$adminMenuWrap.css({
@@ -1138,6 +1355,7 @@ $document.ready( function() {
 					});
 				}
 			} else if ( windowPos < lastScrollPosition ) {
+<<<<<<< HEAD
 				// When a scroll up is detected.
 
 				// If it was pinned to the bottom, unpin and calculate relative scroll.
@@ -1145,6 +1363,12 @@ $document.ready( function() {
 					pinnedMenuBottom = false;
 
 					// Calculate new offset position.
+=======
+				// Scrolling up
+				if ( pinnedMenuBottom ) {
+					// let it scroll
+					pinnedMenuBottom = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					menuTop = $adminMenuWrap.offset().top - height.adminbar + ( lastScrollPosition - windowPos );
 
 					if ( menuTop + height.menu > windowPos + height.window ) {
@@ -1157,8 +1381,12 @@ $document.ready( function() {
 						bottom: ''
 					});
 				} else if ( ! pinnedMenuTop && $adminMenuWrap.offset().top >= windowPos + height.adminbar ) {
+<<<<<<< HEAD
 
 					// Pin it to the top.
+=======
+					// pin the top
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					pinnedMenuTop = true;
 
 					$adminMenuWrap.css({
@@ -1168,11 +1396,16 @@ $document.ready( function() {
 					});
 				}
 			} else if ( resizing ) {
+<<<<<<< HEAD
 				// Window is being resized.
 
 				pinnedMenuTop = pinnedMenuBottom = false;
 
 				// Calculate the new offset.
+=======
+				// Resizing
+				pinnedMenuTop = pinnedMenuBottom = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				menuTop = windowPos + height.window - height.menu - height.adminbar - 1;
 
 				if ( menuTop > 0 ) {
@@ -1190,6 +1423,7 @@ $document.ready( function() {
 		lastScrollPosition = windowPos;
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Determines the height of certain elements.
 	 *
@@ -1197,6 +1431,8 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function resetHeights() {
 		height = {
 			window: $window.height(),
@@ -1206,6 +1442,7 @@ $document.ready( function() {
 		};
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Unpins the menu.
 	 *
@@ -1213,6 +1450,8 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function unpinMenu() {
 		if ( isIOS || ! menuIsPinned ) {
 			return;
@@ -1226,6 +1465,7 @@ $document.ready( function() {
 		});
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Pins and unpins the menu when applicable.
 	 *
@@ -1233,6 +1473,8 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function setPinMenu() {
 		resetHeights();
 
@@ -1255,6 +1497,7 @@ $document.ready( function() {
 		});
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Changes the sortables and responsiveness of metaboxes.
 	 *
@@ -1271,6 +1514,9 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+	window.wpResponsive = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		init: function() {
 			var self = this;
 
@@ -1283,11 +1529,19 @@ $document.ready( function() {
 
 			$( '#wp-admin-bar-menu-toggle a' ).attr( 'aria-expanded', 'false' );
 
+<<<<<<< HEAD
 			// Toggle sidebar when toggle is clicked.
 			$( '#wp-admin-bar-menu-toggle' ).on( 'click.wp-responsive', function( event ) {
 				event.preventDefault();
 
 				// close any open toolbar submenus.
+=======
+			// Toggle sidebar when toggle is clicked
+			$( '#wp-admin-bar-menu-toggle' ).on( 'click.wp-responsive', function( event ) {
+				event.preventDefault();
+
+				// close any open toolbar submenus
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$adminbar.find( '.hover' ).removeClass( 'hover' );
 
 				$wpwrap.toggleClass( 'wp-responsive-open' );
@@ -1299,7 +1553,11 @@ $document.ready( function() {
 				}
 			} );
 
+<<<<<<< HEAD
 			// Add menu events.
+=======
+			// Add menu events
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$adminmenu.on( 'click.wp-responsive', 'li.wp-has-submenu > a', function( event ) {
 				if ( ! $adminmenu.data('wp-responsive') ) {
 					return;
@@ -1312,7 +1570,11 @@ $document.ready( function() {
 			self.trigger();
 			$document.on( 'wp-window-resized.wp-responsive', $.proxy( this.trigger, this ) );
 
+<<<<<<< HEAD
 			// This needs to run later as UI Sortable may be initialized later on $(document).ready().
+=======
+			// This needs to run later as UI Sortable may be initialized later on $(document).ready()
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$window.on( 'load.wp-responsive', function() {
 				var width = navigator.userAgent.indexOf('AppleWebKit/') > -1 ? $window.width() : window.innerWidth;
 
@@ -1322,6 +1584,7 @@ $document.ready( function() {
 			});
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Changes properties of body and admin menu.
 		 *
@@ -1332,6 +1595,8 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		activate: function() {
 			setPinMenu();
 
@@ -1343,6 +1608,7 @@ $document.ready( function() {
 			this.disableSortables();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Changes properties of admin menu and enables metabox sortables.
 		 *
@@ -1353,12 +1619,15 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		deactivate: function() {
 			setPinMenu();
 			$adminmenu.removeData('wp-responsive');
 			this.enableSortables();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Sets the responsiveness and enables the overlay based on the viewport width.
 		 *
@@ -1366,6 +1635,8 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		trigger: function() {
 			var viewportWidth = getViewportWidth();
 
@@ -1393,6 +1664,7 @@ $document.ready( function() {
 			}
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Inserts a responsive overlay and toggles the window.
 		 *
@@ -1400,6 +1672,8 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		enableOverlay: function() {
 			if ( $overlay.length === 0 ) {
 				$overlay = $( '<div id="wp-responsive-overlay"></div>' )
@@ -1416,6 +1690,7 @@ $document.ready( function() {
 			});
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Disables the responsive overlay and removes the overlay.
 		 *
@@ -1423,11 +1698,14 @@ $document.ready( function() {
 		 *
 		 * @returns {void}
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		disableOverlay: function() {
 			$toolbarPopups.off( 'click.wp-responsive' );
 			$overlay.hide();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Disables sortables.
 		 *
@@ -1455,10 +1733,26 @@ $document.ready( function() {
 				try {
 					$sortables.sortable( 'enable' );
 				} catch ( e ) {}
+=======
+		disableSortables: function() {
+			if ( $sortables.length ) {
+				try {
+					$sortables.sortable('disable');
+				} catch(e) {}
+			}
+		},
+
+		enableSortables: function() {
+			if ( $sortables.length ) {
+				try {
+					$sortables.sortable('enable');
+				} catch(e) {}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 	};
 
+<<<<<<< HEAD
 	/**
 	 * Add an ARIA role `button` to elements that behave like UI controls when JavaScript is on.
 	 *
@@ -1466,6 +1760,9 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+	// Add an ARIA role `button` to elements that behave like UI controls when JavaScript is on.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function aria_button_if_js() {
 		$( '.aria-button-if-js' ).attr( 'role', 'button' );
 	}
@@ -1475,7 +1772,11 @@ $document.ready( function() {
 	});
 
 	/**
+<<<<<<< HEAD
 	 * Get the viewport width.
+=======
+	 * @summary Get the viewport width.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.7.0
 	 *
@@ -1494,7 +1795,11 @@ $document.ready( function() {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Sets the admin menu collapsed/expanded state.
+=======
+	 * @summary Set the admin menu collapsed/expanded state.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * Sets the global variable `menuState` and triggers a custom event passing
 	 * the current menu state.
@@ -1521,7 +1826,11 @@ $document.ready( function() {
 	$document.on( 'wp-window-resized.set-menu-state', setMenuState );
 
 	/**
+<<<<<<< HEAD
 	 * Sets ARIA attributes on the collapse/expand menu button.
+=======
+	 * @summary Set ARIA attributes on the collapse/expand menu button.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * When the admin menu is open or folded, updates the `aria-expanded` and
 	 * `aria-label` attributes of the button to give feedback to assistive
@@ -1579,6 +1888,7 @@ $document.ready( function() {
 	});
 });
 
+<<<<<<< HEAD
 // Fire a custom jQuery event at the end of window resize.
 ( function() {
 	var timeout;
@@ -1590,10 +1900,17 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+// Fire a custom jQuery event at the end of window resize
+( function() {
+	var timeout;
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function triggerEvent() {
 		$document.trigger( 'wp-window-resized' );
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Fires the trigger event again after 200 ms.
 	 *
@@ -1601,6 +1918,8 @@ $document.ready( function() {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	function fireOnce() {
 		window.clearTimeout( timeout );
 		timeout = window.setTimeout( triggerEvent, 200 );

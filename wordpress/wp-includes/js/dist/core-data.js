@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["coreData"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 310);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 309);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -242,6 +246,7 @@ function _slicedToArray(arr, i) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 31:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -757,6 +762,241 @@ var external_this_wp_url_ = __webpack_require__(24);
 
 /**
  * WordPress dependencies
+=======
+/***/ 309:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var build_module_actions_namespaceObject = {};
+__webpack_require__.r(build_module_actions_namespaceObject);
+__webpack_require__.d(build_module_actions_namespaceObject, "receiveUserQuery", function() { return receiveUserQuery; });
+__webpack_require__.d(build_module_actions_namespaceObject, "addEntities", function() { return addEntities; });
+__webpack_require__.d(build_module_actions_namespaceObject, "receiveEntityRecords", function() { return receiveEntityRecords; });
+__webpack_require__.d(build_module_actions_namespaceObject, "receiveThemeSupports", function() { return receiveThemeSupports; });
+__webpack_require__.d(build_module_actions_namespaceObject, "receiveEmbedPreview", function() { return receiveEmbedPreview; });
+__webpack_require__.d(build_module_actions_namespaceObject, "saveEntityRecord", function() { return saveEntityRecord; });
+__webpack_require__.d(build_module_actions_namespaceObject, "receiveUploadPermissions", function() { return receiveUploadPermissions; });
+var build_module_selectors_namespaceObject = {};
+__webpack_require__.r(build_module_selectors_namespaceObject);
+__webpack_require__.d(build_module_selectors_namespaceObject, "isRequestingEmbedPreview", function() { return isRequestingEmbedPreview; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getAuthors", function() { return getAuthors; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getUserQueryResults", function() { return getUserQueryResults; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getEntitiesByKind", function() { return getEntitiesByKind; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getEntity", function() { return getEntity; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getEntityRecord", function() { return getEntityRecord; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getEntityRecords", function() { return getEntityRecords; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getThemeSupports", function() { return getThemeSupports; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "getEmbedPreview", function() { return getEmbedPreview; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "isPreviewEmbedFallback", function() { return isPreviewEmbedFallback; });
+__webpack_require__.d(build_module_selectors_namespaceObject, "hasUploadPermissions", function() { return selectors_hasUploadPermissions; });
+var resolvers_namespaceObject = {};
+__webpack_require__.r(resolvers_namespaceObject);
+__webpack_require__.d(resolvers_namespaceObject, "getAuthors", function() { return resolvers_getAuthors; });
+__webpack_require__.d(resolvers_namespaceObject, "getEntityRecord", function() { return resolvers_getEntityRecord; });
+__webpack_require__.d(resolvers_namespaceObject, "getEntityRecords", function() { return resolvers_getEntityRecords; });
+__webpack_require__.d(resolvers_namespaceObject, "getThemeSupports", function() { return resolvers_getThemeSupports; });
+__webpack_require__.d(resolvers_namespaceObject, "getEmbedPreview", function() { return resolvers_getEmbedPreview; });
+__webpack_require__.d(resolvers_namespaceObject, "hasUploadPermissions", function() { return resolvers_hasUploadPermissions; });
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/objectSpread.js
+var objectSpread = __webpack_require__(8);
+
+// EXTERNAL MODULE: external {"this":["wp","data"]}
+var external_this_wp_data_ = __webpack_require__(5);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js + 1 modules
+var slicedToArray = __webpack_require__(25);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
+var toConsumableArray = __webpack_require__(19);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+var defineProperty = __webpack_require__(15);
+
+// EXTERNAL MODULE: external "lodash"
+var external_lodash_ = __webpack_require__(2);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/utils/if-matching-action.js
+/**
+ * A higher-order reducer creator which invokes the original reducer only if
+ * the dispatching action matches the given predicate, **OR** if state is
+ * initializing (undefined).
+ *
+ * @param {Function} isMatch Function predicate for allowing reducer call.
+ *
+ * @return {Function} Higher-order reducer.
+ */
+var ifMatchingAction = function ifMatchingAction(isMatch) {
+  return function (reducer) {
+    return function (state, action) {
+      if (state === undefined || isMatch(action)) {
+        return reducer(state, action);
+      }
+
+      return state;
+    };
+  };
+};
+
+/* harmony default export */ var if_matching_action = (ifMatchingAction);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/utils/on-sub-key.js
+
+
+
+/**
+ * Higher-order reducer creator which creates a combined reducer object, keyed
+ * by a property on the action object.
+ *
+ * @param {string} actionProperty Action property by which to key object.
+ *
+ * @return {Function} Higher-order reducer.
+ */
+var on_sub_key_onSubKey = function onSubKey(actionProperty) {
+  return function (reducer) {
+    return function () {
+      var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      var action = arguments.length > 1 ? arguments[1] : undefined;
+      // Retrieve subkey from action. Do not track if undefined; useful for cases
+      // where reducer is scoped by action shape.
+      var key = action[actionProperty];
+
+      if (key === undefined) {
+        return state;
+      } // Avoid updating state if unchanged. Note that this also accounts for a
+      // reducer which returns undefined on a key which is not yet tracked.
+
+
+      var nextKeyState = reducer(state[key], action);
+
+      if (nextKeyState === state[key]) {
+        return state;
+      }
+
+      return Object(objectSpread["a" /* default */])({}, state, Object(defineProperty["a" /* default */])({}, key, nextKeyState));
+    };
+  };
+};
+/* harmony default export */ var on_sub_key = (on_sub_key_onSubKey);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/utils/replace-action.js
+/**
+ * Higher-order reducer creator which substitutes the action object before
+ * passing to the original reducer.
+ *
+ * @param {Function} replacer Function mapping original action to replacement.
+ *
+ * @return {Function} Higher-order reducer.
+ */
+var replaceAction = function replaceAction(replacer) {
+  return function (reducer) {
+    return function (state, action) {
+      return reducer(state, replacer(action));
+    };
+  };
+};
+
+/* harmony default export */ var replace_action = (replaceAction);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/utils/with-weak-map-cache.js
+/**
+ * External dependencies
+ */
+
+/**
+ * Given a function, returns an enhanced function which caches the result and
+ * tracks in WeakMap. The result is only cached if the original function is
+ * passed a valid object-like argument (requirement for WeakMap key).
+ *
+ * @param {Function} fn Original function.
+ *
+ * @return {Function} Enhanced caching function.
+ */
+
+function withWeakMapCache(fn) {
+  var cache = new WeakMap();
+  return function (key) {
+    var value;
+
+    if (cache.has(key)) {
+      value = cache.get(key);
+    } else {
+      value = fn(key); // Can reach here if key is not valid for WeakMap, since `has`
+      // will return false for invalid key. Since `set` will throw,
+      // ensure that key is valid before setting into cache.
+
+      if (Object(external_lodash_["isObjectLike"])(key)) {
+        cache.set(key, value);
+      }
+    }
+
+    return value;
+  };
+}
+
+/* harmony default export */ var with_weak_map_cache = (withWeakMapCache);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/utils/index.js
+
+
+
+
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/queried-data/actions.js
+
+
+/**
+ * External dependencies
+ */
+
+/**
+ * Returns an action object used in signalling that items have been received.
+ *
+ * @param {Array} items Items received.
+ *
+ * @return {Object} Action object.
+ */
+
+function receiveItems(items) {
+  return {
+    type: 'RECEIVE_ITEMS',
+    items: Object(external_lodash_["castArray"])(items)
+  };
+}
+/**
+ * Returns an action object used in signalling that queried data has been
+ * received.
+ *
+ * @param {Array}   items Queried items received.
+ * @param {?Object} query Optional query object.
+ *
+ * @return {Object} Action object.
+ */
+
+function receiveQueriedItems(items) {
+  var query = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  return Object(objectSpread["a" /* default */])({}, receiveItems(items), {
+    query: query
+  });
+}
+
+// EXTERNAL MODULE: ./node_modules/rememo/es/rememo.js
+var rememo = __webpack_require__(31);
+
+// EXTERNAL MODULE: ./node_modules/equivalent-key-map/equivalent-key-map.js
+var equivalent_key_map = __webpack_require__(66);
+var equivalent_key_map_default = /*#__PURE__*/__webpack_require__.n(equivalent_key_map);
+
+// EXTERNAL MODULE: external {"this":["wp","url"]}
+var external_this_wp_url_ = __webpack_require__(24);
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/queried-data/get-query-parts.js
+
+
+/**
+ * WordPress dependencies
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 
 /**
@@ -2178,6 +2418,134 @@ function resolvers_getEmbedPreview(url) {
   }, _marked5, this, [[0, 8]]);
 }
 /**
+<<<<<<< HEAD
+ * Requests Upload Permissions from the REST API.
+ */
+
+function resolvers_hasUploadPermissions() {
+  var response, allowHeader;
+  return regeneratorRuntime.wrap(function hasUploadPermissions$(_context6) {
+    while (1) {
+      switch (_context6.prev = _context6.next) {
+        case 0:
+          _context6.next = 2;
+          return apiFetch({
+            path: '/wp/v2/media',
+            method: 'OPTIONS',
+            parse: false
+          });
+
+        case 2:
+          response = _context6.sent;
+
+          if (Object(external_lodash_["hasIn"])(response, ['headers', 'get'])) {
+            // If the request is fetched using the fetch api, the header can be
+            // retrieved using the 'get' method.
+            allowHeader = response.headers.get('allow');
+          } else {
+            // If the request was preloaded server-side and is returned by the
+            // preloading middleware, the header will be a simple property.
+            allowHeader = Object(external_lodash_["get"])(response, ['headers', 'Allow'], '');
+          }
+
+          _context6.next = 6;
+          return receiveUploadPermissions(Object(external_lodash_["includes"])(allowHeader, 'POST'));
+
+        case 6:
+        case "end":
+          return _context6.stop();
+      }
+    }
+  }, _marked6, this);
+}
+
+// CONCATENATED MODULE: ./node_modules/@wordpress/core-data/build-module/index.js
+
+
+/**
+ * WordPress dependencies
+ */
+
+/**
+ * Internal dependencies
+ */
+
+
+
+
+
+
+
+ // The entity selectors/resolvers and actions are shortcuts to their generic equivalents
+// (getEntityRecord, getEntityRecords, updateEntityRecord, updateEntityRecordss)
+// Instead of getEntityRecord, the consumer could use more user-frieldly named selector: getPostType, getTaxonomy...
+// The "kind" and the "name" of the entity are combined to generate these shortcuts.
+
+var entitySelectors = defaultEntities.reduce(function (result, entity) {
+  var kind = entity.kind,
+      name = entity.name;
+
+  result[entities_getMethodName(kind, name)] = function (state, key) {
+    return getEntityRecord(state, kind, name, key);
+  };
+
+  result[entities_getMethodName(kind, name, 'get', true)] = function (state) {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return getEntityRecords.apply(build_module_selectors_namespaceObject, [state, kind, name].concat(args));
+  };
+
+  return result;
+}, {});
+var entityResolvers = defaultEntities.reduce(function (result, entity) {
+  var kind = entity.kind,
+      name = entity.name;
+
+  result[entities_getMethodName(kind, name)] = function (key) {
+    return resolvers_getEntityRecord(kind, name, key);
+  };
+
+  var pluralMethodName = entities_getMethodName(kind, name, 'get', true);
+
+  result[pluralMethodName] = function () {
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return resolvers_getEntityRecords.apply(resolvers_namespaceObject, [kind, name].concat(args));
+  };
+
+  result[pluralMethodName].shouldInvalidate = function (action) {
+    var _resolvers$getEntityR;
+
+    for (var _len3 = arguments.length, args = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+      args[_key3 - 1] = arguments[_key3];
+    }
+
+    return (_resolvers$getEntityR = resolvers_getEntityRecords).shouldInvalidate.apply(_resolvers$getEntityR, [action, kind, name].concat(args));
+  };
+
+  return result;
+}, {});
+var entityActions = defaultEntities.reduce(function (result, entity) {
+  var kind = entity.kind,
+      name = entity.name;
+
+  result[entities_getMethodName(kind, name, 'save')] = function (key) {
+    return saveEntityRecord(kind, name, key);
+  };
+
+  return result;
+}, {});
+Object(external_this_wp_data_["registerStore"])(REDUCER_KEY, {
+  reducer: build_module_reducer,
+  controls: build_module_controls,
+  actions: Object(objectSpread["a" /* default */])({}, build_module_actions_namespaceObject, entityActions),
+  selectors: Object(objectSpread["a" /* default */])({}, build_module_selectors_namespaceObject, entitySelectors),
+  resolvers: Object(objectSpread["a" /* default */])({}, resolvers_namespaceObject, entityResolvers)
+=======
  * Requests Upload Permissions from the REST API.
  */
 
@@ -2309,6 +2677,289 @@ Object(external_this_wp_data_["registerStore"])(REDUCER_KEY, {
 
 /***/ }),
 
+/***/ 31:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+
+var LEAF_KEY, hasWeakMap;
+
+/**
+ * Arbitrary value used as key for referencing cache object in WeakMap tree.
+ *
+ * @type {Object}
+ */
+LEAF_KEY = {};
+
+/**
+ * Whether environment supports WeakMap.
+ *
+ * @type {boolean}
+ */
+hasWeakMap = typeof WeakMap !== 'undefined';
+
+/**
+ * Returns the first argument as the sole entry in an array.
+ *
+ * @param {*} value Value to return.
+ *
+ * @return {Array} Value returned as entry in array.
+ */
+function arrayOf( value ) {
+	return [ value ];
+}
+
+/**
+ * Returns true if the value passed is object-like, or false otherwise. A value
+ * is object-like if it can support property assignment, e.g. object or array.
+ *
+ * @param {*} value Value to test.
+ *
+ * @return {boolean} Whether value is object-like.
+ */
+function isObjectLike( value ) {
+	return !! value && 'object' === typeof value;
+}
+
+/**
+ * Creates and returns a new cache object.
+ *
+ * @return {Object} Cache object.
+ */
+function createCache() {
+	var cache = {
+		clear: function() {
+			cache.head = null;
+		},
+	};
+
+	return cache;
+}
+
+/**
+ * Returns true if entries within the two arrays are strictly equal by
+ * reference from a starting index.
+ *
+ * @param {Array}  a         First array.
+ * @param {Array}  b         Second array.
+ * @param {number} fromIndex Index from which to start comparison.
+ *
+ * @return {boolean} Whether arrays are shallowly equal.
+ */
+function isShallowEqual( a, b, fromIndex ) {
+	var i;
+
+	if ( a.length !== b.length ) {
+		return false;
+	}
+
+	for ( i = fromIndex; i < a.length; i++ ) {
+		if ( a[ i ] !== b[ i ] ) {
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Returns a memoized selector function. The getDependants function argument is
+ * called before the memoized selector and is expected to return an immutable
+ * reference or array of references on which the selector depends for computing
+ * its own return value. The memoize cache is preserved only as long as those
+ * dependant references remain the same. If getDependants returns a different
+ * reference(s), the cache is cleared and the selector value regenerated.
+ *
+ * @param {Function} selector      Selector function.
+ * @param {Function} getDependants Dependant getter returning an immutable
+ *                                 reference or array of reference used in
+ *                                 cache bust consideration.
+ *
+ * @return {Function} Memoized selector.
+ */
+/* harmony default export */ __webpack_exports__["a"] = (function( selector, getDependants ) {
+	var rootCache, getCache;
+
+	// Use object source as dependant if getter not provided
+	if ( ! getDependants ) {
+		getDependants = arrayOf;
+	}
+
+	/**
+	 * Returns the root cache. If WeakMap is supported, this is assigned to the
+	 * root WeakMap cache set, otherwise it is a shared instance of the default
+	 * cache object.
+	 *
+	 * @return {(WeakMap|Object)} Root cache object.
+	 */
+	function getRootCache() {
+		return rootCache;
+	}
+
+	/**
+	 * Returns the cache for a given dependants array. When possible, a WeakMap
+	 * will be used to create a unique cache for each set of dependants. This
+	 * is feasible due to the nature of WeakMap in allowing garbage collection
+	 * to occur on entries where the key object is no longer referenced. Since
+	 * WeakMap requires the key to be an object, this is only possible when the
+	 * dependant is object-like. The root cache is created as a hierarchy where
+	 * each top-level key is the first entry in a dependants set, the value a
+	 * WeakMap where each key is the next dependant, and so on. This continues
+	 * so long as the dependants are object-like. If no dependants are object-
+	 * like, then the cache is shared across all invocations.
+	 *
+	 * @see isObjectLike
+	 *
+	 * @param {Array} dependants Selector dependants.
+	 *
+	 * @return {Object} Cache object.
+	 */
+	function getWeakMapCache( dependants ) {
+		var caches = rootCache,
+			isUniqueByDependants = true,
+			i, dependant, map, cache;
+
+		for ( i = 0; i < dependants.length; i++ ) {
+			dependant = dependants[ i ];
+
+			// Can only compose WeakMap from object-like key.
+			if ( ! isObjectLike( dependant ) ) {
+				isUniqueByDependants = false;
+				break;
+			}
+
+			// Does current segment of cache already have a WeakMap?
+			if ( caches.has( dependant ) ) {
+				// Traverse into nested WeakMap.
+				caches = caches.get( dependant );
+			} else {
+				// Create, set, and traverse into a new one.
+				map = new WeakMap();
+				caches.set( dependant, map );
+				caches = map;
+			}
+		}
+
+		// We use an arbitrary (but consistent) object as key for the last item
+		// in the WeakMap to serve as our running cache.
+		if ( ! caches.has( LEAF_KEY ) ) {
+			cache = createCache();
+			cache.isUniqueByDependants = isUniqueByDependants;
+			caches.set( LEAF_KEY, cache );
+		}
+
+		return caches.get( LEAF_KEY );
+	}
+
+	// Assign cache handler by availability of WeakMap
+	getCache = hasWeakMap ? getWeakMapCache : getRootCache;
+
+	/**
+	 * Resets root memoization cache.
+	 */
+	function clear() {
+		rootCache = hasWeakMap ? new WeakMap() : createCache();
+	}
+
+	// eslint-disable-next-line jsdoc/check-param-names
+	/**
+	 * The augmented selector call, considering first whether dependants have
+	 * changed before passing it to underlying memoize function.
+	 *
+	 * @param {Object} source    Source object for derivation.
+	 * @param {...*}   extraArgs Additional arguments to pass to selector.
+	 *
+	 * @return {*} Selector result.
+	 */
+	function callSelector( /* source, ...extraArgs */ ) {
+		var len = arguments.length,
+			cache, node, i, args, dependants;
+
+		// Create copy of arguments (avoid leaking deoptimization).
+		args = new Array( len );
+		for ( i = 0; i < len; i++ ) {
+			args[ i ] = arguments[ i ];
+		}
+
+		dependants = getDependants.apply( null, args );
+		cache = getCache( dependants );
+
+		// If not guaranteed uniqueness by dependants (primitive type or lack
+		// of WeakMap support), shallow compare against last dependants and, if
+		// references have changed, destroy cache to recalculate result.
+		if ( ! cache.isUniqueByDependants ) {
+			if ( cache.lastDependants && ! isShallowEqual( dependants, cache.lastDependants, 0 ) ) {
+				cache.clear();
+			}
+
+			cache.lastDependants = dependants;
+		}
+
+		node = cache.head;
+		while ( node ) {
+			// Check whether node arguments match arguments
+			if ( ! isShallowEqual( node.args, args, 1 ) ) {
+				node = node.next;
+				continue;
+			}
+
+			// At this point we can assume we've found a match
+
+			// Surface matched node to head if not already
+			if ( node !== cache.head ) {
+				// Adjust siblings to point to each other.
+				node.prev.next = node.next;
+				if ( node.next ) {
+					node.next.prev = node.prev;
+				}
+
+				node.next = cache.head;
+				node.prev = null;
+				cache.head.prev = node;
+				cache.head = node;
+			}
+
+			// Return immediately
+			return node.val;
+		}
+
+		// No cached value found. Continue to insertion phase:
+
+		node = {
+			// Generate the result from original function
+			val: selector.apply( null, args ),
+		};
+
+		// Avoid including the source object in the cache.
+		args[ 0 ] = null;
+		node.args = args;
+
+		// Don't need to check whether node is already head, since it would
+		// have been returned above already if it was
+
+		// Shift existing head down list
+		if ( cache.head ) {
+			cache.head.prev = node;
+			node.next = cache.head;
+		}
+
+		cache.head = node;
+
+		return node.val;
+	}
+
+	callSelector.getDependants = getDependants;
+	callSelector.clear = clear;
+	clear();
+
+	return callSelector;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
+});
+
+
+/***/ }),
+
 /***/ 33:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2361,7 +3012,11 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
+<<<<<<< HEAD
 	g = g || new Function("return this")();
+=======
+	g = g || Function("return this")() || (1, eval)("this");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } catch (e) {
 	// This works if the window reference is available
 	if (typeof window === "object") g = window;

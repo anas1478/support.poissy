@@ -41,7 +41,11 @@ class WP_Role {
 	 * @param array $capabilities List of capabilities.
 	 */
 	public function __construct( $role, $capabilities ) {
+<<<<<<< HEAD
 		$this->name         = $role;
+=======
+		$this->name = $role;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->capabilities = $capabilities;
 	}
 
@@ -54,7 +58,11 @@ class WP_Role {
 	 * @param bool $grant Whether role has capability privilege.
 	 */
 	public function add_cap( $cap, $grant = true ) {
+<<<<<<< HEAD
 		$this->capabilities[ $cap ] = $grant;
+=======
+		$this->capabilities[$cap] = $grant;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wp_roles()->add_cap( $this->name, $cap, $grant );
 	}
 
@@ -71,7 +79,11 @@ class WP_Role {
 	 * @param string $cap Capability name.
 	 */
 	public function remove_cap( $cap ) {
+<<<<<<< HEAD
 		unset( $this->capabilities[ $cap ] );
+=======
+		unset( $this->capabilities[$cap] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wp_roles()->remove_cap( $this->name, $cap );
 	}
 
@@ -94,17 +106,28 @@ class WP_Role {
 		 *
 		 * @since 2.0.0
 		 *
+<<<<<<< HEAD
 		 * @param bool[] $capabilities Associative array of capabilities for the role.
+=======
+		 * @param array  $capabilities Array of role capabilities.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 * @param string $cap          Capability name.
 		 * @param string $name         Role name.
 		 */
 		$capabilities = apply_filters( 'role_has_cap', $this->capabilities, $cap, $this->name );
 
+<<<<<<< HEAD
 		if ( ! empty( $capabilities[ $cap ] ) ) {
 			return $capabilities[ $cap ];
 		} else {
 			return false;
 		}
+=======
+		if ( !empty( $capabilities[$cap] ) )
+			return $capabilities[$cap];
+		else
+			return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 }

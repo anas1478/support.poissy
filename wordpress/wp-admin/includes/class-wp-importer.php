@@ -5,6 +5,10 @@
 class WP_Importer {
 	/**
 	 * Class Constructor
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public function __construct() {}
 
@@ -22,22 +26,38 @@ class WP_Importer {
 
 		$hashtable = array();
 
+<<<<<<< HEAD
 		$limit  = 100;
+=======
+		$limit = 100;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$offset = 0;
 
 		// Grab all posts in chunks
 		do {
 			$meta_key = $importer_name . '_' . $bid . '_permalink';
+<<<<<<< HEAD
 			$sql      = $wpdb->prepare( "SELECT post_id, meta_value FROM $wpdb->postmeta WHERE meta_key = %s LIMIT %d,%d", $meta_key, $offset, $limit );
 			$results  = $wpdb->get_results( $sql );
+=======
+			$sql = $wpdb->prepare( "SELECT post_id, meta_value FROM $wpdb->postmeta WHERE meta_key = %s LIMIT %d,%d", $meta_key, $offset, $limit );
+			$results = $wpdb->get_results( $sql );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			// Increment offset
 			$offset = ( $limit + $offset );
 
+<<<<<<< HEAD
 			if ( ! empty( $results ) ) {
 				foreach ( $results as $r ) {
 					// Set permalinks into array
 					$hashtable[ $r->meta_value ] = intval( $r->post_id );
+=======
+			if ( !empty( $results ) ) {
+				foreach ( $results as $r ) {
+					// Set permalinks into array
+					$hashtable[$r->meta_value] = intval( $r->post_id );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		} while ( count( $results ) == $limit );
@@ -64,6 +84,7 @@ class WP_Importer {
 
 		// Get count of permalinks
 		$meta_key = $importer_name . '_' . $bid . '_permalink';
+<<<<<<< HEAD
 		$sql      = $wpdb->prepare( "SELECT COUNT( post_id ) AS cnt FROM $wpdb->postmeta WHERE meta_key = '%s'", $meta_key );
 
 		$result = $wpdb->get_results( $sql );
@@ -71,6 +92,14 @@ class WP_Importer {
 		if ( ! empty( $result ) ) {
 			$count = intval( $result[0]->cnt );
 		}
+=======
+		$sql = $wpdb->prepare( "SELECT COUNT( post_id ) AS cnt FROM $wpdb->postmeta WHERE meta_key = '%s'", $meta_key );
+
+		$result = $wpdb->get_results( $sql );
+
+		if ( !empty( $result ) )
+			$count = intval( $result[0]->cnt );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Unset to save memory.
 		unset( $results );
@@ -91,17 +120,26 @@ class WP_Importer {
 
 		$hashtable = array();
 
+<<<<<<< HEAD
 		$limit  = 100;
+=======
+		$limit = 100;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$offset = 0;
 
 		// Grab all comments in chunks
 		do {
+<<<<<<< HEAD
 			$sql     = $wpdb->prepare( "SELECT comment_ID, comment_agent FROM $wpdb->comments LIMIT %d,%d", $offset, $limit );
+=======
+			$sql = $wpdb->prepare( "SELECT comment_ID, comment_agent FROM $wpdb->comments LIMIT %d,%d", $offset, $limit );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$results = $wpdb->get_results( $sql );
 
 			// Increment offset
 			$offset = ( $limit + $offset );
 
+<<<<<<< HEAD
 			if ( ! empty( $results ) ) {
 				foreach ( $results as $r ) {
 					// Explode comment_agent key
@@ -111,6 +149,17 @@ class WP_Importer {
 					// Check if this comment came from this blog
 					if ( $bid == $ca_bid ) {
 						$hashtable[ $source_comment_id ] = intval( $r->comment_ID );
+=======
+			if ( !empty( $results ) ) {
+				foreach ( $results as $r ) {
+					// Explode comment_agent key
+					list ( $ca_bid, $source_comment_id ) = explode( '-', $r->comment_agent );
+					$source_comment_id = intval( $source_comment_id );
+
+					// Check if this comment came from this blog
+					if ( $bid == $ca_bid ) {
+						$hashtable[$source_comment_id] = intval( $r->comment_ID );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					}
 				}
 			}
@@ -123,6 +172,10 @@ class WP_Importer {
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param int $blog_id
 	 * @return int|void
 	 */
@@ -131,13 +184,18 @@ class WP_Importer {
 			$blog_id = (int) $blog_id;
 		} else {
 			$blog = 'http://' . preg_replace( '#^https?://#', '', $blog_id );
+<<<<<<< HEAD
 			if ( ( ! $parsed = parse_url( $blog ) ) || empty( $parsed['host'] ) ) {
+=======
+			if ( ( !$parsed = parse_url( $blog ) ) || empty( $parsed['host'] ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				fwrite( STDERR, "Error: can not determine blog_id from $blog_id\n" );
 				exit();
 			}
 			if ( empty( $parsed['path'] ) ) {
 				$parsed['path'] = '/';
 			}
+<<<<<<< HEAD
 			$blogs = get_sites(
 				array(
 					'domain' => $parsed['host'],
@@ -145,24 +203,40 @@ class WP_Importer {
 					'path'   => $parsed['path'],
 				)
 			);
+=======
+			$blogs = get_sites( array( 'domain' => $parsed['host'], 'number' => 1, 'path' => $parsed['path'] ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( ! $blogs ) {
 				fwrite( STDERR, "Error: Could not find blog\n" );
 				exit();
 			}
+<<<<<<< HEAD
 			$blog    = array_shift( $blogs );
+=======
+			$blog = array_shift( $blogs );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$blog_id = (int) $blog->blog_id;
 		}
 
 		if ( function_exists( 'is_multisite' ) ) {
+<<<<<<< HEAD
 			if ( is_multisite() ) {
 				switch_to_blog( $blog_id );
 			}
+=======
+			if ( is_multisite() )
+				switch_to_blog( $blog_id );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		return $blog_id;
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param int $user_id
 	 * @return int|void
 	 */
@@ -173,7 +247,11 @@ class WP_Importer {
 			$user_id = (int) username_exists( $user_id );
 		}
 
+<<<<<<< HEAD
 		if ( ! $user_id || ! wp_set_current_user( $user_id ) ) {
+=======
+		if ( !$user_id || !wp_set_current_user( $user_id ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			fwrite( STDERR, "Error: can not find user\n" );
 			exit();
 		}
@@ -206,6 +284,7 @@ class WP_Importer {
 		add_filter( 'http_request_timeout', array( $this, 'bump_request_timeout' ) );
 
 		$headers = array();
+<<<<<<< HEAD
 		$args    = array();
 		if ( true === $head ) {
 			$args['method'] = 'HEAD';
@@ -213,6 +292,13 @@ class WP_Importer {
 		if ( ! empty( $username ) && ! empty( $password ) ) {
 			$headers['Authorization'] = 'Basic ' . base64_encode( "$username:$password" );
 		}
+=======
+		$args = array();
+		if ( true === $head )
+			$args['method'] = 'HEAD';
+		if ( !empty( $username ) && !empty( $password ) )
+			$headers['Authorization'] = 'Basic ' . base64_encode( "$username:$password" );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$args['headers'] = $headers;
 
@@ -281,18 +367,26 @@ class WP_Importer {
  */
 function get_cli_args( $param, $required = false ) {
 	$args = $_SERVER['argv'];
+<<<<<<< HEAD
 	if ( ! is_array( $args ) ) {
 		$args = array();
 	}
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$out = array();
 
 	$last_arg = null;
+<<<<<<< HEAD
 	$return   = null;
+=======
+	$return = null;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$il = sizeof( $args );
 
 	for ( $i = 1, $il; $i < $il; $i++ ) {
+<<<<<<< HEAD
 		if ( (bool) preg_match( '/^--(.+)/', $args[ $i ], $match ) ) {
 			$parts = explode( '=', $match[1] );
 			$key   = preg_replace( '/[^a-z0-9]+/', '', $parts[0] );
@@ -308,15 +402,37 @@ function get_cli_args( $param, $required = false ) {
 			for ( $j = 0, $jl = strlen( $match[1] ); $j < $jl; $j++ ) {
 				$key         = $match[1]{$j};
 				$out[ $key ] = true;
+=======
+		if ( (bool) preg_match( "/^--(.+)/", $args[$i], $match ) ) {
+			$parts = explode( "=", $match[1] );
+			$key = preg_replace( "/[^a-z0-9]+/", "", $parts[0] );
+
+			if ( isset( $parts[1] ) ) {
+				$out[$key] = $parts[1];
+			} else {
+				$out[$key] = true;
+			}
+
+			$last_arg = $key;
+		} elseif ( (bool) preg_match( "/^-([a-zA-Z0-9]+)/", $args[$i], $match ) ) {
+			for ( $j = 0, $jl = strlen( $match[1] ); $j < $jl; $j++ ) {
+				$key = $match[1]{$j};
+				$out[$key] = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			$last_arg = $key;
 		} elseif ( $last_arg !== null ) {
+<<<<<<< HEAD
 			$out[ $last_arg ] = $args[ $i ];
+=======
+			$out[$last_arg] = $args[$i];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
 	// Check array for specified param
+<<<<<<< HEAD
 	if ( isset( $out[ $param ] ) ) {
 		// Set return value
 		$return = $out[ $param ];
@@ -324,6 +440,15 @@ function get_cli_args( $param, $required = false ) {
 
 	// Check for missing required param
 	if ( ! isset( $out[ $param ] ) && $required ) {
+=======
+	if ( isset( $out[$param] ) ) {
+		// Set return value
+		$return = $out[$param];
+	}
+
+	// Check for missing required param
+	if ( !isset( $out[$param] ) && $required ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		// Display message and exit
 		echo "\"$param\" parameter is required but was not specified\n";
 		exit();

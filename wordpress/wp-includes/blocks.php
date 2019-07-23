@@ -152,9 +152,15 @@ function excerpt_remove_blocks( $content ) {
 	 * @param array $allowed_blocks The list of allowed blocks.
 	 */
 	$allowed_blocks = apply_filters( 'excerpt_allowed_blocks', $allowed_blocks );
+<<<<<<< HEAD
 	$blocks         = parse_blocks( $content );
 	$output         = '';
 	foreach ( $blocks as $block ) {
+=======
+	$blocks = parse_blocks( $content );
+	$output = '';
+	 foreach ( $blocks as $block ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( in_array( $block['blockName'], $allowed_blocks, true ) ) {
 			$output .= render_block( $block );
 		}
@@ -175,6 +181,7 @@ function excerpt_remove_blocks( $content ) {
 function render_block( $block ) {
 	global $post;
 
+<<<<<<< HEAD
 	/**
 	 * Allows render_block() to be shortcircuited, by returning a non-null value.
 	 *
@@ -200,6 +207,8 @@ function render_block( $block ) {
 	 */
 	$block = apply_filters( 'render_block_data', $block, $source_block );
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$block_type    = WP_Block_Type_Registry::get_instance()->get_registered( $block['blockName'] );
 	$is_dynamic    = $block['blockName'] && null !== $block_type && $block_type->is_dynamic();
 	$block_content = '';
@@ -291,6 +300,10 @@ function do_blocks( $content ) {
  * @return string The unmodified content.
  */
 function _restore_wpautop_hook( $content ) {
+<<<<<<< HEAD
+=======
+	global $wp_filter;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$current_priority = has_filter( 'the_content', '_restore_wpautop_hook' );
 
 	add_filter( 'the_content', 'wpautop', $current_priority - 1 );

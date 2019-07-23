@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/wp-pointer.js
  */
@@ -6,11 +7,22 @@
 
 /**
  * Initializes the wp-pointer widget using jQuery UI Widget Factory.
+=======
+/* global wpPointerL10n */
+/**
+ * Pointer jQuery widget.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 (function($){
 	var identifier = 0,
 		zindex = 9999;
 
+<<<<<<< HEAD
+=======
+	/**
+	 * @class $.widget.wp.pointer
+	 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$.widget('wp.pointer',/** @lends $.widget.wp.pointer.prototype */{
 		options: {
 			pointerClass: 'wp-pointer',
@@ -39,6 +51,7 @@
 			document: document
 		},
 
+<<<<<<< HEAD
 		/**
 		 * A class that represents a WordPress pointer.
 		 *
@@ -47,6 +60,8 @@
 		 *
 		 * @constructs $.widget.wp.pointer
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_create: function() {
 			var positioning,
 				family;
@@ -69,6 +84,7 @@
 				.appendTo( this.options.document.body );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Sets an option on the pointer instance.
 		 *
@@ -86,6 +102,8 @@
 		 * @param {string} key   The key of the option to set.
 		 * @param {*}      value The value to set the option to.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_setOption: function( key, value ) {
 			var o   = this.options,
 				tip = this.pointer;
@@ -112,6 +130,7 @@
 			}
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Removes the pointer element from of the DOM.
 		 *
@@ -119,11 +138,14 @@
 		 *
 		 * @since 3.3.0
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		destroy: function() {
 			this.pointer.remove();
 			$.Widget.prototype.destroy.call( this );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Returns the pointer element.
 		 *
@@ -131,10 +153,13 @@
 		 *
 		 * @return {Object} Pointer The pointer object.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		widget: function() {
 			return this.pointer;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Updates the content of the pointer.
 		 *
@@ -151,6 +176,8 @@
 		 *
 		 * @return {Promise} Resolves when the update has been executed.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		update: function( event ) {
 			var self = this,
 				o    = this.options,
@@ -181,6 +208,7 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Updates the content of the pointer.
 		 *
 		 * Will make sure that the pointer is correctly positioned.
@@ -190,6 +218,10 @@
 		 *
 		 * @param {Object} event   The event that caused the update.
 		 * @param {*}      content The content object. Either a string or a jQuery tree.
+=======
+		 * Update is separated into two functions to allow events to defer
+		 * updating the pointer (e.g. fetch content with ajax, etc).
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		_update: function( event, content ) {
 			var buttons,
@@ -198,8 +230,12 @@
 			if ( ! content )
 				return;
 
+<<<<<<< HEAD
 			// Kill any animations on the pointer.
 			this.pointer.stop();
+=======
+			this.pointer.stop(); // Kill any animations on the pointer.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			this.content.html( content );
 
 			buttons = o.buttons.call( this.element[0], event, this._handoff() );
@@ -210,6 +246,7 @@
 			this.reposition();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Repositions the pointer.
 		 *
@@ -218,6 +255,8 @@
 		 *
 		 * @since 3.3.0
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		reposition: function() {
 			var position;
 
@@ -239,11 +278,14 @@
 			this.repoint();
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Sets the arrow of the pointer to the correct side of the pointer element.
 		 *
 		 * @since 3.3.0
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		repoint: function() {
 			var o = this.options,
 				edge;
@@ -260,6 +302,7 @@
 			this.pointer.addClass( 'wp-pointer-' + edge );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Calculates the correct position based on a position in the settings.
 		 *
@@ -271,6 +314,8 @@
 		 *
 		 * @return {Object} result  An object containing position related data.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_processPosition: function( position ) {
 			var opposite = {
 					top: 'bottom',
@@ -307,6 +352,7 @@
 			return result;
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Opens the pointer.
 		 *
@@ -318,6 +364,8 @@
 		 *
 		 * @param {Object} event The event that triggered the opening of this pointer.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		open: function( event ) {
 			var self = this,
 				o    = this.options;
@@ -330,6 +378,7 @@
 			});
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Opens and shows the pointer element.
 		 *
@@ -338,6 +387,8 @@
 		 *
 		 * @param {Object} event An event object.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_open: function( event ) {
 			var self = this,
 				o    = this.options;
@@ -356,6 +407,7 @@
 			}));
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Closes and hides the pointer element.
 		 *
@@ -363,6 +415,8 @@
 		 *
 		 * @param {Object} event An event object.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		close: function( event ) {
 			if ( !this.active || this.options.disabled )
 				return;
@@ -378,16 +432,20 @@
 			}));
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Puts the pointer on top by increasing the z-index.
 		 *
 		 * @since 3.3.0
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		sendToTop: function() {
 			if ( this.active )
 				this.pointer.css( 'z-index', zindex++ );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Toggles the element between shown and hidden.
 		 *
@@ -395,6 +453,8 @@
 		 *
 		 * @param {Object} event An event object.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		toggle: function( event ) {
 			if ( this.pointer.is(':hidden') )
 				this.open( event );
@@ -402,6 +462,7 @@
 				this.close( event );
 		},
 
+<<<<<<< HEAD
 		/**
 		 * Extends the pointer and the widget element with the supplied parameter, which
 		 * is either an element or a function.
@@ -413,6 +474,8 @@
 		 *
 		 * @return {Object} The extended object.
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		_handoff: function( extend ) {
 			return $.extend({
 				pointer: this.pointer,

@@ -17,6 +17,7 @@ class _WP_List_Table_Compat extends WP_List_Table {
 	public $_columns;
 
 	public function __construct( $screen, $columns = array() ) {
+<<<<<<< HEAD
 		if ( is_string( $screen ) ) {
 			$screen = convert_to_screen( $screen );
 		}
@@ -24,12 +25,21 @@ class _WP_List_Table_Compat extends WP_List_Table {
 		$this->_screen = $screen;
 
 		if ( ! empty( $columns ) ) {
+=======
+		if ( is_string( $screen ) )
+			$screen = convert_to_screen( $screen );
+
+		$this->_screen = $screen;
+
+		if ( !empty( $columns ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->_columns = $columns;
 			add_filter( 'manage_' . $screen->id . '_columns', array( $this, 'get_columns' ), 0 );
 		}
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @return array
 	 */
 	protected function get_column_info() {
@@ -37,11 +47,25 @@ class _WP_List_Table_Compat extends WP_List_Table {
 		$hidden   = get_hidden_columns( $this->_screen );
 		$sortable = array();
 		$primary  = $this->get_default_primary_column_name();
+=======
+	 *
+	 * @return array
+	 */
+	protected function get_column_info() {
+		$columns = get_column_headers( $this->_screen );
+		$hidden = get_hidden_columns( $this->_screen );
+		$sortable = array();
+		$primary = $this->get_default_primary_column_name();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return array( $columns, $hidden, $sortable, $primary );
 	}
 
 	/**
+<<<<<<< HEAD
+=======
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @return array
 	 */
 	public function get_columns() {

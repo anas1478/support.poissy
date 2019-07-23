@@ -1,9 +1,15 @@
 /**
  * Distraction-Free Writing (wp-fullscreen) backward compatibility stub.
+<<<<<<< HEAD
  *
  * @deprecated 4.1
  * @removed 4.3.
  * @output wp-admin/js/wp-fullscreen-stub.js
+=======
+ * Todo: remove at the end of 2016.
+ *
+ * Original was deprecated in 4.1, removed in 4.3.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 ( function() {
 	var noop = function(){};

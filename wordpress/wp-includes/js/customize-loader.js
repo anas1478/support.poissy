@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 /**
  * @output wp-includes/js/customize-loader.js
  */
 
 /* global _wpCustomizeLoaderSettings */
 
+=======
+/* global _wpCustomizeLoaderSettings */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /**
  * Expose a public API that allows the customizer to be
  * loaded on any page.

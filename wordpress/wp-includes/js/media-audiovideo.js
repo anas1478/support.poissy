@@ -88,6 +88,7 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(1);
 
 
@@ -99,13 +100,19 @@ module.exports = __webpack_require__(1);
  * @output wp-includes/js/media-audiovideo.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var media = wp.media,
 	baseSettings = window._wpmejsSettings || {},
 	l10n = window._wpMediaViewsL10n || {};
 
 /**
  *
+<<<<<<< HEAD
  * Defines the wp.media.mixin object.
+=======
+ * @summary Defines the wp.media.mixin object.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @mixin
  *
@@ -115,7 +122,11 @@ wp.media.mixin = {
 	mejsSettings: baseSettings,
 
 	/**
+<<<<<<< HEAD
 	 * Pauses and removes all players.
+=======
+	 * @summary Pauses and removes all players.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.2.0
 	 *
@@ -133,7 +144,11 @@ wp.media.mixin = {
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Removes the player.
+=======
+	 * @summary Removes the player.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * Override the MediaElement method for removing a player.
 	 * MediaElement tries to pull the audio/video tag out of
@@ -179,7 +194,11 @@ wp.media.mixin = {
 
 	/**
 	 *
+<<<<<<< HEAD
 	 * Removes and resets all players.
+=======
+	 * @summary Removes and resets all players.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * Allows any class that has set 'player' to a MediaElementPlayer
 	 * instance to remove the player when listening to events.
@@ -200,7 +219,11 @@ wp.media.mixin = {
 };
 
 /**
+<<<<<<< HEAD
  * Shortcode modeling for playlists.
+=======
+ * @summary Shortcode modeling for playlists.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 4.2.0
  */
@@ -219,7 +242,11 @@ wp.media.playlist = new wp.media.collection({
 });
 
 /**
+<<<<<<< HEAD
  * Shortcode modeling for audio.
+=======
+ * @summary Shortcode modeling for audio.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * `edit()` prepares the shortcode for the media modal.
  * `shortcode()` builds the new shortcode after an update.
@@ -241,7 +268,11 @@ wp.media.audio = {
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Instantiates a new media object with the next matching shortcode.
+=======
+	 * @summary Instantiates a new media object with the next matching shortcode.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.2.0
 	 *
@@ -261,7 +292,11 @@ wp.media.audio = {
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Generates an audio shortcode.
+=======
+	 * @summary Generates an audio shortcode.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.2.0
 	 *
@@ -291,7 +326,11 @@ wp.media.audio = {
 };
 
 /**
+<<<<<<< HEAD
  * Shortcode modeling for video.
+=======
+ * @summary Shortcode modeling for video.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  *  `edit()` prepares the shortcode for the media modal.
  *  `shortcode()` builds the new shortcode after update.
@@ -316,7 +355,11 @@ wp.media.video = {
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Instantiates a new media object with the next matching shortcode.
+=======
+	 * @summary Instantiates a new media object with the next matching shortcode.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.2.0
 	 *
@@ -341,7 +384,11 @@ wp.media.video = {
 	},
 
 	/**
+<<<<<<< HEAD
 	 * Generates an video shortcode.
+=======
+	 * @summary Generates an video shortcode.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 4.2.0
 	 *
@@ -370,6 +417,7 @@ wp.media.video = {
 	}
 };
 
+<<<<<<< HEAD
 media.model.PostMedia = __webpack_require__( 2 );
 media.controller.AudioDetails = __webpack_require__( 3 );
 media.controller.VideoDetails = __webpack_require__( 4 );
@@ -383,6 +431,21 @@ media.view.VideoDetails = __webpack_require__( 10 );
 
 /***/ }),
 /* 2 */
+=======
+media.model.PostMedia = __webpack_require__( 1 );
+media.controller.AudioDetails = __webpack_require__( 2 );
+media.controller.VideoDetails = __webpack_require__( 3 );
+media.view.MediaFrame.MediaDetails = __webpack_require__( 4 );
+media.view.MediaFrame.AudioDetails = __webpack_require__( 5 );
+media.view.MediaFrame.VideoDetails = __webpack_require__( 6 );
+media.view.MediaDetails = __webpack_require__( 7 );
+media.view.AudioDetails = __webpack_require__( 8 );
+media.view.VideoDetails = __webpack_require__( 9 );
+
+
+/***/ }),
+/* 1 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 /**
@@ -430,7 +493,11 @@ module.exports = PostMedia;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 3 */
+=======
+/* 2 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var State = wp.media.controller.State,
@@ -469,7 +536,11 @@ module.exports = AudioDetails;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 4 */
+=======
+/* 3 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 /**
@@ -508,7 +579,11 @@ module.exports = VideoDetails;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 5 */
+=======
+/* 4 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var Select = wp.media.view.MediaFrame.Select,
@@ -644,7 +719,11 @@ module.exports = MediaDetails;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 6 */
+=======
+/* 5 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var MediaDetails = wp.media.view.MediaFrame.MediaDetails,
@@ -726,7 +805,11 @@ module.exports = AudioDetails;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 7 */
+=======
+/* 6 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var MediaDetails = wp.media.view.MediaFrame.MediaDetails,
@@ -867,7 +950,11 @@ module.exports = VideoDetails;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 8 */
+=======
+/* 7 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 /* global MediaElementPlayer */
@@ -1041,7 +1128,11 @@ module.exports = MediaDetails;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 9 */
+=======
+/* 8 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var MediaDetails = wp.media.view.MediaDetails,
@@ -1085,7 +1176,11 @@ module.exports = AudioDetails;
 
 
 /***/ }),
+<<<<<<< HEAD
 /* 10 */
+=======
+/* 9 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var MediaDetails = wp.media.view.MediaDetails,

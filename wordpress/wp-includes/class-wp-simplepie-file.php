@@ -32,15 +32,24 @@ class WP_SimplePie_File extends SimplePie_File {
 	 * @param boolean      $force_fsockopen Optional. Whether to force opening internet or unix domain socket
 	 *                                      connection or not. Default false.
 	 */
+<<<<<<< HEAD
 	public function __construct( $url, $timeout = 10, $redirects = 5, $headers = null, $useragent = null, $force_fsockopen = false ) {
 		$this->url       = $url;
 		$this->timeout   = $timeout;
 		$this->redirects = $redirects;
 		$this->headers   = $headers;
+=======
+	public function __construct($url, $timeout = 10, $redirects = 5, $headers = null, $useragent = null, $force_fsockopen = false) {
+		$this->url = $url;
+		$this->timeout = $timeout;
+		$this->redirects = $redirects;
+		$this->headers = $headers;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->useragent = $useragent;
 
 		$this->method = SIMPLEPIE_FILE_SOURCE_REMOTE;
 
+<<<<<<< HEAD
 		if ( preg_match( '/^http(s)?:\/\//i', $url ) ) {
 			$args = array(
 				'timeout'     => $this->timeout,
@@ -67,6 +76,32 @@ class WP_SimplePie_File extends SimplePie_File {
 			}
 		} else {
 			$this->error   = '';
+=======
+		if ( preg_match('/^http(s)?:\/\//i', $url) ) {
+			$args = array(
+				'timeout' => $this->timeout,
+				'redirection' => $this->redirects,
+			);
+
+			if ( !empty($this->headers) )
+				$args['headers'] = $this->headers;
+
+			if ( SIMPLEPIE_USERAGENT != $this->useragent ) //Use default WP user agent unless custom has been specified
+				$args['user-agent'] = $this->useragent;
+
+			$res = wp_safe_remote_request($url, $args);
+
+			if ( is_wp_error($res) ) {
+				$this->error = 'WP HTTP Error: ' . $res->get_error_message();
+				$this->success = false;
+			} else {
+				$this->headers = wp_remote_retrieve_headers( $res );
+				$this->body = wp_remote_retrieve_body( $res );
+				$this->status_code = wp_remote_retrieve_response_code( $res );
+			}
+		} else {
+			$this->error = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->success = false;
 		}
 	}

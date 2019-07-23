@@ -52,6 +52,7 @@ abstract class WP_REST_Meta_Fields {
 	 * @see register_rest_field()
 	 */
 	public function register_field() {
+<<<<<<< HEAD
 		register_rest_field(
 			$this->get_rest_field_type(),
 			'meta',
@@ -61,6 +62,13 @@ abstract class WP_REST_Meta_Fields {
 				'schema'          => $this->get_field_schema(),
 			)
 		);
+=======
+		register_rest_field( $this->get_rest_field_type(), 'meta', array(
+			'get_callback'    => array( $this, 'get_value' ),
+			'update_callback' => array( $this, 'update_value' ),
+			'schema'          => $this->get_field_schema(),
+		));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -77,7 +85,11 @@ abstract class WP_REST_Meta_Fields {
 		$response = array();
 
 		foreach ( $fields as $meta_key => $args ) {
+<<<<<<< HEAD
 			$name       = $args['name'];
+=======
+			$name = $args['name'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$all_values = get_metadata( $this->get_meta_type(), $object_id, $meta_key, false );
 			if ( $args['single'] ) {
 				if ( empty( $all_values ) ) {
@@ -189,10 +201,14 @@ abstract class WP_REST_Meta_Fields {
 				'rest_cannot_delete',
 				/* translators: %s: custom field key */
 				sprintf( __( 'Sorry, you are not allowed to edit the %s custom field.' ), $name ),
+<<<<<<< HEAD
 				array(
 					'key'    => $name,
 					'status' => rest_authorization_required_code(),
 				)
+=======
+				array( 'key' => $name, 'status' => rest_authorization_required_code() )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -200,10 +216,14 @@ abstract class WP_REST_Meta_Fields {
 			return new WP_Error(
 				'rest_meta_database_error',
 				__( 'Could not delete meta value from database.' ),
+<<<<<<< HEAD
 				array(
 					'key'    => $name,
 					'status' => WP_Http::INTERNAL_SERVER_ERROR,
 				)
+=======
+				array( 'key' => $name, 'status' => WP_Http::INTERNAL_SERVER_ERROR )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -230,10 +250,14 @@ abstract class WP_REST_Meta_Fields {
 				'rest_cannot_update',
 				/* translators: %s: custom field key */
 				sprintf( __( 'Sorry, you are not allowed to edit the %s custom field.' ), $name ),
+<<<<<<< HEAD
 				array(
 					'key'    => $name,
 					'status' => rest_authorization_required_code(),
 				)
+=======
+				array( 'key' => $name, 'status' => rest_authorization_required_code() )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -268,10 +292,14 @@ abstract class WP_REST_Meta_Fields {
 				return new WP_Error(
 					'rest_meta_database_error',
 					__( 'Could not update meta value in database.' ),
+<<<<<<< HEAD
 					array(
 						'key'    => $name,
 						'status' => WP_Http::INTERNAL_SERVER_ERROR,
 					)
+=======
+					array( 'key' => $name, 'status' => WP_Http::INTERNAL_SERVER_ERROR )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				);
 			}
 		}
@@ -281,10 +309,14 @@ abstract class WP_REST_Meta_Fields {
 				return new WP_Error(
 					'rest_meta_database_error',
 					__( 'Could not update meta value in database.' ),
+<<<<<<< HEAD
 					array(
 						'key'    => $name,
 						'status' => WP_Http::INTERNAL_SERVER_ERROR,
 					)
+=======
+					array( 'key' => $name, 'status' => WP_Http::INTERNAL_SERVER_ERROR )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				);
 			}
 		}
@@ -305,15 +337,23 @@ abstract class WP_REST_Meta_Fields {
 	 */
 	protected function update_meta_value( $object_id, $meta_key, $name, $value ) {
 		$meta_type = $this->get_meta_type();
+<<<<<<< HEAD
 		if ( ! current_user_can( "edit_{$meta_type}_meta", $object_id, $meta_key ) ) {
+=======
+		if ( ! current_user_can(  "edit_{$meta_type}_meta", $object_id, $meta_key ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return new WP_Error(
 				'rest_cannot_update',
 				/* translators: %s: custom field key */
 				sprintf( __( 'Sorry, you are not allowed to edit the %s custom field.' ), $name ),
+<<<<<<< HEAD
 				array(
 					'key'    => $name,
 					'status' => rest_authorization_required_code(),
 				)
+=======
+				array( 'key' => $name, 'status' => rest_authorization_required_code() )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -331,10 +371,14 @@ abstract class WP_REST_Meta_Fields {
 			return new WP_Error(
 				'rest_meta_database_error',
 				__( 'Could not update meta value in database.' ),
+<<<<<<< HEAD
 				array(
 					'key'    => $name,
 					'status' => WP_Http::INTERNAL_SERVER_ERROR,
 				)
+=======
+				array( 'key' => $name, 'status' => WP_Http::INTERNAL_SERVER_ERROR )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 		}
 
@@ -384,7 +428,11 @@ abstract class WP_REST_Meta_Fields {
 				'default'     => isset( $args['default'] ) ? $args['default'] : null,
 			);
 
+<<<<<<< HEAD
 			$rest_args           = array_merge( $default_args, $rest_args );
+=======
+			$rest_args = array_merge( $default_args, $rest_args );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$rest_args['schema'] = array_merge( $default_schema, $rest_args['schema'] );
 
 			$type = ! empty( $rest_args['type'] ) ? $rest_args['type'] : null;
@@ -398,7 +446,11 @@ abstract class WP_REST_Meta_Fields {
 				$rest_args['schema']['items'] = array(
 					'type' => $rest_args['type'],
 				);
+<<<<<<< HEAD
 				$rest_args['schema']['type']  = 'array';
+=======
+				$rest_args['schema']['type'] = 'array';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			$registered[ $name ] = $rest_args;

@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["blockLibrary"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 306);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 305);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -117,7 +121,11 @@ function _classCallCheck(instance, Constructor) {
 /***/ 100:
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 /* WEBPACK VAR INJECTION */(function(module, global) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! https://mths.be/punycode v1.4.1 by @mathias */
+=======
+/* WEBPACK VAR INJECTION */(function(module, global) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! https://mths.be/punycode v1.3.2 by @mathias */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 ;(function(root) {
 
 	/** Detect free variables */
@@ -183,7 +191,11 @@ function _classCallCheck(instance, Constructor) {
 	 * @returns {Error} Throws a `RangeError` with the applicable error message.
 	 */
 	function error(type) {
+<<<<<<< HEAD
 		throw new RangeError(errors[type]);
+=======
+		throw RangeError(errors[type]);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -330,7 +342,11 @@ function _classCallCheck(instance, Constructor) {
 
 	/**
 	 * Bias adaptation function as per section 3.4 of RFC 3492.
+<<<<<<< HEAD
 	 * https://tools.ietf.org/html/rfc3492#section-3.4
+=======
+	 * http://tools.ietf.org/html/rfc3492#section-3.4
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @private
 	 */
 	function adapt(delta, numPoints, firstTime) {
@@ -605,7 +621,11 @@ function _classCallCheck(instance, Constructor) {
 		 * @memberOf punycode
 		 * @type String
 		 */
+<<<<<<< HEAD
 		'version': '1.4.1',
+=======
+		'version': '1.3.2',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		/**
 		 * An object of methods to convert from JavaScript's internal character
 		 * representation (UCS-2) to Unicode code points, and back.
@@ -988,6 +1008,7 @@ function _defineProperty(obj, key, value) {
 /***/ }),
 
 /***/ 16:
+<<<<<<< HEAD
 /***/ (function(module, exports) {
 
 (function() { module.exports = this["wp"]["keycodes"]; }());
@@ -995,6 +1016,8 @@ function _defineProperty(obj, key, value) {
 /***/ }),
 
 /***/ 17:
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -1052,6 +1075,16 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+<<<<<<< HEAD
+=======
+/***/ 17:
+/***/ (function(module, exports) {
+
+(function() { module.exports = this["wp"]["keycodes"]; }());
+
+/***/ }),
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ 18:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1268,7 +1301,11 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 306:
+=======
+/***/ 305:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1440,7 +1477,11 @@ var objectSpread = __webpack_require__(8);
 var external_this_wp_element_ = __webpack_require__(0);
 
 // EXTERNAL MODULE: ./node_modules/classnames/index.js
+<<<<<<< HEAD
 var classnames = __webpack_require__(17);
+=======
+var classnames = __webpack_require__(16);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var classnames_default = /*#__PURE__*/__webpack_require__.n(classnames);
 
 // EXTERNAL MODULE: external "lodash"
@@ -2236,6 +2277,7 @@ var others = [{
   },
   patterns: [/^https?:\/\/(www\.)?collegehumor\.com\/.+/i]
 }, {
+<<<<<<< HEAD
   name: 'core-embed/crowdsignal',
   settings: {
     title: 'Crowdsignal',
@@ -2254,6 +2296,8 @@ var others = [{
   },
   patterns: [/^https?:\/\/((.+\.)?polldaddy\.com|poll\.fm|.+\.survey\.fm)\/.+/i]
 }, {
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   name: 'core-embed/dailymotion',
   settings: {
     title: 'Dailymotion',
@@ -2327,17 +2371,26 @@ var others = [{
   },
   patterns: [/^http:\/\/g?i*\.photobucket\.com\/.+/i]
 }, {
+<<<<<<< HEAD
   // Deprecated in favour of the core-embed/crowdsignal block
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   name: 'core-embed/polldaddy',
   settings: {
     title: 'Polldaddy',
     icon: embedContentIcon,
+<<<<<<< HEAD
     description: Object(external_this_wp_i18n_["__"])('Embed Polldaddy content.'),
     supports: {
       inserter: false
     }
   },
   patterns: []
+=======
+    description: Object(external_this_wp_i18n_["__"])('Embed Polldaddy content.')
+  },
+  patterns: [/^https?:\/\/(www\.)?polldaddy\.com\/.+/i]
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }, {
   name: 'core-embed/reddit',
   settings: {
@@ -2904,12 +2957,18 @@ function (_Component) {
   Object(createClass["a" /* default */])(ImageEdit, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+<<<<<<< HEAD
       var _this2 = this;
 
       var _this$props = this.props,
           attributes = _this$props.attributes,
           setAttributes = _this$props.setAttributes,
           noticeOperations = _this$props.noticeOperations;
+=======
+      var _this$props = this.props,
+          attributes = _this$props.attributes,
+          setAttributes = _this$props.setAttributes;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       var id = attributes.id,
           _attributes$url = attributes.url,
           url = _attributes$url === void 0 ? '' : _attributes$url;
@@ -2926,6 +2985,7 @@ function (_Component) {
 
               setAttributes(edit_pickRelevantMediaFiles(image));
             },
+<<<<<<< HEAD
             allowedTypes: ALLOWED_MEDIA_TYPES,
             onError: function onError(message) {
               noticeOperations.createErrorNotice(message);
@@ -2934,6 +2994,9 @@ function (_Component) {
                 isEditing: true
               });
             }
+=======
+            allowedTypes: ALLOWED_MEDIA_TYPES
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           });
         }
       }
@@ -3141,12 +3204,20 @@ function (_Component) {
   }, {
     key: "updateDimensions",
     value: function updateDimensions() {
+<<<<<<< HEAD
       var _this3 = this;
+=======
+      var _this2 = this;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
       var width = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
       var height = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
       return function () {
+<<<<<<< HEAD
         _this3.props.setAttributes({
+=======
+        _this2.props.setAttributes({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           width: width,
           height: height
         });
@@ -3209,7 +3280,11 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
+<<<<<<< HEAD
       var _this4 = this;
+=======
+      var _this3 = this;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
       var isEditing = this.state.isEditing;
       var _this$props3 = this.props,
@@ -3301,13 +3376,21 @@ function (_Component) {
         }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["TextareaControl"], {
           label: Object(external_this_wp_i18n_["__"])('Alt Text (Alternative Text)'),
           value: alt,
+<<<<<<< HEAD
           onChange: _this4.updateAlt,
+=======
+          onChange: _this3.updateAlt,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           help: Object(external_this_wp_i18n_["__"])('Alternative text describes your image to people who can’t see it. Add a short description with its key details.')
         }), !Object(external_lodash_["isEmpty"])(imageSizeOptions) && Object(external_this_wp_element_["createElement"])(external_this_wp_components_["SelectControl"], {
           label: Object(external_this_wp_i18n_["__"])('Image Size'),
           value: url,
           options: imageSizeOptions,
+<<<<<<< HEAD
           onChange: _this4.updateImageURL
+=======
+          onChange: _this3.updateImageURL
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }), isResizable && Object(external_this_wp_element_["createElement"])("div", {
           className: "block-library-image__dimensions"
         }, Object(external_this_wp_element_["createElement"])("p", {
@@ -3321,7 +3404,11 @@ function (_Component) {
           value: width !== undefined ? width : '',
           placeholder: imageWidth,
           min: 1,
+<<<<<<< HEAD
           onChange: _this4.updateWidth
+=======
+          onChange: _this3.updateWidth
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["TextControl"], {
           type: "number",
           className: "block-library-image__dimensions__height",
@@ -3329,7 +3416,11 @@ function (_Component) {
           value: height !== undefined ? height : '',
           placeholder: imageHeight,
           min: 1,
+<<<<<<< HEAD
           onChange: _this4.updateHeight
+=======
+          onChange: _this3.updateHeight
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         })), Object(external_this_wp_element_["createElement"])("div", {
           className: "block-library-image__dimensions__row"
         }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["ButtonGroup"], {
@@ -3343,36 +3434,65 @@ function (_Component) {
             isSmall: true,
             isPrimary: isCurrent,
             "aria-pressed": isCurrent,
+<<<<<<< HEAD
             onClick: _this4.updateDimensions(scaledWidth, scaledHeight)
           }, scale, "%");
         })), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Button"], {
           isSmall: true,
           onClick: _this4.updateDimensions()
+=======
+            onClick: _this3.updateDimensions(scaledWidth, scaledHeight)
+          }, scale, "%");
+        })), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Button"], {
+          isSmall: true,
+          onClick: _this3.updateDimensions()
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }, Object(external_this_wp_i18n_["__"])('Reset'))))), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["PanelBody"], {
           title: Object(external_this_wp_i18n_["__"])('Link Settings')
         }, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["SelectControl"], {
           label: Object(external_this_wp_i18n_["__"])('Link To'),
           value: linkDestination,
+<<<<<<< HEAD
           options: _this4.getLinkDestinationOptions(),
           onChange: _this4.onSetLinkDestination
         }), linkDestination !== LINK_DESTINATION_NONE && Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["TextControl"], {
           label: Object(external_this_wp_i18n_["__"])('Link URL'),
           value: href || '',
           onChange: _this4.onSetCustomHref,
+=======
+          options: _this3.getLinkDestinationOptions(),
+          onChange: _this3.onSetLinkDestination
+        }), linkDestination !== LINK_DESTINATION_NONE && Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])(external_this_wp_components_["TextControl"], {
+          label: Object(external_this_wp_i18n_["__"])('Link URL'),
+          value: href || '',
+          onChange: _this3.onSetCustomHref,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           placeholder: !isLinkURLInputReadOnly ? 'https://' : undefined,
           readOnly: isLinkURLInputReadOnly
         }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["ToggleControl"], {
           label: Object(external_this_wp_i18n_["__"])('Open in New Tab'),
+<<<<<<< HEAD
           onChange: _this4.onSetNewTab,
+=======
+          onChange: _this3.onSetNewTab,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           checked: linkTarget === '_blank'
         }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["TextControl"], {
           label: Object(external_this_wp_i18n_["__"])('Link CSS Class'),
           value: linkClass || '',
+<<<<<<< HEAD
           onChange: _this4.onSetLinkClass
         }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["TextControl"], {
           label: Object(external_this_wp_i18n_["__"])('Link Rel'),
           value: rel || '',
           onChange: _this4.onSetLinkRel
+=======
+          onChange: _this3.onSetLinkClass
+        }), Object(external_this_wp_element_["createElement"])(external_this_wp_components_["TextControl"], {
+          label: Object(external_this_wp_i18n_["__"])('Link Rel'),
+          value: rel || '',
+          onChange: _this3.onSetLinkRel
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }))));
       }; // Disable reason: Each block can be selected by clicking on it
 
@@ -3390,7 +3510,11 @@ function (_Component) {
             imageWidth = sizes.imageWidth,
             imageHeight = sizes.imageHeight;
 
+<<<<<<< HEAD
         var filename = _this4.getFilename(url);
+=======
+        var filename = _this3.getFilename(url);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
         var defaultedAlt;
 
@@ -3409,9 +3533,15 @@ function (_Component) {
         Object(external_this_wp_element_["createElement"])(external_this_wp_element_["Fragment"], null, Object(external_this_wp_element_["createElement"])("img", {
           src: url,
           alt: defaultedAlt,
+<<<<<<< HEAD
           onClick: _this4.onImageClick,
           onError: function onError() {
             return _this4.onImageError(url);
+=======
+          onClick: _this3.onImageClick,
+          onError: function onError() {
+            return _this3.onImageError(url);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
           }
         }), Object(external_this_wp_blob_["isBlobURL"])(url) && Object(external_this_wp_element_["createElement"])(external_this_wp_components_["Spinner"], null))
         /* eslint-enable jsx-a11y/no-noninteractive-element-interactions */
@@ -4668,7 +4798,11 @@ var quote_settings = {
 };
 
 // EXTERNAL MODULE: external {"this":["wp","keycodes"]}
+<<<<<<< HEAD
 var external_this_wp_keycodes_ = __webpack_require__(16);
+=======
+var external_this_wp_keycodes_ = __webpack_require__(17);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // CONCATENATED MODULE: ./node_modules/@wordpress/block-library/build-module/gallery/gallery-image.js
 
@@ -5308,15 +5442,19 @@ var gallery_settings = {
       isMultiBlock: true,
       blocks: ['core/image'],
       transform: function transform(attributes) {
+<<<<<<< HEAD
         // Init the align attribute from the first item which may be either the placeholder or an image.
         var align = attributes[0].align; // Loop through all the images and check if they have the same align.
 
         align = Object(external_lodash_["every"])(attributes, ['align', align]) ? align : undefined;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         var validImages = Object(external_lodash_["filter"])(attributes, function (_ref) {
           var id = _ref.id,
               url = _ref.url;
           return id && url;
         });
+<<<<<<< HEAD
         return Object(external_this_wp_blocks_["createBlock"])('core/gallery', {
           images: validImages.map(function (_ref2) {
             var id = _ref2.id,
@@ -5336,6 +5474,31 @@ var gallery_settings = {
           }),
           align: align
         });
+=======
+
+        if (validImages.length > 0) {
+          return Object(external_this_wp_blocks_["createBlock"])('core/gallery', {
+            images: validImages.map(function (_ref2) {
+              var id = _ref2.id,
+                  url = _ref2.url,
+                  alt = _ref2.alt,
+                  caption = _ref2.caption;
+              return {
+                id: id,
+                url: url,
+                alt: alt,
+                caption: caption
+              };
+            }),
+            ids: validImages.map(function (_ref3) {
+              var id = _ref3.id;
+              return id;
+            })
+          });
+        }
+
+        return Object(external_this_wp_blocks_["createBlock"])('core/gallery');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       }
     }, {
       type: 'shortcode',
@@ -5410,8 +5573,12 @@ var gallery_settings = {
       type: 'block',
       blocks: ['core/image'],
       transform: function transform(_ref8) {
+<<<<<<< HEAD
         var images = _ref8.images,
             align = _ref8.align;
+=======
+        var images = _ref8.images;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
         if (images.length > 0) {
           return images.map(function (_ref9) {
@@ -5423,15 +5590,23 @@ var gallery_settings = {
               id: id,
               url: url,
               alt: alt,
+<<<<<<< HEAD
               caption: caption,
               align: align
+=======
+              caption: caption
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
             });
           });
         }
 
+<<<<<<< HEAD
         return Object(external_this_wp_blocks_["createBlock"])('core/image', {
           align: align
         });
+=======
+        return Object(external_this_wp_blocks_["createBlock"])('core/image');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       }
     }]
   },
@@ -7830,7 +8005,11 @@ var embed_preview_EmbedPreview = function EmbedPreview(props) {
     href: url
   }, url)), Object(external_this_wp_element_["createElement"])("p", {
     className: "components-placeholder__error"
+<<<<<<< HEAD
   }, Object(external_this_wp_i18n_["__"])('Sorry, we cannot preview this embedded content in the editor.'))) : embedWrapper, (!external_this_wp_editor_["RichText"].isEmpty(caption) || isSelected) && Object(external_this_wp_element_["createElement"])(external_this_wp_editor_["RichText"], {
+=======
+  }, Object(external_this_wp_i18n_["__"])('Previews for this are unavailable in the editor, sorry!'))) : embedWrapper, (!external_this_wp_editor_["RichText"].isEmpty(caption) || isSelected) && Object(external_this_wp_element_["createElement"])(external_this_wp_editor_["RichText"], {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     tagName: "figcaption",
     placeholder: Object(external_this_wp_i18n_["__"])('Write caption…'),
     value: caption,
@@ -8616,8 +8795,12 @@ function (_Component) {
         text: href,
         className: "".concat(className, "__copy-url-button"),
         onCopy: this.confirmCopyURL,
+<<<<<<< HEAD
         onFinishCopy: this.resetCopyConfirmation,
         disabled: Object(external_this_wp_blob_["isBlobURL"])(href)
+=======
+        onFinishCopy: this.resetCopyConfirmation
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
       }, showCopyConfirmation ? Object(external_this_wp_i18n_["__"])('Copied!') : Object(external_this_wp_i18n_["__"])('Copy URL'))));
     }
   }]);
@@ -14075,7 +14258,11 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
+<<<<<<< HEAD
 	g = g || new Function("return this")();
+=======
+	g = g || Function("return this")() || (1, eval)("this");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } catch (e) {
 	// This works if the window reference is available
 	if (typeof window === "object") g = window;

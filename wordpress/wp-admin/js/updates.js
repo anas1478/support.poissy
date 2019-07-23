@@ -2,7 +2,13 @@
  * Functions for ajaxified updates, deletions and installs inside the WordPress admin.
  *
  * @version 4.2.0
+<<<<<<< HEAD
  * @output wp-admin/js/updates.js
+=======
+ *
+ * @package WordPress
+ * @subpackage Administration
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 
 /* global pagenow */
@@ -36,7 +42,11 @@
 	 *
 	 * @since 4.2.0
 	 *
+<<<<<<< HEAD
 	 * @namespace wp.updates
+=======
+	 * @type {object}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	wp.updates = {};
 
@@ -82,6 +92,7 @@
 	 * @since 4.2.0
 	 * @since 4.6.0 Added `available` property to indicate whether credentials have been provided.
 	 *
+<<<<<<< HEAD
 	 * @type {Object}
 	 * @property {Object} filesystemCredentials.ftp                Holds FTP credentials.
 	 * @property {string} filesystemCredentials.ftp.host           FTP host. Default empty string.
@@ -95,6 +106,21 @@
 	 * @property {string} filesystemCredentials.fsNonce            Filesystem credentials form nonce.
 	 * @property {bool}   filesystemCredentials.available          Whether filesystem credentials have been provided.
 	 *                                                             Default 'false'.
+=======
+	 * @type {object} filesystemCredentials                    Holds filesystem credentials.
+	 * @type {object} filesystemCredentials.ftp                Holds FTP credentials.
+	 * @type {string} filesystemCredentials.ftp.host           FTP host. Default empty string.
+	 * @type {string} filesystemCredentials.ftp.username       FTP user name. Default empty string.
+	 * @type {string} filesystemCredentials.ftp.password       FTP password. Default empty string.
+	 * @type {string} filesystemCredentials.ftp.connectionType Type of FTP connection. 'ssh', 'ftp', or 'ftps'.
+	 *                                                         Default empty string.
+	 * @type {object} filesystemCredentials.ssh                Holds SSH credentials.
+	 * @type {string} filesystemCredentials.ssh.publicKey      The public key. Default empty string.
+	 * @type {string} filesystemCredentials.ssh.privateKey     The private key. Default empty string.
+	 * @type {string} filesystemCredentials.fsNonce            Filesystem credentials form nonce.
+	 * @type {bool}   filesystemCredentials.available          Whether filesystem credentials have been provided.
+	 *                                                         Default 'false'.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	wp.updates.filesystemCredentials = {
 		ftp:       {
@@ -126,7 +152,11 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @type {function}
+=======
+	 * @type {function} A function that lazily-compiles the template requested.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	wp.updates.adminNotice = wp.template( 'wp-updates-admin-notice' );
 
@@ -168,9 +198,13 @@
 	 *
 	 */
 	wp.updates.addAdminNotice = function( data ) {
+<<<<<<< HEAD
 		var $notice = $( data.selector ),
 			$headerEnd = $( '.wp-header-end' ),
 			$adminNotice;
+=======
+		var $notice = $( data.selector ), $adminNotice;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		delete data.selector;
 		$adminNotice = wp.updates.adminNotice( data );
@@ -182,8 +216,11 @@
 
 		if ( $notice.length ) {
 			$notice.replaceWith( $adminNotice );
+<<<<<<< HEAD
 		} else if ( $headerEnd.length ) {
 			$headerEnd.after( $adminNotice );
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} else {
 			if ( 'customize' === pagenow ) {
 				$( '.customize-themes-notifications' ).append( $adminNotice );
@@ -409,6 +446,10 @@
 	 * @since 4.2.0
 	 * @since 4.6.0 More accurately named `updatePluginSuccess`.
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} updatePluginSuccess
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response            Response from the server.
 	 * @param {string} response.slug       Slug of the plugin to be updated.
 	 * @param {string} response.plugin     Basename of the plugin to be updated.
@@ -453,6 +494,10 @@
 	 * @since 4.2.0
 	 * @since 4.6.0 More accurately named `updatePluginError`.
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} updatePluginError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object}  response              Response from the server.
 	 * @param {string}  response.slug         Slug of the plugin to be updated.
 	 * @param {string}  response.plugin       Basename of the plugin to be updated.
@@ -574,6 +619,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} installPluginSuccess
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response             Response from the server.
 	 * @param {string} response.slug        Slug of the installed plugin.
 	 * @param {string} response.pluginName  Name of the installed plugin.
@@ -584,10 +633,23 @@
 
 		$message
 			.removeClass( 'updating-message' )
+<<<<<<< HEAD
 			.addClass( 'updated-message installed button-disabled' )
 			.attr( 'aria-label', wp.updates.l10n.pluginInstalledLabel.replace( '%s', response.pluginName ) )
 			.text( wp.updates.l10n.pluginInstalled );
 
+=======
+			.addClass( 'updated-message installed' )
+			.attr( 'aria-label', wp.updates.l10n.pluginInstalledLabel.replace( '%s', response.pluginName ) )
+			.text( wp.updates.l10n.pluginInstalled );
+
+		if ( $message.hasClass( 'button-primary' ) ) {
+			$message.addClass( 'button-primary-disabled' );
+		} else {
+			$message.addClass( 'button-disabled' );
+		}
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wp.a11y.speak( wp.updates.l10n.installedMsg, 'polite' );
 
 		$document.trigger( 'wp-plugin-install-success', response );
@@ -596,10 +658,18 @@
 			setTimeout( function() {
 
 				// Transform the 'Install' button into an 'Activate' button.
+<<<<<<< HEAD
 				$message.removeClass( 'install-now installed button-disabled updated-message' ).addClass( 'activate-now button-primary' )
 					.attr( 'href', response.activateUrl )
 					.attr( 'aria-label', wp.updates.l10n.activatePluginLabel.replace( '%s', response.pluginName ) )
 					.text( wp.updates.l10n.activatePlugin );
+=======
+				$message.removeClass( 'install-now installed button-primary-disabled button-secondary-disabled button-disabled updated-message' )
+					.addClass( 'activate-now' )
+					.attr( 'href', response.activateUrl )
+					.attr( 'aria-label', wp.updates.l10n.activatePluginLabel.replace( '%s', response.pluginName ) )
+					.text( response.activateLabel || wp.updates.l10n.activatePlugin );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}, 1000 );
 		}
 	};
@@ -609,6 +679,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} installPluginError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object}  response              Response from the server.
 	 * @param {string}  response.slug         Slug of the plugin to be installed.
 	 * @param {string=} response.pluginName   Optional. Name of the plugin to be installed.
@@ -659,6 +733,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} installImporterSuccess
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response             Response from the server.
 	 * @param {string} response.slug        Slug of the installed plugin.
 	 * @param {string} response.pluginName  Name of the installed plugin.
@@ -690,6 +768,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} installImporterError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object}  response              Response from the server.
 	 * @param {string}  response.slug         Slug of the plugin to be installed.
 	 * @param {string=} response.pluginName   Optional. Name of the plugin to be installed.
@@ -718,7 +800,11 @@
 		$installLink
 			.removeClass( 'updating-message' )
 			.text( wp.updates.l10n.installNow )
+<<<<<<< HEAD
 			.attr( 'aria-label', wp.updates.l10n.pluginInstallNowLabel.replace( '%s', pluginName ) );
+=======
+			.attr( 'aria-label', wp.updates.l10n.installNowLabel.replace( '%s', pluginName ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		wp.a11y.speak( errorMessage, 'assertive' );
 
@@ -764,7 +850,12 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
 	 * @param {Object} response            Response from the server.
+=======
+	 * @typedef {object} deletePluginSuccess
+	 * @param {object} response            Response from the server.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {string} response.slug       Slug of the plugin that was deleted.
 	 * @param {string} response.plugin     Base name of the plugin that was deleted.
 	 * @param {string} response.pluginName Name of the plugin that was deleted.
@@ -778,11 +869,15 @@
 				$pluginRow       = $( this ),
 				columnCount      = $form.find( 'thead th:not(.hidden), thead td' ).length,
 				pluginDeletedRow = wp.template( 'item-deleted-row' ),
+<<<<<<< HEAD
 				/**
 				 * Plugins Base names of plugins in their different states.
 				 *
 				 * @type {Object}
 				 */
+=======
+				/** @type {object} plugins Base names of plugins in their different states. */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				plugins          = settings.plugins;
 
 			// Add a success message after deleting a plugin.
@@ -857,6 +952,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} deletePluginError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object}  response              Response from the server.
 	 * @param {string}  response.slug         Slug of the plugin to be deleted.
 	 * @param {string}  response.plugin       Base name of the plugin to be deleted
@@ -969,6 +1068,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} updateThemeSuccess
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response
 	 * @param {string} response.slug       Slug of the theme to be updated.
 	 * @param {object} response.theme      Updated theme.
@@ -1030,6 +1133,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} updateThemeError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response              Response from the server.
 	 * @param {string} response.slug         Slug of the theme to be updated.
 	 * @param {string} response.errorCode    Error code for the error that occurred.
@@ -1115,6 +1222,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} installThemeSuccess
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response              Response from the server.
 	 * @param {string} response.slug         Slug of the theme to be installed.
 	 * @param {string} response.customizeUrl URL to the Customizer for the just installed theme.
@@ -1165,6 +1276,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} installThemeError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response              Response from the server.
 	 * @param {string} response.slug         Slug of the theme to be installed.
 	 * @param {string} response.errorCode    Error code for the error that occurred.
@@ -1262,6 +1377,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} deleteThemeSuccess
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response      Response from the server.
 	 * @param {string} response.slug Slug of the theme that was deleted.
 	 */
@@ -1320,6 +1439,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} deleteThemeError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response              Response from the server.
 	 * @param {string} response.slug         Slug of the theme to be deleted.
 	 * @param {string} response.errorCode    Error code for the error that occurred.
@@ -1593,6 +1716,10 @@
 	 *
 	 * @since 4.6.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @typedef {object} maybeHandleCredentialError
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param {object} response              Response from the server.
 	 * @param {string} response.errorCode    Error code for the error that occurred.
 	 * @param {string} response.errorMessage The error that occurred.
@@ -1931,7 +2058,11 @@
 					$button
 						.removeClass( 'updating-message' )
 						.text( wp.updates.l10n.installNow )
+<<<<<<< HEAD
 						.attr( 'aria-label', wp.updates.l10n.pluginInstallNowLabel.replace( '%s', pluginName ) );
+=======
+						.attr( 'aria-label', wp.updates.l10n.installNowLabel.replace( '%s', pluginName ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 					wp.a11y.speak( wp.updates.l10n.updateCancel, 'polite' );
 				} );
@@ -2323,6 +2454,7 @@
 			$( 'input.wp-filter-search' ).trigger( 'input' );
 		} );
 
+<<<<<<< HEAD
 		/**
 		 * Trigger a search event when the "Try Again" button is clicked.
 		 *
@@ -2331,6 +2463,16 @@
 		$document.on( 'click', '.try-again', function( event ) {
 			event.preventDefault();
 			$pluginInstallSearch.trigger( 'input' );
+=======
+		/** 
+		 * Trigger a search event when the "Try Again" button is clicked. 
+		 * 
+		 * @since 4.9.0
+		 */ 
+		$document.on( 'click', '.try-again', function( event ) { 
+			event.preventDefault(); 
+			$pluginInstallSearch.trigger( 'input' ); 
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} );
 
 		/**

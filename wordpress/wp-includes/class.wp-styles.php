@@ -113,7 +113,11 @@ class WP_Styles extends WP_Dependencies {
 		 *
 		 * @param WP_Styles $this WP_Styles instance (passed by reference).
 		 */
+<<<<<<< HEAD
 		do_action_ref_array( 'wp_default_styles', array( &$this ) );
+=======
+		do_action_ref_array( 'wp_default_styles', array(&$this) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -127,6 +131,7 @@ class WP_Styles extends WP_Dependencies {
 	 * @return bool True on success, false on failure.
 	 */
 	public function do_item( $handle ) {
+<<<<<<< HEAD
 		if ( ! parent::do_item( $handle ) ) {
 			return false;
 		}
@@ -166,11 +171,32 @@ class WP_Styles extends WP_Dependencies {
 				$this->concat_version .= "$handle$ver";
 
 				$this->print_code .= $inline_style;
+=======
+		if ( !parent::do_item($handle) )
+			return false;
+
+		$obj = $this->registered[$handle];
+		if ( null === $obj->ver )
+			$ver = '';
+		else
+			$ver = $obj->ver ? $obj->ver : $this->default_version;
+
+		if ( isset($this->args[$handle]) )
+			$ver = $ver ? $ver . '&amp;' . $this->args[$handle] : $this->args[$handle];
+
+		if ( $this->do_concat ) {
+			if ( $this->in_default_dir($obj->src) && !isset($obj->extra['conditional']) && !isset($obj->extra['alt']) ) {
+				$this->concat .= "$handle,";
+				$this->concat_version .= "$handle$ver";
+
+				$this->print_code .= $this->print_inline_style( $handle, false );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				return true;
 			}
 		}
 
+<<<<<<< HEAD
 		if ( isset( $obj->args ) ) {
 			$media = esc_attr( $obj->args );
 		} else {
@@ -191,12 +217,38 @@ class WP_Styles extends WP_Dependencies {
 		}
 
 		$href = $this->_css_href( $src, $ver, $handle );
+=======
+		if ( isset($obj->args) )
+			$media = esc_attr( $obj->args );
+		else
+			$media = 'all';
+
+		// A single item may alias a set of items, by having dependencies, but no source.
+		if ( ! $obj->src ) {
+			if ( $inline_style = $this->print_inline_style( $handle, false ) ) {
+				$inline_style = sprintf( "<style id='%s-inline-css' type='text/css'>\n%s\n</style>\n", esc_attr( $handle ), $inline_style );
+				if ( $this->do_concat ) {
+					$this->print_html .= $inline_style;
+				} else {
+					echo $inline_style;
+				}
+			}
+			return true;
+		}
+
+		$href = $this->_css_href( $obj->src, $ver, $handle );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! $href ) {
 			return true;
 		}
 
+<<<<<<< HEAD
 		$rel   = isset( $obj->extra['alt'] ) && $obj->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
 		$title = isset( $obj->extra['title'] ) ? "title='" . esc_attr( $obj->extra['title'] ) . "'" : '';
+=======
+		$rel = isset($obj->extra['alt']) && $obj->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
+		$title = isset($obj->extra['title']) ? "title='" . esc_attr( $obj->extra['title'] ) . "'" : '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters the HTML link tag of an enqueued style.
@@ -210,12 +262,20 @@ class WP_Styles extends WP_Dependencies {
 		 * @param string $href   The stylesheet's source URL.
 		 * @param string $media  The stylesheet's media attribute.
 		 */
+<<<<<<< HEAD
 		$tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-css' $title href='$href' type='text/css' media='$media' />\n", $handle, $href, $media );
 
 		if ( 'rtl' === $this->text_direction && isset( $obj->extra['rtl'] ) && $obj->extra['rtl'] ) {
 			if ( is_bool( $obj->extra['rtl'] ) || 'replace' === $obj->extra['rtl'] ) {
 				$suffix   = isset( $obj->extra['suffix'] ) ? $obj->extra['suffix'] : '';
 				$rtl_href = str_replace( "{$suffix}.css", "-rtl{$suffix}.css", $this->_css_href( $src, $ver, "$handle-rtl" ) );
+=======
+		$tag = apply_filters( 'style_loader_tag', "<link rel='$rel' id='$handle-css' $title href='$href' type='text/css' media='$media' />\n", $handle, $href, $media);
+		if ( 'rtl' === $this->text_direction && isset($obj->extra['rtl']) && $obj->extra['rtl'] ) {
+			if ( is_bool( $obj->extra['rtl'] ) || 'replace' === $obj->extra['rtl'] ) {
+				$suffix = isset( $obj->extra['suffix'] ) ? $obj->extra['suffix'] : '';
+				$rtl_href = str_replace( "{$suffix}.css", "-rtl{$suffix}.css", $this->_css_href( $obj->src , $ver, "$handle-rtl" ));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			} else {
 				$rtl_href = $this->_css_href( $obj->extra['rtl'], $ver, "$handle-rtl" );
 			}
@@ -230,6 +290,7 @@ class WP_Styles extends WP_Dependencies {
 			}
 		}
 
+<<<<<<< HEAD
 		if ( $this->do_concat ) {
 			$this->print_html .= $cond_before;
 			$this->print_html .= $tag;
@@ -242,6 +303,26 @@ class WP_Styles extends WP_Dependencies {
 			echo $tag;
 			$this->print_inline_style( $handle );
 			echo $cond_after;
+=======
+		$conditional_pre = $conditional_post = '';
+		if ( isset( $obj->extra['conditional'] ) && $obj->extra['conditional'] ) {
+			$conditional_pre  = "<!--[if {$obj->extra['conditional']}]>\n";
+			$conditional_post = "<![endif]-->\n";
+		}
+
+		if ( $this->do_concat ) {
+			$this->print_html .= $conditional_pre;
+			$this->print_html .= $tag;
+			if ( $inline_style = $this->print_inline_style( $handle, false ) ) {
+				$this->print_html .= sprintf( "<style id='%s-inline-css' type='text/css'>\n%s\n</style>\n", esc_attr( $handle ), $inline_style );
+			}
+			$this->print_html .= $conditional_post;
+		} else {
+			echo $conditional_pre;
+			echo $tag;
+			$this->print_inline_style( $handle );
+			echo $conditional_post;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		return true;
@@ -319,7 +400,11 @@ class WP_Styles extends WP_Dependencies {
 			 *
 			 * @since 2.6.0
 			 *
+<<<<<<< HEAD
 			 * @param string[] $to_do The list of enqueued style handles about to be processed.
+=======
+			 * @param array $to_do The list of enqueued styles about to be processed.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 */
 			$this->to_do = apply_filters( 'print_styles_array', $this->to_do );
 		}
@@ -337,6 +422,7 @@ class WP_Styles extends WP_Dependencies {
 	 * @return string Style's fully-qualified URL.
 	 */
 	public function _css_href( $src, $ver, $handle ) {
+<<<<<<< HEAD
 		if ( ! is_bool( $src ) && ! preg_match( '|^(https?:)?//|', $src ) && ! ( $this->content_url && 0 === strpos( $src, $this->content_url ) ) ) {
 			$src = $this->base_url . $src;
 		}
@@ -344,6 +430,14 @@ class WP_Styles extends WP_Dependencies {
 		if ( ! empty( $ver ) ) {
 			$src = add_query_arg( 'ver', $ver, $src );
 		}
+=======
+		if ( !is_bool($src) && !preg_match('|^(https?:)?//|', $src) && ! ( $this->content_url && 0 === strpos($src, $this->content_url) ) ) {
+			$src = $this->base_url . $src;
+		}
+
+		if ( !empty($ver) )
+			$src = add_query_arg('ver', $ver, $src);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters an enqueued style's fully-qualified URL.
@@ -366,6 +460,7 @@ class WP_Styles extends WP_Dependencies {
 	 * @return bool True if found, false if not.
 	 */
 	public function in_default_dir( $src ) {
+<<<<<<< HEAD
 		if ( ! $this->default_dirs ) {
 			return true;
 		}
@@ -374,6 +469,14 @@ class WP_Styles extends WP_Dependencies {
 			if ( 0 === strpos( $src, $test ) ) {
 				return true;
 			}
+=======
+		if ( ! $this->default_dirs )
+			return true;
+
+		foreach ( (array) $this->default_dirs as $test ) {
+			if ( 0 === strpos($src, $test) )
+				return true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		return false;
 	}
@@ -390,7 +493,11 @@ class WP_Styles extends WP_Dependencies {
 	 * @return array Handles of items that have been processed.
 	 */
 	public function do_footer_items() {
+<<<<<<< HEAD
 		$this->do_items( false, 1 );
+=======
+		$this->do_items(false, 1);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $this->done;
 	}
 
@@ -400,9 +507,16 @@ class WP_Styles extends WP_Dependencies {
 	 * @since 3.3.0
 	 */
 	public function reset() {
+<<<<<<< HEAD
 		$this->do_concat      = false;
 		$this->concat         = '';
 		$this->concat_version = '';
 		$this->print_html     = '';
+=======
+		$this->do_concat = false;
+		$this->concat = '';
+		$this->concat_version = '';
+		$this->print_html = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

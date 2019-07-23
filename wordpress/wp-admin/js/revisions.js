@@ -1,12 +1,21 @@
+<<<<<<< HEAD
+=======
+/* global isRtl */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /**
  * @file Revisions interface functions, Backbone classes and
  * the revisions.php document.ready bootstrap.
  *
+<<<<<<< HEAD
  * @output wp-admin/js/revisions.js
  */
 
 /* global isRtl */
 
+=======
+ */
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 window.wp = window.wp || {};
 
 (function($) {

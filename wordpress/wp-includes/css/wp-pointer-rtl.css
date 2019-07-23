@@ -217,7 +217,11 @@
 }
 
 /* Disable pointers at responsive sizes */
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.wp-pointer {
 		display: none;
 	}

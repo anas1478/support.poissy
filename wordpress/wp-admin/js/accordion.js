@@ -25,8 +25,12 @@
  *
  * Note that any appropriate tags may be used, as long as the above classes are present.
  *
+<<<<<<< HEAD
  * @since 3.6.0
  * @output wp-admin/js/accordion.js
+=======
+ * @since 3.6.0.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 
 ( function( $ ){

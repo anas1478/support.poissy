@@ -78,6 +78,11 @@
     width: 36px; }
   .block-library-button__inline-link .dashicon {
     color: #8f98a1; }
+<<<<<<< HEAD
+=======
+  .block-library-button__inline-link .editor-url-input input[type="text"]::-webkit-input-placeholder {
+    color: #8f98a1; }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   .block-library-button__inline-link .editor-url-input input[type="text"]:-ms-input-placeholder {
     color: #8f98a1; }
   .block-library-button__inline-link .editor-url-input input[type="text"]::-ms-input-placeholder {

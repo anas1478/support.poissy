@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/dashboard.js
  */
@@ -11,11 +12,18 @@ window.wp = window.wp || {};
  *
  * @since 2.7.0
  */
+=======
+/* global pagenow, ajaxurl, postboxes, wpActiveEditor:true */
+var ajaxWidgets, ajaxPopulateWidgets, quickPressLoad;
+window.wp = window.wp || {};
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 jQuery(document).ready( function($) {
 	var welcomePanel = $( '#welcome-panel' ),
 		welcomePanelHide = $('#wp_welcome_panel-hide'),
 		updateWelcomePanel;
 
+<<<<<<< HEAD
 	/**
 	 * Saves the visibility of the welcome panel.
 	 *
@@ -25,6 +33,8 @@ jQuery(document).ready( function($) {
 	 *
 	 * @returns {void}
 	 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	updateWelcomePanel = function( visible ) {
 		$.post( ajaxurl, {
 			action: 'update-welcome-panel',
@@ -33,12 +43,18 @@ jQuery(document).ready( function($) {
 		});
 	};
 
+<<<<<<< HEAD
 	// Unhide the welcome panel if the Welcome Option checkbox is checked.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( welcomePanel.hasClass('hidden') && welcomePanelHide.prop('checked') ) {
 		welcomePanel.removeClass('hidden');
 	}
 
+<<<<<<< HEAD
 	// Hide the welcome panel when the dismiss button or close button is clicked.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$('.welcome-panel-close, .welcome-panel-dismiss a', welcomePanel).click( function(e) {
 		e.preventDefault();
 		welcomePanel.addClass('hidden');
@@ -46,12 +62,16 @@ jQuery(document).ready( function($) {
 		$('#wp_welcome_panel-hide').prop('checked', false);
 	});
 
+<<<<<<< HEAD
 	// Set welcome panel visibility based on Welcome Option checkbox value.
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	welcomePanelHide.click( function() {
 		welcomePanel.toggleClass('hidden', ! this.checked );
 		updateWelcomePanel( this.checked ? 1 : 0 );
 	});
 
+<<<<<<< HEAD
 	/**
 	 * These widgets can be populated via ajax.
 	 *
@@ -92,6 +112,18 @@ jQuery(document).ready( function($) {
 					// Request the widget content.
 					p.load( ajaxurl + '?action=dashboard-widgets&widget=' + id + '&pagenow=' + pagenow, '', function() {
 						// Hide the parent and slide it out for visual fancyness.
+=======
+	// These widgets are sometimes populated via ajax
+	ajaxWidgets = ['dashboard_primary'];
+
+	ajaxPopulateWidgets = function(el) {
+		function show(i, id) {
+			var p, e = $('#' + id + ' div.inside:visible').find('.widget-loading');
+			if ( e.length ) {
+				p = e.parent();
+				setTimeout( function(){
+					p.load( ajaxurl + '?action=dashboard-widgets&widget=' + id + '&pagenow=' + pagenow, '', function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						p.hide().slideDown('normal', function(){
 							$(this).css('display', '');
 						});
@@ -100,6 +132,7 @@ jQuery(document).ready( function($) {
 			}
 		}
 
+<<<<<<< HEAD
 		// If we have received a specific element to fetch, check if it is valid.
 		if ( el ) {
 			el = el.toString();
@@ -133,10 +166,30 @@ jQuery(document).ready( function($) {
 		var act = $('#quickpost-action'), t;
 
 		// Enable the submit buttons.
+=======
+		if ( el ) {
+			el = el.toString();
+			if ( $.inArray(el, ajaxWidgets) !== -1 ) {
+				show(0, el);
+			}
+		} else {
+			$.each( ajaxWidgets, show );
+		}
+	};
+	ajaxPopulateWidgets();
+
+	postboxes.add_postbox_toggles(pagenow, { pbshow: ajaxPopulateWidgets } );
+
+	/* QuickPress */
+	quickPressLoad = function() {
+		var act = $('#quickpost-action'), t;
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$( '#quick-press .submit input[type="submit"], #quick-press .submit input[type="reset"]' ).prop( 'disabled' , false );
 
 		t = $('#quick-press').submit( function( e ) {
 			e.preventDefault();
+<<<<<<< HEAD
 
 			// Show a spinner.
 			$('#dashboard_quick_press #publishing-action .spinner').show();
@@ -145,12 +198,18 @@ jQuery(document).ready( function($) {
 			$('#quick-press .submit input[type="submit"], #quick-press .submit input[type="reset"]').prop('disabled', true);
 
 			// Post the entered data to save it.
+=======
+			$('#dashboard_quick_press #publishing-action .spinner').show();
+			$('#quick-press .submit input[type="submit"], #quick-press .submit input[type="reset"]').prop('disabled', true);
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$.post( t.attr( 'action' ), t.serializeArray(), function( data ) {
 				// Replace the form, and prepend the published post.
 				$('#dashboard_quick_press .inside').html( data );
 				$('#quick-press').removeClass('initial-form');
 				quickPressLoad();
 				highlightLatestPost();
+<<<<<<< HEAD
 
 				// Focus the title to allow for quickly drafting another post.
 				$('#title').focus();
@@ -161,6 +220,11 @@ jQuery(document).ready( function($) {
 			 *
 			 * @returns {void}
  			 */
+=======
+				$('#title').focus();
+			});
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			function highlightLatestPost () {
 				var latestPost = $('.drafts ul li').first();
 				latestPost.css('background', '#fffbe5');
@@ -170,6 +234,7 @@ jQuery(document).ready( function($) {
 			}
 		} );
 
+<<<<<<< HEAD
 		// Change the QuickPost action to the publish value.
 		$('#publish').click( function() { act.val( 'post-quickpress-publish' ); } );
 
@@ -181,6 +246,10 @@ jQuery(document).ready( function($) {
 		 *
 		 * @returns {void}
 		 */
+=======
+		$('#publish').click( function() { act.val( 'post-quickpress-publish' ); } );
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$('#title, #tags-input, #content').each( function() {
 			var input = $(this), prompt = $('#' + this.id + '-prompt-text');
 
@@ -210,6 +279,7 @@ jQuery(document).ready( function($) {
 
 		autoResizeTextarea();
 	};
+<<<<<<< HEAD
 	window.quickPressLoad();
 
 	// Enable the dragging functionality of the widgets.
@@ -224,6 +294,13 @@ jQuery(document).ready( function($) {
 	 */
 	function autoResizeTextarea() {
 		// When IE8 or older is used to render this document, exit.
+=======
+	quickPressLoad();
+
+	$( '.meta-box-sortables' ).sortable( 'option', 'containment', '#wpwrap' );
+
+	function autoResizeTextarea() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( document.documentMode && document.documentMode < 9 ) {
 			return;
 		}
@@ -234,6 +311,7 @@ jQuery(document).ready( function($) {
 		var clone = $('.quick-draft-textarea-clone'),
 			editor = $('#content'),
 			editorHeight = editor.height(),
+<<<<<<< HEAD
 			/*
 			 * 100px roughly accounts for browser chrome and allows the
 			 * save draft button to show on-screen at the same time.
@@ -244,6 +322,14 @@ jQuery(document).ready( function($) {
 		 * Match up textarea and clone div as much as possible.
 		 * Padding cannot be reliably retrieved using shorthand in all browsers.
 		 */
+=======
+			// 100px roughly accounts for browser chrome and allows the
+			// save draft button to show on-screen at the same time.
+			editorMaxHeight = $(window).height() - 100;
+
+		// Match up textarea and clone div as much as possible.
+		// Padding cannot be reliably retrieved using shorthand in all browsers.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		clone.css({
 			'font-family': editor.css('font-family'),
 			'font-size':   editor.css('font-size'),
@@ -257,6 +343,7 @@ jQuery(document).ready( function($) {
 			'display': 'none'
 		});
 
+<<<<<<< HEAD
 		// The 'propertychange' is used in IE < 9.
 		editor.on('focus input propertychange', function() {
 			var $this = $(this),
@@ -270,21 +357,44 @@ jQuery(document).ready( function($) {
 			editor.css('overflow-y', 'auto');
 
 			// Only change the height if it has changed and both heights are below the max.
+=======
+		// propertychange is for IE < 9
+		editor.on('focus input propertychange', function() {
+			var $this = $(this),
+				// &nbsp; is to ensure that the height of a final trailing newline is included.
+				textareaContent = $this.val() + '&nbsp;',
+				// 2px is for border-top & border-bottom
+				cloneHeight = clone.css('width', $this.css('width')).text(textareaContent).outerHeight() + 2;
+
+			// Default to having scrollbars
+			editor.css('overflow-y', 'auto');
+
+			// Only change the height if it has indeed changed and both heights are below the max.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( cloneHeight === editorHeight || ( cloneHeight >= editorMaxHeight && editorHeight >= editorMaxHeight ) ) {
 				return;
 			}
 
+<<<<<<< HEAD
 			/*
 			 * Don't allow editor to exceed the height of the window.
 			 * This is also bound in CSS to a max-height of 1300px to be extra safe.
 			 */
+=======
+			// Don't allow editor to exceed height of window.
+			// This is also bound in CSS to a max-height of 1300px to be extra safe.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( cloneHeight > editorMaxHeight ) {
 				editorHeight = editorMaxHeight;
 			} else {
 				editorHeight = cloneHeight;
 			}
 
+<<<<<<< HEAD
 			// Disable scrollbars because we adjust the height to the content.
+=======
+			// No scrollbars as we change height, not for IE < 9
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			editor.css('overflow', 'hidden');
 
 			$this.css('height', editorHeight + 'px');
@@ -299,6 +409,7 @@ jQuery( function( $ ) {
 	var communityEventsData = window.communityEventsData || {},
 		app;
 
+<<<<<<< HEAD
 	/**
 	 * Global Community Events namespace.
 	 *
@@ -308,6 +419,9 @@ jQuery( function( $ ) {
 	 * @namespace wp.communityEvents
 	 */
 	app = window.wp.communityEvents = /** @lends wp.communityEvents */{
+=======
+	app = window.wp.communityEvents = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		initialized: false,
 		model: null,
 
@@ -315,8 +429,11 @@ jQuery( function( $ ) {
 		 * Initializes the wp.communityEvents object.
 		 *
 		 * @since 4.8.0
+<<<<<<< HEAD
 		 *
 		 * @returns {void}
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		init: function() {
 			if ( app.initialized ) {
@@ -347,11 +464,14 @@ jQuery( function( $ ) {
 
 			$container.on( 'click', '.community-events-toggle-location, .community-events-cancel', app.toggleLocationForm );
 
+<<<<<<< HEAD
 			/**
 			 * Filters events based on entered location.
 			 *
 			 * @returns {void}
 			 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$container.on( 'submit', '.community-events-form', function( event ) {
 				var location = $.trim( $( '#community-events-location' ).val() );
 
@@ -386,8 +506,11 @@ jQuery( function( $ ) {
 		 *
 		 * @param {event|string} action 'show' or 'hide' to specify a state;
 		 *                              or an event object to flip between states.
+<<<<<<< HEAD
 		 *
 		 * @returns {void}
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		toggleLocationForm: function( action ) {
 			var $toggleButton = $( '.community-events-toggle-location' ),
@@ -430,9 +553,13 @@ jQuery( function( $ ) {
 		 *
 		 * @since 4.8.0
 		 *
+<<<<<<< HEAD
 		 * @param {Object} requestParams REST API Request parameters object.
 		 *
 		 * @returns {void}
+=======
+		 * @param {object} requestParams
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		getEvents: function( requestParams ) {
 			var initiatedBy,
@@ -485,8 +612,11 @@ jQuery( function( $ ) {
 		 * @param {Object} templateParams The various parameters that will get passed to wp.template.
 		 * @param {string} initiatedBy    'user' to indicate that this was triggered manually by the user;
 		 *                                'app' to indicate it was triggered automatically by the app itself.
+<<<<<<< HEAD
 		 *
 		 * @returns {void}
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		renderEventsTemplate: function( templateParams, initiatedBy ) {
 			var template,

@@ -16,6 +16,7 @@
  * @see Bulk_Upgrader_Skin
  */
 class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
+<<<<<<< HEAD
 	public $theme_info = array(); // Theme_Upgrader::bulk_upgrade() will fill this in.
 
 	public function add_strings() {
@@ -36,6 +37,29 @@ class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
 	 */
 	public function after( $title = '' ) {
 		parent::after( $this->theme_info->display( 'Name' ) );
+=======
+	public $theme_info = array(); // Theme_Upgrader::bulk() will fill this in.
+
+	public function add_strings() {
+		parent::add_strings();
+		$this->upgrader->strings['skin_before_update_header'] = __('Updating Theme %1$s (%2$d/%3$d)');
+	}
+
+	/**
+	 *
+	 * @param string $title
+	 */
+	public function before($title = '') {
+		parent::before( $this->theme_info->display('Name') );
+	}
+
+	/**
+	 *
+	 * @param string $title
+	 */
+	public function after($title = '') {
+		parent::after( $this->theme_info->display('Name') );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->decrement_update_count( 'theme' );
 	}
 
@@ -43,6 +67,7 @@ class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
 	 */
 	public function bulk_footer() {
 		parent::bulk_footer();
+<<<<<<< HEAD
 		$update_actions = array(
 			'themes_page'  => '<a href="' . self_admin_url( 'themes.php' ) . '" target="_parent">' . __( 'Return to Themes page' ) . '</a>',
 			'updates_page' => '<a href="' . self_admin_url( 'update-core.php' ) . '" target="_parent">' . __( 'Return to WordPress Updates page' ) . '</a>',
@@ -50,12 +75,21 @@ class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
 		if ( ! current_user_can( 'switch_themes' ) && ! current_user_can( 'edit_theme_options' ) ) {
 			unset( $update_actions['themes_page'] );
 		}
+=======
+		$update_actions =  array(
+			'themes_page' => '<a href="' . self_admin_url( 'themes.php' ) . '" target="_parent">' . __( 'Return to Themes page' ) . '</a>',
+			'updates_page' => '<a href="' . self_admin_url( 'update-core.php' ) . '" target="_parent">' . __( 'Return to WordPress Updates page' ) . '</a>'
+		);
+		if ( ! current_user_can( 'switch_themes' ) && ! current_user_can( 'edit_theme_options' ) )
+			unset( $update_actions['themes_page'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters the list of action links available following bulk theme updates.
 		 *
 		 * @since 3.0.0
 		 *
+<<<<<<< HEAD
 		 * @param string[] $update_actions Array of theme action links.
 		 * @param WP_Theme $theme_info     Theme object for the last-updated theme.
 		 */
@@ -64,5 +98,14 @@ class Bulk_Theme_Upgrader_Skin extends Bulk_Upgrader_Skin {
 		if ( ! empty( $update_actions ) ) {
 			$this->feedback( implode( ' | ', (array) $update_actions ) );
 		}
+=======
+		 * @param array $update_actions Array of theme action links.
+		 * @param array $theme_info     Array of information for the last-updated theme.
+		 */
+		$update_actions = apply_filters( 'update_bulk_theme_complete_actions', $update_actions, $this->theme_info );
+
+		if ( ! empty($update_actions) )
+			$this->feedback(implode(' | ', (array)$update_actions));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

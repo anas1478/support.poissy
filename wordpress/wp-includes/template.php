@@ -23,9 +23,14 @@
 function get_query_template( $type, $templates = array() ) {
 	$type = preg_replace( '|[^a-z0-9-]+|', '', $type );
 
+<<<<<<< HEAD
 	if ( empty( $templates ) ) {
 		$templates = array( "{$type}.php" );
 	}
+=======
+	if ( empty( $templates ) )
+		$templates = array("{$type}.php");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the list of template filenames that are searched for when retrieving a template to use.
@@ -76,7 +81,11 @@ function get_query_template( $type, $templates = array() ) {
  * @return string Full path to index template file.
  */
 function get_index_template() {
+<<<<<<< HEAD
 	return get_query_template( 'index' );
+=======
+	return get_query_template('index');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -92,7 +101,11 @@ function get_index_template() {
  * @return string Full path to 404 template file.
  */
 function get_404_template() {
+<<<<<<< HEAD
 	return get_query_template( '404' );
+=======
+	return get_query_template('404');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -113,7 +126,11 @@ function get_archive_template() {
 	$templates = array();
 
 	if ( count( $post_types ) == 1 ) {
+<<<<<<< HEAD
 		$post_type   = reset( $post_types );
+=======
+		$post_type = reset( $post_types );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$templates[] = "archive-{$post_type}.php";
 	}
 	$templates[] = 'archive.php';
@@ -135,9 +152,14 @@ function get_archive_template() {
  */
 function get_post_type_archive_template() {
 	$post_type = get_query_var( 'post_type' );
+<<<<<<< HEAD
 	if ( is_array( $post_type ) ) {
 		$post_type = reset( $post_type );
 	}
+=======
+	if ( is_array( $post_type ) )
+		$post_type = reset( $post_type );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$obj = get_post_type_object( $post_type );
 	if ( ! ( $obj instanceof WP_Post_Type ) || ! $obj->has_archive ) {
@@ -337,7 +359,11 @@ function get_taxonomy_template() {
  * @return string Full path to date template file.
  */
 function get_date_template() {
+<<<<<<< HEAD
 	return get_query_template( 'date' );
+=======
+	return get_query_template('date');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -371,7 +397,11 @@ function get_home_template() {
  * @return string Full path to front page template file.
  */
 function get_front_page_template() {
+<<<<<<< HEAD
 	$templates = array( 'front-page.php' );
+=======
+	$templates = array('front-page.php');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return get_query_template( 'front_page', $templates );
 }
@@ -405,13 +435,20 @@ function get_front_page_template() {
  * @return string Full path to page template file.
  */
 function get_page_template() {
+<<<<<<< HEAD
 	$id       = get_queried_object_id();
 	$template = get_page_template_slug();
 	$pagename = get_query_var( 'pagename' );
+=======
+	$id = get_queried_object_id();
+	$template = get_page_template_slug();
+	$pagename = get_query_var('pagename');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( ! $pagename && $id ) {
 		// If a static page is set as the front page, $pagename will not be set. Retrieve it from the queried object
 		$post = get_queried_object();
+<<<<<<< HEAD
 		if ( $post ) {
 			$pagename = $post->post_name;
 		}
@@ -421,6 +458,15 @@ function get_page_template() {
 	if ( $template && 0 === validate_file( $template ) ) {
 		$templates[] = $template;
 	}
+=======
+		if ( $post )
+			$pagename = $post->post_name;
+	}
+
+	$templates = array();
+	if ( $template && 0 === validate_file( $template ) )
+		$templates[] = $template;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( $pagename ) {
 		$pagename_decoded = urldecode( $pagename );
 		if ( $pagename_decoded !== $pagename ) {
@@ -428,9 +474,14 @@ function get_page_template() {
 		}
 		$templates[] = "page-{$pagename}.php";
 	}
+<<<<<<< HEAD
 	if ( $id ) {
 		$templates[] = "page-{$id}.php";
 	}
+=======
+	if ( $id )
+		$templates[] = "page-{$id}.php";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$templates[] = 'page.php';
 
 	return get_query_template( 'page', $templates );
@@ -449,7 +500,11 @@ function get_page_template() {
  * @return string Full path to search template file.
  */
 function get_search_template() {
+<<<<<<< HEAD
 	return get_query_template( 'search' );
+=======
+	return get_query_template('search');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -477,7 +532,11 @@ function get_search_template() {
  * @since 4.4.0 `single-{post_type}-{post_name}.php` was added to the top of the template hierarchy.
  * @since 4.7.0 The decoded form of `single-{post_type}-{post_name}.php` was added to the top of the
  *              template hierarchy when the post name contains multibyte characters.
+<<<<<<< HEAD
  * @since 4.7.0 `{Post Type Template}.php` was added to the top of the template hierarchy.
+=======
+ * @since 4.7.0 {Post Type Template}.php was added to the top of the template hierarchy.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @see get_query_template()
  *
@@ -503,7 +562,11 @@ function get_single_template() {
 		$templates[] = "single-{$object->post_type}.php";
 	}
 
+<<<<<<< HEAD
 	$templates[] = 'single.php';
+=======
+	$templates[] = "single.php";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return get_query_template( 'single', $templates );
 }
@@ -545,7 +608,11 @@ function get_embed_template() {
 		$templates[] = "embed-{$object->post_type}.php";
 	}
 
+<<<<<<< HEAD
 	$templates[] = 'embed.php';
+=======
+	$templates[] = "embed.php";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return get_query_template( 'embed', $templates );
 }
@@ -631,6 +698,7 @@ function get_attachment_template() {
  * @param bool         $require_once   Whether to require_once or require. Default true. Has no effect if $load is false.
  * @return string The template filename if one is located.
  */
+<<<<<<< HEAD
 function locate_template( $template_names, $load = false, $require_once = true ) {
 	$located = '';
 	foreach ( (array) $template_names as $template_name ) {
@@ -641,6 +709,17 @@ function locate_template( $template_names, $load = false, $require_once = true )
 			$located = STYLESHEETPATH . '/' . $template_name;
 			break;
 		} elseif ( file_exists( TEMPLATEPATH . '/' . $template_name ) ) {
+=======
+function locate_template($template_names, $load = false, $require_once = true ) {
+	$located = '';
+	foreach ( (array) $template_names as $template_name ) {
+		if ( !$template_name )
+			continue;
+		if ( file_exists(STYLESHEETPATH . '/' . $template_name)) {
+			$located = STYLESHEETPATH . '/' . $template_name;
+			break;
+		} elseif ( file_exists(TEMPLATEPATH . '/' . $template_name) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$located = TEMPLATEPATH . '/' . $template_name;
 			break;
 		} elseif ( file_exists( ABSPATH . WPINC . '/theme-compat/' . $template_name ) ) {
@@ -649,9 +728,14 @@ function locate_template( $template_names, $load = false, $require_once = true )
 		}
 	}
 
+<<<<<<< HEAD
 	if ( $load && '' != $located ) {
 		load_template( $located, $require_once );
 	}
+=======
+	if ( $load && '' != $located )
+		load_template( $located, $require_once );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $located;
 }
@@ -684,6 +768,7 @@ function load_template( $_template_file, $require_once = true ) {
 	global $posts, $post, $wp_did_header, $wp_query, $wp_rewrite, $wpdb, $wp_version, $wp, $id, $comment, $user_ID;
 
 	if ( is_array( $wp_query->query_vars ) ) {
+<<<<<<< HEAD
 		/*
 		 * This use of extract() cannot be removed. There are many possible ways that
 		 * templates could depend on variables that it creates existing, and no way to
@@ -693,6 +778,8 @@ function load_template( $_template_file, $require_once = true ) {
 		 * function variables cannot be overwritten.
 		 */
 		// phpcs:ignore WordPress.PHP.DontExtract.extract_extract
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		extract( $wp_query->query_vars, EXTR_SKIP );
 	}
 

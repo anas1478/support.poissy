@@ -53,8 +53,11 @@ class WP_Locale_Switcher {
 	 * Initializes the locale switcher.
 	 *
 	 * Hooks into the {@see 'locale'} filter to change the locale on the fly.
+<<<<<<< HEAD
 	 *
 	 * @since 4.7.0
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public function init() {
 		add_filter( 'locale', array( $this, 'filter_locale' ) );

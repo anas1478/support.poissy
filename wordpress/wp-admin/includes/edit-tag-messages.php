@@ -55,4 +55,8 @@ if ( isset( $_REQUEST['message'] ) && ( $msg = (int) $_REQUEST['message'] ) ) {
 	} elseif ( ! isset( $messages[ $taxonomy ] ) && isset( $messages['_item'][ $msg ] ) ) {
 		$message = $messages['_item'][ $msg ];
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

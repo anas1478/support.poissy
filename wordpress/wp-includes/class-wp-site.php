@@ -145,6 +145,10 @@ final class WP_Site {
 	/**
 	 * Retrieves a site from the database by its ID.
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @since 4.5.0
 	 *
 	 * @global wpdb $wpdb WordPress database abstraction object.
@@ -186,7 +190,11 @@ final class WP_Site {
 	 * @param WP_Site|object $site A site object.
 	 */
 	public function __construct( $site ) {
+<<<<<<< HEAD
 		foreach ( get_object_vars( $site ) as $key => $value ) {
+=======
+		foreach( get_object_vars( $site ) as $key => $value ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->$key = $value;
 		}
 	}

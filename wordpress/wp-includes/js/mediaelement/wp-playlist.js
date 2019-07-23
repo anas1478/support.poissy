@@ -6,6 +6,7 @@
 	/** @namespace wp */
 	window.wp = window.wp || {};
 
+<<<<<<< HEAD
 	var WPPlaylistView = Backbone.View.extend(/** @lends WPPlaylistView.prototype */{
 		/**
 		 * @constructs
@@ -13,6 +14,9 @@
 		 * @param {Object} options          The options to create this playlist view with.
 		 * @param {Object} options.metadata The metadata
 		 */
+=======
+	var WPPlaylistView = Backbone.View.extend({
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		initialize : function (options) {
 			this.index = 0;
 			this.settings = {};
@@ -68,7 +72,13 @@
 				this.settings.success = this.bindResetPlayer;
 			}
 
+<<<<<<< HEAD
 			// This is also our bridge to the outside world.
+=======
+			/**
+			 * This is also our bridge to the outside world
+			 */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			this.player = new MediaElementPlayer( this.playerNode.get(0), this.settings );
 		},
 

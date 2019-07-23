@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["data"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 309);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 308);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -444,7 +448,11 @@ function _assertThisInitialized(self) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 309:
+=======
+/***/ 308:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2132,7 +2140,11 @@ g = (function() {
 
 try {
 	// This works if eval is allowed (see CSP)
+<<<<<<< HEAD
 	g = g || new Function("return this")();
+=======
+	g = g || Function("return this")() || (1, eval)("this");
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 } catch (e) {
 	// This works if the window reference is available
 	if (typeof window === "object") g = window;

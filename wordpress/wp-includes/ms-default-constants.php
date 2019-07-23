@@ -19,6 +19,7 @@ function ms_upload_constants() {
 	// This filter is attached in ms-default-filters.php but that file is not included during SHORTINIT.
 	add_filter( 'default_site_option_ms_files_rewriting', '__return_true' );
 
+<<<<<<< HEAD
 	if ( ! get_site_option( 'ms_files_rewriting' ) ) {
 		return;
 	}
@@ -27,6 +28,14 @@ function ms_upload_constants() {
 	if ( ! defined( 'UPLOADBLOGSDIR' ) ) {
 		define( 'UPLOADBLOGSDIR', 'wp-content/blogs.dir' );
 	}
+=======
+	if ( ! get_site_option( 'ms_files_rewriting' ) )
+		return;
+
+	// Base uploads dir relative to ABSPATH
+	if ( !defined( 'UPLOADBLOGSDIR' ) )
+		define( 'UPLOADBLOGSDIR', 'wp-content/blogs.dir' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	// Note, the main site in a post-MU network uses wp-content/uploads.
 	// This is handled in wp_upload_dir() by ignoring UPLOADS for this case.
@@ -36,9 +45,14 @@ function ms_upload_constants() {
 		define( 'UPLOADS', UPLOADBLOGSDIR . '/' . $site_id . '/files/' );
 
 		// Uploads dir relative to ABSPATH
+<<<<<<< HEAD
 		if ( 'wp-content/blogs.dir' == UPLOADBLOGSDIR && ! defined( 'BLOGUPLOADDIR' ) ) {
 			define( 'BLOGUPLOADDIR', WP_CONTENT_DIR . '/blogs.dir/' . $site_id . '/files/' );
 		}
+=======
+		if ( 'wp-content/blogs.dir' == UPLOADBLOGSDIR && ! defined( 'BLOGUPLOADDIR' ) )
+			define( 'BLOGUPLOADDIR', WP_CONTENT_DIR . '/blogs.dir/' . $site_id . '/files/' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }
 
@@ -47,27 +61,45 @@ function ms_upload_constants() {
  *
  * @since 3.0.0
  */
+<<<<<<< HEAD
 function ms_cookie_constants() {
+=======
+function ms_cookie_constants(  ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$current_network = get_network();
 
 	/**
 	 * @since 1.2.0
 	 */
+<<<<<<< HEAD
 	if ( ! defined( 'COOKIEPATH' ) ) {
 		define( 'COOKIEPATH', $current_network->path );
 	}
+=======
+	if ( !defined( 'COOKIEPATH' ) )
+		define( 'COOKIEPATH', $current_network->path );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * @since 1.5.0
 	 */
+<<<<<<< HEAD
 	if ( ! defined( 'SITECOOKIEPATH' ) ) {
 		define( 'SITECOOKIEPATH', $current_network->path );
 	}
+=======
+	if ( !defined( 'SITECOOKIEPATH' ) )
+		define( 'SITECOOKIEPATH', $current_network->path );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * @since 2.6.0
 	 */
+<<<<<<< HEAD
 	if ( ! defined( 'ADMIN_COOKIE_PATH' ) ) {
+=======
+	if ( !defined( 'ADMIN_COOKIE_PATH' ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( ! is_subdomain_install() || trim( parse_url( get_option( 'siteurl' ), PHP_URL_PATH ), '/' ) ) {
 			define( 'ADMIN_COOKIE_PATH', SITECOOKIEPATH );
 		} else {
@@ -78,12 +110,20 @@ function ms_cookie_constants() {
 	/**
 	 * @since 2.0.0
 	 */
+<<<<<<< HEAD
 	if ( ! defined( 'COOKIE_DOMAIN' ) && is_subdomain_install() ) {
 		if ( ! empty( $current_network->cookie_domain ) ) {
 			define( 'COOKIE_DOMAIN', '.' . $current_network->cookie_domain );
 		} else {
 			define( 'COOKIE_DOMAIN', '.' . $current_network->domain );
 		}
+=======
+	if ( !defined('COOKIE_DOMAIN') && is_subdomain_install() ) {
+		if ( !empty( $current_network->cookie_domain ) )
+			define('COOKIE_DOMAIN', '.' . $current_network->cookie_domain);
+		else
+			define('COOKIE_DOMAIN', '.' . $current_network->domain);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }
 
@@ -98,6 +138,7 @@ function ms_cookie_constants() {
 function ms_file_constants() {
 	/**
 	 * Optional support for X-Sendfile header
+<<<<<<< HEAD
 	 *
 	 * @since 3.0.0
 	 */
@@ -113,6 +154,19 @@ function ms_file_constants() {
 	if ( ! defined( 'WPMU_ACCEL_REDIRECT' ) ) {
 		define( 'WPMU_ACCEL_REDIRECT', false );
 	}
+=======
+	 * @since 3.0.0
+	 */
+	if ( !defined( 'WPMU_SENDFILE' ) )
+		define( 'WPMU_SENDFILE', false );
+
+	/**
+	 * Optional support for X-Accel-Redirect header
+	 * @since 3.0.0
+	 */
+	if ( !defined( 'WPMU_ACCEL_REDIRECT' ) )
+		define( 'WPMU_ACCEL_REDIRECT', false );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -129,7 +183,11 @@ function ms_file_constants() {
  * @staticvar bool $subdomain_error_warn
  */
 function ms_subdomain_constants() {
+<<<<<<< HEAD
 	static $subdomain_error      = null;
+=======
+	static $subdomain_error = null;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	static $subdomain_error_warn = null;
 
 	if ( false === $subdomain_error ) {
@@ -148,7 +206,11 @@ function ms_subdomain_constants() {
 		if ( $subdomain_error_warn ) {
 			trigger_error( __( '<strong>Conflicting values for the constants VHOST and SUBDOMAIN_INSTALL.</strong> The value of SUBDOMAIN_INSTALL will be assumed to be your subdomain configuration setting.' ) . ' ' . $vhost_deprecated, E_USER_WARNING );
 		} else {
+<<<<<<< HEAD
 			_deprecated_argument( 'define()', '3.0.0', $vhost_deprecated );
+=======
+	 		_deprecated_argument( 'define()', '3.0.0', $vhost_deprecated );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 		return;
 	}

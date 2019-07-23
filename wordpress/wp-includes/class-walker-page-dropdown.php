@@ -35,10 +35,14 @@ class Walker_PageDropdown extends Walker {
 	 * @see Walker::$db_fields
 	 * @todo Decouple this
 	 */
+<<<<<<< HEAD
 	public $db_fields = array(
 		'parent' => 'post_parent',
 		'id'     => 'ID',
 	);
+=======
+	public $db_fields = array( 'parent' => 'post_parent', 'id' => 'ID' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Starts the element output.
@@ -57,16 +61,26 @@ class Walker_PageDropdown extends Walker {
 	 * @param int     $id     Optional. ID of the current page. Default 0 (unused).
 	 */
 	public function start_el( &$output, $page, $depth = 0, $args = array(), $id = 0 ) {
+<<<<<<< HEAD
 		$pad = str_repeat( '&nbsp;', $depth * 3 );
+=======
+		$pad = str_repeat('&nbsp;', $depth * 3);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! isset( $args['value_field'] ) || ! isset( $page->{$args['value_field']} ) ) {
 			$args['value_field'] = 'ID';
 		}
 
+<<<<<<< HEAD
 		$output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $page->{$args['value_field']} ) . '"';
 		if ( $page->ID == $args['selected'] ) {
 			$output .= ' selected="selected"';
 		}
+=======
+		$output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $page->{$args['value_field']} ) . "\"";
+		if ( $page->ID == $args['selected'] )
+			$output .= ' selected="selected"';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$output .= '>';
 
 		$title = $page->post_title;
@@ -80,8 +94,13 @@ class Walker_PageDropdown extends Walker {
 		 *
 		 * @since 3.1.0
 		 *
+<<<<<<< HEAD
 		 * @param string  $title Page title.
 		 * @param WP_Post $page  Page data object.
+=======
+		 * @param string $title Page title.
+		 * @param object $page  Page data object.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		$title = apply_filters( 'list_pages', $title, $page );
 

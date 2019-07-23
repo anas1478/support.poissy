@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Creates a dialog containing posts that can have a particular media attached
  * to it.
@@ -16,6 +17,26 @@
 	window.findPosts = {
 		/**
 		 * Opens a dialog to attach media to a post.
+=======
+/* global ajaxurl, attachMediaBoxL10n, _wpMediaGridSettings, showNotice */
+
+/**
+ * @summary Creates a dialog containing posts that can have a particular media attached to it.
+ *
+ * @since 2.7.0
+ *
+ * @global
+ * @namespace
+ *
+ * @requires jQuery
+ */
+var findPosts;
+
+( function( $ ){
+	findPosts = {
+		/**
+		 * @summary Opens a dialog to attach media to a post.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Adds an overlay prior to retrieving a list of posts to attach the media to.
 		 *
@@ -59,7 +80,11 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Clears the found posts lists before hiding the attach media dialog.
+=======
+		 * @summary Clears the found posts lists before hiding the attach media dialog.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.7.0
 		 *
@@ -74,8 +99,12 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Binds a click event listener to the overlay which closes the attach media
 		 * dialog.
+=======
+		 * @summary Binds a click event listener to the overlay which closes the attach media dialog.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.5.0
 		 *
@@ -90,11 +119,18 @@
 		},
 
 		/**
+<<<<<<< HEAD
 		 * Retrieves and displays posts based on the search term.
 		 *
 		 * Sends a post request to the admin_ajax.php, requesting posts based on the
 		 * search term provided by the user. Defaults to all posts if no search term is
 		 * provided.
+=======
+		 * @summary Retrieves and displays posts based on the search term.
+		 *
+		 * Sends a post request to the admin_ajax.php, requesting posts based on the search term provided by the user.
+		 * Defaults to all posts if no search term is provided.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.7.0
 		 *
@@ -113,8 +149,13 @@
 			spinner.addClass( 'is-active' );
 
 			/**
+<<<<<<< HEAD
 			 * Send a POST request to admin_ajax.php, hide the spinner and replace the list
 			 * of posts with the response data. If an error occurs, display it.
+=======
+			 * Send a POST request to admin_ajax.php, hide the spinner and replace the list of posts with the response data.
+			 * If an error occurs, display it.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 */
 			$.ajax( ajaxurl, {
 				type: 'POST',
@@ -135,8 +176,12 @@
 	};
 
 	/**
+<<<<<<< HEAD
 	 * Initializes the file once the DOM is fully loaded and attaches events to the
 	 * various form elements.
+=======
+	 * @summary Initializes the file once the DOM is fully loaded and attaches events to the various form elements.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @returns {void}
 	 */
@@ -196,7 +241,11 @@
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Enables clicking on the entire table row.
+=======
+		 * @summary Enables clicking on the entire table row.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @returns {void}
 		 */

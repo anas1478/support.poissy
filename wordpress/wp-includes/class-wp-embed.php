@@ -9,10 +9,17 @@
 class WP_Embed {
 	public $handlers = array();
 	public $post_ID;
+<<<<<<< HEAD
 	public $usecache      = true;
 	public $linkifunknown = true;
 	public $last_attr     = array();
 	public $last_url      = '';
+=======
+	public $usecache = true;
+	public $linkifunknown = true;
+	public $last_attr = array();
+	public $last_url = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * When a URL cannot be embedded, return false instead of returning a link
@@ -81,17 +88,28 @@ class WP_Embed {
 	public function maybe_run_ajax_cache() {
 		$post = get_post();
 
+<<<<<<< HEAD
 		if ( ! $post || empty( $_GET['message'] ) ) {
 			return;
 		}
 
 		?>
+=======
+		if ( ! $post || empty( $_GET['message'] ) )
+			return;
+
+?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		$.get("<?php echo admin_url( 'admin-ajax.php?action=oembed-cache&post=' . $post->ID, 'relative' ); ?>");
 	});
 </script>
+<<<<<<< HEAD
 		<?php
+=======
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -107,7 +125,11 @@ class WP_Embed {
 	 * @param int $priority Optional. Used to specify the order in which the registered handlers will be tested (default: 10). Lower numbers correspond with earlier testing, and handlers with the same priority are tested in the order in which they were added to the action.
 	 */
 	public function register_handler( $id, $regex, $callback, $priority = 10 ) {
+<<<<<<< HEAD
 		$this->handlers[ $priority ][ $id ] = array(
+=======
+		$this->handlers[$priority][$id] = array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'regex'    => $regex,
 			'callback' => $callback,
 		);
@@ -157,7 +179,11 @@ class WP_Embed {
 		}
 
 		$rawattr = $attr;
+<<<<<<< HEAD
 		$attr    = wp_parse_args( $attr, wp_embed_defaults( $url ) );
+=======
+		$attr = wp_parse_args( $attr, wp_embed_defaults( $url ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->last_attr = $attr;
 
@@ -170,7 +196,11 @@ class WP_Embed {
 		foreach ( $this->handlers as $priority => $handlers ) {
 			foreach ( $handlers as $id => $handler ) {
 				if ( preg_match( $handler['regex'], $url, $matches ) && is_callable( $handler['callback'] ) ) {
+<<<<<<< HEAD
 					if ( false !== $return = call_user_func( $handler['callback'], $matches, $attr, $url, $rawattr ) ) {
+=======
+					if ( false !== $return = call_user_func( $handler['callback'], $matches, $attr, $url, $rawattr ) )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 						/**
 						 * Filters the returned embed handler.
 						 *
@@ -183,7 +213,10 @@ class WP_Embed {
 						 * @param array  $attr   An array of shortcode attributes.
 						 */
 						return apply_filters( 'embed_handler_html', $return, $url, $attr );
+<<<<<<< HEAD
 					}
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		}
@@ -218,7 +251,11 @@ class WP_Embed {
 		$cached_post_id = $this->find_oembed_post_id( $key_suffix );
 
 		if ( $post_ID ) {
+<<<<<<< HEAD
 			$cache      = get_post_meta( $post_ID, $cachekey, true );
+=======
+			$cache = get_post_meta( $post_ID, $cachekey, true );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$cache_time = get_post_meta( $post_ID, $cachekey_time, true );
 
 			if ( ! $cache_time ) {
@@ -287,13 +324,20 @@ class WP_Embed {
 			}
 
 			$insert_post_args = array(
+<<<<<<< HEAD
 				'post_name'   => $key_suffix,
 				'post_status' => 'publish',
 				'post_type'   => 'oembed_cache',
+=======
+				'post_name' => $key_suffix,
+				'post_status' => 'publish',
+				'post_type' => 'oembed_cache',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			);
 
 			if ( $html ) {
 				if ( $cached_post_id ) {
+<<<<<<< HEAD
 					wp_update_post(
 						wp_slash(
 							array(
@@ -325,6 +369,27 @@ class WP_Embed {
 						)
 					)
 				);
+=======
+					wp_update_post( wp_slash( array(
+						'ID' => $cached_post_id,
+						'post_content' => $html,
+					) ) );
+				} else {
+					wp_insert_post( wp_slash( array_merge(
+						$insert_post_args,
+						array(
+							'post_content' => $html,
+						)
+					) ) );
+				}
+			} elseif ( ! $cache ) {
+				wp_insert_post( wp_slash( array_merge(
+					$insert_post_args,
+					array(
+						'post_content' => '{{unknown}}',
+					)
+				) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			if ( $has_kses ) {
@@ -349,6 +414,7 @@ class WP_Embed {
 	 */
 	public function delete_oembed_caches( $post_ID ) {
 		$post_metas = get_post_custom_keys( $post_ID );
+<<<<<<< HEAD
 		if ( empty( $post_metas ) ) {
 			return;
 		}
@@ -357,6 +423,14 @@ class WP_Embed {
 			if ( '_oembed_' == substr( $post_meta_key, 0, 8 ) ) {
 				delete_post_meta( $post_ID, $post_meta_key );
 			}
+=======
+		if ( empty($post_metas) )
+			return;
+
+		foreach ( $post_metas as $post_meta_key ) {
+			if ( '_oembed_' == substr( $post_meta_key, 0, 8 ) )
+				delete_post_meta( $post_ID, $post_meta_key );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -374,15 +448,25 @@ class WP_Embed {
 		 *
 		 * @since 2.9.0
 		 *
+<<<<<<< HEAD
 		 * @param string[] $post_types Array of post type names to cache oEmbed results for. Defaults to post types with `show_ui` set to true.
 		 */
 		if ( empty( $post->ID ) || ! in_array( $post->post_type, apply_filters( 'embed_cache_oembed_types', $post_types ) ) ) {
+=======
+		 * @param array $post_types Array of post types to cache oEmbed results for. Defaults to post types with `show_ui` set to true.
+		 */
+		if ( empty( $post->ID ) || ! in_array( $post->post_type, apply_filters( 'embed_cache_oembed_types', $post_types ) ) ){
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return;
 		}
 
 		// Trigger a caching
 		if ( ! empty( $post->post_content ) ) {
+<<<<<<< HEAD
 			$this->post_ID  = $post->ID;
+=======
+			$this->post_ID = $post->ID;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->usecache = false;
 
 			$content = $this->run_shortcode( $post->post_content );
@@ -422,9 +506,15 @@ class WP_Embed {
 	 * @return string The embed HTML on success, otherwise the original URL.
 	 */
 	public function autoembed_callback( $match ) {
+<<<<<<< HEAD
 		$oldval              = $this->linkifunknown;
 		$this->linkifunknown = false;
 		$return              = $this->shortcode( array(), $match[2] );
+=======
+		$oldval = $this->linkifunknown;
+		$this->linkifunknown = false;
+		$return = $this->shortcode( array(), $match[2] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->linkifunknown = $oldval;
 
 		return $match[1] . $return . $match[3];
@@ -441,7 +531,11 @@ class WP_Embed {
 			return false;
 		}
 
+<<<<<<< HEAD
 		$output = ( $this->linkifunknown ) ? '<a href="' . esc_url( $url ) . '">' . esc_html( $url ) . '</a>' : $url;
+=======
+		$output = ( $this->linkifunknown ) ? '<a href="' . esc_url($url) . '">' . esc_html($url) . '</a>' : $url;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters the returned, maybe-linked embed URL.
@@ -470,6 +564,7 @@ class WP_Embed {
 			return $oembed_post_id;
 		}
 
+<<<<<<< HEAD
 		$oembed_post_query = new WP_Query(
 			array(
 				'post_type'              => 'oembed_cache',
@@ -483,6 +578,19 @@ class WP_Embed {
 				'lazy_load_term_meta'    => false,
 			)
 		);
+=======
+		$oembed_post_query = new WP_Query( array(
+			'post_type'              => 'oembed_cache',
+			'post_status'            => 'publish',
+			'name'                   => $cache_key,
+			'posts_per_page'         => 1,
+			'no_found_rows'          => true,
+			'cache_results'          => true,
+			'update_post_meta_cache' => false,
+			'update_post_term_cache' => false,
+			'lazy_load_term_meta'    => false,
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( ! empty( $oembed_post_query->posts ) ) {
 			// Note: 'fields'=>'ids' is not being used in order to cache the post object as it will be needed.

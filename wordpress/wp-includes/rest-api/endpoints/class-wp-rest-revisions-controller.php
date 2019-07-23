@@ -48,12 +48,21 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 * @param string $parent_post_type Post type of the parent.
 	 */
 	public function __construct( $parent_post_type ) {
+<<<<<<< HEAD
 		$this->parent_post_type  = $parent_post_type;
 		$this->parent_controller = new WP_REST_Posts_Controller( $parent_post_type );
 		$this->namespace         = 'wp/v2';
 		$this->rest_base         = 'revisions';
 		$post_type_object        = get_post_type_object( $parent_post_type );
 		$this->parent_base       = ! empty( $post_type_object->rest_base ) ? $post_type_object->rest_base : $post_type_object->name;
+=======
+		$this->parent_post_type = $parent_post_type;
+		$this->parent_controller = new WP_REST_Posts_Controller( $parent_post_type );
+		$this->namespace = 'wp/v2';
+		$this->rest_base = 'revisions';
+		$post_type_object = get_post_type_object( $parent_post_type );
+		$this->parent_base = ! empty( $post_type_object->rest_base ) ? $post_type_object->rest_base : $post_type_object->name;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -65,6 +74,7 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 	 */
 	public function register_routes() {
 
+<<<<<<< HEAD
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->parent_base . '/(?P<parent>[\d]+)/' . $this->rest_base,
@@ -122,6 +132,57 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 				'schema' => array( $this, 'get_public_item_schema' ),
 			)
 		);
+=======
+		register_rest_route( $this->namespace, '/' . $this->parent_base . '/(?P<parent>[\d]+)/' . $this->rest_base, array(
+			'args' => array(
+				'parent' => array(
+					'description' => __( 'The ID for the parent of the object.' ),
+					'type'        => 'integer',
+				),
+			),
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_items' ),
+				'permission_callback' => array( $this, 'get_items_permissions_check' ),
+				'args'                => $this->get_collection_params(),
+			),
+			'schema' => array( $this, 'get_public_item_schema' ),
+		) );
+
+		register_rest_route( $this->namespace, '/' . $this->parent_base . '/(?P<parent>[\d]+)/' . $this->rest_base . '/(?P<id>[\d]+)', array(
+			'args' => array(
+				'parent' => array(
+					'description' => __( 'The ID for the parent of the object.' ),
+					'type'        => 'integer',
+				),
+				'id' => array(
+					'description' => __( 'Unique identifier for the object.' ),
+					'type'        => 'integer',
+				),
+			),
+			array(
+				'methods'             => WP_REST_Server::READABLE,
+				'callback'            => array( $this, 'get_item' ),
+				'permission_callback' => array( $this, 'get_item_permissions_check' ),
+				'args'                => array(
+					'context' => $this->get_context_param( array( 'default' => 'view' ) ),
+				),
+			),
+			array(
+				'methods'             => WP_REST_Server::DELETABLE,
+				'callback'            => array( $this, 'delete_item' ),
+				'permission_callback' => array( $this, 'delete_item_permissions_check' ),
+				'args'                => array(
+					'force' => array(
+						'type'        => 'boolean',
+						'default'     => false,
+						'description' => __( 'Required to be true, as revisions do not support trashing.' ),
+					),
+				),
+			),
+			'schema' => array( $this, 'get_public_item_schema' ),
+		));
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	}
 
@@ -291,7 +352,11 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 
 		$response = array();
 		foreach ( $revisions as $revision ) {
+<<<<<<< HEAD
 			$data       = $this->prepare_item_for_response( $revision, $request );
+=======
+			$data = $this->prepare_item_for_response( $revision, $request );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$response[] = $this->prepare_response_for_collection( $data );
 		}
 
@@ -429,12 +494,16 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 		}
 
 		$response = new WP_REST_Response();
+<<<<<<< HEAD
 		$response->set_data(
 			array(
 				'deleted'  => true,
 				'previous' => $previous->get_data(),
 			)
 		);
+=======
+		$response->set_data( array( 'deleted' => true, 'previous' => $previous->get_data() ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $response;
 	}
 
@@ -553,9 +622,15 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 			);
 		}
 
+<<<<<<< HEAD
 		$context  = ! empty( $request['context'] ) ? $request['context'] : 'view';
 		$data     = $this->add_additional_fields_to_object( $data, $request );
 		$data     = $this->filter_response_by_context( $data, $context );
+=======
+		$context = ! empty( $request['context'] ) ? $request['context'] : 'view';
+		$data = $this->add_additional_fields_to_object( $data, $request );
+		$data = $this->filter_response_by_context( $data, $context );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$response = rest_ensure_response( $data );
 
 		if ( ! empty( $data['parent'] ) ) {
@@ -612,51 +687,88 @@ class WP_REST_Revisions_Controller extends WP_REST_Controller {
 			'type'       => 'object',
 			// Base properties for every Revision.
 			'properties' => array(
+<<<<<<< HEAD
 				'author'       => array(
+=======
+				'author'          => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'The ID for the author of the object.' ),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit', 'embed' ),
 				),
+<<<<<<< HEAD
 				'date'         => array(
+=======
+				'date'            => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( "The date the object was published, in the site's timezone." ),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => array( 'view', 'edit', 'embed' ),
 				),
+<<<<<<< HEAD
 				'date_gmt'     => array(
+=======
+				'date_gmt'        => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'The date the object was published, as GMT.' ),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
+<<<<<<< HEAD
 				'guid'         => array(
+=======
+				'guid'            => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'GUID for the object, as it exists in the database.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit' ),
 				),
+<<<<<<< HEAD
 				'id'           => array(
+=======
+				'id'              => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'Unique identifier for the object.' ),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit', 'embed' ),
 				),
+<<<<<<< HEAD
 				'modified'     => array(
+=======
+				'modified'        => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( "The date the object was last modified, in the site's timezone." ),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
+<<<<<<< HEAD
 				'modified_gmt' => array(
+=======
+				'modified_gmt'    => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'The date the object was last modified, as GMT.' ),
 					'type'        => 'string',
 					'format'      => 'date-time',
 					'context'     => array( 'view', 'edit' ),
 				),
+<<<<<<< HEAD
 				'parent'       => array(
 					'description' => __( 'The ID for the parent of the object.' ),
 					'type'        => 'integer',
 					'context'     => array( 'view', 'edit', 'embed' ),
 				),
 				'slug'         => array(
+=======
+				'parent'          => array(
+					'description' => __( 'The ID for the parent of the object.' ),
+					'type'        => 'integer',
+					'context'     => array( 'view', 'edit', 'embed' ),
+					),
+				'slug'            => array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'description' => __( 'An alphanumeric identifier for the object unique to its type.' ),
 					'type'        => 'string',
 					'context'     => array( 'view', 'edit', 'embed' ),

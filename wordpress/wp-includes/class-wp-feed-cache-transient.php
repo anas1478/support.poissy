@@ -50,8 +50,13 @@ class WP_Feed_Cache_Transient {
 	 * @param string $filename  Unique identifier for cache object.
 	 * @param string $extension 'spi' or 'spc'.
 	 */
+<<<<<<< HEAD
 	public function __construct( $location, $filename, $extension ) {
 		$this->name     = 'feed_' . $filename;
+=======
+	public function __construct($location, $filename, $extension) {
+		$this->name = 'feed_' . $filename;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->mod_name = 'feed_mod_' . $filename;
 
 		$lifetime = $this->lifetime;
@@ -63,7 +68,11 @@ class WP_Feed_Cache_Transient {
 		 * @param int    $lifetime Cache duration in seconds. Default is 43200 seconds (12 hours).
 		 * @param string $filename Unique identifier for the cache object.
 		 */
+<<<<<<< HEAD
 		$this->lifetime = apply_filters( 'wp_feed_cache_transient_lifetime', $lifetime, $filename );
+=======
+		$this->lifetime = apply_filters( 'wp_feed_cache_transient_lifetime', $lifetime, $filename);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -74,13 +83,22 @@ class WP_Feed_Cache_Transient {
 	 * @param SimplePie $data Data to save.
 	 * @return true Always true.
 	 */
+<<<<<<< HEAD
 	public function save( $data ) {
+=======
+	public function save($data) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( $data instanceof SimplePie ) {
 			$data = $data->data;
 		}
 
+<<<<<<< HEAD
 		set_transient( $this->name, $data, $this->lifetime );
 		set_transient( $this->mod_name, time(), $this->lifetime );
+=======
+		set_transient($this->name, $data, $this->lifetime);
+		set_transient($this->mod_name, time(), $this->lifetime);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return true;
 	}
 
@@ -92,7 +110,11 @@ class WP_Feed_Cache_Transient {
 	 * @return mixed Transient value.
 	 */
 	public function load() {
+<<<<<<< HEAD
 		return get_transient( $this->name );
+=======
+		return get_transient($this->name);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -103,7 +125,11 @@ class WP_Feed_Cache_Transient {
 	 * @return mixed Transient value.
 	 */
 	public function mtime() {
+<<<<<<< HEAD
 		return get_transient( $this->mod_name );
+=======
+		return get_transient($this->mod_name);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -114,7 +140,11 @@ class WP_Feed_Cache_Transient {
 	 * @return bool False if value was not set and true if value was set.
 	 */
 	public function touch() {
+<<<<<<< HEAD
 		return set_transient( $this->mod_name, time(), $this->lifetime );
+=======
+		return set_transient($this->mod_name, time(), $this->lifetime);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -125,8 +155,13 @@ class WP_Feed_Cache_Transient {
 	 * @return true Always true.
 	 */
 	public function unlink() {
+<<<<<<< HEAD
 		delete_transient( $this->name );
 		delete_transient( $this->mod_name );
+=======
+		delete_transient($this->name);
+		delete_transient($this->mod_name);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return true;
 	}
 }

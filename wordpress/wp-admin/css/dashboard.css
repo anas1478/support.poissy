@@ -141,6 +141,10 @@
 
 .welcome-panel .welcome-panel-close {
 	position: absolute;
+<<<<<<< HEAD
+=======
+	z-index: 10;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	top: 10px;
 	right: 10px;
 	padding: 10px 15px 10px 21px;
@@ -165,7 +169,11 @@
 }
 
 .welcome-panel-content {
+<<<<<<< HEAD
 	margin-left: 13px;
+=======
+	margin: 0 13px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	max-width: 1500px;
 }
 
@@ -202,7 +210,11 @@
 }
 
 .welcome-panel .welcome-panel-column ul {
+<<<<<<< HEAD
 	margin: 0.8em 1em 1em 0;
+=======
+		margin: 0.8em 1em 1em 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .welcome-panel .welcome-panel-column li {
@@ -245,11 +257,14 @@
 	top: -1px;
 }
 
+<<<<<<< HEAD
 .welcome-panel .welcome-setup-home:before {
 	content: "\f102";
 	top: -1px;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .welcome-panel .welcome-view-site:before {
 	content: "\f115";
 	top: -2px;
@@ -394,7 +409,11 @@
 .community-events li {
 	margin: 0;
 	padding: 8px 12px;
+<<<<<<< HEAD
 	color: #32373c;
+=======
+	color: #72777c;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 .community-events li:first-child {
 	border-top: 1px solid #eee;
@@ -1121,6 +1140,7 @@ a.rsswidget {
 	font-size: 16px;
 }
 
+<<<<<<< HEAD
 /* PHP Nag */
 #dashboard_php_nag .dashicons-warning {
 	color: #ffb900;
@@ -1143,6 +1163,8 @@ a.rsswidget {
 	line-height: 25px;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* =Media Queries
 -------------------------------------------------------------- */
 
@@ -1250,10 +1272,16 @@ a.rsswidget {
 	.welcome-panel .welcome-panel-column ul {
 		margin: 0.4em 0 0;
 	}
+<<<<<<< HEAD
 
 }
 
 @media screen and (max-width: 782px) {
+=======
+}
+
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#dashboard_recent_comments #the-comment-list .comment-item .avatar {
 		height: 30px;
 		width: 30px;

@@ -1,7 +1,10 @@
 /*
  * Script run inside a Customizer preview frame.
+<<<<<<< HEAD
  *
  * @output wp-includes/js/customize-preview.js
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  */
 (function( exports, $ ){
 	var api = wp.customize,
@@ -237,7 +240,11 @@
 	 * @returns {void}
 	 */
 	api.addLinkPreviewing = function addLinkPreviewing() {
+<<<<<<< HEAD
 		var linkSelectors = 'a[href], area[href]';
+=======
+		var linkSelectors = 'a[href], area';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Inject links into initial document.
 		$( document.body ).find( linkSelectors ).each( function() {
@@ -337,11 +344,14 @@
 	api.prepareLinkPreview = function prepareLinkPreview( element ) {
 		var queryParams, $element = $( element );
 
+<<<<<<< HEAD
         // Skip elements with no href attribute. Check first to avoid more expensive checks down the road
         if ( ! element.hasAttribute( 'href' ) ) {
             return;
         }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		// Skip links in admin bar.
 		if ( $element.closest( '#wpadminbar' ).length ) {
 			return;
@@ -384,6 +394,14 @@
 			queryParams.customize_messenger_channel = api.settings.channel;
 		}
 		element.search = $.param( queryParams );
+<<<<<<< HEAD
+=======
+
+		// Prevent links from breaking out of preview iframe.
+		if ( api.settings.channel ) {
+			element.target = '_self';
+		}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	};
 
 	/**
@@ -781,7 +799,11 @@
 			api.settings.changeset.uuid = uuid;
 
 			// Update UUIDs in links and forms.
+<<<<<<< HEAD
 			$( document.body ).find( 'a[href], area[href]' ).each( function() {
+=======
+			$( document.body ).find( 'a[href], area' ).each( function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				api.prepareLinkPreview( this );
 			} );
 			$( document.body ).find( 'form' ).each( function() {
@@ -815,7 +837,11 @@
 
 			api.settings.changeset.autosaved = true; // Start deferring to any autosave once changeset is updated.
 
+<<<<<<< HEAD
 			$( document.body ).find( 'a[href], area[href]' ).each( function() {
+=======
+			$( document.body ).find( 'a[href], area' ).each( function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				api.prepareLinkPreview( this );
 			} );
 			$( document.body ).find( 'form' ).each( function() {

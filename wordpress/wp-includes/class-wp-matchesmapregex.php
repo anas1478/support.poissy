@@ -46,10 +46,17 @@ class WP_MatchesMapRegex {
 	 * @param string $subject subject if regex
 	 * @param array  $matches data to use in map
 	 */
+<<<<<<< HEAD
 	public function __construct( $subject, $matches ) {
 		$this->_subject = $subject;
 		$this->_matches = $matches;
 		$this->output   = $this->_map();
+=======
+	public function __construct($subject, $matches) {
+		$this->_subject = $subject;
+		$this->_matches = $matches;
+		$this->output = $this->_map();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -57,12 +64,22 @@ class WP_MatchesMapRegex {
 	 *
 	 * static helper function to ease use
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param string $subject subject
 	 * @param array  $matches data used for substitution
 	 * @return string
 	 */
+<<<<<<< HEAD
 	public static function apply( $subject, $matches ) {
 		$oSelf = new WP_MatchesMapRegex( $subject, $matches );
+=======
+	public static function apply($subject, $matches) {
+		$oSelf = new WP_MatchesMapRegex($subject, $matches);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		return $oSelf->output;
 	}
 
@@ -72,8 +89,13 @@ class WP_MatchesMapRegex {
 	 * @return string
 	 */
 	private function _map() {
+<<<<<<< HEAD
 		$callback = array( $this, 'callback' );
 		return preg_replace_callback( $this->_pattern, $callback, $this->_subject );
+=======
+		$callback = array($this, 'callback');
+		return preg_replace_callback($this->_pattern, $callback, $this->_subject);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -82,8 +104,14 @@ class WP_MatchesMapRegex {
 	 * @param  array $matches preg_replace regexp matches
 	 * @return string
 	 */
+<<<<<<< HEAD
 	public function callback( $matches ) {
 		$index = intval( substr( $matches[0], 9, -1 ) );
 		return ( isset( $this->_matches[ $index ] ) ? urlencode( $this->_matches[ $index ] ) : '' );
+=======
+	public function callback($matches) {
+		$index = intval(substr($matches[0], 9, -1));
+		return ( isset( $this->_matches[$index] ) ? urlencode($this->_matches[$index]) : '' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 }

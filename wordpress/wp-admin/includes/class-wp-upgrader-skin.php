@@ -25,6 +25,7 @@ class WP_Upgrader_Skin {
 	 * @since 2.8.0
 	 * @var string|bool|WP_Error
 	 */
+<<<<<<< HEAD
 	public $result  = false;
 	public $options = array();
 
@@ -48,6 +49,27 @@ class WP_Upgrader_Skin {
 		if ( is_object( $upgrader ) ) {
 			$this->upgrader =& $upgrader;
 		}
+=======
+	public $result = false;
+	public $options = array();
+
+	/**
+	 *
+	 * @param array $args
+	 */
+	public function __construct($args = array()) {
+		$defaults = array( 'url' => '', 'nonce' => '', 'title' => '', 'context' => false );
+		$this->options = wp_parse_args($args, $defaults);
+	}
+
+	/**
+	 *
+	 * @param WP_Upgrader $upgrader
+	 */
+	public function set_upgrader(&$upgrader) {
+		if ( is_object($upgrader) )
+			$this->upgrader =& $upgrader;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->add_strings();
 	}
 
@@ -88,8 +110,13 @@ class WP_Upgrader_Skin {
 		if ( ! $context ) {
 			$context = $this->options['context'];
 		}
+<<<<<<< HEAD
 		if ( ! empty( $this->options['nonce'] ) ) {
 			$url = wp_nonce_url( $url, $this->options['nonce'] );
+=======
+		if ( !empty($this->options['nonce']) ) {
+			$url = wp_nonce_url($url, $this->options['nonce']);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		$extra_fields = array();
@@ -119,6 +146,7 @@ class WP_Upgrader_Skin {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param string|WP_Error $errors
 	 */
 	public function error( $errors ) {
@@ -134,11 +162,28 @@ class WP_Upgrader_Skin {
 				} else {
 					$this->feedback( $message );
 				}
+=======
+	 *
+	 * @param string|WP_Error $errors
+	 */
+	public function error($errors) {
+		if ( ! $this->done_header )
+			$this->header();
+		if ( is_string($errors) ) {
+			$this->feedback($errors);
+		} elseif ( is_wp_error($errors) && $errors->get_error_code() ) {
+			foreach ( $errors->get_error_messages() as $message ) {
+				if ( $errors->get_error_data() && is_string( $errors->get_error_data() ) )
+					$this->feedback($message . ' ' . esc_html( strip_tags( $errors->get_error_data() ) ) );
+				else
+					$this->feedback($message);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 	}
 
 	/**
+<<<<<<< HEAD
 	 * @param string $string
 	 */
 	public function feedback( $string ) {
@@ -159,6 +204,27 @@ class WP_Upgrader_Skin {
 			return;
 		}
 		show_message( $string );
+=======
+	 *
+	 * @param string $string
+	 */
+	public function feedback($string) {
+		if ( isset( $this->upgrader->strings[$string] ) )
+			$string = $this->upgrader->strings[$string];
+
+		if ( strpos($string, '%') !== false ) {
+			$args = func_get_args();
+			$args = array_splice($args, 1);
+			if ( $args ) {
+				$args = array_map( 'strip_tags', $args );
+				$args = array_map( 'esc_html', $args );
+				$string = vsprintf($string, $args);
+			}
+		}
+		if ( empty($string) )
+			return;
+		show_message($string);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -191,7 +257,11 @@ class WP_Upgrader_Skin {
 		} else {
 			echo '<script type="text/javascript">
 					(function( wp ) {
+<<<<<<< HEAD
 						if ( wp && wp.updates && wp.updates.decrementCount )
+=======
+						if ( wp && wp.updates.decrementCount ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 							wp.updates.decrementCount( "' . $type . '" );
 						}
 					})( window.wp );

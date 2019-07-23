@@ -252,7 +252,11 @@ class Services_JSON
     *
     * @param    mixed   $var    any number, boolean, string, array, or object to be encoded.
     *                           see argument 1 to Services_JSON() above for array-parsing behavior.
+<<<<<<< HEAD
     *                           if var is a string, note that encode() always expects it
+=======
+    *                           if var is a strng, note that encode() always expects it
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     *                           to be in ASCII or UTF-8 format!
     *
     * @return   mixed   JSON string representation of input var or an error if a problem occurs
@@ -268,7 +272,11 @@ class Services_JSON
     *
     * @param    mixed   $var    any number, boolean, string, array, or object to be encoded.
     *                           see argument 1 to Services_JSON() above for array-parsing behavior.
+<<<<<<< HEAD
     *                           if var is a string, note that encode() always expects it
+=======
+    *                           if var is a strng, note that encode() always expects it
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     *                           to be in ASCII or UTF-8 format!
     *
     * @return   mixed   JSON string representation of input var or an error if a problem occurs
@@ -289,7 +297,11 @@ class Services_JSON
     *
     * @param    mixed   $var    any number, boolean, string, array, or object to be encoded.
     *                           see argument 1 to Services_JSON() above for array-parsing behavior.
+<<<<<<< HEAD
     *                           if var is a string, note that encode() always expects it
+=======
+    *                           if var is a strng, note that encode() always expects it
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     *                           to be in ASCII or UTF-8 format!
     *
     * @return   mixed   JSON string representation of input var or an error if a problem occurs

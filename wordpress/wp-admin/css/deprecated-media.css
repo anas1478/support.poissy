@@ -206,6 +206,7 @@ span.required {
 	margin: 8px 0;
 }
 
+<<<<<<< HEAD
 #media-upload .tablenav-pages a,
 #media-upload .tablenav-pages .current {
 	display: inline-block;
@@ -222,6 +223,8 @@ span.required {
 	background: #f7f7f7;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 #filter .tablenav select {
 	border-style: solid;
 	border-width: 1px;
@@ -294,11 +297,19 @@ span.required {
 	border-bottom: 1px solid #ddd;
 }
 
+<<<<<<< HEAD
 h3.media-title {
 	font-size: 1.6em;
 }
 
 h4.media-sub-title {
+=======
+h3.media-title  {
+	font-size: 1.6em;
+}
+
+h4.media-sub-title  {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	border-bottom: 1px solid #ddd;
 	font-size: 1.3em;
 	margin: 12px;

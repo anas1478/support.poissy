@@ -1,14 +1,21 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/editor.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 window.wp = window.wp || {};
 
 ( function( $, wp ) {
 	wp.editor = wp.editor || {};
 
 	/**
+<<<<<<< HEAD
 	 * Utility functions for the editor.
+=======
+	 * @summary Utility functions for the editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @since 2.5.0
 	 */
@@ -22,7 +29,11 @@ window.wp = window.wp || {};
 				$$ = tinymce.$;
 
 				/**
+<<<<<<< HEAD
 				 * Handles onclick events for the Visual/Text tabs.
+=======
+				 * @summary Handles onclick events for the Visual/Text tabs.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 *
 				 * @since 4.3.0
 				 *
@@ -42,7 +53,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Returns the height of the editor toolbar(s) in px.
+=======
+		 * @summary Returns the height of the editor toolbar(s) in px.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.9.0
 		 *
@@ -62,7 +77,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Switches the editor between Visual and Text mode.
+=======
+		 * @summary Switches the editor between Visual and Text mode.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.5.0
 		 *
@@ -188,7 +207,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Checks if a cursor is inside an HTML tag or comment.
+=======
+		 * @summary Checks if a cursor is inside an HTML tag.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * In order to prevent breaking HTML tags when selecting text, the cursor
 		 * must be moved to either the start or end of the tag.
@@ -211,7 +234,11 @@ window.wp = window.wp || {};
 			if ( lastLtPos > lastGtPos || content.substr( cursorPosition, 1 ) === '>' ) {
 				// find what the tag is
 				var tagContent = content.substr( lastLtPos ),
+<<<<<<< HEAD
 					tagMatch = tagContent.match( /<\s*(\/)?(\w+|\!-{2}.*-{2})/ );
+=======
+					tagMatch = tagContent.match( /<\s*(\/)?(\w+)/ );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				if ( ! tagMatch ) {
 					return null;
@@ -231,7 +258,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Checks if the cursor is inside a shortcode
+=======
+		 * @summary Check if the cursor is inside a shortcode
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * If the cursor is inside a shortcode wrapping tag, e.g. `[caption]` it's better to
 		 * move the selection marker to before or after the shortcode.
@@ -285,7 +316,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Gets all shortcodes and their positions in the content
+=======
+		 * @summary Get all shortcodes and their positions in the content
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * This function returns all the shortcodes that could be found in the textarea content
 		 * along with their character positions and boundaries.
@@ -382,7 +417,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Gets adjusted selection cursor positions according to HTML tags, comments, and shortcodes.
+=======
+		 * @summary Get adjusted selection cursor positions according to HTML tags/shortcodes
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Shortcodes and HTML codes are a bit of a special case when selecting, since they may render
 		 * content in Visual mode. If we insert selection markers somewhere inside them, it's really possible
@@ -465,7 +504,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Adds text selection markers in the editor textarea.
+=======
+		 * @summary Adds text selection markers in the editor textarea.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Adds selection markers in the content of the editor `textarea`.
 		 * The method directly manipulates the `textarea` content, to allow TinyMCE plugins
@@ -515,7 +558,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Focuses the selection markers in Visual mode.
+=======
+		 * @summary Focus the selection markers in Visual mode.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * The method checks for existing selection markers inside the editor DOM (Visual mode)
 		 * and create a selection between the two nodes using the DOM `createRange` selection API
@@ -554,7 +601,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Removes selection marker and the parent node if it is an empty paragraph.
+=======
+		 * @summary Remove selection marker and the parent node if it is an empty paragraph.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * By default TinyMCE wraps loose inline tags in a `<p>`.
 		 * When removing selection markers an empty `<p>` may be left behind, remove it.
@@ -573,7 +624,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Scrolls the content to place the selected element in the center of the screen.
+=======
+		 * @summary Scrolls the content to place the selected element in the center of the screen.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Takes an element, that is usually the selection start element, selected in
 		 * `focusHTMLBookmarkInVisualEditor()` and scrolls the screen so the element appears roughly
@@ -648,7 +703,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Finds the current selection position in the Visual editor.
+=======
+		 * @summary Finds the current selection position in the Visual editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Find the current selection in the Visual editor by inserting marker elements at the start
 		 * and end of the selection.
@@ -815,7 +874,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Selects text in the TinyMCE `textarea`.
+=======
+		 * @summary Selects text in the TinyMCE `textarea`.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Selects the text in TinyMCE's textarea that's between `selection.start` and `selection.end`.
 		 *
@@ -856,7 +919,11 @@ window.wp = window.wp || {};
 		} );
 
 		/**
+<<<<<<< HEAD
 		 * Replaces <p> tags with two line breaks. "Opposite" of wpautop().
+=======
+		 * @summary Replaces <p> tags with two line breaks. "Opposite" of wpautop().
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Replaces <p> tags with two line breaks except where the <p> has attributes.
 		 * Unifies whitespace.
@@ -995,7 +1062,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Replaces two line breaks with a paragraph tag and one line break with a <br>.
+=======
+		 * @summary Replaces two line breaks with a paragraph tag and one line break with a <br>.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * Similar to `wpautop()` in formatting.php.
 		 *
@@ -1124,7 +1195,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Fires custom jQuery events `beforePreWpautop` and `afterPreWpautop` when jQuery is available.
+=======
+		 * @summary Fires custom jQuery events `beforePreWpautop` and `afterPreWpautop` when jQuery is available.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.9.0
 		 *
@@ -1150,7 +1225,11 @@ window.wp = window.wp || {};
 		}
 
 		/**
+<<<<<<< HEAD
 		 * Fires custom jQuery events `beforeWpautop` and `afterWpautop` when jQuery is available.
+=======
+		 * @summary Fires custom jQuery events `beforeWpautop` and `afterWpautop` when jQuery is available.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 2.9.0
 		 *
@@ -1204,9 +1283,14 @@ window.wp = window.wp || {};
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Expose the switch editors to be used globally.
 	 *
 	 * @namespace switchEditors
+=======
+	 * @namespace {SwitchEditors} switchEditors
+	 * Expose the switch editors to be used globally.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	window.switchEditors = new SwitchEditors();
 

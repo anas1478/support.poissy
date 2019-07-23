@@ -34,6 +34,7 @@ function edit_link( $link_id = 0 ) {
 		);
 	}
 
+<<<<<<< HEAD
 	$_POST['link_url']   = esc_html( $_POST['link_url'] );
 	$_POST['link_url']   = esc_url( $_POST['link_url'] );
 	$_POST['link_name']  = esc_html( $_POST['link_name'] );
@@ -44,6 +45,17 @@ function edit_link( $link_id = 0 ) {
 	}
 
 	if ( ! empty( $link_id ) ) {
+=======
+	$_POST['link_url'] = esc_html( $_POST['link_url'] );
+	$_POST['link_url'] = esc_url($_POST['link_url']);
+	$_POST['link_name'] = esc_html( $_POST['link_name'] );
+	$_POST['link_image'] = esc_html( $_POST['link_image'] );
+	$_POST['link_rss'] = esc_url($_POST['link_rss']);
+	if ( !isset($_POST['link_visible']) || 'N' != $_POST['link_visible'] )
+		$_POST['link_visible'] = 'Y';
+
+	if ( !empty( $link_id ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$_POST['link_id'] = $link_id;
 		return wp_update_link( $_POST );
 	} else {
@@ -60,6 +72,7 @@ function edit_link( $link_id = 0 ) {
  */
 function get_default_link_to_edit() {
 	$link = new stdClass;
+<<<<<<< HEAD
 	if ( isset( $_GET['linkurl'] ) ) {
 		$link->link_url = esc_url( wp_unslash( $_GET['linkurl'] ) );
 	} else {
@@ -71,6 +84,17 @@ function get_default_link_to_edit() {
 	} else {
 		$link->link_name = '';
 	}
+=======
+	if ( isset( $_GET['linkurl'] ) )
+		$link->link_url = esc_url( wp_unslash( $_GET['linkurl'] ) );
+	else
+		$link->link_url = '';
+
+	if ( isset( $_GET['name'] ) )
+		$link->link_name = esc_attr( wp_unslash( $_GET['name'] ) );
+	else
+		$link->link_name = '';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$link->link_visible = 'Y';
 
@@ -125,7 +149,11 @@ function wp_delete_link( $link_id ) {
  * @return array The requested link's categories
  */
 function wp_get_link_cats( $link_id = 0 ) {
+<<<<<<< HEAD
 	$cats = wp_get_object_terms( $link_id, 'link_category', array( 'fields' => 'ids' ) );
+=======
+	$cats = wp_get_object_terms( $link_id, 'link_category', array('fields' => 'ids') );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	return array_unique( $cats );
 }
 
@@ -155,6 +183,7 @@ function get_link_to_edit( $link ) {
 function wp_insert_link( $linkdata, $wp_error = false ) {
 	global $wpdb;
 
+<<<<<<< HEAD
 	$defaults = array(
 		'link_id'     => 0,
 		'link_name'   => '',
@@ -164,6 +193,12 @@ function wp_insert_link( $linkdata, $wp_error = false ) {
 
 	$args = wp_parse_args( $linkdata, $defaults );
 	$r    = wp_unslash( sanitize_bookmark( $args, 'db' ) );
+=======
+	$defaults = array( 'link_id' => 0, 'link_name' => '', 'link_url' => '', 'link_rating' => 0 );
+
+	$args = wp_parse_args( $linkdata, $defaults );
+	$r = wp_unslash( sanitize_bookmark( $args, 'db' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$link_id   = $r['link_id'];
 	$link_name = $r['link_name'];
@@ -253,6 +288,7 @@ function wp_insert_link( $linkdata, $wp_error = false ) {
  * @since 2.1.0
  *
  * @param int   $link_id         ID of the link to update.
+<<<<<<< HEAD
  * @param int[] $link_categories Array of link category IDs to add the link to.
  */
 function wp_set_link_cats( $link_id = 0, $link_categories = array() ) {
@@ -260,6 +296,14 @@ function wp_set_link_cats( $link_id = 0, $link_categories = array() ) {
 	if ( ! is_array( $link_categories ) || 0 == count( $link_categories ) ) {
 		$link_categories = array( get_option( 'default_link_category' ) );
 	}
+=======
+ * @param array $link_categories Array of link categories to add the link to.
+ */
+function wp_set_link_cats( $link_id = 0, $link_categories = array() ) {
+	// If $link_categories isn't already an array, make it one:
+	if ( !is_array( $link_categories ) || 0 == count( $link_categories ) )
+		$link_categories = array( get_option( 'default_link_category' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	$link_categories = array_map( 'intval', $link_categories );
 	$link_categories = array_unique( $link_categories );
@@ -286,6 +330,7 @@ function wp_update_link( $linkdata ) {
 	$link = wp_slash( $link );
 
 	// Passed link category list overwrites existing category list if not empty.
+<<<<<<< HEAD
 	if ( isset( $linkdata['link_category'] ) && is_array( $linkdata['link_category'] ) && 0 != count( $linkdata['link_category'] ) ) {
 		$link_cats = $linkdata['link_category'];
 	} else {
@@ -294,6 +339,16 @@ function wp_update_link( $linkdata ) {
 
 	// Merge old and new fields with new fields overwriting old ones.
 	$linkdata                  = array_merge( $link, $linkdata );
+=======
+	if ( isset( $linkdata['link_category'] ) && is_array( $linkdata['link_category'] )
+			 && 0 != count( $linkdata['link_category'] ) )
+		$link_cats = $linkdata['link_category'];
+	else
+		$link_cats = $link['link_category'];
+
+	// Merge old and new fields with new fields overwriting old ones.
+	$linkdata = array_merge( $link, $linkdata );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$linkdata['link_category'] = $link_cats;
 
 	return wp_insert_link( $linkdata );
@@ -309,9 +364,14 @@ function wp_update_link( $linkdata ) {
  */
 function wp_link_manager_disabled_message() {
 	global $pagenow;
+<<<<<<< HEAD
 	if ( 'link-manager.php' != $pagenow && 'link-add.php' != $pagenow && 'link.php' != $pagenow ) {
 		return;
 	}
+=======
+	if ( 'link-manager.php' != $pagenow && 'link-add.php' != $pagenow && 'link.php' != $pagenow )
+		return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	add_filter( 'pre_option_link_manager_enabled', '__return_true', 100 );
 	$really_can_manage_links = current_user_can( 'manage_links' );
@@ -319,7 +379,10 @@ function wp_link_manager_disabled_message() {
 
 	if ( $really_can_manage_links && current_user_can( 'install_plugins' ) ) {
 		$link = network_admin_url( 'plugin-install.php?tab=search&amp;s=Link+Manager' );
+<<<<<<< HEAD
 		/* translators: %s: URL of link manager plugin */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		wp_die( sprintf( __( 'If you are looking to use the link manager, please install the <a href="%s">Link Manager</a> plugin.' ), $link ) );
 	}
 

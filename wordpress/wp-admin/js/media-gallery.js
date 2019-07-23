@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * This file is used on media-upload.php which has been replaced by media-new.php and upload.php
  *
@@ -6,6 +7,14 @@
  */
 
  /* global ajaxurl */
+=======
+/* global ajaxurl */
+
+/**
+ * This file is used on media-upload.php which has been replaced by media-new.php and upload.php
+ * Deprecated since 3.5.0
+ */
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 jQuery(function($) {
 	/**
 	 * Adds a click event handler to the element with a 'wp-gallery' class.

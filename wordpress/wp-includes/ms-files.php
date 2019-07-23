@@ -11,9 +11,14 @@
 define( 'SHORTINIT', true );
 require_once( dirname( dirname( __FILE__ ) ) . '/wp-load.php' );
 
+<<<<<<< HEAD
 if ( ! is_multisite() ) {
 	die( 'Multisite support not enabled' );
 }
+=======
+if ( !is_multisite() )
+	die( 'Multisite support not enabled' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 ms_file_constants();
 
@@ -24,13 +29,19 @@ if ( $current_blog->archived == '1' || $current_blog->spam == '1' || $current_bl
 	die( '404 &#8212; File not found.' );
 }
 
+<<<<<<< HEAD
 $file = rtrim( BLOGUPLOADDIR, '/' ) . '/' . str_replace( '..', '', $_GET['file'] );
 if ( ! is_file( $file ) ) {
+=======
+$file = rtrim( BLOGUPLOADDIR, '/' ) . '/' . str_replace( '..', '', $_GET[ 'file' ] );
+if ( !is_file( $file ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	status_header( 404 );
 	die( '404 &#8212; File not found.' );
 }
 
 $mime = wp_check_filetype( $file );
+<<<<<<< HEAD
 if ( false === $mime['type'] && function_exists( 'mime_content_type' ) ) {
 	$mime['type'] = mime_content_type( $file );
 }
@@ -45,6 +56,19 @@ header( 'Content-Type: ' . $mimetype ); // always send this
 if ( false === strpos( $_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS' ) ) {
 	header( 'Content-Length: ' . filesize( $file ) );
 }
+=======
+if ( false === $mime[ 'type' ] && function_exists( 'mime_content_type' ) )
+	$mime[ 'type' ] = mime_content_type( $file );
+
+if ( $mime[ 'type' ] )
+	$mimetype = $mime[ 'type' ];
+else
+	$mimetype = 'image/' . substr( $file, strrpos( $file, '.' ) + 1 );
+
+header( 'Content-Type: ' . $mimetype ); // always send this
+if ( false === strpos( $_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS' ) )
+	header( 'Content-Length: ' . filesize( $file ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 // Optional support for X-Sendfile and X-Accel-Redirect
 if ( WPMU_ACCEL_REDIRECT ) {
@@ -56,7 +80,11 @@ if ( WPMU_ACCEL_REDIRECT ) {
 }
 
 $last_modified = gmdate( 'D, d M Y H:i:s', filemtime( $file ) );
+<<<<<<< HEAD
 $etag          = '"' . md5( $last_modified ) . '"';
+=======
+$etag = '"' . md5( $last_modified ) . '"';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 header( "Last-Modified: $last_modified GMT" );
 header( 'ETag: ' . $etag );
 header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', time() + 100000000 ) . ' GMT' );
@@ -64,20 +92,33 @@ header( 'Expires: ' . gmdate( 'D, d M Y H:i:s', time() + 100000000 ) . ' GMT' );
 // Support for Conditional GET - use stripslashes to avoid formatting.php dependency
 $client_etag = isset( $_SERVER['HTTP_IF_NONE_MATCH'] ) ? stripslashes( $_SERVER['HTTP_IF_NONE_MATCH'] ) : false;
 
+<<<<<<< HEAD
 if ( ! isset( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) ) {
 	$_SERVER['HTTP_IF_MODIFIED_SINCE'] = false;
 }
+=======
+if ( ! isset( $_SERVER['HTTP_IF_MODIFIED_SINCE'] ) )
+	$_SERVER['HTTP_IF_MODIFIED_SINCE'] = false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 $client_last_modified = trim( $_SERVER['HTTP_IF_MODIFIED_SINCE'] );
 // If string is empty, return 0. If not, attempt to parse into a timestamp
 $client_modified_timestamp = $client_last_modified ? strtotime( $client_last_modified ) : 0;
 
 // Make a timestamp for our most recent modification...
+<<<<<<< HEAD
 $modified_timestamp = strtotime( $last_modified );
 
 if ( ( $client_last_modified && $client_etag )
 	? ( ( $client_modified_timestamp >= $modified_timestamp ) && ( $client_etag == $etag ) )
 	: ( ( $client_modified_timestamp >= $modified_timestamp ) || ( $client_etag == $etag ) )
+=======
+$modified_timestamp = strtotime($last_modified);
+
+if ( ( $client_last_modified && $client_etag )
+	? ( ( $client_modified_timestamp >= $modified_timestamp) && ( $client_etag == $etag ) )
+	: ( ( $client_modified_timestamp >= $modified_timestamp) || ( $client_etag == $etag ) )
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	) {
 	status_header( 304 );
 	exit;

@@ -14,7 +14,11 @@
  * @return bool
  */
 function got_mod_rewrite() {
+<<<<<<< HEAD
 	$got_rewrite = apache_mod_loaded( 'mod_rewrite', true );
+=======
+	$got_rewrite = apache_mod_loaded('mod_rewrite', true);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters whether Apache and mod_rewrite are present.
@@ -65,7 +69,11 @@ function got_url_rewrite() {
  * @return array An array of strings from a file (.htaccess ) from between BEGIN and END markers.
  */
 function extract_from_markers( $filename, $marker ) {
+<<<<<<< HEAD
 	$result = array();
+=======
+	$result = array ();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( ! file_exists( $filename ) ) {
 		return $result;
@@ -136,7 +144,11 @@ function insert_with_markers( $filename, $marker, $insertion ) {
 	}
 
 	// Split out the existing file into the preceding lines, and those that appear after the marker
+<<<<<<< HEAD
 	$pre_lines    = $post_lines = $existing_lines = array();
+=======
+	$pre_lines = $post_lines = $existing_lines = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$found_marker = $found_end_marker = false;
 	foreach ( $lines as $line ) {
 		if ( ! $found_marker && false !== strpos( $line, $start_marker ) ) {
@@ -164,6 +176,7 @@ function insert_with_markers( $filename, $marker, $insertion ) {
 	}
 
 	// Generate the new file data
+<<<<<<< HEAD
 	$new_file_data = implode(
 		"\n",
 		array_merge(
@@ -174,6 +187,15 @@ function insert_with_markers( $filename, $marker, $insertion ) {
 			$post_lines
 		)
 	);
+=======
+	$new_file_data = implode( "\n", array_merge(
+		$pre_lines,
+		array( $start_marker ),
+		$insertion,
+		array( $end_marker ),
+		$post_lines
+	) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	// Write to the start of the file, and truncate it to that length
 	fseek( $fp, 0 );
@@ -201,9 +223,14 @@ function insert_with_markers( $filename, $marker, $insertion ) {
  * @return bool|null True on write success, false on failure. Null in multisite.
  */
 function save_mod_rewrite_rules() {
+<<<<<<< HEAD
 	if ( is_multisite() ) {
 		return;
 	}
+=======
+	if ( is_multisite() )
+		return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	global $wp_rewrite;
 
@@ -217,7 +244,11 @@ function save_mod_rewrite_rules() {
 	 * If the file doesn't already exist check for write access to the directory
 	 * and whether we have some rules. Else check for write access to the file.
 	 */
+<<<<<<< HEAD
 	if ( ( ! file_exists( $htaccess_file ) && is_writable( $home_path ) && $wp_rewrite->using_mod_rewrite_permalinks() ) || is_writable( $htaccess_file ) ) {
+=======
+	if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( got_mod_rewrite() ) {
 			$rules = explode( "\n", $wp_rewrite->mod_rewrite_rules() );
 			return insert_with_markers( $htaccess_file, 'WordPress', $rules );
@@ -237,10 +268,16 @@ function save_mod_rewrite_rules() {
  *
  * @return bool|null True on write success, false on failure. Null in multisite.
  */
+<<<<<<< HEAD
 function iis7_save_url_rewrite_rules() {
 	if ( is_multisite() ) {
 		return;
 	}
+=======
+function iis7_save_url_rewrite_rules(){
+	if ( is_multisite() )
+		return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	global $wp_rewrite;
 
@@ -251,12 +288,21 @@ function iis7_save_url_rewrite_rules() {
 	$web_config_file = $home_path . 'web.config';
 
 	// Using win_is_writable() instead of is_writable() because of a bug in Windows PHP
+<<<<<<< HEAD
 	if ( iis7_supports_permalinks() && ( ( ! file_exists( $web_config_file ) && win_is_writable( $home_path ) && $wp_rewrite->using_mod_rewrite_permalinks() ) || win_is_writable( $web_config_file ) ) ) {
 		$rule = $wp_rewrite->iis7_url_rewrite_rules( false );
 		if ( ! empty( $rule ) ) {
 			return iis7_add_rewrite_rule( $web_config_file, $rule );
 		} else {
 			return iis7_delete_rewrite_rule( $web_config_file );
+=======
+	if ( iis7_supports_permalinks() && ( ( ! file_exists($web_config_file) && win_is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks() ) || win_is_writable($web_config_file) ) ) {
+		$rule = $wp_rewrite->iis7_url_rewrite_rules(false, '', '');
+		if ( ! empty($rule) ) {
+			return iis7_add_rewrite_rule($web_config_file, $rule);
+		} else {
+			return iis7_delete_rewrite_rule($web_config_file);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 	return false;
@@ -270,6 +316,7 @@ function iis7_save_url_rewrite_rules() {
  * @param string $file
  */
 function update_recently_edited( $file ) {
+<<<<<<< HEAD
 	$oldfiles = (array) get_option( 'recently_edited' );
 	if ( $oldfiles ) {
 		$oldfiles   = array_reverse( $oldfiles );
@@ -279,6 +326,16 @@ function update_recently_edited( $file ) {
 		if ( 5 < count( $oldfiles ) ) {
 			array_pop( $oldfiles );
 		}
+=======
+	$oldfiles = (array ) get_option( 'recently_edited' );
+	if ( $oldfiles ) {
+		$oldfiles = array_reverse( $oldfiles );
+		$oldfiles[] = $file;
+		$oldfiles = array_reverse( $oldfiles );
+		$oldfiles = array_unique( $oldfiles );
+		if ( 5 < count( $oldfiles ))
+			array_pop( $oldfiles );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	} else {
 		$oldfiles[] = $file;
 	}
@@ -286,7 +343,11 @@ function update_recently_edited( $file ) {
 }
 
 /**
+<<<<<<< HEAD
  * Makes a tree structure for the theme editor's file list.
+=======
+ * Makes a tree structure for the Theme Editor's file list.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 4.9.0
  * @access private
@@ -297,7 +358,11 @@ function update_recently_edited( $file ) {
 function wp_make_theme_file_tree( $allowed_files ) {
 	$tree_list = array();
 	foreach ( $allowed_files as $file_name => $absolute_filename ) {
+<<<<<<< HEAD
 		$list     = explode( '/', $file_name );
+=======
+		$list = explode( '/', $file_name );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$last_dir = &$tree_list;
 		foreach ( $list as $dir ) {
 			$last_dir =& $last_dir[ $dir ];
@@ -308,15 +373,22 @@ function wp_make_theme_file_tree( $allowed_files ) {
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the formatted file list for the theme editor.
+=======
+ * Outputs the formatted file list for the Theme Editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 4.9.0
  * @access private
  *
+<<<<<<< HEAD
  * @global string $relative_file Name of the file being edited relative to the
  *                               theme directory.
  * @global string $stylesheet    The stylesheet name of the theme being edited.
  *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * @param array|string $tree  List of file/folder paths, or filename.
  * @param int          $level The aria-level for the current iteration.
  * @param int          $size  The aria-setsize for the current iteration.
@@ -327,7 +399,11 @@ function wp_print_theme_file_tree( $tree, $level = 2, $size = 1, $index = 1 ) {
 
 	if ( is_array( $tree ) ) {
 		$index = 0;
+<<<<<<< HEAD
 		$size  = count( $tree );
+=======
+		$size = count( $tree );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		foreach ( $tree as $label => $theme_file ) :
 			$index++;
 			if ( ! is_array( $theme_file ) ) {
@@ -346,9 +422,15 @@ function wp_print_theme_file_tree( $tree, $level = 2, $size = 1, $index = 1 ) {
 		endforeach;
 	} else {
 		$filename = $tree;
+<<<<<<< HEAD
 		$url      = add_query_arg(
 			array(
 				'file'  => rawurlencode( $tree ),
+=======
+		$url = add_query_arg(
+			array(
+				'file' => rawurlencode( $tree ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'theme' => rawurlencode( $stylesheet ),
 			),
 			self_admin_url( 'theme-editor.php' )
@@ -379,18 +461,30 @@ function wp_print_theme_file_tree( $tree, $level = 2, $size = 1, $index = 1 ) {
 }
 
 /**
+<<<<<<< HEAD
  * Makes a tree structure for the plugin editor's file list.
+=======
+ * Makes a tree structure for the Plugin Editor's file list.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 4.9.0
  * @access private
  *
+<<<<<<< HEAD
  * @param array $plugin_editable_files List of plugin file paths.
+=======
+ * @param string $plugin_editable_files List of plugin file paths.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  * @return array Tree structure for listing plugin files.
  */
 function wp_make_plugin_file_tree( $plugin_editable_files ) {
 	$tree_list = array();
 	foreach ( $plugin_editable_files as $plugin_file ) {
+<<<<<<< HEAD
 		$list     = explode( '/', preg_replace( '#^.+?/#', '', $plugin_file ) );
+=======
+		$list = explode( '/', preg_replace( '#^.+?/#', '', $plugin_file ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$last_dir = &$tree_list;
 		foreach ( $list as $dir ) {
 			$last_dir =& $last_dir[ $dir ];
@@ -401,7 +495,11 @@ function wp_make_plugin_file_tree( $plugin_editable_files ) {
 }
 
 /**
+<<<<<<< HEAD
  * Outputs the formatted file list for the plugin editor.
+=======
+ * Outputs the formatted file list for the Plugin Editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 4.9.0
  * @access private
@@ -416,7 +514,11 @@ function wp_print_plugin_file_tree( $tree, $label = '', $level = 2, $size = 1, $
 	global $file, $plugin;
 	if ( is_array( $tree ) ) {
 		$index = 0;
+<<<<<<< HEAD
 		$size  = count( $tree );
+=======
+		$size = count( $tree );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		foreach ( $tree as $label => $plugin_file ) :
 			$index++;
 			if ( ! is_array( $plugin_file ) ) {
@@ -436,7 +538,11 @@ function wp_print_plugin_file_tree( $tree, $label = '', $level = 2, $size = 1, $
 	} else {
 		$url = add_query_arg(
 			array(
+<<<<<<< HEAD
 				'file'   => rawurlencode( $tree ),
+=======
+				'file' => rawurlencode( $tree ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				'plugin' => rawurlencode( $plugin ),
 			),
 			self_admin_url( 'plugin-editor.php' )
@@ -470,9 +576,14 @@ function wp_print_plugin_file_tree( $tree, $label = '', $level = 2, $size = 1, $
  * @param string $value
  */
 function update_home_siteurl( $old_value, $value ) {
+<<<<<<< HEAD
 	if ( wp_installing() ) {
 		return;
 	}
+=======
+	if ( wp_installing() )
+		return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( is_multisite() && ms_is_switched() ) {
 		delete_option( 'rewrite_rules' );
@@ -514,6 +625,7 @@ function wp_reset_vars( $vars ) {
  *
  * @param string|WP_Error $message
  */
+<<<<<<< HEAD
 function show_message( $message ) {
 	if ( is_wp_error( $message ) ) {
 		if ( $message->get_error_data() && is_string( $message->get_error_data() ) ) {
@@ -521,6 +633,14 @@ function show_message( $message ) {
 		} else {
 			$message = $message->get_error_message();
 		}
+=======
+function show_message($message) {
+	if ( is_wp_error($message) ){
+		if ( $message->get_error_data() && is_string( $message->get_error_data() ) )
+			$message = $message->get_error_message() . ': ' . $message->get_error_data();
+		else
+			$message = $message->get_error_message();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	echo "<p>$message</p>\n";
 	wp_ob_end_flush_all();
@@ -534,6 +654,7 @@ function show_message( $message ) {
  * @return array
  */
 function wp_doc_link_parse( $content ) {
+<<<<<<< HEAD
 	if ( ! is_string( $content ) || empty( $content ) ) {
 		return array();
 	}
@@ -545,6 +666,17 @@ function wp_doc_link_parse( $content ) {
 	$tokens           = token_get_all( $content );
 	$count            = count( $tokens );
 	$functions        = array();
+=======
+	if ( !is_string( $content ) || empty( $content ) )
+		return array();
+
+	if ( !function_exists('token_get_all') )
+		return array();
+
+	$tokens = token_get_all( $content );
+	$count = count( $tokens );
+	$functions = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$ignore_functions = array();
 	for ( $t = 0; $t < $count - 2; $t++ ) {
 		if ( ! is_array( $tokens[ $t ] ) ) {
@@ -554,10 +686,17 @@ function wp_doc_link_parse( $content ) {
 		if ( T_STRING == $tokens[ $t ][0] && ( '(' == $tokens[ $t + 1 ] || '(' == $tokens[ $t + 2 ] ) ) {
 			// If it's a function or class defined locally, there's not going to be any docs available
 			if ( ( isset( $tokens[ $t - 2 ][1] ) && in_array( $tokens[ $t - 2 ][1], array( 'function', 'class' ) ) ) || ( isset( $tokens[ $t - 2 ][0] ) && T_OBJECT_OPERATOR == $tokens[ $t - 1 ][0] ) ) {
+<<<<<<< HEAD
 				$ignore_functions[] = $tokens[ $t ][1];
 			}
 			// Add this to our stack of unique references
 			$functions[] = $tokens[ $t ][1];
+=======
+				$ignore_functions[] = $tokens[$t][1];
+			}
+			// Add this to our stack of unique references
+			$functions[] = $tokens[$t][1];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -569,7 +708,11 @@ function wp_doc_link_parse( $content ) {
 	 *
 	 * @since 2.8.0
 	 *
+<<<<<<< HEAD
 	 * @param string[] $ignore_functions Array of names of functions and classes to be ignored.
+=======
+	 * @param array $ignore_functions Functions and classes to be ignored.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	$ignore_functions = apply_filters( 'documentation_ignore_functions', $ignore_functions );
 
@@ -577,9 +720,14 @@ function wp_doc_link_parse( $content ) {
 
 	$out = array();
 	foreach ( $functions as $function ) {
+<<<<<<< HEAD
 		if ( in_array( $function, $ignore_functions ) ) {
 			continue;
 		}
+=======
+		if ( in_array( $function, $ignore_functions ) )
+			continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$out[] = $function;
 	}
 
@@ -593,6 +741,7 @@ function wp_doc_link_parse( $content ) {
  */
 function set_screen_options() {
 
+<<<<<<< HEAD
 	if ( isset( $_POST['wp_screen_options'] ) && is_array( $_POST['wp_screen_options'] ) ) {
 		check_admin_referer( 'screen-options-nonce', 'screenoptionnonce' );
 
@@ -616,6 +765,28 @@ function set_screen_options() {
 		} else {
 			$option = str_replace( '-', '_', $option );
 		}
+=======
+	if ( isset($_POST['wp_screen_options']) && is_array($_POST['wp_screen_options']) ) {
+		check_admin_referer( 'screen-options-nonce', 'screenoptionnonce' );
+
+		if ( !$user = wp_get_current_user() )
+			return;
+		$option = $_POST['wp_screen_options']['option'];
+		$value = $_POST['wp_screen_options']['value'];
+
+		if ( $option != sanitize_key( $option ) )
+			return;
+
+		$map_option = $option;
+		$type = str_replace('edit_', '', $map_option);
+		$type = str_replace('_per_page', '', $type);
+		if ( in_array( $type, get_taxonomies() ) )
+			$map_option = 'edit_tags_per_page';
+		elseif ( in_array( $type, get_post_types() ) )
+			$map_option = 'edit_per_page';
+		else
+			$option = str_replace('-', '_', $option);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		switch ( $map_option ) {
 			case 'edit_per_page':
@@ -626,7 +797,11 @@ function set_screen_options() {
 			case 'plugins_per_page':
 			case 'export_personal_data_requests_per_page':
 			case 'remove_personal_data_requests_per_page':
+<<<<<<< HEAD
 				// Network admin
+=======
+			// Network admin
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			case 'sites_network_per_page':
 			case 'users_network_per_page':
 			case 'site_users_network_per_page':
@@ -634,11 +809,19 @@ function set_screen_options() {
 			case 'themes_network_per_page':
 			case 'site_themes_network_per_page':
 				$value = (int) $value;
+<<<<<<< HEAD
 				if ( $value < 1 || $value > 999 ) {
 					return;
 				}
 				break;
 			default:
+=======
+				if ( $value < 1 || $value > 999 )
+					return;
+				break;
+			default:
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				/**
 				 * Filters a screen option value before it is set.
 				 *
@@ -651,12 +834,17 @@ function set_screen_options() {
 				 *
 				 * @see set_screen_options()
 				 *
+<<<<<<< HEAD
 				 * @param bool     $keep   Whether to save or skip saving the screen option value. Default false.
+=======
+				 * @param bool|int $value  Screen option value. Default false to skip.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * @param string   $option The option name.
 				 * @param int      $value  The number of rows to use.
 				 */
 				$value = apply_filters( 'set-screen-option', false, $option, $value );
 
+<<<<<<< HEAD
 				if ( false === $value ) {
 					return;
 				}
@@ -664,6 +852,14 @@ function set_screen_options() {
 		}
 
 		update_user_meta( $user->ID, $option, $value );
+=======
+				if ( false === $value )
+					return;
+				break;
+		}
+
+		update_user_meta($user->ID, $option, $value);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$url = remove_query_arg( array( 'pagenum', 'apage', 'paged' ), wp_get_referer() );
 		if ( isset( $_POST['mode'] ) ) {
@@ -683,15 +879,22 @@ function set_screen_options() {
  * @return bool
  * @param string $filename The file path to the configuration file
  */
+<<<<<<< HEAD
 function iis7_rewrite_rule_exists( $filename ) {
 	if ( ! file_exists( $filename ) ) {
 		return false;
 	}
+=======
+function iis7_rewrite_rule_exists($filename) {
+	if ( ! file_exists($filename) )
+		return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( ! class_exists( 'DOMDocument', false ) ) {
 		return false;
 	}
 
 	$doc = new DOMDocument();
+<<<<<<< HEAD
 	if ( $doc->load( $filename ) === false ) {
 		return false;
 	}
@@ -702,6 +905,16 @@ function iis7_rewrite_rule_exists( $filename ) {
 	} else {
 		return true;
 	}
+=======
+	if ( $doc->load($filename) === false )
+		return false;
+	$xpath = new DOMXPath($doc);
+	$rules = $xpath->query('/configuration/system.webServer/rewrite/rules/rule[starts-with(@name,\'wordpress\')] | /configuration/system.webServer/rewrite/rules/rule[starts-with(@name,\'WordPress\')]');
+	if ( $rules->length == 0 )
+		return false;
+	else
+		return true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -712,16 +925,24 @@ function iis7_rewrite_rule_exists( $filename ) {
  * @param string $filename Name of the configuration file
  * @return bool
  */
+<<<<<<< HEAD
 function iis7_delete_rewrite_rule( $filename ) {
 	// If configuration file does not exist then rules also do not exist so there is nothing to delete
 	if ( ! file_exists( $filename ) ) {
 		return true;
 	}
+=======
+function iis7_delete_rewrite_rule($filename) {
+	// If configuration file does not exist then rules also do not exist so there is nothing to delete
+	if ( ! file_exists($filename) )
+		return true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	if ( ! class_exists( 'DOMDocument', false ) ) {
 		return false;
 	}
 
+<<<<<<< HEAD
 	$doc                     = new DOMDocument();
 	$doc->preserveWhiteSpace = false;
 
@@ -736,6 +957,21 @@ function iis7_delete_rewrite_rule( $filename ) {
 		$parent->removeChild( $child );
 		$doc->formatOutput = true;
 		saveDomDocument( $doc, $filename );
+=======
+	$doc = new DOMDocument();
+	$doc->preserveWhiteSpace = false;
+
+	if ( $doc -> load($filename) === false )
+		return false;
+	$xpath = new DOMXPath($doc);
+	$rules = $xpath->query('/configuration/system.webServer/rewrite/rules/rule[starts-with(@name,\'wordpress\')] | /configuration/system.webServer/rewrite/rules/rule[starts-with(@name,\'WordPress\')]');
+	if ( $rules->length > 0 ) {
+		$child = $rules->item(0);
+		$parent = $child->parentNode;
+		$parent->removeChild($child);
+		$doc->formatOutput = true;
+		saveDomDocument($doc, $filename);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 	return true;
 }
@@ -749,12 +985,17 @@ function iis7_delete_rewrite_rule( $filename ) {
  * @param string $rewrite_rule The XML fragment with URL Rewrite rule
  * @return bool
  */
+<<<<<<< HEAD
 function iis7_add_rewrite_rule( $filename, $rewrite_rule ) {
+=======
+function iis7_add_rewrite_rule($filename, $rewrite_rule) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	if ( ! class_exists( 'DOMDocument', false ) ) {
 		return false;
 	}
 
 	// If configuration file does not exist then we create one.
+<<<<<<< HEAD
 	if ( ! file_exists( $filename ) ) {
 		$fp = fopen( $filename, 'w' );
 		fwrite( $fp, '<configuration/>' );
@@ -807,18 +1048,79 @@ function iis7_add_rewrite_rule( $filename, $rewrite_rule ) {
 					$config_node = $doc->createElement( 'configuration' );
 					$doc->appendChild( $config_node );
 					$config_node->appendChild( $system_webServer_node );
+=======
+	if ( ! file_exists($filename) ) {
+		$fp = fopen( $filename, 'w');
+		fwrite($fp, '<configuration/>');
+		fclose($fp);
+	}
+
+	$doc = new DOMDocument();
+	$doc->preserveWhiteSpace = false;
+
+	if ( $doc->load($filename) === false )
+		return false;
+
+	$xpath = new DOMXPath($doc);
+
+	// First check if the rule already exists as in that case there is no need to re-add it
+	$wordpress_rules = $xpath->query('/configuration/system.webServer/rewrite/rules/rule[starts-with(@name,\'wordpress\')] | /configuration/system.webServer/rewrite/rules/rule[starts-with(@name,\'WordPress\')]');
+	if ( $wordpress_rules->length > 0 )
+		return true;
+
+	// Check the XPath to the rewrite rule and create XML nodes if they do not exist
+	$xmlnodes = $xpath->query('/configuration/system.webServer/rewrite/rules');
+	if ( $xmlnodes->length > 0 ) {
+		$rules_node = $xmlnodes->item(0);
+	} else {
+		$rules_node = $doc->createElement('rules');
+
+		$xmlnodes = $xpath->query('/configuration/system.webServer/rewrite');
+		if ( $xmlnodes->length > 0 ) {
+			$rewrite_node = $xmlnodes->item(0);
+			$rewrite_node->appendChild($rules_node);
+		} else {
+			$rewrite_node = $doc->createElement('rewrite');
+			$rewrite_node->appendChild($rules_node);
+
+			$xmlnodes = $xpath->query('/configuration/system.webServer');
+			if ( $xmlnodes->length > 0 ) {
+				$system_webServer_node = $xmlnodes->item(0);
+				$system_webServer_node->appendChild($rewrite_node);
+			} else {
+				$system_webServer_node = $doc->createElement('system.webServer');
+				$system_webServer_node->appendChild($rewrite_node);
+
+				$xmlnodes = $xpath->query('/configuration');
+				if ( $xmlnodes->length > 0 ) {
+					$config_node = $xmlnodes->item(0);
+					$config_node->appendChild($system_webServer_node);
+				} else {
+					$config_node = $doc->createElement('configuration');
+					$doc->appendChild($config_node);
+					$config_node->appendChild($system_webServer_node);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		}
 	}
 
 	$rule_fragment = $doc->createDocumentFragment();
+<<<<<<< HEAD
 	$rule_fragment->appendXML( $rewrite_rule );
 	$rules_node->appendChild( $rule_fragment );
 
 	$doc->encoding     = 'UTF-8';
 	$doc->formatOutput = true;
 	saveDomDocument( $doc, $filename );
+=======
+	$rule_fragment->appendXML($rewrite_rule);
+	$rules_node->appendChild($rule_fragment);
+
+	$doc->encoding = "UTF-8";
+	$doc->formatOutput = true;
+	saveDomDocument($doc, $filename);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return true;
 }
@@ -831,12 +1133,21 @@ function iis7_add_rewrite_rule( $filename, $rewrite_rule ) {
  * @param DOMDocument $doc
  * @param string $filename
  */
+<<<<<<< HEAD
 function saveDomDocument( $doc, $filename ) {
 	$config = $doc->saveXML();
 	$config = preg_replace( "/([^\r])\n/", "$1\r\n", $config );
 	$fp     = fopen( $filename, 'w' );
 	fwrite( $fp, $config );
 	fclose( $fp );
+=======
+function saveDomDocument($doc, $filename) {
+	$config = $doc->saveXML();
+	$config = preg_replace("/([^\r])\n/", "$1\r\n", $config);
+	$fp = fopen($filename, 'w');
+	fwrite($fp, $config);
+	fclose($fp);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -855,6 +1166,7 @@ function admin_color_scheme_picker( $user_id ) {
 
 	if ( isset( $_wp_admin_css_colors['fresh'] ) ) {
 		// Set Default ('fresh') and Light should go first.
+<<<<<<< HEAD
 		$_wp_admin_css_colors = array_filter(
 			array_merge(
 				array(
@@ -864,6 +1176,9 @@ function admin_color_scheme_picker( $user_id ) {
 				$_wp_admin_css_colors
 			)
 		);
+=======
+		$_wp_admin_css_colors = array_filter( array_merge( array( 'fresh' => '', 'light' => '' ), $_wp_admin_css_colors ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	$current_color = get_user_option( 'admin_color', $user_id );
@@ -903,7 +1218,11 @@ function admin_color_scheme_picker( $user_id ) {
 
 		endforeach;
 
+<<<<<<< HEAD
 		?>
+=======
+	?>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	</fieldset>
 	<?php
 }
@@ -928,11 +1247,15 @@ function wp_color_scheme_settings() {
 		$icon_colors = $_wp_admin_css_colors['fresh']->icon_colors;
 	} else {
 		// Fall back to the default set of icon colors if the default scheme is missing.
+<<<<<<< HEAD
 		$icon_colors = array(
 			'base'    => '#a0a5aa',
 			'focus'   => '#00a0d2',
 			'current' => '#fff',
 		);
+=======
+		$icon_colors = array( 'base' => '#82878c', 'focus' => '#00a0d2', 'current' => '#fff' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	echo '<script type="text/javascript">var _wpColorScheme = ' . wp_json_encode( array( 'icons' => $icon_colors ) ) . ";</script>\n";
@@ -964,25 +1287,42 @@ function wp_check_locked_posts( $response, $data, $screen_id ) {
 
 	if ( array_key_exists( 'wp-check-locked-posts', $data ) && is_array( $data['wp-check-locked-posts'] ) ) {
 		foreach ( $data['wp-check-locked-posts'] as $key ) {
+<<<<<<< HEAD
 			if ( ! $post_id = absint( substr( $key, 5 ) ) ) {
 				continue;
 			}
+=======
+			if ( ! $post_id = absint( substr( $key, 5 ) ) )
+				continue;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			if ( ( $user_id = wp_check_post_lock( $post_id ) ) && ( $user = get_userdata( $user_id ) ) && current_user_can( 'edit_post', $post_id ) ) {
 				$send = array( 'text' => sprintf( __( '%s is currently editing' ), $user->display_name ) );
 
+<<<<<<< HEAD
 				if ( ( $avatar = get_avatar( $user->ID, 18 ) ) && preg_match( "|src='([^']+)'|", $avatar, $matches ) ) {
 					$send['avatar_src'] = $matches[1];
 				}
 
 				$checked[ $key ] = $send;
+=======
+				if ( ( $avatar = get_avatar( $user->ID, 18 ) ) && preg_match( "|src='([^']+)'|", $avatar, $matches ) )
+					$send['avatar_src'] = $matches[1];
+
+				$checked[$key] = $send;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 		}
 	}
 
+<<<<<<< HEAD
 	if ( ! empty( $checked ) ) {
 		$response['wp-check-locked-posts'] = $checked;
 	}
+=======
+	if ( ! empty( $checked ) )
+		$response['wp-check-locked-posts'] = $checked;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	return $response;
 }
@@ -1000,6 +1340,7 @@ function wp_check_locked_posts( $response, $data, $screen_id ) {
 function wp_refresh_post_lock( $response, $data, $screen_id ) {
 	if ( array_key_exists( 'wp-refresh-post-lock', $data ) ) {
 		$received = $data['wp-refresh-post-lock'];
+<<<<<<< HEAD
 		$send     = array();
 
 		if ( ! $post_id = absint( $received['post_id'] ) ) {
@@ -1019,13 +1360,36 @@ function wp_refresh_post_lock( $response, $data, $screen_id ) {
 				if ( preg_match( "|src='([^']+)'|", $avatar, $matches ) ) {
 					$error['avatar_src'] = $matches[1];
 				}
+=======
+		$send = array();
+
+		if ( ! $post_id = absint( $received['post_id'] ) )
+			return $response;
+
+		if ( ! current_user_can('edit_post', $post_id) )
+			return $response;
+
+		if ( ( $user_id = wp_check_post_lock( $post_id ) ) && ( $user = get_userdata( $user_id ) ) ) {
+			$error = array(
+				'text' => sprintf( __( '%s has taken over and is currently editing.' ), $user->display_name )
+			);
+
+			if ( $avatar = get_avatar( $user->ID, 64 ) ) {
+				if ( preg_match( "|src='([^']+)'|", $avatar, $matches ) )
+					$error['avatar_src'] = $matches[1];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			$send['lock_error'] = $error;
 		} else {
+<<<<<<< HEAD
 			if ( $new_lock = wp_set_post_lock( $post_id ) ) {
 				$send['new_lock'] = implode( ':', $new_lock );
 			}
+=======
+			if ( $new_lock = wp_set_post_lock( $post_id ) )
+				$send['new_lock'] = implode( ':', $new_lock );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		$response['wp-refresh-post-lock'] = $send;
@@ -1046,7 +1410,11 @@ function wp_refresh_post_lock( $response, $data, $screen_id ) {
  */
 function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 	if ( array_key_exists( 'wp-refresh-post-nonces', $data ) ) {
+<<<<<<< HEAD
 		$received                           = $data['wp-refresh-post-nonces'];
+=======
+		$received = $data['wp-refresh-post-nonces'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$response['wp-refresh-post-nonces'] = array( 'check' => 1 );
 
 		if ( ! $post_id = absint( $received['post_id'] ) ) {
@@ -1059,11 +1427,19 @@ function wp_refresh_post_nonces( $response, $data, $screen_id ) {
 
 		$response['wp-refresh-post-nonces'] = array(
 			'replace' => array(
+<<<<<<< HEAD
 				'getpermalinknonce'    => wp_create_nonce( 'getpermalink' ),
 				'samplepermalinknonce' => wp_create_nonce( 'samplepermalink' ),
 				'closedpostboxesnonce' => wp_create_nonce( 'closedpostboxes' ),
 				'_ajax_linking_nonce'  => wp_create_nonce( 'internal-linking' ),
 				'_wpnonce'             => wp_create_nonce( 'update-post_' . $post_id ),
+=======
+				'getpermalinknonce' => wp_create_nonce('getpermalink'),
+				'samplepermalinknonce' => wp_create_nonce('samplepermalink'),
+				'closedpostboxesnonce' => wp_create_nonce('closedpostboxes'),
+				'_ajax_linking_nonce' => wp_create_nonce( 'internal-linking' ),
+				'_wpnonce' => wp_create_nonce( 'update-post_' . $post_id ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			),
 		);
 	}
@@ -1124,6 +1500,7 @@ function heartbeat_autosave( $response, $data ) {
 		$saved = wp_autosave( $data['wp_autosave'] );
 
 		if ( is_wp_error( $saved ) ) {
+<<<<<<< HEAD
 			$response['wp_autosave'] = array(
 				'success' => false,
 				'message' => $saved->get_error_message(),
@@ -1133,14 +1510,23 @@ function heartbeat_autosave( $response, $data ) {
 				'success' => false,
 				'message' => __( 'Error while saving.' ),
 			);
+=======
+			$response['wp_autosave'] = array( 'success' => false, 'message' => $saved->get_error_message() );
+		} elseif ( empty( $saved ) ) {
+			$response['wp_autosave'] = array( 'success' => false, 'message' => __( 'Error while saving.' ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} else {
 			/* translators: draft saved date format, see https://secure.php.net/date */
 			$draft_saved_date_format = __( 'g:i:s a' );
 			/* translators: %s: date and time */
+<<<<<<< HEAD
 			$response['wp_autosave'] = array(
 				'success' => true,
 				'message' => sprintf( __( 'Draft saved at %s.' ), date_i18n( $draft_saved_date_format ) ),
 			);
+=======
+			$response['wp_autosave'] = array( 'success' => true, 'message' => sprintf( __( 'Draft saved at %s.' ), date_i18n( $draft_saved_date_format ) ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 	}
 
@@ -1172,7 +1558,11 @@ function wp_admin_canonical_url() {
 			window.history.replaceState( null, null, document.getElementById( 'wp-admin-canonical' ).href + window.location.hash );
 		}
 	</script>
+<<<<<<< HEAD
 	<?php
+=======
+<?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /**
@@ -1232,7 +1622,11 @@ function update_option_new_admin_email( $old_value, $value ) {
 		return;
 	}
 
+<<<<<<< HEAD
 	$hash            = md5( $value . time() . wp_rand() );
+=======
+	$hash = md5( $value . time() . wp_rand() );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	$new_admin_email = array(
 		'hash'     => $hash,
 		'newemail' => $value,
@@ -1242,8 +1636,12 @@ function update_option_new_admin_email( $old_value, $value ) {
 	$switched_locale = switch_to_locale( get_user_locale() );
 
 	/* translators: Do not translate USERNAME, ADMIN_URL, EMAIL, SITENAME, SITEURL: those are placeholders. */
+<<<<<<< HEAD
 	$email_text = __(
 		'Howdy ###USERNAME###,
+=======
+	$email_text = __( 'Howdy ###USERNAME###,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 You recently requested to have the administration email address on
 your site changed.
@@ -1258,8 +1656,12 @@ This email has been sent to ###EMAIL###
 
 Regards,
 All at ###SITENAME###
+<<<<<<< HEAD
 ###SITEURL###'
 	);
+=======
+###SITEURL###' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Filters the text of the email sent when a change of site admin email address is attempted.
@@ -1285,11 +1687,19 @@ All at ###SITENAME###
 	$content = apply_filters( 'new_admin_email_content', $email_text, $new_admin_email );
 
 	$current_user = wp_get_current_user();
+<<<<<<< HEAD
 	$content      = str_replace( '###USERNAME###', $current_user->user_login, $content );
 	$content      = str_replace( '###ADMIN_URL###', esc_url( self_admin_url( 'options.php?adminhash=' . $hash ) ), $content );
 	$content      = str_replace( '###EMAIL###', $value, $content );
 	$content      = str_replace( '###SITENAME###', wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ), $content );
 	$content      = str_replace( '###SITEURL###', home_url(), $content );
+=======
+	$content = str_replace( '###USERNAME###', $current_user->user_login, $content );
+	$content = str_replace( '###ADMIN_URL###', esc_url( self_admin_url( 'options.php?adminhash=' . $hash ) ), $content );
+	$content = str_replace( '###EMAIL###', $value, $content );
+	$content = str_replace( '###SITENAME###', wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ), $content );
+	$content = str_replace( '###SITEURL###', home_url(), $content );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	wp_mail( $value, sprintf( __( '[%s] New Admin Email Address' ), wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES ) ), $content );
 
@@ -1455,15 +1865,23 @@ final class WP_Privacy_Policy_Content {
 
 		?>
 		<div class="policy-text-updated notice notice-warning is-dismissible">
+<<<<<<< HEAD
 			<p>
 			<?php
+=======
+			<p><?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				printf(
 					/* translators: %s: Privacy Policy Guide URL */
 					__( 'The suggested privacy policy text has changed. Please <a href="%s">review the guide</a> and update your privacy policy.' ),
 					esc_url( admin_url( 'tools.php?wp-privacy-policy-guide=1' ) )
 				);
+<<<<<<< HEAD
 			?>
 			</p>
+=======
+			?></p>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		</div>
 		<?php
 	}
@@ -1482,8 +1900,13 @@ final class WP_Privacy_Policy_Content {
 		}
 
 		// Remove updated|removed status.
+<<<<<<< HEAD
 		$old          = (array) get_post_meta( $policy_page_id, '_wp_suggested_privacy_policy_content' );
 		$done         = array();
+=======
+		$old = (array) get_post_meta( $policy_page_id, '_wp_suggested_privacy_policy_content' );
+		$done = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$update_cache = false;
 
 		foreach ( $old as $old_key => $old_data ) {
@@ -1495,7 +1918,11 @@ final class WP_Privacy_Policy_Content {
 
 			if ( ! empty( $old_data['updated'] ) ) {
 				// 'updated' is now 'added'.
+<<<<<<< HEAD
 				$done[]       = array(
+=======
+				$done[] = array(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'plugin_name' => $old_data['plugin_name'],
 					'policy_text' => $old_data['policy_text'],
 					'added'       => $old_data['updated'],
@@ -1526,11 +1953,19 @@ final class WP_Privacy_Policy_Content {
 	 */
 	public static function get_suggested_policy_text() {
 		$policy_page_id = (int) get_option( 'wp_page_for_privacy_policy' );
+<<<<<<< HEAD
 		$checked        = array();
 		$time           = time();
 		$update_cache   = false;
 		$new            = self::$policy_content;
 		$old            = array();
+=======
+		$checked = array();
+		$time = time();
+		$update_cache = false;
+		$new = self::$policy_content;
+		$old = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		if ( $policy_page_id ) {
 			$old = (array) get_post_meta( $policy_page_id, '_wp_suggested_privacy_policy_content' );
@@ -1545,18 +1980,30 @@ final class WP_Privacy_Policy_Content {
 					// Use the new plugin name in case it was changed, translated, etc.
 					if ( $old_data['plugin_name'] !== $new_data['plugin_name'] ) {
 						$old_data['plugin_name'] = $new_data['plugin_name'];
+<<<<<<< HEAD
 						$update_cache            = true;
+=======
+						$update_cache = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					}
 
 					// A plugin was re-activated.
 					if ( ! empty( $old_data['removed'] ) ) {
 						unset( $old_data['removed'] );
 						$old_data['added'] = $time;
+<<<<<<< HEAD
 						$update_cache      = true;
 					}
 
 					$checked[] = $old_data;
 					$found     = true;
+=======
+						$update_cache = true;
+					}
+
+					$checked[] = $old_data;
+					$found = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				} elseif ( $new_data['plugin_name'] === $old_data['plugin_name'] ) {
 					// The info for the policy was updated.
 					$checked[] = array(
@@ -1564,7 +2011,11 @@ final class WP_Privacy_Policy_Content {
 						'policy_text' => $new_data['policy_text'],
 						'updated'     => $time,
 					);
+<<<<<<< HEAD
 					$found     = $update_cache = true;
+=======
+					$found = $update_cache = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 
 				if ( $found ) {
@@ -1668,10 +2119,17 @@ final class WP_Privacy_Policy_Content {
 
 		$content_array = self::get_suggested_policy_text();
 
+<<<<<<< HEAD
 		$content       = '';
 		$toc           = array( '<li><a href="#wp-privacy-policy-guide-introduction">' . __( 'Introduction' ) . '</a></li>' );
 		$date_format   = __( 'F j, Y' );
 		$copy          = __( 'Copy this section to clipboard' );
+=======
+		$content = '';
+		$toc = array( '<li><a href="#wp-privacy-policy-guide-introduction">' . __( 'Introduction' ) . '</a></li>' );
+		$date_format = __( 'F j, Y' );
+		$copy = __( 'Copy' );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$return_to_top = '<a href="#" class="return-to-top">' . __( '&uarr; Return to Top' ) . '</a>';
 
 		foreach ( $content_array as $section ) {
@@ -1679,14 +2137,22 @@ final class WP_Privacy_Policy_Content {
 
 			if ( ! empty( $section['removed'] ) ) {
 				$class = ' text-removed';
+<<<<<<< HEAD
 				$date  = date_i18n( $date_format, $section['removed'] );
+=======
+				$date = date_i18n( $date_format, $section['removed'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$meta  = sprintf( __( 'Removed %s.' ), $date );
 
 				$removed = __( 'You deactivated this plugin on %s and may no longer need this policy.' );
 				$removed = '<div class="error inline"><p>' . sprintf( $removed, $date ) . '</p></div>';
 			} elseif ( ! empty( $section['updated'] ) ) {
 				$class = ' text-updated';
+<<<<<<< HEAD
 				$date  = date_i18n( $date_format, $section['updated'] );
+=======
+				$date = date_i18n( $date_format, $section['updated'] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$meta  = sprintf( __( 'Updated %s.' ), $date );
 			}
 
@@ -1695,8 +2161,13 @@ final class WP_Privacy_Policy_Content {
 			}
 
 			$plugin_name = esc_html( $section['plugin_name'] );
+<<<<<<< HEAD
 			$toc_id      = 'wp-privacy-policy-guide-' . sanitize_title( $plugin_name );
 			$toc[]       = sprintf( '<li><a href="#%1$s">%2$s</a>' . $meta . '</li>', $toc_id, $plugin_name );
+=======
+			$toc_id = 'wp-privacy-policy-guide-' . sanitize_title( $plugin_name );
+			$toc[] = sprintf( '<li><a href="#%1$s">%2$s</a>' . $meta . '</li>', $toc_id, $plugin_name );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			$content .= '<div class="privacy-text-section' . $class . '">';
 			$content .= '<a id="' . $toc_id . '">&nbsp;</a>';
@@ -1708,12 +2179,21 @@ final class WP_Privacy_Policy_Content {
 			$content .= $return_to_top;
 
 			if ( empty( $section['removed'] ) ) {
+<<<<<<< HEAD
 				$content         .= '<div class="privacy-text-actions">';
 					$content     .= '<button type="button" class="privacy-text-copy button">';
 						$content .= $copy;
 						$content .= '<span class="screen-reader-text">' . sprintf( __( 'Copy suggested policy text from %s.' ), $plugin_name ) . '</span>';
 					$content     .= '</button>';
 				$content         .= '</div>';
+=======
+				$content .= '<div class="privacy-text-actions">';
+					$content .= '<button type="button" class="privacy-text-copy button">';
+						$content .= $copy;
+						$content .= '<span class="screen-reader-text">' . sprintf( __( 'Copy suggested policy text from %s.' ), $plugin_name ) . '</span>';
+					$content .= '</button>';
+				$content .= '</div>';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 
 			$content .= "</div>\n"; // End of .privacy-text-section.
@@ -1761,8 +2241,13 @@ final class WP_Privacy_Policy_Content {
 	 */
 	public static function get_default_content( $description = false, $blocks = true ) {
 		$suggested_text = $description ? '<strong class="privacy-policy-tutorial">' . __( 'Suggested text:' ) . ' </strong>' : '';
+<<<<<<< HEAD
 		$content        = '';
 		$strings        = array();
+=======
+		$content = '';
+		$strings = array();
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Start of the suggested privacy policy text.
 		if ( $description ) {
@@ -1876,7 +2361,11 @@ final class WP_Privacy_Policy_Content {
 
 		/* translators: default privacy policy heading. */
 		$strings[] = '<h2>' . __( 'How long we retain your data' ) . '</h2>';
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( $description ) {
 			/* translators: privacy policy tutorial. */
 			$strings[] = '<p class="privacy-policy-tutorial">' . __( 'In this section you should explain how long you retain personal data collected or processed by the web site. While it is your responsibility to come up with the schedule of how long you keep each dataset for and why you keep it, that information does need to be listed here. For example, you may want to say that you keep contact form entries for six months, analytics records for a year, and customer purchase records for ten years.' ) . '</p>';
@@ -1993,10 +2482,17 @@ final class WP_Privacy_Policy_Content {
 		 * @since 4.9.6
 		 * @since 5.0.0 Added the `$strings`, `$description`, and `$blocks` parameters.
 		 *
+<<<<<<< HEAD
 		 * @param string $content     The default policy content.
 		 * @param array  $strings     An array of privacy policy content strings.
 		 * @param bool   $description Whether policy descriptions should be included.
 		 * @param bool   $blocks      Whether the content should be formatted for the block editor.
+=======
+		 * @param $content     string The default policy content.
+		 * @param $strings     array  An array of privacy policy content strings.
+		 * @param $description bool   Whether policy descriptions should be included.
+		 * @param $blocks      bool   Whether the content should be formatted for the block editor.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		return apply_filters( 'wp_get_default_privacy_policy_content', $content, $strings, $description, $blocks );
 	}
@@ -2011,6 +2507,7 @@ final class WP_Privacy_Policy_Content {
 		wp_add_privacy_policy_content( __( 'WordPress' ), $content );
 	}
 }
+<<<<<<< HEAD
 
 /**
  * Checks if the user needs to update PHP.
@@ -2074,3 +2571,5 @@ function wp_check_php_version() {
 
 	return $response;
 }
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

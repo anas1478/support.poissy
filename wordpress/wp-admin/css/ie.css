@@ -558,7 +558,11 @@ table.ie-fixed {
 }
 
 #update-nav-menu #post-body {
+<<<<<<< HEAD
 	overflow: hidden;
+=======
+	overflow:hidden;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .menu li {
@@ -639,7 +643,11 @@ input[type="password"],
 .mce-btn i.mce-i-wp_page,
 .mce-btn i.mce-i-hr,
 .mce-close {
+<<<<<<< HEAD
 	font-family: tinymce, Arial;
+=======
+	font-family: 'tinymce', Arial;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	font-style: normal;
 	font-weight: 400;
 	font-variant: normal;
@@ -650,12 +658,20 @@ input[type="password"],
 
 .mce-btn i.mce-i-wp_fullscreen,
 .qt-fullscreen {
+<<<<<<< HEAD
 	-ie7-icon: "\e023";
+=======
+	-ie7-icon: '\e023';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .mce-btn i.mce-i-wp_more,
 .mce-btn i.mce-i-wp_page {
+<<<<<<< HEAD
 	-ie7-icon: "\e027";
+=======
+	-ie7-icon: '\e027';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .mce-btn i.mce-i-wp_adv {
@@ -664,7 +680,11 @@ input[type="password"],
 
 .mce-btn i.mce-i-help,
 .mce-btn i.mce-i-wp_help {
+<<<<<<< HEAD
 	-ie7-icon: "\e016";
+=======
+	-ie7-icon: '\e016';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 

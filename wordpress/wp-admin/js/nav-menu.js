@@ -6,21 +6,33 @@
  *
  * @package WordPress
  * @subpackage Administration
+<<<<<<< HEAD
  * @output wp-admin/js/nav-menu.js
  */
 
 /* global menus, postboxes, columns, isRtl, navMenuL10n, ajaxurl, wpNavMenu */
+=======
+ */
+
+/* global menus, postboxes, columns, isRtl, navMenuL10n, ajaxurl */
+
+var wpNavMenu;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 (function($) {
 
 	var api;
 
+<<<<<<< HEAD
 	/**
 	 * Contains all the functions to handle WordPress navigation menus administration.
 	 *
 	 * @namespace wpNavMenu
 	 */
 	api = window.wpNavMenu = {
+=======
+	api = wpNavMenu = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		options : {
 			menuItemDepthPerLevel : 30, // Do not use directly. Use depthToPx and pxToDepth instead.
@@ -171,8 +183,11 @@
 				/**
 				 * Adds selected menu items to the menu.
 				 *
+<<<<<<< HEAD
 				 * @ignore
 				 *
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				 * @param jQuery metabox The metabox jQuery object.
 				 */
 				addSelectedToMenu : function(processMethod) {
@@ -835,6 +850,7 @@
 					}
 				}
 			});
+<<<<<<< HEAD
 
 			$( '#menu-name' ).on( 'input', _.debounce( function () {
 				var menuName = $( document.getElementById( 'menu-name' ) ),
@@ -849,6 +865,8 @@
 				}
 			}, 500 ) );
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$('#add-custom-links input[type="text"]').keypress(function(e){
 				$('#customlinkdiv').removeClass('form-invalid');
 
@@ -887,14 +905,34 @@
 		},
 
 		attachQuickSearchListeners : function() {
+<<<<<<< HEAD
 			var searchTimer;
+=======
+			var searchTimer,
+				inputEvent;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 			// Prevent form submission.
 			$( '#nav-menu-meta' ).on( 'submit', function( event ) {
 				event.preventDefault();
 			});
 
+<<<<<<< HEAD
 			$( '#nav-menu-meta' ).on( 'input', '.quick-search', function() {
+=======
+			/*
+			 * Use feature detection to determine whether inputs should use
+			 * the `keyup` or `input` event. Input is preferred but lacks support
+			 * in legacy browsers. See changeset 34078, see also ticket #26600#comment:59
+			 */
+			if ( 'oninput' in document.createElement( 'input' ) ) {
+				inputEvent = 'input';
+			} else {
+				inputEvent = 'keyup';
+			}
+
+			$( '#nav-menu-meta' ).on( inputEvent, '.quick-search', function() {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				var $this = $( this );
 
 				$this.attr( 'autocomplete', 'off' );
@@ -1180,8 +1218,13 @@
 			menuName = $('#menu-name'),
 			menuNameVal = menuName.val();
 			// Cancel and warn if invalid menu name
+<<<<<<< HEAD
 			if ( ! menuNameVal || ! menuNameVal.replace( /\s+/, '' ) ) {
 				menuName.parent().addClass( 'form-invalid' );
+=======
+			if( !menuNameVal || menuNameVal == menuName.attr('title') || !menuNameVal.replace(/\s+/, '') ) {
+				menuName.parent().addClass('form-invalid');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				return false;
 			}
 			// Copy menu theme locations

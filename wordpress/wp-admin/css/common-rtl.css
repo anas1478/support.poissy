@@ -134,10 +134,13 @@
 	word-wrap: normal !important; /* many screen reader and browser combinations announce broken words as they would appear visually */
 }
 
+<<<<<<< HEAD
 .button .screen-reader-text {
 	height: auto; /* Fixes a Safari+VoiceOver bug, see ticket #42006 */
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .screen-reader-shortcut {
 	position: absolute;
 	top: -1000em;
@@ -158,9 +161,13 @@
 	line-height: normal;
 	box-shadow: 0 0 2px 2px rgba(0,0,0,.6);
 	text-decoration: none;
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
 	outline-offset: -2px;
+=======
+	outline: none;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .hidden,
@@ -275,14 +282,18 @@ a:focus .media-icon img,
 	box-shadow:
 		0 0 0 1px #5b9dd9,
 		0 0 2px 1px rgba(30, 140, 190, .8);
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 1px solid transparent;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .ie8 a:focus {
 	outline: #5b9dd9 solid 1px;
 }
 
+<<<<<<< HEAD
 #adminmenu a:focus {
 	box-shadow: none;
 	/* Only visible in Windows High Contrast mode */
@@ -290,6 +301,9 @@ a:focus .media-icon img,
 	outline-offset: -1px;
 }
 
+=======
+#adminmenu a:focus,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 .screen-reader-text:focus {
 	box-shadow: none;
 	outline: none;
@@ -627,6 +641,10 @@ code {
 	line-height: normal; /* IE8-IE11 need this for buttons */
 	color: #0073aa; /* some of these controls are button elements and don't inherit from links */
 	cursor: pointer;
+<<<<<<< HEAD
+=======
+	outline: 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wrap .wp-heading-inline + .page-title-action {
@@ -648,8 +666,11 @@ code {
 .wrap .page-title-action:focus {
 	border-color: #5b9dd9;
 	box-shadow: 0 0 2px rgba( 30, 140, 190, 0.8 );
+<<<<<<< HEAD
 	/* Only visible in Windows High Contrast mode */
 	outline: 2px solid transparent;
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wrap h1.long-header {
@@ -1533,13 +1554,22 @@ div.error {
 .installed p:before,
 .button.updated-message:before {
 	color: #79ba49;
+<<<<<<< HEAD
 	content: "\f147";
+=======
+	content: '\f147';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /* Error icon. */
 .update-message.notice-error p:before {
+<<<<<<< HEAD
 	color: #dc3232;
 	content: "\f534";
+=======
+	 color: #dc3232;
+	 content: "\f534";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .wrap .notice p:before,
@@ -1565,6 +1595,7 @@ ul#dismissed-updates {
 	display: none;
 }
 
+<<<<<<< HEAD
 #dismissed-updates li > p {
 	margin-top: 0;
 }
@@ -1574,6 +1605,8 @@ ul#dismissed-updates {
 	margin-right: 0.5em;
 }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 form.upgrade {
 	margin-top: 8px;
 }
@@ -1749,7 +1782,11 @@ form.upgrade .hint {
 #contextual-help-wrap h5 {
 	margin: 0;
 	padding: 8px 0;
+<<<<<<< HEAD
 	font-size: 13px;
+=======
+ 	font-size: 13px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	font-weight: 600;
 }
 
@@ -1991,7 +2028,11 @@ html.wp-toolbar {
 	width: 200px;
 	text-align: center;
 	color: #ccc;
+<<<<<<< HEAD
 	font-size: 18px;
+=======
+	font-size:18px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	display: none;
 }
 
@@ -2076,6 +2117,7 @@ html.wp-toolbar {
 	user-select: none;
 }
 
+<<<<<<< HEAD
 .postbox .inside {
 	padding: 0 12px 12px;
 	line-height: 1.4em;
@@ -2087,6 +2129,13 @@ html.wp-toolbar {
 	line-height: 1.4em;
 	font-size: 13px;
 	margin-top: 0;
+=======
+.postbox .inside,
+.stuffbox .inside {
+	padding: 0 12px 12px;
+	line-height: 1.4em;
+	font-size: 13px;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 .postbox .inside {
@@ -2223,10 +2272,17 @@ h1.nav-tab-wrapper, /* Back-compat for pre-4.4 */
 
 /* Back-compat for plugins. Deprecated. Use .wp-clearfix instead. */
 .nav-tab-wrapper:not(.wp-clearfix):after {
+<<<<<<< HEAD
 	content: "";
 	display: table;
 	clear: both;
 }
+=======
+ 	content: "";
+ 	display: table;
+ 	clear: both;
+ }
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 .ie8 .nav-tab-wrapper {
 	/* contain floats establishing a new block formatting context */
@@ -2384,8 +2440,16 @@ body.iframe {
 }
 
 .edit-comment-author {
+<<<<<<< HEAD
 	color: #222;
 	border-bottom: 1px solid #eee;
+=======
+	font-size: 14px;
+	line-height: 1.4;
+	font-weight: 600;
+	color: #222;
+	margin: 2px 9px 0 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 #namediv h3 label, /* Back-compat for pre-4.4 */
@@ -2483,7 +2547,11 @@ div.star-holder .star-rating {
 	font-weight: 400;
 	font-style: normal;
 	vertical-align: top;
+<<<<<<< HEAD
 	transition: color .1s ease-in;
+=======
+	transition: color .1s ease-in 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	text-align: center;
 	color: #ffb900;
 }
@@ -2875,7 +2943,11 @@ div.action-links {
 	margin-left: 1em;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 771px) {
+=======
+@media screen and ( max-width: 771px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#plugin-information-title.with-banner {
 		height: 100px;
 	}
@@ -2992,7 +3064,11 @@ div.action-links {
 }
 
 /* move plugin install close icon to top on narrow screens */
+<<<<<<< HEAD
 @media screen and (max-width: 830px) {
+=======
+@media screen and ( max-width: 830px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	.plugin-details-modal #TB_closeWindowButton {
 		left: 0;
 		top: -30px;
@@ -3162,7 +3238,11 @@ img {
 
 /* Styles for folder indicators/depth */
 .tree-folder .tree-folder::after {
+<<<<<<< HEAD
 	content: "";
+=======
+	content: ' ';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	display: block;
 	position: absolute;
 	right: 2px;
@@ -3171,7 +3251,11 @@ img {
 	bottom: 10px;
 }
 .tree-folder > li::before {
+<<<<<<< HEAD
 	content: "";
+=======
+	content: ' ';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	position: absolute;
 	display: block;
 	border-right: 1px solid #ccc;
@@ -3182,7 +3266,11 @@ img {
 	border-bottom: 1px solid #ccc;
 }
 .tree-folder > li::after {
+<<<<<<< HEAD
 	content: "";
+=======
+	content: ' ';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	position: absolute;
 	display: block;
 	border-right: 1px solid #ccc;
@@ -3387,8 +3475,12 @@ img {
 .control-section.open .accordion-section-title:after,
 #customize-info.open .accordion-section-title:after,
 .nav-menus-php .menu-item-edit-active .item-edit:before,
+<<<<<<< HEAD
 .widget.open .widget-top .widget-action .toggle-indicator:before,
 .widget.widget-in-question .widget-top .widget-action .toggle-indicator:before {
+=======
+.widget.open .widget-top .widget-action .toggle-indicator:before {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	content: "\f142";
 }
 
@@ -3681,7 +3773,11 @@ img {
 	width: device-width;
 }
 
+<<<<<<< HEAD
 @media screen and (max-width: 782px) {
+=======
+@media screen and ( max-width: 782px ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	html.wp-toolbar {
 		padding-top: 46px;
 	}
@@ -3723,6 +3819,11 @@ img {
 	}
 
 	/* Hidden Elements */
+<<<<<<< HEAD
+=======
+	#screen-meta,
+	#screen-meta-links,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	#collapse-menu,
 	.post-format-select {
 		display: none !important;
@@ -3933,6 +4034,7 @@ img {
 		line-height: 26px;
 		height: 28px;
 	}
+<<<<<<< HEAD
 
 	/* Fix help tab columns for smaller screens */
 	#screen-meta #contextual-help-wrap {
@@ -3968,6 +4070,8 @@ img {
 	#screen-meta-links {
 		margin-bottom: 60px; /* Add margins beneath links for better spacing between boxes and elements */
 	}
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 }
 
 /* Smartphone */

@@ -24,6 +24,11 @@ class WP_Customize_Panel {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
+=======
+	 *
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @var int
 	 */
 	protected static $instance_count = 0;
@@ -150,7 +155,11 @@ class WP_Customize_Panel {
 		}
 
 		$this->manager = $manager;
+<<<<<<< HEAD
 		$this->id      = $id;
+=======
+		$this->id = $id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( empty( $this->active_callback ) ) {
 			$this->active_callback = array( $this, 'active_callback' );
 		}
@@ -168,7 +177,11 @@ class WP_Customize_Panel {
 	 * @return bool Whether the panel is active to the current preview.
 	 */
 	final public function active() {
+<<<<<<< HEAD
 		$panel  = $this;
+=======
+		$panel = $this;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$active = call_user_func( $this->active_callback, $this );
 
 		/**
@@ -206,11 +219,19 @@ class WP_Customize_Panel {
 	 * @return array The array to be exported to the client as JSON.
 	 */
 	public function json() {
+<<<<<<< HEAD
 		$array                          = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'type' ) );
 		$array['title']                 = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
 		$array['content']               = $this->get_content();
 		$array['active']                = $this->active();
 		$array['instanceNumber']        = $this->instance_number;
+=======
+		$array = wp_array_slice_assoc( (array) $this, array( 'id', 'description', 'priority', 'type' ) );
+		$array['title'] = html_entity_decode( $this->title, ENT_QUOTES, get_bloginfo( 'charset' ) );
+		$array['content'] = $this->get_content();
+		$array['active'] = $this->active();
+		$array['instanceNumber'] = $this->instance_number;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$array['autoExpandSoleSection'] = $this->auto_expand_sole_section;
 		return $array;
 	}
@@ -316,7 +337,11 @@ class WP_Customize_Panel {
 		<script type="text/html" id="tmpl-customize-panel-<?php echo esc_attr( $this->type ); ?>">
 			<?php $this->render_template(); ?>
 		</script>
+<<<<<<< HEAD
 		<?php
+=======
+        <?php
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -356,12 +381,19 @@ class WP_Customize_Panel {
 		<li class="panel-meta customize-info accordion-section <# if ( ! data.description ) { #> cannot-expand<# } #>">
 			<button class="customize-panel-back" tabindex="-1"><span class="screen-reader-text"><?php _e( 'Back' ); ?></span></button>
 			<div class="accordion-section-title">
+<<<<<<< HEAD
 				<span class="preview-notice">
 				<?php
 					/* translators: %s: the site/panel title in the Customizer */
 					echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
 				?>
 				</span>
+=======
+				<span class="preview-notice"><?php
+					/* translators: %s: the site/panel title in the Customizer */
+					echo sprintf( __( 'You are customizing %s' ), '<strong class="panel-title">{{ data.title }}</strong>' );
+				?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<# if ( data.description ) { #>
 					<button type="button" class="customize-help-toggle dashicons dashicons-editor-help" aria-expanded="false"><span class="screen-reader-text"><?php _e( 'Help' ); ?></span></button>
 				<# } #>

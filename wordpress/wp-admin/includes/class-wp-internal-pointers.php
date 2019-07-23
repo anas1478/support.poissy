@@ -24,6 +24,11 @@ final class WP_Internal_Pointers {
 	 * Individual pointers (e.g. wp390_widgets) can be disabled using the following:
 	 *     remove_action( 'admin_print_footer_scripts', array( 'WP_Internal_Pointers', 'pointer_wp390_widgets' ) );
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param string $hook_suffix The current admin page.
 	 */
 	public static function enqueue_scripts( $hook_suffix ) {
@@ -45,9 +50,14 @@ final class WP_Internal_Pointers {
 		);
 
 		// Check if screen related pointer is registered
+<<<<<<< HEAD
 		if ( empty( $registered_pointers[ $hook_suffix ] ) ) {
 			return;
 		}
+=======
+		if ( empty( $registered_pointers[ $hook_suffix ] ) )
+			return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$pointers = (array) $registered_pointers[ $hook_suffix ];
 
@@ -79,9 +89,14 @@ final class WP_Internal_Pointers {
 		foreach ( array_diff( $pointers, $dismissed ) as $pointer ) {
 			if ( isset( $caps_required[ $pointer ] ) ) {
 				foreach ( $caps_required[ $pointer ] as $cap ) {
+<<<<<<< HEAD
 					if ( ! current_user_can( $cap ) ) {
 						continue 2;
 					}
+=======
+					if ( ! current_user_can( $cap ) )
+						continue 2;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 
@@ -90,9 +105,14 @@ final class WP_Internal_Pointers {
 			$got_pointers = true;
 		}
 
+<<<<<<< HEAD
 		if ( ! $got_pointers ) {
 			return;
 		}
+=======
+		if ( ! $got_pointers )
+			return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		// Add pointers script and style to queue
 		wp_enqueue_style( 'wp-pointer' );
@@ -104,14 +124,24 @@ final class WP_Internal_Pointers {
 	 *
 	 * @since 3.3.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param string $pointer_id The pointer ID.
 	 * @param string $selector The HTML elements, on which the pointer should be attached.
 	 * @param array  $args Arguments to be passed to the pointer JS (see wp-pointer.js).
 	 */
 	private static function print_js( $pointer_id, $selector, $args ) {
+<<<<<<< HEAD
 		if ( empty( $pointer_id ) || empty( $selector ) || empty( $args ) || empty( $args['content'] ) ) {
 			return;
 		}
+=======
+		if ( empty( $pointer_id ) || empty( $selector ) || empty( $args ) || empty( $args['content'] ) )
+			return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		?>
 		<script type="text/javascript">
@@ -180,8 +210,13 @@ final class WP_Internal_Pointers {
 		}
 
 		$js_args = array(
+<<<<<<< HEAD
 			'content'      => $content,
 			'position'     => $position,
+=======
+			'content'  => $content,
+			'position' => $position,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			'pointerClass' => 'wp-pointer arrow-bottom',
 			'pointerWidth' => 420,
 		);
@@ -193,6 +228,11 @@ final class WP_Internal_Pointers {
 	 *
 	 * @since 3.3.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param int $user_id User ID.
 	 */
 	public static function dismiss_pointers_for_new_users( $user_id ) {

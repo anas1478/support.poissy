@@ -1,5 +1,9 @@
 <?php if ( $type == 'plugin' ) :?>
+<<<<<<< HEAD
 <div class="updated" id="akismet_setup_prompt">
+=======
+<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	<form name="akismet_activate" action="<?php echo esc_url( Akismet_Admin::get_page_url() ); ?>" method="POST">
 		<div class="akismet_activate">
 			<div class="aa_a">A</div>

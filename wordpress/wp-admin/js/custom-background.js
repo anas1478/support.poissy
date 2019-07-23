@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * @output wp-admin/js/custom-background.js
  */
@@ -6,6 +7,12 @@
 
 /**
  * Registers all events for customizing the background.
+=======
+/* global ajaxurl */
+
+/**
+ * @summary Registers all events for customizing the background.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
  *
  * @since 3.0.0
  *
@@ -17,7 +24,11 @@
 			bgImage = $( '#custom-background-image' );
 
 		/**
+<<<<<<< HEAD
 		 * Instantiates the WordPress color picker and binds the change and clear events.
+=======
+		 * @summary Instantiates the WordPress color picker and binds the change and clear events.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.5.0
 		 *
@@ -33,7 +44,11 @@
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Alters the background size CSS property whenever the background size input has changed.
+=======
+		 * @summary Alters the background size CSS property whenever the background size input has changed.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 4.7.0
 		 *
@@ -44,7 +59,11 @@
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Alters the background position CSS property whenever the background position input has changed.
+=======
+		 * @summary Alters the background position CSS property whenever the background position input has changed.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 4.7.0
 		 *
@@ -55,7 +74,11 @@
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Alters the background repeat CSS property whenever the background repeat input has changed.
+=======
+		 * @summary Alters the background repeat CSS property whenever the background repeat input has changed.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.0.0
 		 *
@@ -66,7 +89,11 @@
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Alters the background attachment CSS property whenever the background attachment input has changed.
+=======
+		 * @summary Alters the background attachment CSS property whenever the background attachment input has changed.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 4.7.0
 		 *
@@ -77,7 +104,11 @@
 		});
 
 		/**
+<<<<<<< HEAD
 		 * Binds the event for opening the WP Media dialog.
+=======
+		 * @summary Binds the event for opening the WP Media dialog.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 *
 		 * @since 3.5.0
 		 *
@@ -117,7 +148,11 @@
 			});
 
 			/**
+<<<<<<< HEAD
 			 * When an image is selected, run a callback.
+=======
+			 * @summary When an image is selected, run a callback.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			 *
 			 * @since 3.5.0
 			 *

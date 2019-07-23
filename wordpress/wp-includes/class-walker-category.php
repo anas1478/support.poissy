@@ -35,10 +35,14 @@ class Walker_Category extends Walker {
 	 * @see Walker::$db_fields
 	 * @todo Decouple this
 	 */
+<<<<<<< HEAD
 	public $db_fields = array(
 		'parent' => 'parent',
 		'id'     => 'term_id',
 	);
+=======
+	public $db_fields = array ('parent' => 'parent', 'id' => 'term_id');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 	/**
 	 * Starts the list before the elements are added.
@@ -53,11 +57,18 @@ class Walker_Category extends Walker {
 	 *                       value is 'list'. See wp_list_categories(). Default empty array.
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = array() ) {
+<<<<<<< HEAD
 		if ( 'list' != $args['style'] ) {
 			return;
 		}
 
 		$indent  = str_repeat( "\t", $depth );
+=======
+		if ( 'list' != $args['style'] )
+			return;
+
+		$indent = str_repeat("\t", $depth);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$output .= "$indent<ul class='children'>\n";
 	}
 
@@ -74,11 +85,18 @@ class Walker_Category extends Walker {
 	 *                       value is 'list'. See wp_list_categories(). Default empty array.
 	 */
 	public function end_lvl( &$output, $depth = 0, $args = array() ) {
+<<<<<<< HEAD
 		if ( 'list' != $args['style'] ) {
 			return;
 		}
 
 		$indent  = str_repeat( "\t", $depth );
+=======
+		if ( 'list' != $args['style'] )
+			return;
+
+		$indent = str_repeat("\t", $depth);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$output .= "$indent</ul>\n";
 	}
 
@@ -134,10 +152,17 @@ class Walker_Category extends Walker {
 			$link .= '<a href="' . esc_url( get_term_feed_link( $category->term_id, $category->taxonomy, $args['feed_type'] ) ) . '"';
 
 			if ( empty( $args['feed'] ) ) {
+<<<<<<< HEAD
 				$alt = ' alt="' . sprintf( __( 'Feed for all posts filed under %s' ), $cat_name ) . '"';
 			} else {
 				$alt   = ' alt="' . $args['feed'] . '"';
 				$name  = $args['feed'];
+=======
+				$alt = ' alt="' . sprintf(__( 'Feed for all posts filed under %s' ), $cat_name ) . '"';
+			} else {
+				$alt = ' alt="' . $args['feed'] . '"';
+				$name = $args['feed'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$link .= empty( $args['title'] ) ? '' : $args['title'];
 			}
 
@@ -146,7 +171,11 @@ class Walker_Category extends Walker {
 			if ( empty( $args['feed_image'] ) ) {
 				$link .= $name;
 			} else {
+<<<<<<< HEAD
 				$link .= "<img src='" . esc_url( $args['feed_image'] ) . "'$alt" . ' />';
+=======
+				$link .= "<img src='" . $args['feed_image'] . "'$alt" . ' />';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			}
 			$link .= '</a>';
 
@@ -159,7 +188,11 @@ class Walker_Category extends Walker {
 			$link .= ' (' . number_format_i18n( $category->count ) . ')';
 		}
 		if ( 'list' == $args['style'] ) {
+<<<<<<< HEAD
 			$output     .= "\t<li";
+=======
+			$output .= "\t<li";
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$css_classes = array(
 				'cat-item',
 				'cat-item-' . $category->term_id,
@@ -167,6 +200,7 @@ class Walker_Category extends Walker {
 
 			if ( ! empty( $args['current_category'] ) ) {
 				// 'current_category' can be an array, so we use `get_terms()`.
+<<<<<<< HEAD
 				$_current_terms = get_terms(
 					$category->taxonomy,
 					array(
@@ -174,6 +208,12 @@ class Walker_Category extends Walker {
 						'hide_empty' => false,
 					)
 				);
+=======
+				$_current_terms = get_terms( $category->taxonomy, array(
+					'include' => $args['current_category'],
+					'hide_empty' => false,
+				) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 				foreach ( $_current_terms as $_current_term ) {
 					if ( $category->term_id == $_current_term->term_id ) {
@@ -183,7 +223,11 @@ class Walker_Category extends Walker {
 					}
 					while ( $_current_term->parent ) {
 						if ( $category->term_id == $_current_term->parent ) {
+<<<<<<< HEAD
 							$css_classes[] = 'current-cat-ancestor';
+=======
+							$css_classes[] =  'current-cat-ancestor';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 							break;
 						}
 						$_current_term = get_term( $_current_term->parent, $category->taxonomy );
@@ -204,9 +248,14 @@ class Walker_Category extends Walker {
 			 * @param array  $args        An array of wp_list_categories() arguments.
 			 */
 			$css_classes = implode( ' ', apply_filters( 'category_css_class', $css_classes, $category, $depth, $args ) );
+<<<<<<< HEAD
 			$css_classes = $css_classes ? ' class="' . esc_attr( $css_classes ) . '"' : '';
 
 			$output .= $css_classes;
+=======
+
+			$output .=  ' class="' . $css_classes . '"';
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$output .= ">$link\n";
 		} elseif ( isset( $args['separator'] ) ) {
 			$output .= "\t$link" . $args['separator'] . "\n";
@@ -229,9 +278,14 @@ class Walker_Category extends Walker {
 	 *                       to output. See wp_list_categories(). Default empty array.
 	 */
 	public function end_el( &$output, $page, $depth = 0, $args = array() ) {
+<<<<<<< HEAD
 		if ( 'list' != $args['style'] ) {
 			return;
 		}
+=======
+		if ( 'list' != $args['style'] )
+			return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$output .= "</li>\n";
 	}

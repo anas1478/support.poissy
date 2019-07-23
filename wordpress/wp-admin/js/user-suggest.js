@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Suggests users in a multisite environment.
  *
@@ -10,6 +11,8 @@
  * @output wp-admin/js/user-suggest.js
  */
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /* global ajaxurl, current_site_id, isRtl */
 
 (function( $ ) {
@@ -20,6 +23,7 @@
 			position.my = 'right top';
 			position.at = 'right bottom';
 		}
+<<<<<<< HEAD
 
 		/**
 		 * Adds an autocomplete function to input fields marked with the class
@@ -42,6 +46,8 @@
 		 *
 		 * @see wp-admin/includes/admin-actions.php:wp_ajax_autocomplete_user()
 		 */
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$( '.wp-suggest-user' ).each( function(){
 			var $this = $( this ),
 				autocompleteType = ( typeof $this.data( 'autocompleteType' ) !== 'undefined' ) ? $this.data( 'autocompleteType' ) : 'add',

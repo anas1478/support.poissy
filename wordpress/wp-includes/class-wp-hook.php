@@ -71,12 +71,21 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 * @param int      $accepted_args   The number of arguments the function accepts.
 	 */
 	public function add_filter( $tag, $function_to_add, $priority, $accepted_args ) {
+<<<<<<< HEAD
 		$idx              = _wp_filter_build_unique_id( $tag, $function_to_add, $priority );
 		$priority_existed = isset( $this->callbacks[ $priority ] );
 
 		$this->callbacks[ $priority ][ $idx ] = array(
 			'function'      => $function_to_add,
 			'accepted_args' => $accepted_args,
+=======
+		$idx = _wp_filter_build_unique_id( $tag, $function_to_add, $priority );
+		$priority_existed = isset( $this->callbacks[ $priority ] );
+
+		$this->callbacks[ $priority ][ $idx ] = array(
+			'function' => $function_to_add,
+			'accepted_args' => $accepted_args
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		);
 
 		// if we're adding a new priority to the list, put them back in sorted order
@@ -243,7 +252,11 @@ final class WP_Hook implements Iterator, ArrayAccess {
 
 		if ( false === $priority ) {
 			$this->callbacks = array();
+<<<<<<< HEAD
 		} elseif ( isset( $this->callbacks[ $priority ] ) ) {
+=======
+		} else if ( isset( $this->callbacks[ $priority ] ) ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			unset( $this->callbacks[ $priority ] );
 		}
 
@@ -269,14 +282,23 @@ final class WP_Hook implements Iterator, ArrayAccess {
 		$nesting_level = $this->nesting_level++;
 
 		$this->iterations[ $nesting_level ] = array_keys( $this->callbacks );
+<<<<<<< HEAD
 		$num_args                           = count( $args );
+=======
+		$num_args = count( $args );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		do {
 			$this->current_priority[ $nesting_level ] = $priority = current( $this->iterations[ $nesting_level ] );
 
 			foreach ( $this->callbacks[ $priority ] as $the_ ) {
+<<<<<<< HEAD
 				if ( ! $this->doing_action ) {
 					$args[0] = $value;
+=======
+				if( ! $this->doing_action ) {
+					$args[ 0 ] = $value;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 
 				// Avoid the array_slice if possible.
@@ -285,7 +307,11 @@ final class WP_Hook implements Iterator, ArrayAccess {
 				} elseif ( $the_['accepted_args'] >= $num_args ) {
 					$value = call_user_func_array( $the_['function'], $args );
 				} else {
+<<<<<<< HEAD
 					$value = call_user_func_array( $the_['function'], array_slice( $args, 0, (int) $the_['accepted_args'] ) );
+=======
+					$value = call_user_func_array( $the_['function'], array_slice( $args, 0, (int)$the_['accepted_args'] ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				}
 			}
 		} while ( false !== next( $this->iterations[ $nesting_level ] ) );
@@ -323,7 +349,11 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 * @param array $args Arguments to pass to the hook callbacks. Passed by reference.
 	 */
 	public function do_all_hook( &$args ) {
+<<<<<<< HEAD
 		$nesting_level                      = $this->nesting_level++;
+=======
+		$nesting_level = $this->nesting_level++;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->iterations[ $nesting_level ] = array_keys( $this->callbacks );
 
 		do {
@@ -356,6 +386,10 @@ final class WP_Hook implements Iterator, ArrayAccess {
 	 * Normalizes filters set up before WordPress has initialized to WP_Hook objects.
 	 *
 	 * @since 4.7.0
+<<<<<<< HEAD
+=======
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 *
 	 * @param array $filters Filters to normalize.
 	 * @return WP_Hook[] Array of normalized filters.

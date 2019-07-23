@@ -20,6 +20,11 @@ class WP_Customize_Control {
 	 * Used when sorting two instances whose priorities are equal.
 	 *
 	 * @since 4.1.0
+<<<<<<< HEAD
+=======
+	 *
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @var int
 	 */
 	protected static $instance_count = 0;
@@ -211,7 +216,11 @@ class WP_Customize_Control {
 		}
 
 		$this->manager = $manager;
+<<<<<<< HEAD
 		$this->id      = $id;
+=======
+		$this->id = $id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		if ( empty( $this->active_callback ) ) {
 			$this->active_callback = array( $this, 'active_callback' );
 		}
@@ -228,8 +237,13 @@ class WP_Customize_Control {
 			foreach ( $this->settings as $key => $setting ) {
 				$settings[ $key ] = $this->manager->get_setting( $setting );
 			}
+<<<<<<< HEAD
 		} elseif ( is_string( $this->settings ) ) {
 			$this->setting       = $this->manager->get_setting( $this->settings );
+=======
+		} else if ( is_string( $this->settings ) ) {
+			$this->setting = $this->manager->get_setting( $this->settings );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$settings['default'] = $this->setting;
 		}
 		$this->settings = $settings;
@@ -251,7 +265,11 @@ class WP_Customize_Control {
 	 */
 	final public function active() {
 		$control = $this;
+<<<<<<< HEAD
 		$active  = call_user_func( $this->active_callback, $this );
+=======
+		$active = call_user_func( $this->active_callback, $this );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Filters response of WP_Customize_Control::active().
@@ -306,6 +324,7 @@ class WP_Customize_Control {
 			$this->json['settings'][ $key ] = $setting->id;
 		}
 
+<<<<<<< HEAD
 		$this->json['type']           = $this->type;
 		$this->json['priority']       = $this->priority;
 		$this->json['active']         = $this->active();
@@ -313,6 +332,15 @@ class WP_Customize_Control {
 		$this->json['content']        = $this->get_content();
 		$this->json['label']          = $this->label;
 		$this->json['description']    = $this->description;
+=======
+		$this->json['type'] = $this->type;
+		$this->json['priority'] = $this->priority;
+		$this->json['active'] = $this->active();
+		$this->json['section'] = $this->section;
+		$this->json['content'] = $this->get_content();
+		$this->json['label'] = $this->label;
+		$this->json['description'] = $this->description;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$this->json['instanceNumber'] = $this->instance_number;
 
 		if ( 'dropdown-pages' === $this->type ) {
@@ -383,9 +411,14 @@ class WP_Customize_Control {
 	 * @uses WP_Customize_Control::render()
 	 */
 	final public function maybe_render() {
+<<<<<<< HEAD
 		if ( ! $this->check_capabilities() ) {
 			return;
 		}
+=======
+		if ( ! $this->check_capabilities() )
+			return;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		/**
 		 * Fires just before the current Customizer control is rendered.
@@ -479,8 +512,13 @@ class WP_Customize_Control {
 	 * @since 3.4.0
 	 */
 	protected function render_content() {
+<<<<<<< HEAD
 		$input_id         = '_customize-input-' . $this->id;
 		$description_id   = '_customize-description-' . $this->id;
+=======
+		$input_id = '_customize-input-' . $this->id;
+		$description_id = '_customize-description-' . $this->id;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$describedby_attr = ( ! empty( $this->description ) ) ? ' aria-describedby="' . esc_attr( $description_id ) . '" ' : '';
 		switch ( $this->type ) {
 			case 'checkbox':
@@ -512,7 +550,11 @@ class WP_Customize_Control {
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
 				<?php endif; ?>
 				<?php if ( ! empty( $this->description ) ) : ?>
+<<<<<<< HEAD
 					<span id="<?php echo esc_attr( $description_id ); ?>" class="description customize-control-description"><?php echo $this->description; ?></span>
+=======
+					<span id="<?php echo esc_attr( $description_id ); ?>" class="description customize-control-description"><?php echo $this->description ; ?></span>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<?php endif; ?>
 
 				<?php foreach ( $this->choices as $value => $label ) : ?>
@@ -566,8 +608,14 @@ class WP_Customize_Control {
 					rows="5"
 					<?php echo $describedby_attr; ?>
 					<?php $this->input_attrs(); ?>
+<<<<<<< HEAD
 					<?php $this->link(); ?>
 				><?php echo esc_textarea( $this->value() ); ?></textarea>
+=======
+					<?php $this->link(); ?>>
+					<?php echo esc_textarea( $this->value() ); ?>
+				</textarea>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<?php
 				break;
 			case 'dropdown-pages':
@@ -580,10 +628,17 @@ class WP_Customize_Control {
 				<?php endif; ?>
 
 				<?php
+<<<<<<< HEAD
 				$dropdown_name     = '_customize-dropdown-pages-' . $this->id;
 				$show_option_none  = __( '&mdash; Select &mdash;' );
 				$option_none_value = '0';
 				$dropdown          = wp_dropdown_pages(
+=======
+				$dropdown_name = '_customize-dropdown-pages-' . $this->id;
+				$show_option_none = __( '&mdash; Select &mdash;' );
+				$option_none_value = '0';
+				$dropdown = wp_dropdown_pages(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					array(
 						'name'              => $dropdown_name,
 						'echo'              => 0,
@@ -593,7 +648,11 @@ class WP_Customize_Control {
 					)
 				);
 				if ( empty( $dropdown ) ) {
+<<<<<<< HEAD
 					$dropdown  = sprintf( '<select id="%1$s" name="%1$s">', esc_attr( $dropdown_name ) );
+=======
+					$dropdown = sprintf( '<select id="%1$s" name="%1$s">', esc_attr( $dropdown_name ) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					$dropdown .= sprintf( '<option value="%1$s">%2$s</option>', esc_attr( $option_none_value ), esc_html( $show_option_none ) );
 					$dropdown .= '</select>';
 				}

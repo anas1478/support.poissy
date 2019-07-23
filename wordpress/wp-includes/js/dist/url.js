@@ -82,7 +82,11 @@ this["wp"] = this["wp"] || {}; this["wp"]["url"] =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 300);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 299);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -105,9 +109,17 @@ var hexTable = (function () {
 }());
 
 var compactQueue = function compactQueue(queue) {
+<<<<<<< HEAD
     while (queue.length > 1) {
         var item = queue.pop();
         var obj = item.obj[item.prop];
+=======
+    var obj;
+
+    while (queue.length) {
+        var item = queue.pop();
+        obj = item.obj[item.prop];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
         if (Array.isArray(obj)) {
             var compacted = [];
@@ -121,6 +133,11 @@ var compactQueue = function compactQueue(queue) {
             item.obj[item.prop] = compacted;
         }
     }
+<<<<<<< HEAD
+=======
+
+    return obj;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 };
 
 var arrayToObject = function arrayToObject(source, options) {
@@ -143,7 +160,11 @@ var merge = function merge(target, source, options) {
         if (Array.isArray(target)) {
             target.push(source);
         } else if (typeof target === 'object') {
+<<<<<<< HEAD
             if ((options && (options.plainObjects || options.allowPrototypes)) || !has.call(Object.prototype, source)) {
+=======
+            if (options.plainObjects || options.allowPrototypes || !has.call(Object.prototype, source)) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
                 target[source] = true;
             }
         } else {
@@ -196,6 +217,7 @@ var assign = function assignSingleSource(target, source) {
     }, target);
 };
 
+<<<<<<< HEAD
 var decode = function (str, decoder, charset) {
     var strWithoutPlus = str.replace(/\+/g, ' ');
     if (charset === 'iso-8859-1') {
@@ -211,6 +233,17 @@ var decode = function (str, decoder, charset) {
 };
 
 var encode = function encode(str, defaultEncoder, charset) {
+=======
+var decode = function (str) {
+    try {
+        return decodeURIComponent(str.replace(/\+/g, ' '));
+    } catch (e) {
+        return str;
+    }
+};
+
+var encode = function encode(str) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     // This code was originally written by Brian White (mscdex) for the io.js core querystring library.
     // It has been adapted here for stricter adherence to RFC 3986
     if (str.length === 0) {
@@ -219,12 +252,15 @@ var encode = function encode(str, defaultEncoder, charset) {
 
     var string = typeof str === 'string' ? str : String(str);
 
+<<<<<<< HEAD
     if (charset === 'iso-8859-1') {
         return escape(string).replace(/%u[0-9a-f]{4}/gi, function ($0) {
             return '%26%23' + parseInt($0.slice(2), 16) + '%3B';
         });
     }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     var out = '';
     for (var i = 0; i < string.length; ++i) {
         var c = string.charCodeAt(i);
@@ -287,9 +323,13 @@ var compact = function compact(value) {
         }
     }
 
+<<<<<<< HEAD
     compactQueue(queue);
 
     return value;
+=======
+    return compactQueue(queue);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 };
 
 var isRegExp = function isRegExp(obj) {
@@ -304,6 +344,7 @@ var isBuffer = function isBuffer(obj) {
     return !!(obj.constructor && obj.constructor.isBuffer && obj.constructor.isBuffer(obj));
 };
 
+<<<<<<< HEAD
 var combine = function combine(a, b) {
     return [].concat(a, b);
 };
@@ -312,6 +353,11 @@ module.exports = {
     arrayToObject: arrayToObject,
     assign: assign,
     combine: combine,
+=======
+module.exports = {
+    arrayToObject: arrayToObject,
+    assign: assign,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     compact: compact,
     decode: decode,
     encode: encode,
@@ -349,7 +395,11 @@ module.exports = {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 300:
+=======
+/***/ 299:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -672,7 +722,11 @@ function filterURLForDisplay(url) {
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 301:
+=======
+/***/ 300:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -693,6 +747,7 @@ var arrayPrefixGenerators = {
     }
 };
 
+<<<<<<< HEAD
 var isArray = Array.isArray;
 var push = Array.prototype.push;
 var pushToArray = function (arr, valueOrArray) {
@@ -706,12 +761,20 @@ var defaults = {
     allowDots: false,
     charset: 'utf-8',
     charsetSentinel: false,
+=======
+var toISO = Date.prototype.toISOString;
+
+var defaults = {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     delimiter: '&',
     encode: true,
     encoder: utils.encode,
     encodeValuesOnly: false,
+<<<<<<< HEAD
     // deprecated
     indices: false,
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     serializeDate: function serializeDate(date) { // eslint-disable-line func-name-matching
         return toISO.call(date);
     },
@@ -731,19 +794,29 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
     allowDots,
     serializeDate,
     formatter,
+<<<<<<< HEAD
     encodeValuesOnly,
     charset
+=======
+    encodeValuesOnly
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 ) {
     var obj = object;
     if (typeof filter === 'function') {
         obj = filter(prefix, obj);
     } else if (obj instanceof Date) {
         obj = serializeDate(obj);
+<<<<<<< HEAD
     }
 
     if (obj === null) {
         if (strictNullHandling) {
             return encoder && !encodeValuesOnly ? encoder(prefix, defaults.encoder, charset) : prefix;
+=======
+    } else if (obj === null) {
+        if (strictNullHandling) {
+            return encoder && !encodeValuesOnly ? encoder(prefix, defaults.encoder) : prefix;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }
 
         obj = '';
@@ -751,8 +824,13 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
 
     if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean' || utils.isBuffer(obj)) {
         if (encoder) {
+<<<<<<< HEAD
             var keyValue = encodeValuesOnly ? prefix : encoder(prefix, defaults.encoder, charset);
             return [formatter(keyValue) + '=' + formatter(encoder(obj, defaults.encoder, charset))];
+=======
+            var keyValue = encodeValuesOnly ? prefix : encoder(prefix, defaults.encoder);
+            return [formatter(keyValue) + '=' + formatter(encoder(obj, defaults.encoder))];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         }
         return [formatter(prefix) + '=' + formatter(String(obj))];
     }
@@ -779,7 +857,11 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
         }
 
         if (Array.isArray(obj)) {
+<<<<<<< HEAD
             pushToArray(values, stringify(
+=======
+            values = values.concat(stringify(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
                 obj[key],
                 generateArrayPrefix(prefix, key),
                 generateArrayPrefix,
@@ -791,11 +873,18 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
                 allowDots,
                 serializeDate,
                 formatter,
+<<<<<<< HEAD
                 encodeValuesOnly,
                 charset
             ));
         } else {
             pushToArray(values, stringify(
+=======
+                encodeValuesOnly
+            ));
+        } else {
+            values = values.concat(stringify(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
                 obj[key],
                 prefix + (allowDots ? '.' + key : '[' + key + ']'),
                 generateArrayPrefix,
@@ -807,8 +896,12 @@ var stringify = function stringify( // eslint-disable-line func-name-matching
                 allowDots,
                 serializeDate,
                 formatter,
+<<<<<<< HEAD
                 encodeValuesOnly,
                 charset
+=======
+                encodeValuesOnly
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
             ));
         }
     }
@@ -830,6 +923,7 @@ module.exports = function (object, opts) {
     var encode = typeof options.encode === 'boolean' ? options.encode : defaults.encode;
     var encoder = typeof options.encoder === 'function' ? options.encoder : defaults.encoder;
     var sort = typeof options.sort === 'function' ? options.sort : null;
+<<<<<<< HEAD
     var allowDots = typeof options.allowDots === 'undefined' ? defaults.allowDots : !!options.allowDots;
     var serializeDate = typeof options.serializeDate === 'function' ? options.serializeDate : defaults.serializeDate;
     var encodeValuesOnly = typeof options.encodeValuesOnly === 'boolean' ? options.encodeValuesOnly : defaults.encodeValuesOnly;
@@ -838,6 +932,11 @@ module.exports = function (object, opts) {
         throw new Error('The charset option must be either utf-8, iso-8859-1, or undefined');
     }
 
+=======
+    var allowDots = typeof options.allowDots === 'undefined' ? false : options.allowDots;
+    var serializeDate = typeof options.serializeDate === 'function' ? options.serializeDate : defaults.serializeDate;
+    var encodeValuesOnly = typeof options.encodeValuesOnly === 'boolean' ? options.encodeValuesOnly : defaults.encodeValuesOnly;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     if (typeof options.format === 'undefined') {
         options.format = formats['default'];
     } else if (!Object.prototype.hasOwnProperty.call(formats.formatters, options.format)) {
@@ -886,7 +985,12 @@ module.exports = function (object, opts) {
         if (skipNulls && obj[key] === null) {
             continue;
         }
+<<<<<<< HEAD
         pushToArray(keys, stringify(
+=======
+
+        keys = keys.concat(stringify(
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
             obj[key],
             key,
             generateArrayPrefix,
@@ -898,14 +1002,19 @@ module.exports = function (object, opts) {
             allowDots,
             serializeDate,
             formatter,
+<<<<<<< HEAD
             encodeValuesOnly,
             charset
+=======
+            encodeValuesOnly
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         ));
     }
 
     var joined = keys.join(delimiter);
     var prefix = options.addQueryPrefix === true ? '?' : '';
 
+<<<<<<< HEAD
     if (options.charsetSentinel) {
         if (charset === 'iso-8859-1') {
             // encodeURIComponent('&#10003;'), the "numeric entity" representation of a checkmark
@@ -916,13 +1025,19 @@ module.exports = function (object, opts) {
         }
     }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     return joined.length > 0 ? prefix + joined : '';
 };
 
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 302:
+=======
+/***/ 301:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -936,6 +1051,7 @@ var defaults = {
     allowDots: false,
     allowPrototypes: false,
     arrayLimit: 20,
+<<<<<<< HEAD
     charset: 'utf-8',
     charsetSentinel: false,
     decoder: utils.decode,
@@ -945,10 +1061,17 @@ var defaults = {
     interpretNumericEntities: false,
     parameterLimit: 1000,
     parseArrays: true,
+=======
+    decoder: utils.decode,
+    delimiter: '&',
+    depth: 5,
+    parameterLimit: 1000,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     plainObjects: false,
     strictNullHandling: false
 };
 
+<<<<<<< HEAD
 var interpretNumericEntities = function (str) {
     return str.replace(/&#(\d+);/g, function ($0, numberStr) {
         return String.fromCharCode(parseInt(numberStr, 10));
@@ -965,11 +1088,14 @@ var isoSentinel = 'utf8=%26%2310003%3B'; // encodeURIComponent('&#10003;')
 // These are the percent-encoded utf-8 octets representing a checkmark, indicating that the request actually is utf-8 encoded.
 var charsetSentinel = 'utf8=%E2%9C%93'; // encodeURIComponent('✓')
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var parseValues = function parseQueryStringValues(str, options) {
     var obj = {};
     var cleanStr = options.ignoreQueryPrefix ? str.replace(/^\?/, '') : str;
     var limit = options.parameterLimit === Infinity ? undefined : options.parameterLimit;
     var parts = cleanStr.split(options.delimiter, limit);
+<<<<<<< HEAD
     var skipIndex = -1; // Keep track of where the utf8 sentinel was found
     var i;
 
@@ -992,6 +1118,10 @@ var parseValues = function parseQueryStringValues(str, options) {
         if (i === skipIndex) {
             continue;
         }
+=======
+
+    for (var i = 0; i < parts.length; ++i) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         var part = parts[i];
 
         var bracketEqualsPos = part.indexOf(']=');
@@ -999,6 +1129,7 @@ var parseValues = function parseQueryStringValues(str, options) {
 
         var key, val;
         if (pos === -1) {
+<<<<<<< HEAD
             key = options.decoder(part, defaults.decoder, charset);
             val = options.strictNullHandling ? null : '';
         } else {
@@ -1011,6 +1142,16 @@ var parseValues = function parseQueryStringValues(str, options) {
         }
         if (has.call(obj, key)) {
             obj[key] = utils.combine(obj[key], val);
+=======
+            key = options.decoder(part, defaults.decoder);
+            val = options.strictNullHandling ? null : '';
+        } else {
+            key = options.decoder(part.slice(0, pos), defaults.decoder);
+            val = options.decoder(part.slice(pos + 1), defaults.decoder);
+        }
+        if (has.call(obj, key)) {
+            obj[key] = [].concat(obj[key]).concat(val);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         } else {
             obj[key] = val;
         }
@@ -1026,15 +1167,25 @@ var parseObject = function (chain, val, options) {
         var obj;
         var root = chain[i];
 
+<<<<<<< HEAD
         if (root === '[]' && options.parseArrays) {
             obj = [].concat(leaf);
+=======
+        if (root === '[]') {
+            obj = [];
+            obj = obj.concat(leaf);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         } else {
             obj = options.plainObjects ? Object.create(null) : {};
             var cleanRoot = root.charAt(0) === '[' && root.charAt(root.length - 1) === ']' ? root.slice(1, -1) : root;
             var index = parseInt(cleanRoot, 10);
+<<<<<<< HEAD
             if (!options.parseArrays && cleanRoot === '') {
                 obj = { 0: leaf };
             } else if (
+=======
+            if (
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
                 !isNaN(index)
                 && root !== cleanRoot
                 && String(index) === cleanRoot
@@ -1076,7 +1227,12 @@ var parseKeys = function parseQueryStringKeys(givenKey, val, options) {
 
     var keys = [];
     if (parent) {
+<<<<<<< HEAD
         // If we aren't using plain objects, optionally prefix keys that would overwrite object prototype properties
+=======
+        // If we aren't using plain objects, optionally prefix keys
+        // that would overwrite object prototype properties
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
         if (!options.plainObjects && has.call(Object.prototype, parent)) {
             if (!options.allowPrototypes) {
                 return;
@@ -1121,12 +1277,17 @@ module.exports = function (str, opts) {
     options.arrayLimit = typeof options.arrayLimit === 'number' ? options.arrayLimit : defaults.arrayLimit;
     options.parseArrays = options.parseArrays !== false;
     options.decoder = typeof options.decoder === 'function' ? options.decoder : defaults.decoder;
+<<<<<<< HEAD
     options.allowDots = typeof options.allowDots === 'undefined' ? defaults.allowDots : !!options.allowDots;
+=======
+    options.allowDots = typeof options.allowDots === 'boolean' ? options.allowDots : defaults.allowDots;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     options.plainObjects = typeof options.plainObjects === 'boolean' ? options.plainObjects : defaults.plainObjects;
     options.allowPrototypes = typeof options.allowPrototypes === 'boolean' ? options.allowPrototypes : defaults.allowPrototypes;
     options.parameterLimit = typeof options.parameterLimit === 'number' ? options.parameterLimit : defaults.parameterLimit;
     options.strictNullHandling = typeof options.strictNullHandling === 'boolean' ? options.strictNullHandling : defaults.strictNullHandling;
 
+<<<<<<< HEAD
     if (typeof options.charset !== 'undefined' && options.charset !== 'utf-8' && options.charset !== 'iso-8859-1') {
         throw new Error('The charset option must be either utf-8, iso-8859-1, or undefined');
     }
@@ -1134,6 +1295,8 @@ module.exports = function (str, opts) {
         options.charset = defaults.charset;
     }
 
+=======
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
     if (str === '' || str === null || typeof str === 'undefined') {
         return options.plainObjects ? Object.create(null) : {};
     }
@@ -1162,8 +1325,13 @@ module.exports = function (str, opts) {
 "use strict";
 
 
+<<<<<<< HEAD
 var stringify = __webpack_require__(301);
 var parse = __webpack_require__(302);
+=======
+var stringify = __webpack_require__(300);
+var parse = __webpack_require__(301);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var formats = __webpack_require__(180);
 
 module.exports = {

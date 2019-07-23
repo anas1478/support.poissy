@@ -111,7 +111,13 @@ input[type=radio]:checked:before {
 
 /* List tables */
 .wrap .add-new-h2:hover,
+<<<<<<< HEAD
 .wrap .page-title-action:hover {
+=======
+.wrap .page-title-action:hover,
+.tablenav .tablenav-pages a:hover,
+.tablenav .tablenav-pages a:focus {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
   color: #fff;
   background-color: #cf4944;
 }

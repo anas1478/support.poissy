@@ -1,8 +1,14 @@
+<<<<<<< HEAD
 ( function( tinymce ) {
 	tinymce.PluginManager.add( 'wpemoji', function( editor ) {
 		var typing,
 			wp = window.wp,
 			settings = window._wpemojiSettings,
+=======
+( function( tinymce, wp, settings ) {
+	tinymce.PluginManager.add( 'wpemoji', function( editor ) {
+		var typing,
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			env = tinymce.Env,
 			ua = window.navigator.userAgent,
 			isWin = ua.indexOf( 'Windows' ) > -1,
@@ -127,4 +133,8 @@
 			}
 		} );
 	} );
+<<<<<<< HEAD
 } )( window.tinymce );
+=======
+} )( window.tinymce, window.wp, window._wpemojiSettings );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

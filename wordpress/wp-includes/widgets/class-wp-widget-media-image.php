@@ -22,6 +22,7 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 	 * @since  4.8.0
 	 */
 	public function __construct() {
+<<<<<<< HEAD
 		parent::__construct(
 			'media_image',
 			__( 'Image' ),
@@ -48,6 +49,27 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 				'media_library_state_single' => __( 'Image Widget' ),
 			)
 		);
+=======
+		parent::__construct( 'media_image', __( 'Image' ), array(
+			'description' => __( 'Displays an image.' ),
+			'mime_type'   => 'image',
+		) );
+
+		$this->l10n = array_merge( $this->l10n, array(
+			'no_media_selected' => __( 'No image selected' ),
+			'add_media' => _x( 'Add Image', 'label for button in the image widget' ),
+			'replace_media' => _x( 'Replace Image', 'label for button in the image widget; should preferably not be longer than ~13 characters long' ),
+			'edit_media' => _x( 'Edit Image', 'label for button in the image widget; should preferably not be longer than ~13 characters long' ),
+			'missing_attachment' => sprintf(
+				/* translators: %s: URL to media library */
+				__( 'We can&#8217;t find that image. Check your <a href="%s">media library</a> and make sure it wasn&#8217;t deleted.' ),
+				esc_url( admin_url( 'upload.php' ) )
+			),
+			/* translators: %d: widget count */
+			'media_library_state_multi' => _n_noop( 'Image Widget (%d)', 'Image Widget (%d)' ),
+			'media_library_state_single' => __( 'Image Widget' ),
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	}
 
 	/**
@@ -64,6 +86,7 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 		return array_merge(
 			parent::get_instance_schema(),
 			array(
+<<<<<<< HEAD
 				'size'              => array(
 					'type'        => 'string',
 					'enum'        => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom' ) ),
@@ -149,6 +172,93 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 					'sanitize_callback'     => 'sanitize_text_field',
 					'media_prop'            => 'title',
 					'description'           => __( 'Image Title Attribute' ),
+=======
+				'size' => array(
+					'type' => 'string',
+					'enum' => array_merge( get_intermediate_image_sizes(), array( 'full', 'custom' ) ),
+					'default' => 'medium',
+					'description' => __( 'Size' ),
+				),
+				'width' => array( // Via 'customWidth', only when size=custom; otherwise via 'width'.
+					'type' => 'integer',
+					'minimum' => 0,
+					'default' => 0,
+					'description' => __( 'Width' ),
+				),
+				'height' => array( // Via 'customHeight', only when size=custom; otherwise via 'height'.
+					'type' => 'integer',
+					'minimum' => 0,
+					'default' => 0,
+					'description' => __( 'Height' ),
+				),
+
+				'caption' => array(
+					'type' => 'string',
+					'default' => '',
+					'sanitize_callback' => 'wp_kses_post',
+					'description' => __( 'Caption' ),
+					'should_preview_update' => false,
+				),
+				'alt' => array(
+					'type' => 'string',
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'description' => __( 'Alternative Text' ),
+				),
+				'link_type' => array(
+					'type' => 'string',
+					'enum' => array( 'none', 'file', 'post', 'custom' ),
+					'default' => 'custom',
+					'media_prop' => 'link',
+					'description' => __( 'Link To' ),
+					'should_preview_update' => true,
+				),
+				'link_url' => array(
+					'type' => 'string',
+					'default' => '',
+					'format' => 'uri',
+					'media_prop' => 'linkUrl',
+					'description' => __( 'URL' ),
+					'should_preview_update' => true,
+				),
+				'image_classes' => array(
+					'type' => 'string',
+					'default' => '',
+					'sanitize_callback' => array( $this, 'sanitize_token_list' ),
+					'media_prop' => 'extraClasses',
+					'description' => __( 'Image CSS Class' ),
+					'should_preview_update' => false,
+				),
+				'link_classes' => array(
+					'type' => 'string',
+					'default' => '',
+					'sanitize_callback' => array( $this, 'sanitize_token_list' ),
+					'media_prop' => 'linkClassName',
+					'should_preview_update' => false,
+					'description' => __( 'Link CSS Class' ),
+				),
+				'link_rel' => array(
+					'type' => 'string',
+					'default' => '',
+					'sanitize_callback' => array( $this, 'sanitize_token_list' ),
+					'media_prop' => 'linkRel',
+					'description' => __( 'Link Rel' ),
+					'should_preview_update' => false,
+				),
+				'link_target_blank' => array(
+					'type' => 'boolean',
+					'default' => false,
+					'media_prop' => 'linkTargetBlank',
+					'description' => __( 'Open link in a new tab' ),
+					'should_preview_update' => false,
+				),
+				'image_title' => array(
+					'type' => 'string',
+					'default' => '',
+					'sanitize_callback' => 'sanitize_text_field',
+					'media_prop' => 'title',
+					'description' => __( 'Image Title Attribute' ),
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 					'should_preview_update' => false,
 				),
 
@@ -175,12 +285,18 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 	 */
 	public function render_media( $instance ) {
 		$instance = array_merge( wp_list_pluck( $this->get_instance_schema(), 'default' ), $instance );
+<<<<<<< HEAD
 		$instance = wp_parse_args(
 			$instance,
 			array(
 				'size' => 'thumbnail',
 			)
 		);
+=======
+		$instance = wp_parse_args( $instance, array(
+			'size' => 'thumbnail',
+		) );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$attachment = null;
 		if ( $this->is_attachment_with_mime_type( $instance['attachment_id'], $this->widget_options['mime_type'] ) ) {
@@ -215,7 +331,11 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 			$image = wp_get_attachment_image( $attachment->ID, $size, false, $image_attributes );
 
 			$caption_size = _wp_get_image_size_from_meta( $instance['size'], wp_get_attachment_metadata( $attachment->ID ) );
+<<<<<<< HEAD
 			$width        = empty( $caption_size[0] ) ? 0 : $caption_size[0];
+=======
+			$width = empty( $caption_size[0] ) ? 0 : $caption_size[0];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		} else {
 			if ( empty( $instance['url'] ) ) {
@@ -223,9 +343,15 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 			}
 
 			$instance['size'] = 'custom';
+<<<<<<< HEAD
 			$caption          = $instance['caption'];
 			$width            = $instance['width'];
 			$classes          = 'image ' . $instance['image_classes'];
+=======
+			$caption = $instance['caption'];
+			$width   = $instance['width'];
+			$classes = 'image ' . $instance['image_classes'];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			if ( 0 === $instance['width'] ) {
 				$instance['width'] = '';
 			}
@@ -233,8 +359,12 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 				$instance['height'] = '';
 			}
 
+<<<<<<< HEAD
 			$image = sprintf(
 				'<img class="%1$s" src="%2$s" alt="%3$s" width="%4$s" height="%5$s" />',
+=======
+			$image = sprintf( '<img class="%1$s" src="%2$s" alt="%3$s" width="%4$s" height="%5$s" />',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				esc_attr( $classes ),
 				esc_url( $instance['url'] ),
 				esc_attr( $instance['alt'] ),
@@ -270,6 +400,7 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 		}
 
 		if ( $caption ) {
+<<<<<<< HEAD
 			$image = img_caption_shortcode(
 				array(
 					'width'   => $width,
@@ -277,6 +408,12 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 				),
 				$image
 			);
+=======
+			$image = img_caption_shortcode( array(
+				'width' => $width,
+				'caption' => $caption,
+			), $image );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		echo $image;
@@ -351,12 +488,19 @@ class WP_Widget_Media_Image extends WP_Widget_Media {
 			<# } else if ( data.url ) { #>
 				<img class="attachment-thumb" src="{{ data.url }}" draggable="false" alt="{{ data.alt }}" <# if ( ! data.alt && data.currentFilename ) { #> aria-describedby="{{ describedById }}" <# } #> />
 				<# if ( ! data.alt && data.currentFilename ) { #>
+<<<<<<< HEAD
 					<p class="hidden" id="{{ describedById }}">
 					<?php
 						/* translators: %s: image filename */
 						echo sprintf( __( 'Current image: %s' ), '{{ data.currentFilename }}' );
 					?>
 					</p>
+=======
+					<p class="hidden" id="{{ describedById }}"><?php
+						/* translators: placeholder is image filename */
+						echo sprintf( __( 'Current image: %s' ), '{{ data.currentFilename }}' );
+					?></p>
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				<# } #>
 			<# } #>
 		</script>

@@ -65,8 +65,12 @@ function get_bloginfo() {}
 /**
  * @ignore
  */
+<<<<<<< HEAD
 function is_admin() {
 	return true;}
+=======
+function is_admin() {return true;}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * @ignore
@@ -94,15 +98,26 @@ function includes_url() {}
 function wp_guess_url() {}
 
 if ( ! function_exists( 'json_encode' ) ) :
+<<<<<<< HEAD
 	/**
 	 * @ignore
 	 */
 	function json_encode() {}
+=======
+/**
+ * @ignore
+ */
+function json_encode() {}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 endif;
 
 function get_file( $path ) {
 
+<<<<<<< HEAD
 	if ( function_exists( 'realpath' ) ) {
+=======
+	if ( function_exists('realpath') ) {
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		$path = realpath( $path );
 	}
 
@@ -111,4 +126,8 @@ function get_file( $path ) {
 	}
 
 	return @file_get_contents( $path );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274

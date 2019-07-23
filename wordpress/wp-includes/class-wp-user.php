@@ -80,8 +80,12 @@ class WP_User {
 	 * All capabilities the user has, including individual and role based.
 	 *
 	 * @since 2.0.0
+<<<<<<< HEAD
 	 * @var bool[] Array of key/value pairs where keys represent a capability name and boolean values
 	 *             represent whether the user has that capability.
+=======
+	 * @var array
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public $allcaps = array();
 
@@ -102,6 +106,10 @@ class WP_User {
 	private $site_id = 0;
 
 	/**
+<<<<<<< HEAD
+=======
+	 * @static
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @since 3.3.0
 	 * @var array
 	 */
@@ -114,12 +122,18 @@ class WP_User {
 	 *
 	 * @since 2.0.0
 	 *
+<<<<<<< HEAD
+=======
+	 * @global wpdb $wpdb WordPress database abstraction object.
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param int|string|stdClass|WP_User $id User's ID, a WP_User object, or a user object from the DB.
 	 * @param string $name Optional. User's username
 	 * @param int $site_id Optional Site ID, defaults to current site.
 	 */
 	public function __construct( $id = 0, $name = '', $site_id = '' ) {
 		if ( ! isset( self::$back_compat_keys ) ) {
+<<<<<<< HEAD
 			$prefix                 = $GLOBALS['wpdb']->prefix;
 			self::$back_compat_keys = array(
 				'user_firstname'             => 'first_name',
@@ -127,6 +141,15 @@ class WP_User {
 				'user_description'           => 'description',
 				'user_level'                 => $prefix . 'user_level',
 				$prefix . 'usersettings'     => $prefix . 'user-settings',
+=======
+			$prefix = $GLOBALS['wpdb']->prefix;
+			self::$back_compat_keys = array(
+				'user_firstname' => 'first_name',
+				'user_lastname' => 'last_name',
+				'user_description' => 'description',
+				'user_level' => $prefix . 'user_level',
+				$prefix . 'usersettings' => $prefix . 'user-settings',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$prefix . 'usersettingstime' => $prefix . 'user-settings-time',
 			);
 		}
@@ -141,7 +164,11 @@ class WP_User {
 
 		if ( ! empty( $id ) && ! is_numeric( $id ) ) {
 			$name = $id;
+<<<<<<< HEAD
 			$id   = 0;
+=======
+			$id = 0;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		if ( $id ) {
@@ -167,7 +194,11 @@ class WP_User {
 	 */
 	public function init( $data, $site_id = '' ) {
 		$this->data = $data;
+<<<<<<< HEAD
 		$this->ID   = (int) $data->ID;
+=======
+		$this->ID = (int) $data->ID;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		$this->for_site( $site_id );
 	}
@@ -178,6 +209,11 @@ class WP_User {
 	 * @since 3.3.0
 	 * @since 4.4.0 Added 'ID' as an alias of 'id' for the `$field` parameter.
 	 *
+<<<<<<< HEAD
+=======
+	 * @static
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @global wpdb $wpdb WordPress database abstraction object.
 	 *
 	 * @param string $field The field to query against: 'id', 'ID', 'slug', 'email' or 'login'.
@@ -195,6 +231,7 @@ class WP_User {
 		if ( 'id' == $field ) {
 			// Make sure the value is numeric to avoid casting objects, for example,
 			// to int 1.
+<<<<<<< HEAD
 			if ( ! is_numeric( $value ) ) {
 				return false;
 			}
@@ -202,10 +239,18 @@ class WP_User {
 			if ( $value < 1 ) {
 				return false;
 			}
+=======
+			if ( ! is_numeric( $value ) )
+				return false;
+			$value = intval( $value );
+			if ( $value < 1 )
+				return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} else {
 			$value = trim( $value );
 		}
 
+<<<<<<< HEAD
 		if ( ! $value ) {
 			return false;
 		}
@@ -226,6 +271,27 @@ class WP_User {
 			case 'login':
 				$value    = sanitize_user( $value );
 				$user_id  = wp_cache_get( $value, 'userlogins' );
+=======
+		if ( !$value )
+			return false;
+
+		switch ( $field ) {
+			case 'id':
+				$user_id = $value;
+				$db_field = 'ID';
+				break;
+			case 'slug':
+				$user_id = wp_cache_get($value, 'userslugs');
+				$db_field = 'user_nicename';
+				break;
+			case 'email':
+				$user_id = wp_cache_get($value, 'useremail');
+				$db_field = 'user_email';
+				break;
+			case 'login':
+				$value = sanitize_user( $value );
+				$user_id = wp_cache_get($value, 'userlogins');
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				$db_field = 'user_login';
 				break;
 			default:
@@ -233,6 +299,7 @@ class WP_User {
 		}
 
 		if ( false !== $user_id ) {
+<<<<<<< HEAD
 			if ( $user = wp_cache_get( $user_id, 'users' ) ) {
 				return $user;
 			}
@@ -246,6 +313,16 @@ class WP_User {
 		) ) {
 			return false;
 		}
+=======
+			if ( $user = wp_cache_get( $user_id, 'users' ) )
+				return $user;
+		}
+
+		if ( !$user = $wpdb->get_row( $wpdb->prepare(
+			"SELECT * FROM $wpdb->users WHERE $db_field = %s", $value
+		) ) )
+			return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		update_user_caches( $user );
 
@@ -262,9 +339,13 @@ class WP_User {
 	 */
 	public function __isset( $key ) {
 		if ( 'id' == $key ) {
+<<<<<<< HEAD
 			_deprecated_argument(
 				'WP_User->id',
 				'2.1.0',
+=======
+			_deprecated_argument( 'WP_User->id', '2.1.0',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				sprintf(
 					/* translators: %s: WP_User->ID */
 					__( 'Use %s instead.' ),
@@ -274,6 +355,7 @@ class WP_User {
 			$key = 'ID';
 		}
 
+<<<<<<< HEAD
 		if ( isset( $this->data->$key ) ) {
 			return true;
 		}
@@ -281,6 +363,13 @@ class WP_User {
 		if ( isset( self::$back_compat_keys[ $key ] ) ) {
 			$key = self::$back_compat_keys[ $key ];
 		}
+=======
+		if ( isset( $this->data->$key ) )
+			return true;
+
+		if ( isset( self::$back_compat_keys[ $key ] ) )
+			$key = self::$back_compat_keys[ $key ];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 		return metadata_exists( 'user', $this->ID, $key );
 	}
@@ -295,9 +384,13 @@ class WP_User {
 	 */
 	public function __get( $key ) {
 		if ( 'id' == $key ) {
+<<<<<<< HEAD
 			_deprecated_argument(
 				'WP_User->id',
 				'2.1.0',
+=======
+			_deprecated_argument( 'WP_User->id', '2.1.0',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				sprintf(
 					/* translators: %s: WP_User->ID */
 					__( 'Use %s instead.' ),
@@ -310,9 +403,14 @@ class WP_User {
 		if ( isset( $this->data->$key ) ) {
 			$value = $this->data->$key;
 		} else {
+<<<<<<< HEAD
 			if ( isset( self::$back_compat_keys[ $key ] ) ) {
 				$key = self::$back_compat_keys[ $key ];
 			}
+=======
+			if ( isset( self::$back_compat_keys[ $key ] ) )
+				$key = self::$back_compat_keys[ $key ];
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$value = get_user_meta( $this->ID, $key, true );
 		}
 
@@ -336,9 +434,13 @@ class WP_User {
 	 */
 	public function __set( $key, $value ) {
 		if ( 'id' == $key ) {
+<<<<<<< HEAD
 			_deprecated_argument(
 				'WP_User->id',
 				'2.1.0',
+=======
+			_deprecated_argument( 'WP_User->id', '2.1.0',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				sprintf(
 					/* translators: %s: WP_User->ID */
 					__( 'Use %s instead.' ),
@@ -361,9 +463,13 @@ class WP_User {
 	 */
 	public function __unset( $key ) {
 		if ( 'id' == $key ) {
+<<<<<<< HEAD
 			_deprecated_argument(
 				'WP_User->id',
 				'2.1.0',
+=======
+			_deprecated_argument( 'WP_User->id', '2.1.0',
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 				sprintf(
 					/* translators: %s: WP_User->ID */
 					__( 'Use %s instead.' ),
@@ -436,7 +542,11 @@ class WP_User {
 	 *
 	 * @since 4.3.0
 	 *
+<<<<<<< HEAD
 	 * @param string   $name      Method to call.
+=======
+	 * @param callable $name      Method to call.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param array    $arguments Arguments to pass when calling.
 	 * @return mixed|false Return value of the callback, false otherwise.
 	 */
@@ -479,6 +589,7 @@ class WP_User {
 	}
 
 	/**
+<<<<<<< HEAD
 	 * Retrieves all of the capabilities of the roles of the user, and merges them with individual user capabilities.
 	 *
 	 * All of the capabilities of the roles of the user are merged with the user's individual capabilities. This means
@@ -488,6 +599,18 @@ class WP_User {
 	 *
 	 * @return bool[] Array of key/value pairs where keys represent a capability name and boolean values
 	 *                represent whether the user has that capability.
+=======
+	 * Retrieve all of the role capabilities and merge with individual capabilities.
+	 *
+	 * All of the capabilities of the roles the user belongs to are merged with
+	 * the users individual roles. This also means that the user can be denied
+	 * specific roles that their role might have, but the specific user isn't
+	 * granted permission to.
+	 *
+	 * @since 2.0.0
+	 *
+	 * @return array List of all capabilities for the user.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 */
 	public function get_role_caps() {
 		$switch_site = false;
@@ -499,6 +622,7 @@ class WP_User {
 
 		$wp_roles = wp_roles();
 
+<<<<<<< HEAD
 		// Filter out caps that are not role names and assign to $this->roles.
 		if ( is_array( $this->caps ) ) {
 			$this->roles = array_filter( array_keys( $this->caps ), array( $wp_roles, 'is_role' ) );
@@ -508,6 +632,16 @@ class WP_User {
 		$this->allcaps = array();
 		foreach ( (array) $this->roles as $role ) {
 			$the_role      = $wp_roles->get_role( $role );
+=======
+		//Filter out caps that are not role names and assign to $this->roles
+		if ( is_array( $this->caps ) )
+			$this->roles = array_filter( array_keys( $this->caps ), array( $wp_roles, 'is_role' ) );
+
+		//Build $allcaps from role caps, overlay user's $caps
+		$this->allcaps = array();
+		foreach ( (array) $this->roles as $role ) {
+			$the_role = $wp_roles->get_role( $role );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			$this->allcaps = array_merge( (array) $this->allcaps, (array) $the_role->capabilities );
 		}
 		$this->allcaps = array_merge( (array) $this->allcaps, (array) $this->caps );
@@ -533,7 +667,11 @@ class WP_User {
 			return;
 		}
 
+<<<<<<< HEAD
 		$this->caps[ $role ] = true;
+=======
+		$this->caps[$role] = true;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		update_user_meta( $this->ID, $this->cap_key, $this->caps );
 		$this->get_role_caps();
 		$this->update_user_level_from_caps();
@@ -557,10 +695,16 @@ class WP_User {
 	 * @param string $role Role name.
 	 */
 	public function remove_role( $role ) {
+<<<<<<< HEAD
 		if ( ! in_array( $role, $this->roles ) ) {
 			return;
 		}
 		unset( $this->caps[ $role ] );
+=======
+		if ( !in_array($role, $this->roles) )
+			return;
+		unset( $this->caps[$role] );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		update_user_meta( $this->ID, $this->cap_key, $this->caps );
 		$this->get_role_caps();
 		$this->update_user_level_from_caps();
@@ -588,6 +732,7 @@ class WP_User {
 	 * @param string $role Role name.
 	 */
 	public function set_role( $role ) {
+<<<<<<< HEAD
 		if ( 1 == count( $this->roles ) && $role == current( $this->roles ) ) {
 			return;
 		}
@@ -600,6 +745,18 @@ class WP_User {
 		if ( ! empty( $role ) ) {
 			$this->caps[ $role ] = true;
 			$this->roles         = array( $role => true );
+=======
+		if ( 1 == count( $this->roles ) && $role == current( $this->roles ) )
+			return;
+
+		foreach ( (array) $this->roles as $oldrole )
+			unset( $this->caps[$oldrole] );
+
+		$old_roles = $this->roles;
+		if ( !empty( $role ) ) {
+			$this->caps[$role] = true;
+			$this->roles = array( $role => true );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		} else {
 			$this->roles = false;
 		}
@@ -613,9 +770,15 @@ class WP_User {
 		 * @since 2.9.0
 		 * @since 3.6.0 Added $old_roles to include an array of the user's previous roles.
 		 *
+<<<<<<< HEAD
 		 * @param int      $user_id   The user ID.
 		 * @param string   $role      The new role.
 		 * @param string[] $old_roles An array of the user's previous roles.
+=======
+		 * @param int    $user_id   The user ID.
+		 * @param string $role      The new role.
+		 * @param array  $old_roles An array of the user's previous roles.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		do_action( 'set_user_role', $this->ID, $role, $old_roles );
 	}
@@ -673,7 +836,11 @@ class WP_User {
 	 * @param bool $grant Whether to grant capability to user.
 	 */
 	public function add_cap( $cap, $grant = true ) {
+<<<<<<< HEAD
 		$this->caps[ $cap ] = $grant;
+=======
+		$this->caps[$cap] = $grant;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		update_user_meta( $this->ID, $this->cap_key, $this->caps );
 		$this->get_role_caps();
 		$this->update_user_level_from_caps();
@@ -741,9 +908,14 @@ class WP_User {
 
 		// Multisite super admin has all caps by definition, Unless specifically denied.
 		if ( is_multisite() && is_super_admin( $this->ID ) ) {
+<<<<<<< HEAD
 			if ( in_array( 'do_not_allow', $caps ) ) {
 				return false;
 			}
+=======
+			if ( in_array('do_not_allow', $caps) )
+				return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 			return true;
 		}
 
@@ -751,6 +923,7 @@ class WP_User {
 		 * Dynamically filter a user's capabilities.
 		 *
 		 * @since 2.0.0
+<<<<<<< HEAD
 		 * @since 3.7.0 Added the `$user` parameter.
 		 *
 		 * @param bool[]   $allcaps Array of key/value pairs where keys represent a capability name and boolean values
@@ -764,6 +937,14 @@ class WP_User {
 		 *     @type mixed  ...$2 Optional second and further parameters, typically object ID.
 		 * }
 		 * @param WP_User  $user    The user object.
+=======
+		 * @since 3.7.0 Added the user object.
+		 *
+		 * @param array   $allcaps An array of all the user's capabilities.
+		 * @param array   $caps    Actual capabilities for meta capability.
+		 * @param array   $args    Optional parameters passed to has_cap(), typically object ID.
+		 * @param WP_User $user    The user object.
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		 */
 		$capabilities = apply_filters( 'user_has_cap', $this->allcaps, $caps, $args, $this );
 
@@ -775,9 +956,14 @@ class WP_User {
 
 		// Must have ALL requested caps.
 		foreach ( (array) $caps as $cap ) {
+<<<<<<< HEAD
 			if ( empty( $capabilities[ $cap ] ) ) {
 				return false;
 			}
+=======
+			if ( empty( $capabilities[ $cap ] ) )
+				return false;
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 		}
 
 		return true;
@@ -803,6 +989,11 @@ class WP_User {
 	 * @since 3.0.0
 	 * @deprecated 4.9.0 Use WP_User::for_site()
 	 *
+<<<<<<< HEAD
+=======
+	 * @global wpdb $wpdb WordPress database abstraction object.
+	 *
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 	 * @param int $blog_id Optional. Site ID, defaults to current site.
 	 */
 	public function for_blog( $blog_id = '' ) {

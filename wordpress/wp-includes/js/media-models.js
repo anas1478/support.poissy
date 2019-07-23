@@ -81,11 +81,16 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
+<<<<<<< HEAD
 /******/ 	return __webpack_require__(__webpack_require__.s = 22);
+=======
+/******/ 	return __webpack_require__(__webpack_require__.s = 20);
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /******/ })
 /************************************************************************/
 /******/ ({
 
+<<<<<<< HEAD
 /***/ 22:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -101,6 +106,11 @@ module.exports = __webpack_require__(23);
  * @output wp-includes/js/media-models.js
  */
 
+=======
+/***/ 20:
+/***/ (function(module, exports, __webpack_require__) {
+
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 var $ = jQuery,
 	Attachment, Attachments, l10n, media;
 
@@ -167,12 +177,21 @@ l10n = media.model.l10n = window._wpMediaModelsL10n || {};
 media.model.settings = l10n.settings || {};
 delete l10n.settings;
 
+<<<<<<< HEAD
 Attachment = media.model.Attachment = __webpack_require__( 24 );
 Attachments = media.model.Attachments = __webpack_require__( 25 );
 
 media.model.Query = __webpack_require__( 26 );
 media.model.PostImage = __webpack_require__( 27 );
 media.model.Selection = __webpack_require__( 28 );
+=======
+Attachment = media.model.Attachment = __webpack_require__( 21 );
+Attachments = media.model.Attachments = __webpack_require__( 22 );
+
+media.model.Query = __webpack_require__( 23 );
+media.model.PostImage = __webpack_require__( 24 );
+media.model.Selection = __webpack_require__( 25 );
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 
 /**
  * ========================================================================
@@ -343,7 +362,11 @@ $(window).on('unload', function(){
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 24:
+=======
+/***/ 21:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var $ = Backbone.$,
@@ -519,7 +542,11 @@ module.exports = Attachment;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 25:
+=======
+/***/ 22:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 /**
@@ -1078,7 +1105,11 @@ module.exports = Attachments;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 26:
+=======
+/***/ 23:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var Attachments = wp.media.model.Attachments,
@@ -1393,7 +1424,11 @@ module.exports = Query;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 27:
+=======
+/***/ 24:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 /**
@@ -1554,7 +1589,11 @@ module.exports = PostImage;
 
 /***/ }),
 
+<<<<<<< HEAD
 /***/ 28:
+=======
+/***/ 25:
+>>>>>>> 05075d87e9e3af44152a5ca6f3621177d0ace274
 /***/ (function(module, exports) {
 
 var Attachments = wp.media.model.Attachments,
